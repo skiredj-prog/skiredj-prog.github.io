@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import { url } from "../data/site";
+---
+
+<Base
+  locale="fr"
+  slug="404"
+  title="Page absente"
+  description="Cette adresse ne correspond à aucune page du site TENIR."
+  kicker="404"
+  lede="Cette adresse ne figure pas dans le rendu public."
+  sources="site"
+>
+  <p><a href={url("/")}>Retour à l’accueil</a> · <a href={url("/en/")}>English home</a></p>
+</Base>
