@@ -15,9 +15,9 @@ export const copy = {
     themeToDark: "Thème sombre",
     themeToLight: "Thème clair",
     status:
-      "Rendu public simplifié, lecture du 19 octobre 2026. KB3 : cible de rendu maintenue, prête pour ratification, non formellement instituée. KB2 : ligne antérieure, continuité seulement. Ce site ne remplace ni la gouvernance amont, ni la source machine, ni les RFC, ni les dépôts, et ne certifie aucune implémentation.",
+      "Rendu public simplifié, lecture du 19 octobre 2026. KB3 : ligne de rendu doctrinale instituée et active. Elle rend le sens ; elle n’est pas le code, ni une constitution. KB2 : ligne antérieure. Ce site ne certifie aucune implémentation.",
     footerNote:
-      "Abdelaziz Skiredj · TENIR Labs. KB3 rend le sens ; il n’est pas un nouveau canon, ni une institution formelle.",
+      "Abdelaziz Skiredj · TENIR Labs. KB3 est institué comme ligne de rendu, hors du code. Il rend le sens ; il n’est pas une nouvelle constitution.",
     sources: "Sources",
     external: "hors de ce site",
   },
@@ -29,9 +29,9 @@ export const copy = {
     themeToDark: "Dark theme",
     themeToLight: "Light theme",
     status:
-      "Simplified public rendering, read on 19 October 2026. KB3: maintained rendering target, ratification-ready, not formally enacted. KB2: prior rendering line, continuity only. This site does not replace upstream governance, the machine source, the RFCs, or the repositories, and it certifies no implementation.",
+      "Simplified public rendering, read on 19 October 2026. KB3: enacted, active doctrinal rendering line. It renders meaning; it is not the code, and not a constitution. KB2: prior rendering line. This site certifies no implementation.",
     footerNote:
-      "Abdelaziz Skiredj · TENIR Labs. KB3 renders meaning; it is not a new canon, and it is not formally enacted.",
+      "Abdelaziz Skiredj · TENIR Labs. KB3 is enacted as the rendering line, outside the code. It renders meaning; it is not a new constitution.",
     sources: "Sources",
     external: "leaves this site",
   },
@@ -78,6 +78,9 @@ const frToEn: Record<string, string> = {
   statut: "/en/status/",
   contribuer: "/en/contribute/",
   contact: "/en/contact/",
+  "architecture/demo": "/en/architecture/demo/",
+  "architecture/interactive": "/en/architecture/interactive/",
+  "architecture/drawing": "/en/architecture/drawing/",
 };
 
 const enToFr: Record<string, string> = Object.fromEntries(

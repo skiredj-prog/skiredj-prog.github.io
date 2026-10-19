@@ -2,7 +2,7 @@
 title: Statut
 kicker: Maturité réelle · octobre 2026
 description: Ce qui est rendu, ce qui est gelé comme brouillon, ce qui est testé en laboratoire, et ce qui n’est pas publié.
-lede: KB3 est la cible de rendu maintenue, prête pour ratification, non formellement instituée. KB2 est la ligne antérieure. Le standard a des brouillons gelés. Le runtime a un arbre bêta dont la dernière entrée de journal n’est pas une release.
+lede: KB3 est la ligne de rendu doctrinale instituée et active. L’institution est la déclaration du propriétaire du 19 octobre 2026 ; les fichiers fournis avec elle ne contiennent pas d’enregistrement signé. KB2 est la ligne antérieure. Le standard a des brouillons gelés. Le runtime a un arbre bêta dont la dernière entrée de journal n’est pas une release.
 sources: KB3, note de normalisation du 14 avril 2026 ; KB2, ligne antérieure ; politique v2 ; architecture illustrative, sections 11 et 13 ; CHANGELOG 5.6.0 et 5.6.1 ; STATUS.md du harnais
 ---
 
@@ -11,8 +11,8 @@ sources: KB3, note de normalisation du 14 avril 2026 ; KB2, ligne antérieure ; 
 <table>
   <thead><tr><th>Espace</th><th>État assumé par les sources</th></tr></thead>
   <tbody>
-    <tr><td>TENIR 2.0</td><td>Nom du cadre dans l’espace canon. Ce nom n’institue pas KB3.</td></tr>
-    <tr><td>KB3</td><td>Cible de rendu maintenue pour le travail éditorial en cours. Prête pour ratification. Non formellement instituée tant qu’un enregistrement signé n’existe pas sous <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. Pas un nouveau canon. L’absence de cet enregistrement ne se comble pas par des artefacts plus tardifs.</td></tr>
+    <tr><td>TENIR 2.0</td><td>Nom du cadre dans l’espace canon. Ce nom n’est pas, à lui seul, l’institution de KB3.</td></tr>
+    <tr><td>KB3</td><td>Ligne de rendu doctrinale instituée et active, par la déclaration du propriétaire du 19 octobre 2026. Les fichiers fournis avec cette déclaration ne contiennent pas d’enregistrement signé sous <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. Couche documentaire, hors du code. KB3 rend le sens ; il ne crée pas de sens souverain et n’est pas une nouvelle constitution. Les services ou applications spécialisés peuvent l’envelopper ou l’étendre ; ils ne doivent pas le redéfinir. TENIR-Gov doit s’y aligner ; il n’est pas KB3.</td></tr>
     <tr><td>KB2</td><td>Ligne de rendu antérieure, continuité seulement. Pas d’autorité active simultanée avec KB3. Le build du 30 mars 2026 est conservé. La note qui l’a nommé actif à l’institution est un contexte historique, pas l’autorité actuelle. KB1.1 est historique. Rédigé et curé avec assistance, auteur Abdelaziz Skiredj.</td></tr>
     <tr><td>REG</td><td>RFC-0 à RFC-7 : Proposed Standard, brouillon gelé, 2–3 octobre 2026. Pas une norme adoptée par un organisme extérieur.</td></tr>
     <tr><td>TENIR-Gov</td><td>Classifieur « Development Status :: 4 - Beta ». Ligne IronOmega 5.0.0 en juin-juillet 2026, poursuivie jusqu’à l’arbre 5.6.1.</td></tr>

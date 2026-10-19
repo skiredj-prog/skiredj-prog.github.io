@@ -7,8 +7,19 @@ sources: KB3, cible de rendu maintenue ; KB2, ligne antérieure (30 mars 2026) ;
 ---
 
 <div class="callout callout-note">
-  <p><strong>Autorité.</strong> Classe de cette page : simplified public-facing. Elle ne se présente pas comme loi canonique. KB3 est la cible de rendu maintenue : elle clarifie, ordonne et signale les limites ; elle ne crée pas de sens souverain. Elle est prête pour ratification, et non formellement instituée tant qu’un enregistrement signé n’existe pas sous <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. KB2 est la ligne de rendu antérieure, pour la continuité seulement. Quand un dépôt, un RFC ou l’introduction emploie le même mot autrement, l’écart reste visible. Là où KB3 ne reformule pas la définition, le libellé conservé vient de KB2 (30 mars 2026). La gouvernance et la source machine restent en amont, et ne sont pas reproduites ici.</p>
+  <p><strong>Autorité.</strong> Classe de cette page : simplified public-facing. Elle ne se présente pas comme loi canonique. KB3 est la ligne de rendu doctrinale instituée et active : il clarifie, ordonne et signale les limites ; il rend le sens et ne le crée pas. KB2 est la ligne de rendu antérieure, pour la continuité seulement. Quand un dépôt, un RFC ou l’introduction emploie le même mot autrement, l’écart reste visible. Là où KB3 ne reformule pas la définition, le libellé conservé vient de KB2 (30 mars 2026). La gouvernance et la source machine restent en amont, et ne sont pas reproduites ici. L’institution de KB3 est notée sur la page <a href="/statut/">Statut</a>.</p>
 </div>
+
+## Trois couches à ne pas fondre
+
+<table>
+  <thead><tr><th>Couche</th><th>Ce qu’elle est</th><th>Ce qu’elle n’est pas</th></tr></thead>
+  <tbody>
+    <tr><td>KB3</td><td>Ligne de rendu doctrinale instituée et active. Couche documentaire.</td><td>Pas le code. Pas une constitution. Pas un module à citer dans un dépôt.</td></tr>
+    <tr><td>Services et applications spécialisés</td><td>Ils enveloppent ou étendent KB3. Ils s’appuient sur lui.</td><td>Ils ne le redéfinissent pas. Une extension gouvernée ne mime pas une ligne canonique.</td></tr>
+    <tr><td>TENIR-Gov, ligne IronOmega</td><td>Implémentation du plan de contrôle d’exécution. Elle doit s’aligner sur KB3.</td><td>Elle n’est pas KB3. Un verdict PASS, FLAG, HOLD ou HARD_VETO n’est pas une posture.</td></tr>
+  </tbody>
+</table>
 
 ## Thèse
 

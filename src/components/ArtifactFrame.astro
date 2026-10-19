@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import { url, type Locale } from "../data/site";
+
+interface Props {
+  locale: Locale;
+  slug: string;
+  title: string;
+  description: string;
+  kicker: string;
+  lede: string;
+  sources: string;
+  src: string;
+  openLabel: string;
+}
+
+const { locale, slug, title, description, kicker, lede, sources, src, openLabel } = Astro.props;
+---
+
+<Base locale={locale} slug={slug} title={title} description={description} kicker={kicker} lede={lede} sources={sources}>
+  <slot />
+  <p class="embed-links">
+    <a href={url(src)}>{openLabel}</a>
+  </p>
+  <iframe class="embed-frame" src={url(src)} title={title}></iframe>
+</Base>

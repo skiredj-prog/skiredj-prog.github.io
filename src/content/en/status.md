@@ -2,7 +2,7 @@
 title: Status
 kicker: Actual maturity · October 2026
 description: What is rendered, what is frozen as a draft, what is tested in the laboratory, and what is not published.
-lede: KB3 is the maintained rendering target, ratification-ready, not formally enacted. KB2 is the prior rendering line. The standard has frozen drafts. The runtime has a beta tree whose latest changelog entry is not a release.
+lede: KB3 is the enacted, active doctrinal rendering line. Enactment is the owner’s declaration of 19 October 2026; the files provided with it contain no signed record. KB2 is the prior rendering line. The standard has frozen drafts. The runtime has a beta tree whose latest changelog entry is not a release.
 sources: KB3, normalisation note of 14 April 2026; KB2, prior rendering line; policy v2; illustrative architecture, sections 11 and 13; CHANGELOG 5.6.0 and 5.6.1; harness STATUS.md
 ---
 
@@ -11,8 +11,8 @@ sources: KB3, normalisation note of 14 April 2026; KB2, prior rendering line; po
 <table>
   <thead><tr><th>Namespace</th><th>State the sources themselves assume</th></tr></thead>
   <tbody>
-    <tr><td>TENIR 2.0</td><td>Name of the framework in the canon namespace. That name does not enact KB3.</td></tr>
-    <tr><td>KB3</td><td>Maintained rendering target for current editorial work. Ratification-ready. Not formally enacted until a signed record exists under <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. Not a new canon. The absence of that record is not filled by later artifacts.</td></tr>
+    <tr><td>TENIR 2.0</td><td>Name of the framework in the canon namespace. That name is not, by itself, the enactment of KB3.</td></tr>
+    <tr><td>KB3</td><td>Enacted, active doctrinal rendering line, by the owner’s declaration of 19 October 2026. The files provided with that declaration contain no signed record under <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. A document layer, outside the code. KB3 renders meaning; it does not create sovereign meaning and is not a new constitution. Specialized services or applications may wrap or extend it; they must not redefine it. TENIR-Gov should align to it; it is not KB3.</td></tr>
     <tr><td>KB2</td><td>Prior rendering line, continuity only. No simultaneous active authority with KB3. The build of 30 March 2026 is kept. The note that once named it active, at institution, is historical context, not current authority. KB1.1 is historical. Written and curated with assistance; author Abdelaziz Skiredj.</td></tr>
     <tr><td>REG</td><td>RFC-0 through RFC-7: Proposed Standard, frozen draft, 2–3 October 2026. Not a standard adopted by an external body.</td></tr>
     <tr><td>TENIR-Gov</td><td>Classifier “Development Status :: 4 - Beta”. IronOmega 5.0.0 line in June–July 2026, continued through the 5.6.1 tree.</td></tr>

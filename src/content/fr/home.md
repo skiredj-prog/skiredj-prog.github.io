@@ -3,10 +3,10 @@ title: TENIR
 kicker: TENIR 2.0 · rendu public
 description: TENIR est un cadre de diagnostic et de gouvernance pour les unités bornées sous pression, et le nom d’une ligne d’exécution qui tente de tenir la frontière entre une intention et un effet.
 lede: Diagnostiquer si une unité reconstruite peut encore tenir, puis empêcher qu’une action devienne un effet tant que les conditions exigées ne sont pas établies.
-sources: KB3, cible de rendu maintenue, prête pour ratification ; KB2, ligne antérieure (30 mars 2026) ; guide public Beyond the Layers ; dépôts publics au 19 octobre 2026
+sources: KB3, ligne de rendu instituée le 19 octobre 2026 ; KB2, ligne antérieure (30 mars 2026) ; guide public Beyond the Layers ; dépôts publics au 19 octobre 2026
 ---
 
-<p>TENIR 2.0 est un cadre diagnostique et de gouvernance, reconstruction-first, pour les unités bornées sous pression. Il porte sur l’admissibilité, la préservation des options, la validité épistémique, la récupérabilité et la posture. Cette page est un rendu public simplifié. Elle suit KB3, cible de rendu maintenue, prête pour ratification et non formellement instituée. KB3 rend le sens ; il n’est pas un nouveau canon. Les définitions qu’il ne reformule pas sont conservées depuis KB2 (30 mars 2026), ligne de rendu antérieure, sans autorité active simultanée. Le mot TENIR désigne aussi, dans les dépôts, une ligne d’implémentation : TENIR-Gov, le runtime de référence du standard Runtime Execution Governance (REG).</p>
+<p>TENIR 2.0 est un cadre diagnostique et de gouvernance, reconstruction-first, pour les unités bornées sous pression. Il porte sur l’admissibilité, la préservation des options, la validité épistémique, la récupérabilité et la posture. Cette page est un rendu public simplifié. Elle suit KB3, ligne de rendu doctrinale instituée et active. KB3 rend le sens ; il ne crée pas de sens souverain et n’est pas une nouvelle constitution. C’est une couche documentaire, hors du code. Les services ou applications spécialisés l’enveloppent ou l’étendent : ils s’appuient sur KB3 et ne doivent pas le redéfinir. Les définitions qu’il ne reformule pas sont conservées depuis KB2 (30 mars 2026), ligne de rendu antérieure, sans autorité active simultanée. Le mot TENIR désigne aussi, dans les dépôts, une implémentation : TENIR-Gov, le runtime de référence du standard Runtime Execution Governance (REG). Cette implémentation doit s’aligner sur KB3. Elle n’est pas KB3.</p>
 
 <div class="triad">
   <article class="card">
@@ -45,7 +45,7 @@ Un délai n’est pas une preuve d’échec. Une confirmation absente n’est pa
   <article class="card">
     <p class="role">Rendu · KB3</p>
     <h3>Doctrine rendue</h3>
-    <p>TENIR 2.0 nomme le cadre : identité admissible, portes, posture, effondrement. KB3 est la cible de rendu maintenue, prête pour ratification, non formellement instituée. Elle n’est pas un nouveau canon. KB2 est la ligne antérieure, pour la continuité seulement. La gouvernance et la source machine restent en amont.</p>
+    <p>TENIR 2.0 nomme le cadre : identité admissible, portes, posture, effondrement. KB3 en est la ligne de rendu instituée et active. Il rend le sens ; il n’est pas une constitution, ni le code. KB2 est la ligne antérieure. La gouvernance et la source machine restent en amont.</p>
   </article>
   <article class="card">
     <p class="role">Standard</p>
@@ -55,7 +55,7 @@ Un délai n’est pas une preuve d’échec. Une confirmation absente n’est pa
   <article class="card">
     <p class="role">Plateforme</p>
     <h3>TENIR-Gov</h3>
-    <p>L’implémentation de référence, ligne IronOmega puis 5.x. Elle sert le cadre. Elle ne le redéfinit pas. La 5.6.1 n’est pas une publication.</p>
+    <p>L’implémentation de référence, ligne IronOmega puis 5.x. Elle doit s’aligner sur KB3. Elle n’est pas KB3. La 5.6.1 n’est pas une publication.</p>
   </article>
 </div>
 

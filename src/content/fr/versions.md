@@ -14,7 +14,7 @@ sources: TENIR Versioning, Namespace and Governed Extension Policy v2 ; KB3, not
   <thead><tr><th>Espace</th><th>Réservé à</th><th>Exemples donnés</th></tr></thead>
   <tbody>
     <tr><td>Canon</td><td>Versions du cadre constitutionnel</td><td>TENIR 2.0, plus tard TENIR 2.1</td></tr>
-    <tr><td>Knowledge base</td><td>Rendu, pas le canon</td><td>KB1.1, historique ; KB2, ligne antérieure ; KB3, cible maintenue, prête pour ratification, non instituée</td></tr>
+    <tr><td>Knowledge base</td><td>Rendu documentaire, hors du code</td><td>KB1.1, historique ; KB2, ligne antérieure ; KB3, institué et actif</td></tr>
     <tr><td>Profils et modules</td><td>Doctrine spécialisée, sans remplacer le canon</td><td>Gouvernance agentique, métabolique, rhizomatique, chacun en v1.0 dans les exemples</td></tr>
     <tr><td>Plateforme</td><td>Releases d’implémentation</td><td>K+4 RC, TENIR2C</td></tr>
     <tr><td>Produits</td><td>Surfaces visibles par l’utilisateur</td><td>Lens / Studio, Engine API, Governance, Reports</td></tr>
@@ -43,7 +43,7 @@ sources: TENIR Versioning, Namespace and Governed Extension Policy v2 ; KB3, not
     <tr><td>v1.x</td><td>Histoire du canon, legacy</td></tr>
     <tr><td>KB1.1</td><td>Rendu historique</td></tr>
     <tr><td>KB2</td><td>Ligne de rendu antérieure. Continuité seulement. Pas une ligne active.</td></tr>
-    <tr><td>KB3</td><td>Cible de rendu maintenue. Prête pour ratification. Non formellement instituée. Pas une version du canon.</td></tr>
+    <tr><td>KB3</td><td>Ligne de rendu doctrinale instituée et active, déclaration du propriétaire du 19 octobre 2026. Pas d’enregistrement signé dans les fichiers fournis. Pas une version du canon, ni un module de code.</td></tr>
     <tr><td>« v3 » informel</td><td>Déprécié comme référence canonique. Devenu profil.</td></tr>
     <tr><td>K+4 RC</td><td>Ligne d’implémentation. Châssis, pas souveraineté sémantique.</td></tr>
     <tr><td>TENIR2C</td><td>Branche de revue / ligne de plateforme</td></tr>
@@ -51,7 +51,9 @@ sources: TENIR Versioning, Namespace and Governed Extension Policy v2 ; KB3, not
   </tbody>
 </table>
 
-<p>Classes de conformité nommées par la ligne antérieure, conservées parce que KB3 exige de les laisser visibles sans les renommer : Canonical 2.0, Legacy processable, Profile-governed, Simplified public-facing, Illustrative only. Ce site est simplified public-facing. Le dessin d’architecture est illustrative only. KB3 n’est pas la classe Canonical 2.0 : c’est la cible de rendu maintenue, prête pour ratification, non formellement instituée. KB2 n’est plus une ligne de rendu active.</p>
+<p>Classes de conformité nommées par la ligne antérieure, conservées parce que KB3 exige de les laisser visibles sans les renommer : Canonical 2.0, Legacy processable, Profile-governed, Simplified public-facing, Illustrative only. Ce site est simplified public-facing. Le dessin d’architecture, la démo du plan de contrôle et le parcours interactif sont illustrative only. KB3 n’est pas la classe Canonical 2.0 : c’est la ligne de rendu doctrinale instituée et active, hors du code. L’institution est la déclaration du propriétaire du 19 octobre 2026. Les fichiers fournis avec cette déclaration ne contiennent pas d’enregistrement signé sous <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. KB2 n’est plus une ligne de rendu active.</p>
+
+<p>Les services ou applications spécialisés enveloppent ou étendent KB3. Ils s’appuient sur cette ligne et ne doivent pas la redéfinir : pas de nouveau vocabulaire de posture, pas d’autorité qu’ils n’ont pas, pas de ligne de version qui mime le canon. TENIR-Gov, espace plateforme, ligne IronOmega, est une implémentation qui doit s’aligner sur KB3. Il n’est pas KB3, et cette page ne pointe aucun fichier de code comme module KB3.</p>
 
 ## Ce que les dépôts ont le droit de dire
 

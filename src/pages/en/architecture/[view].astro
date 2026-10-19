@@ -1,0 +1,87 @@
+---
+import ArtifactFrame from "../../../components/ArtifactFrame.astro";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { view: "demo" },
+      props: {
+        title: "Control-plane demo",
+        description: "Illustrative demonstration of the TENIR-Gov execution control plane, in six scenes. Verdicts are not postures.",
+        kicker: "Illustrative only · demo",
+        lede: "Six scenes of a two-kernel client. A governance decision does not prove an exactly-once external effect.",
+        sources: "TENIR-Gov · Execution Control Plane Demo; KB3, posture kept separate from execution",
+        src: "/embeds/execution-control-plane-demo.html",
+      },
+    },
+    {
+      params: { view: "interactive" },
+      props: {
+        title: "Interactive architecture",
+        description: "Interactive walkthrough of the TENIR Governance architecture, badged REG+ v5.6.0. An illustrative drawing, with its limits.",
+        kicker: "Illustrative only · REG+ v5.6.0",
+        lede: "Five levels, signals, the double kernel, CAVE, consensus, lifecycle, evidence, and the gaps the walkthrough itself publishes.",
+        sources: "TENIR Governance — Interactive Architecture; KB3, enacted rendering line",
+        src: "/embeds/interactive-architecture.html",
+      },
+    },
+    {
+      params: { view: "drawing" },
+      props: {
+        title: "Illustrative drawing",
+        description: "The TENIR / REG illustrative architecture document, served as provided. It is not the normative schema.",
+        kicker: "Illustrative only · source document",
+        lede: "The drawing from which the Architecture page takes its chain, its kernels, and its traps. Class: illustrative only.",
+        sources: "TENIR / REG — illustrative architecture",
+        src: "/embeds/architecture-illustrative.html",
+      },
+    },
+  ];
+}
+
+const { view } = Astro.params;
+const { title, description, kicker, lede, sources, src } = Astro.props;
+---
+
+<ArtifactFrame
+  locale="en"
+  slug={`architecture/${view}`}
+  title={title}
+  description={description}
+  kicker={kicker}
+  lede={lede}
+  sources={sources}
+  src={src}
+  openLabel="Open the artifact alone"
+>
+  {
+    view === "demo" && (
+      <div class="callout callout-limit">
+        <p>
+          <strong>Limit.</strong> The artifact is in English. Class: illustrative only. PASS, FLAG, HOLD, and HARD_VETO are execution verdicts. They are not the postures NORMAL, CAUTION, and HOLDING-FIRST. The HOLD in scene 3 is an operation state, not HOLDING-FIRST. Scene 6 holds the boundary: at most one dispatch on a single host. A governance decision does not, by itself, prove an exactly-once external effect. This site does not replay the code shown.
+        </p>
+      </div>
+    )
+  }
+  {
+    view === "interactive" && (
+      <div class="callout callout-limit">
+        <p>
+          <strong>Limit.</strong> The walkthrough is in English, badged REG+ v5.6.0. It is not KB3 and it is not a certification. Lattice verdicts are not postures. The walkthrough’s Limits section — I8, non-deterministic time, unvalidated amounts, non-atomic stores, linearizability, pickle, quorum, Raft on localhost — stays open. This site does not declare it closed.
+        </p>
+      </div>
+    )
+  }
+  {
+    view === "drawing" && (
+      <div class="callout callout-note">
+        <p>
+          <strong>Status.</strong> Illustrative document, in French. It is not the normative schema. Where it names V volatility, the prior rendering line says velocity. KB3, the enacted line, does not elect that name. Score thresholds are not postures.
+        </p>
+      </div>
+    )
+  }
+  <p>
+    <a href="/en/architecture/">Back to architecture</a>
+  </p>
+</ArtifactFrame>

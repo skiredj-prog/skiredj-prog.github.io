@@ -3,10 +3,10 @@ title: TENIR
 kicker: TENIR 2.0 · public rendering
 description: TENIR is a diagnostic and governance framework for bounded units under pressure, and the name of an execution line that tries to hold the boundary between an intention and an effect.
 lede: Diagnose whether a reconstructed unit can still hold, then keep a proposed action from becoming an effect until the required conditions are established.
-sources: KB3, maintained rendering target, ratification-ready; KB2, prior rendering line (30 March 2026); public guide Beyond the Layers; public repositories as of 19 October 2026
+sources: KB3, rendering line enacted on 19 October 2026; KB2, prior rendering line (30 March 2026); public guide Beyond the Layers; public repositories as of 19 October 2026
 ---
 
-<p>TENIR 2.0 is a diagnostic and governance framework, reconstruction-first, for bounded units under pressure. It is concerned with admissibility, preservation of options, epistemic validity, recoverability, and posture. This page is a simplified public rendering. It follows KB3, the maintained rendering target: ratification-ready, not formally enacted. KB3 renders meaning; it is not a new canon. Definitions it does not restate are carried from KB2 (30 March 2026), the prior rendering line, which has no simultaneous active authority. The same word also names, in the repositories, an implementation line: TENIR-Gov, the reference runtime of the Runtime Execution Governance (REG) standard.</p>
+<p>TENIR 2.0 is a diagnostic and governance framework, reconstruction-first, for bounded units under pressure. It is concerned with admissibility, preservation of options, epistemic validity, recoverability, and posture. This page is a simplified public rendering. It follows KB3, the enacted and active doctrinal rendering line. KB3 renders meaning; it does not create sovereign meaning and is not a new constitution. It is a document layer, outside the code. Specialized services or applications wrap or extend it: they build on KB3 and must not redefine it. Definitions it does not restate are carried from KB2 (30 March 2026), the prior rendering line, which has no simultaneous active authority. The same word also names, in the repositories, an implementation: TENIR-Gov, the reference runtime of the Runtime Execution Governance (REG) standard. That implementation should align to KB3. It is not KB3.</p>
 
 <div class="triad">
   <article class="card">
@@ -45,7 +45,7 @@ sources: KB3, maintained rendering target, ratification-ready; KB2, prior render
   <article class="card">
     <p class="role">Rendering · KB3</p>
     <h3>Rendered doctrine</h3>
-    <p>TENIR 2.0 names the framework: admissible identity, gates, posture, collapse. KB3 is the maintained rendering target, ratification-ready, not formally enacted. It is not a new canon. KB2 is the prior rendering line, for continuity only. Governance and the machine source stay upstream.</p>
+    <p>TENIR 2.0 names the framework: admissible identity, gates, posture, collapse. KB3 is its enacted, active rendering line. It renders meaning; it is not a constitution, and it is not the code. KB2 is the prior rendering line. Governance and the machine source stay upstream.</p>
   </article>
   <article class="card">
     <p class="role">Standard</p>
@@ -55,7 +55,7 @@ sources: KB3, maintained rendering target, ratification-ready; KB2, prior render
   <article class="card">
     <p class="role">Platform</p>
     <h3>TENIR-Gov</h3>
-    <p>The reference implementation, the IronOmega line and then 5.x. It serves the framework. It does not redefine it. 5.6.1 is not a publication.</p>
+    <p>The reference implementation, the IronOmega line and then 5.x. It should align to KB3. It is not KB3. 5.6.1 is not a publication.</p>
   </article>
 </div>
 

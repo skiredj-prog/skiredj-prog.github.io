@@ -2,7 +2,7 @@
 
 Site statique bilingue du cadre TENIR et du standard Runtime Execution Governance (REG). Le français est la langue de lecture. L’anglais est une traduction de travail, page à page.
 
-Ce dépôt produit un rendu public simplifié. Il ne remplace pas la gouvernance amont, la source machine, les RFC, ni les dépôts de code, et il ne se présente pas comme loi canonique. La ligne de rendu suivie est KB3 : cible de rendu maintenue, prête pour ratification, non formellement instituée. KB3 rend le sens ; il n’est pas un nouveau canon. KB2 (30 mars 2026) est la ligne de rendu antérieure, conservée pour la continuité, sans autorité active simultanée. Là où KB3 ne reformule pas une définition, le libellé est gardé depuis cette ligne et l’écart avec les RFC ou les dépôts reste visible. La maturité affichée est celle des arbres publics lus le 19 octobre 2026 : brouillons gelés, runtime bêta, harnais de laboratoire. Rien ici n’est une certification.
+Ce dépôt produit un rendu public simplifié. Il ne remplace pas la gouvernance amont, la source machine, les RFC, ni les dépôts de code, et il ne se présente pas comme loi canonique. La ligne de rendu suivie est KB3, instituée et active par la déclaration du propriétaire du 19 octobre 2026. Les fichiers fournis avec cette déclaration ne contiennent pas d’enregistrement signé. KB3 rend le sens ; il n’est pas une nouvelle constitution, et il n’est pas dans le code. Les services ou applications spécialisés l’enveloppent ou l’étendent sans le redéfinir. TENIR-Gov doit s’aligner sur KB3 ; il n’est pas KB3. KB2 (30 mars 2026) est la ligne de rendu antérieure, conservée pour la continuité, sans autorité active simultanée. Là où KB3 ne reformule pas une définition, le libellé est gardé depuis cette ligne et l’écart avec les RFC ou les dépôts reste visible. La maturité affichée est celle des arbres publics lus le 19 octobre 2026 : brouillons gelés, runtime bêta, harnais de laboratoire. Rien ici n’est une certification.
 
 ## Prérequis
 
@@ -53,7 +53,7 @@ Pages : accueil, origine, concepts, architecture, standard, versions, conformanc
 
 La gouvernance (`00_GOVERNANCE`) et la source machine (`01_CANON_AND_SOURCE_OF_TRUTH/01_MACHINE_SOURCE_OF_TRUTH`) restent en amont. Elles ne sont pas reproduites dans ce dépôt. KB3 est en aval des deux.
 
-1. KB3 — cible de rendu maintenue, prête pour ratification, non formellement instituée. Règles de périmètre, note de normalisation du 14 avril 2026, note de migration KB2 → KB3. KB3 n’est pas un nouveau canon et n’est pas institué tant qu’un enregistrement signé n’existe pas sous `00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS`.
+1. KB3 — ligne de rendu doctrinale instituée et active, déclaration du propriétaire du 19 octobre 2026. Couche documentaire, hors du code. Règles de périmètre, note de normalisation du 14 avril 2026, note de migration KB2 → KB3. KB3 rend le sens ; il n’est pas une nouvelle constitution. Les fichiers fournis ne contiennent pas d’enregistrement signé sous `00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS`.
 2. TENIR Versioning, Namespace & Governed Extension Policy v2 (4 avril 2026). Versions, espaces de noms, extensions.
 3. TENIR / REG — Architecture illustrative. Section architecture uniquement ; les schémas restent illustratifs.
 4. Guide public *Beyond the Layers* (12 diapositives). Récit accessible, en anglais, de la page d’accueil.
@@ -76,4 +76,4 @@ npm run check:links
 
 Pushing `main` deploys `dist/` to GitHub Pages for `skiredj-prog/skiredj-prog.github.io`, served at [https://tenirlabs.cc](https://tenirlabs.cc) (`public/CNAME`). `.nojekyll` is included so the `_astro` assets are served. Pages must use GitHub Actions as its source.
 
-KB3 is the maintained rendering target: ratification-ready, not formally enacted, and not a new canon. KB2 (30 March 2026) is the prior rendering line, kept for continuity only. Definitions KB3 does not restate are carried from that line, and gaps with the RFCs or the repositories stay visible. The site reports the maturity of the public trees as read on 19 October 2026. It does not certify an implementation.
+KB3 is the enacted, active doctrinal rendering line: the owner’s declaration of 19 October 2026. It is a document layer, outside the code, and not a new constitution. The files provided with that declaration contain no signed record. Specialized services wrap or extend KB3 and must not redefine it. TENIR-Gov should align to KB3; it is not KB3. KB2 (30 March 2026) is the prior rendering line, kept for continuity only. Definitions KB3 does not restate are carried from that line, and gaps with the RFCs or the repositories stay visible. The site reports the maturity of the public trees as read on 19 October 2026. It does not certify an implementation.

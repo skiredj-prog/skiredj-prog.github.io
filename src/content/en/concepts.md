@@ -7,8 +7,19 @@ sources: KB3, maintained rendering target; KB2, prior rendering line (30 March 2
 ---
 
 <div class="callout callout-note">
-  <p><strong>Authority.</strong> Class of this page: simplified public-facing. It does not present itself as canonical law. KB3 is the maintained rendering target: it clarifies, orders, and discloses limits; it does not create sovereign meaning. It is ratification-ready, and not formally enacted until a signed record exists under <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. KB2 is the prior rendering line, for continuity only. Where a repository, an RFC, or the introduction uses the same word differently, the gap stays visible. Where KB3 does not restate a definition, the wording carried here comes from KB2 (30 March 2026). Governance and the machine source stay upstream, and are not reproduced here.</p>
+  <p><strong>Authority.</strong> Class of this page: simplified public-facing. It does not present itself as canonical law. KB3 is the enacted, active doctrinal rendering line: it clarifies, orders, and discloses limits; it renders meaning and does not create it. KB2 is the prior rendering line, for continuity only. Where a repository, an RFC, or the introduction uses the same word differently, the gap stays visible. Where KB3 does not restate a definition, the wording carried here comes from KB2 (30 March 2026). Governance and the machine source stay upstream, and are not reproduced here. The enactment of KB3 is recorded on the <a href="/en/status/">Status</a> page.</p>
 </div>
+
+## Three layers not to collapse
+
+<table>
+  <thead><tr><th>Layer</th><th>What it is</th><th>What it is not</th></tr></thead>
+  <tbody>
+    <tr><td>KB3</td><td>The enacted, active doctrinal rendering line. A document layer.</td><td>Not the code. Not a constitution. Not a module to cite inside a repository.</td></tr>
+    <tr><td>Specialized services and applications</td><td>They wrap or extend KB3. They build on it.</td><td>They must not redefine it. A governed extension does not imitate a canonical line.</td></tr>
+    <tr><td>TENIR-Gov, the IronOmega line</td><td>An implementation of the execution control plane. It should align to KB3.</td><td>It is not KB3. A PASS, FLAG, HOLD, or HARD_VETO verdict is not a posture.</td></tr>
+  </tbody>
+</table>
 
 ## Thesis
 

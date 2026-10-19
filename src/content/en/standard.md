@@ -9,7 +9,7 @@ sources: RFC-0 through RFC-7 in reg-conformance; spec.md v0.3.1; KB3, posture an
 <p>The mantra of RFC-0, dated 3 October 2026, status “Proposed Standard (Frozen Draft)”, is: “The agent proposes. The membrane decides. Authorised / Admissible.” The text’s declared origin is the convergence of TENIR-Gov, CCEAF, and CommitGate. The public repositories that were read do not document CCEAF or CommitGate beyond that line.</p>
 
 <div class="callout callout-limit">
-  <p><strong>What REG is not.</strong> It is not KB3, not the prior rendering line, and not TENIR 2.0. KB3 is the maintained rendering target of the diagnostic framework, ratification-ready, not enacted. REG is the execution standard. A PASS disposition is not the NORMAL posture. An execution mode — shadow-passive, shadow-critical, enforce — is not a posture either: if it appears, it is a separate field. The symbol τ of the TAU bundle is not the τ of the proposed transition, nor the window τ_K.</p>
+  <p><strong>What REG is not.</strong> It is not KB3, not the prior rendering line, and not TENIR 2.0. KB3 is the enacted, active doctrinal rendering line, outside the code. REG is the execution standard. TENIR-Gov should align to KB3; it does not constitute it. A PASS disposition is not the NORMAL posture. An execution mode — shadow-passive, shadow-critical, enforce — is not a posture either: if it appears, it is a separate field. The symbol τ of the TAU bundle is not the τ of the proposed transition, nor the window τ_K.</p>
 </div>
 
 ## RFC-0 lexicon

@@ -3,12 +3,16 @@ title: Architecture
 kicker: Illustrative document · adapted
 description: Illustrative architecture of TENIR / REG — theory, standard, runtime, signals, dual kernel, and proof. An illustrative drawing, not the normative schema.
 lede: An intention does not become an effect because a component said yes. It passes a business rule, a regulatory constraint, a mediation, a profile, then a runtime that separates judging, mutating, and proving.
-sources: TENIR / REG — illustrative architecture; KB2, artifact 04, prior rendering line; tenir_governance and reg-conformance; KB3 for the posture / execution split
+sources: TENIR / REG — illustrative architecture; REG+ v5.6.0 interactive walkthrough; Execution Control Plane demo; KB3, enacted rendering line; tenir_governance and reg-conformance
 ---
 
 <div class="callout callout-note">
   <p><strong>Status of the drawing.</strong> Class: illustrative only. The source document calls itself illustrative. It is not the normative schema, not the catalogue YAML, and not a full audit report. Where it names V “volatility”, the prior rendering line says “velocity”. KB3 does not restate V and forbids silently renaming a machine-contract field. The runtime drawing is kept. This page does not elect a sovereign name for V.</p>
 </div>
+
+## KB3, extensions, and code
+
+<p>KB3 is the enacted, active doctrinal rendering line. It is a document layer, outside the code. It renders meaning; it does not create sovereign meaning and is not a constitution. Specialized services or applications wrap or extend it: they build on KB3 and must not redefine it. That is the discipline of the governed-extension policy and of the namespaces. TENIR-Gov, the IronOmega line, is an implementation of the execution control plane. It should align to KB3. It is not KB3. This page cites no code path as a KB3 module.</p>
 
 ## Three pillars of the technical ecosystem
 
@@ -118,6 +122,32 @@ else → PASS
 
 <h3>Proof and after the fact</h3>
 <p>The EvidenceRecord separates evaluation context, inputs, results — including per-invariant detail, not a global boolean —, the commit trace, and integrity. τ⁻¹ classes are PRE_COMMIT, EXACT_INVERSE, COMPENSATION, IRREVERSIBLE, INDETERMINATE. INDETERMINATE is not IRREVERSIBLE: ignorance is not proof that there is no way back. EVP separates intended value, realised value, execution loss, and friction reported apart. The <code>tenir_governance</code> repository says EVP reads records with no write path into the verdict.</p>
+
+## Control-plane demonstration
+
+<p>Three artifacts sit beside this drawing. They are illustrative only. Their verdicts PASS, FLAG, HOLD, and HARD_VETO are execution dispositions. They do not replace the postures NORMAL, CAUTION, and HOLDING-FIRST. An operation’s HOLD is not the HOLDING-FIRST posture.</p>
+
+<ul>
+  <li><a href="/en/architecture/drawing/">The illustrative drawing</a>, as provided.</li>
+  <li><a href="/en/architecture/interactive/">The interactive walkthrough</a>, titled TENIR Governance, badged REG+ v5.6.0.</li>
+  <li><a href="/en/architecture/demo/">The control-plane demo</a>, six scenes. The artifact itself is in English.</li>
+</ul>
+
+<p>The demo draws two kernels, then a lattice. Kernel 1 computes S = K / (P·V + ε). The call parameter it shows is named <code>velocity</code>. The interactive walkthrough writes, for the same letter, “Velocity / Volatility”. KB3 does not restate V. This page does not elect a name. Kernel 2, in the demo, checks invariants I3 through I9. The walkthrough lists I1, I2, I3, I4, I6, I7, I8, and I9, and does not name I5. Both lists stay visible. No invariant reads the score.</p>
+
+<p>The lattice in the demo and in the walkthrough is the same as in the drawing: HARD_VETO wins, then HOLD, then FLAG, otherwise PASS. A high score does not guarantee PASS. If either kernel errors, if data is missing, or if the outcome is indeterminate, the demo says the composition produces HOLD, never PASS.</p>
+
+<p>The six scenes, attributed to the demo and not replayed here:</p>
+<ol>
+  <li><strong>Admissible operation.</strong> A payment of 10 against a capacity of 100. The scoring kernel returns FLAG, the membrane PASS, the composition FLAG, the state RESERVED, then CONFIRMED after dispatch. The idempotency key is claimed at CREATED, before evaluation.</li>
+  <li><strong>Duplicate blocked.</strong> The same key, submitted again, receives HARD_VETO. Recovery goes through <code>resume_existing()</code>, not a fresh adjudication.</li>
+  <li><strong>HOLD lifecycle.</strong> A per-operation suspension, with τ_K, distinct from QUARANTINE_LOCK, which blocks all admission for an entity. Exits shown: RESERVED when evidence suffices, ESCALATED to a risk officer, FAILED when τ_K expires. ESCALATED has no time-based auto-exit. Expiry in that state produces UNKNOWN, not a resolution. This HOLD is an operation state.</li>
+  <li><strong>Memory or persistence.</strong> Without <code>store_path</code>, a restart loses the claim and a second adjudication can return FLAG. With a store, it returns HARD_VETO. <code>require_persistence=True</code> without a path raises ValueError. Since the fix the demo cites, a missing store emits a UserWarning.</li>
+  <li><strong>Timeout, then reconciliation.</strong> A provider timeout leads to UNKNOWN, not FAILED. UNKNOWN is not terminal. The reconciliation shown can confirm that the effect did occur. Treating silence as failure could duplicate the effect.</li>
+  <li><strong>Guarantee boundary.</strong> At most one dispatch through the governance gate, on a single host. Fail-closed composition and mandatory invariants are local. Cross-host coordination requires distributed infrastructure. Exactly-once external effect depends on the provider. PyPI artifact integrity depends on the packaging ecosystem. A governance decision does not, by itself, prove that an external effect occurred exactly once.</li>
+</ol>
+
+<p>The interactive walkthrough adds limits it itself calls open: <code>reconcile_commit()</code> can violate I8 by adding to committed without subtracting from reserved; <code>time.time()</code> inside <code>@replicated</code> methods; no validation of negative or NaN amounts; non-atomic durable stores; a linearizability checker that takes shortcuts; pysyncobj pickle without authentication; a quorum formula f+1 that is not general; Raft tried on localhost only, self-attested evidence, no Byzantine tolerance. This site does not replay those defects. It does not declare them closed. The <a href="/en/status/">Status</a> page keeps the illustrative drawing’s audit of F-01, F-02, and F-03.</p>
 
 ## Traps the drawing asks readers to avoid
 

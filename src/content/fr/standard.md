@@ -9,7 +9,7 @@ sources: RFC-0 à RFC-7 dans reg-conformance ; spec.md v0.3.1 ; KB3, séparation
 <p>Le mantra de RFC-0, daté du 3 octobre 2026, statut « Proposed Standard (Frozen Draft) », est : « The agent proposes. The membrane decides. Authorised / Admissible. » L’origine déclarée du texte est la convergence de TENIR-Gov, CCEAF et CommitGate. Les dépôts publics lus ne documentent pas CCEAF ni CommitGate au-delà de cette ligne.</p>
 
 <div class="callout callout-limit">
-  <p><strong>Ce que REG n’est pas.</strong> Ce n’est pas KB3, ni la ligne antérieure, ni TENIR 2.0. KB3 est la cible de rendu maintenue du cadre diagnostique, prête pour ratification, non instituée. REG est le standard d’exécution. Une disposition PASS n’est pas la posture NORMAL. Un mode d’exécution — shadow-passive, shadow-critical, enforce — n’est pas non plus une posture : s’il apparaît, c’est un champ séparé. Le symbole τ du faisceau TAU n’est pas le τ de la transition proposée, ni la fenêtre τ_K.</p>
+  <p><strong>Ce que REG n’est pas.</strong> Ce n’est pas KB3, ni la ligne antérieure, ni TENIR 2.0. KB3 est la ligne de rendu doctrinale instituée et active, hors du code. REG est le standard d’exécution. TENIR-Gov doit s’aligner sur KB3 ; il ne le constitue pas. Une disposition PASS n’est pas la posture NORMAL. Un mode d’exécution — shadow-passive, shadow-critical, enforce — n’est pas non plus une posture : s’il apparaît, c’est un champ séparé. Le symbole τ du faisceau TAU n’est pas le τ de la transition proposée, ni la fenêtre τ_K.</p>
 </div>
 
 ## Lexique de RFC-0
