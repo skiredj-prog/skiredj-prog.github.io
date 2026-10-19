@@ -6,7 +6,7 @@ lede: TENIR a un auteur identifié et des textes voisins qui ne doivent pas êtr
 sources: CITATION.cff ; KB2, ligne antérieure, pour le croisement de genèse seulement ; Cercle Inverse v1.1 ; Architecture indépendante v2 du 2 octobre 2026
 ---
 
-<p>Abdelaziz Skiredj. Affiliation écrite dans la citation du runtime : TENIR Labs. Courriel publié dans les paquets : <a href="mailto:skiredj@gmail.com">skiredj@gmail.com</a>. ORCID : <a href="https://orcid.org/0009-0003-2678-4069">0009-0003-2678-4069</a>. Code : <a href="https://github.com/skiredj-prog">github.com/skiredj-prog</a>.</p>
+<p>Abdelaziz Skiredj. Affiliation écrite dans la citation du runtime : TENIR Labs. Courriel public de ce site : <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>. ORCID : <a href="https://orcid.org/0009-0003-2678-4069">0009-0003-2678-4069</a>. Code : <a href="https://github.com/skiredj-prog">github.com/skiredj-prog</a>.</p>
 
 <h2>Citer</h2>
 <p>Pour le working paper « Governing the Unobserved », le fichier RELEASES demande le DOI de version quand le texte précis compte, et le DOI concept pour la dernière version. Version 7.1 : <a href="https://doi.org/10.5281/zenodo.23314839">10.5281/zenodo.23314839</a>. Concept : <a href="https://doi.org/10.5281/zenodo.23270928">10.5281/zenodo.23270928</a>. Le statut du papier est celui d’un working paper à évidence empirique bornée. Il ne faut pas le citer comme une certification.</p>

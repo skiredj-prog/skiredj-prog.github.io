@@ -6,7 +6,7 @@ lede: TENIR has an identified author and neighbouring texts that must not be fol
 sources: CITATION.cff; KB2, prior rendering line, for the genesis crossing only; Cercle Inverse v1.1; Independent architecture v2 of 2 October 2026
 ---
 
-<p>Abdelaziz Skiredj. Affiliation written in the runtime citation: TENIR Labs. Email published in the packages: <a href="mailto:skiredj@gmail.com">skiredj@gmail.com</a>. ORCID: <a href="https://orcid.org/0009-0003-2678-4069">0009-0003-2678-4069</a>. Code: <a href="https://github.com/skiredj-prog">github.com/skiredj-prog</a>.</p>
+<p>Abdelaziz Skiredj. Affiliation written in the runtime citation: TENIR Labs. Public email for this site: <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>. ORCID: <a href="https://orcid.org/0009-0003-2678-4069">0009-0003-2678-4069</a>. Code: <a href="https://github.com/skiredj-prog">github.com/skiredj-prog</a>.</p>
 
 <h2>Cite</h2>
 <p>For the working paper “Governing the Unobserved”, the RELEASES file asks for the version DOI when a precise text matters, and the concept DOI for the latest version. Version 7.1: <a href="https://doi.org/10.5281/zenodo.23314839">10.5281/zenodo.23314839</a>. Concept: <a href="https://doi.org/10.5281/zenodo.23270928">10.5281/zenodo.23270928</a>. The paper’s status is a working paper with bounded empirical evidence. It should not be cited as a certification.</p>
