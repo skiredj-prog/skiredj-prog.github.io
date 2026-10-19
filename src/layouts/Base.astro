@@ -1,0 +1,145 @@
+---
+import "../styles/fonts.css";
+import "../styles/site.css";
+import { alternate, copy, nav, url, type Locale } from "../data/site";
+
+interface Props {
+  locale: Locale;
+  slug: string;
+  title: string;
+  description: string;
+  kicker: string;
+  lede: string;
+  sources: string;
+}
+
+const { locale, slug, title, description, kicker, lede, sources } = Astro.props;
+const t = copy[locale];
+const items = nav[locale];
+const other = slug === "404" ? (locale === "fr" ? "/en/" : "/") : alternate(locale, slug);
+const here = slug === "404" ? "/" : locale === "fr" ? (slug ? `/${slug}/` : "/") : `/en/${slug ? `${slug}/` : ""}`;
+const canonical = new URL(url(here), Astro.site);
+---
+
+<!doctype html>
+<html lang={locale} data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title === "TENIR" ? "TENIR" : `${title} — TENIR`}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
+    <meta name="theme-color" content="#16141c" />
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("tenir-theme");
+          var theme = stored || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#content">{t.skip}</a>
+    <div class="banner">
+      <p>{t.status}</p>
+    </div>
+    <header class="site-header">
+      <div class="header-row">
+        <a class="brand" href={url(locale === "fr" ? "/" : "/en/")}>
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
+            <path d="M10 8h8.5M14.2 8v16M10 24h8.5" fill="none" stroke="currentColor" stroke-width="1.4"></path>
+          </svg>
+          <span>
+            <span class="brand-name">TENIR</span>
+            <span class="brand-sub">{locale === "fr" ? "Diagnostic et gouvernance" : "Diagnostic and governance"}</span>
+          </span>
+        </a>
+        <div class="tools">
+          <nav class="lang" aria-label={t.lang}>
+            <a href={url(locale === "fr" ? here : other)} lang="fr" aria-current={locale === "fr" && slug !== "404" ? "true" : undefined}>FR</a>
+            <a href={url(locale === "en" ? here : other)} lang="en" aria-current={locale === "en" && slug !== "404" ? "true" : undefined}>EN</a>
+          </nav>
+          <button class="theme" type="button" data-theme-toggle aria-pressed="false">
+            <span class="label-light">{t.themeToDark}</span>
+            <span class="label-dark">{t.themeToLight}</span>
+          </button>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label={t.nav}>
+        {
+          items.map((item) => (
+            <a href={url(item.href)} aria-current={item.slug === slug ? "page" : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+    <main id="content" class="doc">
+      <article>
+        <header class="doc-head">
+          <p class="kicker">{kicker}</p>
+          <h1>{title}</h1>
+          <p class="lede">{lede}</p>
+          <p class="sources">{t.sources} : {sources}</p>
+        </header>
+        <div class="prose">
+          <slot />
+        </div>
+      </article>
+      <aside class="toc" id="toc" hidden>
+        <p>{t.toc}</p>
+        <ol></ol>
+      </aside>
+    </main>
+    <footer class="site-footer">
+      <div class="inner">
+        <p>{t.footerNote}</p>
+        <p>
+          <a href="https://github.com/skiredj-prog/tenir_governance">GitHub</a>
+          ·
+          <a href="mailto:skiredj@gmail.com">skiredj@gmail.com</a>
+        </p>
+      </div>
+    </footer>
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        var button = document.querySelector("[data-theme-toggle]");
+        function sync() {
+          if (!button) return;
+          button.setAttribute("aria-pressed", root.dataset.theme === "dark" ? "true" : "false");
+        }
+        sync();
+        if (button) {
+          button.addEventListener("click", function () {
+            var next = root.dataset.theme === "dark" ? "light" : "dark";
+            root.dataset.theme = next;
+            try { localStorage.setItem("tenir-theme", next); } catch (e) {}
+            sync();
+          });
+        }
+        var prose = document.querySelector(".prose");
+        var toc = document.getElementById("toc");
+        if (!prose || !toc) return;
+        var heads = prose.querySelectorAll("h2");
+        if (heads.length < 2) return;
+        var list = toc.querySelector("ol");
+        heads.forEach(function (h) {
+          if (!h.id) h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "");
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          a.href = "#" + h.id;
+          a.textContent = h.textContent;
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+        toc.hidden = false;
+      })();
+    </script>
+  </body>
+</html>

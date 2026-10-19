@@ -1,0 +1,30 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const modules = import.meta.glob("../../content/en/*.md", { eager: true });
+
+export function getStaticPaths() {
+  const pages = import.meta.glob("../../content/en/*.md", { eager: true });
+  return Object.keys(pages)
+    .map((path) => path.split("/").pop()!.replace(/\.md$/, ""))
+    .filter((slug) => slug !== "home")
+    .map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const mod = modules[`../../content/en/${slug}.md`] as {
+  Content: any;
+  frontmatter: {
+    title: string;
+    description: string;
+    kicker: string;
+    lede: string;
+    sources: string;
+  };
+};
+const { Content, frontmatter } = mod;
+---
+
+<Base locale="en" slug={slug!} {...frontmatter}>
+  <Content />
+</Base>
