@@ -2,7 +2,7 @@
 
 Site statique bilingue du cadre TENIR et du standard Runtime Execution Governance (REG). Le français est la langue de lecture. L’anglais est une traduction de travail, page à page.
 
-Ce dépôt produit un rendu public. Il ne remplace pas la Knowledge Base 2, les RFC, ni les dépôts de code. Quand ces sources se contredisent, les définitions suivent KB2 (30 mars 2026). La maturité affichée est celle des arbres publics lus le 19 octobre 2026 : brouillons gelés, runtime bêta, harnais de laboratoire. Rien ici n’est une certification.
+Ce dépôt produit un rendu public simplifié. Il ne remplace pas la gouvernance amont, la source machine, les RFC, ni les dépôts de code, et il ne se présente pas comme loi canonique. La ligne de rendu suivie est KB3 : cible de rendu maintenue, prête pour ratification, non formellement instituée. KB3 rend le sens ; il n’est pas un nouveau canon. KB2 (30 mars 2026) est la ligne de rendu antérieure, conservée pour la continuité, sans autorité active simultanée. Là où KB3 ne reformule pas une définition, le libellé est gardé depuis cette ligne et l’écart avec les RFC ou les dépôts reste visible. La maturité affichée est celle des arbres publics lus le 19 octobre 2026 : brouillons gelés, runtime bêta, harnais de laboratoire. Rien ici n’est une certification.
 
 ## Prérequis
 
@@ -49,14 +49,17 @@ Chaque page a un frontmatter : `title`, `kicker`, `description`, `lede`, `source
 
 Pages : accueil, origine, concepts, architecture, standard, versions, conformance, dépôts, statut, contribuer, contact — et leurs équivalents anglais sous `/en/`.
 
-## Sources, par ordre d’autorité
+## Sources, par ordre de lecture
 
-1. TENIR / KB2 — Source de Vérité v2.0 (30 mars 2026). Définitions et affirmations.
+La gouvernance (`00_GOVERNANCE`) et la source machine (`01_CANON_AND_SOURCE_OF_TRUTH/01_MACHINE_SOURCE_OF_TRUTH`) restent en amont. Elles ne sont pas reproduites dans ce dépôt. KB3 est en aval des deux.
+
+1. KB3 — cible de rendu maintenue, prête pour ratification, non formellement instituée. Règles de périmètre, note de normalisation du 14 avril 2026, note de migration KB2 → KB3. KB3 n’est pas un nouveau canon et n’est pas institué tant qu’un enregistrement signé n’existe pas sous `00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS`.
 2. TENIR Versioning, Namespace & Governed Extension Policy v2 (4 avril 2026). Versions, espaces de noms, extensions.
 3. TENIR / REG — Architecture illustrative. Section architecture uniquement ; les schémas restent illustratifs.
 4. Guide public *Beyond the Layers* (12 diapositives). Récit accessible, en anglais, de la page d’accueil.
-5. Introduction TAU / TENIR, Casablanca 2026. Genèse, vocabulaire d’entrée. Reclassée par KB2 comme récit historique.
+5. Introduction TAU / TENIR, Casablanca 2026. Genèse, vocabulaire d’entrée. Récit historique, reclassé par la ligne antérieure.
 6. Dépôts publics `skiredj-prog` lus le 19 octobre 2026 : `tenir_governance`, `reg-conformance`, `tenir-conformance-s1-g1`, `tenir-governance`, `tenir-gov`, `tenir-schemas`.
+7. KB2 (30 mars 2026), document alors titré Source de Vérité v2.0. Ligne de rendu antérieure, continuité et lecture comparative seulement. Pas une seconde ligne active. Ce titre historique ne lui rend pas l’autorité.
 
 Deux textes voisins sont cités seulement dans la page Contact, et ne font pas partie de TENIR : *Cercle Inverse — Document de Vision & Structure* v1.1, et *Architecture indépendante — Trajectoires de valeur et contrôle des passages* (spécification v2, 2 octobre 2026).
 
@@ -73,4 +76,4 @@ npm run check:links
 
 Pushing `main` deploys `dist/` to GitHub Pages for `skiredj-prog/skiredj-prog.github.io`, served at [https://tenirlabs.cc](https://tenirlabs.cc) (`public/CNAME`). `.nojekyll` is included so the `_astro` assets are served. Pages must use GitHub Actions as its source.
 
-Definitions follow Knowledge Base 2 (30 March 2026) when sources disagree. The site reports the maturity of the public trees as read on 19 October 2026. It does not certify an implementation.
+KB3 is the maintained rendering target: ratification-ready, not formally enacted, and not a new canon. KB2 (30 March 2026) is the prior rendering line, kept for continuity only. Definitions KB3 does not restate are carried from that line, and gaps with the RFCs or the repositories stay visible. The site reports the maturity of the public trees as read on 19 October 2026. It does not certify an implementation.

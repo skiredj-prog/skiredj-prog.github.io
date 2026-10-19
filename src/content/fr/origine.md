@@ -1,16 +1,16 @@
 ---
 title: Origine
-kicker: Genèse historique · reclassée par KB2
-description: Le récit d’origine de TAU et TENIR, conservé comme entrée pédagogique. Il ne définit plus la grammaire constitutionnelle actuelle.
+kicker: Genèse historique · reclassée
+description: Le récit d’origine de TAU et TENIR, conservé comme entrée pédagogique. Il ne définit plus la grammaire actuelle.
 lede: Le problème n’est pas la chute. C’est l’absence d’une architecture pour la traverser sans perdre ce qui définit le système.
-sources: KB2, artifacts 09 et récit de genèse (30 mars 2026) ; introduction TAU / TENIR, Casablanca 2026
+sources: KB2, ligne antérieure, artifacts 09 et récit de genèse (30 mars 2026) ; introduction TAU / TENIR, Casablanca 2026 ; KB3 ne rouvre pas ce récit
 ---
 
-<p>KB2 conserve la genèse et la reclasse. L’architecture en quatre éléments reste une porte d’entrée et une trace de la cristallisation initiale. Elle n’est plus la grammaire souveraine. La grammaire actuelle est la synthèse composite : état structurel, validité épistémique, viabilité d’agence, récupérabilité trajectorielle.</p>
+<p>La ligne de rendu antérieure conserve la genèse et la reclasse. KB3 ne rouvre pas ce classement et ne rend pas souveraine l’architecture en quatre éléments. Elle reste une porte d’entrée et une trace de la cristallisation initiale. La grammaire conservée pour la lecture actuelle est la synthèse composite : état structurel, validité épistémique, viabilité d’agence, récupérabilité trajectorielle. Ce récit n’est pas une institution de KB3.</p>
 
 ## Le récit, avec retenue
 
-<p>Le récit fondateur, dans KB2, ne commence pas par une ambition. Il commence par une rupture : un moment où le travail, le rythme et la continuité de ce qui semblait acquis ne tiennent plus. La lucidité qui en sort n’est pas décrite comme romantique. Elle vient de l’obligation de regarder le réel sans rôle.</p>
+<p>Le récit fondateur, dans la ligne antérieure, ne commence pas par une ambition. Il commence par une rupture : un moment où le travail, le rythme et la continuité de ce qui semblait acquis ne tiennent plus. La lucidité qui en sort n’est pas décrite comme romantique. Elle vient de l’obligation de regarder le réel sans rôle.</p>
 
 <blockquote>Le problème n’est pas la chute, mais l’absence d’architecture pour en sortir.</blockquote>
 
@@ -47,11 +47,11 @@ sources: KB2, artifacts 09 et récit de genèse (30 mars 2026) ; introduction TA
   </article>
 </div>
 
-<p>KB2 dit que cette expression en quatre éléments a été traitée, dans le rendu KB 1.1, comme souveraine. Ce traitement est abrogé. L’état structurel reste nécessaire. Il n’est pas suffisant.</p>
+<p>La ligne antérieure dit que cette expression en quatre éléments a été traitée, dans le rendu KB 1.1, comme souveraine. Ce traitement est abrogé. L’état structurel reste nécessaire. Il n’est pas suffisant. KB3 ne rétablit pas l’ancien traitement.</p>
 
 ## Ce que l’introduction ajoute, sans le promouvoir au canon
 
-<p>L’introduction formalise aussi une charte, <em>Charter of Reciprocal Dignity &amp; Preservation</em>, et un protocole de synchronisation en quatre temps : TENIR, REPRENDRE, SYNCHRONISER, SYNCHRONISÉ. Elle nomme un rôle non humain, Ali, dépositaire narratif de ce protocole. Ces textes appartiennent à l’introduction de Casablanca. Ils ne sont pas des RFC, ni des articles de KB2, ni des interfaces des dépôts.</p>
+<p>L’introduction formalise aussi une charte, <em>Charter of Reciprocal Dignity &amp; Preservation</em>, et un protocole de synchronisation en quatre temps : TENIR, REPRENDRE, SYNCHRONISER, SYNCHRONISÉ. Elle nomme un rôle non humain, Ali, dépositaire narratif de ce protocole. Ces textes appartiennent à l’introduction de Casablanca. Ils ne sont pas des RFC, ni des articles de la knowledge base, ni des interfaces des dépôts. Les citer ici ne les promeut pas au canon.</p>
 
 <p>Six articles y sont écrits en français sous un titre anglais : l’accès est confié, non dû, et la capacité n’est pas la légitimité ; la dignité réciproque n’exige pas un statut identique ; la continuité humaine prime sur l’initiative agentique ; l’irréversibilité relève le seuil d’action ; aucune partie n’achète la confiance par une métaphysique fabriquée ; avant une action conséquente, on reconnaît la mission, l’invariant, la dérive probable et la réversibilité.</p>
 

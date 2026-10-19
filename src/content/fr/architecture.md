@@ -1,13 +1,13 @@
 ---
 title: Architecture
 kicker: Document illustratif · adapté
-description: Architecture illustrative de TENIR / REG — théorie, standard, runtime, signaux, double noyau et preuve — lue sous l’autorité de KB2.
+description: Architecture illustrative de TENIR / REG — théorie, standard, runtime, signaux, double noyau et preuve. Dessin illustratif, pas schéma normatif.
 lede: Une intention ne devient pas un effet parce qu’un composant a dit oui. Elle traverse une règle, une contrainte, une médiation, un profil, puis un runtime qui sépare juger, muter et prouver.
-sources: TENIR / REG — Architecture illustrative ; KB2, artifact 04 ; dépôts tenir_governance et reg-conformance
+sources: TENIR / REG — Architecture illustrative ; KB2, artifact 04, ligne antérieure ; dépôts tenir_governance et reg-conformance ; KB3 pour la séparation posture / exécution
 ---
 
 <div class="callout callout-note">
-  <p><strong>Statut du dessin.</strong> Le document source se dit illustratif. Il n’est pas le schéma normatif, ni le YAML du catalogue, ni un rapport d’audit complet. Là où il nomme V « volatilité », KB2 dit « vitesse ». Le dessin du runtime est conservé ; le sens doctrinal de V reste celui de KB2.</p>
+  <p><strong>Statut du dessin.</strong> Classe : illustrative only. Le document source se dit illustratif. Il n’est pas le schéma normatif, ni le YAML du catalogue, ni un rapport d’audit complet. Là où il nomme V « volatilité », la ligne antérieure dit « vitesse ». KB3 ne reformule pas V et interdit de renommer en silence un champ du contrat machine. Le dessin du runtime est conservé. Cette page ne choisit pas un nom souverain pour V.</p>
 </div>
 
 ## Trois piliers de l’écosystème technique
@@ -37,7 +37,7 @@ sources: TENIR / REG — Architecture illustrative ; KB2, artifact 04 ; dépôts
   <article><span class="n">Niveau 4</span><p><strong>Runtime.</strong> Evaluate produit un verdict. Commit tente la mutation. Record produit une preuve reconstructible.</p></article>
 </div>
 
-<p>KB2 décrit la même séparation en trois couches d’implémentation : interprétative, constitutionnelle, gouvernance. Le principe qu’il fixe : le modèle propose, la couche constitutionnelle adjudique, la couche de gouvernance applique, l’humain responsable reste comptable.</p>
+<p>La ligne antérieure décrit la même séparation en trois couches d’implémentation : interprétative, constitutionnelle, gouvernance. Le principe qu’elle formule : le modèle propose, la couche constitutionnelle adjudique, la couche de gouvernance applique, l’humain responsable reste comptable. KB3 exige de garder cette asymétrie visible. Une explication assistée par modèle ne remplace pas l’adjudication de la posture, de la conformité, de la dégradation ou de la trace.</p>
 
 ## Quatre fonctions
 
@@ -95,7 +95,7 @@ sources: TENIR / REG — Architecture illustrative ; KB2, artifact 04 ; dépôts
   <article class="card">
     <h3>Score</h3>
     <p class="formula">S = K / (P · V + ε)</p>
-    <p>Dans ce dessin, V est appelé volatilité. KB2 l’appelle vitesse. Les seuils τ_pass et τ_block du dessin sont des paramètres du runtime, pas les postures NORMAL / CAUTION / HOLDING-FIRST.</p>
+    <p>Dans ce dessin, V est appelé volatilité. La ligne antérieure l’appelle vitesse. Les deux noms restent visibles. Les seuils τ_pass et τ_block du dessin sont des paramètres du runtime, pas les postures NORMAL / CAUTION / HOLDING-FIRST. PASS, FLAG, HOLD et HARD_VETO sont des dispositions, pas ces postures.</p>
   </article>
   <div class="op" aria-hidden="true">×</div>
   <article class="card">

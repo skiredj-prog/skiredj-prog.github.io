@@ -15,9 +15,9 @@ export const copy = {
     themeToDark: "Thème sombre",
     themeToLight: "Thème clair",
     status:
-      "Lecture au 19 octobre 2026. Rendu public simplifié : il ne remplace pas KB2, les RFC, ni les dépôts, et il ne certifie aucune implémentation.",
+      "Rendu public simplifié, lecture du 19 octobre 2026. KB3 : cible de rendu maintenue, prête pour ratification, non formellement instituée. KB2 : ligne antérieure, continuité seulement. Ce site ne remplace ni la gouvernance amont, ni la source machine, ni les RFC, ni les dépôts, et ne certifie aucune implémentation.",
     footerNote:
-      "Abdelaziz Skiredj · TENIR Labs. Les définitions suivent KB2 (30 mars 2026) lorsque les sources divergent.",
+      "Abdelaziz Skiredj · TENIR Labs. KB3 rend le sens ; il n’est pas un nouveau canon, ni une institution formelle.",
     sources: "Sources",
     external: "hors de ce site",
   },
@@ -29,9 +29,9 @@ export const copy = {
     themeToDark: "Dark theme",
     themeToLight: "Light theme",
     status:
-      "Read on 19 October 2026. A simplified public rendering: it does not replace KB2, the RFCs, or the repositories, and it certifies no implementation.",
+      "Simplified public rendering, read on 19 October 2026. KB3: maintained rendering target, ratification-ready, not formally enacted. KB2: prior rendering line, continuity only. This site does not replace upstream governance, the machine source, the RFCs, or the repositories, and it certifies no implementation.",
     footerNote:
-      "Abdelaziz Skiredj · TENIR Labs. Where sources disagree, definitions follow KB2 (30 March 2026).",
+      "Abdelaziz Skiredj · TENIR Labs. KB3 renders meaning; it is not a new canon, and it is not formally enacted.",
     sources: "Sources",
     external: "leaves this site",
   },

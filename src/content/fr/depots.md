@@ -2,7 +2,7 @@
 title: Dépôts
 kicker: Cartographie · 19 octobre 2026
 description: Rôle de chaque dépôt public de skiredj-prog lié à TENIR, REG et IronOmega, avec les fichiers à ouvrir en premier.
-lede: "Sept dépôts publics. Un est vide. Les autres ne sont pas sept copies du même logiciel : doctrine, standard, runtime et schémas n’y ont pas le même âge ni la même autorité."
+lede: "Sept dépôts publics, lus le 19 octobre 2026. L’un, celui-ci, était vide à cette date. Les autres ne sont pas sept copies du même logiciel : doctrine, standard, runtime et schémas n’y avaient pas le même âge ni la même autorité."
 sources: arbres clonés le 19 octobre 2026 ; politique de namespaces v2
 ---
 
@@ -44,13 +44,13 @@ sources: arbres clonés le 19 octobre 2026 ; politique de namespaces v2
     <tr>
       <td><a href="https://github.com/skiredj-prog/tenir-schemas">tenir-schemas</a></td>
       <td>Faisceau JSON Schema et OpenAPI d’un moteur d’analyse, février 2026.</td>
-      <td>v1.0.0. Certains schémas sont des stubs. Pas de LICENSE dans l’arbre cloné. Les <code>$id</code> visent <code>skiredj-prog.github.io</code>, dépôt encore vide.</td>
+      <td>v1.0.0. Certains schémas sont des stubs. Pas de LICENSE dans l’arbre cloné. Les <code>$id</code> visent <code>skiredj-prog.github.io</code>, vide à la date de cette lecture.</td>
       <td><a href="https://github.com/skiredj-prog/tenir-schemas/blob/main/schemas/v1/index.json">index</a>, <a href="https://github.com/skiredj-prog/tenir-schemas/blob/main/openapi/tenir-engine.openapi.yaml">OpenAPI</a></td>
     </tr>
     <tr>
       <td><a href="https://github.com/skiredj-prog/skiredj-prog.github.io">skiredj-prog.github.io</a></td>
-      <td>Cible probable de GitHub Pages. Vide au moment de la lecture.</td>
-      <td>Aucun fichier.</td>
+      <td>Cible de GitHub Pages. Vide au moment de la lecture du 19 octobre 2026. Ce n’est plus l’état du dépôt.</td>
+      <td>Aucun fichier à cette date.</td>
       <td>Le README de ce site explique comment y publier le rendu.</td>
     </tr>
   </tbody>
@@ -58,6 +58,6 @@ sources: arbres clonés le 19 octobre 2026 ; politique de namespaces v2
 
 ## Comment ils s’articulent
 
-<p>KB2 et la politique de namespaces ne vivent pas dans ces dépôts. Ils fixent le sens. <code>reg-conformance</code> porte le standard et la suite. <code>tenir_governance</code> est le runtime le plus récent de la ligne IronOmega / 5.x. Les dépôts <code>tenir-gov</code> et <code>tenir-governance</code> sont des états antérieurs de cette ligne, pas des forks au sens d’un produit différent : le second est initialisé, le 18 juillet 2026, comme baseline v5.0.0-IronOmega-R5. Le harnais S1 teste des définitions opérationnelles contre une membrane de laboratoire ; il peut appeler le moteur de score, sans certifier le runtime. <code>tenir-schemas</code> est antérieur : son <code>TauResult</code> porte une distance, un epsilon et un statut de continuité OK, FRAGILIZED ou BROKEN. Ce n’est pas le faisceau TAU de KB2, ni l’Autonomous Unit du manuscrit.</p>
+<p>KB3, KB2 et la politique de namespaces ne vivent pas dans ces dépôts. KB3 est la cible de rendu maintenue ; elle ne crée pas le sens souverain et n’est pas instituée. KB2 est la ligne antérieure, pour la continuité. La politique de namespaces reste la note de versions. Aucun de ces textes n’est « le » sens porté par le code. <code>reg-conformance</code> porte le standard et la suite. <code>tenir_governance</code> est le runtime le plus récent de la ligne IronOmega / 5.x. Les dépôts <code>tenir-gov</code> et <code>tenir-governance</code> sont des états antérieurs de cette ligne, pas des forks au sens d’un produit différent : le second est initialisé, le 18 juillet 2026, comme baseline v5.0.0-IronOmega-R5. Le harnais S1 teste des définitions opérationnelles contre une membrane de laboratoire ; il peut appeler le moteur de score, sans certifier le runtime. <code>tenir-schemas</code> est antérieur : son <code>TauResult</code> porte une distance, un epsilon et un statut de continuité OK, FRAGILIZED ou BROKEN. Ce n’est pas le faisceau TAU conservé depuis la ligne antérieure, ni l’Autonomous Unit du manuscrit. Les statuts OK, FRAGILIZED et BROKEN ne sont pas les postures NORMAL, CAUTION et HOLDING-FIRST.</p>
 
 <p>Auteur indiqué dans les <code>pyproject.toml</code> et les citations : Abdelaziz Skiredj, <a href="mailto:skiredj@gmail.com">skiredj@gmail.com</a>. L’affiliation « TENIR Labs » et l’ORCID <a href="https://orcid.org/0009-0003-2678-4069">0009-0003-2678-4069</a> figurent dans <code>CITATION.cff</code> de <code>tenir_governance</code>. Les DOI qui y sont écrits ne concordent pas tous avec le README ni avec la version du paquet. Voir la page Statut avant de citer un identifiant.</p>

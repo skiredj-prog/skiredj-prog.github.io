@@ -1,15 +1,15 @@
 ---
 title: The standard
 kicker: REG · frozen drafts
-description: The Runtime Execution Governance standard, its RFCs, and what it is not relative to KB2.
+description: The Runtime Execution Governance standard, its RFCs, and what it is not relative to the diagnostic framework.
 lede: REG standardises the boundary at which a proposed action may become an effect, and the proof obligations that go with it. It does not standardise the internal architecture that realises them.
-sources: RFC-0 through RFC-7 in reg-conformance; spec.md v0.3.1; KB2
+sources: RFC-0 through RFC-7 in reg-conformance; spec.md v0.3.1; KB3, posture and execution kept separate
 ---
 
 <p>The mantra of RFC-0, dated 3 October 2026, status “Proposed Standard (Frozen Draft)”, is: “The agent proposes. The membrane decides. Authorised / Admissible.” The text’s declared origin is the convergence of TENIR-Gov, CCEAF, and CommitGate. The public repositories that were read do not document CCEAF or CommitGate beyond that line.</p>
 
 <div class="callout callout-limit">
-  <p><strong>What REG is not.</strong> It is not KB2, and it is not TENIR 2.0. KB2 is the doctrinal rendering of the diagnostic framework. REG is the execution standard. A PASS disposition is not the NORMAL posture. The symbol τ of the TAU bundle is not the τ of the proposed transition, nor the window τ_K.</p>
+  <p><strong>What REG is not.</strong> It is not KB3, not the prior rendering line, and not TENIR 2.0. KB3 is the maintained rendering target of the diagnostic framework, ratification-ready, not enacted. REG is the execution standard. A PASS disposition is not the NORMAL posture. An execution mode — shadow-passive, shadow-critical, enforce — is not a posture either: if it appears, it is a separate field. The symbol τ of the TAU bundle is not the τ of the proposed transition, nor the window τ_K.</p>
 </div>
 
 ## RFC-0 lexicon
@@ -44,7 +44,7 @@ sources: RFC-0 through RFC-7 in reg-conformance; spec.md v0.3.1; KB2
 
 <p>τ_K is the maximum window for human resolution of a HOLD. RFC-0 says it is derived from existing service-level agreements. It is not invented. On expiry, the pre-declared policy applies. The default is fail-closed. A degraded mode is admitted only if it was declared and preserves the invariant.</p>
 
-<p>RFC-2 fixes S = K / (P × V + ε) as the reference model of structural admissibility, with other models permitted if they satisfy the epistemic, invariant, and conservatism constraints. Uncertainty contracts the admissible region. Absence of proof that an invariant holds is not proof that it holds. In that RFC, V is volatility and irreversibility, not KB2’s velocity.</p>
+<p>RFC-2 fixes S = K / (P × V + ε) as the reference model of structural admissibility, with other models permitted if they satisfy the epistemic, invariant, and conservatism constraints. Uncertainty contracts the admissible region. Absence of proof that an invariant holds is not proof that it holds. In that RFC, V is volatility and irreversibility, not the velocity named by the prior rendering line. KB3 does not collapse the two names.</p>
 
 ## The series
 

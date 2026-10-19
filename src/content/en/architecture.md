@@ -1,13 +1,13 @@
 ---
 title: Architecture
 kicker: Illustrative document · adapted
-description: Illustrative architecture of TENIR / REG — theory, standard, runtime, signals, dual kernel, and proof — read under KB2’s authority.
+description: Illustrative architecture of TENIR / REG — theory, standard, runtime, signals, dual kernel, and proof. An illustrative drawing, not the normative schema.
 lede: An intention does not become an effect because a component said yes. It passes a business rule, a regulatory constraint, a mediation, a profile, then a runtime that separates judging, mutating, and proving.
-sources: TENIR / REG — illustrative architecture; KB2, artifact 04; tenir_governance and reg-conformance
+sources: TENIR / REG — illustrative architecture; KB2, artifact 04, prior rendering line; tenir_governance and reg-conformance; KB3 for the posture / execution split
 ---
 
 <div class="callout callout-note">
-  <p><strong>Status of the drawing.</strong> The source document calls itself illustrative. It is not the normative schema, not the catalogue YAML, and not a full audit report. Where it names V “volatility”, KB2 says “velocity”. The runtime drawing is kept; the doctrinal meaning of V remains KB2’s.</p>
+  <p><strong>Status of the drawing.</strong> Class: illustrative only. The source document calls itself illustrative. It is not the normative schema, not the catalogue YAML, and not a full audit report. Where it names V “volatility”, the prior rendering line says “velocity”. KB3 does not restate V and forbids silently renaming a machine-contract field. The runtime drawing is kept. This page does not elect a sovereign name for V.</p>
 </div>
 
 ## Three pillars of the technical ecosystem
@@ -37,7 +37,7 @@ sources: TENIR / REG — illustrative architecture; KB2, artifact 04; tenir_gove
   <article><span class="n">Level 4</span><p><strong>Runtime.</strong> Evaluate produces a verdict. Commit attempts the mutation. Record produces reconstructible proof.</p></article>
 </div>
 
-<p>KB2 describes the same separation as three implementation layers: interpretive, constitutional, governance. The principle it fixes: the model proposes, the constitutional layer adjudicates, the governance layer applies, and the responsible human remains accountable.</p>
+<p>The prior rendering line describes the same separation as three implementation layers: interpretive, constitutional, governance. The principle it states: the model proposes, the constitutional layer adjudicates, the governance layer applies, and the responsible human remains accountable. KB3 requires that asymmetry to stay visible. A model-assisted explanation does not replace adjudication of posture, compliance, degradation, or trace.</p>
 
 ## Four functions
 
@@ -95,7 +95,7 @@ sources: TENIR / REG — illustrative architecture; KB2, artifact 04; tenir_gove
   <article class="card">
     <h3>Score</h3>
     <p class="formula">S = K / (P · V + ε)</p>
-    <p>In this drawing, V is called volatility. KB2 calls it velocity. The drawing’s thresholds τ_pass and τ_block are runtime parameters, not the postures NORMAL / CAUTION / HOLDING-FIRST.</p>
+    <p>In this drawing, V is called volatility. The prior rendering line calls it velocity. Both names stay visible. The drawing’s thresholds τ_pass and τ_block are runtime parameters, not the postures NORMAL / CAUTION / HOLDING-FIRST. PASS, FLAG, HOLD, and HARD_VETO are dispositions, not those postures.</p>
   </article>
   <div class="op" aria-hidden="true">×</div>
   <article class="card">

@@ -2,8 +2,8 @@
 title: Status
 kicker: Actual maturity · October 2026
 description: What is rendered, what is frozen as a draft, what is tested in the laboratory, and what is not published.
-lede: The framework has an active doctrinal rendering and a constitution still waiting for its note. The standard has frozen drafts. The runtime has a beta tree whose latest changelog entry is not a release.
-sources: KB2; policy v2; illustrative architecture, sections 11 and 13; CHANGELOG 5.6.0 and 5.6.1; harness STATUS.md
+lede: KB3 is the maintained rendering target, ratification-ready, not formally enacted. KB2 is the prior rendering line. The standard has frozen drafts. The runtime has a beta tree whose latest changelog entry is not a release.
+sources: KB3, normalisation note of 14 April 2026; KB2, prior rendering line; policy v2; illustrative architecture, sections 11 and 13; CHANGELOG 5.6.0 and 5.6.1; harness STATUS.md
 ---
 
 ## Where each namespace stands
@@ -11,8 +11,9 @@ sources: KB2; policy v2; illustrative architecture, sections 11 and 13; CHANGELO
 <table>
   <thead><tr><th>Namespace</th><th>State the sources themselves assume</th></tr></thead>
   <tbody>
-    <tr><td>TENIR 2.0</td><td>Canonical name. KB2, build of 30 March 2026, calls the rendering active and the constitution awaiting a formal note.</td></tr>
-    <tr><td>KB2</td><td>Active as the knowledge layer. KB1.1 is historical. Written and curated with assistance; author Abdelaziz Skiredj.</td></tr>
+    <tr><td>TENIR 2.0</td><td>Name of the framework in the canon namespace. That name does not enact KB3.</td></tr>
+    <tr><td>KB3</td><td>Maintained rendering target for current editorial work. Ratification-ready. Not formally enacted until a signed record exists under <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. Not a new canon. The absence of that record is not filled by later artifacts.</td></tr>
+    <tr><td>KB2</td><td>Prior rendering line, continuity only. No simultaneous active authority with KB3. The build of 30 March 2026 is kept. The note that once named it active, at institution, is historical context, not current authority. KB1.1 is historical. Written and curated with assistance; author Abdelaziz Skiredj.</td></tr>
     <tr><td>REG</td><td>RFC-0 through RFC-7: Proposed Standard, frozen draft, 2–3 October 2026. Not a standard adopted by an external body.</td></tr>
     <tr><td>TENIR-Gov</td><td>Classifier “Development Status :: 4 - Beta”. IronOmega 5.0.0 line in June–July 2026, continued through the 5.6.1 tree.</td></tr>
     <tr><td>5.6.1</td><td>The changelog marks it “Pending release” and forbids inferring a PyPI publication.</td></tr>
@@ -52,4 +53,4 @@ sources: KB2; policy v2; illustrative architecture, sections 11 and 13; CHANGELO
 
 ## What the sources themselves leave open
 
-<p>KB2 asks the chassis to consume a complete TENIR 2.0 object instead of letting the implementation define the doctrine. The 5.7.0 drawing asks for safe reconciliation, non-destructive persistence, a reliable linearizability validator, and hardened consensus transport. The conformance README asks for <code>deployment.manifest</code> before any external audit. The harness STATUS.md asks readers to keep the non-certification sentence, and lists documentary remainder outside the repository. The versioning policy asks every surface to declare the authority it does not have.</p>
+<p>The prior rendering line asks the chassis to consume a complete TENIR 2.0 object instead of letting the implementation define the doctrine. KB3, without creating a new canon, further asks for one rendering line at a time, visible compliance class and degraded status, no silent renaming of the machine contract, execution mode kept separate from posture, and a public surface that states what it simplifies. The 5.7.0 drawing asks for safe reconciliation, non-destructive persistence, a reliable linearizability validator, and hardened consensus transport. The conformance README asks for <code>deployment.manifest</code> before any external audit. The harness STATUS.md asks readers to keep the non-certification sentence, and lists documentary remainder outside the repository. The versioning policy asks every surface to declare the authority it does not have. None of those asks is closed by this page.</p>
