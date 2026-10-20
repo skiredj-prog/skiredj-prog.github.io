@@ -1,8 +1,8 @@
 ---
-title: Une action a été autorisée. Sa réponse n’arrive pas.
+title: Sa réponse n’arrive pas.
 kicker: Atelier de diagnostic
-description: Atelier de diagnostic des contrôles d’agents. L’état UNKNOWN, le reçu perdu, puis l’arc Tenir, Trancher, Prouver.
-lede: L’état est UNKNOWN. Renvoyer, au risque d’un double effet, ou attendre ?
+description: Une action a été autorisée. Sa réponse n’arrive pas. TENIR tient. Puis l’arc Tenir, Trancher, Prouver.
+lede: L’agent a agi. La confirmation est perdue. TENIR tient.
 sources: démo Execution Control Plane, scène 5, Timeout → Reconcile ; KB3, ligne instituée le 19 octobre 2026 ; KB2, ligne antérieure
 ---
 
