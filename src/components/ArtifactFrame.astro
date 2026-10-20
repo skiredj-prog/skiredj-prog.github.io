@@ -28,7 +28,7 @@ const { locale, slug, title, description, kicker, lede, sources, src, openLabel 
       var frame = document.querySelector(".embed-frame");
       if (!frame || !location.hash || location.hash.length < 2) return;
       var src = frame.getAttribute("src") || "";
-      if (src.indexOf("#") === -1) frame.src = src + location.hash;
+      if (src.indexOf("#") === -1 && /^#scene-[1-6]$/.test(location.hash)) frame.src = src + location.hash;
     })();
   </script>
 </Base>
