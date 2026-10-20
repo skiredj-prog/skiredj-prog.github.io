@@ -6,10 +6,17 @@ themeButton?.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme
 const menuButton=document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
 const nav=document.querySelector<HTMLElement>('#main-navigation');
 const contactSituation=new URLSearchParams(location.search).get('situation');
+const businessProfile=new URLSearchParams(location.search).get('profil');
+if(document.querySelector('.contact-page')&&businessProfile&&['services','produit','operations'].includes(businessProfile)){
+  document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-tools a').forEach(link=>{const destination=new URL(link.href);destination.searchParams.set('profil',businessProfile);link.href=destination.href;});
+}
 if(document.querySelector('.contact-page')&&contactSituation&&['decouvrir','deleguer','concevoir','examiner','etudier'].includes(contactSituation)){
   document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-tools a').forEach(link=>{const destination=new URL(link.href);destination.searchParams.set('situation',contactSituation);link.href=destination.href;});
 }
 const groups=Array.from(document.querySelectorAll<HTMLDetailsElement>('.site-nav details'));
+const openBusinessProfile=()=>{const id=location.hash.slice(1);document.querySelectorAll<HTMLDetailsElement>('.persona-card').forEach(card=>{if(card.id===id)card.open=true;});};
+openBusinessProfile();
+window.addEventListener('hashchange',openBusinessProfile);
 const closeMenu=(focus=false)=>{menuButton?.setAttribute('aria-expanded','false');nav?.removeAttribute('data-open');groups.forEach(group=>group.open=false);if(focus)menuButton?.focus();};
 menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));nav?.toggleAttribute('data-open',open);});
 groups.forEach(group=>group.addEventListener('toggle',()=>{if(group.open)groups.forEach(other=>{if(other!==group)other.open=false;});}));

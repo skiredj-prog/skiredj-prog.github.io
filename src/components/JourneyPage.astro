@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { url, type Locale } from '../data/site';
 import { journeyHref, journeys, type Journey } from '../data/journeys';
+import { businessHref } from '../data/business';
 interface Props { locale: Locale; journey: Journey }
 const { locale, journey } = Astro.props;
 const fr=locale==='fr';
@@ -13,6 +14,7 @@ const href=(value:string)=>value.startsWith('#')||value.startsWith('https:')?val
   <div class="journey-next"><a class="btn btn-primary" href={href(journey.primary.href)}>{journey.primary.label} <span aria-hidden="true">→</span></a><p class="section-note">{journey.primary.note}</p></div>
   <section class="reader-questions" aria-labelledby="reader-questions-title"><h2 id="reader-questions-title">{fr?'Ce que vous vous demandez peut-être':'Questions you might have'}</h2>{journey.questions.map(({question,answer})=><details><summary>{question}</summary><p>{answer}</p></details>)}</section>
   <section class="reader-resources" aria-labelledby="reader-resources-title"><h2 id="reader-resources-title">{journey.id==='etudier'?(fr?'Les sources, directement':'Go straight to the sources'):(fr?'Pour la suite, c’est vous qui choisissez':'Choose what comes next')}</h2><div class="resource-links">{journey.links.map(link=><a href={href(link.href)}><span><strong>{link.label}</strong><small>{link.note}</small></span><span aria-hidden="true">↗</span></a>)}</div></section>
+  {['deleguer','concevoir','examiner'].includes(journey.id)&&<div class="reader-contact"><p>{fr?'Vous pensez à un usage dans votre activité ?':'Thinking of a use in your business?'}</p><a class="text-link" href={url(businessHref(locale))}>{fr?'Explorer selon votre rôle, votre secteur et votre besoin':'Explore by role, industry and need'} →</a></div>}
   <div class="reader-contact"><p>{fr?'Votre situation ne rentre pas dans ces exemples ?':'Your situation does not fit these examples?'}</p><a class="text-link" href={url(`${fr?'/contact/':'/en/contact/'}?situation=${journey.id}`)}>{fr?'Décrivez-la avec vos mots':'Describe it in your own words'} →</a></div>
   <nav class="journey-switcher" aria-label={fr?'Explorer un autre besoin':'Explore another need'}><p class="role">{fr?'Vous pouvez aussi…':'You can also…'}</p>{journeys[locale].filter(j=>j.id!==journey.id).map(j=><a href={url(journeyHref(locale,j))}>{j.label} <span aria-hidden="true">→</span></a>)}</nav>
 </Base>

@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../data/site';
+import { personas } from '../data/business';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const fr=locale==='fr';
@@ -11,6 +12,7 @@ const fr=locale==='fr';
     <textarea id="brief-action" name="action" rows="3" required maxlength="1500" placeholder={fr?'« J’aimerais… », « Je n’arrive pas à savoir si… »':'“I’d like to…”, “I cannot establish whether…”'}></textarea>
     <label for="brief-context">{fr?'Où en êtes-vous ?':'Where are you starting from?'}</label>
     <select id="brief-context" name="context"><option value="decouvrir">{fr?'Je découvre le sujet / j’ai une question':'I’m discovering the subject / I have a question'}</option><option value="deleguer">{fr?'J’aimerais déléguer une tâche':'I’d like to delegate a task'}</option><option value="concevoir">{fr?'Je prépare l’utilisation d’un agent':'I’m preparing to use an agent'}</option><option value="examiner">{fr?'Une action a eu lieu et je cherche à comprendre':'An action happened and I want to understand'}</option><option value="etudier">{fr?'Je souhaite discuter les sources ou la technique':'I’d like to discuss sources or technical details'}</option><option value="autre">{fr?'Autre chose / je ne sais pas encore':'Something else / I’m not sure yet'}</option></select>
+    <div data-profile-context hidden><label for="brief-profile">{fr?'Votre contexte d’activité':'Your business context'} <span>{fr?'(modifiable, facultatif)':'(editable, optional)'}</span></label><select id="brief-profile" name="profile"><option value="">{fr?'Autre situation / ne pas préciser':'Another situation / leave unspecified'}</option>{personas[locale].map(p=><option value={p.id}>{p.profile} — {p.industry}</option>)}</select></div>
     <label for="brief-decision">{fr?'Qu’est-ce qui compte pour vous dans cette situation ?':'What matters to you in this situation?'} <span>{fr?'(facultatif)':'(optional)'}</span></label>
     <textarea id="brief-decision" name="decision" rows="2" maxlength="1500" placeholder={fr?'Une limite à garder, un doute, une échéance… Vous pouvez aussi laisser ce champ vide.':'A limit to keep, an uncertainty, a deadline… You can also leave this blank.'}></textarea>
     <button class="btn btn-primary" type="submit" disabled data-brief-submit>{fr?'Préparer mon e-mail':'Prepare my email'} <span aria-hidden="true">↗</span></button>
@@ -25,6 +27,11 @@ const fr=locale==='fr';
     const context=form.querySelector<HTMLSelectElement>('[name=context]');
     const actionField=form.querySelector<HTMLTextAreaElement>('[name=action]');
     const decisionField=form.querySelector<HTMLTextAreaElement>('[name=decision]');
+    const profileField=form.querySelector<HTMLSelectElement>('[name=profile]');
+    const profileHolder=form.querySelector<HTMLElement>('[data-profile-context]');
+    const profile=new URLSearchParams(location.search).get('profil');
+    const setProfile=(value:unknown)=>{if(profileField&&typeof value==='string'&&Array.from(profileField.options).some(o=>o.value===value)){profileField.value=value;if(profileHolder)profileHolder.hidden=false;}};
+    if(profile)setProfile(profile);
     const transferKey='tenir-contact-language-transfer';
     const situation=new URLSearchParams(location.search).get('situation');
     const allowed=new Set(['decouvrir','deleguer','concevoir','examiner','etudier']);
@@ -33,17 +40,21 @@ const fr=locale==='fr';
     if(submit)submit.disabled=false;
     try{
       const raw=sessionStorage.getItem(transferKey);
-      if(raw){sessionStorage.removeItem(transferKey);const draft=JSON.parse(raw);if(draft.target===location.pathname&&Date.now()-draft.time<120000){if(actionField&&typeof draft.action==='string')actionField.value=draft.action.slice(0,1500);if(decisionField&&typeof draft.decision==='string')decisionField.value=draft.decision.slice(0,1500);if(context&&Array.from(context.options).some(o=>o.value===draft.context))context.value=draft.context;}}
+      if(raw){sessionStorage.removeItem(transferKey);const draft=JSON.parse(raw);if(draft.target===location.pathname&&Date.now()-draft.time<120000){if(actionField&&typeof draft.action==='string')actionField.value=draft.action.slice(0,1500);if(decisionField&&typeof draft.decision==='string')decisionField.value=draft.decision.slice(0,1500);if(context&&Array.from(context.options).some(o=>o.value===draft.context))context.value=draft.context;setProfile(draft.profile);}}
     }catch(e){}
     document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-tools a').forEach(link=>link.addEventListener('click',event=>{
       const destination=new URL(link.href);
-      if(destination.pathname===location.pathname||!actionField?.value&&!decisionField?.value)return;
-      try{sessionStorage.setItem(transferKey,JSON.stringify({action:actionField?.value||'',decision:decisionField?.value||'',context:context?.value,time:Date.now(),target:destination.pathname}));}
+      if(destination.pathname===location.pathname)return;
+      if(context)destination.searchParams.set('situation',context.value);
+      if(profileHolder?.hidden===false){if(profileField?.value)destination.searchParams.set('profil',profileField.value);else destination.searchParams.delete('profil');}
+      link.href=destination.href;
+      if(!actionField?.value&&!decisionField?.value&&profileHolder?.hidden!==false)return;
+      try{sessionStorage.setItem(transferKey,JSON.stringify({action:actionField?.value||'',decision:decisionField?.value||'',context:context?.value,profile:profileHolder?.hidden?undefined:profileField?.value,time:Date.now(),target:destination.pathname}));}
       catch(e){event.preventDefault();const feedback=form.querySelector<HTMLElement>('[data-brief-feedback]');if(feedback){feedback.hidden=false;feedback.textContent=form.dataset.locale==='fr'?'Le changement de langue ne peut pas conserver votre texte dans ce navigateur. Copiez-le avant de changer de langue.':'This browser cannot carry your text across the language change. Copy it before switching language.';}}
     }));
     form.addEventListener('input',event=>{
       const field=event.target as HTMLInputElement;
-      if(!['action','context','decision'].includes(field.name))return;
+      if(!['action','context','decision','profile'].includes(field.name))return;
       const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]');
       if(fallback)fallback.hidden=true;if(feedback)feedback.hidden=true;
     });
@@ -55,7 +66,8 @@ const fr=locale==='fr';
       if(!action){const field=form.querySelector<HTMLTextAreaElement>('[name=action]');field?.setCustomValidity(fr?'Quelques mots sur votre question suffisent.':'A few words about your question are enough.');field?.reportValidity();return;}
       const contextLabel=context?.selectedOptions[0]?.textContent||'';
       const extra=String(data.get('decision')||'').trim();
-      const body=fr?`Bonjour Abdelaziz,\n\n${action}\n\nMon point de départ : ${contextLabel}${extra?`\n\nCe qui compte pour moi :\n${extra}`:''}\n\nMerci.`:`Hello Abdelaziz,\n\n${action}\n\nMy starting point: ${contextLabel}${extra?`\n\nWhat matters to me:\n${extra}`:''}\n\nThank you.`;
+      const profileLabel=profileField?.value?profileField.selectedOptions[0]?.textContent||'':'';
+      const body=fr?`Bonjour Abdelaziz,\n\n${action}\n\nMon point de départ : ${contextLabel}${profileLabel?`\nContexte d’activité : ${profileLabel}`:''}${extra?`\n\nCe qui compte pour moi :\n${extra}`:''}\n\nMerci.`:`Hello Abdelaziz,\n\n${action}\n\nMy starting point: ${contextLabel}${profileLabel?`\nBusiness context: ${profileLabel}`:''}${extra?`\n\nWhat matters to me:\n${extra}`:''}\n\nThank you.`;
       const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]'),copy=form.querySelector<HTMLTextAreaElement>('#brief-copy');
       if(copy)copy.value=body;if(fallback)fallback.hidden=false;if(feedback)feedback.hidden=false;
       const mailto=form.querySelector<HTMLAnchorElement>('[data-brief-mailto]');
