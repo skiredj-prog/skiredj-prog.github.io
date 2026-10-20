@@ -162,6 +162,11 @@ export const navGroups: Record<Locale, NavGroup[]> = {
   ],
 };
 
+export const navProducts: Record<Locale, NavItem> = {
+  fr: { slug: "produits-et-services", href: "/produits-et-services/", label: "Produits et services" },
+  en: { slug: "products-and-services", href: "/en/products-and-services/", label: "Products & services" },
+};
+
 export const navContact: Record<Locale, NavItem> = {
   fr: { slug: "contact", href: "/contact/", label: "Contact" },
   en: { slug: "contact", href: "/en/contact/", label: "Contact" },
@@ -184,6 +189,7 @@ const frToEn: Record<string, string> = {
   offre: "/en/offer/",
   "offre/exemple": "/en/offer/example/",
   souverainete: "/en/sovereignty/",
+  "produits-et-services": "/en/products-and-services/",
   "architecture/demo": "/en/architecture/demo/",
   "architecture/interactive": "/en/architecture/interactive/",
   "architecture/drawing": "/en/architecture/drawing/",

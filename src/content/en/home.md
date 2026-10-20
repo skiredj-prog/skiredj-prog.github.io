@@ -37,7 +37,7 @@ sources: Execution Control Plane demo, scene 5, Timeout → Reconcile; KB3, rend
 
 <div class="actions">
   <a class="btn btn-primary" href="mailto:skiredj@tenirlabs.cc?subject=Scoping%20%E2%80%94%20diagnostic%20of%20an%20agent%E2%80%99s%20controls&amp;body=Hello%2C%0A%0AI%20would%20like%20to%20scope%20a%20diagnostic%20of%20an%20agent%E2%80%99s%20controls.%0A%0A1.%20Which%20precise%20action%20can%20the%20agent%20trigger%2C%20in%20which%20system%2C%20and%20which%20consequence%20must%20be%20preserved%3F%0ATo%20be%20specified%0A%0A2.%20Which%20incident%2C%20doubt%2C%20or%20change%20motivates%20the%20request%3F%0ATo%20be%20specified%0A%0A3.%20Which%20decision%20has%20to%20be%20made%2C%20and%20by%20when%3F%0ATo%20be%20specified%0A%0A4.%20Which%20rules%2C%20people%2C%20and%20traces%20are%20available%20for%20the%20examination%3F%0ATo%20be%20specified%0A%0A5.%20Who%20carries%20the%20decision%20and%20the%20budget%20for%20the%20diagnostic%2C%20and%20who%20will%20take%20part%20in%20the%20restitution%3F%0ATo%20be%20specified%0A%0AThank%20you.">Scope my diagnostic</a>
-  <a class="btn" href="/en/offer/">Read the offer</a>
+  <a class="btn" href="/en/products-and-services/">Products & services</a>
 </div>
 
 <p><a href="/en/offer/example/">See a filled example — local simulation</a>. Context, pain points, and illustrative scenarios are on <a href="/en/applications/">Applications</a>.</p>
