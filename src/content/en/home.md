@@ -1,8 +1,8 @@
 ---
-title: An action was authorized. Its response never arrives.
+title: Its response never arrives.
 kicker: Diagnostic workshop
-description: A workshop for diagnosing the controls of agents. The UNKNOWN state, the lost receipt, then the arc Tenir, Trancher, Prouver.
-lede: The state is UNKNOWN. Resend, risking a double effect, or wait?
+description: An action was authorized. Its response never arrives. TENIR holds. Then the arc Tenir, Trancher, Prouver.
+lede: The agent acted. The confirmation is lost. TENIR holds.
 sources: Execution Control Plane demo, scene 5, Timeout → Reconcile; KB3, rendering line enacted on 19 October 2026; KB2, prior rendering line
 ---
 
