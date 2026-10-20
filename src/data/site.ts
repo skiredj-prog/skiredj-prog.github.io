@@ -71,6 +71,8 @@ export const navGroups: Record<Locale, NavGroup[]> = {
       links: [
         { slug: "applications", href: "/applications/", label: "Contexte et valeur" },
         { slug: "applications#scenarios", href: "/applications/#scénarios", label: "Scénarios" },
+        { slug: "offre", href: "/offre/", label: "Offre" },
+        { slug: "offre/exemple", href: "/offre/exemple/", label: "Exemple simulé" },
       ],
     },
     {
@@ -117,6 +119,8 @@ export const navGroups: Record<Locale, NavGroup[]> = {
       links: [
         { slug: "applications", href: "/en/applications/", label: "Context and value" },
         { slug: "applications#scenarios", href: "/en/applications/#scenarios", label: "Scenarios" },
+        { slug: "offer", href: "/en/offer/", label: "Offer" },
+        { slug: "offer/example", href: "/en/offer/example/", label: "Simulated example" },
       ],
     },
     {
@@ -169,6 +173,8 @@ const frToEn: Record<string, string> = {
   contribuer: "/en/contribute/",
   contact: "/en/contact/",
   applications: "/en/applications/",
+  offre: "/en/offer/",
+  "offre/exemple": "/en/offer/example/",
   "architecture/demo": "/en/architecture/demo/",
   "architecture/interactive": "/en/architecture/interactive/",
   "architecture/drawing": "/en/architecture/drawing/",

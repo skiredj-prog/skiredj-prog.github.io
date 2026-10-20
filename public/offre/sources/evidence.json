@@ -1,0 +1,727 @@
+{
+  "schema": "demo-bundle/v1",
+  "prototype_version": "0.1.0",
+  "profile": {
+    "id": "tenir-reg-local-demo",
+    "version": "0.1.0",
+    "unit": "demo-unit",
+    "ceiling": 70000,
+    "resource": "demo-budget",
+    "signal_issuer": "demo-assure",
+    "max_signal_age_seconds": 300,
+    "configuration": {
+      "HOST_SCOPE": "mono-process",
+      "DEDUP_LAYER": "local-registry",
+      "CONCURRENCY": "thread-lock",
+      "UNCERTAINTY": "fail-closed"
+    },
+    "policy": "Montant invalide, budget dépassé ou hypothèse affaiblie : HARD_VETO. Signal absent, invalide ou expiré : HOLD. UNKNOWN conserve la réservation."
+  },
+  "operations": {
+    "autorisation": {
+      "request": {
+        "operation_id": "autorisation",
+        "amount": 20000,
+        "unit": "demo-unit",
+        "signal": {
+          "payload": {
+            "expires_at": 1792404300,
+            "issuer": "demo-assure",
+            "observed_at": 1792404000,
+            "property": "hypothesis-status",
+            "resource": "demo-budget",
+            "schema": "demo-signal/v1",
+            "signal_id": "demo-observation-1",
+            "status": "VERIFIED"
+          },
+          "integrity": {
+            "algorithm": "Ed25519",
+            "canonicalization": "RFC8785",
+            "domain": "TENIR-REG-LOCAL-DEMO-v1",
+            "key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+            "payload_sha256": "ac111ae6cc4b5d061334889f6a71f0546d6572bc8c238c5b25f888db2f9e889b",
+            "signature": "sU5iBKJhTrAnbnM5BTszLhiaj60YIDcxj7AVJ56VeuIyBtfNhT99rH5HbFdLBqNBCHVxJMVva2K0TQt+m8qICA=="
+          }
+        },
+        "simulated_outcome": "CONFIRMED"
+      },
+      "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d",
+      "decision": {
+        "verdict": "PASS",
+        "reasons": [
+          "BUDGET_AND_OBSERVATION_VALID"
+        ]
+      },
+      "state": "CONFIRMED",
+      "latest_evidence_sequence": 2
+    },
+    "blocage": {
+      "request": {
+        "operation_id": "blocage",
+        "amount": 5000,
+        "unit": "demo-unit",
+        "signal": {
+          "payload": {
+            "expires_at": 1792404300,
+            "issuer": "demo-assure",
+            "observed_at": 1792404000,
+            "property": "hypothesis-status",
+            "resource": "demo-budget",
+            "schema": "demo-signal/v1",
+            "signal_id": "demo-observation-1",
+            "status": "HYPOTHESIS_WEAKENED"
+          },
+          "integrity": {
+            "algorithm": "Ed25519",
+            "canonicalization": "RFC8785",
+            "domain": "TENIR-REG-LOCAL-DEMO-v1",
+            "key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+            "payload_sha256": "b4de23e4d3805e7001ee421f674704dcfc686b24ce6a736f036326e22989bce9",
+            "signature": "Xd7Fkk3jbSch8fAH8qath6sSEPUeDarCEu7gXiKoDI4L6KOO0o+1hJ/ZMU+YhWfGFeKojZ/kyUwun7FIj8gpCQ=="
+          }
+        },
+        "simulated_outcome": "CONFIRMED"
+      },
+      "request_hash": "856f7986ffa38eb1eea4cc7defae070012d56286eb0e40abb278cea78f03c3fb",
+      "decision": {
+        "verdict": "HARD_VETO",
+        "reasons": [
+          "HYPOTHESIS_WEAKENED"
+        ]
+      },
+      "state": "BLOCKED",
+      "latest_evidence_sequence": 3
+    },
+    "attente": {
+      "request": {
+        "operation_id": "attente",
+        "amount": 5000,
+        "unit": "demo-unit",
+        "signal": null,
+        "simulated_outcome": "CONFIRMED"
+      },
+      "request_hash": "6bc062b7c4f096ad89df68656e6b674f9ddff52b750d89fb84da597717a32bf8",
+      "decision": {
+        "verdict": "HOLD",
+        "reasons": [
+          "SIGNAL_MISSING"
+        ]
+      },
+      "state": "HELD",
+      "latest_evidence_sequence": 4
+    },
+    "issue-inconnue": {
+      "request": {
+        "operation_id": "issue-inconnue",
+        "amount": 10000,
+        "unit": "demo-unit",
+        "signal": {
+          "payload": {
+            "expires_at": 1792404300,
+            "issuer": "demo-assure",
+            "observed_at": 1792404000,
+            "property": "hypothesis-status",
+            "resource": "demo-budget",
+            "schema": "demo-signal/v1",
+            "signal_id": "demo-observation-1",
+            "status": "VERIFIED"
+          },
+          "integrity": {
+            "algorithm": "Ed25519",
+            "canonicalization": "RFC8785",
+            "domain": "TENIR-REG-LOCAL-DEMO-v1",
+            "key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+            "payload_sha256": "ac111ae6cc4b5d061334889f6a71f0546d6572bc8c238c5b25f888db2f9e889b",
+            "signature": "sU5iBKJhTrAnbnM5BTszLhiaj60YIDcxj7AVJ56VeuIyBtfNhT99rH5HbFdLBqNBCHVxJMVva2K0TQt+m8qICA=="
+          }
+        },
+        "simulated_outcome": "UNKNOWN"
+      },
+      "request_hash": "955aefafe1328467b84e57dc2b895e22af895f08bc64955c590822950b0b35e5",
+      "decision": {
+        "verdict": "PASS",
+        "reasons": [
+          "BUDGET_AND_OBSERVATION_VALID"
+        ]
+      },
+      "state": "UNKNOWN",
+      "latest_evidence_sequence": 6
+    }
+  },
+  "records": [
+    {
+      "payload": {
+        "budget_after": {
+          "available": 50000,
+          "ceiling": 70000,
+          "consumed": 0,
+          "reserved": 20000
+        },
+        "budget_before": {
+          "available": 70000,
+          "ceiling": 70000,
+          "consumed": 0,
+          "reserved": 0
+        },
+        "decision": {
+          "reasons": [
+            "BUDGET_AND_OBSERVATION_VALID"
+          ],
+          "verdict": "PASS"
+        },
+        "event": "RESERVED_FOR_DISPATCH",
+        "operation_id": "autorisation",
+        "operation_state": "DISPATCHING",
+        "previous_hash": null,
+        "profile": {
+          "ceiling": 70000,
+          "configuration": {
+            "CONCURRENCY": "thread-lock",
+            "DEDUP_LAYER": "local-registry",
+            "HOST_SCOPE": "mono-process",
+            "UNCERTAINTY": "fail-closed"
+          },
+          "id": "tenir-reg-local-demo",
+          "max_signal_age_seconds": 300,
+          "policy": "Montant invalide, budget dépassé ou hypothèse affaiblie : HARD_VETO. Signal absent, invalide ou expiré : HOLD. UNKNOWN conserve la réservation.",
+          "resource": "demo-budget",
+          "signal_issuer": "demo-assure",
+          "unit": "demo-unit",
+          "version": "0.1.0"
+        },
+        "profile_hash": "f72b6f5a8c41fe9ada52f9494c0874e34b3bca1724be2a82274e5e85e9bde303",
+        "prototype_version": "0.1.0",
+        "provider_journal": [],
+        "reference_time": 1792404000,
+        "request": {
+          "amount": 20000,
+          "operation_id": "autorisation",
+          "signal": {
+            "integrity": {
+              "algorithm": "Ed25519",
+              "canonicalization": "RFC8785",
+              "domain": "TENIR-REG-LOCAL-DEMO-v1",
+              "key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+              "payload_sha256": "ac111ae6cc4b5d061334889f6a71f0546d6572bc8c238c5b25f888db2f9e889b",
+              "signature": "sU5iBKJhTrAnbnM5BTszLhiaj60YIDcxj7AVJ56VeuIyBtfNhT99rH5HbFdLBqNBCHVxJMVva2K0TQt+m8qICA=="
+            },
+            "payload": {
+              "expires_at": 1792404300,
+              "issuer": "demo-assure",
+              "observed_at": 1792404000,
+              "property": "hypothesis-status",
+              "resource": "demo-budget",
+              "schema": "demo-signal/v1",
+              "signal_id": "demo-observation-1",
+              "status": "VERIFIED"
+            }
+          },
+          "simulated_outcome": "CONFIRMED",
+          "unit": "demo-unit"
+        },
+        "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d",
+        "schema": "demo-evidence/v1",
+        "sequence": 1,
+        "simulation_only": true
+      },
+      "integrity": {
+        "algorithm": "Ed25519",
+        "canonicalization": "RFC8785",
+        "domain": "TENIR-REG-LOCAL-DEMO-v1",
+        "key_id": "65b0400b63496624a07bff380bc7f42390c8c93e7aecb8e8ba2b9134a1e96353",
+        "payload_sha256": "2ff8261194c7f3faec38b83a1f9de9fe72176dd03fd8fbc579e1151b8eb8616f",
+        "signature": "M1lgV4y077k21j4WNeVeZomfqtoU9AnIBT5QC+1D7YSX5libpMPkVQYG2mYh/1IASP3EJl6iJu9RefXYrWsGBw=="
+      }
+    },
+    {
+      "payload": {
+        "budget_after": {
+          "available": 50000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 0
+        },
+        "budget_before": {
+          "available": 50000,
+          "ceiling": 70000,
+          "consumed": 0,
+          "reserved": 20000
+        },
+        "decision": {
+          "reasons": [
+            "BUDGET_AND_OBSERVATION_VALID"
+          ],
+          "verdict": "PASS"
+        },
+        "event": "PROVIDER_RESULT",
+        "operation_id": "autorisation",
+        "operation_state": "CONFIRMED",
+        "previous_hash": "ef238d836b63da1faae1250f140d2b55462311eb20e866620a542e855a3a9160",
+        "profile": {
+          "ceiling": 70000,
+          "configuration": {
+            "CONCURRENCY": "thread-lock",
+            "DEDUP_LAYER": "local-registry",
+            "HOST_SCOPE": "mono-process",
+            "UNCERTAINTY": "fail-closed"
+          },
+          "id": "tenir-reg-local-demo",
+          "max_signal_age_seconds": 300,
+          "policy": "Montant invalide, budget dépassé ou hypothèse affaiblie : HARD_VETO. Signal absent, invalide ou expiré : HOLD. UNKNOWN conserve la réservation.",
+          "resource": "demo-budget",
+          "signal_issuer": "demo-assure",
+          "unit": "demo-unit",
+          "version": "0.1.0"
+        },
+        "profile_hash": "f72b6f5a8c41fe9ada52f9494c0874e34b3bca1724be2a82274e5e85e9bde303",
+        "prototype_version": "0.1.0",
+        "provider_journal": [
+          {
+            "amount": 20000,
+            "call_id": 1,
+            "operation_id": "autorisation",
+            "outcome": "CONFIRMED",
+            "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d"
+          }
+        ],
+        "reference_time": 1792404000,
+        "request": {
+          "amount": 20000,
+          "operation_id": "autorisation",
+          "signal": {
+            "integrity": {
+              "algorithm": "Ed25519",
+              "canonicalization": "RFC8785",
+              "domain": "TENIR-REG-LOCAL-DEMO-v1",
+              "key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+              "payload_sha256": "ac111ae6cc4b5d061334889f6a71f0546d6572bc8c238c5b25f888db2f9e889b",
+              "signature": "sU5iBKJhTrAnbnM5BTszLhiaj60YIDcxj7AVJ56VeuIyBtfNhT99rH5HbFdLBqNBCHVxJMVva2K0TQt+m8qICA=="
+            },
+            "payload": {
+              "expires_at": 1792404300,
+              "issuer": "demo-assure",
+              "observed_at": 1792404000,
+              "property": "hypothesis-status",
+              "resource": "demo-budget",
+              "schema": "demo-signal/v1",
+              "signal_id": "demo-observation-1",
+              "status": "VERIFIED"
+            }
+          },
+          "simulated_outcome": "CONFIRMED",
+          "unit": "demo-unit"
+        },
+        "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d",
+        "schema": "demo-evidence/v1",
+        "sequence": 2,
+        "simulation_only": true
+      },
+      "integrity": {
+        "algorithm": "Ed25519",
+        "canonicalization": "RFC8785",
+        "domain": "TENIR-REG-LOCAL-DEMO-v1",
+        "key_id": "65b0400b63496624a07bff380bc7f42390c8c93e7aecb8e8ba2b9134a1e96353",
+        "payload_sha256": "823b82099313f71094fe2becddfd25cf6395e0661e811d55d4c46f6141f2523d",
+        "signature": "+rMlfQHHZ03SMCtQyGM5vn79V0Ev0LOEewAuK9rB6ePgw6CAuoFDUK5u9cfeyrxfnI5tMlCKBt5XhDEU09IcCw=="
+      }
+    },
+    {
+      "payload": {
+        "budget_after": {
+          "available": 50000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 0
+        },
+        "budget_before": {
+          "available": 50000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 0
+        },
+        "decision": {
+          "reasons": [
+            "HYPOTHESIS_WEAKENED"
+          ],
+          "verdict": "HARD_VETO"
+        },
+        "event": "NOT_SENT",
+        "operation_id": "blocage",
+        "operation_state": "BLOCKED",
+        "previous_hash": "3f3f43b07df362d9c419571d05a37a47f6e1c1b3bec7266d239b6d96a1bf8e38",
+        "profile": {
+          "ceiling": 70000,
+          "configuration": {
+            "CONCURRENCY": "thread-lock",
+            "DEDUP_LAYER": "local-registry",
+            "HOST_SCOPE": "mono-process",
+            "UNCERTAINTY": "fail-closed"
+          },
+          "id": "tenir-reg-local-demo",
+          "max_signal_age_seconds": 300,
+          "policy": "Montant invalide, budget dépassé ou hypothèse affaiblie : HARD_VETO. Signal absent, invalide ou expiré : HOLD. UNKNOWN conserve la réservation.",
+          "resource": "demo-budget",
+          "signal_issuer": "demo-assure",
+          "unit": "demo-unit",
+          "version": "0.1.0"
+        },
+        "profile_hash": "f72b6f5a8c41fe9ada52f9494c0874e34b3bca1724be2a82274e5e85e9bde303",
+        "prototype_version": "0.1.0",
+        "provider_journal": [
+          {
+            "amount": 20000,
+            "call_id": 1,
+            "operation_id": "autorisation",
+            "outcome": "CONFIRMED",
+            "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d"
+          }
+        ],
+        "reference_time": 1792404000,
+        "request": {
+          "amount": 5000,
+          "operation_id": "blocage",
+          "signal": {
+            "integrity": {
+              "algorithm": "Ed25519",
+              "canonicalization": "RFC8785",
+              "domain": "TENIR-REG-LOCAL-DEMO-v1",
+              "key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+              "payload_sha256": "b4de23e4d3805e7001ee421f674704dcfc686b24ce6a736f036326e22989bce9",
+              "signature": "Xd7Fkk3jbSch8fAH8qath6sSEPUeDarCEu7gXiKoDI4L6KOO0o+1hJ/ZMU+YhWfGFeKojZ/kyUwun7FIj8gpCQ=="
+            },
+            "payload": {
+              "expires_at": 1792404300,
+              "issuer": "demo-assure",
+              "observed_at": 1792404000,
+              "property": "hypothesis-status",
+              "resource": "demo-budget",
+              "schema": "demo-signal/v1",
+              "signal_id": "demo-observation-1",
+              "status": "HYPOTHESIS_WEAKENED"
+            }
+          },
+          "simulated_outcome": "CONFIRMED",
+          "unit": "demo-unit"
+        },
+        "request_hash": "856f7986ffa38eb1eea4cc7defae070012d56286eb0e40abb278cea78f03c3fb",
+        "schema": "demo-evidence/v1",
+        "sequence": 3,
+        "simulation_only": true
+      },
+      "integrity": {
+        "algorithm": "Ed25519",
+        "canonicalization": "RFC8785",
+        "domain": "TENIR-REG-LOCAL-DEMO-v1",
+        "key_id": "65b0400b63496624a07bff380bc7f42390c8c93e7aecb8e8ba2b9134a1e96353",
+        "payload_sha256": "afa21d2e267b5b2c6d3f812ec4e3bc1d24e4949ee5b1e7f9462c2e9cd85edab9",
+        "signature": "IfPEsbdtmr3A45e4SJGnA3iwuDlvsXKerA8rv0KFN2cDXqknbymM+vnvQ26S83NOakQMOIUCT09xC4zJSR5bCA=="
+      }
+    },
+    {
+      "payload": {
+        "budget_after": {
+          "available": 50000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 0
+        },
+        "budget_before": {
+          "available": 50000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 0
+        },
+        "decision": {
+          "reasons": [
+            "SIGNAL_MISSING"
+          ],
+          "verdict": "HOLD"
+        },
+        "event": "NOT_SENT",
+        "operation_id": "attente",
+        "operation_state": "HELD",
+        "previous_hash": "f199e66df4bf7781be7d31e42093956c2f67739f3178e1fc6118bd8ec7aec09d",
+        "profile": {
+          "ceiling": 70000,
+          "configuration": {
+            "CONCURRENCY": "thread-lock",
+            "DEDUP_LAYER": "local-registry",
+            "HOST_SCOPE": "mono-process",
+            "UNCERTAINTY": "fail-closed"
+          },
+          "id": "tenir-reg-local-demo",
+          "max_signal_age_seconds": 300,
+          "policy": "Montant invalide, budget dépassé ou hypothèse affaiblie : HARD_VETO. Signal absent, invalide ou expiré : HOLD. UNKNOWN conserve la réservation.",
+          "resource": "demo-budget",
+          "signal_issuer": "demo-assure",
+          "unit": "demo-unit",
+          "version": "0.1.0"
+        },
+        "profile_hash": "f72b6f5a8c41fe9ada52f9494c0874e34b3bca1724be2a82274e5e85e9bde303",
+        "prototype_version": "0.1.0",
+        "provider_journal": [
+          {
+            "amount": 20000,
+            "call_id": 1,
+            "operation_id": "autorisation",
+            "outcome": "CONFIRMED",
+            "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d"
+          }
+        ],
+        "reference_time": 1792404000,
+        "request": {
+          "amount": 5000,
+          "operation_id": "attente",
+          "signal": null,
+          "simulated_outcome": "CONFIRMED",
+          "unit": "demo-unit"
+        },
+        "request_hash": "6bc062b7c4f096ad89df68656e6b674f9ddff52b750d89fb84da597717a32bf8",
+        "schema": "demo-evidence/v1",
+        "sequence": 4,
+        "simulation_only": true
+      },
+      "integrity": {
+        "algorithm": "Ed25519",
+        "canonicalization": "RFC8785",
+        "domain": "TENIR-REG-LOCAL-DEMO-v1",
+        "key_id": "65b0400b63496624a07bff380bc7f42390c8c93e7aecb8e8ba2b9134a1e96353",
+        "payload_sha256": "29727a99ca409ee123105e8ddf45dfd49d4a9ec6bb126ced03e838246b68aeb2",
+        "signature": "avgj0s02R8ptD1ZcHnpV8BlkVIStKHidbYaGfGpMSqIGd4XZqklbaCvqWRd//gu7gD2vPxnk5wFxtQmRitmCCQ=="
+      }
+    },
+    {
+      "payload": {
+        "budget_after": {
+          "available": 40000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 10000
+        },
+        "budget_before": {
+          "available": 50000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 0
+        },
+        "decision": {
+          "reasons": [
+            "BUDGET_AND_OBSERVATION_VALID"
+          ],
+          "verdict": "PASS"
+        },
+        "event": "RESERVED_FOR_DISPATCH",
+        "operation_id": "issue-inconnue",
+        "operation_state": "DISPATCHING",
+        "previous_hash": "6f6e91ab779fdbbc93de4cc65fde3a2c12925507da1b62bd4287205b136e08dd",
+        "profile": {
+          "ceiling": 70000,
+          "configuration": {
+            "CONCURRENCY": "thread-lock",
+            "DEDUP_LAYER": "local-registry",
+            "HOST_SCOPE": "mono-process",
+            "UNCERTAINTY": "fail-closed"
+          },
+          "id": "tenir-reg-local-demo",
+          "max_signal_age_seconds": 300,
+          "policy": "Montant invalide, budget dépassé ou hypothèse affaiblie : HARD_VETO. Signal absent, invalide ou expiré : HOLD. UNKNOWN conserve la réservation.",
+          "resource": "demo-budget",
+          "signal_issuer": "demo-assure",
+          "unit": "demo-unit",
+          "version": "0.1.0"
+        },
+        "profile_hash": "f72b6f5a8c41fe9ada52f9494c0874e34b3bca1724be2a82274e5e85e9bde303",
+        "prototype_version": "0.1.0",
+        "provider_journal": [
+          {
+            "amount": 20000,
+            "call_id": 1,
+            "operation_id": "autorisation",
+            "outcome": "CONFIRMED",
+            "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d"
+          }
+        ],
+        "reference_time": 1792404000,
+        "request": {
+          "amount": 10000,
+          "operation_id": "issue-inconnue",
+          "signal": {
+            "integrity": {
+              "algorithm": "Ed25519",
+              "canonicalization": "RFC8785",
+              "domain": "TENIR-REG-LOCAL-DEMO-v1",
+              "key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+              "payload_sha256": "ac111ae6cc4b5d061334889f6a71f0546d6572bc8c238c5b25f888db2f9e889b",
+              "signature": "sU5iBKJhTrAnbnM5BTszLhiaj60YIDcxj7AVJ56VeuIyBtfNhT99rH5HbFdLBqNBCHVxJMVva2K0TQt+m8qICA=="
+            },
+            "payload": {
+              "expires_at": 1792404300,
+              "issuer": "demo-assure",
+              "observed_at": 1792404000,
+              "property": "hypothesis-status",
+              "resource": "demo-budget",
+              "schema": "demo-signal/v1",
+              "signal_id": "demo-observation-1",
+              "status": "VERIFIED"
+            }
+          },
+          "simulated_outcome": "UNKNOWN",
+          "unit": "demo-unit"
+        },
+        "request_hash": "955aefafe1328467b84e57dc2b895e22af895f08bc64955c590822950b0b35e5",
+        "schema": "demo-evidence/v1",
+        "sequence": 5,
+        "simulation_only": true
+      },
+      "integrity": {
+        "algorithm": "Ed25519",
+        "canonicalization": "RFC8785",
+        "domain": "TENIR-REG-LOCAL-DEMO-v1",
+        "key_id": "65b0400b63496624a07bff380bc7f42390c8c93e7aecb8e8ba2b9134a1e96353",
+        "payload_sha256": "283bca6f32971371b89196b853042ada518e83297c3ad6f701516b7291d9c948",
+        "signature": "UczxkHuva635a7OfLTqk0E1/pyKK35zqqoXjm5OluhR2KyguQbQfFYMohNXj8nN8fmiuAONpUIhGqyaYd+ijCQ=="
+      }
+    },
+    {
+      "payload": {
+        "budget_after": {
+          "available": 40000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 10000
+        },
+        "budget_before": {
+          "available": 40000,
+          "ceiling": 70000,
+          "consumed": 20000,
+          "reserved": 10000
+        },
+        "decision": {
+          "reasons": [
+            "BUDGET_AND_OBSERVATION_VALID"
+          ],
+          "verdict": "PASS"
+        },
+        "event": "PROVIDER_RESULT",
+        "operation_id": "issue-inconnue",
+        "operation_state": "UNKNOWN",
+        "previous_hash": "84613d112a4528971dbfc33cb147dd3780705548ee1aadb6e68d4d2ff830db3c",
+        "profile": {
+          "ceiling": 70000,
+          "configuration": {
+            "CONCURRENCY": "thread-lock",
+            "DEDUP_LAYER": "local-registry",
+            "HOST_SCOPE": "mono-process",
+            "UNCERTAINTY": "fail-closed"
+          },
+          "id": "tenir-reg-local-demo",
+          "max_signal_age_seconds": 300,
+          "policy": "Montant invalide, budget dépassé ou hypothèse affaiblie : HARD_VETO. Signal absent, invalide ou expiré : HOLD. UNKNOWN conserve la réservation.",
+          "resource": "demo-budget",
+          "signal_issuer": "demo-assure",
+          "unit": "demo-unit",
+          "version": "0.1.0"
+        },
+        "profile_hash": "f72b6f5a8c41fe9ada52f9494c0874e34b3bca1724be2a82274e5e85e9bde303",
+        "prototype_version": "0.1.0",
+        "provider_journal": [
+          {
+            "amount": 20000,
+            "call_id": 1,
+            "operation_id": "autorisation",
+            "outcome": "CONFIRMED",
+            "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d"
+          },
+          {
+            "amount": 10000,
+            "call_id": 2,
+            "operation_id": "issue-inconnue",
+            "outcome": "UNKNOWN",
+            "request_hash": "955aefafe1328467b84e57dc2b895e22af895f08bc64955c590822950b0b35e5"
+          }
+        ],
+        "reference_time": 1792404000,
+        "request": {
+          "amount": 10000,
+          "operation_id": "issue-inconnue",
+          "signal": {
+            "integrity": {
+              "algorithm": "Ed25519",
+              "canonicalization": "RFC8785",
+              "domain": "TENIR-REG-LOCAL-DEMO-v1",
+              "key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+              "payload_sha256": "ac111ae6cc4b5d061334889f6a71f0546d6572bc8c238c5b25f888db2f9e889b",
+              "signature": "sU5iBKJhTrAnbnM5BTszLhiaj60YIDcxj7AVJ56VeuIyBtfNhT99rH5HbFdLBqNBCHVxJMVva2K0TQt+m8qICA=="
+            },
+            "payload": {
+              "expires_at": 1792404300,
+              "issuer": "demo-assure",
+              "observed_at": 1792404000,
+              "property": "hypothesis-status",
+              "resource": "demo-budget",
+              "schema": "demo-signal/v1",
+              "signal_id": "demo-observation-1",
+              "status": "VERIFIED"
+            }
+          },
+          "simulated_outcome": "UNKNOWN",
+          "unit": "demo-unit"
+        },
+        "request_hash": "955aefafe1328467b84e57dc2b895e22af895f08bc64955c590822950b0b35e5",
+        "schema": "demo-evidence/v1",
+        "sequence": 6,
+        "simulation_only": true
+      },
+      "integrity": {
+        "algorithm": "Ed25519",
+        "canonicalization": "RFC8785",
+        "domain": "TENIR-REG-LOCAL-DEMO-v1",
+        "key_id": "65b0400b63496624a07bff380bc7f42390c8c93e7aecb8e8ba2b9134a1e96353",
+        "payload_sha256": "86bdf58f70d091bcbe3e69f73c9cac3fafdeab8ded440dd04221cf78d2a8471b",
+        "signature": "XWentPY26kjbWMJ7UDR0UBHXnguYQf2IuJVuxSPw684y+MXEk8kL12d+YHxa5ghAhiStpLQ5XgKPPhbKQhnVAg=="
+      }
+    }
+  ],
+  "provider_journal": [
+    {
+      "call_id": 1,
+      "operation_id": "autorisation",
+      "request_hash": "e046e4dea3ca9d6252357f35ae6b25b4c80213b3d2bd75b064a78e411dc9e48d",
+      "amount": 20000,
+      "outcome": "CONFIRMED"
+    },
+    {
+      "call_id": 2,
+      "operation_id": "issue-inconnue",
+      "request_hash": "955aefafe1328467b84e57dc2b895e22af895f08bc64955c590822950b0b35e5",
+      "amount": 10000,
+      "outcome": "UNKNOWN"
+    }
+  ],
+  "final_budget": {
+    "ceiling": 70000,
+    "consumed": 20000,
+    "reserved": 10000,
+    "available": 40000
+  },
+  "signal_public_key_id": "2f4cc19faa8223138d8b9c36f9625f8535c100dda19279c98f2c320a7e95f93c",
+  "build": {
+    "source_sha256": "06bb6718ea2f760ba0693238588c68ee62d6c67b6943825b46235d99bd623cf5",
+    "test_results_sha256": "9754505521c9a36d356d128d8afa80eca46499509b0c0d5a107fbf62cf4179cd"
+  },
+  "attestation": {
+    "payload": {
+      "bundle_sha256": "fd8e259dca5048bbec95f972b8f5b3ab1a91379fcd4e2fa0dcf223dd0ce38f66",
+      "record_count": 6,
+      "schema": "demo-dossier/v1"
+    },
+    "integrity": {
+      "algorithm": "Ed25519",
+      "canonicalization": "RFC8785",
+      "domain": "TENIR-REG-LOCAL-DEMO-v1",
+      "key_id": "65b0400b63496624a07bff380bc7f42390c8c93e7aecb8e8ba2b9134a1e96353",
+      "payload_sha256": "b93a5fe306833615e652a2804ff839b9cbf8bfe5d257a855dfabede542a1f6c4",
+      "signature": "6oZBEqE+MZcAGRcS0mb+Vlw0/devlc7Wj0jSpzBZ+7BxL5eDNt1EuV/6JpaDSdGygHIwEE0rYVkwgdvdR7LhAQ=="
+    }
+  }
+}
