@@ -26,11 +26,11 @@ export const copy = {
       "Abdelaziz Skiredj · TENIR Labs. KB3 est institué comme ligne de rendu, hors du code. Il rend le sens ; il n’est pas une nouvelle constitution.",
     sources: "Sources",
     external: "hors de ce site",
-    eyebrow: "TENIR LABS · EXECUTION GOVERNANCE",
-    headline: "L’agent propose. La frontière décide.",
-    homeLead:
-      "Les systèmes autonomes peuvent agir. TENIR vérifie que les conditions nécessaires sont toujours réunies avant qu’une décision produise un effet.",
-    explore: "Explorer une démonstration",
+    eyebrow: "TENIR LABS · ATELIER DE DIAGNOSTIC",
+    headline: "L’état est UNKNOWN. Renvoyer, au risque d’un double effet, ou attendre ?",
+    homeLead: "UNKNOWN : l’envoi a eu lieu, son résultat n’est pas confirmé.",
+    membrane: "L’agent propose. La membrane décide.",
+    explore: "Simuler l’incident",
     understand: "Comprendre TENIR",
   },
   en: {
@@ -46,11 +46,11 @@ export const copy = {
       "Abdelaziz Skiredj · TENIR Labs. KB3 is enacted as the rendering line, outside the code. It renders meaning; it is not a new constitution.",
     sources: "Sources",
     external: "leaves this site",
-    eyebrow: "TENIR LABS · EXECUTION GOVERNANCE",
-    headline: "The agent proposes. The boundary decides.",
-    homeLead:
-      "Autonomous systems can act. TENIR checks that the necessary conditions are still met before a decision produces an effect.",
-    explore: "Explore a demonstration",
+    eyebrow: "TENIR LABS · DIAGNOSTIC WORKSHOP",
+    headline: "The state is UNKNOWN. Resend, risking a double effect, or wait?",
+    homeLead: "UNKNOWN: the dispatch took place, its result is not confirmed.",
+    membrane: "The agent proposes. The membrane decides.",
+    explore: "Simulate the incident",
     understand: "Understand TENIR",
   },
 } as const;

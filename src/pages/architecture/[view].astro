@@ -58,7 +58,7 @@ const { title, description, kicker, lede, sources, src } = Astro.props;
     view === "demo" && (
       <div class="callout callout-limit">
         <p>
-          <strong>Limite.</strong> Artefact en anglais. Classe illustrative only. PASS, FLAG, HOLD et HARD_VETO sont des verdicts d’exécution. Ils ne sont pas les postures NORMAL, CAUTION et HOLDING-FIRST. Le HOLD de la scène 3 est un état d’opération, pas HOLDING-FIRST. La scène 6 tient la frontière : au plus un dispatch sur un seul hôte. Une décision de gouvernance ne prouve pas, à elle seule, un effet externe exactly-once. Ce site ne rejoue pas le code montré.
+          <strong>Limite.</strong> Artefact en anglais. Classe illustrative only. PASS, FLAG, HOLD et HARD_VETO sont des verdicts d’exécution. Ils ne sont pas les postures NORMAL, CAUTION et HOLDING-FIRST. Le HOLD de la scène 3 est un état d’opération, pas HOLDING-FIRST. La scène 6 tient la membrane : au plus un dispatch sur un seul hôte. Une décision de gouvernance ne prouve pas, à elle seule, un effet externe exactly-once. Ce site ne rejoue pas le code montré.
         </p>
       </div>
     )
@@ -79,6 +79,13 @@ const { title, description, kicker, lede, sources, src } = Astro.props;
           <strong>Statut.</strong> Document illustratif, en français. Il n’est pas le schéma normatif. Là où il nomme V volatilité, la ligne antérieure dit vitesse. KB3, ligne instituée, ne choisit pas ce nom. Les seuils du score ne sont pas les postures.
         </p>
       </div>
+    )
+  }
+  {
+    view === "demo" && (
+      <p id="scene-5">
+        Scène 5 · Timeout → Reconcile. L’opération montrée est marquée UNKNOWN. Le silence n’est pas une non-exécution.
+      </p>
     )
   }
   <p>

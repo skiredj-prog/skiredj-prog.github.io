@@ -106,9 +106,10 @@ const canonical = new URL(url(here), Astro.site);
               <p class="eyebrow">{t.eyebrow}</p>
               <h1>{title}</h1>
               <p class="headline">{t.headline}</p>
-              <p class="lead">{t.homeLead}</p>
+              <p class="gloss">{t.homeLead}</p>
+              <p class="membrane">{t.membrane}</p>
               <div class="actions">
-                <a class="btn btn-primary" href={url(locale === "fr" ? "/architecture/demo/" : "/en/architecture/demo/")}>
+                <a class="btn btn-primary" href={`${url(locale === "fr" ? "/architecture/demo/" : "/en/architecture/demo/")}#scene-5`}>
                   {t.explore}
                 </a>
                 <a class="btn" href={url(locale === "fr" ? "/concepts/" : "/en/concepts/")}>
