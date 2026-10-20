@@ -11,9 +11,9 @@ const href=(value:string)=>value.startsWith('#')||value.startsWith('https:')?val
 const connection=(labelFr:string,labelEn:string,pathFr:string,pathEn:string,kindFr:string,kindEn:string)=>({label:fr?labelFr:labelEn,href:fr?pathFr:pathEn,kind:fr?kindFr:kindEn});
 const connections={
   decouvrir:[
-    connection('Une tâche de rendez-vous, par exemple','An appointment task, for example','/parcours/deleguer/','/en/start/delegate/','Une autre situation','Another situation'),
-    connection('Et si la confirmation manque ?','What if confirmation is missing?','/#comprendre','/en/#comprendre','À explorer','Explore'),
-    connection('Essayer avec des données d’exemple','Try it with example data','https://mobile.tenirlabs.cc/discover','https://mobile.tenirlabs.cc/discover','Prototype','Prototype'),
+    connection('Retrouver les définitions','Find the definitions','/concepts/','/en/concepts/','Le cadre','The framework'),
+    connection('Explorer la démarche d’observation','Explore the observation approach','/#demarche','/en/#demarche','La démarche','The approach'),
+    connection('Voir un cas d’application aux agents','See an agent application example','/#comprendre','/en/#comprendre','Une application','An application'),
   ],
   deleguer:[
     connection('Ouvrir la tâche d’exemple','Open the example task','https://mobile.tenirlabs.cc/discover','https://mobile.tenirlabs.cc/discover','Simulation','Simulation'),

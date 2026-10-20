@@ -2,9 +2,11 @@
 import { url, type Locale } from '../data/site';
 import { journeys, journeyHref } from '../data/journeys';
 import { businessHref } from '../data/business';
+import { frameworkIntro, introductions } from '../data/introductions';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
+const introduction = introductions[locale][0];
 const path = (f: string, e: string = f) => url(fr ? `/${f}/` : `/en/${e}/`);
 const shortNeeds = fr ? ['Comprendre l’idée', 'Essayer une simulation', 'Préparer un lancement', 'Comprendre une incertitude', 'Examiner les textes et le code'] : ['Understand the idea', 'Try a simulation', 'Prepare a launch', 'Understand uncertainty', 'Examine texts and code'];
 const steps = fr ? [
@@ -25,13 +27,13 @@ const steps = fr ? [
 
 ---
 <div class="landing">
-  <section class="landing-hero" aria-labelledby="home-title">
+  <section class="landing-hero" aria-labelledby="home-title" data-hero data-locale={locale}>
     <div class="hero-copy">
       <p class="eyebrow"><span class="status-dot"></span> {fr ? 'À votre rythme' : 'At your own pace'}</p>
-      <h1 id="home-title">{fr ? 'Que voudriez-vous' : 'What would you like'}<br /><em>{fr ? 'confier à un agent ?' : 'to delegate to an agent?'}</em></h1>
-      <p class="hero-lead">{fr ? 'TENIR aide à examiner les actions d’un agent : ce qu’on lui permet, ce qui doit l’arrêter et ce que l’on peut vérifier de son résultat.' : 'TENIR helps examine agent actions: what they are allowed to do, what must stop them and what can be verified about the outcome.'}</p>
+      <h1 id="home-title"><span data-hero-opening>{introduction.opening}</span><br /><em data-hero-emphasis>{introduction.emphasis}</em></h1>
+      <p class="hero-lead">{frameworkIntro[locale]}{' '}<span data-hero-body>{introduction.body}</span></p>
       <div class="actions">
-        <a class="btn btn-primary" href="#comprendre">{fr ? 'Voir une situation concrète' : 'See a familiar situation'} <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-primary" href={path('parcours/decouvrir','start/discover')}>{fr ? 'Découvrir le cadre' : 'Explore the framework'} <span aria-hidden="true">↗</span></a>
         <a class="btn btn-quiet" href={path('contact')}>{fr ? 'Poser ma question' : 'Ask my question'} <span aria-hidden="true">→</span></a>
       </div>
       <p class="hero-caption">{fr ? 'En développement. Des exemples pour explorer, une personne pour échanger.' : 'In development. Examples to explore, a person to talk to.'}</p>
@@ -43,7 +45,7 @@ const steps = fr ? [
     </nav>
   </section>
   <section class="landing-section incident-section" id="comprendre" aria-labelledby="incident-title">
-    <div class="incident-intro"><p class="eyebrow">{fr?'Pour se faire une idée':'Get a feel for it'}</p><h2 id="incident-title">{fr?'La confirmation manque.' : 'The confirmation is missing.'}<br /><em>{fr?'Vous faites quoi ?':'What would you do?'}</em></h2><p>{fr?'Imaginez : un agent a envoyé votre commande, mais le service ne répond plus. Vous ne savez pas si elle a été créée.':'Imagine: an agent sent your order, but the service stops responding. You do not know whether the order was created.'}</p><p class="section-note">{fr?'Explorez la réaction qui vous vient. Il n’y a ni score, ni opération lancée.':'Explore the reaction that comes to mind. There is no score and no operation is launched.'}</p></div>
+    <div class="incident-intro"><p class="eyebrow">{fr?'Une application aux agents':'An application to agents'}</p><h2 id="incident-title">{fr?'La confirmation manque.' : 'The confirmation is missing.'}<br /><em>{fr?'Vous faites quoi ?':'What would you do?'}</em></h2><p>{fr?'Imaginez : un agent a envoyé votre commande, mais le service ne répond plus. Vous ne savez pas si elle a été créée.':'Imagine: an agent sent your order, but the service stops responding. You do not know whether the order was created.'}</p><p class="section-note">{fr?'Explorez la réaction qui vous vient. Il n’y a ni score, ni opération lancée.':'Explore the reaction that comes to mind. There is no score and no operation is launched.'}</p></div>
     <div class="incident-conversation">
       <div class="reader-reflections">
         <details name="incident-reflection"><summary>{fr?'Je renvoie la commande.':'I send the order again.'}</summary><p>{fr?'Cela peut sembler le moyen le plus simple d’avancer. Mais si la première commande existe déjà, une relance peut créer un doublon. La réponse manquante ne prouve pas l’échec.':'That can seem like the simplest way forward. But if the first order already exists, retrying can create a duplicate. A missing response does not establish failure.'}</p><a href={path('parcours/examiner','start/investigate')}>{fr?'Voir ce que l’on peut vérifier':'See what can be checked'} →</a></details>
@@ -79,7 +81,7 @@ const steps = fr ? [
   </section>
 
   <section class="landing-section substance-section" aria-labelledby="substance-title"><div class="section-heading"><div><p class="eyebrow">{fr?'Les repères TENIR':'TENIR, in context'}</p><h2 id="substance-title">{fr?'Et derrière ces exemples ?':'What’s behind these examples?'}</h2></div><p>{fr?'TENIR, REG et le logiciel : des rôles distincts, des sources à explorer.':'TENIR, REG and the software: distinct roles, with sources to explore.'}</p></div><div class="substance-grid">
-    <a href={path('concepts')}><span class="role">{fr?'Le cadre':'The framework'}</span><h3>TENIR</h3><p>{fr?'Les concepts pour examiner qui peut agir et dans quelles limites.':'Concepts to examine who can act and within which limits.'}</p><span class="text-link">{fr?'Comprendre les repères':'Understand the concepts'} →</span></a>
+    <a href={path('concepts')}><span class="role">{fr?'Le cadre':'The framework'}</span><h3>TENIR</h3><p>{fr?'Le diagnostic des systèmes sous pression et la préservation des options.':'Diagnosing systems under pressure and preserving options.'}</p><span class="text-link">{fr?'Comprendre les repères':'Understand the concepts'} →</span></a>
     <a href={path('standard')}><span class="role">{fr?'Le standard proposé':'The proposed standard'}</span><h3>REG</h3><p>{fr?'Les exigences proposées pour autoriser, bloquer et suivre une action.':'Proposed requirements to authorize, block and track an action.'}</p><span class="text-link">{fr?'Explorer les exigences':'Explore the requirements'} →</span></a>
     <a href={path('depots','repositories')}><span class="role">{fr?'Le logiciel en évaluation':'Software under evaluation'}</span><h3>TENIR-Gov</h3><p>{fr?'Du code public en évaluation, avec ses tests et leurs limites.':'Public code under evaluation, with tests and their limits.'}</p><span class="text-link">{fr?'Voir le code et les dépôts':'See code and repositories'} →</span></a>
   </div><div class="demo-shelf"><div><h3>{fr?'Vous préférez voir les mécanismes ?':'Prefer to see the mechanisms?'}</h3><p>{fr?'Démonstrations techniques bornées, sans action sur votre système.':'Bounded technical demonstrations, with no action on your system.'}</p></div><a href={path('architecture/demo')}>{fr?'Six scènes d’exécution':'Six execution scenes'} <small>{fr?'Artefact en anglais':'Artifact in English'}</small> ↗</a><a href={path('architecture/interactive')}>{fr?'Architecture interactive':'Interactive architecture'} <small>{fr?'Artefact en anglais':'Artifact in English'}</small> ↗</a><a href={path('architecture/drawing')}>{fr?'Le système en dessin':'The system illustrated'} <small>{fr?'Schéma en français':'Diagram in French'}</small> ↗</a></div><p class="section-note">{fr?'Pour distinguer ce qui est établi de ce qui reste ouvert :':'To distinguish what is established from what remains open:'} <a href={path('statut','status')}>{fr?'statut et limites':'status and limits'} →</a></p></section>
@@ -104,6 +106,16 @@ const steps = fr ? [
   </details>
 </div>
 <script>
+  import { introductions } from '../data/introductions';
+  const hero=document.querySelector<HTMLElement>('[data-hero]');
+  if(hero){
+    const entries=introductions[hero.dataset.locale==='en'?'en':'fr'];
+    const entry=entries[Math.floor(Math.random()*entries.length)];
+    for(const [field,value] of Object.entries(entry)){
+      const target=hero.querySelector(`[data-hero-${field}]`);
+      if(target)target.textContent=value;
+    }
+  }
   function setupTabs(root: Element, tabSelector: string, panelSelector: string, next?: Element | null) {
     const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>(tabSelector));
     const panels = Array.from(root.querySelectorAll<HTMLElement>(panelSelector));

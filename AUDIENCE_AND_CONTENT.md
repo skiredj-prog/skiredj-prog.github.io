@@ -36,6 +36,8 @@ Ces entrées se croisent au fil des questions : une réponse peut inviter à ess
 
 Le support existant [TENIR visual abstract dans Canva](https://www.canva.com/d/bY_JDapMuy6Gc-m) a aussi été consulté pour recentrer la hiérarchie des messages. Le site reste implémenté dans son dépôt ; aucun support Canva n’a été modifié.
 
+L’entrée générale présente le cadre de diagnostic et de gouvernance des systèmes sous pression, aux échelles décrites dans Concepts. Les agents logiciels sont explicitement un cas d’application. Six accroches FR/EN, chacune avec son introduction, sont choisies aléatoirement au chargement et restent stables pendant la lecture. Ce sont des reformulations éditoriales, appuyées sur Concepts et sur l’article d’Abdelaziz Skiredj [Pourquoi les bonnes décisions mènent parfois au désastre](https://fr.linkedin.com/pulse/pourquoi-les-bonnes-d%C3%A9cisions-m%C3%A8nent-parfois-au-d%C3%A9sastre-skiredj-uxx5e), publié le 23 juillet 2026. Elles ne redéfinissent pas le cadre.
+
 L’exemple d’accueil laisse le visiteur explorer plusieurs réactions. La réponse explique une conséquence sans noter la personne ni lui attribuer une émotion. La méthode et les ressources détaillées sont dépliables. La navigation garde l’accès direct à la technique pour qui la cherche.
 
 Le contact invite à décrire ce que l’on souhaite faire ou comprendre. Le besoin choisi est repris dans une sélection modifiable. L’échéance et les limites personnelles sont facultatives. Le brouillon ne présume pas que chaque question est une demande de devis. Il n’est pas envoyé automatiquement.
