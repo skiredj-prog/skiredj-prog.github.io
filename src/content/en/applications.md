@@ -38,19 +38,19 @@ sources: Execution Control Plane demo, scenes 1, 2, and 5; Architecture page; KB
 <div class="grid-3">
   <article class="card">
     <p class="role">Payment</p>
-    <h2>An admissible action</h2>
+    <h3>An admissible action</h3>
     <p>The demo shows a payment of 10 against a capacity of 100. The score returns FLAG, the membrane PASS, the composition FLAG. The state moves to RESERVED, then to CONFIRMED after dispatch. The key is claimed at CREATED, before evaluation.</p>
     <p><a href="/en/architecture/demo/#scene-1">Scene 1</a></p>
   </article>
   <article class="card">
     <p class="role">Duplicate</p>
-    <h2>The same key, again</h2>
+    <h3>The same key, again</h3>
     <p>The same key, submitted a second time, receives HARD_VETO. The resumption shown goes through the existing claim, not through a new adjudication.</p>
     <p><a href="/en/architecture/demo/#scene-2">Scene 2</a></p>
   </article>
   <article class="card">
     <p class="role">Lost receipt</p>
-    <h2>A timeout is not a failure</h2>
+    <h3>A timeout is not a failure</h3>
     <p>A provider timeout leads to UNKNOWN, not to FAILED. UNKNOWN is not terminal. The reconciliation shown can confirm that the effect already occurred. Treating silence as failure could double it.</p>
     <p><a href="/en/architecture/demo/#scene-5">Scene 5</a></p>
   </article>

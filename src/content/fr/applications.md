@@ -38,19 +38,19 @@ sources: démo Execution Control Plane, scènes 1, 2 et 5 ; page Architecture ; 
 <div class="grid-3">
   <article class="card">
     <p class="role">Paiement</p>
-    <h2>Une action admissible</h2>
+    <h3>Une action admissible</h3>
     <p>La démo montre un paiement de 10 sur une capacité de 100. Le score renvoie FLAG, la membrane PASS, la composition FLAG. L’état passe à RESERVED, puis à CONFIRMED après l’envoi. La clé est réclamée à CREATED, avant l’évaluation.</p>
     <p><a href="/architecture/demo/#scene-1">Scène 1</a></p>
   </article>
   <article class="card">
     <p class="role">Doublon</p>
-    <h2>La même clé, encore</h2>
+    <h3>La même clé, encore</h3>
     <p>La même clé, soumise une seconde fois, reçoit HARD_VETO. La reprise montrée passe par la réclamation existante, pas par une nouvelle adjudication.</p>
     <p><a href="/architecture/demo/#scene-2">Scène 2</a></p>
   </article>
   <article class="card">
     <p class="role">Reçu perdu</p>
-    <h2>Le délai n’est pas un échec</h2>
+    <h3>Le délai n’est pas un échec</h3>
     <p>Un timeout de fournisseur mène à UNKNOWN, pas à FAILED. UNKNOWN n’est pas terminal. La réconciliation montrée peut confirmer que l’effet a déjà eu lieu. Traiter le silence comme un échec pourrait le doubler.</p>
     <p><a href="/architecture/demo/#scene-5">Scène 5</a></p>
   </article>
