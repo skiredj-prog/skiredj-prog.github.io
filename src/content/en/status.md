@@ -16,7 +16,7 @@ sources: KB3, normalisation note of 14 April 2026; KB2, prior rendering line; po
     <tr><td>KB2</td><td>Prior rendering line, continuity only. No simultaneous active authority with KB3. The build of 30 March 2026 is kept. The note that once named it active, at institution, is historical context, not current authority. KB1.1 is historical. Written and curated with assistance; author Abdelaziz Skiredj.</td></tr>
     <tr><td>REG</td><td>RFC-0 through RFC-7: Proposed Standard, frozen draft, 2–3 October 2026. Not a standard adopted by an external body.</td></tr>
     <tr><td>TENIR-Gov</td><td>Classifier “Development Status :: 4 - Beta”. IronOmega 5.0.0 line in June–July 2026, continued through the 5.6.1 tree.</td></tr>
-    <tr><td>5.6.1</td><td>The changelog marks it “Pending release” and forbids inferring a PyPI publication.</td></tr>
+    <tr><td>5.6.1</td><td>The changelog marks it “Pending release” and forbids inferring a <a href="https://pypi.org/project/tenir-governance/">PyPI</a> publication. The published package is 5.6.0.</td></tr>
     <tr><td>5.7.0</td><td>Objective named by the illustrative document. Absent from the tree that was read.</td></tr>
     <tr><td>S1 harness</td><td>Laboratory validation on tested interleavings. Non-certification written at the head of the repository.</td></tr>
     <tr><td>Schemas v1</td><td>Publishable bundle of February 2026, example hosts, stubs acknowledged.</td></tr>
@@ -35,6 +35,8 @@ sources: KB3, normalisation note of 14 April 2026; KB2, prior rendering line; po
 <p>The unpublished 5.6.1 changelog describes corrections: reject <code>reconcile_commit()</code> unless the reservation is RESERVED, non-destructive resource registration, and further safety corrections “under review”, including the linearizability checker. The excluded perimeter is explicit: Byzantine tolerance, hardened authenticated transport, third-party attestation, proof of exactly-once external effect. An earlier Raft run is reported: 46 tests passed on commit <code>8203705</code>, GitHub run <code>39205580977</code>, Python 3.11.17, localhost. This site does not replay those tests. It does not conclude that F-01, F-02, or F-03 are closed in a published version.</p>
 
 <p>The same document, in its release section, freezes public communication and marketing artifacts until the hardened 5.7.0. This page reports that. It does not replace it with an argument of maturity.</p>
+
+<p>The published package is <a href="https://pypi.org/project/tenir-governance/">tenir-governance 5.6.0</a>, beta. Two SSRN working papers are recorded on the <a href="/en/publications/">Publications</a> page: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7291620">7291620</a> and <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7197218">7197218</a>. They do not certify the runtime, and they are not KB3.</p>
 
 ## Counts that should not be cited alone
 

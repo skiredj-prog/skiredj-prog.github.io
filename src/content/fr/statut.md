@@ -16,7 +16,7 @@ sources: KB3, note de normalisation du 14 avril 2026 ; KB2, ligne antérieure ; 
     <tr><td>KB2</td><td>Ligne de rendu antérieure, continuité seulement. Pas d’autorité active simultanée avec KB3. Le build du 30 mars 2026 est conservé. La note qui l’a nommé actif à l’institution est un contexte historique, pas l’autorité actuelle. KB1.1 est historique. Rédigé et curé avec assistance, auteur Abdelaziz Skiredj.</td></tr>
     <tr><td>REG</td><td>RFC-0 à RFC-7 : Proposed Standard, brouillon gelé, 2–3 octobre 2026. Pas une norme adoptée par un organisme extérieur.</td></tr>
     <tr><td>TENIR-Gov</td><td>Classifieur « Development Status :: 4 - Beta ». Ligne IronOmega 5.0.0 en juin-juillet 2026, poursuivie jusqu’à l’arbre 5.6.1.</td></tr>
-    <tr><td>5.6.1</td><td>Le journal la marque « Pending release » et interdit d’en inférer une publication PyPI.</td></tr>
+    <tr><td>5.6.1</td><td>Le journal la marque « Pending release » et interdit d’en inférer une publication <a href="https://pypi.org/project/tenir-governance/">PyPI</a>. Le paquet publié est la 5.6.0.</td></tr>
     <tr><td>5.7.0</td><td>Objectif nommé par le document illustratif. Absente de l’arbre lu.</td></tr>
     <tr><td>Harnais S1</td><td>Validation de laboratoire sur des entrelacements testés. Non-certification écrite en tête de dépôt.</td></tr>
     <tr><td>Schémas v1</td><td>Faisceau publiable de février 2026, hôtes d’exemple, stubs assumés.</td></tr>
@@ -35,6 +35,8 @@ sources: KB3, note de normalisation du 14 avril 2026 ; KB2, ligne antérieure ; 
 <p>Le journal 5.6.1, non publié, décrit des corrections : refuser <code>reconcile_commit()</code> hors réservation RESERVED, enregistrement de ressource non destructif, et d’autres corrections de sûreté « under review », dont le vérificateur de linéarisation. Le périmètre exclu y est explicite : tolérance byzantine, transport authentifié durci, attestation tierce, preuve d’effet externe exactly-once. Un essai Raft antérieur est rapporté : 46 tests passés sur le commit <code>8203705</code>, run GitHub <code>39205580977</code>, Python 3.11.17, localhost. Ce site ne rejoue pas ces tests. Il ne conclut pas que F-01, F-02 ou F-03 sont clos dans une version publiée.</p>
 
 <p>Le même document gèle, dans sa section release, la communication publique et les artefacts marketing jusqu’à la 5.7.0 durcie. Cette page en rend compte. Elle ne les remplace pas par un argument de maturité.</p>
+
+<p>Le paquet publié est <a href="https://pypi.org/project/tenir-governance/">tenir-governance 5.6.0</a>, bêta. Deux working papers SSRN sont enregistrés sur la page <a href="/publications/">Publications</a> : <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7291620">7291620</a> et <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7197218">7197218</a>. Ils ne certifient pas le runtime, et ils ne sont pas KB3.</p>
 
 ## Décomptes qui ne doivent pas être cités seuls
 

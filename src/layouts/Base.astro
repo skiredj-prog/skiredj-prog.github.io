@@ -100,6 +100,8 @@ const canonical = new URL(url(here), Astro.site);
       <div class="inner">
         <p>{t.footerNote}</p>
         <p>
+          <a href={url(locale === "fr" ? "/publications/" : "/en/publications/")}>Publications</a>
+          ·
           <a href="https://github.com/skiredj-prog/tenir_governance">GitHub</a>
           ·
           <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>
