@@ -1,0 +1,7 @@
+---
+import JourneyPage from '../../components/JourneyPage.astro';
+import { journeys } from '../../data/journeys';
+export function getStaticPaths(){return journeys.fr.map(journey=>({params:{interest:journey.slug},props:{journey}}));}
+const {journey}=Astro.props;
+---
+<JourneyPage locale="fr" journey={journey}/>

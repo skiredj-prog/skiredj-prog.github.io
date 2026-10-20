@@ -5,16 +5,16 @@ const { locale } = Astro.props;
 const fr=locale==='fr';
 ---
 <section class="contact-brief" aria-labelledby="brief-title">
-  <div><p class="eyebrow">{fr?'Premier échange':'First conversation'}</p><h2 id="brief-title">{fr?'Parlons de votre cas.':'Let’s discuss your case.'}</h2><p>{fr?'Quelques lignes suffisent pour commencer. Nous préciserons ensemble le périmètre, les sources et les interlocuteurs.':'A few lines are enough to begin. We will clarify the scope, sources and participants together.'}</p><p class="section-note">{fr?'Cadrage proposé : 30 minutes. Forfait sur devis après cadrage.':'Proposed scoping: 30 minutes. Fixed quote after scoping.'}</p></div>
+  <div><p class="eyebrow">{fr?'Vous écrivez à Abdelaziz Skiredj':'You are writing to Abdelaziz Skiredj'}</p><h2 id="brief-title">{fr?'Qu’aimeriez-vous éclaircir ?':'What would you like to clarify?'}</h2><p>{fr?'Une idée encore floue, une question technique ou un résultat incertain : vous pouvez commencer avec vos mots. Quelques lignes suffisent.':'An idea still taking shape, a technical question or an uncertain outcome: start in your own words. A few lines are enough.'}</p><p class="contact-context" data-contact-context hidden role="status"></p></div>
   <form data-contact-brief data-locale={locale}>
-    <label for="brief-action">{fr?'Quelle action votre agent peut-il déclencher ?':'Which action can your agent trigger?'} <span>{fr?'(requis)':'(required)'}</span></label>
-    <textarea id="brief-action" name="action" rows="3" required maxlength="1500" placeholder={fr?'Ex. créer une commande fournisseur, modifier un accès…':'E.g. create a supplier order, change access…'}></textarea>
-    <label for="brief-context">{fr?'Dans quelle situation êtes-vous ?':'What is your situation?'}</label>
-    <select id="brief-context" name="context"><option>{fr?'Je prépare une mise en service ou un changement':'I am preparing a rollout or change'}</option><option>{fr?'J’examine un incident ou un résultat incertain':'I am examining an incident or uncertain outcome'}</option><option>{fr?'Je souhaite d’abord comprendre la démarche':'I would first like to understand the approach'}</option></select>
-    <label for="brief-decision">{fr?'Quelle décision souhaitez-vous préparer ?':'Which decision do you want to prepare?'} <span>{fr?'(facultatif)':'(optional)'}</span></label>
-    <textarea id="brief-decision" name="decision" rows="2" maxlength="1500" placeholder={fr?'La question à trancher, votre échéance…':'The question to resolve, your deadline…'}></textarea>
+    <label for="brief-action">{fr?'Qu’est-ce que vous aimeriez faire ou comprendre ?':'What would you like to do or understand?'} <span>{fr?'(requis)':'(required)'}</span></label>
+    <textarea id="brief-action" name="action" rows="3" required maxlength="1500" placeholder={fr?'« J’aimerais… », « Je n’arrive pas à savoir si… »':'“I’d like to…”, “I cannot establish whether…”'}></textarea>
+    <label for="brief-context">{fr?'Où en êtes-vous ?':'Where are you starting from?'}</label>
+    <select id="brief-context" name="context"><option value="decouvrir">{fr?'Je découvre le sujet / j’ai une question':'I’m discovering the subject / I have a question'}</option><option value="deleguer">{fr?'J’aimerais déléguer une tâche':'I’d like to delegate a task'}</option><option value="concevoir">{fr?'Je prépare l’utilisation d’un agent':'I’m preparing to use an agent'}</option><option value="examiner">{fr?'Une action a eu lieu et je cherche à comprendre':'An action happened and I want to understand'}</option><option value="etudier">{fr?'Je souhaite discuter les sources ou la technique':'I’d like to discuss sources or technical details'}</option><option value="autre">{fr?'Autre chose / je ne sais pas encore':'Something else / I’m not sure yet'}</option></select>
+    <label for="brief-decision">{fr?'Qu’est-ce qui compte pour vous dans cette situation ?':'What matters to you in this situation?'} <span>{fr?'(facultatif)':'(optional)'}</span></label>
+    <textarea id="brief-decision" name="decision" rows="2" maxlength="1500" placeholder={fr?'Une limite à garder, un doute, une échéance… Vous pouvez aussi laisser ce champ vide.':'A limit to keep, an uncertainty, a deadline… You can also leave this blank.'}></textarea>
     <button class="btn btn-primary" type="submit" disabled data-brief-submit>{fr?'Préparer mon e-mail':'Prepare my email'} <span aria-hidden="true">↗</span></button>
-    <p class="section-note">{fr?'Préparez un brouillon à relire, puis ouvrez-le dans votre messagerie. Ce formulaire n’envoie rien et ne stocke pas vos réponses.':'Prepare a draft to review, then open it in your email app. This form sends nothing and does not store your answers.'}</p>
+    <p class="section-note">{fr?'Le site ne reçoit pas vos réponses. Votre texte reste dans cet onglet si vous changez de langue. Vous décidez de l’envoi depuis votre messagerie.':'The site does not receive your answers. Your text stays in this tab when you change language. You decide when to send it from your email app.'}</p>
     <p data-brief-feedback role="status" hidden>{fr?'Votre brouillon est prêt. Relisez-le ci-dessous avant de l’ouvrir dans votre messagerie.':'Your draft is ready. Review it below before opening it in your email app.'}</p>
     <div data-brief-fallback hidden><label for="brief-copy">{fr?'Votre brouillon':'Your draft'}</label><textarea id="brief-copy" readonly rows="8"></textarea><a class="btn btn-primary" data-brief-mailto href="mailto:skiredj@tenirlabs.cc">{fr?'Ouvrir dans ma messagerie':'Open in my email app'} ↗</a><p class="section-note">{fr?'Pas de messagerie configurée ? Copiez le brouillon et écrivez à skiredj@tenirlabs.cc.':'No email app configured? Copy the draft and write to skiredj@tenirlabs.cc.'}</p></div>
     <noscript><p>{fr?'Écrivez directement à':'Write directly to'} <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>.</p></noscript>
@@ -22,8 +22,25 @@ const fr=locale==='fr';
 </section>
 <script>
   document.querySelectorAll<HTMLFormElement>('[data-contact-brief]').forEach(form=>{
+    const context=form.querySelector<HTMLSelectElement>('[name=context]');
+    const actionField=form.querySelector<HTMLTextAreaElement>('[name=action]');
+    const decisionField=form.querySelector<HTMLTextAreaElement>('[name=decision]');
+    const transferKey='tenir-contact-language-transfer';
+    const situation=new URLSearchParams(location.search).get('situation');
+    const allowed=new Set(['decouvrir','deleguer','concevoir','examiner','etudier']);
+    if(situation&&allowed.has(situation)&&context){context.value=situation;const note=form.parentElement?.querySelector<HTMLElement>('[data-contact-context]');if(note){note.hidden=false;note.textContent=form.dataset.locale==='fr'?'Votre point de départ est repris ci-dessous. Vous pouvez le changer.':'Your starting point is carried over below. You can change it.';}}
     const submit=form.querySelector<HTMLButtonElement>('[data-brief-submit]');
     if(submit)submit.disabled=false;
+    try{
+      const raw=sessionStorage.getItem(transferKey);
+      if(raw){sessionStorage.removeItem(transferKey);const draft=JSON.parse(raw);if(draft.target===location.pathname&&Date.now()-draft.time<120000){if(actionField&&typeof draft.action==='string')actionField.value=draft.action.slice(0,1500);if(decisionField&&typeof draft.decision==='string')decisionField.value=draft.decision.slice(0,1500);if(context&&Array.from(context.options).some(o=>o.value===draft.context))context.value=draft.context;}}
+    }catch(e){}
+    document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-tools a').forEach(link=>link.addEventListener('click',event=>{
+      const destination=new URL(link.href);
+      if(destination.pathname===location.pathname||!actionField?.value&&!decisionField?.value)return;
+      try{sessionStorage.setItem(transferKey,JSON.stringify({action:actionField?.value||'',decision:decisionField?.value||'',context:context?.value,time:Date.now(),target:destination.pathname}));}
+      catch(e){event.preventDefault();const feedback=form.querySelector<HTMLElement>('[data-brief-feedback]');if(feedback){feedback.hidden=false;feedback.textContent=form.dataset.locale==='fr'?'Le changement de langue ne peut pas conserver votre texte dans ce navigateur. Copiez-le avant de changer de langue.':'This browser cannot carry your text across the language change. Copy it before switching language.';}}
+    }));
     form.addEventListener('input',event=>{
       const field=event.target as HTMLInputElement;
       if(!['action','context','decision'].includes(field.name))return;
@@ -35,12 +52,14 @@ const fr=locale==='fr';
       if(!form.reportValidity())return;
       const data=new FormData(form),fr=form.dataset.locale==='fr';
       const action=String(data.get('action')||'').trim();
-      if(!action){const field=form.querySelector<HTMLTextAreaElement>('[name=action]');field?.setCustomValidity(fr?'Précisez l’action à examiner.':'Describe the action to examine.');field?.reportValidity();return;}
-      const body=fr?`Bonjour,\n\nJe souhaite échanger sur un diagnostic des contrôles d’un agent.\n\nAction et système concernés :\n${action}\n\nSituation :\n${data.get('context')}\n\nDécision et échéance :\n${data.get('decision')||'À préciser ensemble'}\n\nSources et traces disponibles : à préciser ensemble.\nResponsable et participants : à préciser ensemble.\n\nMerci.`:`Hello,\n\nI would like to discuss a diagnostic of an agent’s controls.\n\nAction and system:\n${action}\n\nSituation:\n${data.get('context')}\n\nDecision and deadline:\n${data.get('decision')||'To clarify together'}\n\nAvailable sources and traces: to clarify together.\nOwner and participants: to clarify together.\n\nThank you.`;
+      if(!action){const field=form.querySelector<HTMLTextAreaElement>('[name=action]');field?.setCustomValidity(fr?'Quelques mots sur votre question suffisent.':'A few words about your question are enough.');field?.reportValidity();return;}
+      const contextLabel=context?.selectedOptions[0]?.textContent||'';
+      const extra=String(data.get('decision')||'').trim();
+      const body=fr?`Bonjour Abdelaziz,\n\n${action}\n\nMon point de départ : ${contextLabel}${extra?`\n\nCe qui compte pour moi :\n${extra}`:''}\n\nMerci.`:`Hello Abdelaziz,\n\n${action}\n\nMy starting point: ${contextLabel}${extra?`\n\nWhat matters to me:\n${extra}`:''}\n\nThank you.`;
       const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]'),copy=form.querySelector<HTMLTextAreaElement>('#brief-copy');
       if(copy)copy.value=body;if(fallback)fallback.hidden=false;if(feedback)feedback.hidden=false;
       const mailto=form.querySelector<HTMLAnchorElement>('[data-brief-mailto]');
-      if(mailto)mailto.href=`mailto:skiredj@tenirlabs.cc?subject=${encodeURIComponent(fr?'Cadrage — diagnostic des contrôles d’un agent':'Scoping — diagnostic of an agent’s controls')}&body=${encodeURIComponent(body)}`;
+      if(mailto)mailto.href=`mailto:skiredj@tenirlabs.cc?subject=${encodeURIComponent(fr?'Une question sur TENIR':'A question about TENIR')}&body=${encodeURIComponent(body)}`;
       copy?.focus();
     });
     form.querySelector<HTMLTextAreaElement>('[name=action]')?.addEventListener('input',event=>(event.target as HTMLTextAreaElement).setCustomValidity(''));

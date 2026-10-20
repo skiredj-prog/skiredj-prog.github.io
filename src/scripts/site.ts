@@ -5,6 +5,10 @@ syncTheme();
 themeButton?.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('tenir-theme',root.dataset.theme);}catch(e){}syncTheme();});
 const menuButton=document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
 const nav=document.querySelector<HTMLElement>('#main-navigation');
+const contactSituation=new URLSearchParams(location.search).get('situation');
+if(document.querySelector('.contact-page')&&contactSituation&&['decouvrir','deleguer','concevoir','examiner','etudier'].includes(contactSituation)){
+  document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-tools a').forEach(link=>{const destination=new URL(link.href);destination.searchParams.set('situation',contactSituation);link.href=destination.href;});
+}
 const groups=Array.from(document.querySelectorAll<HTMLDetailsElement>('.site-nav details'));
 const closeMenu=(focus=false)=>{menuButton?.setAttribute('aria-expanded','false');nav?.removeAttribute('data-open');groups.forEach(group=>group.open=false);if(focus)menuButton?.focus();};
 menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));nav?.toggleAttribute('data-open',open);});
@@ -20,7 +24,7 @@ if(headings.length>=2&&toc&&mobileToc){
   const links:HTMLAnchorElement[]=[];
   headings.forEach((h,index)=>{
     if(!h.id)h.id=`section-${index+1}`;
-    [toc,mobileToc].forEach(container=>{const li=document.createElement('li'),a=document.createElement('a');a.href=`#${h.id}`;a.textContent=h.textContent;li.append(a);container.querySelector('ol')?.append(li);if(container===toc)links.push(a);else a.addEventListener('click',()=>mobileToc.open=false);});
+    [toc,mobileToc].forEach(container=>{const li=document.createElement('li'),a=document.createElement('a');a.href=`#${h.id}`;a.textContent=h.textContent;li.append(a);container.querySelector('ol')?.append(li);a.addEventListener('click',()=>{let parent=h.parentElement;while(parent){if(parent instanceof HTMLDetailsElement)parent.open=true;parent=parent.parentElement;}});if(container===toc)links.push(a);else a.addEventListener('click',()=>mobileToc.open=false);});
   });
   toc.hidden=false;mobileToc.hidden=false;
   if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{const entry=entries.find(e=>e.isIntersecting);if(!entry)return;links.forEach(link=>{if(link.hash===`#${entry.target.id}`)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});},{rootMargin:'-100px 0px -65% 0px'});headings.forEach(h=>observer.observe(h));}

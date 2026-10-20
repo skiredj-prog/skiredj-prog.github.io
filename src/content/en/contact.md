@@ -2,7 +2,7 @@
 title: Contact
 kicker: Contact · first conversation
 description: Discuss an agent action with Abdelaziz Skiredj, prepare a diagnostic or ask a question about TENIR.
-lede: An action to examine, a project to scope or a question about TENIR? Let’s prepare the first conversation.
+lede: A question, an idea to explore or something that remains unclear? You can write to us from there.
 sources: CITATION.cff; KB2, prior rendering line, for the genesis crossing only; Cercle Inverse v1.1; Independent architecture v2 of 2 October 2026
 ---
 

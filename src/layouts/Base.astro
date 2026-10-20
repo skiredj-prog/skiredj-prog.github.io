@@ -2,22 +2,32 @@
 import '../styles/fonts.css';
 import '../styles/site.css';
 import '../styles/experience.css';
+import '../styles/journeys.css';
 import Home from '../components/Home.astro';
 import ContactBrief from '../components/ContactBrief.astro';
+import { journeys, journeyHref } from '../data/journeys';
 import { alternate, copy, navContact, navGroups, navProducts, url, type Locale } from '../data/site';
 interface Props { locale: Locale; slug: string; title: string; description: string; kicker: string; lede: string; sources: string; }
 const { locale, slug, title, description, kicker, lede, sources } = Astro.props;
 const fr=locale==='fr', t=copy[locale], groups=navGroups[locale], products=navProducts[locale], contact=navContact[locale];
 const home=slug==='';
+const isJourney=slug.startsWith('parcours/')||slug.startsWith('start/');
 const other=slug==='404'?(fr?'/en/':'/'):alternate(locale,slug);
 const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}`;
 const canonical=new URL(url(here),Astro.site);
 const path=(f:string,e:string=f)=>url(fr?`/${f}/`:`/en/${e}/`);
+const selectedJourney=journeys[locale].find(j=>slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`));
+const readerContact=path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
 const demo=groups[2];
 const resources=[...groups[3].links,...groups[4].links,...groups[0].links.filter(x=>x.slug!=='concepts'),groups[1].links[0],groups[1].links[4],{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}];
-const footerGroups=[...groups,{id:'services',label:fr?'Accompagnement':'Services',links:[products,{slug:fr?'offre':'offer',href:fr?'/offre/':'/en/offer/',label:'Diagnostic'},contact]}];
-const mainTitle=home?(fr?'TENIR — Laissez vos agents agir. Gardez la main.':'TENIR — Let your agents act. Stay in control.'):`${title} — TENIR`;
-const mainDescription=home?(fr?'Comprendre les contrôles des actions d’agents, explorer un prototype de délégation et cadrer un diagnostic sourcé avec TENIR.':'Understand controls for agent actions, explore a delegation prototype and scope a sourced diagnostic with TENIR.'):description;
+const footerGroups=[
+  {id:'needs',label:fr?'Votre point de départ':'Your starting point',links:journeys[locale].map(j=>({slug:fr?`parcours/${j.slug}`:`start/${j.slug}`,href:journeyHref(locale,j),label:j.label}))},
+  {id:'try',label:fr?'Explorer et essayer':'Explore and try',links:[{slug:'prototype',href:'https://mobile.tenirlabs.cc/discover',label:fr?'Prototype mobile':'Mobile prototype'},...demo.links]},
+  {id:'study',label:fr?'Approfondir':'Go deeper',links:[...groups[3].links,...groups[4].links,...groups[0].links]},
+  {id:'talk',label:fr?'Échanger et contribuer':'Discuss and contribute',links:[contact,products,{slug:fr?'offre':'offer',href:fr?'/offre/':'/en/offer/',label:fr?'Diagnostic accompagné':'Accompanied diagnostic'},{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}]},
+];
+const mainTitle=home?(fr?'TENIR — Que voulez-vous confier à un agent ?':'TENIR — What would you like to delegate to an agent?'):`${title} — TENIR`;
+const mainDescription=home?(fr?'Une tâche à déléguer, un agent à concevoir, une question à éclaircir ? Découvrez TENIR à partir de ce qui vous intéresse, à votre rythme.':'A task to delegate, an agent to build or a question to clarify? Explore TENIR through what matters to you, at your own pace.'):description;
 ---
 <!doctype html>
 <html lang={locale} data-theme="light">
@@ -40,13 +50,13 @@ const mainDescription=home?(fr?'Comprendre les contrôles des actions d’agents
         <a class="brand" href={url(fr?'/':'/en/')} aria-label={fr?'TENIR — accueil':'TENIR — home'}><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="1.2"></rect><path d="M10 8h12M16 8v16M10 24h12" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg><span class="brand-name">TENIR<span class="brand-labs">LABS</span></span></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span>Menu</span><span class="menu-symbol" aria-hidden="true">☰</span></button>
         <nav class="site-nav" id="main-navigation" aria-label={t.nav}>
-          <a href={path('concepts')} aria-current={slug==='concepts'?'page':undefined}>{fr?'Comprendre':'Understand'}</a>
-          <details class="nav-group"><summary>{fr?'Démonstrations':'Demonstrations'}</summary><div class="nav-menu"><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Prototype mobile':'Mobile prototype'}</strong><small>{fr?'Déléguer une tâche · simulation':'Delegate a task · simulation'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
+          <a href={url(journeyHref(locale,journeys[locale][0]))} aria-current={slug===(fr?'parcours/decouvrir':'start/discover')?'page':undefined}>{fr?'Découvrir':'Discover'}</a>
+          <details class:list={['nav-group',isJourney&&'is-current']}><summary>{fr?'Vos besoins':'Your needs'}</summary><div class="nav-menu needs-menu"><p class="needs-intro">{fr?'Qu’est-ce qui vous serait utile ?':'What would be useful to you?'}</p>{journeys[locale].map(j=><a href={url(journeyHref(locale,j))} aria-current={slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`)?'page':undefined}><strong>{j.label} <span aria-hidden="true">↗</span></strong><small>{j.need}</small></a>)}<a class="needs-question" href={path('contact')}>{fr?'Vous cherchez autre chose ? Posez votre question.':'Looking for something else? Ask your question.'} →</a></div></details>
+          <details class="nav-group"><summary>{fr?'Essayer':'Try it'}</summary><div class="nav-menu"><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Une tâche de rendez-vous':'An appointment task'}</strong><small>{fr?'Prototype mobile · aucun vrai message envoyé':'Mobile prototype · no real messages sent'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
           <details class:list={['nav-group',resources.some(x=>x.slug===slug)&&'is-current']}><summary>{fr?'Ressources':'Resources'}</summary><div class="nav-menu resource-menu">{resources.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
-          <a href={path('offre','offer')} aria-current={slug===(fr?'offre':'offer')?'page':undefined}>Diagnostic</a>
           <div class="nav-mobile-tools"><a href={url(other)} lang={fr?'en':'fr'}>{fr?'Read in English':'Lire en français'}</a></div>
         </nav>
-        <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={path('contact')}>{fr?'Parlons de votre cas':'Let’s discuss your case'} <span aria-hidden="true">↗</span></a></div>
+        <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={readerContact}>{fr?'Poser une question':'Ask a question'} <span aria-hidden="true">↗</span></a></div>
       </div>
     </header>
     <main id="content" class:list={[home?'home-main':'doc',slug==='contact'&&'contact-page']} tabindex="-1">
@@ -57,10 +67,10 @@ const mainDescription=home?(fr?'Comprendre les contrôles des actions d’agents
           {slug==='contact'&&<ContactBrief locale={locale}/>}
           {(slug==='offre'||slug==='offer'||slug==='produits-et-services'||slug==='products-and-services')&&<div class="offer-summary"><div><span class="role">{fr?'Le point de départ':'The starting point'}</span><strong>{fr?'Un cas précis. Une fiche sourcée. Une suite à décider.':'One precise case. A sourced sheet. A next step to decide.'}</strong><p>{fr?'Cadrage proposé : 30 min · forfait sur devis · format à confirmer':'Proposed scoping: 30 min · fixed quote · format to confirm'}</p></div><a class="btn btn-primary" href={path('contact')}>{fr?'Préparer le premier échange':'Prepare the first conversation'} →</a></div>}
           <details class="mobile-toc" data-mobile-toc hidden><summary>{t.toc}</summary><ol></ol></details>
-          <div class="prose"><slot /></div>
-          {slug!=='404'&&<nav class="next-reading" aria-label={fr?'Poursuivre votre parcours':'Continue your journey'}><div><span class="role">{fr?'Et maintenant ?':'What’s next?'}</span><h2>{fr?'Choisissez votre prochaine étape.':'Choose your next step.'}</h2></div><div class="actions"><a class="btn" href={path('offre/exemple','offer/example')}>{fr?'Voir un diagnostic simulé':'See a simulated diagnostic'} →</a><a class="btn btn-primary" href={slug==='contact'?path('offre','offer'):path('contact')}>{slug==='contact'?(fr?'Consulter l’offre':'Read the offer'):(fr?'Parlons de votre cas':'Let’s discuss your case')} ↗</a></div></nav>}
+          {slug==='contact'?<details class="contact-references"><summary>{fr?'Références de l’auteur et citations':'Author references and citations'}</summary><div class="prose"><slot /></div></details>:<div class="prose"><slot /></div>}
+          {slug!=='404'&&!isJourney&&<nav class="next-reading" aria-label={fr?'Poursuivre votre parcours':'Continue your journey'}><div><span class="role">{fr?'À votre rythme':'At your own pace'}</span><h2>{fr?'Qu’est-ce qui vous serait utile maintenant ?':'What would be useful to you now?'}</h2></div><div class="actions"><a class="btn" href={url(journeyHref(locale,journeys[locale][0]))}>{fr?'Une explication simple':'A simple explanation'} →</a><a class="btn btn-primary" href={slug==='contact'?path('offre/exemple','offer/example'):path('contact')}>{slug==='contact'?(fr?'Voir un exemple':'See an example'):(fr?'Poser une question':'Ask a question')} ↗</a></div></nav>}
         </article>
-        <aside class="toc" id="toc" hidden><p>{t.toc}</p><ol></ol><a class="toc-help" href={path('contact')}>{fr?'Un cas à examiner ?':'A case to examine?'}<strong>{fr?'Échangeons':'Let’s talk'} ↗</strong></a></aside>
+        <aside class="toc" id="toc" hidden><p>{t.toc}</p><ol></ol><a class="toc-help" href={readerContact}>{fr?'Une question en lisant ?':'A question while reading?'}<strong>{fr?'Écrire à Abdelaziz':'Write to Abdelaziz'} ↗</strong></a><a class="toc-help" href={url(journeyHref(locale,journeys[locale][0]))}>{fr?'Revenir à une explication simple':'Return to a simple explanation'} →</a></aside>
       </>}
     </main>
     <footer class="site-footer"><div class="footer-top"><div class="footer-brand"><a class="brand" href={url(fr?'/':'/en/')}><span class="brand-name">TENIR<span class="brand-labs">LABS</span></span></a><p>{fr?'Des actions encadrées.\nDes décisions éclairées.':'Bounded actions.\nInformed decisions.'}</p><a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc ↗</a><a class="footer-prototype" href="https://mobile.tenirlabs.cc/discover">{fr?'Explorer le prototype mobile':'Explore the mobile prototype'} ↗</a></div><div class="footer-links">{footerGroups.map(group=><div><h2>{group.label}</h2>{group.links.map(link=><a href={url(link.href)}>{link.label}</a>)}</div>)}</div></div><div class="footer-bottom"><p>© 2026 Abdelaziz Skiredj · TENIR Labs</p><p>{fr?'Cadre en développement · démonstrations bornées · aucune certification':'Framework in development · bounded demonstrations · no certification'}</p><a href={path('statut','status')}>{fr?'Statut et limites':'Status and limits'} ↗</a></div></footer>

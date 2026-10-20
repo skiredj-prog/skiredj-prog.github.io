@@ -173,6 +173,11 @@ export const navContact: Record<Locale, NavItem> = {
 };
 
 const frToEn: Record<string, string> = {
+  'parcours/decouvrir': '/en/start/discover/',
+  'parcours/deleguer': '/en/start/delegate/',
+  'parcours/concevoir': '/en/start/build/',
+  'parcours/examiner': '/en/start/investigate/',
+  'parcours/etudier': '/en/start/research/',
   "": "/en/",
   origine: "/en/origin/",
   concepts: "/en/concepts/",

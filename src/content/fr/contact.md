@@ -2,7 +2,7 @@
 title: Contact
 kicker: Contact · premier échange
 description: Échanger avec Abdelaziz Skiredj sur une action d’agent, préparer un diagnostic ou poser une question sur TENIR.
-lede: Une action à examiner, un projet à cadrer ou une question sur TENIR ? Préparons le premier échange.
+lede: Une question, une idée à explorer ou quelque chose qui reste flou ? Vous pouvez nous écrire à partir de là.
 sources: CITATION.cff ; KB2, ligne antérieure, pour le croisement de genèse seulement ; Cercle Inverse v1.1 ; Architecture indépendante v2 du 2 octobre 2026
 ---
 
