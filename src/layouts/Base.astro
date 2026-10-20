@@ -1,7 +1,7 @@
 ---
 import "../styles/fonts.css";
 import "../styles/site.css";
-import { alternate, copy, nav, url, type Locale } from "../data/site";
+import { alternate, copy, navContact, navGroups, url, type Locale } from "../data/site";
 
 interface Props {
   locale: Locale;
@@ -15,7 +15,9 @@ interface Props {
 
 const { locale, slug, title, description, kicker, lede, sources } = Astro.props;
 const t = copy[locale];
-const items = nav[locale];
+const groups = navGroups[locale];
+const contact = navContact[locale];
+const home = slug === "";
 const other = slug === "404" ? (locale === "fr" ? "/en/" : "/") : alternate(locale, slug);
 const here = slug === "404" ? "/" : locale === "fr" ? (slug ? `/${slug}/` : "/") : `/en/${slug ? `${slug}/` : ""}`;
 const canonical = new URL(url(here), Astro.site);
@@ -43,9 +45,13 @@ const canonical = new URL(url(here), Astro.site);
   </head>
   <body>
     <a class="skip" href="#content">{t.skip}</a>
-    <div class="banner">
-      <p>{t.status}</p>
-    </div>
+    {
+      !home && (
+        <div class="banner">
+          <p>{t.status}</p>
+        </div>
+      )
+    }
     <header class="site-header">
       <div class="header-row">
         <a class="brand" href={url(locale === "fr" ? "/" : "/en/")}>
@@ -71,22 +77,55 @@ const canonical = new URL(url(here), Astro.site);
       </div>
       <nav class="site-nav" aria-label={t.nav}>
         {
-          items.map((item) => (
-            <a href={url(item.href)} aria-current={item.slug === slug ? "page" : undefined}>
-              {item.label}
-            </a>
-          ))
+          groups.map((group) => {
+            const current = group.links.some((link) => link.slug === slug);
+            return (
+              <details class:list={["nav-group", current && "is-current"]}>
+                <summary>{group.label}</summary>
+                <div class="nav-menu">
+                  {group.links.map((link) => (
+                    <a href={url(link.href)} aria-current={link.slug === slug ? "page" : undefined}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            );
+          })
         }
+        <a class="nav-end" href={url(contact.href)} aria-current={contact.slug === slug ? "page" : undefined}>
+          {contact.label}
+        </a>
       </nav>
     </header>
-    <main id="content" class="doc">
+    <main id="content" class:list={["doc", home && "home"]}>
       <article>
-        <header class="doc-head">
-          <p class="kicker">{kicker}</p>
-          <h1>{title}</h1>
-          <p class="lede">{lede}</p>
-          <p class="sources">{t.sources} : {sources}</p>
-        </header>
+        {
+          home ? (
+            <header class="hero">
+              <p class="eyebrow">{t.eyebrow}</p>
+              <h1>{title}</h1>
+              <p class="headline">{t.headline}</p>
+              <p class="lead">{t.homeLead}</p>
+              <div class="actions">
+                <a class="btn btn-primary" href={url(locale === "fr" ? "/architecture/demo/" : "/en/architecture/demo/")}>
+                  {t.explore}
+                </a>
+                <a class="btn" href={url(locale === "fr" ? "/concepts/" : "/en/concepts/")}>
+                  {t.understand}
+                </a>
+              </div>
+              <p class="sources">{t.sources} : {sources}</p>
+            </header>
+          ) : (
+            <header class="doc-head">
+              <p class="kicker">{kicker}</p>
+              <h1>{title}</h1>
+              <p class="lede">{lede}</p>
+              <p class="sources">{t.sources} : {sources}</p>
+            </header>
+          )
+        }
         <div class="prose">
           <slot />
         </div>
@@ -101,6 +140,10 @@ const canonical = new URL(url(here), Astro.site);
         <p>{t.footerNote}</p>
         <p>
           <a href={url(locale === "fr" ? "/publications/" : "/en/publications/")}>Publications</a>
+          ·
+          <a href={url(locale === "fr" ? "/contribuer/" : "/en/contribute/")}>{locale === "fr" ? "Contribuer" : "Contribute"}</a>
+          ·
+          <a href={url(contact.href)}>Contact</a>
           ·
           <a href="https://github.com/skiredj-prog/tenir_governance">GitHub</a>
           ·
@@ -141,6 +184,31 @@ const canonical = new URL(url(here), Astro.site);
           list.appendChild(li);
         });
         toc.hidden = false;
+      })();
+      (function () {
+        var nav = document.querySelector(".site-nav");
+        if (!nav) return;
+        var groups = nav.querySelectorAll("details");
+        groups.forEach(function (group) {
+          group.addEventListener("toggle", function () {
+            if (!group.open) return;
+            groups.forEach(function (other) {
+              if (other !== group) other.open = false;
+            });
+          });
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key !== "Escape") return;
+          groups.forEach(function (group) {
+            group.open = false;
+          });
+        });
+        document.addEventListener("click", function (event) {
+          if (nav.contains(event.target)) return;
+          groups.forEach(function (group) {
+            group.open = false;
+          });
+        });
       })();
     </script>
   </body>

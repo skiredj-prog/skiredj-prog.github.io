@@ -6,6 +6,12 @@ export interface NavItem {
   label: string;
 }
 
+export interface NavGroup {
+  id: string;
+  label: string;
+  links: NavItem[];
+}
+
 export const copy = {
   fr: {
     skip: "Aller au contenu",
@@ -20,6 +26,12 @@ export const copy = {
       "Abdelaziz Skiredj · TENIR Labs. KB3 est institué comme ligne de rendu, hors du code. Il rend le sens ; il n’est pas une nouvelle constitution.",
     sources: "Sources",
     external: "hors de ce site",
+    eyebrow: "TENIR LABS · EXECUTION GOVERNANCE",
+    headline: "L’agent propose. La frontière décide.",
+    homeLead:
+      "Les systèmes autonomes peuvent agir. TENIR vérifie que les conditions nécessaires sont toujours réunies avant qu’une décision produise un effet.",
+    explore: "Explorer une démonstration",
+    understand: "Comprendre TENIR",
   },
   en: {
     skip: "Skip to content",
@@ -34,38 +46,97 @@ export const copy = {
       "Abdelaziz Skiredj · TENIR Labs. KB3 is enacted as the rendering line, outside the code. It renders meaning; it is not a new constitution.",
     sources: "Sources",
     external: "leaves this site",
+    eyebrow: "TENIR LABS · EXECUTION GOVERNANCE",
+    headline: "The agent proposes. The boundary decides.",
+    homeLead:
+      "Autonomous systems can act. TENIR checks that the necessary conditions are still met before a decision produces an effect.",
+    explore: "Explore a demonstration",
+    understand: "Understand TENIR",
   },
 } as const;
 
-export const nav: Record<Locale, NavItem[]> = {
+export const navGroups: Record<Locale, NavGroup[]> = {
   fr: [
-    { slug: "", href: "/", label: "Accueil" },
-    { slug: "origine", href: "/origine/", label: "Origine" },
-    { slug: "concepts", href: "/concepts/", label: "Concepts" },
-    { slug: "architecture", href: "/architecture/", label: "Architecture" },
-    { slug: "standard", href: "/standard/", label: "Standard" },
-    { slug: "versions", href: "/versions/", label: "Versions" },
-    { slug: "conformance", href: "/conformance/", label: "Conformance" },
-    { slug: "depots", href: "/depots/", label: "Dépôts" },
-    { slug: "statut", href: "/statut/", label: "Statut" },
-    { slug: "publications", href: "/publications/", label: "Publications" },
-    { slug: "contribuer", href: "/contribuer/", label: "Contribuer" },
-    { slug: "contact", href: "/contact/", label: "Contact" },
+    {
+      id: "decouvrir",
+      label: "Découvrir",
+      links: [
+        { slug: "origine", href: "/origine/", label: "Origine" },
+        { slug: "concepts", href: "/concepts/", label: "Concepts" },
+      ],
+    },
+    {
+      id: "applications",
+      label: "Applications",
+      links: [
+        { slug: "architecture/demo", href: "/architecture/demo/", label: "Démonstration" },
+        { slug: "architecture/interactive", href: "/architecture/interactive/", label: "Parcours interactif" },
+        { slug: "architecture/drawing", href: "/architecture/drawing/", label: "Dessin illustratif" },
+      ],
+    },
+    {
+      id: "technologie",
+      label: "Technologie",
+      links: [
+        { slug: "architecture", href: "/architecture/", label: "Architecture" },
+        { slug: "standard", href: "/standard/", label: "Standard" },
+        { slug: "versions", href: "/versions/", label: "Versions" },
+        { slug: "depots", href: "/depots/", label: "Dépôts" },
+      ],
+    },
+    {
+      id: "preuves",
+      label: "Preuves",
+      links: [
+        { slug: "conformance", href: "/conformance/", label: "Conformance" },
+        { slug: "statut", href: "/statut/", label: "Statut" },
+        { slug: "publications", href: "/publications/", label: "Publications" },
+      ],
+    },
   ],
   en: [
-    { slug: "", href: "/en/", label: "Home" },
-    { slug: "origin", href: "/en/origin/", label: "Origin" },
-    { slug: "concepts", href: "/en/concepts/", label: "Concepts" },
-    { slug: "architecture", href: "/en/architecture/", label: "Architecture" },
-    { slug: "standard", href: "/en/standard/", label: "Standard" },
-    { slug: "versions", href: "/en/versions/", label: "Versions" },
-    { slug: "conformance", href: "/en/conformance/", label: "Conformance" },
-    { slug: "repositories", href: "/en/repositories/", label: "Repositories" },
-    { slug: "status", href: "/en/status/", label: "Status" },
-    { slug: "publications", href: "/en/publications/", label: "Publications" },
-    { slug: "contribute", href: "/en/contribute/", label: "Contribute" },
-    { slug: "contact", href: "/en/contact/", label: "Contact" },
+    {
+      id: "discover",
+      label: "Discover",
+      links: [
+        { slug: "origin", href: "/en/origin/", label: "Origin" },
+        { slug: "concepts", href: "/en/concepts/", label: "Concepts" },
+      ],
+    },
+    {
+      id: "applications",
+      label: "Applications",
+      links: [
+        { slug: "architecture/demo", href: "/en/architecture/demo/", label: "Demonstration" },
+        { slug: "architecture/interactive", href: "/en/architecture/interactive/", label: "Interactive walkthrough" },
+        { slug: "architecture/drawing", href: "/en/architecture/drawing/", label: "Illustrative drawing" },
+      ],
+    },
+    {
+      id: "technology",
+      label: "Technology",
+      links: [
+        { slug: "architecture", href: "/en/architecture/", label: "Architecture" },
+        { slug: "standard", href: "/en/standard/", label: "Standard" },
+        { slug: "versions", href: "/en/versions/", label: "Versions" },
+        { slug: "repositories", href: "/en/repositories/", label: "Repositories" },
+      ],
+    },
+    {
+      id: "evidence",
+      label: "Evidence",
+      links: [
+        { slug: "conformance", href: "/en/conformance/", label: "Conformance" },
+        { slug: "status", href: "/en/status/", label: "Status" },
+        { slug: "publications", href: "/en/publications/", label: "Publications" },
+      ],
+    },
   ],
+};
+
+export const navContact: Record<Locale, NavItem> = {
+  fr: { slug: "contact", href: "/contact/", label: "Contact" },
+  en: { slug: "contact", href: "/en/contact/", label: "Contact" },
 };
 
 const frToEn: Record<string, string> = {

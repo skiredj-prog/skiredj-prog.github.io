@@ -6,7 +6,23 @@ lede: Diagnostiquer si une unité reconstruite peut encore tenir, puis empêcher
 sources: KB3, ligne de rendu instituée le 19 octobre 2026 ; KB2, ligne antérieure (30 mars 2026) ; guide public Beyond the Layers ; dépôts publics au 19 octobre 2026
 ---
 
-<p>TENIR 2.0 est un cadre diagnostique et de gouvernance, reconstruction-first, pour les unités bornées sous pression. Il porte sur l’admissibilité, la préservation des options, la validité épistémique, la récupérabilité et la posture. Cette page est un rendu public simplifié. Elle suit KB3, ligne de rendu doctrinale instituée et active. KB3 rend le sens ; il ne crée pas de sens souverain et n’est pas une nouvelle constitution. C’est une couche documentaire, hors du code. Les services ou applications spécialisés l’enveloppent ou l’étendent : ils s’appuient sur KB3 et ne doivent pas le redéfinir. Les définitions qu’il ne reformule pas sont conservées depuis KB2 (30 mars 2026), ligne de rendu antérieure, sans autorité active simultanée. Le mot TENIR désigne aussi, dans les dépôts, une implémentation : TENIR-Gov, le runtime de référence du standard Runtime Execution Governance (REG). Cette implémentation doit s’aligner sur KB3. Elle n’est pas KB3.</p>
+<div class="grid-3">
+  <article class="card">
+    <h2>Que protège TENIR ?</h2>
+    <p>TENIR 2.0 est un cadre diagnostique et de gouvernance pour les unités bornées sous pression. Il porte sur l’admissibilité, la préservation des options, la validité épistémique, la récupérabilité et la posture. Les termes de posture sont NORMAL, CAUTION et HOLDING-FIRST.</p>
+    <p><a href="/concepts/">Concepts</a></p>
+  </article>
+  <article class="card">
+    <h2>Comment fonctionne la frontière d’exécution ?</h2>
+    <p>La frontière tient entre une intention et un effet. REG fixe les obligations de cette frontière et ne prescrit pas le mécanisme. Une disposition PASS, FLAG, HOLD ou HARD_VETO n’est pas une posture.</p>
+    <p><a href="/architecture/">Architecture</a></p>
+  </article>
+  <article class="card">
+    <h2>Qu’est-ce qui est effectivement implémenté ?</h2>
+    <p>Le paquet publié est tenir-governance 5.6.0, bêta. La 5.6.1 n’est pas une publication. La communication publique reste gelée jusqu’à une 5.7.0 durcie.</p>
+    <p><a href="/publications/">Publications</a></p>
+  </article>
+</div>
 
 <div class="triad">
   <article class="card">
@@ -55,7 +71,7 @@ Un délai n’est pas une preuve d’échec. Une confirmation absente n’est pa
   <article class="card">
     <p class="role">Plateforme</p>
     <h3>TENIR-Gov</h3>
-    <p>L’implémentation de référence, ligne IronOmega puis 5.x. Elle doit s’aligner sur KB3. Elle n’est pas KB3. La 5.6.1 n’est pas une publication.</p>
+    <p>L’implémentation publiée est tenir-governance 5.6.0, bêta. Elle doit s’aligner sur KB3. Elle n’est pas KB3. La 5.6.1 n’est pas une publication.</p>
   </article>
 </div>
 
@@ -81,6 +97,8 @@ Un délai n’est pas une preuve d’échec. Une confirmation absente n’est pa
   <li><strong>Chercheur ou lecteur de norme.</strong> Les concepts, le standard et le statut séparent le rendu, les RFC, les preuves d’auteur et les limites d’un harnais de laboratoire.</li>
 </ul>
 
-<div class="callout callout-limit">
-  <p><strong>Limite.</strong> Classe de cette page : simplified public-facing. Aucun adopteur, aucun revenu et aucun chiffre d’impact ne sont établis par les dépôts publics. La ligne antérieure nomme des surfaces de produit et un cas de lecture ; ce n’est pas un registre de déploiements. Le document d’architecture illustrative conditionne en outre la communication publique marketing à une version durcie 5.7.0, qui n’existe pas dans l’arbre lu.</p>
-</div>
+## Statut et limites
+
+<p>KB3 est la ligne de rendu doctrinale instituée et active, par la déclaration du propriétaire du 19 octobre 2026. KB2 est la ligne antérieure. KB3 n’est pas dans le code. Ce site ne certifie aucune implémentation. Le détail est sur la page <a href="/statut/">Statut</a>.</p>
+
+<p>Classe de cette page : simplified public-facing. Aucun adopteur, aucun revenu et aucun chiffre d’impact ne sont établis par les dépôts publics. La ligne antérieure nomme des surfaces de produit et un cas de lecture ; ce n’est pas un registre de déploiements. Le document d’architecture illustrative conditionne en outre la communication publique marketing à une version durcie 5.7.0, qui n’existe pas dans l’arbre lu.</p>

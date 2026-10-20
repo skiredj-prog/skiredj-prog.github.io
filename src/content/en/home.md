@@ -6,7 +6,23 @@ lede: Diagnose whether a reconstructed unit can still hold, then keep a proposed
 sources: KB3, rendering line enacted on 19 October 2026; KB2, prior rendering line (30 March 2026); public guide Beyond the Layers; public repositories as of 19 October 2026
 ---
 
-<p>TENIR 2.0 is a diagnostic and governance framework, reconstruction-first, for bounded units under pressure. It is concerned with admissibility, preservation of options, epistemic validity, recoverability, and posture. This page is a simplified public rendering. It follows KB3, the enacted and active doctrinal rendering line. KB3 renders meaning; it does not create sovereign meaning and is not a new constitution. It is a document layer, outside the code. Specialized services or applications wrap or extend it: they build on KB3 and must not redefine it. Definitions it does not restate are carried from KB2 (30 March 2026), the prior rendering line, which has no simultaneous active authority. The same word also names, in the repositories, an implementation: TENIR-Gov, the reference runtime of the Runtime Execution Governance (REG) standard. That implementation should align to KB3. It is not KB3.</p>
+<div class="grid-3">
+  <article class="card">
+    <h2>What does TENIR protect?</h2>
+    <p>TENIR 2.0 is a diagnostic and governance framework for bounded units under pressure. It is concerned with admissibility, preservation of options, epistemic validity, recoverability, and posture. The posture terms are NORMAL, CAUTION, and HOLDING-FIRST.</p>
+    <p><a href="/en/concepts/">Concepts</a></p>
+  </article>
+  <article class="card">
+    <h2>How does the execution boundary work?</h2>
+    <p>The boundary holds between an intention and an effect. REG fixes the obligations of that boundary and does not prescribe the mechanism. A PASS, FLAG, HOLD, or HARD_VETO disposition is not a posture.</p>
+    <p><a href="/en/architecture/">Architecture</a></p>
+  </article>
+  <article class="card">
+    <h2>What is actually implemented?</h2>
+    <p>The published package is tenir-governance 5.6.0, beta. 5.6.1 is not a publication. Public communication stays frozen until a hardened 5.7.0.</p>
+    <p><a href="/en/publications/">Publications</a></p>
+  </article>
+</div>
 
 <div class="triad">
   <article class="card">
@@ -55,7 +71,7 @@ sources: KB3, rendering line enacted on 19 October 2026; KB2, prior rendering li
   <article class="card">
     <p class="role">Platform</p>
     <h3>TENIR-Gov</h3>
-    <p>The reference implementation, the IronOmega line and then 5.x. It should align to KB3. It is not KB3. 5.6.1 is not a publication.</p>
+    <p>The published implementation is tenir-governance 5.6.0, beta. It should align to KB3. It is not KB3. 5.6.1 is not a publication.</p>
   </article>
 </div>
 
@@ -81,6 +97,8 @@ sources: KB3, rendering line enacted on 19 October 2026; KB2, prior rendering li
   <li><strong>A researcher or a standards reader.</strong> Concepts, the standard, and status separate the rendering, the RFCs, author-produced evidence, and the limits of a laboratory harness.</li>
 </ul>
 
-<div class="callout callout-limit">
-  <p><strong>Limit.</strong> Class of this page: simplified public-facing. No adopter, revenue, or impact figure is established by the public repositories. The prior rendering line names product surfaces and a reading case; that is not a deployment register. The illustrative architecture note also conditions public marketing communication on a hardened 5.7.0, which is not in the tree that was read.</p>
-</div>
+## Status and limits
+
+<p>KB3 is the enacted, active doctrinal rendering line, by the owner’s declaration of 19 October 2026. KB2 is the prior rendering line. KB3 is not in the code. This site certifies no implementation. The detail is on the <a href="/en/status/">Status</a> page.</p>
+
+<p>Class of this page: simplified public-facing. No adopter, revenue, or impact figure is established by the public repositories. The prior rendering line names product surfaces and a reading case; that is not a deployment register. The illustrative architecture note also conditions public marketing communication on a hardened 5.7.0, which is not in the tree that was read.</p>
