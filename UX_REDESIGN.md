@@ -5,7 +5,7 @@ La première visite doit permettre de se reconnaître dans une situation, de cho
 ## Choix de conception
 
 - Identité commune : fond clair, vert profond, titres avec empattements, texte sans empattements, clair/sombre et FR/EN sur la page équivalente.
-- Navigation par intentions : Découvrir, Vos besoins, Votre activité, Essayer, Ressources, puis Poser une question. Les destinations sont expliquées avant le clic ; les chemins restent accessibles depuis l’accueil et le pied de page.
+- Navigation par intentions : Découvrir, Vos besoins, En pratique, Essayer, Ressources, puis Poser une question. Les destinations sont expliquées avant le clic ; les chemins restent accessibles depuis l’accueil et le pied de page.
 - Parcours client potentiel : trois situations illustratives articulent profil, secteur et besoin. Une démo ou un exemple précède l’accompagnement proposé. L’offre payante est explicite dans ce parcours, après la reconnaissance du besoin ; l’accueil conserve sa question ouverte et ses cinq intentions.
 - Substance visible : TENIR comme cadre, REG comme standard proposé et TENIR-Gov comme logiciel en évaluation, puis accès direct aux démonstrations techniques et au statut. Les situations ne sont pas présentées comme des références clients.
 - Exemple guidé : autorisation et envoi, résultat inconnu, contrôle nécessaire avant la suite. Il s’agit d’une lecture illustrative, sans opération exécutée.

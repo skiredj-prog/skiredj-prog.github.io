@@ -8,13 +8,41 @@ const { locale, journey } = Astro.props;
 const fr=locale==='fr';
 const slug=fr?`parcours/${journey.slug}`:`start/${journey.slug}`;
 const href=(value:string)=>value.startsWith('#')||value.startsWith('https:')?value:url(value);
+const connection=(labelFr:string,labelEn:string,pathFr:string,pathEn:string,kindFr:string,kindEn:string)=>({label:fr?labelFr:labelEn,href:fr?pathFr:pathEn,kind:fr?kindFr:kindEn});
+const connections={
+  decouvrir:[
+    connection('Une tâche de rendez-vous, par exemple','An appointment task, for example','/parcours/deleguer/','/en/start/delegate/','Une autre situation','Another situation'),
+    connection('Et si la confirmation manque ?','What if confirmation is missing?','/#comprendre','/en/#comprendre','À explorer','Explore'),
+    connection('Essayer avec des données d’exemple','Try it with example data','https://mobile.tenirlabs.cc/discover','https://mobile.tenirlabs.cc/discover','Prototype','Prototype'),
+  ],
+  deleguer:[
+    connection('Ouvrir la tâche d’exemple','Open the example task','https://mobile.tenirlabs.cc/discover','https://mobile.tenirlabs.cc/discover','Simulation','Simulation'),
+    connection('Vous préparez plutôt un agent avec une équipe ?','Preparing an agent with a team instead?','/parcours/concevoir/','/en/start/build/','Autre angle','Another angle'),
+    connection('Regarder une situation de services','Look at a service-business situation','/parcours/activite/#services','/en/start/business/#services','En pratique','In practice'),
+  ],
+  concevoir:[
+    connection('Partir d’une situation produit','Start with a product situation','/parcours/activite/#produit','/en/start/business/#produit','En pratique','In practice'),
+    connection('Explorer les rôles dans l’architecture','Explore roles in the architecture','/architecture/interactive/','/en/architecture/interactive/','Interactif · anglais','Interactive · English'),
+    connection('Regarder une fiche et ses sources','Look at a sheet and its sources','/offre/exemple/','/en/offer/example/','Exemple simulé','Simulated example'),
+  ],
+  examiner:[
+    connection('Voir l’incertitude dans la démo','See uncertainty in the demo','/architecture/demo/#scene-5','/en/architecture/demo/#scene-5','Démo · anglais','Demo · English'),
+    connection('Voir comment les inconnues sont présentées','See how unknowns are presented','/offre/exemple/','/en/offer/example/','Fiche sourcée','Sourced sheet'),
+    connection('Et avant de laisser l’agent agir ?','What about before letting an agent act?','/parcours/concevoir/','/en/start/build/','Autre angle','Another angle'),
+  ],
+  etudier:[
+    connection('Aller aux exigences REG','Go to the REG requirements','/standard/','/en/standard/','Texte de référence','Reference text'),
+    connection('Examiner aussi un exemple sourcé','Examine a sourced example too','/offre/exemple/','/en/offer/example/','Du texte au cas','From text to case'),
+    connection('Discuter une source avec Abdelaziz','Discuss a source with Abdelaziz','/contact/?situation=etudier','/en/contact/?situation=etudier','Échange','Conversation'),
+  ],
+}[journey.id];
 ---
 <Base locale={locale} slug={slug} title={journey.title} kicker={journey.label} description={journey.need} lede={journey.lede} sources={fr?'Guide de lecture des pages et démonstrations TENIR. Les sources détaillées sont indiquées sur chaque ressource liée.':'Reading guide to TENIR pages and demonstrations. Detailed sources are identified on each linked resource.'}>
   <div class="journey-introduction"><p>{journey.recognition}</p><p class="reader-emphasis">{journey.emphasis}</p></div>
   <div class="journey-next"><a class="btn btn-primary" href={href(journey.primary.href)}>{journey.primary.label} <span aria-hidden="true">→</span></a><p class="section-note">{journey.primary.note}</p></div>
-  <section class="reader-questions" aria-labelledby="reader-questions-title"><h2 id="reader-questions-title">{fr?'Ce que vous vous demandez peut-être':'Questions you might have'}</h2>{journey.questions.map(({question,answer})=><details><summary>{question}</summary><p>{answer}</p></details>)}</section>
+  <section class="reader-questions" aria-labelledby="reader-questions-title"><h2 id="reader-questions-title">{fr?'Ce que vous vous demandez peut-être':'Questions you might have'}</h2>{journey.questions.map(({question,answer},i)=><details><summary>{question}</summary><p>{answer}</p>{connections[i]&&<a class="question-link" href={href(connections[i].href)}><span>{connections[i].label} →</span><small>{connections[i].kind}</small></a>}</details>)}</section>
   <section class="reader-resources" aria-labelledby="reader-resources-title"><h2 id="reader-resources-title">{journey.id==='etudier'?(fr?'Les sources, directement':'Go straight to the sources'):(fr?'Pour la suite, c’est vous qui choisissez':'Choose what comes next')}</h2><div class="resource-links">{journey.links.map(link=><a href={href(link.href)}><span><strong>{link.label}</strong><small>{link.note}</small></span><span aria-hidden="true">↗</span></a>)}</div></section>
-  {['deleguer','concevoir','examiner'].includes(journey.id)&&<div class="reader-contact"><p>{fr?'Vous pensez à un usage dans votre activité ?':'Thinking of a use in your business?'}</p><a class="text-link" href={url(businessHref(locale))}>{fr?'Explorer selon votre rôle, votre secteur et votre besoin':'Explore by role, industry and need'} →</a></div>}
+  {['deleguer','concevoir','examiner'].includes(journey.id)&&<div class="reader-contact"><p>{fr?'Une situation concrète vous aiderait à vous projeter ?':'Would a concrete situation help you explore?'}</p><a class="text-link" href={url(businessHref(locale))}>{fr?'Voir d’autres situations':'See more situations'} →</a></div>}
   <div class="reader-contact"><p>{fr?'Votre situation ne rentre pas dans ces exemples ?':'Your situation does not fit these examples?'}</p><a class="text-link" href={url(`${fr?'/contact/':'/en/contact/'}?situation=${journey.id}`)}>{fr?'Décrivez-la avec vos mots':'Describe it in your own words'} →</a></div>
   <nav class="journey-switcher" aria-label={fr?'Explorer un autre besoin':'Explore another need'}><p class="role">{fr?'Vous pouvez aussi…':'You can also…'}</p>{journeys[locale].filter(j=>j.id!==journey.id).map(j=><a href={url(journeyHref(locale,j))}>{j.label} <span aria-hidden="true">→</span></a>)}</nav>
 </Base>

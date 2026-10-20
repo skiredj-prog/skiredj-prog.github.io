@@ -14,7 +14,7 @@ Les besoins ci-dessous sont des hypothèses éditoriales de conception, à confr
 
 ## Le parcours d’un client potentiel
 
-« Votre activité » est une entrée distincte, accessible dans la navigation et après les cinq intentions de l’accueil. L’accueil garde sa question ouverte et ses appels à explorer. L’offre payante intervient lorsque le visiteur cherche à examiner son propre cas.
+« En pratique » est une entrée distincte, accessible dans la navigation et après les cinq intentions de l’accueil. L’accueil garde sa question ouverte et ses appels à explorer. L’offre payante intervient lorsque le visiteur cherche à examiner son propre cas.
 
 Trois personas servent d’hypothèses de conception. Ils ne décrivent ni des personnes interrogées, ni des clients ou des intégrations livrées.
 
@@ -31,6 +31,10 @@ Les repères TENIR, REG et TENIR-Gov, ainsi que les démonstrations techniques, 
 ## Reconnaissance et liberté de parcours
 
 Le menu « Vos besoins » annonce ce qu’apporte chaque destination. Chaque page d’entrée reconnaît une situation, donne un repère court et répond à des questions possibles. Les liens restent utilisables directement : aucun questionnaire, compte ou ordre de lecture n’est requis.
+
+Ces entrées se croisent au fil des questions : une réponse peut inviter à essayer une simulation, examiner une fiche sourcée, regarder l’architecture ou aborder une autre situation. Les formats varient, avec des repères stables et sans séquence obligatoire. L’accueil reste compact ; les trois situations sont regroupées sous l’entrée discrète « En pratique ».
+
+Le support existant [TENIR visual abstract dans Canva](https://www.canva.com/d/bY_JDapMuy6Gc-m) a aussi été consulté pour recentrer la hiérarchie des messages. Le site reste implémenté dans son dépôt ; aucun support Canva n’a été modifié.
 
 L’exemple d’accueil laisse le visiteur explorer plusieurs réactions. La réponse explique une conséquence sans noter la personne ni lui attribuer une émotion. La méthode et les ressources détaillées sont dépliables. La navigation garde l’accès direct à la technique pour qui la cherche.
 
