@@ -69,6 +69,14 @@ export const navGroups: Record<Locale, NavGroup[]> = {
       id: "applications",
       label: "Applications",
       links: [
+        { slug: "applications", href: "/applications/", label: "Contexte et valeur" },
+        { slug: "applications#scenarios", href: "/applications/#scénarios", label: "Scénarios" },
+      ],
+    },
+    {
+      id: "mecanique",
+      label: "Mécanique",
+      links: [
         { slug: "architecture/demo", href: "/architecture/demo/", label: "Démonstration" },
         { slug: "architecture/interactive", href: "/architecture/interactive/", label: "Parcours interactif" },
         { slug: "architecture/drawing", href: "/architecture/drawing/", label: "Dessin illustratif" },
@@ -106,6 +114,14 @@ export const navGroups: Record<Locale, NavGroup[]> = {
     {
       id: "applications",
       label: "Applications",
+      links: [
+        { slug: "applications", href: "/en/applications/", label: "Context and value" },
+        { slug: "applications#scenarios", href: "/en/applications/#scenarios", label: "Scenarios" },
+      ],
+    },
+    {
+      id: "mechanics",
+      label: "Mechanics",
       links: [
         { slug: "architecture/demo", href: "/en/architecture/demo/", label: "Demonstration" },
         { slug: "architecture/interactive", href: "/en/architecture/interactive/", label: "Interactive walkthrough" },
@@ -152,6 +168,7 @@ const frToEn: Record<string, string> = {
   publications: "/en/publications/",
   contribuer: "/en/contribute/",
   contact: "/en/contact/",
+  applications: "/en/applications/",
   "architecture/demo": "/en/architecture/demo/",
   "architecture/interactive": "/en/architecture/interactive/",
   "architecture/drawing": "/en/architecture/drawing/",
@@ -170,7 +187,13 @@ export function url(path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   if (/^https?:\/\//.test(path)) return path;
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  const isFile = /\.[a-z0-9]+$/i.test(normalized.split("?")[0].split("#")[0]);
-  const slashed = isFile || normalized.endsWith("/") ? normalized : `${normalized}/`;
-  return `${base}${slashed}`;
+  const hashAt = normalized.indexOf("#");
+  const queryAt = normalized.indexOf("?");
+  const cuts = [hashAt, queryAt].filter((index) => index >= 0);
+  const cut = cuts.length ? Math.min(...cuts) : normalized.length;
+  const pathOnly = normalized.slice(0, cut);
+  const suffix = normalized.slice(cut);
+  const isFile = /\.[a-z0-9]+$/i.test(pathOnly);
+  const slashed = isFile || pathOnly.endsWith("/") ? pathOnly : `${pathOnly}/`;
+  return `${base}${slashed}${suffix}`;
 }

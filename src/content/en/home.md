@@ -35,6 +35,8 @@ sources: Execution Control Plane demo, scene 5, Timeout → Reconcile; KB3, rend
 
 <p><a class="btn btn-primary" href="mailto:skiredj@tenirlabs.cc">Request a diagnostic</a></p>
 
+<p>Context, pain points, and illustrative scenarios are on <a href="/en/applications/">Applications</a>.</p>
+
 ## Status and limits
 
 <p>KB3 is the enacted, active doctrinal rendering line, by the owner’s declaration of 19 October 2026. KB2 is the prior rendering line. KB3 is not in the code. This site does not declare any implementation closed. The detail is on the <a href="/en/status/">Status</a> page.</p>

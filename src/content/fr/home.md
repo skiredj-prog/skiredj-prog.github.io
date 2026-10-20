@@ -35,6 +35,8 @@ sources: démo Execution Control Plane, scène 5, Timeout → Reconcile ; KB3, l
 
 <p><a class="btn btn-primary" href="mailto:skiredj@tenirlabs.cc">Demander un diagnostic</a></p>
 
+<p>Le contexte, les points de douleur et les scénarios illustratifs sont sur <a href="/applications/">Applications</a>.</p>
+
 ## Statut et limites
 
 <p>KB3 est la ligne de rendu doctrinale instituée et active, par la déclaration du propriétaire du 19 octobre 2026. KB2 est la ligne antérieure. KB3 n’est pas dans le code. Ce site ne déclare aucune implémentation close. Le détail est sur la page <a href="/statut/">Statut</a>.</p>

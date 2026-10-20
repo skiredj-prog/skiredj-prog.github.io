@@ -83,9 +83,17 @@ const { title, description, kicker, lede, sources, src } = Astro.props;
   }
   {
     view === "demo" && (
-      <p id="scene-5">
-        Scene 5 · Timeout → Reconcile. The operation shown is marked UNKNOWN. Silence is not non-execution.
-      </p>
+      <>
+        <p id="scene-1">
+          Scene 1 · Admissible operation. A payment of 10 against a capacity of 100. The idempotency key is claimed at CREATED, before evaluation.
+        </p>
+        <p id="scene-2">
+          Scene 2 · Duplicate blocked. The same key receives HARD_VETO. Resumption goes through the existing claim, not through a new adjudication.
+        </p>
+        <p id="scene-5">
+          Scene 5 · Timeout → Reconcile. The operation shown is marked UNKNOWN. Silence is not non-execution.
+        </p>
+      </>
     )
   }
   <p>

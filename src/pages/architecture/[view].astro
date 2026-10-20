@@ -83,9 +83,17 @@ const { title, description, kicker, lede, sources, src } = Astro.props;
   }
   {
     view === "demo" && (
-      <p id="scene-5">
-        Scène 5 · Timeout → Reconcile. L’opération montrée est marquée UNKNOWN. Le silence n’est pas une non-exécution.
-      </p>
+      <>
+        <p id="scene-1">
+          Scène 1 · Opération admissible. Un paiement de 10 sur une capacité de 100. La clé d’idempotence est réclamée à CREATED, avant l’évaluation.
+        </p>
+        <p id="scene-2">
+          Scène 2 · Doublon bloqué. La même clé reçoit HARD_VETO. La reprise passe par la réclamation existante, pas par une nouvelle adjudication.
+        </p>
+        <p id="scene-5">
+          Scène 5 · Timeout → Reconcile. L’opération montrée est marquée UNKNOWN. Le silence n’est pas une non-exécution.
+        </p>
+      </>
     )
   }
   <p>
