@@ -10,6 +10,8 @@ sources: KB3, maintained rendering target; KB2, prior rendering line (30 March 2
   <p><strong>Authority.</strong> Class of this page: simplified public-facing. It does not present itself as canonical law. KB3 is the enacted, active doctrinal rendering line: it clarifies, orders, and discloses limits; it renders meaning and does not create it. KB2 is the prior rendering line, for continuity only. Where a repository, an RFC, or the introduction uses the same word differently, the gap stays visible. Where KB3 does not restate a definition, the wording carried here comes from KB2 (30 March 2026). Governance and the machine source stay upstream, and are not reproduced here. The enactment of KB3 is recorded on the <a href="/en/status/">Status</a> page.</p>
 </div>
 
+<p>TENIR 2.0 is a diagnostic and governance framework, reconstruction-first, for bounded units under pressure. It is concerned with admissibility, preservation of options, epistemic validity, recoverability, and posture. This page is a simplified public rendering. It follows KB3, the enacted and active doctrinal rendering line. KB3 renders meaning; it does not create sovereign meaning and is not a new constitution. It is a document layer, outside the code. Specialized services or applications wrap or extend it: they build on KB3 and must not redefine it. Definitions it does not restate are carried from KB2 (30 March 2026), the prior rendering line, which has no simultaneous active authority. The same word also names, in the repositories, an implementation: TENIR-Gov, the reference runtime of the Runtime Execution Governance (REG) standard. That implementation should align to KB3. It is not KB3.</p>
+
 ## Three layers not to collapse
 
 <table>
