@@ -494,6 +494,17 @@ h1 {
 .site-footer .inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .site-footer a { color: inherit; }
 
+.embed-frame {
+  display: block;
+  width: 100%;
+  height: min(78vh, 52rem);
+  margin: 1rem 0 0;
+  border: 1px solid var(--line-strong);
+  background: #0d1117;
+}
+
+.embed-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+
 @media (max-width: 960px) {
   .doc { grid-template-columns: 1fr; }
   .toc { display: none; }

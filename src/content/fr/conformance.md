@@ -13,7 +13,7 @@ sources: reg-conformance/README.md et spec.md ; tenir-conformance-s1-g1/README.m
 <p>Le README et le document illustratif rapportent les mêmes comptes, vérifiés selon eux par un test indépendant du générateur : 144 combinaisons théoriques, 42 admissibles structurellement (9 mono-processus, 18 mono-hôte, 15 multi-hôtes), 102 rejetées. Les règles R1, R2 et R3 lient le périmètre d’hôte, la concurrence et la déduplication. Un profil qui viole les bornes de résilience est rejeté : pour le crash seul, n ≥ 2f+1 ; pour le byzantin, n ≥ 3m+1.</p>
 
 <div class="callout callout-limit">
-  <p><strong>Structurel n’est pas effectif.</strong> Le vérificateur de garanties effectives exige un fichier de preuve présent, un SHA-256 égal à l’attestation, et un chemin relatif sans <code>..</code>. Il échoue fermé sinon. Le README dit que cet échec, pour les profils d’exemple, est le comportement voulu.</p>
+  <p><strong>Structurel n’est pas effectif.</strong> Le vérificateur de garanties effectives exige un fichier de preuve présent, un SHA-256 égal à l’attestation, et un chemin relatif sans <code>..</code>. Il échoue fermé sinon. Le README dit que cet échec, pour les profils d’exemple, est le comportement voulu. Cette absence est un marquage incomplet : INCONCLUSIVE, IMPLEMENTATION_GAP ou une preuve manquante ne se résument pas en admissibilité pleine, ni en posture NORMAL.</p>
 </div>
 
 ## Lancer

@@ -13,7 +13,7 @@ sources: reg-conformance/README.md and spec.md; tenir-conformance-s1-g1/README.m
 <p>The README and the illustrative document report the same counts, which they say are checked by a test independent of the generator: 144 theoretical combinations, 42 structurally admissible (9 single-process, 18 single-host, 15 multi-host), 102 rejected. Rules R1, R2, and R3 bind host scope, concurrency, and deduplication. A profile that violates resilience bounds is rejected: for crash-only, n ≥ 2f+1; for Byzantine, n ≥ 3m+1.</p>
 
 <div class="callout callout-limit">
-  <p><strong>Structural is not effective.</strong> The effective-guarantee verifier requires a proof file to be present, a SHA-256 equal to the attestation, and a relative path without <code>..</code>. Otherwise it fails closed. The README says that failure, for the example profiles, is the intended behaviour.</p>
+  <p><strong>Structural is not effective.</strong> The effective-guarantee verifier requires a proof file to be present, a SHA-256 equal to the attestation, and a relative path without <code>..</code>. Otherwise it fails closed. The README says that failure, for the example profiles, is the intended behaviour. That absence is an incomplete marking: INCONCLUSIVE, IMPLEMENTATION_GAP, or a missing proof is not summarised as full admissibility, nor as posture NORMAL.</p>
 </div>
 
 ## Run

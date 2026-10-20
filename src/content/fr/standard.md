@@ -1,15 +1,15 @@
 ---
 title: Le standard
 kicker: REG · brouillons gelés
-description: Le standard Runtime Execution Governance, ses RFC, et ce qu’il n’est pas par rapport à KB2.
+description: Le standard Runtime Execution Governance, ses RFC, et ce qu’il n’est pas par rapport au cadre diagnostique.
 lede: REG standardise la frontière où une action proposée peut devenir un effet, et les obligations de preuve qui vont avec. Il ne standardise pas l’architecture interne qui les réalise.
-sources: RFC-0 à RFC-7 dans reg-conformance ; spec.md v0.3.1 ; KB2
+sources: RFC-0 à RFC-7 dans reg-conformance ; spec.md v0.3.1 ; KB3, séparation posture et exécution
 ---
 
 <p>Le mantra de RFC-0, daté du 3 octobre 2026, statut « Proposed Standard (Frozen Draft) », est : « The agent proposes. The membrane decides. Authorised / Admissible. » L’origine déclarée du texte est la convergence de TENIR-Gov, CCEAF et CommitGate. Les dépôts publics lus ne documentent pas CCEAF ni CommitGate au-delà de cette ligne.</p>
 
 <div class="callout callout-limit">
-  <p><strong>Ce que REG n’est pas.</strong> Ce n’est pas KB2, ni TENIR 2.0. KB2 est le rendu doctrinal du cadre diagnostique. REG est le standard d’exécution. Une disposition PASS n’est pas la posture NORMAL. Le symbole τ du faisceau TAU n’est pas le τ de la transition proposée, ni la fenêtre τ_K.</p>
+  <p><strong>Ce que REG n’est pas.</strong> Ce n’est pas KB3, ni la ligne antérieure, ni TENIR 2.0. KB3 est la ligne de rendu doctrinale instituée et active, hors du code. REG est le standard d’exécution. TENIR-Gov doit s’aligner sur KB3 ; il ne le constitue pas. Une disposition PASS n’est pas la posture NORMAL. Un mode d’exécution — shadow-passive, shadow-critical, enforce — n’est pas non plus une posture : s’il apparaît, c’est un champ séparé. Le symbole τ du faisceau TAU n’est pas le τ de la transition proposée, ni la fenêtre τ_K.</p>
 </div>
 
 ## Lexique de RFC-0
@@ -44,7 +44,7 @@ sources: RFC-0 à RFC-7 dans reg-conformance ; spec.md v0.3.1 ; KB2
 
 <p>τ_K est la fenêtre maximale de résolution humaine d’un HOLD. RFC-0 dit qu’elle se dérive d’accords de niveau de service existants. Elle ne s’invente pas. À l’expiration, la politique pré-déclarée s’applique. Le défaut est fail-closed. Un mode dégradé n’est admis que s’il a été déclaré et s’il préserve l’invariant.</p>
 
-<p>RFC-2 fixe S = K / (P × V + ε) comme modèle de référence de l’admissibilité structurelle, avec d’autres modèles permis s’ils respectent les contraintes épistémiques, d’invariant et de conservatisme. L’incertitude contracte la région admissible. L’absence de preuve qu’un invariant tient n’est pas la preuve qu’il tient. Dans ce RFC, V est la volatilité et l’irréversibilité, pas la vitesse de KB2.</p>
+<p>RFC-2 fixe S = K / (P × V + ε) comme modèle de référence de l’admissibilité structurelle, avec d’autres modèles permis s’ils respectent les contraintes épistémiques, d’invariant et de conservatisme. L’incertitude contracte la région admissible. L’absence de preuve qu’un invariant tient n’est pas la preuve qu’il tient. Dans ce RFC, V est la volatilité et l’irréversibilité, pas la vitesse nommée par la ligne antérieure. KB3 ne fond pas les deux noms.</p>
 
 ## La série
 

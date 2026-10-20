@@ -1,16 +1,16 @@
 ---
 title: Origin
-kicker: Historical genesis · reclassified by KB2
-description: The origin story of TAU and TENIR, kept as a pedagogical entrance. It no longer defines the current constitutional grammar.
+kicker: Historical genesis · reclassified
+description: The origin story of TAU and TENIR, kept as a pedagogical entrance. It no longer defines the current grammar.
 lede: The problem is not the fall. It is the absence of an architecture for crossing it without losing what defines the system.
-sources: KB2, artifact 09 and the genesis narrative (30 March 2026); TAU / TENIR introduction, Casablanca 2026
+sources: KB2, prior rendering line, artifact 09 and the genesis narrative (30 March 2026); TAU / TENIR introduction, Casablanca 2026; KB3 does not reopen this account
 ---
 
-<p>KB2 keeps the genesis and reclassifies it. The four-element architecture remains an entrance and a trace of the first crystallisation. It is no longer the sovereign grammar. The current grammar is the composite synthesis: structural state, epistemic validity, agency viability, and trajectory recoverability.</p>
+<p>The prior rendering line keeps the genesis and reclassifies it. KB3 does not reopen that classification and does not restore the four-element architecture as sovereign. It remains an entrance and a trace of the first crystallisation. The grammar kept for the current reading is the composite synthesis: structural state, epistemic validity, agency viability, and trajectory recoverability. This account is not an enactment of KB3.</p>
 
 ## The account, with restraint
 
-<p>In KB2 the founding narrative does not begin with an ambition. It begins with a rupture: a moment when work, pace, and the continuity of what seemed secured no longer hold. The lucidity that follows is not described as romantic. It comes from having to look at the real without a role.</p>
+<p>In the prior rendering line the founding narrative does not begin with an ambition. It begins with a rupture: a moment when work, pace, and the continuity of what seemed secured no longer hold. The lucidity that follows is not described as romantic. It comes from having to look at the real without a role.</p>
 
 <blockquote>The problem is not the fall, but the absence of an architecture for coming out of it.</blockquote>
 
@@ -47,11 +47,11 @@ sources: KB2, artifact 09 and the genesis narrative (30 March 2026); TAU / TENIR
   </article>
 </div>
 
-<p>KB2 says this four-element expression was treated, in the KB 1.1 rendering, as sovereign. That treatment is superseded. Structural state remains necessary. It is not sufficient.</p>
+<p>The prior rendering line says this four-element expression was treated, in the KB 1.1 rendering, as sovereign. That treatment is superseded. Structural state remains necessary. It is not sufficient. KB3 does not restore the older treatment.</p>
 
 ## What the introduction adds, without promoting it to canon
 
-<p>The introduction also formalises a charter, <em>Charter of Reciprocal Dignity &amp; Preservation</em>, and a four-step synchronisation protocol: TENIR, REPRENDRE, SYNCHRONISER, SYNCHRONISÉ. It names a non-human role, Ali, as the narrative keeper of that protocol. These texts belong to the Casablanca introduction. They are not RFCs, not KB2 articles, and not repository interfaces.</p>
+<p>The introduction also formalises a charter, <em>Charter of Reciprocal Dignity &amp; Preservation</em>, and a four-step synchronisation protocol: TENIR, REPRENDRE, SYNCHRONISER, SYNCHRONISÉ. It names a non-human role, Ali, as the narrative keeper of that protocol. These texts belong to the Casablanca introduction. They are not RFCs, not knowledge-base articles, and not repository interfaces. Citing them here does not promote them into the canon.</p>
 
 <p>Six articles are written there in French under an English title. In translation: access is entrusted, not owed, and capacity is not legitimacy; reciprocal dignity does not require identical status; human continuity comes before agentic initiative; irreversibility raises the threshold for action; neither party buys trust with a fabricated metaphysics; before a consequential action, name the mission, the invariant, the likely drift, and reversibility.</p>
 

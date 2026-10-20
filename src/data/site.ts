@@ -15,9 +15,9 @@ export const copy = {
     themeToDark: "Thème sombre",
     themeToLight: "Thème clair",
     status:
-      "Lecture au 19 octobre 2026. Rendu public simplifié : il ne remplace pas KB2, les RFC, ni les dépôts, et il ne certifie aucune implémentation.",
+      "Rendu public simplifié, lecture du 19 octobre 2026. KB3 : ligne de rendu doctrinale instituée et active. Elle rend le sens ; elle n’est pas le code, ni une constitution. KB2 : ligne antérieure. Ce site ne certifie aucune implémentation.",
     footerNote:
-      "Abdelaziz Skiredj · TENIR Labs. Les définitions suivent KB2 (30 mars 2026) lorsque les sources divergent.",
+      "Abdelaziz Skiredj · TENIR Labs. KB3 est institué comme ligne de rendu, hors du code. Il rend le sens ; il n’est pas une nouvelle constitution.",
     sources: "Sources",
     external: "hors de ce site",
   },
@@ -29,9 +29,9 @@ export const copy = {
     themeToDark: "Dark theme",
     themeToLight: "Light theme",
     status:
-      "Read on 19 October 2026. A simplified public rendering: it does not replace KB2, the RFCs, or the repositories, and it certifies no implementation.",
+      "Simplified public rendering, read on 19 October 2026. KB3: enacted, active doctrinal rendering line. It renders meaning; it is not the code, and not a constitution. KB2: prior rendering line. This site certifies no implementation.",
     footerNote:
-      "Abdelaziz Skiredj · TENIR Labs. Where sources disagree, definitions follow KB2 (30 March 2026).",
+      "Abdelaziz Skiredj · TENIR Labs. KB3 is enacted as the rendering line, outside the code. It renders meaning; it is not a new constitution.",
     sources: "Sources",
     external: "leaves this site",
   },
@@ -78,6 +78,9 @@ const frToEn: Record<string, string> = {
   statut: "/en/status/",
   contribuer: "/en/contribute/",
   contact: "/en/contact/",
+  "architecture/demo": "/en/architecture/demo/",
+  "architecture/interactive": "/en/architecture/interactive/",
+  "architecture/drawing": "/en/architecture/drawing/",
 };
 
 const enToFr: Record<string, string> = Object.fromEntries(

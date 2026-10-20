@@ -2,8 +2,8 @@
 title: Statut
 kicker: Maturité réelle · octobre 2026
 description: Ce qui est rendu, ce qui est gelé comme brouillon, ce qui est testé en laboratoire, et ce qui n’est pas publié.
-lede: Le cadre a un rendu doctrinal actif et une constitution encore en attente de note. Le standard a des brouillons gelés. Le runtime a un arbre bêta dont la dernière entrée de journal n’est pas une release.
-sources: KB2 ; politique v2 ; architecture illustrative, sections 11 et 13 ; CHANGELOG 5.6.0 et 5.6.1 ; STATUS.md du harnais
+lede: KB3 est la ligne de rendu doctrinale instituée et active. L’institution est la déclaration du propriétaire du 19 octobre 2026 ; les fichiers fournis avec elle ne contiennent pas d’enregistrement signé. KB2 est la ligne antérieure. Le standard a des brouillons gelés. Le runtime a un arbre bêta dont la dernière entrée de journal n’est pas une release.
+sources: KB3, note de normalisation du 14 avril 2026 ; KB2, ligne antérieure ; politique v2 ; architecture illustrative, sections 11 et 13 ; CHANGELOG 5.6.0 et 5.6.1 ; STATUS.md du harnais
 ---
 
 ## Où en est chaque espace
@@ -11,8 +11,9 @@ sources: KB2 ; politique v2 ; architecture illustrative, sections 11 et 13 ; CHA
 <table>
   <thead><tr><th>Espace</th><th>État assumé par les sources</th></tr></thead>
   <tbody>
-    <tr><td>TENIR 2.0</td><td>Nom canonique. KB2, build du 30 mars 2026, dit le rendu actif et la constitution en attente de note formelle.</td></tr>
-    <tr><td>KB2</td><td>Actif comme couche de connaissance. KB1.1 est historique. Rédigé et curé avec assistance, auteur Abdelaziz Skiredj.</td></tr>
+    <tr><td>TENIR 2.0</td><td>Nom du cadre dans l’espace canon. Ce nom n’est pas, à lui seul, l’institution de KB3.</td></tr>
+    <tr><td>KB3</td><td>Ligne de rendu doctrinale instituée et active, par la déclaration du propriétaire du 19 octobre 2026. Les fichiers fournis avec cette déclaration ne contiennent pas d’enregistrement signé sous <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. Couche documentaire, hors du code. KB3 rend le sens ; il ne crée pas de sens souverain et n’est pas une nouvelle constitution. Les services ou applications spécialisés peuvent l’envelopper ou l’étendre ; ils ne doivent pas le redéfinir. TENIR-Gov doit s’y aligner ; il n’est pas KB3.</td></tr>
+    <tr><td>KB2</td><td>Ligne de rendu antérieure, continuité seulement. Pas d’autorité active simultanée avec KB3. Le build du 30 mars 2026 est conservé. La note qui l’a nommé actif à l’institution est un contexte historique, pas l’autorité actuelle. KB1.1 est historique. Rédigé et curé avec assistance, auteur Abdelaziz Skiredj.</td></tr>
     <tr><td>REG</td><td>RFC-0 à RFC-7 : Proposed Standard, brouillon gelé, 2–3 octobre 2026. Pas une norme adoptée par un organisme extérieur.</td></tr>
     <tr><td>TENIR-Gov</td><td>Classifieur « Development Status :: 4 - Beta ». Ligne IronOmega 5.0.0 en juin-juillet 2026, poursuivie jusqu’à l’arbre 5.6.1.</td></tr>
     <tr><td>5.6.1</td><td>Le journal la marque « Pending release » et interdit d’en inférer une publication PyPI.</td></tr>
@@ -52,4 +53,4 @@ sources: KB2 ; politique v2 ; architecture illustrative, sections 11 et 13 ; CHA
 
 ## Suite visible dans les sources, pas un calendrier
 
-<p>KB2 demande que le châssis consomme un objet TENIR 2.0 complet au lieu de laisser l’implémentation définir la doctrine. Le dessin 5.7.0 demande une réconciliation sûre, une persistance non destructive, un validateur de linéarisation fiable et un transport de consensus durci. Le README de conformance demande le <code>deployment.manifest</code> avant tout audit externe. STATUS.md du harnais demande de tenir la phrase de non-certification, et liste un reste documentaire hors dépôt. La politique de versions demande que chaque surface déclare l’autorité qu’elle n’a pas.</p>
+<p>La ligne antérieure demande que le châssis consomme un objet TENIR 2.0 complet au lieu de laisser l’implémentation définir la doctrine. KB3, sans créer un nouveau canon, demande en plus une seule ligne de rendu à la fois, la classe de conformité et le statut dégradé visibles, le contrat machine non renommé en silence, le mode d’exécution séparé de la posture, et la déclaration de ce qu’une surface publique simplifie. Le dessin 5.7.0 demande une réconciliation sûre, une persistance non destructive, un validateur de linéarisation fiable et un transport de consensus durci. Le README de conformance demande le <code>deployment.manifest</code> avant tout audit externe. STATUS.md du harnais demande de tenir la phrase de non-certification, et liste un reste documentaire hors dépôt. La politique de versions demande que chaque surface déclare l’autorité qu’elle n’a pas. Aucune de ces demandes n’est close par cette page.</p>

@@ -1,0 +1,87 @@
+---
+import ArtifactFrame from "../../components/ArtifactFrame.astro";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { view: "demo" },
+      props: {
+        title: "Démo du plan de contrôle",
+        description: "Démonstration illustrative du plan de contrôle d’exécution TENIR-Gov, en six scènes. Les verdicts ne sont pas des postures.",
+        kicker: "Illustrative only · démo",
+        lede: "Six scènes d’un client à deux noyaux. Une décision de gouvernance ne prouve pas un effet externe exactly-once.",
+        sources: "TENIR-Gov · Execution Control Plane Demo ; KB3, séparation posture et exécution",
+        src: "/embeds/execution-control-plane-demo.html",
+      },
+    },
+    {
+      params: { view: "interactive" },
+      props: {
+        title: "Architecture interactive",
+        description: "Parcours interactif de l’architecture TENIR Governance, badge REG+ v5.6.0. Dessin illustratif, avec ses limites.",
+        kicker: "Illustrative only · REG+ v5.6.0",
+        lede: "Cinq niveaux, signaux, double noyau, CAVE, consensus, cycle de vie, preuve, et la liste des manques que le parcours lui-même publie.",
+        sources: "TENIR Governance — Interactive Architecture ; KB3, ligne de rendu instituée",
+        src: "/embeds/interactive-architecture.html",
+      },
+    },
+    {
+      params: { view: "drawing" },
+      props: {
+        title: "Dessin illustratif",
+        description: "Le document TENIR / REG — Architecture illustrative, servi tel quel. Il n’est pas le schéma normatif.",
+        kicker: "Illustrative only · document source",
+        lede: "Le dessin d’où la page Architecture tire sa chaîne, ses noyaux et ses pièges. Classe : illustrative only.",
+        sources: "TENIR / REG — Architecture illustrative",
+        src: "/embeds/architecture-illustrative.html",
+      },
+    },
+  ];
+}
+
+const { view } = Astro.params;
+const { title, description, kicker, lede, sources, src } = Astro.props;
+---
+
+<ArtifactFrame
+  locale="fr"
+  slug={`architecture/${view}`}
+  title={title}
+  description={description}
+  kicker={kicker}
+  lede={lede}
+  sources={sources}
+  src={src}
+  openLabel="Ouvrir l’artefact seul"
+>
+  {
+    view === "demo" && (
+      <div class="callout callout-limit">
+        <p>
+          <strong>Limite.</strong> Artefact en anglais. Classe illustrative only. PASS, FLAG, HOLD et HARD_VETO sont des verdicts d’exécution. Ils ne sont pas les postures NORMAL, CAUTION et HOLDING-FIRST. Le HOLD de la scène 3 est un état d’opération, pas HOLDING-FIRST. La scène 6 tient la frontière : au plus un dispatch sur un seul hôte. Une décision de gouvernance ne prouve pas, à elle seule, un effet externe exactly-once. Ce site ne rejoue pas le code montré.
+        </p>
+      </div>
+    )
+  }
+  {
+    view === "interactive" && (
+      <div class="callout callout-limit">
+        <p>
+          <strong>Limite.</strong> Parcours en anglais, badge REG+ v5.6.0. Il n’est pas KB3 et n’est pas une certification. Les verdicts du treillis ne sont pas des postures. La section Limits du parcours — I8, temps non déterministe, montants non validés, magasins non atomiques, linéarisabilité, pickle, quorum, Raft sur localhost — reste ouverte. Ce site ne la déclare pas close.
+        </p>
+      </div>
+    )
+  }
+  {
+    view === "drawing" && (
+      <div class="callout callout-note">
+        <p>
+          <strong>Statut.</strong> Document illustratif, en français. Il n’est pas le schéma normatif. Là où il nomme V volatilité, la ligne antérieure dit vitesse. KB3, ligne instituée, ne choisit pas ce nom. Les seuils du score ne sont pas les postures.
+        </p>
+      </div>
+    )
+  }
+  <p>
+    <a href="/architecture/">Retour à l’architecture</a>
+  </p>
+</ArtifactFrame>
