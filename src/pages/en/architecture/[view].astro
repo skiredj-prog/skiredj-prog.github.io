@@ -58,7 +58,7 @@ const { title, description, kicker, lede, sources, src } = Astro.props;
     view === "demo" && (
       <div class="callout callout-limit">
         <p>
-          <strong>Limit.</strong> The artifact is in English. Class: illustrative only. PASS, FLAG, HOLD, and HARD_VETO are execution verdicts. They are not the postures NORMAL, CAUTION, and HOLDING-FIRST. The HOLD in scene 3 is an operation state, not HOLDING-FIRST. Scene 6 holds the boundary: at most one dispatch on a single host. A governance decision does not, by itself, prove an exactly-once external effect. This site does not replay the code shown.
+          <strong>Limit.</strong> The artifact is in English. Class: illustrative only. PASS, FLAG, HOLD, and HARD_VETO are execution verdicts. They are not the postures NORMAL, CAUTION, and HOLDING-FIRST. The HOLD in scene 3 is an operation state, not HOLDING-FIRST. Scene 6 holds the membrane: at most one dispatch on a single host. A governance decision does not, by itself, prove an exactly-once external effect. This site does not replay the code shown.
         </p>
       </div>
     )
@@ -79,6 +79,21 @@ const { title, description, kicker, lede, sources, src } = Astro.props;
           <strong>Status.</strong> Illustrative document, in French. It is not the normative schema. Where it names V volatility, the prior rendering line says velocity. KB3, the enacted line, does not elect that name. Score thresholds are not postures.
         </p>
       </div>
+    )
+  }
+  {
+    view === "demo" && (
+      <>
+        <p id="scene-1">
+          Scene 1 · Admissible operation. A payment of 10 against a capacity of 100. The idempotency key is claimed at CREATED, before evaluation.
+        </p>
+        <p id="scene-2">
+          Scene 2 · Duplicate blocked. The same key receives HARD_VETO. Resumption goes through the existing claim, not through a new adjudication.
+        </p>
+        <p id="scene-5">
+          Scene 5 · Timeout → Reconcile. The operation shown is marked UNKNOWN. Silence is not non-execution.
+        </p>
+      </>
     )
   }
   <p>
