@@ -3,7 +3,7 @@ title: Simulation locale — issue inconnue
 kicker: Exemple rempli · pas une référence client
 description: Fiche illustrative d’un diagnostic, préparée sur le démonstrateur TENIR/REG. Aucun client, aucun incident réel.
 lede: La forme d’une fiche de diagnostic, remplie sur un dossier simulé. Aucun client n’est représenté.
-sources: dossier local du démonstrateur TENIR/REG, figé ; preuves #5 et #6 ; préparé le 20 octobre 2026
+sources: "dossier local du démonstrateur TENIR/REG, figé ; preuves #5 et #6 ; préparé le 20 octobre 2026"
 ---
 
 <div class="callout callout-limit">

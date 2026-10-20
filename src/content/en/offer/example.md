@@ -3,7 +3,7 @@ title: Local simulation — unknown outcome
 kicker: Filled example · not a client reference
 description: An illustrative diagnostic sheet, prepared on the TENIR/REG demonstrator. No client, no real incident.
 lede: The form of a diagnostic sheet, filled on a simulated file. No client is represented.
-sources: frozen local file of the TENIR/REG demonstrator; evidence records #5 and #6; prepared on 20 October 2026
+sources: "frozen local file of the TENIR/REG demonstrator; evidence records #5 and #6; prepared on 20 October 2026"
 ---
 
 <div class="callout callout-limit">
