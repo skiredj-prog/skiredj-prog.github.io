@@ -47,7 +47,7 @@ Un push sur `main` lance `.github/workflows/deploy.yml` : `npm ci`, `npm run bui
 
 Chaque page a un frontmatter : `title`, `kicker`, `description`, `lede`, `sources`. Le corps commence au premier titre de niveau 2. La ligne `sources` dit sur quoi la page s’appuie.
 
-Pages : accueil, origine, concepts, applications, architecture, standard, versions, conformance, dépôts, statut, publications, contribuer, contact — et leurs équivalents anglais sous `/en/`.
+Pages : accueil, origine, concepts, applications, offre, architecture, standard, versions, conformance, dépôts, statut, publications, contribuer, contact — et leurs équivalents anglais sous `/en/`. L’exemple simulé est sous `/offre/exemple/` et `/en/offer/example/`.
 
 ## Sources, par ordre de lecture
 

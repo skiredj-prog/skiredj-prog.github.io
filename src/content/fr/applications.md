@@ -27,9 +27,12 @@ sources: démo Execution Control Plane, scènes 1, 2 et 5 ; page Architecture ; 
 
 <p>TENIR demande de prouver l’état avant d’agir de nouveau. La membrane tranche. Les verdicts d’exécution, PASS, FLAG, HOLD et HARD_VETO, restent un champ distinct des postures NORMAL, CAUTION et HOLDING-FIRST.</p>
 
-<p>Ce qui est proposé, dans le périmètre public, est un diagnostic : identifier les contrôles, les cas d’incertitude et les preuves à conserver, avec des garanties explicitement bornées. Ce site ne certifie aucune implémentation. Il ne promet pas un effet externe exactement une fois.</p>
+<p>Ce qui est proposé, dans le périmètre public, est un diagnostic accompagné : une action, un périmètre convenu, une fiche qui sépare les faits établis, les inconnues et le prochain contrôle. Les garanties restent bornées à ce périmètre. Ce site ne certifie aucune implémentation. Il ne promet pas un effet externe exactement une fois. Le détail du service est sur la page <a href="/offre/">Offre</a>.</p>
 
-<p><a class="btn btn-primary" href="mailto:skiredj@tenirlabs.cc">Demander un diagnostic</a></p>
+<div class="actions">
+  <a class="btn btn-primary" href="mailto:skiredj@tenirlabs.cc?subject=Cadrage%20%E2%80%94%20diagnostic%20des%20contr%C3%B4les%20d%E2%80%99un%20agent&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20cadrer%20un%20diagnostic%20des%20contr%C3%B4les%20d%E2%80%99un%20agent.%0A%0A1.%20Quelle%20action%20pr%C3%A9cise%20l%E2%80%99agent%20peut-il%20d%C3%A9clencher%2C%20dans%20quel%20syst%C3%A8me%2C%20et%20quelle%20cons%C3%A9quence%20faut-il%20pr%C3%A9server%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0A2.%20Quel%20incident%2C%20doute%20ou%20changement%20motive%20la%20demande%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0A3.%20Quelle%20d%C3%A9cision%20faut-il%20prendre%2C%20et%20%C3%A0%20quelle%20%C3%A9ch%C3%A9ance%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0A4.%20Quelles%20r%C3%A8gles%2C%20personnes%20et%20traces%20sont%20accessibles%20pour%20l%E2%80%99examen%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0A5.%20Qui%20porte%20la%20d%C3%A9cision%20et%20le%20budget%20du%20diagnostic%2C%20et%20qui%20participera%20%C3%A0%20la%20restitution%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0AMerci.">Cadrer mon diagnostic</a>
+  <a class="btn" href="/offre/">Lire l’offre</a>
+</div>
 
 ## Scénarios
 

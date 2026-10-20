@@ -393,7 +393,9 @@ h1 {
   color: var(--muted);
 }
 
-.prose { max-width: 78ch; }
+.prose { max-width: 78ch; min-width: 0; }
+
+.doc > article { min-width: 0; }
 
 .prose h2 {
   margin: 2.2rem 0 0.6rem;
@@ -451,7 +453,7 @@ h1 {
   line-height: 1.55;
 }
 
-.table-scroll { overflow-x: auto; margin: 1rem 0 1.4rem; }
+.table-scroll { overflow-x: auto; margin: 1rem 0 1.4rem; max-width: 100%; }
 
 .prose table {
   width: 100%;
