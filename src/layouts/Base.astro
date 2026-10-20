@@ -1,7 +1,7 @@
 ---
 import "../styles/fonts.css";
 import "../styles/site.css";
-import { alternate, copy, navContact, navGroups, url, type Locale } from "../data/site";
+import { alternate, copy, navContact, navGroups, navProducts, url, type Locale } from "../data/site";
 
 interface Props {
   locale: Locale;
@@ -16,6 +16,7 @@ interface Props {
 const { locale, slug, title, description, kicker, lede, sources } = Astro.props;
 const t = copy[locale];
 const groups = navGroups[locale];
+const products = navProducts[locale];
 const contact = navContact[locale];
 const home = slug === "";
 const other = slug === "404" ? (locale === "fr" ? "/en/" : "/") : alternate(locale, slug);
@@ -93,7 +94,10 @@ const canonical = new URL(url(here), Astro.site);
             );
           })
         }
-        <a class="nav-end" href={url(contact.href)} aria-current={contact.slug === slug ? "page" : undefined}>
+        <a class="nav-end" href={url(products.href)} aria-current={products.slug === slug ? "page" : undefined}>
+          {products.label}
+        </a>
+        <a href={url(contact.href)} aria-current={contact.slug === slug ? "page" : undefined}>
           {contact.label}
         </a>
       </nav>
@@ -141,6 +145,8 @@ const canonical = new URL(url(here), Astro.site);
           <a href={url(locale === "fr" ? "/publications/" : "/en/publications/")}>Publications</a>
           ·
           <a href={url(locale === "fr" ? "/contribuer/" : "/en/contribute/")}>{locale === "fr" ? "Contribuer" : "Contribute"}</a>
+          ·
+          <a href={url(products.href)}>{products.label}</a>
           ·
           <a href={url(contact.href)}>Contact</a>
           ·
