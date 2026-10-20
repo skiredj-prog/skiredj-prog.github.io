@@ -1,0 +1,48 @@
+---
+import type { Locale } from '../data/site';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr=locale==='fr';
+---
+<section class="contact-brief" aria-labelledby="brief-title">
+  <div><p class="eyebrow">{fr?'Premier échange':'First conversation'}</p><h2 id="brief-title">{fr?'Parlons de votre cas.':'Let’s discuss your case.'}</h2><p>{fr?'Quelques lignes suffisent pour commencer. Nous préciserons ensemble le périmètre, les sources et les interlocuteurs.':'A few lines are enough to begin. We will clarify the scope, sources and participants together.'}</p><p class="section-note">{fr?'Cadrage proposé : 30 minutes. Forfait sur devis après cadrage.':'Proposed scoping: 30 minutes. Fixed quote after scoping.'}</p></div>
+  <form data-contact-brief data-locale={locale}>
+    <label for="brief-action">{fr?'Quelle action votre agent peut-il déclencher ?':'Which action can your agent trigger?'} <span>{fr?'(requis)':'(required)'}</span></label>
+    <textarea id="brief-action" name="action" rows="3" required maxlength="1500" placeholder={fr?'Ex. créer une commande fournisseur, modifier un accès…':'E.g. create a supplier order, change access…'}></textarea>
+    <label for="brief-context">{fr?'Dans quelle situation êtes-vous ?':'What is your situation?'}</label>
+    <select id="brief-context" name="context"><option>{fr?'Je prépare une mise en service ou un changement':'I am preparing a rollout or change'}</option><option>{fr?'J’examine un incident ou un résultat incertain':'I am examining an incident or uncertain outcome'}</option><option>{fr?'Je souhaite d’abord comprendre la démarche':'I would first like to understand the approach'}</option></select>
+    <label for="brief-decision">{fr?'Quelle décision souhaitez-vous préparer ?':'Which decision do you want to prepare?'} <span>{fr?'(facultatif)':'(optional)'}</span></label>
+    <textarea id="brief-decision" name="decision" rows="2" maxlength="1500" placeholder={fr?'La question à trancher, votre échéance…':'The question to resolve, your deadline…'}></textarea>
+    <button class="btn btn-primary" type="submit" disabled data-brief-submit>{fr?'Préparer mon e-mail':'Prepare my email'} <span aria-hidden="true">↗</span></button>
+    <p class="section-note">{fr?'Préparez un brouillon à relire, puis ouvrez-le dans votre messagerie. Ce formulaire n’envoie rien et ne stocke pas vos réponses.':'Prepare a draft to review, then open it in your email app. This form sends nothing and does not store your answers.'}</p>
+    <p data-brief-feedback role="status" hidden>{fr?'Votre brouillon est prêt. Relisez-le ci-dessous avant de l’ouvrir dans votre messagerie.':'Your draft is ready. Review it below before opening it in your email app.'}</p>
+    <div data-brief-fallback hidden><label for="brief-copy">{fr?'Votre brouillon':'Your draft'}</label><textarea id="brief-copy" readonly rows="8"></textarea><a class="btn btn-primary" data-brief-mailto href="mailto:skiredj@tenirlabs.cc">{fr?'Ouvrir dans ma messagerie':'Open in my email app'} ↗</a><p class="section-note">{fr?'Pas de messagerie configurée ? Copiez le brouillon et écrivez à skiredj@tenirlabs.cc.':'No email app configured? Copy the draft and write to skiredj@tenirlabs.cc.'}</p></div>
+    <noscript><p>{fr?'Écrivez directement à':'Write directly to'} <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>.</p></noscript>
+  </form>
+</section>
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-contact-brief]').forEach(form=>{
+    const submit=form.querySelector<HTMLButtonElement>('[data-brief-submit]');
+    if(submit)submit.disabled=false;
+    form.addEventListener('input',event=>{
+      const field=event.target as HTMLInputElement;
+      if(!['action','context','decision'].includes(field.name))return;
+      const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]');
+      if(fallback)fallback.hidden=true;if(feedback)feedback.hidden=true;
+    });
+    form.addEventListener('submit',event=>{
+      event.preventDefault();
+      if(!form.reportValidity())return;
+      const data=new FormData(form),fr=form.dataset.locale==='fr';
+      const action=String(data.get('action')||'').trim();
+      if(!action){const field=form.querySelector<HTMLTextAreaElement>('[name=action]');field?.setCustomValidity(fr?'Précisez l’action à examiner.':'Describe the action to examine.');field?.reportValidity();return;}
+      const body=fr?`Bonjour,\n\nJe souhaite échanger sur un diagnostic des contrôles d’un agent.\n\nAction et système concernés :\n${action}\n\nSituation :\n${data.get('context')}\n\nDécision et échéance :\n${data.get('decision')||'À préciser ensemble'}\n\nSources et traces disponibles : à préciser ensemble.\nResponsable et participants : à préciser ensemble.\n\nMerci.`:`Hello,\n\nI would like to discuss a diagnostic of an agent’s controls.\n\nAction and system:\n${action}\n\nSituation:\n${data.get('context')}\n\nDecision and deadline:\n${data.get('decision')||'To clarify together'}\n\nAvailable sources and traces: to clarify together.\nOwner and participants: to clarify together.\n\nThank you.`;
+      const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]'),copy=form.querySelector<HTMLTextAreaElement>('#brief-copy');
+      if(copy)copy.value=body;if(fallback)fallback.hidden=false;if(feedback)feedback.hidden=false;
+      const mailto=form.querySelector<HTMLAnchorElement>('[data-brief-mailto]');
+      if(mailto)mailto.href=`mailto:skiredj@tenirlabs.cc?subject=${encodeURIComponent(fr?'Cadrage — diagnostic des contrôles d’un agent':'Scoping — diagnostic of an agent’s controls')}&body=${encodeURIComponent(body)}`;
+      copy?.focus();
+    });
+    form.querySelector<HTMLTextAreaElement>('[name=action]')?.addEventListener('input',event=>(event.target as HTMLTextAreaElement).setCustomValidity(''));
+  });
+</script>

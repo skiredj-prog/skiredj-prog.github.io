@@ -1,0 +1,126 @@
+---
+import { url, type Locale } from '../data/site';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const path = (f: string, e: string = f) => url(fr ? `/${f}/` : `/en/${e}/`);
+const steps = fr ? [
+  ['01', 'Question', 'Partir de la décision à préparer.', 'Quelle action examine-t-on ? Quelle conséquence faut-il préserver ? La question définit le périmètre de travail.', 'Une question précise et un responsable identifié.'],
+  ['02', 'Modèle', 'Expliciter ce que l’on cherche.', 'Décrire le système, les règles et les hypothèses. Choisir les propriétés et les observations nécessaires pour examiner la question.', 'Des hypothèses et un protocole d’observation.'],
+  ['03', 'Observation', 'Recueillir ce qui est disponible.', 'Retrouver les données, leur origine et leur contexte : requête, réponse, journal ou état du destinataire. Une donnée absente reste absente.', 'Des données situées et des lacunes visibles.'],
+  ['04', 'Interprétation', 'Séparer les faits des hypothèses.', 'Appliquer un protocole d’analyse explicite aux valeurs observées. Distinguer ce que la trace établit, ce que l’équipe déclare et ce qui reste inconnu.', 'Des constats reliés à leurs sources.'],
+  ['05', 'Restitution', 'Rendre la conclusion utilisable.', 'Relier les constats à la question initiale. Expliquer les limites et le prochain contrôle à vérifier pour préparer une décision humaine.', 'Une fiche de diagnostic et une suite proposée.'],
+  ['06', 'Suivi', 'Réexaminer à partir de nouvelles données.', 'Définir les indicateurs et le modèle de suivi. Comparer les observations dans le temps pour enrichir la connaissance et réviser les hypothèses.', 'Une nouvelle observation, une connaissance à actualiser.'],
+] : [
+  ['01', 'Question', 'Start with the decision to prepare.', 'Which action are we examining? Which consequence must be preserved? The question defines the scope.', 'A precise question and an identified owner.'],
+  ['02', 'Model', 'Make the assumptions explicit.', 'Describe the system, rules and assumptions. Choose the properties and observations needed to examine the question.', 'Assumptions and an observation protocol.'],
+  ['03', 'Observation', 'Collect what is available.', 'Find the data, its origin and context: request, response, log or recipient state. Missing data stays missing.', 'Contextual data and visible gaps.'],
+  ['04', 'Interpretation', 'Separate facts from assumptions.', 'Apply an explicit analysis protocol to observed values. Distinguish what a trace establishes, what the team reports and what remains unknown.', 'Findings linked to their sources.'],
+  ['05', 'Restitution', 'Make the conclusion useful.', 'Connect findings to the initial question. Explain the limits and the next control to check to prepare a human decision.', 'A diagnostic sheet and proposed next steps.'],
+  ['06', 'Follow-up', 'Revisit with new observations.', 'Define indicators and a monitoring model. Compare observations over time to update knowledge and revisit assumptions.', 'A new observation and knowledge to update.'],
+];
+const routes = fr ? [
+  ['01', 'Je découvre TENIR', 'Comprendre pourquoi autoriser une action et confirmer son résultat sont deux choses différentes.', 'Comprendre les concepts', path('concepts')],
+  ['02', 'Je veux essayer', 'Explorer la délégation de tâches et ses limites dans un prototype sur votre appareil.', 'Explorer le prototype', 'https://mobile.tenirlabs.cc/discover'],
+  ['03', 'J’ai un cas à examiner', 'Préparer une mise en service ou comprendre une action dont le résultat est incertain.', 'Découvrir le diagnostic', path('offre', 'offer')],
+] : [
+  ['01', 'I’m discovering TENIR', 'Understand why authorizing an action and confirming its outcome are different things.', 'Understand the concepts', path('concepts')],
+  ['02', 'I want to try it', 'Explore task delegation and its limits in a prototype on your device.', 'Explore the prototype', 'https://mobile.tenirlabs.cc/discover'],
+  ['03', 'I have a case to examine', 'Prepare a rollout or investigate an action whose outcome is uncertain.', 'Explore the diagnostic', path('offre', 'offer')],
+];
+---
+<div class="landing">
+  <section class="landing-hero" aria-labelledby="home-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot"></span> {fr ? 'Gouvernance des actions d’agents' : 'Governance of agent actions'}</p>
+      <h1 id="home-title">{fr ? 'Laissez vos agents agir.' : 'Let your agents act.'}<br /><em>{fr ? 'Gardez la main.' : 'Stay in control.'}</em></h1>
+      <p class="hero-lead">{fr ? 'Définir ce qui autorise une action, ce qui doit l’arrêter et ce qui permet d’en confirmer le résultat. C’est le point de départ de TENIR.' : 'Define what authorizes an action, what must stop it, and what confirms its outcome. That is where TENIR starts.'}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#comprendre">{fr ? 'Comprendre en un exemple' : 'Understand through an example'} <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-quiet" href="https://mobile.tenirlabs.cc/discover">{fr ? 'Essayer le prototype' : 'Try the prototype'} <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="hero-caption">{fr ? 'Un cadre ouvert. Des démonstrations. Un diagnostic accompagné.' : 'An open framework. Demonstrations. An accompanied diagnostic.'}</p>
+    </div>
+    <div class="control-visual" aria-label={fr ? 'Illustration : l’agent propose une action, un contrôle l’examine, son résultat reste à confirmer.' : 'Illustration: an agent proposes an action, a control examines it, its outcome remains to be confirmed.'}>
+      <div class="visual-top"><span>TENIR / REG</span><span class="visual-label">{fr ? 'Principe de contrôle' : 'Control principle'}</span></div>
+      <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
+      <div class="visual-node node-agent"><span class="node-icon" aria-hidden="true">↗</span><div><small>01 / {fr ? 'INTENTION' : 'INTENT'}</small><strong>{fr ? 'L’agent propose' : 'The agent proposes'}</strong></div></div>
+      <div class="visual-connector" aria-hidden="true"><span></span>↓</div>
+      <div class="visual-node node-control"><span class="node-icon" aria-hidden="true">⊣</span><div><small>02 / {fr ? 'CONTRÔLE' : 'CONTROL'}</small><strong>{fr ? 'La membrane décide' : 'The membrane decides'}</strong><span class="node-sub">{fr ? 'Règles · limites · observations' : 'Rules · limits · observations'}</span></div><span class="control-badge">REG</span></div>
+      <div class="visual-connector" aria-hidden="true"><span></span>↓</div>
+      <div class="visual-node node-proof"><span class="node-icon" aria-hidden="true">≡</span><div><small>03 / {fr ? 'RÉSULTAT' : 'OUTCOME'}</small><strong>{fr ? 'La preuve fait la différence' : 'Evidence makes the difference'}</strong></div></div>
+      <div class="visual-note"><span aria-hidden="true">↳</span> {fr ? 'Autorisé ne veut pas dire confirmé.' : 'Authorized does not mean confirmed.'}</div>
+    </div>
+  </section>
+  <div class="principle-strip"><span>{fr ? 'LE FIL CONDUCTEUR' : 'THE GUIDING PRINCIPLE'}</span><p>{fr ? 'Tenir le cadre.' : 'Hold the frame.'} <b>{fr ? 'Trancher à la frontière.' : 'Decide at the boundary.'}</b> {fr ? 'Prouver ce qui est établi.' : 'Evidence what is established.'}</p><a href={path('concepts')}>{fr ? 'Les concepts' : 'The concepts'} <span aria-hidden="true">↗</span></a></div>
+
+  <section class="landing-section" aria-labelledby="start-title">
+    <div class="section-heading"><div><p class="eyebrow">{fr ? 'Votre point de départ' : 'Your starting point'}</p><h2 id="start-title">{fr ? 'À chaque besoin, un chemin clair.' : 'A clear path for every need.'}</h2></div><p>{fr ? 'Commencez par ce qui vous est utile. Approfondissez à votre rythme.' : 'Start with what you need. Go deeper at your own pace.'}</p></div>
+    <div class="journey-grid">{routes.map(([n,title,body,label,href])=><a class="journey-card" href={href}><span class="card-number">{n}<span aria-hidden="true">↗</span></span><h3>{title}</h3><p>{body}</p><span class="text-link">{label} <span aria-hidden="true">→</span></span></a>)}</div>
+  </section>
+
+  <section class="landing-section incident-section" id="comprendre" aria-labelledby="incident-title">
+    <div class="incident-intro"><p class="eyebrow">{fr ? 'Un cas concret · illustration' : 'A concrete case · illustration'}</p><h2 id="incident-title">{fr ? 'L’action est partie.' : 'The action was sent.'}<br /><em>{fr ? 'La réponse n’arrive pas.' : 'The response never arrives.'}</em></h2><p>{fr ? 'Votre agent a envoyé une commande. Le service ne répond plus. Faut-il la renvoyer ? Sans confirmation, vous ignorez si elle a déjà été exécutée.' : 'Your agent sent an order. The service stops responding. Should it retry? Without confirmation, you do not know whether it already ran.'}</p><a class="text-link" href={path('architecture/demo')}>{fr ? 'Ouvrir la démonstration technique' : 'Open the technical demonstration'} <span aria-hidden="true">↗</span></a></div>
+    <div class="incident-walkthrough" data-walkthrough>
+      <div class="walkthrough-tabs" role="tablist" aria-label={fr ? 'Les trois étapes de l’incident' : 'The three incident steps'}>
+        {(fr ? ['L’envoi', 'L’incertitude', 'La suite'] : ['Dispatch', 'Uncertainty', 'Next step']).map((s,i)=><button type="button" id={`incident-tab-${i}`} role="tab" aria-selected={i===0 ? 'true':'false'} aria-controls={`incident-panel-${i}`} tabindex={i===0 ? 0:-1} data-walk-tab>{`0${i+1}`} <span>{s}</span></button>)}
+      </div>
+      <div class="walkthrough-body">
+        <section id="incident-panel-0" role="tabpanel" tabindex="0" aria-labelledby="incident-tab-0" data-walk-panel><span class="state-badge state-ok">PASS → {fr ? 'ENVOYÉ' : 'SENT'}</span><h3>{fr ? 'L’autorisation a été donnée.' : 'Authorization was given.'}</h3><p>{fr ? 'L’appel est enregistré. Cela établit l’envoi, pas encore le résultat de la commande.' : 'The call is recorded. That establishes dispatch, but not yet the outcome of the order.'}</p><div class="fact-row"><span>{fr ? 'Autorisation' : 'Authorization'}</span><strong>PASS</strong></div><div class="fact-row"><span>{fr ? 'Résultat' : 'Outcome'}</span><strong>{fr ? 'À confirmer' : 'To be confirmed'}</strong></div></section>
+        <section id="incident-panel-1" role="tabpanel" tabindex="0" aria-labelledby="incident-tab-1" data-walk-panel hidden><span class="state-badge">UNKNOWN</span><h3>{fr ? 'Le résultat reste inconnu.' : 'The outcome remains unknown.'}</h3><p>{fr ? 'La réponse manque. Cela ne prouve pas que l’action a échoué. Dans le scénario local, la réservation reste conservée.' : 'The response is missing. That does not prove the action failed. In the local scenario, the reservation stays held.'}</p><div class="fact-row"><span>{fr ? 'Nouvel envoi automatique' : 'Automatic retry'}</span><strong>{fr ? 'Non' : 'No'}</strong></div><div class="fact-row"><span>{fr ? 'Réservation' : 'Reservation'}</span><strong>{fr ? 'Conservée' : 'Retained'}</strong></div></section>
+        <section id="incident-panel-2" role="tabpanel" tabindex="0" aria-labelledby="incident-tab-2" data-walk-panel hidden><span class="state-badge state-neutral">{fr ? 'VÉRIFIER AVANT LA SUITE' : 'VERIFY BEFORE PROCEEDING'}</span><h3>{fr ? 'Retrouver la preuve utile.' : 'Find the evidence that matters.'}</h3><p>{fr ? 'Examiner l’état du destinataire, les traces disponibles et la responsabilité de reprise. Le prototype ne résout pas automatiquement l’incertitude.' : 'Examine the recipient state, available traces and responsibility for resuming. The prototype does not automatically resolve uncertainty.'}</p><a class="text-link" href={path('offre/exemple','offer/example')}>{fr ? 'Voir la fiche de diagnostic simulée' : 'See the simulated diagnostic sheet'} <span aria-hidden="true">→</span></a></section>
+      </div>
+      <div class="walkthrough-footer"><span>{fr ? 'Lecture guidée · aucune action exécutée' : 'Guided reading · no action executed'}</span><button type="button" data-walk-next>{fr ? 'Étape suivante' : 'Next step'} <span aria-hidden="true">→</span></button></div>
+    </div>
+  </section>
+
+  <section class="landing-section observation-section" aria-labelledby="observation-title">
+    <div class="section-heading"><div><p class="eyebrow">{fr ? 'La démarche' : 'The approach'}</p><h2 id="observation-title">{fr ? 'De la question à une suite éclairée.' : 'From a question to an informed next step.'}</h2></div><p>{fr ? 'Observer, comprendre, restituer. Puis faire évoluer la connaissance avec le suivi.' : 'Observe, understand, report. Then update knowledge through follow-up.'}</p></div>
+    <div class="observation-cycle" data-cycle>
+      <div class="cycle-tabs" role="tablist" aria-label={fr ? 'Boucle d’observation et de connaissance' : 'Observation and knowledge loop'}>{steps.map(([n,name],i)=><button type="button" role="tab" id={`cycle-tab-${i}`} aria-controls={`cycle-panel-${i}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-cycle-tab><span>{n}</span>{name}<span class="cycle-arrow" aria-hidden="true">{i===5?'↺':'→'}</span></button>)}</div>
+      {steps.map(([n,name,title,body,result],i)=><section class="cycle-panel" role="tabpanel" id={`cycle-panel-${i}`} aria-labelledby={`cycle-tab-${i}`} data-cycle-panel hidden={i!==0}><div><span class="role">{n} / {name}</span><h3>{title}</h3><p>{body}</p></div><div class="cycle-output"><span class="role">{fr ? 'Ce que l’on obtient' : 'What you get'}</span><p>{result}</p></div></section>)}
+    </div>
+    <p class="section-note">{fr ? 'Les liens entre modèle, analyse et suivi forment une boucle. Ce guide de lecture aide à structurer le diagnostic ; il ne constitue pas un moteur de décision automatisé.' : 'Model, analysis and follow-up form a loop. This reading guide helps structure the diagnostic; it is not an automated decision engine.'} <a href={path('architecture')}>{fr ? 'Approfondir l’architecture' : 'Explore the architecture'} →</a></p>
+    <details class="reference-diagram"><summary>{fr ? 'Voir le schéma de référence de la démarche' : 'View the approach’s reference diagram'}</summary><figure><img src={url('/images/observation-reference.png')} width="580" height="416" loading="lazy" alt={fr ? 'Schéma reliant acteur, question, modèle théorique, protocole d’observation, donnée observée, interprétation, restitution, suivi et nouvelle connaissance.' : 'Diagram connecting actor, question, theoretical model, observation protocol, observed data, interpretation, restitution, monitoring and new knowledge.'} /><figcaption>{fr ? 'Schéma de travail fourni comme référence pour ce parcours. Le guide ci-dessus en propose une lecture progressive, sans remplacer ses relations détaillées.' : 'Working diagram supplied as a reference for this journey. The guide above offers a progressive reading without replacing its detailed relationships.'}</figcaption></figure></details>
+  </section>
+
+  <section class="prototype-section" aria-labelledby="prototype-title">
+    <div class="prototype-copy"><span class="pill">{fr ? 'À explorer · prototype' : 'Explore · prototype'}</span><h2 id="prototype-title">{fr ? 'Déléguer une tâche.' : 'Delegate a task.'}<br /><em>{fr ? 'Pas tous les droits.' : 'Not every permission.'}</em></h2><p>{fr ? 'Sur mobile.tenirlabs.cc, explorez un assistant qui propose des créneaux dans les limites d’une tâche. Retrouvez l’agenda, les clients et l’activité dans un même parcours.' : 'On mobile.tenirlabs.cc, explore an assistant that proposes time slots within task limits. Find the schedule, clients and activity in one journey.'}</p><ul class="check-list"><li>{fr ? 'Définir les limites d’une tâche' : 'Set a task’s limits'}</li><li>{fr ? 'Voir la prochaine proposition' : 'See the next proposal'}</li><li>{fr ? 'Mettre en pause et consulter l’activité' : 'Pause and review activity'}</li></ul><a class="btn btn-primary" href="https://mobile.tenirlabs.cc/discover">{fr ? 'Découvrir le prototype mobile' : 'Explore the mobile prototype'} <span aria-hidden="true">↗</span></a><p class="prototype-note">{fr ? 'Espace de démonstration distinct. Aucun vrai message envoyé.' : 'Separate demonstration space. No real messages sent.'}</p></div>
+    <div class="phone-composition" aria-label={fr ? 'Aperçu illustratif du prototype, pas une interface interactive.' : 'Illustrative prototype preview, not an interactive interface.'}>
+      <div class="phone"><div class="phone-status" aria-hidden="true"><span>9:41</span><span>● ▰</span></div><div class="phone-brand">⊣ <span>TENIR</span><small>{fr ? 'DÉLÉGATION' : 'DELEGATION'}</small></div><p class="phone-hello">{fr ? 'Moins à faire.' : 'Less to do.'}<br /><strong>{fr ? 'Gardez la main.' : 'Stay in control.'}</strong></p><div class="phone-task"><span class="phone-live"><span class="status-dot"></span>{fr ? 'En cours' : 'Active'}</span><h3>{fr ? 'Remplir les créneaux libres de demain' : 'Fill tomorrow’s free slots'}</h3><p>{fr ? '4 clients inclus · 09:00 — 17:00' : '4 included clients · 09:00 — 17:00'}</p><div class="phone-budget"><span>{fr ? 'Messages restants' : 'Messages left'}</span><strong>5 / 5</strong></div><div class="phone-progress"></div><div class="phone-faux-button">{fr ? 'Proposition simulée' : 'Simulated proposal'} <span aria-hidden="true">→</span></div></div><div class="phone-guard"><span aria-hidden="true">⊣</span><p>{fr ? 'Vos rendez-vous confirmés restent protégés.' : 'Your confirmed appointments stay protected.'}</p></div><div class="phone-bottom" aria-hidden="true"><span>⌂</span><span>☷</span><span>▦</span><span>◷</span></div></div><span class="floating-note"><span aria-hidden="true">↳</span> {fr ? 'Vous fixez le cadre.' : 'You set the frame.'}</span>
+    </div>
+  </section>
+
+  <section class="landing-section diagnostic-section" aria-labelledby="diagnostic-title"><div><p class="eyebrow">{fr ? 'Pour votre équipe' : 'For your team'}</p><h2 id="diagnostic-title">{fr ? 'Une action. Ses preuves.' : 'One action. Its evidence.'}<br /><em>{fr ? 'Le prochain contrôle à décider.' : 'The next control to decide.'}</em></h2><p>{fr ? 'Avant une mise en service ou après un incident, le diagnostic accompagné examine un cas précis avec votre équipe.' : 'Before a rollout or after an incident, the accompanied diagnostic examines one precise case with your team.'}</p><div class="actions"><a class="btn btn-primary" href={path('contact')}>{fr ? 'Parlons de votre cas' : 'Let’s discuss your case'} <span aria-hidden="true">→</span></a><a class="btn btn-quiet" href={path('offre','offer')}>{fr ? 'Voir le périmètre et les livrables' : 'View the scope and deliverables'}</a></div><p class="section-note">{fr ? 'Cadrage de 30 min · forfait sur devis · format à confirmer au cadrage' : '30-minute scoping · fixed quote · format confirmed during scoping'}</p></div><ol class="deliverables"><li><span>01</span><div><h3>{fr ? 'Des faits établis' : 'Established facts'}</h3><p>{fr ? 'Une fiche de synthèse sourcée, avec les inconnues explicites.' : 'A sourced summary sheet with explicit unknowns.'}</p></div></li><li><span>02</span><div><h3>{fr ? 'Un périmètre lisible' : 'A clear scope'}</h3><p>{fr ? 'L’action, les règles, les traces et les responsabilités examinées.' : 'The action, rules, traces and responsibilities examined.'}</p></div></li><li><span>03</span><div><h3>{fr ? 'Une suite exploitable' : 'Useful next steps'}</h3><p>{fr ? 'Jusqu’à trois priorités avec un contrôle et un critère observable.' : 'Up to three priorities with a control and an observable criterion.'}</p></div></li></ol></section>
+
+  <section class="landing-section resources-section" aria-labelledby="resources-title"><div class="section-heading"><div><p class="eyebrow">{fr ? 'Aller plus loin' : 'Go deeper'}</p><h2 id="resources-title">{fr ? 'Le fond, en accès direct.' : 'The substance, directly accessible.'}</h2></div><a class="text-link" href={path('publications')}>{fr ? 'Toutes les publications' : 'All publications'} ↗</a></div><div class="resource-links">{(fr ? [['Architecture','Les rôles et les frontières du système.','architecture'],['Standard REG','Les exigences, indépendamment du logiciel.','standard'],['Preuves et maturité','Ce qui est établi et ce qui reste ouvert.','statut'],['Code et contributions','Les dépôts publics et leurs périmètres.','depots']] : [['Architecture','System roles and boundaries.','architecture'],['REG standard','Requirements independent of the software.','standard'],['Evidence and maturity','What is established and what remains open.','status'],['Code and contributions','Public repositories and their scopes.','repositories']]).map(([title,body,slug])=><a href={url(fr?`/${slug}/`:`/en/${slug}/`)}><span><strong>{title}</strong><small>{body}</small></span><span aria-hidden="true">↗</span></a>)}</div></section>
+</div>
+<script>
+  function setupTabs(root: Element, tabSelector: string, panelSelector: string, next?: Element | null) {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>(tabSelector));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>(panelSelector));
+    let active = 0;
+    const show = (index: number, focus = false) => {
+      active = index;
+      tabs.forEach((tab,i) => { tab.setAttribute('aria-selected',String(i===index)); tab.tabIndex=i===index?0:-1; });
+      panels.forEach((panel,i) => { panel.hidden=i!==index; });
+      if (next) { next.toggleAttribute('disabled', index===tabs.length-1); }
+      if(focus) tabs[index].focus();
+    };
+    tabs.forEach((tab,i) => {
+      tab.addEventListener('click',()=>show(i));
+      tab.addEventListener('keydown',event=>{
+        let target = i;
+        if(event.key==='ArrowRight') target=(i+1)%tabs.length;
+        else if(event.key==='ArrowLeft') target=(i+tabs.length-1)%tabs.length;
+        else if(event.key==='Home') target=0;
+        else if(event.key==='End') target=tabs.length-1;
+        else return;
+        event.preventDefault(); show(target,true);
+      });
+    });
+    next?.addEventListener('click',()=>{ if(active<tabs.length-1) show(active+1,true); });
+  }
+  document.querySelectorAll('[data-walkthrough]').forEach(root=>setupTabs(root,'[data-walk-tab]','[data-walk-panel]',root.querySelector('[data-walk-next]')));
+  document.querySelectorAll('[data-cycle]').forEach(root=>setupTabs(root,'[data-cycle-tab]','[data-cycle-panel]'));
+</script>
