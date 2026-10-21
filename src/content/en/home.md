@@ -1,13 +1,47 @@
 ---
-title: Its response never arrives.
-kicker: Diagnostic workshop
-description: An action was authorized. Its response never arrives. TENIR holds. Then the arc Tenir, Trancher, Prouver.
-lede: The agent acted. The confirmation is lost. TENIR holds.
-sources: Execution Control Plane demo, scene 5, Timeout → Reconcile; KB3, rendering line enacted on 19 October 2026; KB2, prior rendering line
+title: TENIR Labs
+kicker: Governance Framework · Runtime Execution Governance Standard
+description: Closing the gap between what is required, what is controlled, and what can be proven.
+lede: Prevent what we can foresee. Prepare what we must demonstrate.
+sources: KB3 · REG v0.1 · skiredj-prog public repositories
 ---
 
-## Status and limits
+# TENIR Labs
 
-<p>KB3 is the enacted, active doctrinal rendering line, by the owner’s declaration of 19 October 2026. KB2 is the prior rendering line. KB3 is not in the code. This site does not declare any implementation closed. The detail is on the <a href="/en/status/">Status</a> page.</p>
+## Know what must hold. Know what you can prove.
 
-<p>Class of this page: simplified public-facing. No adopter, revenue, or impact figure is established by the public repositories. The prior rendering line names product surfaces and a reading case; that is not a deployment register. The illustrative architecture note also conditions public marketing communication on a hardened 5.7.0, which is not in the tree that was read.</p>
+Organizations invest in rules, systems, and checks. Yet the gap remains:
+
+What is **required** is not always **clear**
+What is **claimed** is not always **verified**
+What is **in place** is not always **provable**
+
+**TENIR** is the framework that makes that gap visible.
+**REG** is its operational tool: prevent upstream, prepare downstream, demonstrate with clarity.
+
+### Two directions. One standard.
+
+| PREVENT                                 | PREPARE                                             |
+| --------------------------------------- | --------------------------------------------------- |
+| **From requirement to control**         | **From systems to evidence**                        |
+| Start with laws, policies, rules.       | Start with configurations, logs, documents.         |
+| Uncover implicit assumptions.           | Inventory what exists — and what is missing.        |
+| Identify risks before they materialize. | Build a defensible record before review.            |
+| Clarify first, then act.                | Qualify every piece; do not fill gaps with fiction. |
+
+→ **REG does not certify.** REG illuminates.
+
+### At the core of TENIR
+
+**Integrity** : never present uncertainty as established fact
+**Traceability** : link every finding back to its source
+**Preservation** : human judgment remains final
+**Reversibility** : correct, document, never erase
+**Clarity** : display what is incomplete, ambiguous, or absent
+
+*"Beyond the checklist."*
+
+REG — Prevent · Prepare · Demonstrate
+
+[Discover REG →](/en/products-and-services)
+[Understand the framework →](/en/concepts)
