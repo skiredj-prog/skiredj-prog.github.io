@@ -29,6 +29,15 @@ python3 tools/verify_effective_guarantees.py</code></pre>
 
 <p><code>spec.md</code> v0.3.1 dit que le runner enregistre 53 vecteurs, dont 36 vecteurs étendus encore en IMPLEMENTATION_GAP, C4 natif non applicable, CT-R4-009 et CT-R4-010 ouverts. Cette phrase date le périmètre du fichier. L’arbre a continué. Il ne faut pas lire 36 comme le décompte vivant sans relire <a href="https://github.com/skiredj-prog/reg-conformance/blob/main/VECTORS.md">VECTORS.md</a>.</p>
 
+## Validation publiée — 20 octobre 2026
+
+<div class="callout">
+  <p><strong>REG-Conformant — profil Raft single-host loopback (périmètre limité)</strong></p>
+  <p>La <a href="https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1">release REG Conformance v0.6.1</a>, publiée le 21 octobre 2026, annonce une réexécution indépendante par Harv Banning le 20 octobre 2026 : <strong>46 tests sur 46 PASS</strong>, pour TENIR-Gov v5.6.1 (commit <code>8203705</code>), sur un cluster Raft en loopback et un seul hôte.</p>
+  <p><strong>Empreinte SHA-256 déclarée :</strong> <code>f9f9c98b42c939acd9b953e08e1da89a94fcbb3a5d8cf11abb8e3ec60d785172</code>.</p>
+  <p><strong>Portée :</strong> C3 non revendiqué ; aucune certification tierce ; le multi-hôte physique reste non supporté. Le résumé de release est une attestation publiée, pas à lui seul une reproduction indépendante de la preuve ni une garantie de comportement en production.</p>
+</div>
+
 ## Preuves, au 19 octobre 2026
 
 <p>Les journaux sous <code>evidence/</code> portent des en-têtes qui disent l’exécution dans l’environnement de l’auteur, pas par un vérificateur indépendant. Le hash prouve que le fichier n’a pas changé depuis l’attestation. Il ne prouve pas que le test a été bien exécuté. <code>deployment.manifest</code> reste, dans les profils lus, une dépendance bloquante : sans lui, un auditeur externe ne relie pas la preuve à l’hypothèse d’hôte.</p>
