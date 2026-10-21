@@ -1,0 +1,57 @@
+name: Preview REG Discovery with TENIR UX
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - '.github/workflows/**'
+      - 'package*.json'
+  push:
+    branches:
+      - feat/reg-discovery-ux-integration
+
+permissions:
+  contents: read
+
+jobs:
+  site-and-discovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: skiredj-prog/reg-conformance
+          ref: 14acd5ab23706fae44c861df31c2b7417e4686eb
+          path: _upstream/reg-conformance
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify Discovery contract and generate projection
+        working-directory: _upstream/reg-conformance
+        run: |
+          python -m pip install 'jsonschema>=4,<5' 'pytest>=8,<10'
+          python -m pytest -q discovery/tests/
+          python -m discovery.build_projection --output ../../public/discovery/projection-v0.1.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:links
+      - run: node scripts/check-discovery.mjs --dist
+      - name: End-to-end browser smoke (Chromium, desktop and mobile)
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          python -m http.server 4173 --bind 127.0.0.1 --directory dist > /tmp/reg-discovery-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          node scripts/check-discovery-browser.mjs
+          node scripts/check-ux-mobile-header.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tenir-reg-discovery-private-preview
+          path: dist/
+          retention-days: 7

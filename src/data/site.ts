@@ -174,6 +174,7 @@ export const navContact: Record<Locale, NavItem> = {
 
 const frToEn: Record<string, string> = {
   'parcours/activite': '/en/start/business/',
+  discovery: '/en/discovery/',
   'parcours/decouvrir': '/en/start/discover/',
   'parcours/deleguer': '/en/start/delegate/',
   'parcours/concevoir': '/en/start/build/',
