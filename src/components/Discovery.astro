@@ -1,0 +1,107 @@
+---
+import type { Locale } from '../data/site';
+const { locale } = Astro.props as { locale: Locale };
+const fr = locale === 'fr';
+---
+<section class="reg-discovery" data-reg-discovery data-locale={locale}>
+  <div class="reg-banner">
+    <span class="reg-eyebrow">{fr ? 'REG DISCOVERY · PRÉVISUALISATION EXPLORATOIRE' : 'REG DISCOVERY · EXPLORATORY PREVIEW'}</span>
+    <h2>{fr ? 'Que suppose-t-on sans le voir ?' : 'What are we assuming without noticing?'}</h2>
+    <p>{fr
+      ? 'Choisissez les textes qui vous intéressent. REG révèle les hypothèses comportementales à questionner — sans présumer que ces textes vous sont applicables.'
+      : 'Select the frameworks that matter to you. REG reveals behavioral assumptions worth challenging — without presuming those frameworks apply to you.'}</p>
+    <p class="reg-caution">{fr
+      ? 'Ce prototype produit des questions à partir de correspondances éditoriales vérifiables, et non des constats de conformité ou de défaillance.'
+      : 'This preview produces questions from traceable editorial mappings, not findings of compliance or actual system failure.'}</p>
+  </div>
+
+  <div class="reg-steps">
+    <span><b>1</b> {fr ? 'Choisir les référentiels' : 'Select frameworks'}</span>
+    <span><b>2</b> {fr ? 'Découvrir les hypothèses' : 'Discover assumptions'}</span>
+    <span><b>3</b> {fr ? 'Explorer les conditions' : 'Explore dependencies'}</span>
+  </div>
+
+  <h3>{fr ? 'Référentiels disponibles' : 'Available frameworks'}</h3>
+  <p class="reg-small">{fr
+    ? 'Lois, normes et recommandations sont distinguées. Aucune règle n’est déclarée applicable par une simple sélection.'
+    : 'Laws, standards and recommendations are distinguished. Selecting a source never establishes legal applicability.'}</p>
+  <p data-reg-load role="status">{fr ? 'Chargement du catalogue versionné…' : 'Loading versioned catalogue…'}</p>
+  <div class="reg-grid" data-reg-cards role="group" aria-label={fr ? 'Sélection de référentiels' : 'Framework selection'}></div>
+  <div class="reg-actions">
+    <button type="button" data-reg-generate disabled>{fr ? 'Révéler les hypothèses' : 'Reveal assumptions'} <span aria-hidden="true">→</span></button>
+    <button type="button" data-reg-example disabled class="reg-secondary">{fr ? 'Voir un exemple PayFlow fictif' : 'See fictional PayFlow example'}</button>
+  </div>
+
+  <section data-reg-output class="reg-output" hidden aria-live="polite" aria-labelledby="reg-report-heading">
+    <div class="reg-report-heading">
+      <span class="reg-eyebrow">{fr ? 'REG DISCOVERY REPORT · BÊTA' : 'REG DISCOVERY REPORT · BETA'}</span>
+      <h3 id="reg-report-heading" data-reg-report-title></h3>
+      <p data-reg-intro></p>
+      <p data-reg-metadata class="reg-small"></p>
+    </div>
+    <div class="reg-actions">
+      <button type="button" data-reg-export class="reg-secondary">{fr ? 'Exporter le JSON' : 'Export JSON'}</button>
+      <button type="button" data-reg-print class="reg-secondary">{fr ? 'Imprimer / Enregistrer en PDF' : 'Print / Save as PDF'}</button>
+    </div>
+    <div data-reg-findings></div>
+    <p class="reg-limit">{fr
+      ? 'Limites : analyse exploratoire sur hypothèses déclarées et inférences d’ingénierie. Aucun système n’a été audité ; aucune conformité, absence d’incident, autorisation de déploiement ni garantie technique n’est établie.'
+      : 'Limits: exploratory analysis based on declared assumptions and engineering inferences. No system was audited; no compliance, absence of incident, deployment approval or technical guarantee is established.'}</p>
+  </section>
+
+  <div class="reg-challenge">
+    <span class="reg-eyebrow">{fr ? 'ALLER PLUS LOIN · SERVICE INDÉPENDANT' : 'GO FURTHER · STANDALONE SERVICE'}</span>
+    <h3>Hidden Assumptions Challenge</h3>
+    <p>{fr
+      ? 'Un comportement précis sur lequel vous comptez ? Nous pouvons challenger ses préconditions, sans audit d’infrastructure ni installation obligatoire.'
+      : 'Relying on a specific behavior? We can challenge its hidden preconditions without an infrastructure audit or mandatory installation.'}</p>
+    <a href={fr
+      ? 'mailto:skiredj@tenirlabs.cc?subject=REG%20Discovery%20%E2%80%94%20Hidden%20Assumptions%20Challenge'
+      : 'mailto:skiredj@tenirlabs.cc?subject=REG%20Discovery%20%E2%80%94%20Challenge%20inquiry'}
+      class="reg-link">{fr ? 'Proposer un comportement à challenger' : 'Request a behavioral challenge'} <span aria-hidden="true">→</span></a>
+    <small>{fr ? 'L’ouverture de votre messagerie ne transmet aucune donnée au site.' : 'Opening your email application does not send data to this website.'}</small>
+  </div>
+</section>
+<script>
+  import '../scripts/discovery';
+</script>
+<style>
+  .reg-discovery{max-width:980px;margin:0 auto;color:var(--text,#243a36)}
+  .reg-banner{padding:clamp(20px,4vw,38px);border-radius:15px;background:#153f35;color:#f3f8f4;margin:16px 0 22px}
+  .reg-eyebrow{display:block;font-weight:700;text-transform:uppercase;letter-spacing:.11em;font-size:.75rem;color:#80bfa4}
+  .reg-banner h2{color:inherit;font-size:clamp(1.6rem,3vw,2.2rem);margin:12px 0}
+  .reg-banner p{color:#e1eae3;max-width:680px}
+  .reg-banner .reg-caution{font-size:.9rem;color:#b7d9c7}
+  .reg-steps{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+  .reg-steps span{border:1px solid #c5d9cd;padding:9px 12px;border-radius:7px;font-size:.88rem}
+  .reg-steps b{padding:2px 7px;border-radius:50%;background:#153f35;color:white;margin-right:6px}
+  .reg-small{font-size:.86rem;color:#677b75}
+  .reg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:12px}
+  .reg-discovery :global(.reg-source){display:block;padding:16px;border:1px solid #c5d8cd;border-radius:10px;cursor:pointer;background:var(--surface,#f7fbf9)}
+  .reg-discovery :global(.reg-source:has(input:checked)){outline:2px solid #236d55;outline-offset:-2px;background:#e4f2e9;color:#173e31}
+  .reg-discovery :global(.reg-source input){margin-right:8px;accent-color:#267659}
+  .reg-discovery :global(.reg-source-name){font-weight:700;display:block;margin:9px 0 5px}
+  .reg-discovery :global(.reg-source-kind){color:#5c7770;font-size:.77rem}
+  .reg-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:19px 0}
+  .reg-actions button{font:inherit;background:#1b644b;border:1px solid #1b644b;color:white;border-radius:7px;padding:10px 15px;cursor:pointer}
+  .reg-actions button.reg-secondary{background:transparent;color:inherit;border-color:#86a79a}
+  .reg-actions button:disabled{opacity:.5;cursor:not-allowed}
+  .reg-output{border-top:2px solid #a1c4ae;margin-top:25px;padding-top:25px}
+  .reg-output[hidden]{display:none}
+  .reg-report-heading{padding:20px;border-radius:10px;background:#e4efe7;color:#183e32}
+  .reg-report-heading .reg-eyebrow{color:#286b4e}
+  .reg-discovery :global(.reg-finding){border-top:1px solid #c9d9cf;padding:21px 0}
+  .reg-discovery :global(.reg-finding h4){margin:5px 0 10px}
+  .reg-discovery :global(.reg-finding p){line-height:1.55}
+  .reg-discovery :global(.reg-tag){font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#336c55}
+  .reg-discovery :global(.reg-conflict){color:#99532e}
+  .reg-discovery :global(.reg-question){font-weight:650;border-left:3px solid #65a284;padding-left:14px}
+  .reg-discovery :global(.reg-references){display:flex;flex-wrap:wrap;gap:12px;font-size:.8rem}
+  .reg-discovery :global(.reg-references a){color:#267052}
+  .reg-limit{font-size:.84rem;border-left:3px solid #bb9851;background:#f9f2e8;padding:14px}
+  .reg-challenge{margin:28px 0;padding:23px;border:1px solid #b7d4bf;border-radius:11px}
+  .reg-challenge .reg-eyebrow{color:#377259}
+  .reg-challenge small{display:block;margin-top:13px;color:#667a72}
+  .reg-link{display:inline-block;background:#1b644b;color:white!important;padding:11px 15px;border-radius:8px;text-decoration:none}
+  @media print{.reg-banner,.reg-steps,.reg-grid,.reg-actions,.reg-challenge,.reg-limit,.reg-small[data-noprint]{display:none!important}.reg-output{display:block!important}}
+</style>
