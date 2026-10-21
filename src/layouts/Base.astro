@@ -74,9 +74,11 @@ const canonical = new URL(url(here), Astro.site);
             <span class="label-light">{t.themeToDark}</span>
             <span class="label-dark">{t.themeToLight}</span>
           </button>
+          <button class="menu-toggle" type="button" data-mobile-menu-toggle aria-controls="site-navigation"
+            aria-expanded="false" aria-label={locale === "fr" ? "Afficher le menu de navigation" : "Show navigation menu"}>Menu</button>
         </div>
       </div>
-      <nav class="site-nav" aria-label={t.nav}>
+      <nav class="site-nav" id="site-navigation" aria-label={t.nav}>
         {
           groups.map((group) => {
             const current = group.links.some((link) => link.slug === slug);
@@ -246,6 +248,27 @@ const canonical = new URL(url(here), Astro.site);
         var nav = document.querySelector(".site-nav");
         if (!nav) return;
         var groups = nav.querySelectorAll("details");
+        var toggle = document.querySelector("[data-mobile-menu-toggle]");
+
+        function setMenu(open) {
+          if (!toggle) return;
+          nav.toggleAttribute("data-open", open);
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute("aria-label", document.documentElement.lang === "fr"
+            ? (open ? "Masquer le menu de navigation" : "Afficher le menu de navigation")
+            : (open ? "Hide navigation menu" : "Show navigation menu"));
+          if (!open) groups.forEach(function (group) { group.open = false; });
+        }
+        if (toggle) {
+          // Keep navigation visible for non-JS users.
+          document.documentElement.classList.add("nav-enhanced");
+          toggle.addEventListener("click", function () { setMenu(!nav.hasAttribute("data-open")); });
+          nav.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () { setMenu(false); });
+          });
+          var mobile = window.matchMedia("(max-width: 960px)");
+          if (mobile.addEventListener) mobile.addEventListener("change", function () { setMenu(false); });
+        }
         groups.forEach(function (group) {
           group.addEventListener("toggle", function () {
             if (!group.open) return;
@@ -256,15 +279,15 @@ const canonical = new URL(url(here), Astro.site);
         });
         document.addEventListener("keydown", function (event) {
           if (event.key !== "Escape") return;
-          groups.forEach(function (group) {
-            group.open = false;
-          });
+          var wasOpen = nav.hasAttribute("data-open");
+          groups.forEach(function (group) { group.open = false; });
+          setMenu(false);
+          if (wasOpen && toggle) toggle.focus();
         });
         document.addEventListener("click", function (event) {
-          if (nav.contains(event.target)) return;
-          groups.forEach(function (group) {
-            group.open = false;
-          });
+          if (nav.contains(event.target) || (toggle && toggle.contains(event.target))) return;
+          groups.forEach(function (group) { group.open = false; });
+          if (window.matchMedia("(max-width: 960px)").matches) setMenu(false);
         });
       })();
     </script>
