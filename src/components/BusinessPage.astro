@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { url, type Locale } from '../data/site';
+import { personas } from '../data/business';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const path = (f: string, e: string = f) => url(fr ? `/${f}/` : `/en/${e}/`);
+const profiles = personas[locale];
+---
+<Base locale={locale} slug={fr?'parcours/activite':'start/business'} kicker={fr?'En pratique':'In practice'} title={fr?'Une situation vous parle ?':'Does a situation feel familiar?'} description={fr?'Trois situations pour explorer TENIR selon votre rôle, votre secteur et votre besoin, puis décider si un accompagnement vous serait utile.':'Three situations to explore TENIR through your role, industry and need, then decide whether accompanied work would help.'} lede={fr?'Un agenda à alléger, un agent à préparer, un résultat à éclaircir. Commencez par ce qui vous parle.':'A busy calendar, an agent to prepare, an outcome to understand. Start with what speaks to you.'} sources={fr?'Situations illustratives de conception, pas des références clients ni des intégrations livrées. Ressources : prototype mobile, démonstration technique, standard REG et offre de diagnostic publiée.':'Illustrative design situations, not customer references or delivered integrations. Sources: mobile prototype, technical demonstration, REG standard and published diagnostic offer.'}>
+  <div class="business-journey">
+    <section class="business-personas" aria-labelledby="situations-title">
+      <h2 id="situations-title">{fr?'Qu’est-ce qui vous ressemble ?':'What feels familiar?'}</h2>
+      <p class="section-note">{fr?'Trois situations illustratives, à explorer librement.':'Three illustrative situations to explore at your own pace.'}</p>
+      <div class="persona-grid">
+        {profiles.map(p=><details class="persona-card" id={p.id}>
+          <summary><span class="persona-industry">{p.industry}</span><strong>{p.profile}</strong><span class="persona-need">{p.need}</span><span class="persona-open">{fr?'Explorer cette situation':'Explore this situation'} <span aria-hidden="true">+</span></span></summary>
+          <div class="persona-body"><p>{p.situation}</p><p class="persona-question">{p.question}</p><a class="btn btn-primary" href={url(p.first.href)}>{p.first.label} <span aria-hidden="true">↗</span></a><p class="section-note">{p.first.note}</p><a class="text-link" href={url(p.next.href)}>{p.next.label} →</a><a class="text-link persona-contact" href={path('contact')+`?situation=${p.context}&profil=${p.id}`}>{fr?'Échanger sur ma situation':'Talk about my situation'} →</a></div>
+        </details>)}
+      </div>
+    </section>
+    <section class="business-next" aria-labelledby="business-next-title"><div><p class="eyebrow">{fr?'Si cela vous aide':'If it would help'}</p><h2 id="business-next-title">{fr?'Vous souhaitez examiner votre propre cas ?':'Want to examine your own case?'}</h2><p>{fr?'Le diagnostic accompagné part d’une action et d’une question convenues avec votre équipe. Nous examinons les documents, les traces disponibles et les inconnues pour préparer votre décision.':'The accompanied diagnostic starts with one action and a question agreed with your team. We examine documents, available traces and unknowns to prepare your decision.'}</p></div><div class="business-offer"><span class="role">{fr?'Diagnostic accompagné':'Accompanied diagnostic'}</span><h3>{fr?'Une fiche sourcée. Jusqu’à trois priorités. Une restitution avec vous.':'A sourced sheet. Up to three priorities. A review with you.'}</h3><p>{fr?'Prestation payante · forfait sur devis après cadrage. Le périmètre et le format sont confirmés avant engagement.':'Paid engagement · fixed fee quoted after scoping. Scope and format are confirmed before commitment.'}</p><div class="actions"><a class="btn btn-primary" href={path('offre','offer')}>{fr?'Voir le déroulement et les livrables':'See the process and deliverables'} →</a><a class="text-link" href={path('offre/exemple','offer/example')}>{fr?'D’abord, regarder un exemple':'First, look at an example'} →</a></div><p class="section-note">{fr?'Les ateliers, la formation ou un travail d’architecture peuvent faire l’objet d’un cadrage distinct.':'Workshops, training or architecture work can be scoped separately.'} <a href={path('produits-et-services','products-and-services')}>{fr?'Autres accompagnements':'Other engagements'} →</a></p></div></section>
+    <div class="reader-contact"><p>{fr?'Vous ne vous reconnaissez pas dans ces trois situations ?':'None of these three situations fits?'}</p><a class="text-link" href={path('contact')}>{fr?'Parlons de votre besoin avec vos mots':'Tell us what you need in your own words'} →</a></div>
+  </div>
+</Base>

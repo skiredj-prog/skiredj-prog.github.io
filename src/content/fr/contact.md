@@ -1,8 +1,8 @@
 ---
 title: Contact
-kicker: Auteur · écosystème voisin
-description: Écrire à Abdelaziz Skiredj, citer les bons identifiants, et situer Cercle Inverse et la spécification de trajectoires hors de TENIR.
-lede: TENIR a un auteur identifié et des textes voisins qui ne doivent pas être fondus dans le cadre.
+kicker: Contact · premier échange
+description: Échanger avec Abdelaziz Skiredj sur une action d’agent, préparer un diagnostic ou poser une question sur TENIR.
+lede: Une question, une idée à explorer ou quelque chose qui reste flou ? Vous pouvez nous écrire à partir de là.
 sources: CITATION.cff ; KB2, ligne antérieure, pour le croisement de genèse seulement ; Cercle Inverse v1.1 ; Architecture indépendante v2 du 2 octobre 2026
 ---
 

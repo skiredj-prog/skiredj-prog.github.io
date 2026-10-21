@@ -1,8 +1,8 @@
 ---
 title: Contact
-kicker: Author · neighbouring ecosystem
-description: Write to Abdelaziz Skiredj, cite the right identifiers, and keep Cercle Inverse and the trajectory specification outside TENIR.
-lede: TENIR has an identified author and neighbouring texts that must not be folded into the framework.
+kicker: Contact · first conversation
+description: Discuss an agent action with Abdelaziz Skiredj, prepare a diagnostic or ask a question about TENIR.
+lede: A question, an idea to explore or something that remains unclear? You can write to us from there.
 sources: CITATION.cff; KB2, prior rendering line, for the genesis crossing only; Cercle Inverse v1.1; Independent architecture v2 of 2 October 2026
 ---
 

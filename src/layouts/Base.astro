@@ -1,295 +1,82 @@
 ---
-import "../styles/fonts.css";
-import "../styles/site.css";
-import { alternate, copy, navContact, navGroups, navProducts, url, type Locale } from "../data/site";
-
-interface Props {
-  locale: Locale;
-  slug: string;
-  title: string;
-  description: string;
-  kicker: string;
-  lede: string;
-  sources: string;
-}
-
+import '../styles/fonts.css';
+import '../styles/site.css';
+import '../styles/experience.css';
+import '../styles/journeys.css';
+import Home from '../components/Home.astro';
+import ContactBrief from '../components/ContactBrief.astro';
+import { journeys, journeyHref } from '../data/journeys';
+import { businessHref } from '../data/business';
+import { alternate, copy, navContact, navGroups, navProducts, url, type Locale } from '../data/site';
+interface Props { locale: Locale; slug: string; title: string; description: string; kicker: string; lede: string; sources: string; }
 const { locale, slug, title, description, kicker, lede, sources } = Astro.props;
-const t = copy[locale];
-const groups = navGroups[locale];
-const products = navProducts[locale];
-const contact = navContact[locale];
-const home = slug === "";
-const other = slug === "404" ? (locale === "fr" ? "/en/" : "/") : alternate(locale, slug);
-const here = slug === "404" ? "/" : locale === "fr" ? (slug ? `/${slug}/` : "/") : `/en/${slug ? `${slug}/` : ""}`;
-const canonical = new URL(url(here), Astro.site);
+const fr=locale==='fr', t=copy[locale], groups=navGroups[locale], products=navProducts[locale], contact=navContact[locale];
+const home=slug==='';
+const isJourney=slug.startsWith('parcours/')||slug.startsWith('start/');
+const isBusiness=slug==='parcours/activite'||slug==='start/business';
+const other=slug==='404'?(fr?'/en/':'/'):alternate(locale,slug);
+const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}`;
+const canonical=new URL(url(here),Astro.site);
+const path=(f:string,e:string=f)=>url(fr?`/${f}/`:`/en/${e}/`);
+const selectedJourney=journeys[locale].find(j=>slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`));
+const readerContact=path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
+const demo=groups[2];
+const resources=[...groups[3].links,...groups[4].links,...groups[0].links.filter(x=>x.slug!=='concepts'),groups[1].links[0],groups[1].links[4],{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}];
+const footerGroups=[
+  {id:'needs',label:fr?'Votre point de départ':'Your starting point',links:[...journeys[locale].map(j=>({slug:fr?`parcours/${j.slug}`:`start/${j.slug}`,href:journeyHref(locale,j),label:j.label})),{slug:fr?'parcours/activite':'start/business',href:businessHref(locale),label:fr?'En pratique':'In practice'}]},
+  {id:'try',label:fr?'Explorer et essayer':'Explore and try',links:[{slug:'prototype',href:'https://mobile.tenirlabs.cc/discover',label:fr?'Prototype mobile':'Mobile prototype'},demo.links[0],{slug:fr?'offre/exemple':'offer/example',href:fr?'/offre/exemple/':'/en/offer/example/',label:fr?'Un exemple sourcé':'A sourced example'}]},
+  {id:'study',label:fr?'Approfondir':'Go deeper',links:[groups[3].links[1],groups[3].links[3],...groups[4].links.slice(1)]},
+  {id:'talk',label:fr?'Échanger':'Talk',links:[contact,{slug:fr?'offre':'offer',href:fr?'/offre/':'/en/offer/',label:fr?'Un accompagnement':'Accompanied work'},{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}]},
+];
+const mainTitle=home?(fr?'TENIR — Diagnostic et gouvernance sous pression':'TENIR — Diagnosis and governance under pressure'):`${title} — TENIR`;
+const mainDescription=home?(fr?'TENIR : cadre de diagnostic et de gouvernance des systèmes sous pression. Individus, organisations, institutions, États : ce qui doit être préservé, les options et les bases d’une décision.':'TENIR: a diagnostic and governance framework for systems under pressure. Individuals, organizations, institutions and states: what must be preserved, the options and the basis for a decision.'):description;
 ---
-
 <!doctype html>
 <html lang={locale} data-theme="light">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title === "TENIR" ? "TENIR" : `${title} — TENIR`}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
-    <meta name="theme-color" content="#16141c" />
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{mainTitle}</title><meta name="description" content={mainDescription} />
+    <link rel="canonical" href={canonical} /><link rel="alternate" hreflang={locale} href={canonical} /><link rel="alternate" hreflang={fr?'en':'fr'} href={new URL(url(other),Astro.site)} />
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <meta name="theme-color" content="#f6f7f2" />
+    <meta property="og:title" content={mainTitle} /><meta property="og:description" content={mainDescription} /><meta property="og:type" content="website" /><meta property="og:url" content={canonical} /><meta property="og:locale" content={fr?'fr_FR':'en_GB'} />
     <script is:inline>
-      (function () {
-        try {
-          var stored = localStorage.getItem("tenir-theme");
-          var theme = stored || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-          document.documentElement.dataset.theme = theme;
-        } catch (e) {}
-      })();
+      document.documentElement.classList.add('js');
+      try { var saved=localStorage.getItem('tenir-theme'); document.documentElement.dataset.theme=(saved==='dark'||saved==='light')?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); } catch(e) {}
     </script>
   </head>
   <body>
     <a class="skip" href="#content">{t.skip}</a>
-    {
-      !home && (
-        <div class="banner">
-          <p>{t.status}</p>
-        </div>
-      )
-    }
     <header class="site-header">
-      <div class="header-row">
-        <a class="brand" href={url(locale === "fr" ? "/" : "/en/")}>
-          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
-            <rect x="1" y="1" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
-            <path d="M10 8h8.5M14.2 8v16M10 24h8.5" fill="none" stroke="currentColor" stroke-width="1.4"></path>
-          </svg>
-          <span>
-            <span class="brand-name">TENIR</span>
-            <span class="brand-sub">{locale === "fr" ? "Diagnostic et gouvernance" : "Diagnostic and governance"}</span>
-          </span>
-        </a>
-        <div class="tools">
-          <nav class="lang" aria-label={t.lang}>
-            <a href={url(locale === "fr" ? here : other)} lang="fr" aria-current={locale === "fr" && slug !== "404" ? "true" : undefined}>FR</a>
-            <a href={url(locale === "en" ? here : other)} lang="en" aria-current={locale === "en" && slug !== "404" ? "true" : undefined}>EN</a>
-          </nav>
-          <button class="theme" type="button" data-theme-toggle aria-pressed="false">
-            <span class="label-light">{t.themeToDark}</span>
-            <span class="label-dark">{t.themeToLight}</span>
-          </button>
-          <button class="menu-toggle" type="button" data-mobile-menu-toggle aria-controls="site-navigation"
-            aria-expanded="false" aria-label={locale === "fr" ? "Afficher le menu de navigation" : "Show navigation menu"}>Menu</button>
-        </div>
+      <div class="header-inner">
+        <a class="brand" href={url(fr?'/':'/en/')} aria-label={fr?'TENIR — accueil':'TENIR — home'}><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="1.2"></rect><path d="M10 8h12M16 8v16M10 24h12" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg><span class="brand-name">TENIR<span class="brand-labs">LABS</span></span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span>Menu</span><span class="menu-symbol" aria-hidden="true">☰</span></button>
+        <nav class="site-nav" id="main-navigation" aria-label={t.nav}>
+          <a href={url(journeyHref(locale,journeys[locale][0]))} aria-current={slug===(fr?'parcours/decouvrir':'start/discover')?'page':undefined}>{fr?'Découvrir':'Discover'}</a>
+          <details class:list={['nav-group',selectedJourney&&'is-current']}><summary>{fr?'Vos besoins':'Your needs'}</summary><div class="nav-menu needs-menu"><p class="needs-intro">{fr?'Qu’est-ce qui vous serait utile ?':'What would be useful to you?'}</p>{journeys[locale].map(j=><a href={url(journeyHref(locale,j))} aria-current={slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`)?'page':undefined}><strong>{j.label} <span aria-hidden="true">↗</span></strong><small>{j.need}</small></a>)}<a class="needs-question" href={path('contact')}>{fr?'Vous cherchez autre chose ? Posez votre question.':'Looking for something else? Ask your question.'} →</a></div></details>
+          <a href={url(businessHref(locale))} aria-current={slug===(fr?'parcours/activite':'start/business')?'page':undefined}>{fr?'En pratique':'In practice'}</a>
+          <details class="nav-group"><summary>{fr?'Essayer':'Try it'}</summary><div class="nav-menu"><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Une tâche de rendez-vous':'An appointment task'}</strong><small>{fr?'Prototype mobile · aucun vrai message envoyé':'Mobile prototype · no real messages sent'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
+          <details class:list={['nav-group',resources.some(x=>x.slug===slug)&&'is-current']}><summary>{fr?'Ressources':'Resources'}</summary><div class="nav-menu resource-menu">{resources.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
+          <div class="nav-mobile-tools"><a href={url(other)} lang={fr?'en':'fr'}>{fr?'Read in English':'Lire en français'}</a></div>
+        </nav>
+        <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={readerContact}>{fr?'Poser une question':'Ask a question'} <span aria-hidden="true">↗</span></a></div>
       </div>
-      <nav class="site-nav" id="site-navigation" aria-label={t.nav}>
-        {
-          groups.map((group) => {
-            const current = group.links.some((link) => link.slug === slug);
-            return (
-              <details class:list={["nav-group", current && "is-current"]}>
-                <summary>{group.label}</summary>
-                <div class="nav-menu">
-                  {group.links.map((link) => (
-                    <a href={url(link.href)} aria-current={link.slug === slug ? "page" : undefined}>
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              </details>
-            );
-          })
-        }
-        <a class="nav-end" href={url(products.href)} aria-current={products.slug === slug ? "page" : undefined}>
-          {products.label}
-        </a>
-        <a href={url(contact.href)} aria-current={contact.slug === slug ? "page" : undefined}>
-          {contact.label}
-        </a>
-      </nav>
     </header>
-    <main id="content" class:list={["doc", home && "home"]}>
-      <article>
-        {
-          home ? (
-            <header class="hero">
-              <p class="eyebrow">{t.eyebrow}</p>
-              <h1>{title}</h1>
-              <p class="headline">{t.headline}</p>
-              <p class="hold-mark" aria-hidden="true">
-                <span class="hold-receipt">{locale === "fr" ? "reçu" : "receipt"}</span>
-                <span class="hold-break"></span>
-                <span class="hold-word">HOLD</span>
-              </p>
-              <div class="actions">
-                <a class="btn btn-primary" href={t.cadrerHref}>{t.cadrer}</a>
-              </div>
-              <p class="sources">{t.sources} : {sources}</p>
-            </header>
-          ) : (
-            <header class="doc-head">
-              <p class="kicker">{kicker}</p>
-              <h1>{title}</h1>
-              <p class="lede">{lede}</p>
-              <p class="sources">{t.sources} : {sources}</p>
-            </header>
-          )
-        }
-        <div class="prose">
-          <slot />
-        </div>
-      </article>
-      <aside class="toc" id="toc" hidden>
-        <p>{t.toc}</p>
-        <ol></ol>
-      </aside>
+    <main id="content" class:list={[home?'home-main':'doc',slug==='contact'&&'contact-page',isBusiness&&'business-page']} tabindex="-1">
+      {home ? <><Home locale={locale}/><details class="reading-note"><summary>{fr?'Statut, sources et limites de cette présentation':'Status, sources and limits of this presentation'}</summary><div class="prose"><p class="sources">{t.sources} : {sources}</p><slot /></div></details></> : <>
+        <article>
+          <nav class="breadcrumb" aria-label={fr?'Fil d’Ariane':'Breadcrumb'}><a href={url(fr?'/':'/en/')}>{fr?'Accueil':'Home'}</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
+          <header class="doc-head"><p class="kicker">{kicker}</p><h1>{title}</h1><p class="lede">{lede}</p><details class="source-disclosure"><summary>{fr?'Sources et contexte de lecture':'Sources and reading context'}</summary><p class="sources">{sources}</p><p>{t.status} <a href={path('statut','status')}>{fr?'Lire le statut détaillé':'Read the detailed status'} →</a></p></details></header>
+          {slug==='contact'&&<ContactBrief locale={locale}/>}
+          {(slug==='offre'||slug==='offer'||slug==='produits-et-services'||slug==='products-and-services')&&<div class="offer-summary"><div><span class="role">{fr?'Le point de départ':'The starting point'}</span><strong>{fr?'Un cas précis. Une fiche sourcée. Une suite à décider.':'One precise case. A sourced sheet. A next step to decide.'}</strong><p>{fr?'Cadrage proposé : 30 min · forfait sur devis · format à confirmer':'Proposed scoping: 30 min · fixed quote · format to confirm'}</p></div><a class="btn btn-primary" href={path('contact')}>{fr?'Préparer le premier échange':'Prepare the first conversation'} →</a></div>}
+          <details class="mobile-toc" data-mobile-toc hidden><summary>{t.toc}</summary><ol></ol></details>
+          {isBusiness?<slot />:slug==='contact'?<details class="contact-references"><summary>{fr?'Références de l’auteur et citations':'Author references and citations'}</summary><div class="prose"><slot /></div></details>:<div class="prose"><slot /></div>}
+          {slug!=='404'&&!isJourney&&<nav class="next-reading" aria-label={fr?'Poursuivre votre parcours':'Continue your journey'}><div><span class="role">{fr?'À votre rythme':'At your own pace'}</span><h2>{fr?'Qu’est-ce qui vous serait utile maintenant ?':'What would be useful to you now?'}</h2></div><div class="actions"><a class="btn" href={url(journeyHref(locale,journeys[locale][0]))}>{fr?'Une explication simple':'A simple explanation'} →</a><a class="btn btn-primary" href={slug==='contact'?path('offre/exemple','offer/example'):path('contact')}>{slug==='contact'?(fr?'Voir un exemple':'See an example'):(fr?'Poser une question':'Ask a question')} ↗</a></div></nav>}
+        </article>
+        <aside class="toc" id="toc" hidden><p>{t.toc}</p><ol></ol><a class="toc-help" href={readerContact}>{fr?'Une question en lisant ?':'A question while reading?'}<strong>{fr?'Écrire à Abdelaziz':'Write to Abdelaziz'} ↗</strong></a><a class="toc-help" href={url(journeyHref(locale,journeys[locale][0]))}>{fr?'Revenir à une explication simple':'Return to a simple explanation'} →</a></aside>
+      </>}
     </main>
-    <footer class="site-footer">
-      <div class="inner">
-        <p>{t.footerNote}</p>
-        <p>
-          <a href={url(locale === "fr" ? "/publications/" : "/en/publications/")}>Publications</a>
-          ·
-          <a href={url(locale === "fr" ? "/contribuer/" : "/en/contribute/")}>{locale === "fr" ? "Contribuer" : "Contribute"}</a>
-          ·
-          <a href={url(products.href)}>{products.label}</a>
-          ·
-          <a href={url(contact.href)}>Contact</a>
-          ·
-          <a href="https://github.com/skiredj-prog/tenir_governance">GitHub</a>
-          ·
-          <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>
-        </p>
-      </div>
-    </footer>
-    <script is:inline>
-      (function () {
-        var root = document.documentElement;
-        var button = document.querySelector("[data-theme-toggle]");
-        function sync() {
-          if (!button) return;
-          button.setAttribute("aria-pressed", root.dataset.theme === "dark" ? "true" : "false");
-        }
-        sync();
-        if (button) {
-          button.addEventListener("click", function () {
-            var next = root.dataset.theme === "dark" ? "light" : "dark";
-            root.dataset.theme = next;
-            try { localStorage.setItem("tenir-theme", next); } catch (e) {}
-            sync();
-          });
-        }
-        document.querySelectorAll("[data-scenario]").forEach(function (root) {
-          var panels = Array.prototype.slice.call(root.querySelectorAll("[data-panel]"));
-          var tabs = Array.prototype.slice.call(root.querySelectorAll("[data-step]"));
-          var prev = root.querySelector("[data-prev]");
-          var next = root.querySelector("[data-next]");
-          if (!panels.length || panels.length !== tabs.length || !prev || !next) return;
-          var index = 0;
-          function show(i) {
-            if (i < 0 || i >= panels.length) return;
-            index = i;
-            root.setAttribute("data-ready", "true");
-            panels.forEach(function (panel, n) {
-              panel.hidden = n !== index;
-            });
-            tabs.forEach(function (tab, n) {
-              var on = n === index;
-              tab.setAttribute("aria-selected", on ? "true" : "false");
-              tab.tabIndex = on ? 0 : -1;
-              if (on) tab.setAttribute("aria-current", "step");
-              else tab.removeAttribute("aria-current");
-            });
-            prev.disabled = index === 0;
-            next.disabled = index === panels.length - 1;
-          }
-          function move(i) {
-            show(i);
-            tabs[index].focus();
-          }
-          tabs.forEach(function (tab, n) {
-            tab.setAttribute("role", "tab");
-            tab.addEventListener("click", function () { show(n); });
-            tab.addEventListener("keydown", function (event) {
-              var key = event.key;
-              if (key === "ArrowRight" || key === "ArrowDown") {
-                event.preventDefault();
-                move(Math.min(index + 1, panels.length - 1));
-              } else if (key === "ArrowLeft" || key === "ArrowUp") {
-                event.preventDefault();
-                move(Math.max(index - 1, 0));
-              } else if (key === "Home") {
-                event.preventDefault();
-                move(0);
-              } else if (key === "End") {
-                event.preventDefault();
-                move(panels.length - 1);
-              }
-            });
-          });
-          prev.addEventListener("click", function () { show(index - 1); });
-          next.addEventListener("click", function () { show(index + 1); });
-          show(0);
-        });
-        var prose = document.querySelector(".prose");
-        var toc = document.getElementById("toc");
-        if (!prose || !toc) return;
-        var heads = prose.querySelectorAll("h2");
-        if (heads.length < 2) return;
-        var list = toc.querySelector("ol");
-        heads.forEach(function (h) {
-          if (!h.id) h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "");
-          var li = document.createElement("li");
-          var a = document.createElement("a");
-          a.href = "#" + h.id;
-          a.textContent = h.textContent;
-          li.appendChild(a);
-          list.appendChild(li);
-        });
-        toc.hidden = false;
-      })();
-      (function () {
-        var nav = document.querySelector(".site-nav");
-        if (!nav) return;
-        var groups = nav.querySelectorAll("details");
-        var toggle = document.querySelector("[data-mobile-menu-toggle]");
-
-        function setMenu(open) {
-          if (!toggle) return;
-          nav.toggleAttribute("data-open", open);
-          toggle.setAttribute("aria-expanded", open ? "true" : "false");
-          toggle.setAttribute("aria-label", document.documentElement.lang === "fr"
-            ? (open ? "Masquer le menu de navigation" : "Afficher le menu de navigation")
-            : (open ? "Hide navigation menu" : "Show navigation menu"));
-          if (!open) groups.forEach(function (group) { group.open = false; });
-        }
-        if (toggle) {
-          // Keep navigation visible for non-JS users.
-          document.documentElement.classList.add("nav-enhanced");
-          toggle.addEventListener("click", function () { setMenu(!nav.hasAttribute("data-open")); });
-          nav.querySelectorAll("a").forEach(function (link) {
-            link.addEventListener("click", function () { setMenu(false); });
-          });
-          var mobile = window.matchMedia("(max-width: 960px)");
-          if (mobile.addEventListener) mobile.addEventListener("change", function () { setMenu(false); });
-        }
-        groups.forEach(function (group) {
-          group.addEventListener("toggle", function () {
-            if (!group.open) return;
-            groups.forEach(function (other) {
-              if (other !== group) other.open = false;
-            });
-          });
-        });
-        document.addEventListener("keydown", function (event) {
-          if (event.key !== "Escape") return;
-          var wasOpen = nav.hasAttribute("data-open");
-          groups.forEach(function (group) { group.open = false; });
-          setMenu(false);
-          if (wasOpen && toggle) toggle.focus();
-        });
-        document.addEventListener("click", function (event) {
-          if (nav.contains(event.target) || (toggle && toggle.contains(event.target))) return;
-          groups.forEach(function (group) { group.open = false; });
-          if (window.matchMedia("(max-width: 960px)").matches) setMenu(false);
-        });
-      })();
-    </script>
+    <footer class="site-footer"><div class="footer-top"><div class="footer-brand"><a class="brand" href={url(fr?'/':'/en/')}><span class="brand-name">TENIR<span class="brand-labs">LABS</span></span></a><p>{fr?'Des actions encadrées.\nDes décisions éclairées.':'Bounded actions.\nInformed decisions.'}</p><a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc ↗</a><a class="footer-prototype" href="https://mobile.tenirlabs.cc/discover">{fr?'Explorer le prototype mobile':'Explore the mobile prototype'} ↗</a></div><div class="footer-links">{footerGroups.map(group=><div><h2>{group.label}</h2>{group.links.map(link=><a href={url(link.href)}>{link.label}</a>)}</div>)}</div></div><div class="footer-bottom"><p>© 2026 Abdelaziz Skiredj · TENIR Labs</p><p>{fr?'Cadre en développement · démonstrations bornées · aucune certification':'Framework in development · bounded demonstrations · no certification'}</p><a href={path('statut','status')}>{fr?'Statut et limites':'Status and limits'} ↗</a></div></footer>
+    <script src="../scripts/site.ts"></script>
   </body>
 </html>

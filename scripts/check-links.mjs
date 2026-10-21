@@ -67,7 +67,8 @@ for (const [url, html] of byUrl) {
       }
       continue;
     }
-    const [pathPart, hash] = raw.split("#");
+    const [pathWithQuery, hash] = raw.split("#");
+    const [pathPart] = pathWithQuery.split("?");
     const target = resolveHref(url, pathPart || "/");
     const fileLike = /\.[a-z0-9]+$/i.test(target);
     if (fileLike) {

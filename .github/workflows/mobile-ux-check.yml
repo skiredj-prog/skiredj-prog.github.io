@@ -1,18 +1,17 @@
-name: Mobile navigation P0 regression
+name: UX mobile header regression
 on:
   pull_request:
     paths:
-      - 'src/layouts/Base.astro'
-      - 'src/styles/site.css'
-      - 'scripts/check-mobile-nav.mjs'
-      - '.github/workflows/mobile-nav.yml'
+      - 'src/styles/experience.css'
+      - 'scripts/check-ux-mobile-header.mjs'
+      - '.github/workflows/mobile-ux-check.yml'
   push:
     branches:
-      - fix/p0-mobile-navigation-not-sticky
+      - codex/ux-journey-redesign
 permissions:
   contents: read
 jobs:
-  mobile-browser:
+  responsive-ux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,11 +22,11 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run check:links
-      - name: Test responsive menu in Chromium
+      - name: Chromium mobile regression
         run: |
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
-          python -m http.server 4173 --bind 127.0.0.1 --directory dist >/tmp/tenir-mobile-http.log 2>&1 &
+          python -m http.server 4173 --bind 127.0.0.1 --directory dist >/tmp/tenir-ux.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID' EXIT
-          node scripts/check-mobile-nav.mjs
+          node scripts/check-ux-mobile-header.mjs
