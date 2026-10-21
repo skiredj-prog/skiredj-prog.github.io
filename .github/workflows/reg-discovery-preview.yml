@@ -49,6 +49,7 @@ jobs:
           SERVER_PID=$!
           trap 'kill $SERVER_PID' EXIT
           node scripts/check-discovery-browser.mjs
+          node scripts/check-ux-mobile-header.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: tenir-reg-discovery-private-preview
