@@ -36,7 +36,7 @@ const steps = fr ? [
         <a class="btn btn-primary" href={path('parcours/decouvrir','start/discover')}>{fr ? 'Découvrir le cadre' : 'Explore the framework'} <span aria-hidden="true">↗</span></a>
         <a class="btn btn-quiet" href={path('contact')}>{fr ? 'Poser ma question' : 'Ask my question'} <span aria-hidden="true">→</span></a>
       </div>
-      <p class="hero-caption">{fr ? 'En développement. Des exemples pour explorer, une personne pour échanger.' : 'In development. Examples to explore, a person to talk to.'}</p>
+      <p class="hero-caption">{fr ? 'En développement. Des exemples pour explorer, une personne pour échanger.' : 'In development. Examples to explore, a person to talk to.'} <a href={path('produits-et-services','products-and-services')}>{fr ? 'Voir les produits et services' : 'See products and services'} →</a></p>
     </div>
     <nav class="hero-paths" aria-label={fr?'Choisir selon votre besoin':'Choose by what you need'}>
       <p class="guide-kicker">{fr?'Selon ce que vous cherchez':'Based on what you need'}</p>
