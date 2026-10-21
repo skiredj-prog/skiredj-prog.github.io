@@ -797,3 +797,82 @@ h1 {
   body { background: white; color: black; }
   a { color: black; }
 }
+
+/* P0 mobile navigation: the whole header must scroll away with the document.
+   JS-enhanced visitors get a collapsed menu. Without JS the links stay visible. */
+.menu-toggle { display: none; }
+
+@media (max-width: 960px) {
+  .site-header {
+    position: static;
+    top: auto;
+    backdrop-filter: none;
+  }
+  .header-row {
+    gap: .4rem .75rem;
+    padding-block: .65rem;
+  }
+  html.nav-enhanced .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 58px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-raised);
+    color: var(--ink);
+    font: 600 .9rem var(--sans);
+    padding: .4rem .7rem;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  html.nav-enhanced .site-nav:not([data-open]) { display: none; }
+  .site-nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0;
+    overflow: visible;
+    max-height: none;
+    padding: 0 0 .7rem;
+  }
+  .site-nav > a,
+  .site-nav .nav-group > summary {
+    display: block;
+    min-height: 44px;
+    padding: .65rem .6rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-group { width: 100%; }
+  .nav-menu {
+    position: static;
+    top: auto;
+    left: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    min-width: 0;
+    box-shadow: none;
+    border: 0;
+    border-left: 2px solid var(--line);
+    margin: 0 .3rem .6rem;
+    padding: 0;
+  }
+  .nav-menu a {
+    display: block;
+    min-height: 44px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    padding: .6rem .8rem;
+  }
+  .nav-end { margin-left: 0; }
+}
+@media (max-width: 380px) {
+  .brand-name { font-size: 1.4rem; }
+  .brand-sub { font-size: .59rem; }
+  .tools { gap: .3rem; }
+  .lang a { padding-inline: .4rem; }
+}
