@@ -24,10 +24,10 @@ try {
     assert(!(await nav.isVisible()), 'Escape closes navigation');
     assert.equal(await toggle.getAttribute('aria-expanded'), 'false');
     await toggle.click();
-    await page.evaluate(() => window.scrollTo(0, 900));
+    await page.evaluate(() => window.scrollTo({ top: 900, behavior: "instant" }));
     const bottom = await page.locator('.site-header').evaluate(el => el.getBoundingClientRect().bottom);
     assert(bottom < 0, `opened header scrolls out of view at ${width} (bottom=${bottom})`);
-    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
     await page.locator('main').click({ position: { x: 5, y: 5 } });
     assert(!(await nav.isVisible()), 'outside click closes navigation');
     const overflow = await page.evaluate(() => ({
