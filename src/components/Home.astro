@@ -44,6 +44,13 @@ const steps = fr ? [
       {journeys[locale].map((j,i)=><a href={url(journeyHref(locale,j))}><span><strong>{j.label}</strong><small>{shortNeeds[i]}</small></span><span aria-hidden="true">↗</span></a>)}
     </nav>
   </section>
+  <section class="landing-section" id="reg-discovery" aria-labelledby="discovery-intro-title" style="padding:clamp(20px,4vw,40px);border:1px solid #adcaba;border-radius:14px;margin:18px 0;background:var(--surface,#f7faf8)">
+    <p class="eyebrow">REG Discovery · {fr?'Prévisualisation exploratoire':'Exploratory preview'}</p>
+    <h2 id="discovery-intro-title" style="max-width:800px">{fr?'Votre système fonctionne. Jusqu’à ce qu’une hypothèse ne tienne plus.':'Your system works. Until an assumption doesn’t.'}</h2>
+    <p style="max-width:720px">{fr?'Qu’est-ce qu’un comportement attendu suppose, sans que personne l’ait explicité ? Sélectionnez vos référentiels et explorez les dépendances invisibles qui pourraient changer une décision.':'What unspoken conditions does a desired system behavior depend on? Select frameworks and explore hidden assumptions that may change a decision.'}</p>
+    <div class="actions"><a class="btn btn-primary" href={path('discovery')}>{fr?'Explorer REG Discovery':'Explore REG Discovery'} →</a><a class="btn" href={path('contact')}>{fr?'Discuter un cas concret':'Discuss a real case'} →</a></div>
+    <p class="section-note">{fr?'Aucun audit du système. Aucune certification. Analyse exploratoire sur sources et hypothèses déclarées.':'No system audit. No certification. Exploratory findings based on sources and declared assumptions.'}</p>
+  </section>
   <section class="landing-section incident-section" id="comprendre" aria-labelledby="incident-title">
     <div class="incident-intro"><p class="eyebrow">{fr?'Une application aux agents':'An application to agents'}</p><h2 id="incident-title">{fr?'La confirmation manque.' : 'The confirmation is missing.'}<br /><em>{fr?'Vous faites quoi ?':'What would you do?'}</em></h2><p>{fr?'Imaginez : un agent a envoyé votre commande, mais le service ne répond plus. Vous ne savez pas si elle a été créée.':'Imagine: an agent sent your order, but the service stops responding. You do not know whether the order was created.'}</p><p class="section-note">{fr?'Explorez la réaction qui vous vient. Il n’y a ni score, ni opération lancée.':'Explore the reaction that comes to mind. There is no score and no operation is launched.'}</p></div>
     <div class="incident-conversation">
