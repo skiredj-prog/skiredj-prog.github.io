@@ -41,6 +41,14 @@ jobs:
       - run: npm run build
       - run: npm run check:links
       - run: node scripts/check-discovery.mjs --dist
+      - name: End-to-end browser smoke (Chromium, desktop and mobile)
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          python -m http.server 4173 --bind 127.0.0.1 --directory dist > /tmp/reg-discovery-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          node scripts/check-discovery-browser.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: tenir-reg-discovery-private-preview
