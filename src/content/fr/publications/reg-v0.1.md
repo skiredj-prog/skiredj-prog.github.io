@@ -82,7 +82,7 @@ Aucune capacité n'a le droit de transformer silencieusement une hypothèse en o
 
 Deux entrées visibles : **« Je veux anticiper mes risques »** et **« Je veux préparer un contrôle »**. Un accès direct aux capacités spécialisées reste possible.
 
-Une démonstration commune illustre les deux parcours avec un paiement fictif dont la confirmation a été perdue. Aucun montant, journal ou résultat de cette démonstration ne constitue une preuve sur le système d'un client.
+Une démonstration commune des deux parcours est envisagée autour d'un paiement fictif dont la confirmation a été perdue. L'exemple technique actuellement publié illustre seulement une partie de cette situation, notamment la distinction entre envoi et résultat confirmé ; il ne démontre pas les deux parcours de REG v0.1. Aucun montant, journal ou résultat de cette démonstration ne constitue une preuve sur le système d'un client.
 
 La restitution, compréhensible par un décideur non technique, présente :
 1. la question et le périmètre ;
