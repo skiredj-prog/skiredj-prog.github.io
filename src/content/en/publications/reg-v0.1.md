@@ -82,7 +82,7 @@ No component may silently promote hypotheses into obligations, candidate specifi
 
 Present two clear entries: **“Anticipate my risks”** and **“Prepare for an audit or review.”** Allow direct access to specialized capabilities.
 
-Use one shared, explicitly fictional example: a payment whose acknowledgement was lost. No values, logs or results in this example are evidence about a real client.
+A shared, explicitly fictional example is planned around a payment whose acknowledgement was lost. The currently published technical example illustrates only part of that situation, particularly the difference between dispatch and confirmed outcome; it does not demonstrate both REG v0.1 journeys. No values, logs or results in this example are evidence about a real client.
 
 A decision-maker's report should include:
 1. question and scope;
