@@ -8,6 +8,24 @@ sources: REG v0.1 Working Draft — October 21, 2026
 
 # REG — Prevent · Prepare · Demonstrate
 
+## Start with a guided diagnostic
+
+AI may already be embedded in email, productivity suites, CRM, recruitment or supplier software. Its presence and use must be **checked**, never assumed. Before any installation, we propose an initial remote conversation to define a business question, followed by a scoped diagnostic.
+
+**What we examine:** where AI is actually used, what data it processes, which decisions or actions it influences, and which safeguards or evidence are missing.
+
+**What you receive, according to the agreed scope:** a summary of observed and reported uses, risks to investigate, unknowns and prioritized next steps. This is neither a certification audit nor production validation.
+
+**How to begin:** an exploratory conversation, then a proposal defining scope, authorized access, confidentiality, deliverables and commercial terms. No technical access or sensitive document is required to make contact.
+
+[Discuss a guided diagnostic →](/en/contact/)
+
+## After the diagnostic: optional next steps
+
+A **non-blocking observation** pilot may be considered if integration is justified and authorized. It requires assessment of technical impact, data handling and responsibilities; it is not described as risk-free or ready for every client.
+
+Blocking governance (**ENFORCE**) is a later step, subject to validation of invariants, failure modes and bounded guarantees. It is neither automatic nor included in the diagnostic.
+
 ## The problem
 
 Two recurring gaps may arise in organizations:
