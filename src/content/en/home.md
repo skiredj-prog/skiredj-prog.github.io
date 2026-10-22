@@ -17,7 +17,7 @@ What is **claimed** is not always **verified**
 What is **in place** is not always **provable**
 
 **TENIR** is the framework that makes that gap visible.
-**REG** is its operational tool: prevent upstream, prepare downstream, demonstrate with clarity.
+**REG** offers two complementary journeys: anticipate risks upstream, prepare supporting evidence downstream, and distinguish what is established from what remains to be checked.
 
 ### Two directions. One standard.
 

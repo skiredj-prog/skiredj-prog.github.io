@@ -7,7 +7,7 @@ sources: "dossier local du démonstrateur TENIR/REG, figé ; preuves #5 et #6 ; 
 ---
 
 <div class="callout callout-limit">
-  <p><strong>Simulation locale.</strong> Fiche illustrative préparée le 20 octobre 2026 à partir du dossier du démonstrateur TENIR/REG. Aucun client, entretien, incident réel ou gain commercial n’est représenté. La fiche est rédigée à la main. Les recommandations ne sont pas des résultats signés du moteur. Un essai de ce démonstrateur ne démontre pas le système d’un client.</p>
+  <p><strong>Exemple simulé — données fictives.</strong> Fiche illustrative préparée le 20 octobre 2026 à partir du dossier du démonstrateur TENIR/REG. Aucun client, entretien, incident réel ou gain commercial n’est représenté. La fiche est rédigée à la main. Les recommandations ne sont pas des résultats signés du moteur. Un essai de ce démonstrateur ne démontre pas le système d’un client.</p>
 </div>
 
 <p>La synthèse illustre la fiche remise à l’issue du service décrit sur <a href="/offre/">l’offre</a>. Les annexes explicitent ses sources et les limites de l’exemple. PASS, ici, est un verdict d’exécution. Ce n’est pas une posture. Ce cas montre une issue UNKNOWN après un PASS. Il ne montre pas un nouveau verdict HOLD.</p>

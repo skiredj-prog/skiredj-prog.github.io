@@ -32,8 +32,10 @@ const steps = fr ? [
       <p class="eyebrow"><span class="status-dot"></span> {fr ? 'À votre rythme' : 'At your own pace'}</p>
       <h1 id="home-title"><span data-hero-opening>{introduction.opening}</span><br /><em data-hero-emphasis>{introduction.emphasis}</em></h1>
       <p class="hero-lead">{frameworkIntro[locale]}{' '}<span data-hero-body>{introduction.body}</span></p>
+      <p class="hero-caption">{fr ? 'REG : anticiper les risques en partant des exigences ; préparer les contrôles en partant des systèmes et des preuves.' : 'REG: anticipate risk from requirements; prepare for review using systems and evidence.'}</p>
       <div class="actions">
         <a class="btn btn-primary" href={path('parcours/decouvrir','start/discover')}>{fr ? 'Découvrir le cadre' : 'Explore the framework'} <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-quiet" href={path('produits-et-services','products-and-services')}>{fr ? 'Explorer REG : Prévenir / Préparer' : 'Explore REG: Prevent / Prepare'} <span aria-hidden="true">→</span></a>
         <a class="btn btn-quiet" href={path('contact')}>{fr ? 'Poser ma question' : 'Ask my question'} <span aria-hidden="true">→</span></a>
       </div>
       <p class="hero-caption">{fr ? 'En développement. Des exemples pour explorer, une personne pour échanger.' : 'In development. Examples to explore, a person to talk to.'}</p>

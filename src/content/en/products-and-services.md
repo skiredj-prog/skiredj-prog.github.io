@@ -1,7 +1,8 @@
 ---
 title: Products & Services
 kicker: REG — Regulatory Prevention & Readiness
-description: Closing the gap between requirements, controls, and evidence.
+description: Anticipate compliance risks and prepare the available evidence ahead of reviews.
+lede: Start with requirements or with existing systems. Get qualified findings and practical next steps, not automatic certification.
 sources: REG v0.1 Working Draft — October 21, 2026
 ---
 
@@ -9,7 +10,7 @@ sources: REG v0.1 Working Draft — October 21, 2026
 
 ## The problem
 
-Two gaps persist in every organization:
+Two recurring gaps may arise in organizations:
 
 **Upstream** : a rule is adopted, but its conditions, dependencies, and hidden assumptions stay unstated. Compliance is attempted without knowing what is truly required.
 
@@ -48,7 +49,7 @@ When both tracks are fed, REG produces the alignment:
 
 | Expected              | Available          | Status                     |
 | --------------------- | ------------------ | -------------------------- |
-| Requirement clarified | Control verified ✅ | Covered                    |
+| Requirement clarified | Control identified | Candidate coverage — to verify |
 | Requirement clarified | Control claimed ⚠️ | Needs verification         |
 | Requirement clarified | Evidence missing ❌ | Gap — action required      |
 | Assumption unresolved | —                  | Clarify before deciding    |
@@ -68,10 +69,10 @@ When both tracks are fed, REG produces the alignment:
 ## Project status
 
 **Version** : 0.1 — Consolidated framing · Working Draft
-**Status** : Demo available · Fictional example live
+**Status** : Simulated example available · Discovery private preview, not publicly released
 **Next** : Market validation · First real engagement
-**Maturity** : Discovery live · Translation Studio prototype · Readiness in progress
+**Maturity** : Discovery tested on a development branch · Translation Studio prototype · Readiness in progress
 
-[Read full REG v0.1 specification →](/en/publications/reg-v0.1)
-[See the example →](/en/offer/example)
-[Contact us →](/en/contact)
+[Read the REG v0.1 framing specification — Working Draft →](/en/publications/reg-v0.1/)
+[See the simulated file — no client data →](/en/offer/example/)
+[Contact us →](/en/contact/)

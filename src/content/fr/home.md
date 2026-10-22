@@ -17,7 +17,7 @@ Ce qui est **déclaré** n'est pas toujours **vérifié**
 Ce qui est **en place** n'est pas toujours **prouvé**
 
 **TENIR** est le cadre qui rend cet écart visible.
-**REG** en est l'outil opérationnel : prévenir en amont, préparer en aval, démontrer avec lucidité.
+**REG** propose deux parcours complémentaires : prévenir en amont, préparer les justificatifs en aval, et distinguer ce qui est établi de ce qui reste à vérifier.
 
 ### Deux directions. Une même rigueur.
 
@@ -43,5 +43,5 @@ Ce qui est **en place** n'est pas toujours **prouvé**
 
 REG — Prévenir · Préparer · Démontrer
 
-[Découvrir REG →](/fr/produits-et-services)
-[Comprendre le cadre →](/fr/concepts)
+[Explorer les deux services REG →](/produits-et-services/)
+[Comprendre le cadre →](/concepts/)

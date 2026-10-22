@@ -1,7 +1,8 @@
 ---
 title: Produits et Services
 kicker: REG — Prévention et préparation réglementaire
-description: Fermer l'écart entre exigences, contrôles et preuves.
+description: Prévenir les risques de conformité et préparer les preuves disponibles avant un contrôle.
+lede: "Deux points de départ complémentaires : vos exigences et vos systèmes. Des constats qualifiés et des actions concrètes, sans certification automatique."
 sources: REG v0.1 Working Draft — 21 octobre 2026
 ---
 
@@ -9,7 +10,7 @@ sources: REG v0.1 Working Draft — 21 octobre 2026
 
 ## Le problème
 
-Deux écarts persistent dans toutes les organisations :
+Deux écarts peuvent apparaître dans les organisations :
 
 **En amont** : une exigence est publiée, mais ses conditions d'application, ses dépendances et ses hypothèses implicites restent dans l'ombre. On applique sans savoir ce qui est réellement requis.
 
@@ -48,7 +49,7 @@ Lorsque les deux parcours sont alimentés, REG établit la correspondance :
 
 | Ce qui est attendu    | Ce qui est disponible | État                             |
 | --------------------- | --------------------- | -------------------------------- |
-| Exigence clarifiée    | Contrôle identifié ✅  | Couvert                          |
+| Exigence clarifiée    | Contrôle identifié    | Couverture candidate — à vérifier |
 | Exigence clarifiée    | Contrôle déclaré ⚠️   | À vérifier                       |
 | Exigence clarifiée    | Preuve absente ❌      | Lacune — action requise          |
 | Hypothèse non résolue | —                     | À clarifier avant décision       |
@@ -68,10 +69,10 @@ Lorsque les deux parcours sont alimentés, REG établit la correspondance :
 ## État du projet
 
 **Version** : 0.1 — Cadrage consolidé · Working Draft
-**Statut** : Démonstration accessible · Cas fictif en ligne
+**Statut** : Exemple simulé disponible · Discovery en aperçu privé, non publié
 **Prochaine étape** : Validation marché · Premier accompagnement réel
-**Maturité** : Discovery fonctionnel · Translation Studio en prototype · Préparation en construction
+**Maturité** : Discovery testé sur branche de travail · Translation Studio en prototype · Préparation en construction
 
-[Lire la spécification complète REG v0.1 →](/fr/publications/reg-v0.1)
-[Voir l'exemple concret →](/fr/offre/exemple)
-[Nous contacter →](/fr/contact)
+[Lire la spécification de cadrage REG v0.1 — Working Draft →](/publications/reg-v0.1/)
+[Voir le dossier simulé — aucune donnée client →](/offre/exemple/)
+[Nous contacter →](/contact/)
