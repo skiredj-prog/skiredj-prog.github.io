@@ -39,6 +39,11 @@ const steps = fr ? [
         <a class="btn btn-quiet" href={path('contact')}>{fr ? 'Poser ma question' : 'Ask my question'} <span aria-hidden="true">→</span></a>
       </div>
       <p class="hero-caption">{fr ? 'En développement. Des exemples pour explorer, une personne pour échanger.' : 'In development. Examples to explore, a person to talk to.'}</p>
+      <div class="reg-business-path" aria-label={fr ? 'Parcours diagnostic REG' : 'REG diagnostic journey'}>
+        <p><strong>{fr ? 'L’IA est peut-être déjà dans vos outils.' : 'AI may already be embedded in your tools.'}</strong> {fr ? 'Avant de déployer une nouvelle protection, commençons par identifier les usages, les décisions et les risques qui méritent votre attention.' : 'Before deploying new safeguards, identify the AI uses, decisions and risks worth examining.'}</p>
+        <p>{fr ? '1. Comprendre les risques → 2. Cadrer un diagnostic accompagné → 3. Décider de la suite.' : '1. Understand the risks → 2. Scope a guided diagnostic → 3. Decide what comes next.'}</p>
+        <a class="btn btn-primary" href={path('produits-et-services','products-and-services')}>{fr ? 'Comprendre les risques et le diagnostic' : 'Explore risks and the diagnostic'} <span aria-hidden="true">→</span></a>
+      </div>
     </div>
     <nav class="hero-paths" aria-label={fr?'Choisir selon votre besoin':'Choose by what you need'}>
       <p class="guide-kicker">{fr?'Selon ce que vous cherchez':'Based on what you need'}</p>
