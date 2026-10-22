@@ -1,0 +1,33 @@
+name: REG bilingual content and links
+on:
+  pull_request:
+    paths:
+      - 'src/content/fr/home.md'
+      - 'src/content/en/home.md'
+      - 'src/content/fr/produits-et-services.md'
+      - 'src/content/en/products-and-services.md'
+      - 'src/content/fr/offre/exemple.md'
+      - 'src/content/en/offer/example.md'
+      - 'src/content/fr/publications/**'
+      - 'src/content/en/publications/**'
+      - 'src/pages/publications/**'
+      - 'src/pages/en/publications/**'
+      - 'src/components/Home.astro'
+      - 'src/data/site.ts'
+      - 'scripts/check-reg-content.mjs'
+      - '.github/workflows/reg-content-check.yml'
+permissions:
+  contents: read
+jobs:
+  build-links-and-claims:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:links
+      - run: node scripts/check-reg-content.mjs
