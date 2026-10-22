@@ -2,7 +2,7 @@
 title: Produits et Services
 kicker: REG — Prévention et préparation réglementaire
 description: Prévenir les risques de conformité et préparer les preuves disponibles avant un contrôle.
-lede: Deux points de départ complémentaires : vos exigences et vos systèmes. Des constats qualifiés et des actions concrètes, sans certification automatique.
+lede: "Deux points de départ complémentaires : vos exigences et vos systèmes. Des constats qualifiés et des actions concrètes, sans certification automatique."
 sources: REG v0.1 Working Draft — 21 octobre 2026
 ---
 
