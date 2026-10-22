@@ -8,6 +8,24 @@ sources: REG v0.1 Working Draft — 21 octobre 2026
 
 # REG — Prévenir · Préparer · Démontrer
 
+## Commencer par un diagnostic accompagné
+
+L'IA peut déjà être intégrée aux outils de messagerie, de bureautique, de relation client, de recrutement ou aux logiciels de fournisseurs. Sa présence et ses usages doivent être **vérifiés**, jamais présumés. Avant toute installation, nous proposons un premier échange à distance pour définir une question métier, puis un diagnostic à périmètre convenu.
+
+**Ce que nous examinerons :** où l'IA intervient réellement, quelles données elle traite, quelles décisions ou actions elle influence, et quelles protections ou preuves manquent.
+
+**Ce que vous recevrez selon le périmètre convenu :** une synthèse des usages observés et déclarés, des risques à examiner, des inconnues et un plan d'actions priorisé. Ce n'est ni un audit de conformité certifiant ni une validation de production.
+
+**Comment démarrer :** un échange exploratoire, puis une proposition précisant périmètre, accès autorisés, confidentialité, livrables et conditions commerciales. Aucun accès technique ou document sensible n'est requis pour prendre contact.
+
+[Discuter d'un diagnostic accompagné →](/contact/)
+
+## Après le diagnostic : des étapes facultatives
+
+Un pilote d'observation **non bloquant** peut ensuite être étudié si une intégration est justifiée et autorisée. Il nécessite une analyse des impacts techniques, des données et des responsabilités ; il n'est pas présenté comme sans risque ni comme déjà déployable chez tout client.
+
+La gouvernance bloquante (**ENFORCE**) est une étape ultérieure soumise à validation des invariants, des modes de défaillance et des garanties dans un périmètre défini. Elle n'est ni automatique ni incluse dans le diagnostic.
+
 ## Le problème
 
 Deux écarts peuvent apparaître dans les organisations :
