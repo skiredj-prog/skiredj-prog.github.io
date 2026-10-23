@@ -79,6 +79,33 @@ main:focus { outline: none; }
 .hero-lead { max-width: 32rem; margin: 1.6rem 0 0; font-size: 1.13rem; line-height: 1.65; color: var(--muted); }
 .hero-copy .actions { margin-top: 1.9rem; gap: .7rem; }
 .hero-caption { margin: 1.1rem 0 0; font-size: .84rem; color: var(--muted); }
+/* REG entry in the hero — align with the existing editorial card language. */
+.reg-business-path {
+  margin-top: 1.5rem;
+  padding: 1.15rem 1.3rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: var(--bg-raised);
+}
+.reg-business-intro {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--ink-soft);
+  font-size: .97rem;
+  line-height: 1.65;
+}
+.reg-business-intro strong { color: var(--ink); font-weight: 650; }
+.reg-business-steps {
+  margin: .85rem 0 0;
+  padding-top: .75rem;
+  border-top: 1px solid var(--line);
+  color: var(--accent);
+  font-size: .82rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
 .control-visual { position: relative; isolation: isolate; padding: 1.5rem 1.8rem 1.25rem; border: 1px solid var(--line); border-radius: 16px; background: var(--accent-soft); overflow: hidden; box-shadow: 0 25px 70px #193b2010; }
 .visual-top { display: flex; justify-content: space-between; gap: 1rem; font: .61rem var(--mono); letter-spacing: .07em; color: var(--accent); margin-bottom: 2.1rem; }
 .visual-label { color: var(--muted); letter-spacing: 0; }
