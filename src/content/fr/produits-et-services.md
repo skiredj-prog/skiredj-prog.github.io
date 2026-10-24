@@ -91,6 +91,8 @@ Lorsque les deux parcours sont alimentés, REG établit la correspondance :
 **Prochaine étape** : Validation marché · Premier accompagnement réel
 **Maturité** : Discovery testé sur branche de travail · Translation Studio en prototype · Préparation en construction
 
-[Lire la spécification de cadrage REG v0.1 — Working Draft →](/publications/reg-v0.1/)
-[Voir le dossier simulé — aucune donnée client →](/offre/exemple/)
+**Spécification REG v0.1 — Working Draft :** publication intégrale en préparation. Cette page présente le cadrage produit, sans se substituer au texte de référence.
+[Voir le dossier simulé — exemple fictif, aucune donnée client →](/offre/exemple/)
+
+**Limite :** rien ici n'est une certification, un avis juridique ou une preuve de conformité d'un système réel.
 [Nous contacter →](/contact/)
