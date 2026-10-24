@@ -7,6 +7,7 @@ sources: "frozen local file of the TENIR/REG demonstrator; evidence records #5 a
 ---
 
 <div class="callout callout-limit">
+  <p><strong>Fictional example — simulated data.</strong> This record does not represent a real client. Nothing here constitutes certification.</p>
   <p><strong>Simulated example — fictional data.</strong> Illustrative sheet prepared on 20 October 2026 from the TENIR/REG demonstrator file. No client, interview, real incident, or commercial gain is represented. The sheet is written by hand. The recommendations are not signed results of the engine. A trial of this demonstrator does not show a client’s system.</p>
 </div>
 
