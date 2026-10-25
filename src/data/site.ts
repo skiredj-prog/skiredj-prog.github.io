@@ -209,6 +209,8 @@ const enToFr: Record<string, string> = Object.fromEntries(
 );
 
 export function alternate(locale: Locale, slug: string): string {
+  // Draft P1 portfolio paths use deliberately identical bilingual slugs.
+  if (slug.startsWith('portfolio/')) return locale === 'fr' ? `/en/${slug}/` : `/${slug}/`;
   if (locale === "fr") return frToEn[slug] ?? "/en/";
   return enToFr[slug] ?? "/";
 }

@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import PortfolioPage from '../../components/PortfolioPage.astro';
+import { portfolio, portfolioHubs, portfolioOrder } from '../../data/portfolio';
+const language = 'fr' as const;
+export function getStaticPaths(){
+ const pages = ['products','services','demos',...portfolioOrder];
+ return pages.map(page=>({params:{page}}));
+}
+const { page } = Astro.params;
+const hub = (portfolioHubs[language] as Record<string,any>)[page!];
+const entry = portfolio[language][page!];
+const title = hub?.title ?? entry?.title ?? 'TENIR Labs';
+const description = hub?.description ?? entry?.tagline ?? 'TENIR Labs';
+const kicker = hub?.kicker ?? (language==='fr'?'TENIR Labs · Portefeuille':'TENIR Labs · Portfolio');
+const lede = hub?.lede ?? entry?.tagline ?? '';
+const sources = 'P1 canonical portfolio map · working editorial draft · public versioned sources and explicit uncertainty';
+---
+<Base locale={language} slug={`portfolio/${page}`} title={title} description={description} kicker={kicker} lede={lede} sources={sources}>
+  <PortfolioPage locale={language} page={page!}/>
+</Base>

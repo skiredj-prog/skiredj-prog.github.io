@@ -1,0 +1,33 @@
+name: P1 portfolio pages — bilingual preview
+
+on:
+  pull_request:
+    paths:
+      - 'src/data/portfolio.ts'
+      - 'src/data/site.ts'
+      - 'src/layouts/Base.astro'
+      - 'src/components/PortfolioPage.astro'
+      - 'src/pages/portfolio/**'
+      - 'src/pages/en/portfolio/**'
+      - 'src/styles/portfolio.css'
+      - 'public/embeds/reg-autonomy-control-tower-v1.0.html'
+      - 'scripts/check-portfolio.mjs'
+      - '.github/workflows/portfolio-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  portfolio-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:links
+      - run: node scripts/check-portfolio.mjs
