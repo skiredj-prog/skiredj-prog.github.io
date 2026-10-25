@@ -30,7 +30,7 @@
 3. #23 adds the link in the requested location, preserves the five journeys and adds an automated *inside dropdown* regression check. The [REG bilingual content and links workflow, run 40159071046](https://github.com/skiredj-prog/skiredj-prog.github.io/actions/runs/40159071046) previously concluded success for #23. This is build/link assertion evidence **not a completed manual mobile usability review**.
 4. #15 and #22 each propose additional *top-level* navigation, whereas the settled requirement is inclusion **inside Vos besoins**. These approaches conflict and must not be combined blindly.
 5. #13 is stacked on an older UX base and modifies extensive site and build/projection paths; integration must be rebased and verified, not silently promoted to production.
-6. Current [FR status page](https://github.com/skiredj-prog/skiredj-prog.github.io/blob/main/src/content/fr/statut.md) calls v5.6.0 the published runtime; separate [TENIR-Gov release v5.7.0](https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0) was published 2026-10-24. **Separate status-correction PR needed after content approval**, not appended to these unrelated PRs.
+6. Current [FR status page](https://github.com/skiredj-prog/skiredj-prog.github.io/blob/main/src/content/fr/statut.md) calls v5.6.0 the published runtime; separate [TENIR-Gov release v5.7.0](https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0) was published 2026-10-24. **Draft status-correction [PR #25](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/25) prepared, CI green, unmerged and not deployed**, separate from these unrelated PRs.
 
 ## Decisions: owner-approved dispositions; per-action gates remain
 
@@ -41,7 +41,7 @@
 | D-P1-PR-03 | #21 close; retain FR/EN working-draft links; optionally reuse CTA labels. | A2 project-owner approval in conversation; closure separately gated | **A2 APPROVED; execution gated** |
 | D-P1-PR-04 | #22 supersede/split; preserve verified disclaimers only. | A2 project-owner approval in conversation; closure separately gated | **A2 APPROVED; execution gated** |
 | D-P1-PR-05 | #13 amend/rebase, validate pinned upstream source, independent go/no-go. | A2 project-owner approval in conversation; integration/release decision separately gated | **A2 APPROVED; execution gated** |
-| D-P1-PR-06 | Separate status copy PR for 5.7.0; no C3/external exactly-once claim. | Named technical + editorial owner to be recorded | **PENDING** |
+| D-P1-PR-06 | [Draft #25](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/25) prepares FR/EN v5.7.0 status; automated checks green; C3/external exactly-once explicitly excluded. | Named technical + editorial owner and separately authorized release still required | **PREPARED, NOT MERGED** |
 
 ## Dependency-safe execution order (not authorization)
 
