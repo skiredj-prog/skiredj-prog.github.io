@@ -10,7 +10,7 @@ const cases = [
     productPath: '/produits-et-services/',
     specPath: '/publications/reg-v0.1/',
     examplePath: '/offre/exemple/',
-    hero: 'Explorer le diagnostic REG',
+    hero: 'Explorer les démos',
     draft: 'Working Draft',
     fictional: 'Exemple simulé',
   },
@@ -22,7 +22,7 @@ const cases = [
     productPath: '/en/products-and-services/',
     specPath: '/en/publications/reg-v0.1/',
     examplePath: '/en/offer/example/',
-    hero: 'Explore the REG diagnostic',
+    hero: 'Explore the demos',
     draft: 'Working Draft',
     fictional: 'Simulated example',
   },
@@ -34,7 +34,7 @@ for (const c of cases) {
   const spec = readFileSync(c.spec, 'utf8');
   const example = readFileSync(c.example, 'utf8');
 
-  assert(home.includes(c.hero), `${c.locale}: homepage hero missing REG entry`);
+  assert(home.includes(c.hero), `${c.locale}: homepage demo invitation missing`);
   assert(home.includes(c.productPath), `${c.locale}: homepage catalogue link missing`);
   assert(products.includes(c.specPath), `${c.locale}: spec link missing`);
   assert(products.includes(c.examplePath), `${c.locale}: example link missing`);
