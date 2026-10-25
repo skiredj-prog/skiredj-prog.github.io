@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Démonstration bancaire — TENIR Labs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <style>
+    :root{--ink:#1d302b;--green:#245b46;--sage:#5a6a62;--line:#dce2d8;--pale:#edf3ec;--paper:#f6f7f2}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:'Source Sans 3',sans-serif;background:var(--paper)}
+    .app-shell{width:100%;min-height:100%;background:var(--paper)}
+    .frame{width:min(100% - 40px,1380px);margin:auto}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:16px}
+    .eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+    .mono{font-family:'IBM Plex Mono',monospace;font-size:12px}
+    .muted{color:var(--sage)}
+    .scenario{border:1px solid var(--line);background:#fff;border-radius:12px;text-align:left;transition:background .18s,border-color .18s,transform .18s}
+    .scenario:hover{transform:translateY(-2px);border-color:var(--green)}
+    .scenario[aria-pressed="true"]{background:var(--pale);border-color:var(--green);box-shadow:inset 3px 0 var(--green)}
+    button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #245b46;outline-offset:3px}
+    button:disabled{opacity:.48;cursor:not-allowed}
+    .primary{background:var(--green);color:#f6f7f2;border-radius:9px;font-weight:700}
+    .secondary{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:9px;font-weight:600}
+    .state-box{min-height:142px}
+    .status{display:inline-flex;align-items:center;border-radius:5px;padding:5px 10px;font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.04em}
+    .status.allow{background:#e4f1e8;color:#245b46}.status.hold{background:#f7edcf;color:#694e10}.status.deny{background:#f5e6e2;color:#833b30}
+    .flow-node{border:1px solid var(--line);background:white;border-radius:10px;min-height:76px}
+    .flow-node.active{background:var(--pale);border-color:var(--green);box-shadow:inset 0 -3px var(--green)}
+    .flow-node.uncertain{background:#fcf4df;border-color:#b78b35;box-shadow:inset 0 -3px #b78b35}
+    .flow-node.blocked{background:#f8ece8;border-color:#b56d60}
+    .timeline-item{border-left:2px solid var(--line);padding:0 0 19px 19px;position:relative}
+    .timeline-item:before{content:"";position:absolute;left:-6px;top:2px;width:10px;height:10px;border-radius:50%;background:var(--green)}
+    .timeline-item:last-child{padding-bottom:0}
+    .check-dot{display:grid;place-items:center;width:21px;height:21px;flex:none;border:1px solid var(--line);border-radius:50%;font-size:13px}
+    .passed .check-dot{background:var(--green);color:white;border-color:var(--green)}
+    @media(max-width:700px){.frame{width:min(100% - 28px,1380px)}.flow-node{min-height:66px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+   <header class="border-b border-[#dce2d8] bg-[#f6f7f2]">
+    <div class="frame py-5 flex flex-wrap items-center justify-between gap-4">
+     <div class="flex items-center gap-4">
+      <a href="/" class="font-semibold tracking-tight text-[#245b46]">TENIR Labs</a>
+      <span class="h-7 border-l border-[#dce2d8]" aria-hidden="true"></span>
+      <span class="eyebrow">Laboratoire de démonstration</span>
+     </div>
+     <span class="rounded-full border border-[#dce2d8] bg-white px-3 py-1 text-[#245b46] font-semibold">Simulation uniquement · Non-production</span>
+    </div>
+   </header>
+   <main class="frame pb-14">
+    <section class="grid lg:grid-cols-[1fr_auto] gap-8 items-end pt-10 pb-8">
+     <div>
+      <p class="eyebrow mb-3">Démonstration bancaire / cas PAY-MAR-001</p>
+      <h1 class="max-w-4xl leading-[.99] tracking-tight text-4xl md:text-5xl font-semibold">Éviter le double règlement lorsque le résultat devient inconnu</h1>
+      <p class="muted max-w-2xl mt-5 leading-relaxed text-lg">Une réponse absente n’est pas une preuve d’échec. Parcourez quatre scénarios pour voir ce que l’agent propose, ce que le contrôle admet et ce que le simulateur permet réellement d’établir.</p>
+     </div>
+     <div class="max-w-sm bg-[#edf3ec] rounded-xl p-5 border-l-[3px] border-[#245b46]">
+      <p class="font-bold mb-1">La question décisive</p>
+      <p class="leading-snug text-[#245b46]">Avant une nouvelle commande : connaître l’état de l’opération ou la placer en réconciliation.</p>
+     </div>
+    </section>
+    <section aria-label="Périmètre de simulation" class="panel p-4 md:p-5 mb-7">
+     <div class="flex flex-wrap gap-x-7 gap-y-2 items-center">
+      <span class="eyebrow">Périmètre</span>
+      <span class="font-semibold">Données synthétiques · bénéficiaire fictif</span>
+      <span class="font-semibold">Simulateur contrôlé · laboratoire uniquement</span>
+      <span class="font-semibold">Non certifié · aucun règlement réel</span>
+     </div>
+    </section>
+    <div class="grid xl:grid-cols-[290px_minmax(0,1fr)] gap-6 items-start">
+     <aside class="space-y-5">
+      <section class="panel p-5">
+       <h2 class="font-semibold mb-1 text-2xl">Choisir un scénario</h2>
+       <p class="muted mb-5">Chaque parcours avance étape par étape.</p>
+       <nav aria-label="Choix du scénario" class="space-y-2">
+        <button type="button" class="scenario w-full p-3" data-scenario="normal" aria-pressed="true">01 · Opération normale</button>
+        <button type="button" class="scenario w-full p-3" data-scenario="duplicate" aria-pressed="false">02 · Duplication</button>
+        <button type="button" class="scenario w-full p-3" data-scenario="interruption" aria-pressed="false">03 · Interruption</button>
+        <button type="button" class="scenario w-full p-3" data-scenario="reconciliation" aria-pressed="false">04 · Réconciliation</button>
+       </nav>
+      </section>
+      <section class="panel p-5">
+       <h2 class="font-semibold mb-4 text-2xl">Contrat d’action · simulé</h2>
+       <dl class="space-y-3 text-sm">
+        <div class="flex justify-between gap-3"><dt class="muted">Identifiant</dt><dd class="mono text-right">PAY-MAR-001</dd></div>
+        <div class="flex justify-between gap-3"><dt class="muted">Montant</dt><dd class="font-semibold text-right">1 250 MAD · synthétique</dd></div>
+        <div class="flex justify-between gap-3"><dt class="muted">Bénéficiaire</dt><dd class="font-semibold text-right">Compte FICTIF-MAR-01</dd></div>
+        <div class="flex justify-between gap-3"><dt class="muted">Budget autorisé</dt><dd class="font-semibold text-right">2 000 MAD · synthétique</dd></div>
+        <div class="flex justify-between gap-3"><dt class="muted">Fournisseur</dt><dd class="font-semibold text-right">Simulateur contrôlé</dd></div>
+       </dl>
+       <div class="mt-5 pt-4 border-t border-[#dce2d8]">
+        <p class="eyebrow mb-2">Contrôles d’admission</p>
+        <p class="leading-snug">Identité · capacité · montant · périmètre · réversibilité</p>
+       </div>
+      </section>
+     </aside>
+     <div class="min-w-0 space-y-5">
+      <section class="panel overflow-hidden">
+       <div class="p-5 md:p-7 border-b border-[#dce2d8]">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+         <div>
+          <p class="eyebrow mb-2">Parcours guidé</p>
+          <h2 id="current-scenario" class="font-semibold text-2xl text-[#1d302b]"></h2>
+         </div>
+         <div class="rounded-lg bg-[#edf3ec] px-4 py-2 text-[#245b46] font-semibold" id="step-indicator" aria-live="polite"></div>
+        </div>
+        <p id="step-description" class="mt-4 text-[#5a6a62] leading-relaxed min-h-6" aria-live="polite"></p>
+        <div id="reconciliation-choice" class="hidden mt-5 p-4 bg-[#f6f7f2] rounded-xl">
+         <label class="block font-semibold mb-2" for="external-choice">État que renverra le simulateur</label>
+         <select id="external-choice" class="w-full max-w-md rounded-lg border border-[#b8c6b9] bg-white px-3 py-2 text-[#1d302b]">
+          <option value="confirmed">Effet confirmé par le simulateur</option>
+          <option value="absent">Absence d’effet établie ; annulation contrôlée</option>
+          <option value="unknown">État toujours indéterminé ; intervention humaine</option>
+         </select>
+         <p class="muted mt-2">Choisissez avant l’interrogation. Ce résultat est entièrement simulé.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-6">
+         <button id="next" type="button" class="primary px-5 py-2.5">Étape suivante →</button>
+         <button id="replay" type="button" class="secondary px-4 py-2.5">Rejouer</button>
+         <button id="reset" type="button" class="secondary px-4 py-2.5">Recommencer</button>
+        </div>
+        <p id="control-message" class="mt-3 text-sm text-[#5a6a62]" role="status"></p>
+       </div>
+       <div class="p-5 md:p-7 bg-[#fbfcf9]">
+        <h3 class="font-semibold mb-4 text-lg">Ce qui est proposé, admis, reçu et confirmé</h3>
+        <div id="flow" class="grid grid-cols-2 sm:grid-cols-5 gap-2" aria-label="Chemin de l'opération simulée">
+         <div class="flow-node p-3" data-flow="agent"><span class="eyebrow">01</span><div class="font-semibold">Agent IA</div><div class="text-xs muted">Propose</div></div>
+         <div class="flow-node p-3" data-flow="control"><span class="eyebrow">02</span><div class="font-semibold">Contrôle</div><div class="text-xs muted">Admet ou suspend</div></div>
+         <div class="flow-node p-3" data-flow="reservation"><span class="eyebrow">03</span><div class="font-semibold">Réservation</div><div class="text-xs muted">Identifiant unique</div></div>
+         <div class="flow-node p-3" data-flow="external"><span class="eyebrow">04</span><div class="font-semibold">Simulateur</div><div class="text-xs muted">Reçoit / observe</div></div>
+         <div class="flow-node p-3" data-flow="response"><span class="eyebrow">05</span><div class="font-semibold">Réponse</div><div class="text-xs muted">Connue ou absente</div></div>
+        </div>
+       </div>
+      </section>
+      <section aria-label="Vue simultanée des états" class="grid md:grid-cols-2 xl:grid-cols-3 gap-3">
+       <article class="panel state-box p-5"><h3 class="eyebrow mb-3">Intention de l’agent</h3><p id="intent" class="font-semibold leading-snug" aria-live="polite"></p></article>
+       <article class="panel state-box p-5"><h3 class="eyebrow mb-3">Verdict du contrôle</h3><span id="verdict" class="status hold" aria-live="polite">[HOLD]</span><p id="verdict-detail" class="muted text-sm mt-3"></p></article>
+       <article class="panel state-box p-5"><h3 class="eyebrow mb-3">État local</h3><p id="local" class="font-semibold leading-snug" aria-live="polite"></p></article>
+       <article class="panel state-box p-5"><h3 class="eyebrow mb-3">État externe simulé</h3><p id="external" class="font-semibold leading-snug" aria-live="polite"></p></article>
+       <article class="panel state-box p-5 md:col-span-2"><h3 class="eyebrow mb-3">Motif de réconciliation</h3><p id="reason" class="leading-relaxed" aria-live="polite"></p></article>
+      </section>
+      <div class="grid lg:grid-cols-[1fr_310px] gap-5 items-start">
+       <section id="journal-section" class="panel p-5 md:p-6">
+        <div class="flex flex-wrap justify-between items-start gap-3 mb-5">
+         <div>
+          <h2 class="font-semibold text-2xl">Journal d’événements</h2>
+          <p class="muted">Ordre des faits simulés de ce parcours.</p>
+         </div>
+         <button id="export" type="button" class="secondary px-3 py-2">Exporter la trace simulée</button>
+        </div>
+        <ol id="journal" class="min-h-20" aria-live="polite"></ol>
+        <p id="journal-empty" class="muted">Aucun événement pour le moment. Lancez la première étape.</p>
+       </section>
+       <section class="panel p-5 md:p-6">
+        <h2 class="font-semibold mb-1 text-2xl">Critères de réussite</h2>
+        <p class="muted mb-5">Ils se cochent à mesure que vous exercez les scénarios.</p>
+        <ul class="space-y-3 text-sm" id="checklist">
+         <li data-check="unique" class="flex gap-3"><span class="check-dot" aria-hidden="true"></span><span>L’identifiant reste unique.</span></li>
+         <li data-check="duplicate" class="flex gap-3"><span class="check-dot" aria-hidden="true"></span><span>La duplication est visible et bloquée.</span></li>
+         <li data-check="unknown" class="flex gap-3"><span class="check-dot" aria-hidden="true"></span><span>L’interruption produit un état inconnu explicite.</span></li>
+         <li data-check="retry" class="flex gap-3"><span class="check-dot" aria-hidden="true"></span><span>La relance automatique est empêchée.</span></li>
+         <li data-check="reconciled" class="flex gap-3"><span class="check-dot" aria-hidden="true"></span><span>La réconciliation est observable.</span></li>
+         <li data-check="limits" class="flex gap-3"><span class="check-dot" aria-hidden="true"></span><span>Les limites du laboratoire sont affichées.</span></li>
+         <li data-check="repeatable" class="flex gap-3"><span class="check-dot" aria-hidden="true"></span><span>Le parcours est reproductible sur le même commit.</span></li>
+        </ul>
+       </section>
+      </div>
+     </div>
+    </div>
+    <footer class="mt-8 rounded-2xl p-7 md:p-10 border border-[#dce2d8] bg-white">
+     <p class="eyebrow mb-3">À retenir</p>
+     <h2 class="mb-4 text-2xl font-semibold">Ne pas confondre silence et échec.</h2>
+     <p class="max-w-4xl leading-relaxed text-xl">La démonstration ne prétend pas certifier un règlement bancaire réel. Elle montre une propriété plus précise : dans les conditions testées, le système ne déduit pas l’échec d’une opération ambiguë et évite de relancer aveuglément une action potentiellement déjà exécutée.</p>
+     <p class="muted mt-5 pt-5 border-t border-[#dce2d8]">Données synthétiques · compte fictif · simulateur contrôlé · laboratoire uniquement · non-production · aucune preuve d’un règlement bancaire réel.</p>
+    </footer>
+   </main>
+  </div>
+  <script>
+(() => {
+  const base = {
+    intent:"Aucune commande proposée pour cette séquence.",
+    verdict:"HOLD", detail:"En attente d'une étape explicite.",
+    local:"Aucune nouvelle réservation observée.",
+    external:"Non interrogé ; aucun état déduit.",
+    reason:"Aucun rapprochement engagé.", flow:[], event:null
+  };
+  const scenarios = {
+    normal:{
+      title:"01 / Opération normale",
+      steps:[
+        {description:"L'agent propose PAY-MAR-001. Proposer ne signifie ni admettre ni envoyer.",intent:"Propose PAY-MAR-001 · 1 250 MAD synthétiques.",local:"Proposition enregistrée ; aucune réservation.",flow:["agent"],event:"Agent — proposition de PAY-MAR-001."},
+        {description:"Le moteur vérifie identité, capacité, montant, périmètre et réversibilité.",intent:"Attend la décision du moteur de contrôle.",detail:"Contrôles conformes ; admission possible.",flow:["agent","control"],event:"Contrôle — cinq vérifications conformes."},
+        {description:"Le moteur admet la réservation unique sous PAY-MAR-001.",verdict:"ALLOW",detail:"Une seule réservation admise.",local:"Réservé · PAY-MAR-001 · 1 réservation.",flow:["agent","control","reservation"],event:"Admission — réservation unique PAY-MAR-001.",checks:["unique"]},
+        {description:"La commande admise atteint le simulateur de règlement contrôlé.",verdict:"ALLOW",local:"Réservé ; commande transmise une fois.",external:"Commande reçue une fois par le simulateur.",flow:["agent","control","reservation","external"],event:"Simulateur — une commande reçue."},
+        {description:"Le simulateur confirme l'effet ; le journal conserve l'ordre. État final connu.",verdict:"ALLOW",detail:"Effet confirmé, sans second envoi.",local:"Finalisé · effet unique confirmé.",external:"Un effet simulé confirmé.",reason:"Aucune réconciliation nécessaire : confirmation reçue.",flow:["agent","control","reservation","external","response"],event:"Confirmation — un effet simulé ; état final connu.",checks:["unique"]}
+      ]
+    },
+    duplicate:{
+      title:"02 / Duplication",
+      steps:[
+        {description:"Contexte simulé : PAY-MAR-001 est déjà réservé et finalisé ; une seule commande a été reçue.",local:"Finalisé · 1 réservation existante.",external:"1 commande reçue ; 1 effet simulé confirmé.",flow:["reservation","external","response"],event:"Contexte — identifiant déjà finalisé, effet unique.",checks:["unique"]},
+        {description:"L'agent renvoie exactement le même identifiant PAY-MAR-001.",intent:"Propose une seconde commande PAY-MAR-001.",local:"Toujours 1 réservation ; contrôle en cours.",flow:["agent","control","reservation","external","response"],event:"Agent — tentative de renvoi de PAY-MAR-001."},
+        {description:"Le moteur détecte l'identifiant déjà réservé ou finalisé et refuse la seconde commande.",verdict:"DENY",detail:"Doublon bloqué avant toute nouvelle réservation ou transmission.",local:"Finalisé · toujours 1 réservation.",external:"Toujours 1 commande reçue ; 1 effet simulé.",reason:"L'identifiant existant interdit une seconde admission.",flow:["agent","control","reservation","external","response"],blocked:["control"],event:"Contrôle — doublon refusé ; aucun second envoi.",checks:["duplicate","unique"]}
+      ]
+    },
+    interruption:{
+      title:"03 / Interruption",
+      steps:[
+        {description:"L'agent propose PAY-MAR-001.",intent:"Propose PAY-MAR-001 · 1 250 MAD synthétiques.",local:"Proposition ; aucune réservation.",flow:["agent"],event:"Agent — proposition de PAY-MAR-001."},
+        {description:"Contrôles conformes : le moteur admet et réserve PAY-MAR-001.",verdict:"ALLOW",detail:"Admission et réservation effectuées.",local:"Réservé · 1 réservation.",flow:["agent","control","reservation"],event:"Contrôle — admission ; réservation unique.",checks:["unique"]},
+        {description:"La commande est envoyée. Le simulateur perd volontairement la réponse après l'envoi.",verdict:"HOLD",detail:"Réponse perdue après transmission ; résultat non établi.",local:"Réservé et envoyé · résultat inconnu.",external:"Commande reçue ; effet non communiqué à l'agent.",reason:"Absence de réponse ≠ preuve d'échec. L'effet peut déjà avoir eu lieu.",flow:["agent","control","reservation","external"],uncertain:["response"],event:"Interruption — réponse simulée perdue après envoi.",checks:["unknown"]},
+        {description:"Sans confirmation, l'agent propose une relance. Il ne sait pas si l'effet a eu lieu.",intent:"Tente de relancer PAY-MAR-001.",verdict:"HOLD",detail:"Nouvelle commande non admise pendant l'incertitude.",local:"État inconnu · réservation conservée.",external:"État non confirmé auprès de l'agent.",reason:"Avant une nouvelle commande : établir l'état ou ouvrir la réconciliation.",flow:["agent","control","reservation","external"],uncertain:["response"],event:"Agent — tentative de relance malgré réponse absente."},
+        {description:"Le moteur suspend la relance et oriente PAY-MAR-001 vers la réconciliation. Aucun second règlement.",intent:"Relance proposée, non exécutée.",verdict:"HOLD",detail:"Relance suspendue ; aucun deuxième envoi.",local:"Inconnu · réconciliation requise · 1 réservation.",external:"Une commande reçue ; résultat à vérifier.",reason:"Une réponse manquante n'autorise pas à déduire l'échec.",flow:["agent","control","reservation","external"],uncertain:["response"],blocked:["control"],event:"Contrôle — relance suspendue ; réconciliation requise.",checks:["unknown","retry","unique"]}
+      ]
+    },
+    reconciliation:{
+      title:"04 / Réconciliation",
+      steps:[
+        {description:"Point de départ : admission, réservation et envoi ont eu lieu ; la réponse est absente.",local:"Réservé et envoyé · état inconnu.",external:"Commande reçue ; état non encore interrogé.",reason:"L'absence de réponse ne démontre ni échec ni réussite.",flow:["reservation","external"],uncertain:["response"],event:"Contexte — réponse absente après un envoi unique.",checks:["unknown","unique"]},
+        {description:"Le système interroge le simulateur par l'identifiant PAY-MAR-001. Aucune nouvelle commande de règlement.",intent:"Demande l'état de PAY-MAR-001, pas un nouvel envoi.",verdict:"HOLD",detail:"Consultation d'état uniquement.",local:"En attente du résultat de consultation.",external:"Consultation en cours dans le simulateur.",reason:"La reprise doit se fonder sur un état observé.",flow:["control","external"],uncertain:["response"],event:"Réconciliation — interrogation de PAY-MAR-001."},
+        {description:"Le simulateur retourne son état ; comparer ce constat à la réservation locale.",dynamic:"observed",flow:["reservation","external"],event:"Simulateur — état externe consulté pour PAY-MAR-001."},
+        {description:"Le rapprochement local/externe conduit à une décision proportionnée, sans relance aveugle.",dynamic:"decision",flow:["control","reservation","external","response"],event:"Réconciliation — décision fondée sur l'état observé.",checks:["reconciled","retry"]}
+      ]
+    }
+  };
+  const outcomes = {
+    confirmed:{
+      observed:{external:"Effet simulé confirmé pour PAY-MAR-001.",local:"Réservé localement ; confirmation externe observée.",reason:"Un effet existe dans le simulateur ; ne pas émettre une seconde commande."},
+      decision:{verdict:"ALLOW",detail:"Clôture administrative de l'opération existante seulement.",local:"Finalisé · effet simulé confirmé · 1 réservation.",external:"1 effet simulé confirmé.",reason:"États rapprochés : clôture autorisée, sans nouvel envoi."},
+      event:"clôture de l'opération existante"
+    },
+    absent:{
+      observed:{external:"Absence d'effet établie par le simulateur.",local:"Réservé localement ; aucun effet externe observé.",reason:"Le constat externe permet d'envisager une annulation contrôlée."},
+      decision:{verdict:"ALLOW",detail:"Annulation contrôlée de la réservation ; aucun règlement relancé.",local:"Réservation annulée sous contrôle · aucun effet.",external:"Absence d'effet établie.",reason:"États rapprochés : annulation contrôlée autorisée, sans nouvel envoi."},
+      event:"annulation contrôlée de la réservation"
+    },
+    unknown:{
+      observed:{external:"État externe toujours indéterminé.",local:"Réservé · résultat encore inconnu.",reason:"La consultation ne fournit pas une preuve d'état suffisante."},
+      decision:{verdict:"HOLD",detail:"Intervention humaine requise ; aucune nouvelle commande.",local:"En attente d'intervention humaine · réservation conservée.",external:"État toujours indéterminé.",reason:"Ambiguïté persistante : ni clôture ni annulation automatique."},
+      event:"intervention humaine requise ; état indéterminé"
+    }
+  };
+  let scenario="normal", index=-1, journal=[], replayTimer=null, lockedOutcome=null;
+  const achieved=new Set(["limits"]);
+  const $=id=>document.getElementById(id);
+  const choice=$("external-choice");
+  function stopReplay(){if(replayTimer){clearTimeout(replayTimer);replayTimer=null}}
+  function reset(){stopReplay();index=-1;journal=[];lockedOutcome=null;choice.disabled=false;render();}
+  function selectScenario(name){
+    scenario=name;
+    document.querySelectorAll("[data-scenario]").forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.scenario===name)));
+    reset();
+  }
+  function snapshot(){
+    const result={...base};
+    for(let i=0;i<=index;i++){
+      const step=scenarios[scenario].steps[i];
+      for(const key of ["intent","verdict","detail","local","external","reason","flow","uncertain","blocked"]){
+        if(step[key]!==undefined)result[key]=step[key];
+      }
+      if(step.dynamic)Object.assign(result,outcomes[lockedOutcome][step.dynamic]);
+    }
+    return result;
+  }
+  function advance(){
+    const steps=scenarios[scenario].steps;
+    if(index>=steps.length-1)return false;
+    if(scenario==="reconciliation" && index===0)lockedOutcome=choice.value;
+    index++;
+    const step=steps[index];
+    let text=step.event;
+    if(step.dynamic==="observed")text+=" — "+outcomes[lockedOutcome].observed.external;
+    if(step.dynamic==="decision")text+=" — "+outcomes[lockedOutcome].event+".";
+    journal.push({sequence:journal.length+1,description:text});
+    (step.checks||[]).forEach(key=>achieved.add(key));
+    render();
+    return true;
+  }
+  function render(){
+    const steps=scenarios[scenario].steps, state=snapshot();
+    $("current-scenario").textContent=scenarios[scenario].title;
+    $("step-indicator").textContent=index<0?"Préparation · 0 / "+steps.length:"Étape "+(index+1)+" / "+steps.length;
+    $("step-description").textContent=index<0?"Avancez à votre rythme : chaque action et chaque limite de connaissance sera affichée.":steps[index].description;
+    $("intent").textContent=state.intent;
+    $("verdict").textContent="["+state.verdict+"]";
+    $("verdict").className="status "+state.verdict.toLowerCase();
+    $("verdict-detail").textContent=state.detail;
+    $("local").textContent=state.local;
+    $("external").textContent=state.external;
+    $("reason").textContent=state.reason;
+    $("next").disabled=index>=steps.length-1;
+    $("control-message").textContent=index===steps.length-1?"Séquence terminée. Vous pouvez inspecter le journal, rejouer ou choisir un autre scénario.":"";
+    $("reconciliation-choice").classList.toggle("hidden",scenario!=="reconciliation");
+    choice.disabled=scenario==="reconciliation" && index>=1;
+    document.querySelectorAll("[data-flow]").forEach(node=>{
+      node.classList.toggle("active",(state.flow||[]).includes(node.dataset.flow));
+      node.classList.toggle("uncertain",(state.uncertain||[]).includes(node.dataset.flow));
+      node.classList.toggle("blocked",(state.blocked||[]).includes(node.dataset.flow));
+    });
+    const list=$("journal");
+    list.replaceChildren();
+    journal.forEach(entry=>{
+      const li=document.createElement("li");
+      li.className="timeline-item";
+      const number=document.createElement("span");
+      number.className="mono text-[#245b46]";
+      number.textContent=String(entry.sequence).padStart(2,"0")+" / SIMULÉ";
+      const body=document.createElement("p");
+      body.className="mt-1 leading-snug";
+      body.textContent=entry.description;
+      li.append(number,body);
+      list.append(li);
+    });
+    $("journal-empty").hidden=journal.length>0;
+    document.querySelectorAll("[data-check]").forEach(item=>{
+      const yes=achieved.has(item.dataset.check);
+      item.classList.toggle("passed",yes);
+      item.querySelector(".check-dot").textContent=yes?"✓":"";
+    });
+  }
+  $("next").addEventListener("click",advance);
+  $("reset").addEventListener("click",reset);
+  document.querySelectorAll("[data-scenario]").forEach(button=>button.addEventListener("click",()=>selectScenario(button.dataset.scenario)));
+  $("replay").addEventListener("click",()=>{
+    reset();
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+      advance();
+      $("control-message").textContent="Animations réduites : utilisez « Étape suivante » pour poursuivre le rejeu.";
+      return;
+    }
+    function tick(){
+      if(advance()){replayTimer=setTimeout(tick,850)}
+      else{replayTimer=null;achieved.add("repeatable");render();$("control-message").textContent="Rejeu terminé : même séquence simulée, dans le même ordre."}
+    }
+    tick();
+  });
+  $("export").addEventListener("click",()=>{
+    const evidence={
+      label:"TRACE SYNTHÉTIQUE SIMULÉE — laboratoire uniquement",
+      operation_id:"PAY-MAR-001",
+      scenario,
+      external_outcome:scenario==="reconciliation" && lockedOutcome ? lockedOutcome : null,
+      completed_steps:index+1,
+      events:journal.map(e=>({sequence:e.sequence,description:e.description})),
+      limits:"Non certifié ; non-production ; ne prouve aucun règlement bancaire réel."
+    };
+    const blob=new Blob([JSON.stringify(evidence,null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement("a");
+    link.href=url;link.download="trace-simulee-PAY-MAR-001.json";
+    document.body.appendChild(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    $("control-message").textContent="Trace JSON synthétique téléchargée ; aucune preuve de règlement réel.";
+  });
+  render();
+})();
+</script>
+</body>
+</html>
