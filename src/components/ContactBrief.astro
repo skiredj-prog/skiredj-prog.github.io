@@ -1,13 +1,16 @@
 ---
 import type { Locale } from '../data/site';
 import { personas } from '../data/business';
+import { portfolioTopics } from '../data/contact';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const fr=locale==='fr';
+const topics=portfolioTopics(locale);
 ---
 <section class="contact-brief" aria-labelledby="brief-title">
   <div><p class="eyebrow">{fr?'Vous écrivez à Abdelaziz Skiredj':'You are writing to Abdelaziz Skiredj'}</p><h2 id="brief-title">{fr?'Qu’aimeriez-vous éclaircir ?':'What would you like to clarify?'}</h2><p>{fr?'Une idée encore floue, une question technique ou un résultat incertain : vous pouvez commencer avec vos mots. Quelques lignes suffisent.':'An idea still taking shape, a technical question or an uncertain outcome: start in your own words. A few lines are enough.'}</p><p class="contact-context" data-contact-context hidden role="status"></p></div>
-  <form data-contact-brief data-locale={locale}>
+  <p class="contact-topic" data-contact-topic hidden><span>{fr?'À propos de':'About'} <a data-topic-link></a></span><button type="button" data-clear-topic>{fr?'Retirer ce contexte':'Remove this context'}</button></p>
+  <form data-contact-brief data-locale={locale} data-topics={JSON.stringify(topics)} data-topic-site={Astro.site?.href}>
     <label for="brief-action">{fr?'Qu’est-ce que vous aimeriez faire ou comprendre ?':'What would you like to do or understand?'} <span>{fr?'(requis)':'(required)'}</span></label>
     <textarea id="brief-action" name="action" rows="3" required maxlength="1500" placeholder={fr?'« J’aimerais… », « Je n’arrive pas à savoir si… »':'“I’d like to…”, “I cannot establish whether…”'}></textarea>
     <label for="brief-context">{fr?'Où en êtes-vous ?':'Where are you starting from?'}</label>
@@ -29,6 +32,21 @@ const fr=locale==='fr';
     const decisionField=form.querySelector<HTMLTextAreaElement>('[name=decision]');
     const profileField=form.querySelector<HTMLSelectElement>('[name=profile]');
     const profileHolder=form.querySelector<HTMLElement>('[data-profile-context]');
+    const topicHolder=form.parentElement?.querySelector<HTMLElement>('[data-contact-topic]');
+    const topicLink=topicHolder?.querySelector<HTMLAnchorElement>('[data-topic-link]');
+    const topics: Record<string,{title:string;href:string}>=JSON.parse(form.dataset.topics||'{}');
+    const requestedTopic=new URLSearchParams(location.search).get('sujet');
+    let topicId=requestedTopic&&Object.hasOwn(topics,requestedTopic)?requestedTopic:null;
+    if(topicId&&topicHolder&&topicLink){topicHolder.hidden=false;topicLink.textContent=topics[topicId].title;topicLink.href=topics[topicId].href;}
+    const invalidateDraft=()=>{
+      const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]');
+      if(fallback)fallback.hidden=true;if(feedback)feedback.hidden=true;
+    };
+    topicHolder?.querySelector('[data-clear-topic]')?.addEventListener('click',()=>{
+      topicId=null;if(topicHolder)topicHolder.hidden=true;
+      const destination=new URL(location.href);destination.searchParams.delete('sujet');history.replaceState(null,'',destination);
+      invalidateDraft();actionField?.focus();
+    });
     const profile=new URLSearchParams(location.search).get('profil');
     const setProfile=(value:unknown)=>{if(profileField&&typeof value==='string'&&Array.from(profileField.options).some(o=>o.value===value)){profileField.value=value;if(profileHolder)profileHolder.hidden=false;}};
     if(profile)setProfile(profile);
@@ -40,23 +58,23 @@ const fr=locale==='fr';
     if(submit)submit.disabled=false;
     try{
       const raw=sessionStorage.getItem(transferKey);
-      if(raw){sessionStorage.removeItem(transferKey);const draft=JSON.parse(raw);if(draft.target===location.pathname&&Date.now()-draft.time<120000){if(actionField&&typeof draft.action==='string')actionField.value=draft.action.slice(0,1500);if(decisionField&&typeof draft.decision==='string')decisionField.value=draft.decision.slice(0,1500);if(context&&Array.from(context.options).some(o=>o.value===draft.context))context.value=draft.context;setProfile(draft.profile);}}
+      if(raw){sessionStorage.removeItem(transferKey);const draft=JSON.parse(raw);if(draft.target===location.pathname&&(draft.topic??null)===topicId&&Date.now()-draft.time<120000){if(actionField&&typeof draft.action==='string')actionField.value=draft.action.slice(0,1500);if(decisionField&&typeof draft.decision==='string')decisionField.value=draft.decision.slice(0,1500);if(context&&Array.from(context.options).some(o=>o.value===draft.context))context.value=draft.context;setProfile(draft.profile);}}
     }catch(e){}
     document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-tools a').forEach(link=>link.addEventListener('click',event=>{
       const destination=new URL(link.href);
-      if(destination.pathname===location.pathname)return;
+      if(topicId)destination.searchParams.set('sujet',topicId);else destination.searchParams.delete('sujet');
+      if(destination.pathname===location.pathname){event.preventDefault();return;}
       if(context)destination.searchParams.set('situation',context.value);
       if(profileHolder?.hidden===false){if(profileField?.value)destination.searchParams.set('profil',profileField.value);else destination.searchParams.delete('profil');}
       link.href=destination.href;
       if(!actionField?.value&&!decisionField?.value&&profileHolder?.hidden!==false)return;
-      try{sessionStorage.setItem(transferKey,JSON.stringify({action:actionField?.value||'',decision:decisionField?.value||'',context:context?.value,profile:profileHolder?.hidden?undefined:profileField?.value,time:Date.now(),target:destination.pathname}));}
+      try{sessionStorage.setItem(transferKey,JSON.stringify({action:actionField?.value||'',decision:decisionField?.value||'',context:context?.value,profile:profileHolder?.hidden?undefined:profileField?.value,topic:topicId,time:Date.now(),target:destination.pathname}));}
       catch(e){event.preventDefault();const feedback=form.querySelector<HTMLElement>('[data-brief-feedback]');if(feedback){feedback.hidden=false;feedback.textContent=form.dataset.locale==='fr'?'Le changement de langue ne peut pas conserver votre texte dans ce navigateur. Copiez-le avant de changer de langue.':'This browser cannot carry your text across the language change. Copy it before switching language.';}}
     }));
     form.addEventListener('input',event=>{
       const field=event.target as HTMLInputElement;
       if(!['action','context','decision','profile'].includes(field.name))return;
-      const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]');
-      if(fallback)fallback.hidden=true;if(feedback)feedback.hidden=true;
+      invalidateDraft();
     });
     form.addEventListener('submit',event=>{
       event.preventDefault();
@@ -67,7 +85,9 @@ const fr=locale==='fr';
       const contextLabel=context?.selectedOptions[0]?.textContent||'';
       const extra=String(data.get('decision')||'').trim();
       const profileLabel=profileField?.value?profileField.selectedOptions[0]?.textContent||'':'';
-      const body=fr?`Bonjour Abdelaziz,\n\n${action}\n\nMon point de départ : ${contextLabel}${profileLabel?`\nContexte : ${profileLabel}`:''}${extra?`\n\nCe qui compte pour moi :\n${extra}`:''}\n\nMerci.`:`Hello Abdelaziz,\n\n${action}\n\nMy starting point: ${contextLabel}${profileLabel?`\nContext: ${profileLabel}`:''}${extra?`\n\nWhat matters to me:\n${extra}`:''}\n\nThank you.`;
+      const topic=topicId?topics[topicId]:null;
+      const topicReference=topic?`\n\n${fr?'Page consultée':'Page viewed'} : ${topic.title}\n${new URL(topic.href,form.dataset.topicSite||location.origin).href}`:'';
+      const body=fr?`Bonjour Abdelaziz,\n\n${action}${topicReference}\n\nMon point de départ : ${contextLabel}${profileLabel?`\nContexte : ${profileLabel}`:''}${extra?`\n\nCe qui compte pour moi :\n${extra}`:''}\n\nMerci.`:`Hello Abdelaziz,\n\n${action}${topicReference}\n\nMy starting point: ${contextLabel}${profileLabel?`\nContext: ${profileLabel}`:''}${extra?`\n\nWhat matters to me:\n${extra}`:''}\n\nThank you.`;
       const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]'),copy=form.querySelector<HTMLTextAreaElement>('#brief-copy');
       if(copy)copy.value=body;if(fallback)fallback.hidden=false;if(feedback)feedback.hidden=false;
       const mailto=form.querySelector<HTMLAnchorElement>('[data-brief-mailto]');

@@ -7,6 +7,7 @@ import Home from '../components/Home.astro';
 import ContactBrief from '../components/ContactBrief.astro';
 import { journeys, journeyHref } from '../data/journeys';
 import { businessHref } from '../data/business';
+import { portfolioContactHref } from '../data/contact';
 import { alternate, copy, navContact, navGroups, navProducts, url, type Locale } from '../data/site';
 interface Props { locale: Locale; slug: string; title: string; description: string; kicker: string; lede: string; sources: string; }
 const { locale, slug, title, description, kicker, lede, sources } = Astro.props;
@@ -20,7 +21,7 @@ const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}
 const canonical=new URL(url(here),Astro.site);
 const path=(f:string,e:string=f)=>url(fr?`/${f}/`:`/en/${e}/`);
 const selectedJourney=journeys[locale].find(j=>slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`));
-const readerContact=path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
+const readerContact=isPortfolio?portfolioContactHref(locale,slug.split('/')[1]):path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
 const pageKinds: Record<string, string> = {
   offre: fr?'Service':'Service', offer:'Service',
   'produits-et-services': 'Service · REG', 'products-and-services': 'Service · REG',
