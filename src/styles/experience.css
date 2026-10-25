@@ -484,3 +484,18 @@ html:not(.js) [role="tablist"],html:not(.js) [data-walk-next] { display: none; }
     overflow: visible;
   }
 }
+/* A lighter entry: an open invitation, followed by concrete examples. */
+.home-curiosity { min-width: 0; padding: clamp(1.4rem,3vw,2.5rem); border: 1px solid var(--line); border-radius: 15px; background: var(--accent-soft); }
+.home-curiosity > p:not(.eyebrow) { color: var(--ink-soft); max-width: 31rem; margin: 1.3rem 0 1.5rem; }
+.home-curiosity small { display: block; color: var(--muted); font-size: .76rem; margin-top: .9rem; }
+.home-principles { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2rem; padding: 1.6rem 0; border-block: 1px solid var(--line); }
+.landing .home-principles h2 { font: 600 1.05rem/1.4 var(--sans); letter-spacing: 0; }
+.home-principles p { font-size: .92rem; color: var(--muted); margin: .4rem 0 0; }
+.home-examples .journey-card h3 { margin-top: .9rem; }
+.pf-xray-explore { scroll-margin-top: 6rem; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--accent-soft); }
+.pf-xray-explore h2 { font: 500 clamp(1.8rem,3vw,2.5rem)/1.2 var(--serif); margin: 0; }
+.pf-xray-explore > p:not(.pf-overline) { max-width: 48rem; color: var(--muted); }
+@media (max-width: 720px) {
+  .home-principles { grid-template-columns: minmax(0,1fr); gap: 1.2rem; }
+  .pf-xray-explore { padding: 1.1rem; scroll-margin-top: 1rem; }
+}

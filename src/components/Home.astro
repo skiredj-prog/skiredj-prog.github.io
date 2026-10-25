@@ -1,14 +1,11 @@
 ---
 import { url, type Locale } from '../data/site';
-import { journeys, journeyHref } from '../data/journeys';
-import { businessHref } from '../data/business';
 import { frameworkIntro, introductions } from '../data/introductions';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
 const introduction = introductions[locale][0];
 const path = (f: string, e: string = f) => url(fr ? `/${f}/` : `/en/${e}/`);
-const shortNeeds = fr ? ['Comprendre l’idée', 'Essayer une simulation', 'Préparer un lancement', 'Comprendre une incertitude', 'Examiner les textes et le code'] : ['Understand the idea', 'Try a simulation', 'Prepare a launch', 'Understand uncertainty', 'Examine texts and code'];
 const steps = fr ? [
   ['01', 'Question', 'Partir de la décision à préparer.', 'Quelle action examine-t-on ? Quelle conséquence faut-il préserver ? La question définit le périmètre de travail.', 'Une question précise et un responsable identifié.'],
   ['02', 'Modèle', 'Expliciter ce que l’on cherche.', 'Décrire le système, les règles et les hypothèses. Choisir les propriétés et les observations nécessaires pour examiner la question.', 'Des hypothèses et un protocole d’observation.'],
@@ -32,51 +29,31 @@ const steps = fr ? [
       <p class="eyebrow"><span class="status-dot"></span> {fr ? 'À votre rythme' : 'At your own pace'}</p>
       <h1 id="home-title"><span data-hero-opening>{introduction.opening}</span><br /><em data-hero-emphasis>{introduction.emphasis}</em></h1>
       <p class="hero-lead">{frameworkIntro[locale]}{' '}<span data-hero-body>{introduction.body}</span></p>
-      <p class="hero-caption">{fr ? 'REG, la démarche Prévenir / Préparer de TENIR Labs : des exigences aux contrôles, des systèmes aux preuves.' : 'REG, the TENIR Labs Prevent / Prepare approach: from requirements to controls, from systems to evidence.'}</p>
-      <div class="reg-business-path" aria-label={fr ? 'Le diagnostic accompagné' : 'The guided diagnostic'}>
-        <p class="reg-business-intro"><strong>{fr ? 'Un cas concret à éclaircir ?' : 'A concrete case to clarify?'}</strong> {fr ? 'Le diagnostic accompagné vous remet une synthèse sourcée, les inconnues et un plan d’actions priorisé, selon le périmètre convenu.' : 'The guided diagnostic provides a source-linked summary, open questions and a prioritized action plan within an agreed scope.'}</p>
-        <p class="reg-business-steps">{fr ? 'Votre question et vos sources → Examen → Synthèse et prochaines décisions.' : 'Your question and sources → Review → Summary and next decisions.'}</p>
-      </div>
       <div class="actions">
-        <a class="btn btn-primary" href={path('produits-et-services','products-and-services')}>{fr ? 'Explorer le diagnostic REG' : 'Explore the REG diagnostic'} <span aria-hidden="true">→</span></a>
-        <a class="btn btn-quiet" href={path('parcours/decouvrir','start/discover')}>{fr ? 'Comprendre TENIR' : 'Understand TENIR'} <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-primary" href={path('portfolio/demos')}>{fr ? 'Explorer les démos' : 'Explore the demos'} <span aria-hidden="true">→</span></a>
+        <a class="btn btn-quiet" href={path('portfolio/products')}>{fr ? 'Voir les produits' : 'See the products'} <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="hero-caption">{fr ? 'Diagnostic REG : voir la démarche et les livrables, puis prendre contact si cela vous aide.' : 'REG diagnostic: read the process and deliverables, then get in touch if useful.'}</p>
     </div>
-    <nav class="hero-paths" aria-label={fr?'Choisir selon votre besoin':'Choose by what you need'}>
-      <p class="guide-kicker">{fr?'Selon ce que vous cherchez':'Based on what you need'}</p>
-      <h2>{fr?'Qu’est-ce qui vous amène ?':'What brings you here?'}</h2>
-      {journeys[locale].map((j,i)=><a href={url(journeyHref(locale,j))}><span><strong>{j.label}</strong><small>{shortNeeds[i]}</small></span><span aria-hidden="true">↗</span></a>)}
-    </nav>
+    <aside class="home-curiosity" aria-labelledby="curiosity-title">
+      <p class="eyebrow">AI Exposure X-Ray</p>
+      <h2 id="curiosity-title">{fr ? 'L’IA est peut-être' : 'AI may already be'}<br /><em>{fr ? 'déjà là.' : 'part of the picture.'}</em></h2>
+      <p>{fr ? 'Un compte rendu automatique. Une réponse suggérée. Un document classé. Derrière ces gestes pratiques, quelles informations circulent ?' : 'An automatic summary. A suggested reply. A document sorted. What information travels behind these everyday shortcuts?'}</p>
+      <a class="btn" href={path('portfolio/xray')+'#explorer'}>{fr ? 'Explorer trois exemples' : 'Explore three examples'} <span aria-hidden="true">→</span></a>
+      <small>{fr ? 'Exemples illustratifs · sans inscription · à votre rythme' : 'Illustrative examples · no sign-up · at your own pace'}</small>
+    </aside>
   </section>
-  <section class="landing-section incident-section" id="comprendre" aria-labelledby="incident-title">
-    <div class="incident-intro"><p class="eyebrow">{fr?'Une application aux agents':'An application to agents'}</p><h2 id="incident-title">{fr?'La confirmation manque.' : 'The confirmation is missing.'}<br /><em>{fr?'Vous faites quoi ?':'What would you do?'}</em></h2><p>{fr?'Imaginez : un agent a envoyé votre commande, mais le service ne répond plus. Vous ne savez pas si elle a été créée.':'Imagine: an agent sent your order, but the service stops responding. You do not know whether the order was created.'}</p><p class="section-note">{fr?'Explorez la réaction qui vous vient. Il n’y a ni score, ni opération lancée.':'Explore the reaction that comes to mind. There is no score and no operation is launched.'}</p></div>
-    <div class="incident-conversation">
-      <div class="reader-reflections">
-        <details name="incident-reflection"><summary>{fr?'Je renvoie la commande.':'I send the order again.'}</summary><p>{fr?'Cela peut sembler le moyen le plus simple d’avancer. Mais si la première commande existe déjà, une relance peut créer un doublon. La réponse manquante ne prouve pas l’échec.':'That can seem like the simplest way forward. But if the first order already exists, retrying can create a duplicate. A missing response does not establish failure.'}</p><a href={path('parcours/examiner','start/investigate')}>{fr?'Voir ce que l’on peut vérifier':'See what can be checked'} →</a></details>
-        <details name="incident-reflection"><summary>{fr?'Je cherche d’abord si elle existe.':'I first check whether it exists.'}</summary><p>{fr?'Vous cherchez à connaître le résultat avant de recommencer. L’état du destinataire ou une trace peut aider. Si ces éléments ne suffisent pas, le résultat reste inconnu.':'You want to know the outcome before trying again. The recipient state or a trace can help. If these are insufficient, the outcome remains unknown.'}</p><a href={path('offre/exemple','offer/example')}>{fr?'Regarder un exemple avec ses sources':'Look at an example with sources'} →</a></details>
-        <details name="incident-reflection"><summary>{fr?'Je ne sais pas encore.':'I’m not sure yet.'}</summary><p>{fr?'C’est justement la question à éclaircir. Commençons par trois choses : ce qui a été autorisé, ce qui a été envoyé et ce qui a été confirmé. Elles ne disent pas la même chose.':'That is the question to clarify. Start with three things: what was authorized, what was sent and what was confirmed. They do not mean the same thing.'}</p><a href={path('parcours/decouvrir','start/discover')}>{fr?'Prendre les repères, simplement':'Start with the basics'} →</a></details>
-      </div>
-      <details class="evidence-detail"><summary>{fr?'Voir ce que l’on sait dans cet exemple':'See what is known in this example'}</summary>
-    <div class="incident-walkthrough" data-walkthrough>
-      <div class="walkthrough-tabs" role="tablist" aria-label={fr ? 'Les trois étapes de l’incident' : 'The three incident steps'}>
-        {(fr ? ['L’envoi', 'L’incertitude', 'La suite'] : ['Dispatch', 'Uncertainty', 'Next step']).map((s,i)=><button type="button" id={`incident-tab-${i}`} role="tab" aria-selected={i===0 ? 'true':'false'} aria-controls={`incident-panel-${i}`} tabindex={i===0 ? 0:-1} data-walk-tab>{`0${i+1}`} <span>{s}</span></button>)}
-      </div>
-      <div class="walkthrough-body">
-        <section id="incident-panel-0" role="tabpanel" tabindex="0" aria-labelledby="incident-tab-0" data-walk-panel><span class="state-badge state-ok">PASS → {fr ? 'ENVOYÉ' : 'SENT'}</span><h3>{fr ? 'L’autorisation a été donnée.' : 'Authorization was given.'}</h3><p>{fr ? 'L’appel est enregistré. Cela établit l’envoi, pas encore le résultat de la commande.' : 'The call is recorded. That establishes dispatch, but not yet the outcome of the order.'}</p><div class="fact-row"><span>{fr ? 'Autorisation' : 'Authorization'}</span><strong>PASS</strong></div><div class="fact-row"><span>{fr ? 'Résultat' : 'Outcome'}</span><strong>{fr ? 'À confirmer' : 'To be confirmed'}</strong></div></section>
-        <section id="incident-panel-1" role="tabpanel" tabindex="0" aria-labelledby="incident-tab-1" data-walk-panel hidden><span class="state-badge">UNKNOWN</span><h3>{fr ? 'Le résultat reste inconnu.' : 'The outcome remains unknown.'}</h3><p>{fr ? 'La réponse manque. Cela ne prouve pas que l’action a échoué. Dans le scénario local, la réservation reste conservée.' : 'The response is missing. That does not prove the action failed. In the local scenario, the reservation stays held.'}</p><div class="fact-row"><span>{fr ? 'Nouvel envoi automatique' : 'Automatic retry'}</span><strong>{fr ? 'Non' : 'No'}</strong></div><div class="fact-row"><span>{fr ? 'Réservation' : 'Reservation'}</span><strong>{fr ? 'Conservée' : 'Retained'}</strong></div></section>
-        <section id="incident-panel-2" role="tabpanel" tabindex="0" aria-labelledby="incident-tab-2" data-walk-panel hidden><span class="state-badge state-neutral">{fr ? 'VÉRIFIER AVANT LA SUITE' : 'VERIFY BEFORE PROCEEDING'}</span><h3>{fr ? 'Retrouver la preuve utile.' : 'Find the evidence that matters.'}</h3><p>{fr ? 'Examiner l’état du destinataire, les traces disponibles et la responsabilité de reprise. Le prototype ne résout pas automatiquement l’incertitude.' : 'Examine the recipient state, available traces and responsibility for resuming. The prototype does not automatically resolve uncertainty.'}</p><a class="text-link" href={path('offre/exemple','offer/example')}>{fr ? 'Voir la fiche de diagnostic simulée' : 'See the simulated diagnostic sheet'} <span aria-hidden="true">→</span></a></section>
-      </div>
-      <div class="walkthrough-footer"><span>{fr ? 'Lecture guidée · aucune action exécutée' : 'Guided reading · no action executed'}</span><button type="button" data-walk-next>{fr ? 'Étape suivante' : 'Next step'} <span aria-hidden="true">→</span></button></div>
-    </div>
-
-      </details>
-    </div>
+  <section class="home-principles" aria-label={fr ? 'Ce qui guide TENIR' : 'What guides TENIR'}>
+    <div><h2>{fr ? 'Le contexte avant la conclusion.' : 'Context before conclusions.'}</h2><p>{fr ? 'Comprendre ce qui se joue, ce qui compte et ce qui doit être préservé.' : 'Understand what is at stake, what matters and what must be preserved.'}</p></div>
+    <div><h2>{fr ? 'Des constats reliés aux sources.' : 'Findings linked to sources.'}</h2><p>{fr ? 'Distinguer les faits, les interprétations et ce qui reste inconnu.' : 'Distinguish facts, interpretations and what remains unknown.'}</p></div>
+    <div><h2>{fr ? 'Pouvoir encore choisir.' : 'Keep choices open.'}</h2><p>{fr ? 'Examiner les conséquences et les possibilités de reprise avant de s’engager.' : 'Examine consequences and ways to recover before committing.'}</p></div>
   </section>
-
-  <section class="business-entry" aria-labelledby="business-entry-title">
-    <div><h2 id="business-entry-title">{fr?'D’autres situations à explorer':'More situations to explore'}</h2><p>{fr?'Un agenda à alléger, un agent à préparer, un résultat à éclaircir.':'A busy calendar, an agent to prepare, an outcome to understand.'}</p></div>
-    <a class="btn" href={url(businessHref(locale))}>{fr?'Voir les situations':'See the situations'} <span aria-hidden="true">→</span></a>
+  <section class="landing-section" id="comprendre" aria-labelledby="examples-title">
+    <div class="section-heading"><div><p class="eyebrow">{fr ? 'En pratique' : 'In practice'}</p><h2 id="examples-title">{fr ? 'Quelques situations, pour voir.' : 'A few situations to explore.'}</h2></div><p>{fr ? 'Un exemple peut suffire à faire le lien.' : 'One example can make the connection.'}</p></div>
+    <div class="journey-grid home-examples">
+      <a class="journey-card" href={path('portfolio/prevent')}><span class="role">REG Prevent</span><h3>{fr ? 'Une règle change. Qu’est-ce que cela implique ?' : 'A rule changes. What does that mean in practice?'}</h3><p>{fr ? 'Repérer les décisions concernées et les vérifications à préparer.' : 'Identify the decisions affected and the checks to prepare.'}</p><span class="text-link">{fr ? 'Découvrir l’approche' : 'Discover the approach'} →</span></a>
+      <a class="journey-card" href={path('portfolio/prepare')}><span class="role">REG Prepare</span><h3>{fr ? 'Une preuve est demandée. Où la retrouver ?' : 'Evidence is requested. Where can we find it?'}</h3><p>{fr ? 'Relier une affirmation aux pièces disponibles et rendre les manques visibles.' : 'Connect a claim to available records and make the gaps visible.'}</p><span class="text-link">{fr ? 'Voir ce que l’on examine' : 'See what is examined'} →</span></a>
+      <a class="journey-card" href={path('portfolio/control-tower')}><span class="role">{fr ? 'Simulation interactive · anglais' : 'Interactive simulation · English'}</span><h3>{fr ? 'Un agent envoie une commande. La réponse manque.' : 'An agent sends an order. The response is missing.'}</h3><p>{fr ? 'Faut-il relancer ? Observer ce qui change dans un scénario simulé.' : 'Should it retry? See what changes in a simulated scenario.'}</p><span class="text-link">{fr ? 'Ouvrir la simulation' : 'Open the simulation'} →</span></a>
+    </div>
   </section>
   <section class="prototype-section" aria-labelledby="prototype-title">
     <div class="prototype-copy"><span class="pill">{fr ? 'À explorer · prototype' : 'Explore · prototype'}</span><h2 id="prototype-title">{fr ? 'Vous préférez essayer ?' : 'Would you rather try it?'}<br /><em>{fr ? 'Une tâche est prête.' : 'An example task is ready.'}</em></h2><p>{fr ? 'Proposez un créneau, simulez une réponse, puis mettez en pause. Vous pouvez découvrir le principe avec des données d’exemple, sans connecter votre agenda.' : 'Propose a slot, simulate a reply, then pause. Explore the idea with example data, without connecting your calendar.'}</p><ul class="check-list"><li>{fr ? 'Définir les limites d’une tâche' : 'Set a task’s limits'}</li><li>{fr ? 'Voir la prochaine proposition' : 'See the next proposal'}</li><li>{fr ? 'Mettre en pause et consulter l’activité' : 'Pause and review activity'}</li></ul><a class="btn btn-primary" href="https://mobile.tenirlabs.cc/discover">{fr ? 'Essayer avec la tâche d’exemple' : 'Try the example task'} <span aria-hidden="true">↗</span></a><p class="prototype-note">{fr ? 'Espace de démonstration distinct. Aucun vrai message envoyé.' : 'Separate demonstration space. No real messages sent.'}</p></div>
@@ -146,6 +123,5 @@ const steps = fr ? [
     });
     next?.addEventListener('click',()=>{ if(active<tabs.length-1) show(active+1,true); });
   }
-  document.querySelectorAll('[data-walkthrough]').forEach(root=>setupTabs(root,'[data-walk-tab]','[data-walk-panel]',root.querySelector('[data-walk-next]')));
   document.querySelectorAll('[data-cycle]').forEach(root=>setupTabs(root,'[data-cycle-tab]','[data-cycle-panel]'));
 </script>
