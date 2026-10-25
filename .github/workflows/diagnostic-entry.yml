@@ -1,0 +1,32 @@
+name: Commercial diagnostic front-door — bilingual and scope QA
+
+on:
+  pull_request:
+    paths:
+      - 'src/content/fr/diagnostic-execution.md'
+      - 'src/content/en/diagnostic-execution.md'
+      - 'src/components/Home.astro'
+      - 'src/styles/experience.css'
+      - 'src/data/site.ts'
+      - 'src/layouts/Base.astro'
+      - 'scripts/check-diagnostic-entry.mjs'
+      - '.github/workflows/diagnostic-entry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bilingual-commercial-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:links
+      - run: node scripts/check-diagnostic-entry.mjs
+      - run: npm run check:assets
