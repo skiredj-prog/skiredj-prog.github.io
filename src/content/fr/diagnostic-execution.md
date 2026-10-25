@@ -1,9 +1,9 @@
 ---
-title: REG Execution Boundary Diagnostic
-kicker: Offre spécialisée · un flux critique
-description: Diagnostic borné des frontières d'exécution des agents IA : duplications, interruptions, résultat inconnu et réconciliation.
-lede: Un agent peut déclencher une action. Saurions-nous établir son résultat avant d'autoriser une nouvelle commande ?
-sources: Pack commercial TENIR Labs du 25 octobre 2026 · proposition à qualifier, non certifiante
+title: "REG Execution Boundary Diagnostic"
+kicker: "Offre spécialisée · un flux critique"
+description: "Diagnostic borné des frontières d'exécution des agents IA : duplications, interruptions, résultat inconnu et réconciliation."
+lede: "Un agent peut déclencher une action. Saurions-nous établir son résultat avant d'autoriser une nouvelle commande ?"
+sources: "Pack commercial TENIR Labs du 25 octobre 2026 · proposition à qualifier, non certifiante"
 ---
 
 ## Un flux. Une frontière. Une conclusion vérifiable.
