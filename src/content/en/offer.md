@@ -10,6 +10,8 @@ sources: offer proposal of 20 October 2026; format and effort to be confirmed in
   <p><strong>Launch hypothesis.</strong> Proposal of 20 October 2026. The format and the effort below are to be confirmed in each quote. They still have to be tested on the first missions. This page is not a certification, and it is not an authorization to go into production.</p>
 </div>
 
+<p><strong>For one consequential agent-driven flow:</strong> the <a href="/en/diagnostic-execution/">REG Execution Boundary Diagnostic</a> focuses on duplicates, interruptions, UNKNOWN outcomes and reconciliation. This is distinct from the general document-based review below; scope, schedule and fees are determined in a written quotation.</p>
+
 ## The promise
 
 <p>Your agent can trigger a payment, change a record, or send an order. What authorizes it? What must stop it? What is to be done when the response is missing?</p>
