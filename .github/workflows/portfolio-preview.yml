@@ -5,6 +5,7 @@ on:
     paths:
       - 'src/data/portfolio.ts'
       - 'src/data/site.ts'
+      - 'src/layouts/Base.astro'
       - 'src/components/PortfolioPage.astro'
       - 'src/pages/portfolio/**'
       - 'src/pages/en/portfolio/**'
