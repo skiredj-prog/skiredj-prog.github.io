@@ -273,6 +273,10 @@ html:not(.js) [role="tablist"],html:not(.js) [data-walk-next] { display: none; }
 .offer-summary strong { display: block; font-size: 1.25rem; line-height: 1.4; }
 .offer-summary p { font-size: .8rem; margin: .4rem 0 0; color: var(--muted); }
 .contact-brief { border: 1px solid var(--line); border-radius: var(--radius); background: var(--accent-soft); padding: 1.8rem; margin-bottom: 2.5rem; }
+.doc.contact-page { grid-template-columns:minmax(0,1fr); max-width:54rem; }
+.contact-page .breadcrumb { margin-bottom:1.2rem; }
+.contact-page .doc-head { padding-bottom:1rem; margin-bottom:1.4rem; }
+.contact-page .doc-head .kicker { margin-bottom:.5rem; }
 .contact-brief h2 { font: 500 2.6rem/1.1 var(--serif); margin: 0; }
 .contact-brief p { color: var(--muted); }
 .contact-topic { display:flex; flex-wrap:wrap; gap:.3rem 1rem; align-items:baseline; padding:.6rem 0; margin:1rem 0 0; border-block:1px solid var(--line); font-size:.85rem; }
