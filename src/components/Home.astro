@@ -21,6 +21,17 @@ const steps = fr ? [
   ['05', 'Restitution', 'Make the conclusion useful.', 'Connect findings to the initial question. Explain the limits and the next control to check to prepare a human decision.', 'A diagnostic sheet and proposed next steps.'],
   ['06', 'Follow-up', 'Revisit with new observations.', 'Define indicators and a monitoring model. Compare observations over time to update knowledge and revisit assumptions.', 'A new observation and knowledge to update.'],
 ];
+const entryPoints = fr ? [
+  {type:'Service · sur devis',title:'Diagnostic des frontières d’exécution',text:'Un flux critique, ses doublons, ses interruptions et les preuves nécessaires avant une reprise.',href:path('diagnostic-execution'),action:'Examiner l’offre'},
+  {type:'Démonstrations · données fictives',title:'Essayer les scénarios',text:'Voir les mécanismes de HOLD, de résultat inconnu et de réconciliation — sans effet client réel.',href:path('portfolio/demos'),action:'Explorer les démos'},
+  {type:'Logiciel · bêta bornée',title:'TENIR-Gov v5.7.0',text:'Consulter les sources, les capacités et les limites de la gouvernance runtime mono-hôte.',href:path('portfolio/gov'),action:'Examiner le logiciel'},
+  {type:'Cadre et méthode',title:'TENIR · REG Prevent / Prepare',text:'Comprendre le cadre, puis distinguer exigences, contrôles candidats et pièces démontrables.',href:path('produits-et-services','products-and-services'),action:'Lire les approches'},
+] : [
+  {type:'Service · scoped quotation',title:'Execution Boundary Diagnostic',text:'One critical flow, duplicate attempts, interruptions and evidence needed before any retry.',href:path('diagnostic-execution'),action:'Examine the offer'},
+  {type:'Demos · fictional data',title:'Explore scenarios',text:'See HOLD, unknown outcomes and reconciliation — with no real customer-side effect.',href:path('portfolio/demos'),action:'Explore demos'},
+  {type:'Software · bounded beta',title:'TENIR-Gov v5.7.0',text:'Read source, capabilities and limitations of the bounded single-host runtime governor.',href:path('portfolio/gov'),action:'Inspect the software'},
+  {type:'Framework and method',title:'TENIR · REG Prevent / Prepare',text:'Understand the framework and separate requirements, candidate controls and supporting evidence.',href:path('produits-et-services','products-and-services'),action:'Read the approaches'},
+];
 
 ---
 <div class="landing">
@@ -30,8 +41,8 @@ const steps = fr ? [
       <h1 id="home-title"><span data-hero-opening>{introduction.opening}</span><br /><em data-hero-emphasis>{introduction.emphasis}</em></h1>
       <p class="hero-lead">{frameworkIntro[locale]}{' '}<span data-hero-body>{introduction.body}</span></p>
       <div class="actions">
-        <a class="btn btn-primary" href={path('portfolio/demos')}>{fr ? 'Explorer les démos' : 'Explore the demos'} <span aria-hidden="true">→</span></a>
-        <a class="btn btn-quiet" href={path('portfolio/products')}>{fr ? 'Voir les produits' : 'See the products'} <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-primary" href={path('diagnostic-execution')}>{fr ? 'Examiner un flux critique' : 'Examine one critical flow'} <span aria-hidden="true">→</span></a>
+        <a class="btn btn-quiet" href={path('portfolio/demos')}>{fr ? 'Essayer les démos' : 'Explore the demos'} <span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <aside class="home-curiosity" aria-labelledby="curiosity-title">
@@ -41,6 +52,17 @@ const steps = fr ? [
       <a class="btn" href={path('portfolio/xray')+'#explorer'}>{fr ? 'Explorer trois exemples' : 'Explore three examples'} <span aria-hidden="true">→</span></a>
       <small>{fr ? 'Exemples illustratifs · sans inscription · à votre rythme' : 'Illustrative examples · no sign-up · at your own pace'}</small>
     </aside>
+  </section>
+  <section class="home-offer-map" aria-labelledby="offer-map-title">
+    <div class="home-offer-map-heading">
+      <div><p class="eyebrow">{fr ? 'En un regard' : 'At a glance'}</p><h2 id="offer-map-title">{fr ? 'Faire examiner, explorer, comprendre.' : 'Engage, explore, understand.'}</h2></div>
+      <p>{fr ? 'Distinguez ce que nous pouvons examiner ensemble, ce que vous pouvez essayer et ce qui relève encore de l’étude.' : 'Separate a scoped engagement, what you can try, and what remains framework or bounded software research.'}</p>
+    </div>
+    <div class="home-offer-grid">
+      {entryPoints.map(item=><a class="home-offer-item" href={item.href}>
+        <span class="role">{item.type}</span><h3>{item.title}</h3><p>{item.text}</p><span class="home-offer-link">{item.action} <span aria-hidden="true">→</span></span>
+      </a>)}
+    </div>
   </section>
   <section class="home-principles" aria-label={fr ? 'Ce qui guide TENIR' : 'What guides TENIR'}>
     <div><h2>{fr ? 'Le contexte avant la conclusion.' : 'Context before conclusions.'}</h2><p>{fr ? 'Comprendre ce qui se joue, ce qui compte et ce qui doit être préservé.' : 'Understand what is at stake, what matters and what must be preserved.'}</p></div>
@@ -66,7 +88,7 @@ const steps = fr ? [
     <a href={path('concepts')}><span class="role">{fr?'Le cadre':'The framework'}</span><h3>TENIR</h3><p>{fr?'Le diagnostic des systèmes sous pression et la préservation des options.':'Diagnosing systems under pressure and preserving options.'}</p><span class="text-link">{fr?'Comprendre les repères':'Understand the concepts'} →</span></a>
     <a href={path('produits-et-services','products-and-services')}><span class="role">{fr?'Le parcours opérationnel':'The practical approach'}</span><h3>REG</h3><p>{fr?'Des exigences vers les contrôles, des systèmes vers les preuves. Identifier les risques et préparer des décisions étayées.':'From requirements to controls, and from systems to evidence. Identify risks and prepare well-supported decisions.'}</p><span class="text-link">{fr?'Explorer les deux parcours':'Explore both journeys'} →</span></a>
     <a href={path('depots','repositories')}><span class="role">{fr?'Le logiciel en évaluation':'Software under evaluation'}</span><h3>TENIR-Gov</h3><p>{fr?'Du code public en évaluation, avec ses tests et leurs limites.':'Public code under evaluation, with tests and their limits.'}</p><span class="text-link">{fr?'Voir le code et les dépôts':'See code and repositories'} →</span></a>
-  </div><div class="demo-shelf"><div><h3>{fr?'Vous préférez voir les mécanismes ?':'Prefer to see the mechanisms?'}</h3><p>{fr?'Démonstrations techniques bornées, sans action sur votre système.':'Bounded technical demonstrations, with no action on your system.'}</p></div><a href={path('architecture/demo')}>{fr?'Six scènes d’exécution':'Six execution scenes'} <small>{fr?'Artefact en anglais':'Artifact in English'}</small> ↗</a><a href={path('architecture/interactive')}>{fr?'Architecture interactive':'Interactive architecture'} <small>{fr?'Artefact en anglais':'Artifact in English'}</small> ↗</a><a href={path('architecture/drawing')}>{fr?'Le système en dessin':'The system illustrated'} <small>{fr?'Schéma en français':'Diagram in French'}</small> ↗</a></div><p class="section-note">{fr?'Pour distinguer ce qui est établi de ce qui reste ouvert :':'To distinguish what is established from what remains open:'} <a href={path('statut','status')}>{fr?'statut et limites':'status and limits'} →</a></p></section>
+  </div><div class="demo-shelf"><div><h3>{fr?'Vous préférez voir les mécanismes ?':'Prefer to see the mechanisms?'}</h3><p>{fr?'Démonstrations techniques bornées, sans action sur votre système.':'Bounded technical demonstrations, with no action on your system.'}</p></div><a href={path('architecture/demo')}>{fr?'Six scènes d’exécution':'Six execution scenes'} <small>{fr?'Artefact en anglais':'Artifact in English'}</small> ↗</a><a href={path('architecture/interactive')}>{fr?'Architecture interactive':'Interactive architecture'} <small>{fr?'Artefact en anglais':'Artifact in English'}</small> ↗</a><a href={path('architecture/drawing')}>{fr?'Le système en dessin':'The system illustrated'} <small>{fr?'Schéma en français':'Diagram in French'}</small> ↗</a><a href={url('/embeds/demonstration-bancaire.html')}>{fr?'Scénario bancaire':'Banking scenario'} <small>{fr?'Simulation fictive · français':'Fictional simulation · French'}</small> ↗</a></div><p class="section-note">{fr?'Pour distinguer ce qui est établi de ce qui reste ouvert :':'To distinguish what is established from what remains open:'} <a href={path('statut','status')}>{fr?'statut et limites':'status and limits'} →</a></p></section>
 
   <section class="landing-section invitation-section" aria-labelledby="invitation-title"><div><p class="eyebrow">{fr?'Une personne, aussi':'A person, too'}</p><h2 id="invitation-title">{fr?'Pas encore les bons mots ?':'Still finding the words?'}<br /><em>{fr?'Partons de votre situation.':'Start with your situation.'}</em></h2><p>{fr?'Vous pouvez dire ce que vous essayez de faire, ou ce qui vous laisse dans le doute. Pas besoin de préparer un dossier complet pour poser une question.':'Tell us what you are trying to do, or what you are unsure about. You do not need a complete dossier to ask a question.'}</p><div class="actions"><a class="btn btn-primary" href={path('contact')}>{fr?'Décrire ma situation':'Describe my situation'} →</a><a class="btn btn-quiet" href={path('offre','offer')}>{fr?'Voir l’accompagnement proposé':'See the proposed engagement'}</a></div><p class="section-note">{fr?'Vous écrivez à Abdelaziz Skiredj. Le diagnostic est un accompagnement sur devis après cadrage.':'You write to Abdelaziz Skiredj. The diagnostic is an accompanied engagement, quoted after scoping.'}</p></div><div class="invitation-prompts"><p>{fr?'Vous pouvez commencer par…':'You can start with…'}</p><ul><li>{fr?'« J’aimerais confier cette tâche… »':'“I’d like to delegate this task…”'}</li><li>{fr?'« Je veux garder la décision sur… »':'“I want to keep control over…”'}</li><li>{fr?'« Ce que je n’arrive pas à savoir, c’est… »':'“What I cannot establish is…”'}</li></ul></div></section>
 
