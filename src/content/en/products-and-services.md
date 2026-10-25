@@ -1,8 +1,8 @@
 ---
 title: Products & Services
 kicker: REG — Regulatory Prevention & Readiness
-description: Anticipate compliance risks and prepare the available evidence ahead of reviews.
-lede: Start with requirements or with existing systems. Get qualified findings and practical next steps, not automatic certification.
+description: Understand requirements, examine controls and prepare a sourced summary with prioritized next steps.
+lede: "A rule to understand, an AI use to clarify or a review to prepare? A guided diagnostic can help establish the facts, the gaps and the next decision."
 sources: REG v0.1 Working Draft — October 21, 2026
 ---
 
@@ -10,17 +10,31 @@ sources: REG v0.1 Working Draft — October 21, 2026
 
 ## Start with a guided diagnostic
 
-AI may already be embedded in email, productivity suites, CRM, recruitment or supplier software. Its presence and use must be **checked**, never assumed. Before any installation, we propose an initial remote conversation to define a business question, followed by a scoped diagnostic.
+You have a business, compliance or design question. Start with a specific situation: understand what a requirement implies, locate the evidence supporting a control, or clarify how AI is used in a process.
 
-**What we examine:** where AI is actually used, what data it processes, which decisions or actions it influences, and which safeguards or evidence are missing.
+**The deliverable, within the agreed scope:** a sourced summary of findings, unknowns and gaps, with prioritized next steps. It helps prepare a decision and makes its supporting information traceable.
 
-**What you receive, according to the agreed scope:** a summary of observed and reported uses, risks to investigate, unknowns and prioritized next steps. This is neither a certification audit nor production validation.
+| You bring | We examine together | You receive |
+| --- | --- | --- |
+| A rule or process, with the documents and evidence available | Requirements, reported controls, verifiable information and gaps | A summary with its sources and limits, followed by proposed checks or decisions |
 
-**How to begin:** an exploratory conversation, then a proposal defining scope, authorized access, confidentiality, deliverables and commercial terms. No technical access or sensitive document is required to make contact.
+The diagnostic is a **service to scope together**, rather than software to install. An initial remote conversation helps choose the question. A proposal then sets out scope, authorized access, confidentiality, deliverables and commercial terms. No technical access or sensitive document is required to make contact.
 
 [Discuss a guided diagnostic →](/en/contact/)
 
+The contact page helps prepare your message; you review it before sending it through your own email app.
+
+## REG: two directions of work
+
+On this page, **REG names TENIR Labs' Prevent · Prepare product approach**. Its tools have different levels of maturity, described below. The technical standard **[Runtime Execution Governance (REG)](/en/standard/)** concerns the execution boundary of actions; this approach does not replace its contracts.
+
+- [Products and their current status](/en/portfolio/products/) — capabilities, access and limits.
+- [Services](/en/portfolio/services/) — scope, process and deliverables.
+- [Demonstrations](/en/portfolio/demos/) — what you can explore and what each example lets you observe.
+
 ## After the diagnostic: optional next steps
+
+When the question concerns AI, the review may cover its actual presence in tools, the data it processes, the decisions or actions it influences and the safeguards available. Reported use and observed use remain distinct.
 
 A **non-blocking observation** pilot may be considered if integration is justified and authorized. It requires assessment of technical impact, data handling and responsibilities; it is not described as risk-free or ready for every client.
 
@@ -75,21 +89,18 @@ When both tracks are fed, REG produces the alignment:
 
 **No cell becomes "compliant" through presence alone.** Every finding carries its source, its date, and its limits.
 
-## What REG is NOT
+## Reading the findings
 
-❌ It does not issue automatic certification
-❌ It does not replace legal advice
-❌ It does not claim real-time auditing of live systems
-❌ It does not manufacture evidence to fill gaps
-
-**What it is** : an honest mirror. What you see is what you can prove — no more, no less.
+An available document, a statement and a verified control carry different statuses. A gap remains visible and explains which conclusions it prevents. The summary helps choose the next check; it is neither certification, legal advice nor production validation. REG does not claim real-time auditing of systems or manufacture evidence to fill gaps.
 
 ## Project status
 
-**Version** : 0.1 — Consolidated framing · Working Draft
-**Status** : Simulated example available · Discovery private preview, not publicly released
-**Next** : Market validation · First real engagement
-**Maturity** : Discovery tested on a development branch · Translation Studio prototype · Readiness in progress
+Reference status as of **October 21, 2026**:
+
+- **Version:** 0.1 — consolidated framing, Working Draft.
+- **Available:** a public simulated example, with no client data.
+- **In development:** Discovery tested on a development branch, in private preview; Translation Studio prototype; Readiness in progress.
+- **To validate:** the value and format of the service through the first real engagements.
 
 [Read the REG v0.1 framing specification — Working Draft →](/en/publications/reg-v0.1/)
 [See the simulated file — no client data →](/en/offer/example/)

@@ -2,7 +2,7 @@
 title: Le standard
 kicker: REG · brouillons gelés
 description: Le standard Runtime Execution Governance, ses RFC, et ce qu’il n’est pas par rapport au cadre diagnostique.
-lede: REG standardise la frontière où une action proposée peut devenir un effet, et les obligations de preuve qui vont avec. Il ne standardise pas l’architecture interne qui les réalise.
+lede: Runtime Execution Governance (REG) propose des exigences pour la frontière où une action peut devenir un effet, et les preuves qui vont avec. L’architecture qui les réalise reste distincte.
 sources: RFC-0 à RFC-7 dans reg-conformance ; spec.md v0.3.1 ; KB3, séparation posture et exécution
 ---
 

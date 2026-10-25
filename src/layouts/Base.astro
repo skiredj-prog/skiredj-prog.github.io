@@ -14,12 +14,22 @@ const fr=locale==='fr', t=copy[locale], groups=navGroups[locale], products=navPr
 const home=slug==='';
 const isJourney=slug.startsWith('parcours/')||slug.startsWith('start/');
 const isBusiness=slug==='parcours/activite'||slug==='start/business';
+const isPortfolio=slug.startsWith('portfolio/');
 const other=slug==='404'?(fr?'/en/':'/'):alternate(locale,slug);
 const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}`;
 const canonical=new URL(url(here),Astro.site);
 const path=(f:string,e:string=f)=>url(fr?`/${f}/`:`/en/${e}/`);
 const selectedJourney=journeys[locale].find(j=>slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`));
 const readerContact=path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
+const pageKinds: Record<string, string> = {
+  offre: fr?'Service':'Service', offer:'Service',
+  'produits-et-services': 'Service · REG', 'products-and-services': 'Service · REG',
+  'offre/exemple': fr?'Exemple simulé':'Simulated example', 'offer/example':'Simulated example',
+  'architecture/demo': fr?'Démonstration':'Demo', 'architecture/interactive': fr?'Démonstration interactive':'Interactive demo',
+  'architecture/drawing': fr?'Document illustratif':'Illustrative document',
+  concepts: fr?'Cadre et recherche':'Framework and research', standard: fr?'Standard proposé':'Proposed standard',
+  depots: fr?'Sources logicielles':'Software sources', repositories:'Software sources',
+};
 const demo=groups[2];
 const resources=[...groups[3].links,...groups[4].links,...groups[0].links.filter(x=>x.slug!=='concepts'),groups[1].links[0],groups[1].links[4],{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}];
 const footerGroups=[
@@ -56,23 +66,23 @@ const mainDescription=home?(fr?'TENIR : cadre de diagnostic et de gouvernance de
           <details class:list={['nav-group',selectedJourney&&'is-current']}><summary>{fr?'Vos besoins':'Your needs'}</summary><div class="nav-menu needs-menu"><p class="needs-intro">{fr?'Qu’est-ce qui vous serait utile ?':'What would be useful to you?'}</p>{journeys[locale].map(j=><a href={url(journeyHref(locale,j))} aria-current={slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`)?'page':undefined}><strong>{j.label} <span aria-hidden="true">↗</span></strong><small>{j.need}</small></a>)}<a class="needs-question" href={path('contact')}>{fr?'Vous cherchez autre chose ? Posez votre question.':'Looking for something else? Ask your question.'} →</a></div></details>
           <a href={path('portfolio/products')} aria-current={slug==='portfolio/products'?'page':undefined}>{fr?'Produits':'Products'}</a>
           <a href={url(businessHref(locale))} aria-current={slug===(fr?'parcours/activite':'start/business')?'page':undefined}>{fr?'En pratique':'In practice'}</a>
-          <details class="nav-group"><summary>{fr?'Essayer':'Try it'}</summary><div class="nav-menu"><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Une tâche de rendez-vous':'An appointment task'}</strong><small>{fr?'Prototype mobile · aucun vrai message envoyé':'Mobile prototype · no real messages sent'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
+          <details class="nav-group"><summary>{fr?'Essayer':'Try it'}</summary><div class="nav-menu"><a href={path('portfolio/demos')}><strong>{fr?'Voir les démonstrations':'Browse the demos'}</strong><small>{fr?'Scénarios, schémas et exemples à explorer':'Scenarios, diagrams and examples to explore'}</small></a><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Une tâche de rendez-vous':'An appointment task'}</strong><small>{fr?'Prototype mobile · aucun vrai message envoyé':'Mobile prototype · no real messages sent'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
           <details class:list={['nav-group',resources.some(x=>x.slug===slug)&&'is-current']}><summary>{fr?'Ressources':'Resources'}</summary><div class="nav-menu resource-menu">{resources.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
           <div class="nav-mobile-tools"><a href={url(other)} lang={fr?'en':'fr'}>{fr?'Read in English':'Lire en français'}</a></div>
         </nav>
         <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={readerContact}>{fr?'Poser une question':'Ask a question'} <span aria-hidden="true">↗</span></a></div>
       </div>
     </header>
-    <main id="content" class:list={[home?'home-main':'doc',slug==='contact'&&'contact-page',isBusiness&&'business-page']} tabindex="-1">
+    <main id="content" class:list={[home?'home-main':'doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page']} tabindex="-1">
       {home ? <><Home locale={locale}/><details class="reading-note"><summary>{fr?'Statut, sources et limites de cette présentation':'Status, sources and limits of this presentation'}</summary><div class="prose"><p class="sources">{t.sources} : {sources}</p><slot /></div></details></> : <>
         <article>
           <nav class="breadcrumb" aria-label={fr?'Fil d’Ariane':'Breadcrumb'}><a href={url(fr?'/':'/en/')}>{fr?'Accueil':'Home'}</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
-          <header class="doc-head"><p class="kicker">{kicker}</p><h1>{title}</h1><p class="lede">{lede}</p><details class="source-disclosure"><summary>{fr?'Sources et contexte de lecture':'Sources and reading context'}</summary><p class="sources">{sources}</p><p>{t.status} <a href={path('statut','status')}>{fr?'Lire le statut détaillé':'Read the detailed status'} →</a></p></details></header>
+          <header class="doc-head"><p class="kicker">{pageKinds[slug]&&<span>{pageKinds[slug]} · </span>}{kicker}</p><h1>{title}</h1>{!isPortfolio&&<><p class="lede">{lede}</p><details class="source-disclosure"><summary>{fr?'Sources et contexte de lecture':'Sources and reading context'}</summary><p class="sources">{sources}</p><p>{t.status} <a href={path('statut','status')}>{fr?'Lire le statut détaillé':'Read the detailed status'} →</a></p></details></>}</header>
           {slug==='contact'&&<ContactBrief locale={locale}/>}
           {(slug==='offre'||slug==='offer'||slug==='produits-et-services'||slug==='products-and-services')&&<div class="offer-summary"><div><span class="role">{fr?'Le point de départ':'The starting point'}</span><strong>{fr?'Un cas précis. Une fiche sourcée. Une suite à décider.':'One precise case. A sourced sheet. A next step to decide.'}</strong><p>{fr?'Cadrage proposé : 30 min · forfait sur devis · format à confirmer':'Proposed scoping: 30 min · fixed quote · format to confirm'}</p></div><a class="btn btn-primary" href={path('contact')}>{fr?'Préparer le premier échange':'Prepare the first conversation'} →</a></div>}
           <details class="mobile-toc" data-mobile-toc hidden><summary>{t.toc}</summary><ol></ol></details>
-          {isBusiness?<slot />:slug==='contact'?<details class="contact-references"><summary>{fr?'Références de l’auteur et citations':'Author references and citations'}</summary><div class="prose"><slot /></div></details>:<div class="prose"><slot /></div>}
-          {slug!=='404'&&!isJourney&&<nav class="next-reading" aria-label={fr?'Poursuivre votre parcours':'Continue your journey'}><div><span class="role">{fr?'À votre rythme':'At your own pace'}</span><h2>{fr?'Qu’est-ce qui vous serait utile maintenant ?':'What would be useful to you now?'}</h2></div><div class="actions"><a class="btn" href={url(journeyHref(locale,journeys[locale][0]))}>{fr?'Une explication simple':'A simple explanation'} →</a><a class="btn btn-primary" href={slug==='contact'?path('offre/exemple','offer/example'):path('contact')}>{slug==='contact'?(fr?'Voir un exemple':'See an example'):(fr?'Poser une question':'Ask a question')} ↗</a></div></nav>}
+          {isBusiness||isPortfolio?<slot />:slug==='contact'?<details class="contact-references"><summary>{fr?'Références de l’auteur et citations':'Author references and citations'}</summary><div class="prose"><slot /></div></details>:<div class="prose"><slot /></div>}
+          {slug!=='404'&&!isJourney&&!isPortfolio&&<nav class="next-reading" aria-label={fr?'Poursuivre votre parcours':'Continue your journey'}><div><span class="role">{fr?'À votre rythme':'At your own pace'}</span><h2>{fr?'Qu’est-ce qui vous serait utile maintenant ?':'What would be useful to you now?'}</h2></div><div class="actions"><a class="btn" href={url(journeyHref(locale,journeys[locale][0]))}>{fr?'Une explication simple':'A simple explanation'} →</a><a class="btn btn-primary" href={slug==='contact'?path('offre/exemple','offer/example'):path('contact')}>{slug==='contact'?(fr?'Voir un exemple':'See an example'):(fr?'Poser une question':'Ask a question')} ↗</a></div></nav>}
         </article>
         <aside class="toc" id="toc" hidden><p>{t.toc}</p><ol></ol><a class="toc-help" href={readerContact}>{fr?'Une question en lisant ?':'A question while reading?'}<strong>{fr?'Écrire à Abdelaziz':'Write to Abdelaziz'} ↗</strong></a><a class="toc-help" href={url(journeyHref(locale,journeys[locale][0]))}>{fr?'Revenir à une explication simple':'Return to a simple explanation'} →</a></aside>
       </>}

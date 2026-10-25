@@ -2,7 +2,7 @@
 title: The standard
 kicker: REG · frozen drafts
 description: The Runtime Execution Governance standard, its RFCs, and what it is not relative to the diagnostic framework.
-lede: REG standardises the boundary at which a proposed action may become an effect, and the proof obligations that go with it. It does not standardise the internal architecture that realises them.
+lede: Runtime Execution Governance (REG) proposes requirements for the boundary where an action may become an effect, and the evidence that goes with it. The architecture that implements them remains separate.
 sources: RFC-0 through RFC-7 in reg-conformance; spec.md v0.3.1; KB3, posture and execution kept separate
 ---
 
