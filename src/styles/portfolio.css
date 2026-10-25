@@ -146,3 +146,13 @@
   .pf-card-bottom { flex-direction:column; align-items:start; gap:.5rem; }
   .pf-card-bottom small { max-width:none; }
 }
+
+/* Verifiable public access: distinguish a readable resource from product maturity. */
+.pf-public-access{margin-top:auto;display:grid;gap:.2rem;padding:.85rem 0;border-top:1px solid var(--line)}
+.pf-public-access>a{font-size:.92rem;font-weight:700;line-height:1.4}
+.pf-public-access small{font-size:.76rem;color:var(--muted);line-height:1.4}
+.pf-direct-access{display:flex;gap:1.4rem;align-items:center;justify-content:space-between;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--radius);background:var(--bg-raised);padding:1.2rem 1.5rem;margin:1.2rem 0 2rem}
+.pf-direct-access strong{font-size:1.1rem;display:block;margin:.35rem 0}
+.pf-direct-access p{font-size:.84rem;color:var(--muted);margin:0}
+.pf-direct-access .btn{flex-shrink:0}
+@media(max-width:700px){.pf-direct-access{flex-direction:column;align-items:stretch}.pf-direct-access .btn{text-align:center}}
