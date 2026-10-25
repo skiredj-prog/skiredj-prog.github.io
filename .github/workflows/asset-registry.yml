@@ -1,0 +1,61 @@
+name: PMO asset registry — lineage, version and public claims
+
+on:
+  pull_request:
+    paths:
+      - 'data/asset-registry.v1.json'
+      - 'src/data/portfolio.ts'
+      - 'src/data/portfolioAccess.ts'
+      - 'src/pages/portfolio/**'
+      - 'src/pages/en/portfolio/**'
+      - 'public/embeds/**'
+      - 'scripts/check-asset-registry.mjs'
+      - 'scripts/generate-sitemap.mjs'
+      - 'package.json'
+      - '.github/workflows/asset-registry.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/asset-registry.v1.json'
+      - 'src/data/portfolio.ts'
+      - 'src/data/portfolioAccess.ts'
+      - 'public/embeds/**'
+      - 'scripts/check-asset-registry.mjs'
+      - 'package.json'
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  asset-identity-and-integrity:
+    name: Portfolio FR/EN, provenances and immutable release tags
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          cache: npm
+      - name: Install locked site dependencies
+        run: npm ci
+      - name: Generate exact website pages and sitemap
+        run: npm run build
+      - name: Test fail-closed drift detection with adversarial mutations
+        run: npm run check:assets:unit
+      - name: Verify all 14 FR/EN entries, versions, statuses, links and artifact boundaries
+        run: npm run check:assets
+      - name: Check external published release tags against immutable Git targets
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npm run check:assets:remote
+      - name: Validate internal web links
+        run: npm run check:links
+      - name: PMO status (no automatic promotion)
+        if: always()
+        run: |
+          echo 'The PMO CI checks only registry consistency, local site build and release tag identity.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'It does not certify upstream source, private product readiness, regulatory compliance or production behavior.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Open lineage discrepancies remain explicitly registered until qualified evidence closes them.' >> "$GITHUB_STEP_SUMMARY"

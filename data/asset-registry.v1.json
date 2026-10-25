@@ -1,0 +1,724 @@
+{
+  "schema_version": "tenir-labs-asset-registry/v1",
+  "updated_on": "2026-10-25",
+  "purpose": "Deterministic maintenance contract for public portfolio, not normative accreditation or publication approval",
+  "historical_input": {
+    "filename": "Tenirlabs-Products-consolidation-20261024.zip",
+    "dated": "2026-10-24",
+    "sha256": "0f3684a0e72d19e3677f78e00a91dea215334a22d4d1f03d4bad02964cd0e3c2",
+    "manifest_files_verified": 13,
+    "classification": "historical_offline_source_snapshot_not_deployed"
+  },
+  "assets": [
+    {
+      "asset_id": "diagnostic",
+      "lineage": "diagnostic",
+      "kind": "service",
+      "site": {
+        "fr": {
+          "route": "/portfolio/diagnostic/",
+          "title": "Diagnostic accompagné de gouvernance",
+          "status": "Offre proposée · périmètre et devis à convenir"
+        },
+        "en": {
+          "route": "/en/portfolio/diagnostic/",
+          "title": "Guided Governance Diagnostic",
+          "status": "Proposed client offer · scoped and quoted"
+        },
+        "claimed_version": null,
+        "version_basis": "not_applicable"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "offered_scoped",
+        "conditions": [
+          "Scope, custody and commercial terms agreed before work"
+        ]
+      },
+      "public_artifact_url": null,
+      "public_access": "example",
+      "claims_scope": [
+        "Scope limited to the displayed editorial description."
+      ],
+      "non_claims": [
+        "Not a certification or automated runtime enforcement"
+      ],
+      "dependencies": []
+    },
+    {
+      "asset_id": "prevent",
+      "lineage": "prevent",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/prevent/",
+          "title": "REG Prevent",
+          "status": "Working Draft v0.1 · démarche pilote bornée"
+        },
+        "en": {
+          "route": "/en/portfolio/prevent/",
+          "title": "REG Prevent",
+          "status": "Working Draft v0.1 · bounded pilot approach"
+        },
+        "claimed_version": "v0.1",
+        "version_basis": "REG framing document, not released runtime"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "working_draft",
+        "conditions": []
+      },
+      "public_artifact_url": null,
+      "public_access": "documentation",
+      "claims_scope": [
+        "Working Draft approach for candidate controls"
+      ],
+      "non_claims": [
+        "Candidate controls are not admitted properties"
+      ],
+      "dependencies": [
+        "translation"
+      ]
+    },
+    {
+      "asset_id": "prepare",
+      "lineage": "prepare",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/prepare/",
+          "title": "REG Prepare",
+          "status": "Working Draft v0.1 · démarche pilote bornée"
+        },
+        "en": {
+          "route": "/en/portfolio/prepare/",
+          "title": "REG Prepare",
+          "status": "Working Draft v0.1 · bounded pilot approach"
+        },
+        "claimed_version": "v0.1",
+        "version_basis": "REG framing document, not released runtime"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "working_draft",
+        "conditions": []
+      },
+      "public_artifact_url": null,
+      "public_access": "documentation",
+      "claims_scope": [
+        "Evidence-readiness Working Draft"
+      ],
+      "non_claims": [
+        "No client verification or authentic production audit demonstrated"
+      ],
+      "dependencies": []
+    },
+    {
+      "asset_id": "explorer",
+      "lineage": "explorer",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/explorer/",
+          "title": "REG Explorer v0.2",
+          "status": "Prototype v0.2 · READY WITH CONDITIONS · test navigateur final requis"
+        },
+        "en": {
+          "route": "/en/portfolio/explorer/",
+          "title": "REG Explorer v0.2",
+          "status": "v0.2 prototype · READY WITH CONDITIONS · final browser test pending"
+        },
+        "claimed_version": "v0.2",
+        "version_basis": "project-reported prototype (not embedded-source-verified)"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "ready_with_conditions",
+        "conditions": [
+          "Final real-browser test PASS and pinned build/commit before public interactive link"
+        ]
+      },
+      "public_artifact_url": null,
+      "public_access": null,
+      "claims_scope": [
+        "P1 corrections reported; bounded prototype"
+      ],
+      "non_claims": [
+        "Not published as a qualified runnable experience"
+      ],
+      "dependencies": [
+        "discovery"
+      ]
+    },
+    {
+      "asset_id": "discovery",
+      "lineage": "discovery",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/discovery/",
+          "title": "REG Discovery",
+          "status": "Moteur déterministe expérimental · Working Draft · site PR #13 non fusionnée"
+        },
+        "en": {
+          "route": "/en/portfolio/discovery/",
+          "title": "REG Discovery",
+          "status": "Experimental deterministic engine · Working Draft · draft site PR #13"
+        },
+        "claimed_version": null,
+        "version_basis": "not_applicable"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "experimental_draft",
+        "conditions": [
+          "Merge and qualify PR #13 only after sources and browser review"
+        ]
+      },
+      "public_artifact_url": null,
+      "public_access": null,
+      "claims_scope": [
+        "Bounded deterministic hypothesis catalogue and printable report, per project report"
+      ],
+      "non_claims": [
+        "No generalized free-form compliance audit"
+      ],
+      "dependencies": [
+        "prevent"
+      ]
+    },
+    {
+      "asset_id": "mediation",
+      "lineage": "mediation",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/mediation/",
+          "title": "REG Mediation",
+          "status": "Prototype expérimental · propositions non admises"
+        },
+        "en": {
+          "route": "/en/portfolio/mediation/",
+          "title": "REG Mediation",
+          "status": "Experimental prototype · proposals not admitted"
+        },
+        "claimed_version": null,
+        "version_basis": "not_applicable"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "experimental_unadmitted",
+        "conditions": []
+      },
+      "public_artifact_url": null,
+      "public_access": null,
+      "claims_scope": [
+        "PREVENT/PREPARE candidate proposals"
+      ],
+      "non_claims": [
+        "No demonstrated completeness or normative admission"
+      ],
+      "dependencies": [
+        "prevent",
+        "prepare"
+      ]
+    },
+    {
+      "asset_id": "xray",
+      "lineage": "xray",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/xray/",
+          "title": "AI Exposure X-Ray",
+          "status": "Prototype X-Ray v0.2 · évaluation interne favorable · non qualifié production"
+        },
+        "en": {
+          "route": "/en/portfolio/xray/",
+          "title": "AI Exposure X-Ray",
+          "status": "X-Ray v0.2 prototype · favorable internal assessment · not production-qualified"
+        },
+        "claimed_version": "v0.2",
+        "version_basis": "site/project-reported prototype; distinct historical v0.5.1 unresolved"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "experimental_unpublished",
+        "conditions": []
+      },
+      "public_artifact_url": null,
+      "public_access": "example",
+      "claims_scope": [
+        "Editorial examples on site; internal prototype assessment reported"
+      ],
+      "non_claims": [
+        "Editorial examples are not a verified deployed X-Ray engine",
+        "Self-report is not evidence or admission"
+      ],
+      "dependencies": [
+        "discovery"
+      ]
+    },
+    {
+      "asset_id": "translation",
+      "lineage": "translation",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/translation/",
+          "title": "REG Translation Studio",
+          "status": "Prototype exploratoire · tests internes à préparer"
+        },
+        "en": {
+          "route": "/en/portfolio/translation/",
+          "title": "REG Translation Studio",
+          "status": "Exploratory prototype · preparing internal testing"
+        },
+        "claimed_version": null,
+        "version_basis": "not_applicable"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "experimental_draft",
+        "conditions": []
+      },
+      "public_artifact_url": null,
+      "public_access": "documentation",
+      "claims_scope": [
+        "Candidate translation and ambiguity tracking"
+      ],
+      "non_claims": [
+        "No formal normative resolution or production gate"
+      ],
+      "dependencies": [
+        "prevent"
+      ]
+    },
+    {
+      "asset_id": "gov",
+      "lineage": "gov",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/gov/",
+          "title": "TENIR-Gov v5.7.0",
+          "status": "Logiciel open source publié · bêta · mono-hôte borné"
+        },
+        "en": {
+          "route": "/en/portfolio/gov/",
+          "title": "TENIR-Gov v5.7.0",
+          "status": "Released open-source beta · bounded single-host"
+        },
+        "claimed_version": "v5.7.0",
+        "version_basis": "verified public release tag"
+      },
+      "version_embedded": null,
+      "source_ref": {
+        "kind": "release_tag",
+        "repository": "skiredj-prog/tenir_governance",
+        "ref": "v5.7.0",
+        "url": "https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0",
+        "verified_via": "GitHub release API 2026-10-25",
+        "commit_sha": "47ef67e3efc5f3008896a7d88bebf929fa0a98f0"
+      },
+      "build_ref": {
+        "kind": "external_git_release",
+        "repository": "skiredj-prog/tenir_governance",
+        "ref": "v5.7.0"
+      },
+      "test_ref": {
+        "status": "release_exists_not_independently_retested",
+        "url": "https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0"
+      },
+      "release_gate": {
+        "state": "released_scoped_software",
+        "conditions": [
+          "Single-host bounded runtime; deployed manifest and independent tests required for any further claim"
+        ]
+      },
+      "public_artifact_url": "https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0",
+      "public_access": "release",
+      "claims_scope": [
+        "Published beta tagged v5.7.0 with bounded single-host positioning"
+      ],
+      "non_claims": [
+        "No C3 multi-host production claim",
+        "No external exactly-once guarantee"
+      ],
+      "dependencies": [
+        "technical"
+      ]
+    },
+    {
+      "asset_id": "conformance",
+      "lineage": "conformance",
+      "kind": "product",
+      "site": {
+        "fr": {
+          "route": "/portfolio/conformance/",
+          "title": "REG Conformance v0.6.1",
+          "status": "Release v0.6.1 publiée · 46/46 PASS · profil Raft loopback mono-hôte"
+        },
+        "en": {
+          "route": "/en/portfolio/conformance/",
+          "title": "REG Conformance v0.6.1",
+          "status": "v0.6.1 released · 46/46 PASS · single-host loopback Raft profile"
+        },
+        "claimed_version": "v0.6.1",
+        "version_basis": "verified public GitHub release tag"
+      },
+      "version_embedded": null,
+      "source_ref": {
+        "kind": "release_tag",
+        "repository": "skiredj-prog/reg-conformance",
+        "ref": "v0.6.1",
+        "url": "https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1",
+        "verified_via": "GitHub release API 2026-10-25",
+        "commit_sha": "05cb6f83d70388fcc738456bb4d5778d7859f0b1"
+      },
+      "build_ref": {
+        "kind": "external_git_release",
+        "repository": "skiredj-prog/reg-conformance",
+        "ref": "v0.6.1"
+      },
+      "test_ref": {
+        "status": "release_attested_not_reexecuted_here",
+        "url": "https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1",
+        "reported_passed": 46,
+        "reported_total": 46,
+        "profile": "Raft single-host loopback"
+      },
+      "release_gate": {
+        "state": "released_scoped_software",
+        "conditions": []
+      },
+      "public_artifact_url": "https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1",
+      "public_access": "release",
+      "claims_scope": [
+        "Release reports signed badge and 46/46 PASS limited to Raft single-host loopback"
+      ],
+      "non_claims": [
+        "No C3 guarantee or physical multi-host validation",
+        "No generic certification"
+      ],
+      "dependencies": [
+        "technical",
+        "gov"
+      ]
+    },
+    {
+      "asset_id": "reg-arch",
+      "lineage": "reg-arch",
+      "kind": "foundation",
+      "site": {
+        "fr": {
+          "route": "/portfolio/reg-arch/",
+          "title": "REG-ARCH",
+          "status": "Fondation d’architecture · spécification de travail"
+        },
+        "en": {
+          "route": "/en/portfolio/reg-arch/",
+          "title": "REG-ARCH",
+          "status": "Architecture foundation · working specification"
+        },
+        "claimed_version": null,
+        "version_basis": "not_applicable"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "reference_only",
+        "conditions": []
+      },
+      "public_artifact_url": null,
+      "public_access": "demo",
+      "claims_scope": [
+        "Architecture references and illustrative diagram"
+      ],
+      "non_claims": [
+        "Proposed gates are not executed automatically"
+      ],
+      "dependencies": [
+        "technical"
+      ]
+    },
+    {
+      "asset_id": "technical",
+      "lineage": "technical",
+      "kind": "foundation",
+      "site": {
+        "fr": {
+          "route": "/portfolio/technical/",
+          "title": "REG+ et RFC · contrats et fondations",
+          "status": "Fondations documentaires REG+ / RFC · statut distinct du logiciel Conformance"
+        },
+        "en": {
+          "route": "/en/portfolio/technical/",
+          "title": "REG+ & RFCs · Contracts and foundations",
+          "status": "REG+ / RFC reference foundations · distinct from released Conformance tool"
+        },
+        "claimed_version": null,
+        "version_basis": "not_applicable"
+      },
+      "version_embedded": null,
+      "source_ref": null,
+      "build_ref": null,
+      "test_ref": null,
+      "release_gate": {
+        "state": "reference_only",
+        "conditions": []
+      },
+      "public_artifact_url": null,
+      "public_access": "documentation",
+      "claims_scope": [
+        "REG+ and RFC versioned reference layer; structurally admissible does not imply effective guarantee"
+      ],
+      "non_claims": [
+        "No runtime conformance inferred from a document or catalogue projection"
+      ],
+      "dependencies": [
+        "conformance"
+      ]
+    },
+    {
+      "asset_id": "experiences",
+      "lineage": "experiences",
+      "kind": "demo",
+      "site": {
+        "fr": {
+          "route": "/portfolio/experiences/",
+          "title": "Expériences TENIR Labs",
+          "status": "Expériences bornées · états de test distincts"
+        },
+        "en": {
+          "route": "/en/portfolio/experiences/",
+          "title": "TENIR Labs Experiences",
+          "status": "Developing and tested bounded experiences"
+        },
+        "claimed_version": null,
+        "version_basis": "not_applicable"
+      },
+      "version_embedded": null,
+      "source_ref": {
+        "kind": "site_file",
+        "repository": "skiredj-prog/skiredj-prog.github.io",
+        "ref": "4eae64f9d4b09654b82b3c9a8dc80db1c772b674",
+        "path": "public/embeds/demonstration-bancaire.html"
+      },
+      "build_ref": {
+        "kind": "site_static",
+        "path": "public/embeds/demonstration-bancaire.html"
+      },
+      "test_ref": {
+        "status": "site_pages_build_verified",
+        "url": "https://github.com/skiredj-prog/skiredj-prog.github.io/actions/runs/40227789934"
+      },
+      "release_gate": {
+        "state": "deployed_simulation",
+        "conditions": []
+      },
+      "public_artifact_url": "https://tenirlabs.cc/embeds/demonstration-bancaire.html",
+      "public_access": "demo",
+      "claims_scope": [
+        "Existing banking scenario with fictional operation, duplicate, interruption and reconciliation"
+      ],
+      "non_claims": [
+        "No bank integration or externally verified settlement"
+      ],
+      "dependencies": [
+        "gov"
+      ]
+    },
+    {
+      "asset_id": "control-tower",
+      "lineage": "control-tower",
+      "kind": "demo",
+      "site": {
+        "fr": {
+          "route": "/portfolio/control-tower/",
+          "title": "REG — Autonomy Control Tower v1.0",
+          "status": "Simulation interactive fournie · noyau non connecté"
+        },
+        "en": {
+          "route": "/en/portfolio/control-tower/",
+          "title": "REG — Autonomy Control Tower v1.0",
+          "status": "Self-contained interactive simulation · no live kernel"
+        },
+        "claimed_version": "v1.0",
+        "version_basis": "standalone HTML copied in published site"
+      },
+      "version_embedded": "v1.0",
+      "source_ref": {
+        "kind": "site_file",
+        "repository": "skiredj-prog/skiredj-prog.github.io",
+        "ref": "54b3a10e332124cc5c050b372a18bc03705c0c6c",
+        "path": "public/embeds/reg-autonomy-control-tower-v1.0.html"
+      },
+      "build_ref": {
+        "kind": "site_static",
+        "path": "public/embeds/reg-autonomy-control-tower-v1.0.html"
+      },
+      "test_ref": {
+        "status": "site_page_ci_verified_not_browser_acceptance",
+        "url": "https://github.com/skiredj-prog/skiredj-prog.github.io/actions/runs/40227645459"
+      },
+      "release_gate": {
+        "state": "deployed_simulation",
+        "conditions": []
+      },
+      "public_artifact_url": "https://tenirlabs.cc/embeds/reg-autonomy-control-tower-v1.0.html",
+      "public_access": "demo",
+      "claims_scope": [
+        "Four synthetic scenarios and client-side illustrative JSON export"
+      ],
+      "non_claims": [
+        "No live kernel, signed ledger or real provider effect"
+      ],
+      "dependencies": [
+        "reg-arch",
+        "gov"
+      ]
+    }
+  ],
+  "historical_or_staged_assets": [
+    {
+      "asset_id": "xray-archive-v0.5.1",
+      "lineage": "xray",
+      "filename_version": "v0.5.1",
+      "embedded_version": "v0.5.1",
+      "source_archive": "Tenirlabs-Products-consolidation-20261024.zip",
+      "source_path": "archive/tenir-ai-exposure-xray-v0.5.1-original.html",
+      "source_ref": null,
+      "public_url": null,
+      "release_gate": "historical_only",
+      "claims_scope": "Self-report interface with reg.discovery.self_report v1; not proof, admission or runtime"
+    },
+    {
+      "asset_id": "point-of-no-return-archive",
+      "lineage": "point-of-no-return",
+      "filename_version": "v0.3",
+      "embedded_version": "v0.2",
+      "source_archive": "Tenirlabs-Products-consolidation-20261024.zip",
+      "source_path": "archive/tenir-point-of-no-return-v0.3.html",
+      "source_ref": null,
+      "public_url": null,
+      "release_gate": "blocked_version_mismatch",
+      "claims_scope": "Pedagogic HOLD/replay, not operational undo"
+    },
+    {
+      "asset_id": "integrated-ux-archive",
+      "lineage": "integrated-ux",
+      "filename_version": "v0.3.1",
+      "embedded_version": "v0.3",
+      "source_archive": "Tenirlabs-Products-consolidation-20261024.zip",
+      "source_path": "archive/tenir-labs-integrated-ux-v0.3.1.html",
+      "source_ref": null,
+      "public_url": null,
+      "release_gate": "read_only_legacy",
+      "claims_scope": "Legacy UX reference; do not import classifier"
+    },
+    {
+      "asset_id": "workbench-private-candidate",
+      "lineage": "workbench",
+      "filename_version": "v0.1.0",
+      "embedded_version": null,
+      "source_archive": null,
+      "source_path": null,
+      "source_ref": {
+        "kind": "private_pr",
+        "repository": "skiredj-prog/tenir-reg-demo",
+        "ref": "pull/4",
+        "access": "private"
+      },
+      "public_url": null,
+      "release_gate": "private_candidate_awaiting_release",
+      "claims_scope": "Signed synthetic dossier candidate; public site PR #27 remains draft"
+    },
+    {
+      "asset_id": "control-tower-v1.1-fr-en-candidate",
+      "lineage": "control-tower",
+      "filename_version": "v1.1",
+      "embedded_version": "v1.1",
+      "source_archive": null,
+      "source_path": null,
+      "source_ref": null,
+      "public_url": null,
+      "release_gate": "local_candidate_not_deployed",
+      "claims_scope": "FR/EN local HTML; site remains v1.0 until controlled integration"
+    }
+  ],
+  "open_discrepancies": [
+    {
+      "id": "XRAY-LINEAGE",
+      "severity": "P0",
+      "status": "OPEN",
+      "canonical_asset_id": "xray",
+      "historic_asset_id": "xray-archive-v0.5.1",
+      "finding": "Site reports v0.2; historical independent HTML embeds v0.5.1. Do not infer equivalence.",
+      "close_when": "Pinned source lineage, commit, build fingerprint and validated URL confirm the relationship."
+    },
+    {
+      "id": "EXPLORER-PIN",
+      "severity": "P0",
+      "status": "OPEN",
+      "canonical_asset_id": "explorer",
+      "historic_asset_id": null,
+      "finding": "Explorer v0.2 reported READY WITH CONDITIONS; dated archive only documents prior concept, not validated executable.",
+      "close_when": "Source/commit and final-browser test attached to exact build."
+    },
+    {
+      "id": "PONR-VERSION",
+      "severity": "P1",
+      "status": "OPEN",
+      "canonical_asset_id": null,
+      "historic_asset_id": "point-of-no-return-archive",
+      "finding": "Filename v0.3 versus embedded title v0.2.",
+      "close_when": "Aligned source, title and versioned reproducible release."
+    },
+    {
+      "id": "LEGACY-UX-VERSION",
+      "severity": "P2",
+      "status": "OPEN",
+      "canonical_asset_id": null,
+      "historic_asset_id": "integrated-ux-archive",
+      "finding": "Filename v0.3.1 versus embedded v0.3; older classifier may conceal ai=no/effect=yes.",
+      "close_when": "Archived read-only or remediated only by reviewed replacement."
+    },
+    {
+      "id": "REG-ARCH-TEMPORAL",
+      "severity": "P1",
+      "status": "OPEN",
+      "canonical_asset_id": "reg-arch",
+      "historic_asset_id": null,
+      "finding": "Historical architecture v0.1 proposed, later site references v0.4.",
+      "close_when": "Pin normative lineage with versioned artifact/ratification evidence."
+    }
+  ],
+  "dependency_semantics": "dependencies are navigation/context references only, NOT runtime or build-time prerequisites"
+}
