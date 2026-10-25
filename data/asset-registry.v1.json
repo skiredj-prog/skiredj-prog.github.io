@@ -342,7 +342,8 @@
         "repository": "skiredj-prog/tenir_governance",
         "ref": "v5.7.0",
         "url": "https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0",
-        "verified_via": "GitHub release API 2026-10-25"
+        "verified_via": "GitHub release API 2026-10-25",
+        "commit_sha": "47ef67e3efc5f3008896a7d88bebf929fa0a98f0"
       },
       "build_ref": {
         "kind": "external_git_release",
@@ -396,7 +397,8 @@
         "repository": "skiredj-prog/reg-conformance",
         "ref": "v0.6.1",
         "url": "https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1",
-        "verified_via": "GitHub release API 2026-10-25"
+        "verified_via": "GitHub release API 2026-10-25",
+        "commit_sha": "05cb6f83d70388fcc738456bb4d5778d7859f0b1"
       },
       "build_ref": {
         "kind": "external_git_release",
@@ -717,5 +719,6 @@
       "finding": "Historical architecture v0.1 proposed, later site references v0.4.",
       "close_when": "Pin normative lineage with versioned artifact/ratification evidence."
     }
-  ]
+  ],
+  "dependency_semantics": "dependencies are navigation/context references only, NOT runtime or build-time prerequisites"
 }
