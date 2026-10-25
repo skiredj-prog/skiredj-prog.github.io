@@ -2,11 +2,11 @@
 
 **Register ID:** P1-PRS-20261025  
 **Verified:** 2026-10-25 UTC, website main [408eb2bff693](https://github.com/skiredj-prog/skiredj-prog.github.io/commit/408eb2bff6932c4ad7e43bbd0e44ffef4ff2960a)  
-**State:** RECOMMENDATIONS ONLY. **No PR has been merged, closed, published or automatically approved by this register.**  
+**State:** **A2 dispositions APPROVED by project owner in this conversation on 2026-10-25.** No PR has been merged, closed or published by this approval. Individual PR actions still require safety checks and separately recorded authorization.  
 **Scope:** Website PRs #13, #15, #21, #22 and #23. Based on GitHub PR metadata and unified diffs, not solely PR descriptions.  
-**Source/reviewer custody:** GitHub owner skiredj-prog; decision maker and second reviewer not yet documented; approval gate OPEN.
+**Source/reviewer custody:** Project-owner A2 instruction explicitly recorded in chat (2026-10-25); authenticated GitHub sign-off, second reviewer, accountable delegates and release approval remain open.
 
-## Proposed disposition matrix
+## A2-approved disposition matrix (approval of plan, not execution)
 
 | PR | Current state / factual changes | Recommended classification | Action required *after approval* | Collision / rationale |
 | --- | --- | --- | --- | --- |
@@ -32,20 +32,20 @@
 5. #13 is stacked on an older UX base and modifies extensive site and build/projection paths; integration must be rebased and verified, not silently promoted to production.
 6. Current [FR status page](https://github.com/skiredj-prog/skiredj-prog.github.io/blob/main/src/content/fr/statut.md) calls v5.6.0 the published runtime; separate [TENIR-Gov release v5.7.0](https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0) was published 2026-10-24. **Separate status-correction PR needed after content approval**, not appended to these unrelated PRs.
 
-## Decisions awaiting owner approval
+## Decisions: owner-approved dispositions; per-action gates remain
 
 | Decision | Recommendation | Approver / record | Status |
 | --- | --- | --- | --- |
-| D-P1-PR-01 | #23 becomes sole current nav fix (after manual desktop/mobile FR/EN check). | Named editorial/site maintainer to be recorded | **PENDING** |
-| D-P1-PR-02 | #15 superseded, close after evaluating footer CTA and regression check. | Named editorial/site maintainer to be recorded | **PENDING** |
-| D-P1-PR-03 | #21 close; retain FR/EN working-draft links; optionally reuse CTA labels. | Named product-editorial owner to be recorded | **PENDING** |
-| D-P1-PR-04 | #22 supersede/split; preserve verified disclaimers only. | Named product-editorial owner to be recorded | **PENDING** |
-| D-P1-PR-05 | #13 amend/rebase, validate pinned upstream source, independent go/no-go. | Named technical/release owner to be recorded | **PENDING** |
+| D-P1-PR-01 | #23 becomes sole current nav fix (after manual desktop/mobile FR/EN check). | A2 project-owner approval in conversation; deploy/merge approver still to be recorded | **A2 APPROVED; execution gated** |
+| D-P1-PR-02 | #15 superseded, close after evaluating footer CTA and regression check. | A2 project-owner approval in conversation; closure separately gated | **A2 APPROVED; execution gated** |
+| D-P1-PR-03 | #21 close; retain FR/EN working-draft links; optionally reuse CTA labels. | A2 project-owner approval in conversation; closure separately gated | **A2 APPROVED; execution gated** |
+| D-P1-PR-04 | #22 supersede/split; preserve verified disclaimers only. | A2 project-owner approval in conversation; closure separately gated | **A2 APPROVED; execution gated** |
+| D-P1-PR-05 | #13 amend/rebase, validate pinned upstream source, independent go/no-go. | A2 project-owner approval in conversation; integration/release decision separately gated | **A2 APPROVED; execution gated** |
 | D-P1-PR-06 | Separate status copy PR for 5.7.0; no C3/external exactly-once claim. | Named technical + editorial owner to be recorded | **PENDING** |
 
 ## Dependency-safe execution order (not authorization)
 
-1. Approve product map and accountable ownership; decide PR register classifications.
+1. **A1/A2 recorded** for map classifications and PR dispositions; assign named accountable owners and clear remaining source custody gaps before declaring P1 complete.
 2. Verify #23 FR/EN menu in desktop/mobile; on approval merge #23, record sha/build.
 3. Resolve #15, #21, #22 without competing header and without deleting extant spec links. Salvage useful microcopy into narrow, separately tested content PR if needed.
 4. Rebase and scope #13 as a separate Discovery exploratory launch after upstream pin, contract, privacy and browser gates.
@@ -57,11 +57,11 @@
 
 - [ ] Owners and reviewer/approver named; exceptions explicitly accepted.
 - [ ] All 11 portfolio entries reconciled with sources; unresolved artifact-location gaps logged and handled honestly.
-- [ ] Each of the five PRs has an **approved** disposition plus link to the resulting merge/closure/replacement.
+- [x] A2-approved dispositions recorded for all five PRs; resulting merge/closure/replacement links remain required before completing P1.
 - [ ] Navigation (FR/EN, desktop/mobile) and actual site deployment sha checked; no duplicate product entry path.
 - [ ] FR/EN Products & Services reflect canonical map, two distinct entry modes and evidence-backed maturity.
 - [ ] FR/EN runtime status reflects tagged source and bounded C3 non-claim without claiming a client deployment.
 - [ ] All links/builds/UX checks green; no unsupported certification, runtime guarantee or invented product.
 - [ ] **Explicit owner approval of P1 closure** recorded before authorizing visual redesign.
 
-**Until this gate is satisfied: P1 is OPEN; website redesign is BLOCKED.**
+**A2 approval does not execute PR operations. P1 remains OPEN, website redesign remains BLOCKED until all release and deployment checks succeed.**
