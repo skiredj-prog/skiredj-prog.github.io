@@ -45,7 +45,7 @@ An admission **PASS** is not proof of an external effect. A successful synthetic
 
 **One critical flow for the first engagement.** Minimal access, synthetic data and a test environment are preferred. Confidentiality, responsibilities, input records and exclusions are agreed in writing before the work begins.
 
-The commercial pack suggests an **indicative 1–3 weeks depending on the flow and feasible tests**. This is a planning estimate, **not a contractual service-level promise**. Fees are **quoted after qualification**, reflecting systems involved and required evidence.
+**Schedule and fees are quoted after qualification** of the flow, the systems involved, the available evidence and the tests expressly agreed. Neither client-environment testing nor a delivery deadline is assumed before written approval.
 
 Code changes, real provider integration, governor deployment and any production enforcement are separately scoped.
 
