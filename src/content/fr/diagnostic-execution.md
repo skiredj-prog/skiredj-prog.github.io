@@ -45,7 +45,7 @@ Un **PASS** d'admission n'est pas la confirmation d'un effet externe. Un test fa
 
 **Un flux critique lors du premier engagement.** Accès minimaux, données synthétiques et environnement de test privilégiés. La confidentialité, les rôles, les pièces consultées et les exclusions sont définis avant démarrage.
 
-Le format envisagé pour ce diagnostic spécialisé est de **1 à 3 semaines selon le flux et les tests réalisables** ; il s'agit d'une indication de cadrage issue du pack commercial, **pas d'un délai contractuel**. Le prix est établi **sur devis après qualification** du nombre de systèmes et du niveau de preuve attendu.
+La **durée et le prix sont définis sur devis après qualification** du flux, du nombre de systèmes, des sources disponibles et du niveau de preuve attendu. Aucun essai en environnement client ni délai de livraison n'est présumé avant accord écrit.
 
 Les modifications de code, la connexion à un fournisseur réel, le déploiement d'un gouverneur et toute mise en production constituent des engagements distincts.
 
