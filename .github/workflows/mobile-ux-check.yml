@@ -12,7 +12,8 @@ permissions:
   contents: read
 jobs:
   responsive-ux:
-    runs-on: ubuntu-latest
+    # Match the OS supported by the pinned Playwright 1.56.1 browser bundle.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
