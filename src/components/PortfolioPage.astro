@@ -65,6 +65,12 @@ const isFeatured = page === 'demos' || page === 'control-tower';
         </article>
       })}
     </div>
+    {page==='demos' && <section class="pf-conclusion" aria-label={fr?'Atelier approfondi':'Deeper workbench'}>
+      <div><p class="pf-overline">{fr?'APRÈS LA DÉCOUVERTE':'AFTER THE INTRODUCTION'}</p>
+       <h3>TENIR/REG · Diagnostic & Evidence Workbench</h3>
+       <p>{fr?'Passer de la démonstration narrative à la configuration et à la lecture d’un dossier signé simulé. L’édition autonome a passé les vérifications automatisées ; la diffusion du kit est encore en préparation.':'Go from narrative demonstration to configuration and synthetic signed-evidence inspection. The offline edition passed automated checks; public distribution remains gated.'}</p>
+      </div><a class="btn" href={url(fr?'/portfolio/workbench/':'/en/portfolio/workbench/')}>{fr?'Découvrir le Workbench':'Explore the Workbench'} →</a>
+    </section>}
     <div class="pf-conclusion">
       <div><h3>{fr?'Pas certain de votre point de départ ?':'Not sure where to start?'}</h3><p>{fr?'Nous pouvons cadrer la question avant de choisir un instrument. Rien ne vous oblige à acheter un diagnostic pour lire la documentation ou essayer une démo.':'We can scope the question before selecting an instrument. You do not need to purchase a diagnostic to read documentation or try a demo.'}</p></div>
       <a class="btn" href={url(fr?'/contact/':'/en/contact/')}>{fr?'Échanger sur un besoin':'Discuss a need'} →</a>
@@ -92,6 +98,10 @@ const isFeatured = page === 'demos' || page === 'control-tower';
       <div class="pf-details-head"><span class="pf-overline">{fr?'FICHE · 9 QUESTIONS':'PROFILE · 9 QUESTIONS'}</span><h3>{fr?'Ce qui est utile à savoir, avant de décider':'What matters before you decide'}</h3></div>
       <dl>{labels.map(([key,label],i)=><div class:list={['pf-field',key==='limits'&&'pf-field-limit']}><dt><span>{String(i+1).padStart(2,'0')}</span>{label}</dt><dd>{(entry as any)[key]}</dd></div>)}</dl>
     </section>
+    {page==='experiences' && <section class="pf-conclusion" aria-label="TENIR REG Workbench">
+      <div><h3>TENIR/REG · Diagnostic & Evidence Workbench</h3><p>{fr?'Un atelier plus approfondi pour comparer des contrôles et relire les preuves d’une exécution simulée, distinct de la Control Tower.':'A deeper environment for comparing controls and reading synthetic execution evidence, complementary to the Control Tower.'}</p></div>
+      <a class="btn" href={url(fr?'/portfolio/workbench/':'/en/portfolio/workbench/')}>{fr?'Voir le Workbench':'Explore Workbench'} →</a>
+    </section>}
     <section class="pf-sources"><h3>{fr?'Sources et repères':'Sources and references'}</h3><div class="pf-source-links">{entry.sources.map(s=><a href={href(s.href)}>{s.label} <span aria-hidden="true">↗</span></a>)}</div><p>{fr?'Les statuts correspondent aux sources et déclarations actuellement disponibles. Les versions d’artefacts non vérifiées restent explicitement indiquées.':'Statuses reflect currently available sources and declarations; unverified artifact revisions remain explicitly marked.'}</p></section>
     <section class="pf-related"><h3>{fr?'Explorer les connexions':'Related routes'}</h3><div class="pf-related-grid">{entry.related.map(id=><a href={cardHref(id)}><span>{portfolio[locale][id].title}</span><small>{portfolio[locale][id].tagline}</small></a>)}</div></section>
   </> : <p>{fr?'Page non disponible.':'Page unavailable.'}</p>}
