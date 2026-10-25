@@ -44,7 +44,7 @@
 | --- | --- | --- | --- |
 | P1-W1 | Navigation | PR #23 approved **as candidate**, still unmerged; site main lacks link inside Vos besoins | Manual FR/EN review and separate merge/release authorization |
 | P1-W2 | PR reconciliation | 5 dispositions approved by A2; five PRs still open | Safely amend/supersede, preserve useful code, separately authorize closures |
-| P1-W3 | Status correction | Runtime v5.7.0 published; website status still 5.6.0 | Approve bounded evidence-backed copy |
+| P1-W3 | Status correction | [Draft PR #25](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/25) proposes bounded v5.7.0 FR/EN correction; CI passed, not merged | Technical/editorial review and separate merge/deployment authorization |
 | P1-W4 | Canonical product map | 11-entry candidate here; owners/precise artifact sources unresolved | Product authority and source ownership |
 
 ## Approval log (fill before proceeding)
