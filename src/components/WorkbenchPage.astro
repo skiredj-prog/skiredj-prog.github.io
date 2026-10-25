@@ -1,0 +1,79 @@
+---
+import '../styles/portfolio.css';
+import { url } from '../data/site';
+interface Props {locale:'fr'|'en';}
+const {locale}=Astro.props;
+const fr=locale==='fr';
+const routes={
+  demos: url(fr?'/portfolio/demos/':'/en/portfolio/demos/'),
+  experiences: url(fr?'/portfolio/experiences/':'/en/portfolio/experiences/'),
+  tower: url(fr?'/portfolio/control-tower/':'/en/portfolio/control-tower/'),
+  gov: url(fr?'/portfolio/gov/':'/en/portfolio/gov/'),
+  contact:url(fr?'/contact/':'/en/contact/'),
+};
+const situations=fr ? [
+  ['01','Autorisation','Une demande recevable peut être envoyée, sans que le verdict confirme son résultat.'],
+  ['02','Veto','Une contrainte bloquante empêche l’envoi. Il n’y a pas d’effet fournisseur à inférer.'],
+  ['03','Attente','Une observation manque ou expire ; le système doit s’abstenir d’envoyer.'],
+  ['04','UNKNOWN','L’appel a été tenté, mais sa confirmation manque. Le rejeu aveugle serait une mauvaise conclusion.']
+]:[
+  ['01','Authorized','A request can be admitted and sent without that admission confirming its external outcome.'],
+  ['02','Veto','A blocking control prevents dispatch; no external provider effect is established.'],
+  ['03','Holding','An observation is absent or expired; the action must not be dispatched.'],
+  ['04','UNKNOWN','An action was attempted, but its outcome is unconfirmed. Blind retry would be unjustified.']
+];
+const stages=fr?[
+  ['Choisir','Comparer quatre axes et sept clauses sur 144 configurations.'],
+  ['Examiner','Lire quatre scénarios fictifs et suivre leurs états.'],
+  ['Remonter','Retrouver les champs, empreintes et liens d’un dossier signé.'],
+  ['Distinguer','Séparer les faits, les inconnues et les prochains contrôles.']
+]:[
+  ['Configure','Compare four axes and seven clauses across 144 configurations.'],
+  ['Inspect','Read four synthetic scenarios and follow state changes.'],
+  ['Trace','Find field values, hashes and pointers in a signed dossier.'],
+  ['Qualify','Separate observations, unknowns and the next control to verify.']
+];
+---
+<div class="pf-root">
+<nav class="pf-local-nav" aria-label={fr?'Parcours des expériences':'Experience routes'}>
+  <a class="pf-local-link" href={routes.tower}><span>Autonomy Control Tower</span><small>{fr?'Découvrir les frontières':'Discover execution boundaries'}</small></a>
+  <a class="pf-local-link pf-selected" href={url(fr?'/portfolio/workbench/':'/en/portfolio/workbench/')} aria-current="page"><span>Diagnostic Workbench</span><small>{fr?'Examiner un dossier':'Inspect a dossier'}</small></a>
+  <a class="pf-local-link" href={routes.demos}><span>{fr?'Autres expériences':'More experiences'}</span><small>{fr?'Explorer le portefeuille':'Browse the portfolio'}</small></a>
+</nav>
+<section class="pf-detail-hero">
+ <div>
+  <p class="pf-overline">{fr?'EXPÉRIENCE TECHNIQUE · VERSION LOCALE':'TECHNICAL EXPERIENCE · LOCAL EDITION'}</p>
+  <h2>{fr?'Autoriser une action ne signifie pas connaître son résultat.':'Authorizing an action does not establish its outcome.'}</h2>
+  <p class="pf-detail-lead">{fr?'Le TENIR/REG Diagnostic & Evidence Workbench relie choix de configuration, états d’exécution simulés et sources de preuve. Il commence par une question très concrète : un agent a reçu un PASS, mais la confirmation de son action a disparu. Que sait-on réellement ?':'The TENIR/REG Diagnostic & Evidence Workbench links configuration choices, simulated execution states and evidence sources. Start with a concrete question: an agent received PASS, yet confirmation of its action is missing. What can we actually establish?'}</p>
+  <div class="pf-actions">
+   <a class="btn btn-primary" href={routes.tower}>{fr?'Découvrir d’abord avec la Control Tower':'Start with the Control Tower'} →</a>
+   <a class="btn" href={routes.contact}>{fr?'Étudier un cas avec nous':'Discuss a concrete case'} →</a>
+  </div>
+ </div>
+ <aside class="pf-status-card">
+  <span class="pf-aside-label">{fr?'ÉTAT DE PUBLICATION':'PUBLICATION STATUS'}</span>
+  <strong>{fr?'Kit autonome validé en CI ; distribution publique encore en préparation.':'Standalone kit passed automated QA; public distribution is still gated.'}</strong>
+  <p>{fr?'Aucun lien de téléchargement public n’est présenté avant vérification des octets destinés au site et validation de diffusion. Le dépôt de développement reste privé.':'No public download link is presented before the site-bound bytes and release authorization are verified. The development repository stays private.'}</p>
+ </aside>
+</section>
+<section class="pf-details">
+ <div class="pf-details-head"><p class="pf-overline">{fr?'PARCOURS EN QUATRE TEMPS':'FOUR-STEP WORKFLOW'}</p><h3>{fr?'Ce que l’atelier rend vérifiable':'What the workbench makes inspectable'}</h3></div>
+ <div class="pf-card-grid">
+  {stages.map(([heading,desc],i)=><article class="pf-card">
+   <span class="pf-card-index">{String(i+1).padStart(2,'0')}</span>
+   <h3>{heading}</h3><p class="pf-tagline">{desc}</p>
+  </article>)}
+ </div>
+</section>
+<section class="pf-details">
+ <div class="pf-details-head"><p class="pf-overline">{fr?'ÉVÉNEMENTS ENREGISTRÉS · SIMULATION':'RECORDED EVENTS · SIMULATION'}</p><h3>{fr?'Quatre issues, des conséquences différentes':'Four outcomes, four different implications'}</h3></div>
+ <dl>
+  {situations.map(([n,title,desc])=><div class="pf-field"><dt><span>{n}</span>{title}</dt><dd>{desc}</dd></div>)}
+ </dl>
+</section>
+<section class="pf-conclusion">
+ <div><h3>{fr?'Ce que cela ne démontre pas':'What this does not prove'}</h3>
+ <p>{fr?'Le simulateur n’est pas connecté à TENIR-Gov 5.7.0. L’admissibilité structurelle ne démontre pas une garantie effective. Les signatures Ed25519 assurent la cohérence du dossier synthétique relativement à la clé fournie ; elles ne prouvent ni l’identité indépendante du signataire ni un effet fournisseur réel.':'The local engine is not connected to TENIR-Gov 5.7.0. Structural admissibility is not an effective guarantee. Ed25519 protects the synthetic dossier relative to the provided public key; it does not independently authenticate the signer or establish a real provider effect.'}</p></div>
+ <a class="btn" href={routes.experiences}>{fr?'Revenir aux expériences':'More experiences'} →</a>
+</section>
+</div>
