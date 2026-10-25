@@ -1,9 +1,9 @@
 ---
-title: REG Execution Boundary Diagnostic
-kicker: Specialized engagement · one critical flow
-description: Scoped analysis of autonomous-agent execution boundaries: duplicates, interruption, unknown outcomes and reconciliation.
-lede: An agent may initiate an action. Can we establish its outcome before permitting another command?
-sources: TENIR Labs commercial proposal, 25 October 2026 · scope subject to qualification, not certification
+title: "REG Execution Boundary Diagnostic"
+kicker: "Specialized engagement · one critical flow"
+description: "Scoped analysis of autonomous-agent execution boundaries: duplicates, interruption, unknown outcomes and reconciliation."
+lede: "An agent may initiate an action. Can we establish its outcome before permitting another command?"
+sources: "TENIR Labs commercial proposal, 25 October 2026 · scope subject to qualification, not certification"
 ---
 
 ## One flow. One execution boundary. A qualified conclusion.
