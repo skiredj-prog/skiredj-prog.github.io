@@ -215,7 +215,7 @@
 4. **D-P1-04 pending** — Approve product maturity/deployment copy, notably 5.7.0 published *vs* unknown customer deployment; amend [status page](https://github.com/skiredj-prog/skiredj-prog.github.io/blob/main/src/content/fr/statut.md) / English counterpart later in a separate PR.
 5. **D-P1-05 pending** — Confirm need-mode information architecture **within existing page structure**, avoiding an invented new product or redesign.
 
-**Exit criteria:** source/owner gaps explicitly accepted or closed; five PR dispositions authorized; FR/EN routes verified; release/status copy evidence-tagged; all 11 entries carry five product questions; a second reviewer accepts the result. Until then **P1 is open; next redesign is blocked**.
+**Exit criteria:** source/owner gaps explicitly accepted or closed; five PR dispositions authorized; FR/EN routes verified; release/status copy evidence-tagged; all 11 entries carry nine page-facing fields plus source/owner governance metadata; a second reviewer accepts the result. Until then **P1 is open; next redesign is blocked**.
 
 ## Evidence inventory and scope
 
