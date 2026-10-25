@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
-const entries=['diagnostic','prevent','prepare','discovery','xray','translation','gov','reg-arch','technical','experiences','control-tower'];
+const entries=['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'];
 const hubs=['products','services','demos'];
 const expected=[...hubs,...entries];
 const paths = (lang,page) => lang==='fr'?`dist/portfolio/${page}/index.html`:`dist/en/portfolio/${page}/index.html`;
@@ -50,4 +50,4 @@ for(const lang of ['fr','en']){
   assert(frame.includes('loading="lazy"'),'Control Tower should not force media loading');
   assert(frame.includes('/embeds/reg-autonomy-control-tower-v1.0.html'),'Control Tower source missing');
 }
-console.log('Portfolio: 28 FR/EN routes, 22 nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.');
+console.log('Portfolio: 34 FR/EN routes, 28 nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.');
