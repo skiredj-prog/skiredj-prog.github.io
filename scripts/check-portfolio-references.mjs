@@ -38,4 +38,11 @@ for (const locale of ['fr','en']) {
 for (const file of ['dist/embeds/demonstration-bancaire.html','dist/embeds/reg-autonomy-control-tower-v1.0.html']) {
   assert(existsSync(file),`Missing public demo file: ${file}`);
 }
+const sitemap=readFileSync('dist/sitemap.xml','utf8');
+for (const p of ['/portfolio/products/','/en/portfolio/products/','/portfolio/conformance/','/en/portfolio/conformance/','/portfolio/explorer/','/en/portfolio/explorer/','/portfolio/mediation/','/en/portfolio/mediation/']) {
+  assert(sitemap.includes('https://tenirlabs.cc'+p),'Missing SEO sitemap route: '+p);
+}
+assert(sitemap.includes('hreflang="fr"')&&sitemap.includes('hreflang="en"'),'Missing FR/EN sitemap alternate URLs');
+assert(readFileSync('dist/robots.txt','utf8').includes('Sitemap: https://tenirlabs.cc/sitemap.xml'),'robots.txt missing sitemap discovery');
+
 console.log('PASS: FR/EN 14-item product references, scoped releases, explicit verified public routes and no invented prototype deployments.');
