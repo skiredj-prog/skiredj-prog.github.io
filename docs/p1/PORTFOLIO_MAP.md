@@ -3,7 +3,7 @@
 **Register ID:** P1-PORTFOLIO-20261025  
 **As-of:** 2026-10-25 UTC  
 **Baseline website main:** [408eb2bff693](https://github.com/skiredj-prog/skiredj-prog.github.io/commit/408eb2bff6932c4ad7e43bbd0e44ffef4ff2960a)  
-**State:** Proposed editorial source of truth for P1; **not approved**, **not normative**, **not deployed**.  
+**State:** A1 **owner-approved as portfolio classification and nine-field content baseline** on 2026-10-25 by explicit instruction in current project conversation; **not normative, not a product-source ratification, not deployed**. Source custody and role ownership gaps remain outstanding.  
 **Scope:** Product/offer identity, commercial entry paths, maturity and limitations. It does not supersede TENIR doctrine, REG RFCs, REG-ARCH authoritative specifications, code or evidence records.  
 **Source custody:** GitHub repository owner skiredj-prog is verifiable. **Accountable product owners and the final approving authority are not formally assigned in the reviewed public sources.** Each entry therefore distinguishes custodianship from pending ownership ratification.
 
@@ -209,9 +209,9 @@
 
 ## P1 decisions, blockers and downstream edits
 
-1. **D-P1-01 pending** — Approve these 11 entry identities and classifications; assign named accountable owners or explicitly accept temporary role-based ownership.
+1. **D-P1-01 A1 APPROVED (classification only)** — The 11 entry identities, classifications and nine-field schema are accepted by project-owner direction on 2026-10-25. Assign named accountable owners or explicitly accept temporary role-based ownership; ownership assignments **not** approved by implication.
 2. **D-P1-02 pending** — Verify and register canonical source location/version for X-Ray, Translation Studio, REG-ARCH v0.4 and Labs experiences.
-3. **D-P1-03 pending** — Approve [PR #23](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/23) as the nav approach, with manual FR/EN desktop/mobile checks; see [PR register](./PR_RECONCILIATION.md).
+3. **D-P1-03 A2 APPROVED as candidate; merge gated** — Review [PR #23](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/23) as the selected nav approach, with manual FR/EN desktop/mobile checks and separate merge authorization; see [PR register](./PR_RECONCILIATION.md).
 4. **D-P1-04 pending** — Approve product maturity/deployment copy, notably 5.7.0 published *vs* unknown customer deployment; amend [status page](https://github.com/skiredj-prog/skiredj-prog.github.io/blob/main/src/content/fr/statut.md) / English counterpart later in a separate PR.
 5. **D-P1-05 pending** — Confirm need-mode information architecture **within existing page structure**, avoiding an invented new product or redesign.
 
