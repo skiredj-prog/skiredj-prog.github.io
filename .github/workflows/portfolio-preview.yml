@@ -15,6 +15,9 @@ on:
       - 'public/embeds/reg-autonomy-control-tower-v1.0.html'
       - 'scripts/check-portfolio.mjs'
       - 'scripts/check-portfolio-references.mjs'
+      - 'scripts/generate-sitemap.mjs'
+      - 'package.json'
+      - 'public/robots.txt'
       - '.github/workflows/portfolio-preview.yml'
   workflow_dispatch:
 
