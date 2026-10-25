@@ -91,6 +91,8 @@ When both tracks are fed, REG produces the alignment:
 **Next** : Market validation · First real engagement
 **Maturity** : Discovery tested on a development branch · Translation Studio prototype · Readiness in progress
 
-[Read the REG v0.1 framing specification — Working Draft →](/en/publications/reg-v0.1/)
-[See the simulated file — no client data →](/en/offer/example/)
+**REG v0.1 specification — Working Draft:** full publication pending. This page presents the product framing; it does not replace the source specification.
+[See the simulated case — fictional example, no client data →](/en/offer/example/)
+
+**Limit:** nothing here constitutes certification, legal advice, or evidence of compliance for a real system.
 [Contact us →](/en/contact/)

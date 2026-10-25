@@ -7,6 +7,7 @@ sources: "dossier local du démonstrateur TENIR/REG, figé ; preuves #5 et #6 ; 
 ---
 
 <div class="callout callout-limit">
+  <p><strong>Exemple fictif — données simulées.</strong> Ce dossier ne représente aucun client réel. Rien ici n'est une certification.</p>
   <p><strong>Exemple simulé — données fictives.</strong> Fiche illustrative préparée le 20 octobre 2026 à partir du dossier du démonstrateur TENIR/REG. Aucun client, entretien, incident réel ou gain commercial n’est représenté. La fiche est rédigée à la main. Les recommandations ne sont pas des résultats signés du moteur. Un essai de ce démonstrateur ne démontre pas le système d’un client.</p>
 </div>
 
