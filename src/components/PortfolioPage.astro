@@ -1,0 +1,98 @@
+---
+import '../styles/portfolio.css';
+import { portfolio, portfolioHubs, type PortfolioLocale } from '../data/portfolio';
+import { url } from '../data/site';
+interface Props { locale: PortfolioLocale; page: string; }
+const { locale, page } = Astro.props;
+const fr = locale === 'fr';
+const hub = (portfolioHubs[locale] as Record<string, any>)[page];
+const entry = portfolio[locale][page];
+const cardHref = (id:string) => url((fr?'/portfolio/':'/en/portfolio/') + id + '/');
+const sections = [
+  { id:'products', label:fr?'Produits':'Products',detail:fr?'Instruments et logiciels':'Instruments and software'},
+  { id:'services', label:fr?'Services':'Services',detail:fr?'Accompagnement borné':'Scoped engagements'},
+  { id:'demos', label:fr?'Démonstrations':'Experiences',detail:fr?'Explorer sans connexion':'Explore without connecting'}
+];
+const kindName = (kind: string) => ({product:fr?'Produit ou instrument':'Product or instrument',service:fr?'Service':'Service',demo:fr?'Expérience':'Experience',foundation:fr?'Fondation technique':'Technical foundation'} as Record<string,string>)[kind] ?? kind;
+const labels = fr ? [
+  ['pain','Le problème'],['when','Quand l’utiliser'],['examines','Ce qui est examiné ou contrôlé'],
+  ['inputs','Pour commencer'],['output','Ce que vous recevez'],['relationships','Avec quoi le combiner'],
+  ['maturity','Maturité et disponibilité'],['limits','Ce que cela ne démontre pas'],['next','La suite possible']
+] : [
+  ['pain','The problem'],['when','When to use it'],['examines','What it examines or controls'],
+  ['inputs','What you need'],['output','What it produces'],['relationships','How it connects'],
+  ['maturity','Maturity and availability'],['limits','What it does not establish'],['next','An honest next step']
+];
+const href = (path:string) => path.startsWith('#')?path:url(path);
+const isFeatured = page === 'demos' || page === 'control-tower';
+---
+<div class="pf-root">
+  <nav class="pf-local-nav" aria-label={fr?'Explorer le portefeuille':'Browse portfolio'}>
+    {sections.map(s => <a class:list={['pf-local-link',(page===s.id || (entry && (entry.kind === (s.id==='services'?'service':s.id==='demos'?'demo':'product')))) && 'pf-selected']} href={cardHref(s.id)}>
+      <span>{s.label}</span><small>{s.detail}</small>
+    </a>)}
+  </nav>
+  {hub ? <>
+    <section class="pf-intro">
+      <div class="pf-intro-body">
+        <p class="pf-overline">{fr?'DÉCOUVRIR LE PORTEFEUILLE':'EXPLORE THE PORTFOLIO'} / {hub.title}</p>
+        <h2>{hub.opening}</h2>
+        <p>{hub.intro}</p>
+        <div class="pf-inline-links">
+          <a href={cardHref('diagnostic')}>{fr?'Un cas concret à discuter':'Discuss a concrete case'} <span aria-hidden="true">↗</span></a>
+          <a href={cardHref('control-tower')}>{fr?'Explorer la Control Tower':'Explore the Control Tower'} <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <aside class="pf-aside">
+        <span class="pf-aside-label">{fr?'Principe du portefeuille':'Portfolio principle'}</span>
+        <strong>{hub.spotlight}</strong>
+        <p>{fr?'Chaque fiche précise ses entrées, résultats et limites. Vous pouvez commencer où le problème se trouve.':'Every page states its inputs, output and limits. Begin where your question actually lies.'}</p>
+      </aside>
+    </section>
+    {page==='demos' && <div class="pf-feature">
+      <div><span class="pf-overline">01 · {fr?'EXPÉRIENCE À DÉCOUVRIR':'FEATURED EXPERIENCE'}</span><h3>{fr?'Et si un agent agissait sans confirmation ?':'What if an agent acted and the confirmation disappeared?'}</h3><p>{fr?'Quatre scénarios interactifs. Vous déclenchez le parcours ; aucun scénario ne démarre automatiquement. La simulation ne contacte aucun noyau réel.':'Four interactive scenarios. You choose when to start; nothing autoplays. No live governor is connected.'}</p></div>
+      <a class="btn btn-primary" href={cardHref('control-tower')}>{fr?'Découvrir la Control Tower':'Explore Control Tower'} →</a>
+    </div>}
+    <div class="pf-card-grid">
+      {hub.keys.map((id:string,i:number)=>{
+        const item=portfolio[locale][id];
+        return <article class:list={['pf-card',i===0&&'pf-card-leading']}>
+          <div class="pf-card-top"><span class="pf-card-index">{String(i+1).padStart(2,'0')} / {kindName(item.kind)}</span></div>
+          <h3><a href={cardHref(id)}>{item.title} <span aria-hidden="true">↗</span></a></h3>
+          <p class="pf-tagline">{item.tagline}</p>
+          <p class="pf-card-question">{item.pain}</p>
+          <div class="pf-card-bottom"><small>{item.status}</small><a href={cardHref(id)} aria-label={hub.linkLabel+' : '+item.title}>{hub.linkLabel} →</a></div>
+        </article>
+      })}
+    </div>
+    <div class="pf-conclusion">
+      <div><h3>{fr?'Pas certain de votre point de départ ?':'Not sure where to start?'}</h3><p>{fr?'Nous pouvons cadrer la question avant de choisir un instrument. Rien ne vous oblige à acheter un diagnostic pour lire la documentation ou essayer une démo.':'We can scope the question before selecting an instrument. You do not need to purchase a diagnostic to read documentation or try a demo.'}</p></div>
+      <a class="btn" href={url(fr?'/contact/':'/en/contact/')}>{fr?'Échanger sur un besoin':'Discuss a need'} →</a>
+    </div>
+  </> : entry ? <>
+    <section class="pf-detail-hero">
+      <div>
+        <p class="pf-overline">{kindName(entry.kind)} / TENIR Labs</p>
+        <h2>{entry.tagline}</h2>
+        <p class="pf-detail-lead">{entry.pain}</p>
+        <div class="pf-actions"><a class="btn btn-primary" href={href(entry.nextHref)}>{entry.nextLabel} <span aria-hidden="true">↗</span></a><a class="btn" href={cardHref(entry.kind==='service'?'services':entry.kind==='demo'?'demos':'products')}>{fr?'Voir les autres voies':'Explore other routes'} →</a></div>
+      </div>
+      <aside class="pf-status-card">
+        <span class="pf-aside-label">{fr?'ÉTAT ACTUEL':'CURRENT STATUS'}</span><strong>{entry.status}</strong>
+        <p>{fr?'Source, périmètre et limites sont indiqués plus bas. Une page de présentation ne constitue pas une preuve de production.':'Source, scope and limits appear below. A product page is not evidence of a production deployment.'}</p>
+      </aside>
+    </section>
+    {page==='control-tower' && <section id="control-tower-experience" class="pf-embed-section">
+      <div class="pf-embed-heading"><div><span class="pf-overline">REG · AUTONOMY CONTROL TOWER v1.0</span><h3>{fr?'Quatre scénarios, à votre rythme':'Four scenarios, at your pace'}</h3><p>{fr?'Le simulateur interactif est actuellement en anglais. La lecture et les limites de cette page sont en français. Choisissez un scénario, puis lancez le parcours manuellement.':'Select a scenario, then start manually. The simulated event log is not a record of a real system.'}</p></div>
+      <a href={url('/embeds/reg-autonomy-control-tower-v1.0.html')} target="_blank" rel="noopener noreferrer">{fr?'Ouvrir la simulation en plein écran':'Open full-screen simulation'} ↗</a></div>
+      <iframe loading="lazy" title="REG Autonomy Control Tower v1.0 — interactive English-language simulation, no live kernel" src={url('/embeds/reg-autonomy-control-tower-v1.0.html')} class="pf-demo-frame"></iframe>
+      <p class="pf-frame-note">{fr?'Scénario synthétique indépendant · aucun contrôle réel ni certification · sur mobile, privilégier le plein écran pour inspecter les détails.':'Standalone synthetic scenario · no live runtime or certification · on mobile, open full screen to inspect details.'}</p>
+    </section>}
+    <section class="pf-details" aria-label={fr?'Fiche de l’instrument':'Instrument profile'}>
+      <div class="pf-details-head"><span class="pf-overline">{fr?'FICHE · 9 QUESTIONS':'PROFILE · 9 QUESTIONS'}</span><h3>{fr?'Ce qui est utile à savoir, avant de décider':'What matters before you decide'}</h3></div>
+      <dl>{labels.map(([key,label],i)=><div class:list={['pf-field',key==='limits'&&'pf-field-limit']}><dt><span>{String(i+1).padStart(2,'0')}</span>{label}</dt><dd>{(entry as any)[key]}</dd></div>)}</dl>
+    </section>
+    <section class="pf-sources"><h3>{fr?'Sources et repères':'Sources and references'}</h3><div class="pf-source-links">{entry.sources.map(s=><a href={href(s.href)}>{s.label} <span aria-hidden="true">↗</span></a>)}</div><p>{fr?'Les statuts correspondent aux sources et déclarations actuellement disponibles. Les versions d’artefacts non vérifiées restent explicitement indiquées.':'Statuses reflect currently available sources and declarations; unverified artifact revisions remain explicitly marked.'}</p></section>
+    <section class="pf-related"><h3>{fr?'Explorer les connexions':'Related routes'}</h3><div class="pf-related-grid">{entry.related.map(id=><a href={cardHref(id)}><span>{portfolio[locale][id].title}</span><small>{portfolio[locale][id].tagline}</small></a>)}</div></section>
+  </> : <p>{fr?'Page non disponible.':'Page unavailable.'}</p>}
+</div>
