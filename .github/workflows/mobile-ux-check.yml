@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'src/styles/experience.css'
+      - 'src/components/Home.astro'
+      - 'src/content/fr/diagnostic-execution.md'
+      - 'src/content/en/diagnostic-execution.md'
+      - 'scripts/check-commercial-browser.mjs'
       - 'scripts/check-ux-mobile-header.mjs'
       - '.github/workflows/mobile-ux-check.yml'
   push:
@@ -31,3 +35,4 @@ jobs:
           SERVER_PID=$!
           trap 'kill $SERVER_PID' EXIT
           node scripts/check-ux-mobile-header.mjs
+          node scripts/check-commercial-browser.mjs

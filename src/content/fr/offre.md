@@ -10,6 +10,8 @@ sources: proposition d’offre du 20 octobre 2026 ; format et charge à confirme
   <p><strong>Hypothèse de lancement.</strong> Proposition du 20 octobre 2026. Le format et la charge ci-dessous sont à confirmer dans chaque devis. Ils restent à éprouver sur les premières missions. Cette page ne constitue pas une certification, ni une autorisation de mise en production.</p>
 </div>
 
+<p><strong>Pour un flux agentique à effet externe :</strong> le <a href="/diagnostic-execution/">REG Execution Boundary Diagnostic</a> est notre proposition spécialisée pour analyser doublons, interruptions, résultats UNKNOWN et réconciliation. Ce parcours est distinct du diagnostic documentaire général présenté ci-dessous ; sa durée et son prix restent sur devis après cadrage.</p>
+
 ## La promesse
 
 <p>Votre agent peut déclencher un paiement, modifier une donnée ou envoyer une commande. Qu’est-ce qui l’autorise ? Qu’est-ce qui doit l’arrêter ? Que faire lorsque la réponse manque ?</p>

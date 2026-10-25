@@ -24,6 +24,7 @@ const selectedJourney=journeys[locale].find(j=>slug===(fr?`parcours/${j.slug}`:`
 const readerContact=isPortfolio?portfolioContactHref(locale,slug.split('/')[1]):path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
 const pageKinds: Record<string, string> = {
   offre: fr?'Service':'Service', offer:'Service',
+  'diagnostic-execution': fr?'Diagnostic spécialisé':'Specialized diagnostic',
   'produits-et-services': 'Service · REG', 'products-and-services': 'Service · REG',
   'offre/exemple': fr?'Exemple simulé':'Simulated example', 'offer/example':'Simulated example',
   'architecture/demo': fr?'Démonstration':'Demo', 'architecture/interactive': fr?'Démonstration interactive':'Interactive demo',
