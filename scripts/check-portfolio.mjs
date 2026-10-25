@@ -20,6 +20,25 @@ for(const lang of ['fr','en']){
     }
   }
 }
+// Products must be discoverable in the primary menu for both languages, not only through site content.
+for (const [lang, home, productsPath] of [
+  ['fr', 'dist/index.html', '/portfolio/products/'],
+  ['en', 'dist/en/index.html', '/en/portfolio/products/'],
+]) {
+  const html = readFileSync(home,'utf8');
+  const navStart = html.indexOf('id="main-navigation"');
+  assert(navStart !== -1, `${lang}: main navigation missing`);
+  const navEnd = html.indexOf('</nav>', navStart);
+  assert(navEnd !== -1, `${lang}: main navigation closing tag missing`);
+  const nav = html.slice(navStart, navEnd);
+  assert(nav.includes(`href="${productsPath}"`), `${lang}: Products link missing from header nav`);
+  assert(existsSync(paths(lang,'products')), `${lang}: menu destination not built`);
+  const expectedLabel = lang === 'fr' ? 'Produits' : 'Products';
+  assert(nav.includes(`>${expectedLabel}</a>`), `${lang}: visible Products label missing`);
+  const productNavLinks = (nav.match(new RegExp('href="' + productsPath + '"','g')) || []).length;
+  assert.equal(productNavLinks, 1, `${lang}: duplicate Products entry in header navigation`);
+}
+
 const htmlArtifact='dist/embeds/reg-autonomy-control-tower-v1.0.html';
 assert(existsSync(htmlArtifact),'Missing standalone Control Tower asset');
 const simulation=readFileSync(htmlArtifact,'utf8');
