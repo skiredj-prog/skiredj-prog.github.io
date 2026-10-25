@@ -5,6 +5,8 @@ on:
     paths:
       - 'src/content/fr/diagnostic-execution.md'
       - 'src/content/en/diagnostic-execution.md'
+      - 'src/content/fr/offre.md'
+      - 'src/content/en/offer.md'
       - 'src/components/Home.astro'
       - 'src/styles/experience.css'
       - 'src/data/site.ts'
