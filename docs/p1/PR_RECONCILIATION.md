@@ -50,7 +50,7 @@
 3. Resolve #15, #21, #22 without competing header and without deleting extant spec links. Salvage useful microcopy into narrow, separately tested content PR if needed.
 4. Rebase and scope #13 as a separate Discovery exploratory launch after upstream pin, contract, privacy and browser gates.
 5. Correct FR and EN status/product-copy against tagged/runtime evidence in isolated PR; avoid implying deployed client systems.
-6. Verify both paths (journey-led and need-led), five product questions per entry, working links, visible maturity/limits and no unsupported claim.
+6. Verify both paths (journey-led and need-led), nine public product fields per entry, with source and owner governance metadata, working links, visible maturity/limits and no unsupported claim.
 7. Freeze accepted P1 baseline, then and only then consider any subsequent visual redesign.
 
 ## P1 acceptance and "ready for next redesign" gate
