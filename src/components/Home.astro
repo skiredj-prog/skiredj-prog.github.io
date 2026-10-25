@@ -32,16 +32,16 @@ const steps = fr ? [
       <p class="eyebrow"><span class="status-dot"></span> {fr ? 'À votre rythme' : 'At your own pace'}</p>
       <h1 id="home-title"><span data-hero-opening>{introduction.opening}</span><br /><em data-hero-emphasis>{introduction.emphasis}</em></h1>
       <p class="hero-lead">{frameworkIntro[locale]}{' '}<span data-hero-body>{introduction.body}</span></p>
-      <p class="hero-caption">{fr ? 'REG : anticiper les risques en partant des exigences ; préparer les contrôles en partant des systèmes et des preuves.' : 'REG: anticipate risk from requirements; prepare for review using systems and evidence.'}</p>
+      <p class="hero-caption">{fr ? 'REG, la démarche Prévenir / Préparer de TENIR Labs : des exigences aux contrôles, des systèmes aux preuves.' : 'REG, the TENIR Labs Prevent / Prepare approach: from requirements to controls, from systems to evidence.'}</p>
+      <div class="reg-business-path" aria-label={fr ? 'Le diagnostic accompagné' : 'The guided diagnostic'}>
+        <p class="reg-business-intro"><strong>{fr ? 'Un cas concret à éclaircir ?' : 'A concrete case to clarify?'}</strong> {fr ? 'Le diagnostic accompagné vous remet une synthèse sourcée, les inconnues et un plan d’actions priorisé, selon le périmètre convenu.' : 'The guided diagnostic provides a source-linked summary, open questions and a prioritized action plan within an agreed scope.'}</p>
+        <p class="reg-business-steps">{fr ? 'Votre question et vos sources → Examen → Synthèse et prochaines décisions.' : 'Your question and sources → Review → Summary and next decisions.'}</p>
+      </div>
       <div class="actions">
         <a class="btn btn-primary" href={path('produits-et-services','products-and-services')}>{fr ? 'Explorer le diagnostic REG' : 'Explore the REG diagnostic'} <span aria-hidden="true">→</span></a>
         <a class="btn btn-quiet" href={path('parcours/decouvrir','start/discover')}>{fr ? 'Comprendre TENIR' : 'Understand TENIR'} <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="hero-caption">{fr ? 'Cadre en développement · diagnostic accompagné sur périmètre convenu · aucune certification.' : 'Framework in development · scoped guided diagnostic · no certification.'}</p>
-      <div class="reg-business-path" aria-label={fr ? 'Parcours diagnostic REG' : 'REG diagnostic journey'}>
-        <p class="reg-business-intro"><strong>{fr ? 'L’IA est peut-être déjà dans vos outils.' : 'AI may already be embedded in your tools.'}</strong> {fr ? 'Avant de déployer une nouvelle protection, commençons par identifier les usages, les décisions et les risques qui méritent votre attention.' : 'Before deploying new safeguards, identify the AI uses, decisions and risks worth examining.'}</p>
-        <p class="reg-business-steps">{fr ? 'Comprendre les risques → Diagnostic accompagné à distance → Décider de la suite.' : 'Understand risks → Remote guided diagnostic → Decide on next steps.'}</p>
-      </div>
+      <p class="hero-caption">{fr ? 'Diagnostic REG : voir la démarche et les livrables, puis prendre contact si cela vous aide.' : 'REG diagnostic: read the process and deliverables, then get in touch if useful.'}</p>
     </div>
     <nav class="hero-paths" aria-label={fr?'Choisir selon votre besoin':'Choose by what you need'}>
       <p class="guide-kicker">{fr?'Selon ce que vous cherchez':'Based on what you need'}</p>

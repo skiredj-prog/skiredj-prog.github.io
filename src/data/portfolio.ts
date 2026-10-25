@@ -27,10 +27,10 @@ export const portfolio: Record<PortfolioLocale, Record<string, PortfolioEntry>> 
 fr: {
   diagnostic: {
     id:'diagnostic',kind:'service',title:'Diagnostic accompagné de gouvernance',
-    tagline:'Une question précise. Des éléments situés. Une décision à préparer.',
+    tagline:'Quand il faut décider, savoir sur quoi s’appuyer.',
     status:'Offre proposée · périmètre et devis à convenir',
-    pain:'Votre équipe doit décider quoi autoriser, retenir ou vérifier, mais les règles, les traces et les responsabilités ne disent pas toutes la même chose.',
-    when:'Avant une mise en service, à l’occasion d’un changement sensible, ou après un résultat d’agent qui demeure incertain.',
+    pain:'Une décision attend, mais les règles, les traces et les responsabilités ne racontent pas la même histoire. Quels éléments permettent d’avancer ?',
+    when:'Avant un lancement, lors d’un changement sensible ou après une action d’agent dont le résultat reste incertain.',
     examines:'Une action, son autorité, ses conditions d’exécution, la preuve disponible et la prochaine décision humaine. Le diagnostic choisit les instruments adaptés : il n’impose pas un parcours unique.',
     inputs:'Question métier, personne responsable, descriptions du processus, exigences, architecture et traces accessibles selon le périmètre écrit. Aucun accès sensible n’est nécessaire au premier contact.',
     output:'Fiche sourcée, faits/affirmations distingués, inconnues, points de contrôle prioritaires et restitution humaine.',
@@ -38,15 +38,15 @@ fr: {
     maturity:'Offre commerciale décrite, sur devis après cadrage. Premières missions réelles et résultats clients non publiquement démontrés.',
     limits:'Ni certification, ni avis juridique, ni contrôle automatique en production, ni garantie d’obtenir une conclusion.',
     next:'Décrire une action et la décision à prendre ; convenir ensuite d’un périmètre, d’un accès autorisé et d’un livrable.',
-    nextHref:'/contact/',nextLabel:'Parler d’un cas précis',related:['prevent','prepare','xray','gov'],
+    nextHref:'/contact/',nextLabel:'Décrire la situation',related:['prevent','prepare','xray','gov'],
     sources:[{label:'Offre actuelle',href:'/offre/'},{label:'Exemple fictif',href:'/offre/exemple/'}]
   },
   prevent: {
     id:'prevent',kind:'product',title:'REG Prevent',
-    tagline:'Avant de permettre une action, comprendre les conditions qui doivent tenir.',
+    tagline:'Une exigence à appliquer. Quelles conditions faut-il vérifier ?',
     status:'Working Draft v0.1 · démarche pilote bornée',
-    pain:'Une exigence existe, mais ses conséquences opérationnelles, les hypothèses implicites et les contrôles attendus restent flous.',
-    when:'Lors d’une conception, d’un changement de politique ou de l’examen d’une action conséquente ; aussi lorsqu’un contrôle existant doit être réévalué.',
+    pain:'Le texte existe. Ce qu’il implique pour les systèmes, les décisions et les contrôles reste à éclaircir.',
+    when:'Pendant une conception, après un changement de règle ou pour réexaminer les contrôles d’une action importante.',
     examines:'Exigences → conditions d’autorité, réversibilité, doublons, incertitudes d’effet → contrôles candidats.',
     inputs:'Exigences ou politiques versionnées, contexte métier, périmètre de l’action, décisions concernées, personnes habilitées et hypothèses.',
     output:'Carte de contrôles candidats, hypothèses critiques, risques à examiner et vérifications prioritaires ; REG Prevention Brief proposé.',
@@ -54,15 +54,15 @@ fr: {
     maturity:'Cadrage REG v0.1 publié comme Working Draft ; workflow pilote en construction et en test, non validé comme produit de production.',
     limits:'Ne crée aucune propriété formellement admise ; ne délivre ni validation réglementaire ni permission d’exécuter.',
     next:'Examiner une exigence réelle avec son responsable, puis tester un contrôle candidat dans un périmètre convenu.',
-    nextHref:'/contact/',nextLabel:'Cadrer un pilote Prevent',related:['translation','prepare','diagnostic','technical'],
+    nextHref:'/contact/',nextLabel:'Discuter d’un pilote Prevent',related:['translation','prepare','diagnostic','technical'],
     sources:[{label:'Spécification REG v0.1',href:'/publications/reg-v0.1/'},{label:'Produits REG existants',href:'/produits-et-services/'}]
   },
   prepare: {
     id:'prepare',kind:'product',title:'REG Prepare',
-    tagline:'Savoir exactement ce que les preuves disponibles permettent de dire.',
+    tagline:'Que pouvons-nous réellement démontrer ?',
     status:'Working Draft v0.1 · démarche pilote bornée',
-    pain:'Des contrôles et procédures sont déclarés, mais il manque une chaîne fiable entre ce qui est affirmé, ce qui existe et ce qui a réellement été vérifié.',
-    when:'Avant une revue, un lancement ou un audit ; après un incident ; ou au moment de préparer une décision qui dépend de preuves.',
+    pain:'Un contrôle est annoncé, une procédure est décrite. Reste à retrouver ce qui existe et ce qui a vraiment été vérifié.',
+    when:'Avant une revue, un lancement ou un audit, après un incident, ou lorsqu’une décision dépend de preuves à retrouver.',
     examines:'Responsabilités, sources, dates, configurations, journaux et tests ; couverture possible et lacunes de vérification.',
     inputs:'Question bornée, périmètre de systèmes, exigences, responsables, pièces et traces disponibles avec leur provenance.',
     output:'Dossier d’état des preuves, matrice des affirmations étayées ou non, registre des inconnues et plan de vérification.',
@@ -70,14 +70,14 @@ fr: {
     maturity:'Méthode en Working Draft ; Evidence Readiness Pack ciblé, à construire et éprouver dans des pilotes.',
     limits:'Un fichier, un hash ou un journal ne suffit pas à prouver la vérité, l’effet externe ou la conformité.',
     next:'Choisir une affirmation importante et inventorier ensemble les pièces qui peuvent réellement l’étayer.',
-    nextHref:'/contact/',nextLabel:'Discuter la préparation des preuves',related:['prevent','diagnostic','gov','technical'],
+    nextHref:'/contact/',nextLabel:'Parler des éléments disponibles',related:['prevent','diagnostic','gov','technical'],
     sources:[{label:'Spécification REG v0.1',href:'/publications/reg-v0.1/'},{label:'Exemple de diagnostic simulé',href:'/offre/exemple/'}]
   },
   discovery:{
-    id:'discovery',kind:'product',title:'REG Discovery',tagline:'Mettre en lumière les hypothèses que personne n’avait formulées.',
+    id:'discovery',kind:'product',title:'REG Discovery',tagline:'Et si une hypothèse importante nous échappait ?',
     status:'Aperçu exploratoire · intégration web en PR #13',
-    pain:'Le système semble couvert par les textes et les contrôles connus, mais les hypothèses comportementales adjacentes n’ont pas été mises à l’épreuve.',
-    when:'Au démarrage d’un examen, lorsqu’un texte paraît trop évident ou quand il faut préparer des questions de vérification.',
+    pain:'Les textes et les contrôles semblent couvrir le sujet. Certaines hypothèses sur le comportement du système restent pourtant sans examen.',
+    when:'Au début d’un examen, face à une exigence qui paraît évidente ou pour préparer les questions à vérifier.',
     examines:'Un catalogue limité de sources et leurs hypothèses à interroger, sans prétendre analyser librement un système client.',
     inputs:'Sélection explicite de sources et hypothèses de contexte ; aucune donnée client requise pour l’aperçu présenté dans la PR.',
     output:'Questions exploratoires sourcées et rapport borné. L’intégration proposée comprend cinq cartes de sources et 31 combinaisons.',
@@ -89,10 +89,10 @@ fr: {
     sources:[{label:'PR #13 · intégration exploratoire',href:'https://github.com/skiredj-prog/skiredj-prog.github.io/pull/13'},{label:'REG v0.1',href:'/publications/reg-v0.1/'}]
   },
   xray:{
-    id:'xray',kind:'product',title:'AI Exposure X-Ray',tagline:'Où l’IA influence-t-elle déjà les opérations et les responsabilités ?',
+    id:'xray',kind:'product',title:'AI Exposure X-Ray',tagline:'L’IA intervient-elle déjà dans les outils du quotidien ?',
     status:'Prototype · validation interne annoncée',
-    pain:'L’IA peut être introduite par les logiciels du quotidien sans inventaire clair des usages, des données touchées et des décisions affectées.',
-    when:'Avant de cadrer une politique IA, de lancer un diagnostic ou d’évaluer les zones d’exposition d’une activité.',
+    pain:'Une fonction IA peut arriver dans un logiciel sans que ses usages, les données concernées et les décisions affectées soient clairement recensés.',
+    when:'Pour préparer un inventaire des usages, une politique IA ou le périmètre d’un diagnostic.',
     examines:'Usages déclarés, exposition potentielle, rôles et contrôles connus ou incertains.',
     inputs:'Réponses attribuées, inventaire d’outils, processus, propriétaires métier et informations connues / inconnues.',
     output:'Carte exploratoire d’exposition et questions classées pour vérification.',
@@ -100,14 +100,14 @@ fr: {
     maturity:'Validation interne rapportée dans les artefacts de projet ; dépôt canonique et déploiement public non confirmés.',
     limits:'Les réponses déclaratives ne prouvent ni l’usage effectif, ni son absence, ni la conformité ou la couverture de contrôle.',
     next:'Commencer par un processus ou un ensemble d’outils, puis vérifier les expositions prioritaires à partir des sources.',
-    nextHref:'/contact/',nextLabel:'Examiner un périmètre',related:['diagnostic','discovery','prevent','prepare'],
+    nextHref:'/contact/',nextLabel:'Parler d’un processus à examiner',related:['diagnostic','discovery','prevent','prepare'],
     sources:[{label:'Cadrage REG v0.1',href:'/publications/reg-v0.1/'}]
   },
   translation:{
-    id:'translation',kind:'product',title:'REG Translation Studio',tagline:'Passer de l’intention exprimée à des contraintes candidates et vérifiables.',
+    id:'translation',kind:'product',title:'REG Translation Studio',tagline:'Une exigence à comprendre et à rendre vérifiable.',
     status:'Prototype exploratoire · tests internes à préparer',
-    pain:'La langue des politiques et des exigences ne correspond pas directement aux conditions qu’un système peut tester.',
-    when:'Lorsqu’une exigence est ambiguë, doit devenir testable ou exige la séparation entre interprétation et admission.',
+    pain:'Une règle peut être compréhensible à la lecture et difficile à traduire en conditions qu’un système peut tester.',
+    when:'Lorsqu’une exigence est ambiguë ou doit devenir testable, en distinguant l’interprétation proposée de sa validation.',
     examines:'Sources normatives, sens proposé, hypothèses d’applicabilité, contraintes candidates et lacunes de validation.',
     inputs:'Exigences versionnées, origine et applicabilité, responsabilité, contexte technique et critères de vérification.',
     output:'Contraintes candidates traçables et journal d’ambiguïtés, prêts pour discussion et validation indépendante.',
@@ -115,14 +115,14 @@ fr: {
     maturity:'Instrument exploratoire décrit par REG v0.1 ; version publique exécutable et validation client non confirmées.',
     limits:'La traduction ou l’appariement lexical ne vaut ni résolution normative, ni admission, ni règle appliquée en production.',
     next:'Choisir une exigence difficile et examiner sa traduction proposée avec ses autorités métier et techniques.',
-    nextHref:'/contact/',nextLabel:'Proposer une exigence à examiner',related:['prevent','technical','discovery','diagnostic'],
+    nextHref:'/contact/',nextLabel:'Parler d’une exigence',related:['prevent','technical','discovery','diagnostic'],
     sources:[{label:'Working Draft REG v0.1',href:'/publications/reg-v0.1/'}]
   },
   gov:{
-    id:'gov',kind:'product',title:'TENIR-Gov v5.7.0',tagline:'La frontière d’exécution entre ce qu’un agent propose et ce qui peut devenir réel.',
+    id:'gov',kind:'product',title:'TENIR-Gov v5.7.0',tagline:'Avant qu’un agent agisse, examiner ce qui l’y autorise.',
     status:'Logiciel open source publié · bêta · mono-hôte borné',
-    pain:'Une proposition d’agent peut franchir la frontière d’une action conséquente sans contrôle explicite de l’autorité, du doublon, de l’incertitude ou de la reprise.',
-    when:'Lorsqu’une équipe technique conçoit une intégration agentique avec effet externe et accepte de vérifier un contrat de déploiement précis.',
+    pain:'Un agent peut envoyer une instruction, modifier une donnée ou engager une ressource. Il faut contrôler son autorité, les doublons et la reprise si le résultat reste incertain.',
+    when:'Lorsqu’une équipe technique prépare une action d’agent sur un système externe et peut vérifier les conditions précises de son déploiement.',
     examines:'Adjudication d’exécution, réservation ONCE, HOLD, dispatch gouverné, preuves de décision et rapprochement des résultats.',
     inputs:'Contrat d’action, règles/profils versionnés, identité et autorité, clé d’idempotence, fournisseur externe et manifeste du déploiement.',
     output:'Décisions et traces locales bornées, états de réservation/reprise et éléments de rapprochement ; pas une preuve automatique d’effet fournisseur.',
@@ -134,10 +134,10 @@ fr: {
     sources:[{label:'Release v5.7.0',href:'https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0'},{label:'README source',href:'https://github.com/skiredj-prog/tenir_governance'},{label:'Statut du site',href:'/statut/'}]
   },
   'reg-arch':{
-    id:'reg-arch',kind:'foundation',title:'REG-ARCH',tagline:'Relier ce qui est affirmé, ce qui est fait et ce qui peut être représenté.',
+    id:'reg-arch',kind:'foundation',title:'REG-ARCH',tagline:'Exigences, actions, preuves : comment les relier ?',
     status:'Fondation d’architecture · spécification de travail',
-    pain:'Exigences, exécution et pièces de preuve évoluent en pistes séparées, sans transitions ou autorités clairement reliées.',
-    when:'Quand des architectes doivent définir les états et les conditions de passage entre Claim, Action et Representation.',
+    pain:'Les exigences, les actions et les pièces de preuve évoluent séparément. Leurs liens, les responsabilités et les conditions de passage deviennent difficiles à suivre.',
+    when:'Quand des architectes doivent relier les affirmations, les actions et leur représentation — Claim, Action et Representation.',
     examines:'Objets, transitions, gates et relations entre les trois lanes Claim / Action / Representation.',
     inputs:'Exigences, états d’action, sources de preuves, responsabilités et hypothèses de liaison.',
     output:'Cartographie conceptuelle, transitions typées, points de contrôle à confronter à une spécification versionnée.',
@@ -149,10 +149,10 @@ fr: {
     sources:[{label:'Architecture illustrative',href:'/architecture/'},{label:'REG v0.1',href:'/publications/reg-v0.1/'}]
   },
   technical:{
-    id:'technical',kind:'foundation',title:'REG+, RFC et conformance',tagline:'Des contrats examinables, pas des garanties proclamées.',
+    id:'technical',kind:'foundation',title:'REG+, RFC et conformance',tagline:'À quelles conditions une garantie tient-elle ?',
     status:'Spécifications, catalogue et harnais publics · périmètres distincts',
-    pain:'Une affirmation sur l’exécution doit être reliée à un contrat précis, une configuration et des tests reproductibles.',
-    when:'Pour examiner des invariants, un profil, un cas de test, une hypothèse de déploiement ou la portée d’une garantie.',
+    pain:'Une garantie annoncée ne dit pas encore dans quelle configuration elle tient, ni quels tests permettent de la vérifier.',
+    when:'Pour vérifier un invariant, un profil, un test ou les conditions de déploiement dont dépend une garantie.',
     examines:'RFC-0 à RFC-7, profils REG+, compatibilité de configurations, contrats de preuve et tests de conformité limités.',
     inputs:'Version du contrat, hypothèses, source/commit de l’implémentation, manifeste, jeux de tests et preuves disponibles.',
     output:'Références, profils candidats, résultats de vérification attribués et limites non résolues.',
@@ -164,10 +164,10 @@ fr: {
     sources:[{label:'reg-conformance',href:'https://github.com/skiredj-prog/reg-conformance'},{label:'Site conformance',href:'/conformance/'},{label:'Standard REG',href:'/standard/'}]
   },
   experiences:{
-    id:'experiences',kind:'demo',title:'Expériences TENIR Labs',tagline:'Une façon d’examiner ensemble plutôt que de croire sur parole.',
+    id:'experiences',kind:'demo',title:'Expériences TENIR Labs',tagline:'Voir une situation se dérouler, puis explorer ce qui change.',
     status:'Expériences bornées · états de test distincts',
-    pain:'Les mécanismes de décision, de reprise et de preuve restent abstraits même pour des équipes habituées à la gouvernance.',
-    when:'Lors d’une découverte, d’un atelier ou pour préparer une conversation technique avec un exemple visible.',
+    pain:'La décision, la reprise et la preuve restent abstraites tant qu’on ne voit pas ce qui se passe dans une situation concrète.',
+    when:'Pour découvrir une idée, l’explorer en atelier ou préparer une conversation technique à partir d’un exemple.',
     examines:'Decision Readiness, Execution Timeline, Lifecycle Workbench ; scénarios, transitions et limites rendus inspectables.',
     inputs:'Cas simulés et hypothèses explicites ; aucune donnée de production nécessaire.',
     output:'Parcours pédagogique, trace fictive et question à ramener à des sources ou à un pilote.',
@@ -175,14 +175,14 @@ fr: {
     maturity:'Artefacts de projet en développement et en test ; équivalence des versions publiques et déploiement des trois expériences non établis.',
     limits:'Une simulation n’est ni un résultat de production, ni une validation de contrat, ni une certification.',
     next:'Explorer une expérience déjà publiée sur le site, puis choisir un problème réel à examiner.',
-    nextHref:'/architecture/demo/',nextLabel:'Essayer la démo existante',related:['control-tower','reg-arch','gov','diagnostic'],
+    nextHref:'/architecture/demo/',nextLabel:'Ouvrir la démo en six scènes',related:['control-tower','reg-arch','gov','diagnostic'],
     sources:[{label:'Démonstration existante',href:'/architecture/demo/'},{label:'Architecture interactive existante',href:'/architecture/interactive/'}]
   },
   'control-tower':{
-    id:'control-tower',kind:'demo',title:'REG — Autonomy Control Tower v1.0',tagline:'L’agent propose. Que se passe-t-il à la frontière d’exécution ?',
+    id:'control-tower',kind:'demo',title:'REG — Autonomy Control Tower v1.0',tagline:'Un agent propose une action. Que se passe-t-il ensuite ?',
     status:'Simulation interactive fournie · noyau non connecté',
-    pain:'Difficile de distinguer une proposition de l’agent, une autorisation, un état appliqué, un effet externe et la preuve disponible.',
-    when:'Pour comprendre les risques avant une discussion de diagnostic, de gouvernance technique ou de déploiement.',
+    pain:'L’agent a proposé une action. A-t-elle été autorisée, envoyée, réalisée ? Une trace ne répond pas forcément à toutes ces questions.',
+    when:'Pour explorer les mécanismes avec une simulation, avant un diagnostic ou une discussion technique.',
     examines:'Quatre histoires : autorité manquante, action autorisée, confirmation perdue, tentative en double. Progression pas-à-pas, trace et dossier fictifs.',
     inputs:'Simple choix d’un scénario et rythme de lecture. Données fictives uniquement ; aucun compte ni réseau requis pour la simulation.',
     output:'Chronologie synthétique inspectable, lecture métier/risque/ingénierie et export JSON de scénario fictif.',
@@ -190,16 +190,16 @@ fr: {
     maturity:'HTML v1.0 autonome reçu et reproduit dans cette branche de préparation. Interface anglaise ; récit d’accompagnement en français ici. Tests humains et validation d’intégration requis.',
     limits:'Ne contacte pas TENIR-Gov, ne démontre ni règlement fournisseur ni ledger vérifié, ni conformité ni protection juridique. Création d’Écart structurel encore provisoire (D-02).',
     next:'Choisir un scénario, commencer manuellement, puis lire les limites. Poursuivre avec une question réelle ou le code publié.',
-    nextHref:'#control-tower-experience',nextLabel:'Lancer la simulation, à votre rythme',related:['gov','diagnostic','experiences','reg-arch'],
+    nextHref:'#control-tower-experience',nextLabel:'Choisir un scénario',related:['gov','diagnostic','experiences','reg-arch'],
     sources:[{label:'REG-ARCH · architecture illustrative',href:'/architecture/'},{label:'Code TENIR-Gov',href:'https://github.com/skiredj-prog/tenir_governance'}]
   }
 },
 en: {
   diagnostic:{
-    id:'diagnostic',kind:'service',title:'Guided Governance Diagnostic',tagline:'One consequential question. Source-linked findings. A human decision to prepare.',
+    id:'diagnostic',kind:'service',title:'Guided Governance Diagnostic',tagline:'When a decision is needed, know what you can rely on.',
     status:'Proposed client offer · scoped and quoted',
-    pain:'A team needs to decide whether to proceed, hold or investigate, but rules, records and responsibilities do not tell a consistent story.',
-    when:'Before go-live or a consequential change, or after an agent’s outcome remains uncertain.',
+    pain:'A decision is waiting, but the rules, records and responsibilities tell different stories. Which findings can help the team move forward?',
+    when:'Before a launch, during a sensitive change or after an agent action with an uncertain outcome.',
     examines:'One action and its authority, execution boundary, evidence and next human decision. Selects relevant instruments rather than imposing one funnel.',
     inputs:'Business question, responsible counterpart, process and system context, agreed policies and available traces under written scope. No sensitive access needed for initial contact.',
     output:'Sourced diagnostic brief, known facts and uncertainties, prioritized checks and human debrief.',
@@ -207,14 +207,14 @@ en: {
     maturity:'Described and available for scoped discussion and quotation; completed customer outcomes have not been publicly demonstrated.',
     limits:'No certification, legal opinion, production enforcement or guaranteed conclusion.',
     next:'Describe one action and the decision required; then agree scope, authorized access and deliverables.',
-    nextHref:'/en/contact/',nextLabel:'Discuss a bounded case',related:['prevent','prepare','xray','gov'],
+    nextHref:'/en/contact/',nextLabel:'Describe the situation',related:['prevent','prepare','xray','gov'],
     sources:[{label:'Existing offer',href:'/en/offer/'},{label:'Fictional example',href:'/en/offer/example/'}]
   },
   prevent:{
-    id:'prevent',kind:'product',title:'REG Prevent',tagline:'Understand the conditions before a consequential action is allowed.',
+    id:'prevent',kind:'product',title:'REG Prevent',tagline:'A requirement to apply. What needs to be checked?',
     status:'Working Draft v0.1 · bounded pilot approach',
-    pain:'A requirement exists, but the operational conditions, hidden assumptions and candidate controls remain unclear.',
-    when:'During design, policy change or reassessment of an existing action boundary.',
+    pain:'The text exists. What it means for systems, decisions and controls still needs clarification.',
+    when:'During design, after a rule changes or when reviewing the controls around an important action.',
     examines:'Requirements → authority, reversibility, duplicate actions and uncertain effects → candidate controls.',
     inputs:'Versioned policies/requirements, business context, action scope, responsible authorities and assumptions.',
     output:'Candidate control map, critical assumptions, risk questions and proposed REG Prevention Brief.',
@@ -222,14 +222,14 @@ en: {
     maturity:'REG v0.1 public working draft; bounded pilot workflow under development and testing, not a production-grade product.',
     limits:'Candidate controls are not formally admitted properties, regulatory findings or execution permissions.',
     next:'Review a real requirement with an accountable owner and test candidate controls within an agreed scope.',
-    nextHref:'/en/contact/',nextLabel:'Explore a Prevent pilot',related:['translation','prepare','diagnostic','technical'],
+    nextHref:'/en/contact/',nextLabel:'Discuss a Prevent pilot',related:['translation','prepare','diagnostic','technical'],
     sources:[{label:'REG v0.1 specification',href:'/en/publications/reg-v0.1/'},{label:'Current REG overview',href:'/en/products-and-services/'}]
   },
   prepare:{
-    id:'prepare',kind:'product',title:'REG Prepare',tagline:'Know exactly what your available evidence can support.',
+    id:'prepare',kind:'product',title:'REG Prepare',tagline:'What can we actually demonstrate?',
     status:'Working Draft v0.1 · bounded pilot approach',
-    pain:'Declared controls and processes lack a defensible trail from claim to observed evidence.',
-    when:'Ahead of a review or launch decision, after an incident, or whenever an important claim needs evidentiary support.',
+    pain:'A control is reported and a procedure is described. What actually exists, and what has been checked?',
+    when:'Before a review, launch or audit, after an incident, or when a decision depends on evidence that needs to be found.',
     examines:'Responsibilities, sources, dates, logs, tests, possible coverage and verification gaps.',
     inputs:'Defined question, system scope, control owners, requirements, available records and provenance.',
     output:'Evidence Readiness Pack, qualified claim matrix, unknowns and verification plan.',
@@ -237,14 +237,14 @@ en: {
     maturity:'Working-draft approach with pilot validation still to be demonstrated.',
     limits:'A record, file or hash alone does not prove the truth of a claim, an external effect or compliance.',
     next:'Select one claim and identify which records can actually support it.',
-    nextHref:'/en/contact/',nextLabel:'Discuss evidence readiness',related:['prevent','diagnostic','gov','technical'],
+    nextHref:'/en/contact/',nextLabel:'Discuss the available records',related:['prevent','diagnostic','gov','technical'],
     sources:[{label:'REG v0.1 specification',href:'/en/publications/reg-v0.1/'},{label:'Fictional diagnostic example',href:'/en/offer/example/'}]
   },
   discovery:{
-    id:'discovery',kind:'product',title:'REG Discovery',tagline:'Surface the assumptions nobody thought to question.',
+    id:'discovery',kind:'product',title:'REG Discovery',tagline:'Could an important assumption be missing?',
     status:'Exploratory preview · web integration in draft PR #13',
-    pain:'Frameworks appear covered, but adjacent behavioral assumptions have never been challenged.',
-    when:'At the start of an examination or when preparing test questions about seemingly obvious requirements.',
+    pain:'The texts and controls seem to cover the subject. Some assumptions about system behavior may still be unexamined.',
+    when:'At the start of a review, when a requirement seems obvious or when preparing questions to verify.',
     examines:'A bounded catalogue of selected frameworks and candidate questions, not an unrestricted audit of a client system.',
     inputs:'Selected framework cards and context assumptions, no operational client telemetry for the preview.',
     output:'Sourced exploratory questions and a bounded report; proposal includes five source cards and 31 combinations.',
@@ -256,10 +256,10 @@ en: {
     sources:[{label:'Draft PR #13',href:'https://github.com/skiredj-prog/skiredj-prog.github.io/pull/13'},{label:'REG v0.1',href:'/en/publications/reg-v0.1/'}]
   },
   xray:{
-    id:'xray',kind:'product',title:'AI Exposure X-Ray',tagline:'Where might AI already be influencing your operations?',
+    id:'xray',kind:'product',title:'AI Exposure X-Ray',tagline:'Is AI already part of the everyday tools?',
     status:'Prototype · reported internal validation',
-    pain:'AI enters everyday software without a reliable account of usage, affected data and consequential decisions.',
-    when:'Before establishing an AI inventory, a governance policy or the scope of a diagnostic.',
+    pain:'An AI feature can arrive in a familiar tool before its uses, affected data and influence on decisions have been recorded.',
+    when:'When preparing an inventory of AI uses, an AI policy or the scope of a diagnostic.',
     examines:'Reported AI use, possible exposure, owners and unknown safeguards.',
     inputs:'Attributed interviews/surveys, tool inventory, processes, system owners and known unknowns.',
     output:'Exploratory exposure view and prioritized verification questions.',
@@ -267,14 +267,14 @@ en: {
     maturity:'Internal validation reported in project artifacts; canonical source revision and public deployment not confirmed.',
     limits:'Self-reports do not prove actual use or its absence, compliance or control coverage.',
     next:'Select one process, then verify reported exposure against independent sources.',
-    nextHref:'/en/contact/',nextLabel:'Explore an exposure review',related:['diagnostic','discovery','prevent','prepare'],
+    nextHref:'/en/contact/',nextLabel:'Discuss a process to examine',related:['diagnostic','discovery','prevent','prepare'],
     sources:[{label:'REG v0.1 framing',href:'/en/publications/reg-v0.1/'}]
   },
   translation:{
-    id:'translation',kind:'product',title:'REG Translation Studio',tagline:'From business intent to candidate constraints that can be tested.',
+    id:'translation',kind:'product',title:'REG Translation Studio',tagline:'Understand a requirement and make it testable.',
     status:'Exploratory prototype · preparing internal testing',
-    pain:'The language of business and regulation rarely maps cleanly onto executable test conditions.',
-    when:'When a requirement is ambiguous or must be made testable while interpretation remains distinct from admission.',
+    pain:'A rule can be easy to read and difficult to turn into conditions a system can test.',
+    when:'When a requirement is ambiguous or needs to be testable, while keeping proposed interpretation separate from validation.',
     examines:'Normative source, possible meaning, applicability assumptions, candidate constraints and validation gaps.',
     inputs:'Versioned requirements, provenance, authority scope, domain and system context.',
     output:'Traceable candidate constraints and ambiguity log for qualified review.',
@@ -286,10 +286,10 @@ en: {
     sources:[{label:'REG v0.1 working draft',href:'/en/publications/reg-v0.1/'}]
   },
   gov:{
-    id:'gov',kind:'product',title:'TENIR-Gov v5.7.0',tagline:'The execution boundary between what an agent proposes and what becomes real.',
+    id:'gov',kind:'product',title:'TENIR-Gov v5.7.0',tagline:'Before an agent acts, examine what authorizes it.',
     status:'Released open-source beta · bounded single-host',
-    pain:'Agent intent can become consequential external action without explicit authority, duplicate, uncertainty and resumption controls.',
-    when:'When a technical team designs an agent-to-provider integration and can validate a specific deployment contract.',
+    pain:'An agent can send an instruction, change data or commit a resource. Its authority, duplicate attempts and recovery need controls when the outcome is uncertain.',
+    when:'When a technical team prepares an agent action on an external system and can verify the specific deployment conditions.',
     examines:'Execution admission, ONCE reservation, HOLD, mediated dispatch, decision trace and reconciliation.',
     inputs:'Action schema, versioned profile, identity/authority, idempotency keys, external-provider contract and verified deployment manifest.',
     output:'Scoped local decisions, reservations and reconciliation records—not automatic proof of external provider effects.',
@@ -301,10 +301,10 @@ en: {
     sources:[{label:'v5.7.0 release',href:'https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0'},{label:'Runtime source',href:'https://github.com/skiredj-prog/tenir_governance'},{label:'Status',href:'/en/status/'}]
   },
   'reg-arch':{
-    id:'reg-arch',kind:'foundation',title:'REG-ARCH',tagline:'Connect what is claimed, what is done and what can be represented.',
+    id:'reg-arch',kind:'foundation',title:'REG-ARCH',tagline:'Requirements, actions and evidence: how do they connect?',
     status:'Architecture foundation · working specification',
-    pain:'Requirements, actions and evidence evolve separately, with no explicit linking of transition states or authorities.',
-    when:'When architects need a common language for Claim, Action and Representation lifecycle boundaries.',
+    pain:'Requirements, actions and evidence evolve separately. Their links, responsibilities and conditions for moving between states become difficult to follow.',
+    when:'When architects need to connect claims, actions and their representation across Claim, Action and Representation.',
     examines:'Objects, transitions, gates and bindings across Claim / Action / Representation lanes.',
     inputs:'Requirements, action/effect states, representation artifacts, responsibilities and assumptions.',
     output:'Conceptual map and typed transition model to compare with versioned source specifications.',
@@ -312,14 +312,14 @@ en: {
     maturity:'REG-ARCH v0.4 referenced in project artifacts; authoritative public version and ratification not verified.',
     limits:'An architecture diagram is not an implementation, a successful test or an adopted standard.',
     next:'Inspect illustrative architecture, then verify the appropriate versioned specification with a qualified owner.',
-    nextHref:'/en/architecture/',nextLabel:'Review site architecture',related:['technical','experiences','prevent','prepare'],
+    nextHref:'/en/architecture/',nextLabel:'Read the published architecture',related:['technical','experiences','prevent','prepare'],
     sources:[{label:'Illustrative architecture',href:'/en/architecture/'},{label:'REG v0.1',href:'/en/publications/reg-v0.1/'}]
   },
   technical:{
-    id:'technical',kind:'foundation',title:'REG+, RFCs & Conformance',tagline:'Inspectable contracts rather than proclaimed guarantees.',
+    id:'technical',kind:'foundation',title:'REG+, RFCs & Conformance',tagline:'Under which conditions does a guarantee hold?',
     status:'Public specifications and test tools · scoped evidence',
-    pain:'Claims about execution require explicit contracts, configuration hypotheses and reproducible tests.',
-    when:'Examining an invariant, profile, test case, deployment assumption or guarantee scope.',
+    pain:'A stated guarantee does not yet tell us which configuration supports it or which tests can verify it.',
+    when:'When checking an invariant, profile, test or the deployment conditions a guarantee depends on.',
     examines:'RFC-0 to RFC-7, REG+ profiles, configuration compatibility, evidence contracts and scoped tests.',
     inputs:'Versioned contract, assumptions/profile, implementation commit, manifest and applicable test evidence.',
     output:'Specification and candidate profiles, attributable test outcomes and known gaps.',
@@ -331,10 +331,10 @@ en: {
     sources:[{label:'reg-conformance',href:'https://github.com/skiredj-prog/reg-conformance'},{label:'Conformance page',href:'/en/conformance/'},{label:'REG standard',href:'/en/standard/'}]
   },
   experiences:{
-    id:'experiences',kind:'demo',title:'TENIR Labs Experiences',tagline:'Explore a bounded scenario instead of taking the claim on trust.',
+    id:'experiences',kind:'demo',title:'TENIR Labs Experiences',tagline:'Watch a situation unfold, then explore what changes.',
     status:'Developing and tested bounded experiences',
-    pain:'Decision, reconciliation and evidence concepts are hard to make tangible in a workshop.',
-    when:'At first encounter or before discussing a concrete risk or engineering engagement.',
+    pain:'Decisions, recovery and evidence remain abstract until a concrete situation makes them visible.',
+    when:'To discover an idea, explore it in a workshop or prepare a technical conversation around an example.',
     examines:'Decision Readiness, Execution Timeline and Lifecycle Workbench: scenarios, transitions and limits.',
     inputs:'Explicit, generally fictional scenario assumptions; no production integration.',
     output:'Educational walkthrough, synthetic trace and a focused question to verify elsewhere.',
@@ -342,14 +342,14 @@ en: {
     maturity:'Project artifacts in development/testing; public-source revisions and deployment of the three named experiences unverified.',
     limits:'No operating-system result, effective conformance demonstration or certification follows from a simulation.',
     next:'Explore an existing public illustrative demo, then inspect source or discuss a real bounded case.',
-    nextHref:'/en/architecture/demo/',nextLabel:'Open existing demo',related:['control-tower','reg-arch','gov','diagnostic'],
+    nextHref:'/en/architecture/demo/',nextLabel:'Open the six-scene demo',related:['control-tower','reg-arch','gov','diagnostic'],
     sources:[{label:'Existing control-plane demo',href:'/en/architecture/demo/'},{label:'Existing architecture walkthrough',href:'/en/architecture/interactive/'}]
   },
   'control-tower':{
-    id:'control-tower',kind:'demo',title:'REG — Autonomy Control Tower v1.0',tagline:'The agent proposes. What happens at the execution boundary?',
+    id:'control-tower',kind:'demo',title:'REG — Autonomy Control Tower v1.0',tagline:'An agent proposes an action. What happens next?',
     status:'Self-contained interactive simulation · no live kernel',
-    pain:'People struggle to separate an agent proposal, authorization, applied local state, external effect and evidence.',
-    when:'When exploring governance before discussing a diagnostic, technical pilot or source review.',
+    pain:'The agent proposed an action. Was it authorized, sent or completed? A record may not answer every question.',
+    when:'To explore the mechanisms in a simulation before a diagnostic or technical discussion.',
     examines:'Four stories: missing authority, authorized action, lost confirmation and a duplicate attempt. Guided trace and fictional dossier.',
     inputs:'Scenario and pace selection only. Fictional data; no login or live-system request.',
     output:'Inspectable synthetic chronology, executive/risk/engineering perspectives and fictional JSON dossier.',
@@ -357,20 +357,20 @@ en: {
     maturity:'Standalone v1.0 HTML supplied and staged in this branch. English interactive labels; FR surrounding explanation. Human and embedding checks required.',
     limits:'No live governor, verified cryptographic ledger, provider settlement, regulatory certification or liability protection. Structural Écart creation remains provisional (D-02).',
     next:'Choose a scenario and start manually. Read its limits, then inspect a real question or the published code.',
-    nextHref:'#control-tower-experience',nextLabel:'Start the guided simulation',related:['gov','diagnostic','experiences','reg-arch'],
+    nextHref:'#control-tower-experience',nextLabel:'Choose a scenario',related:['gov','diagnostic','experiences','reg-arch'],
     sources:[{label:'REG-ARCH architecture',href:'/en/architecture/'},{label:'TENIR-Gov source',href:'https://github.com/skiredj-prog/tenir_governance'}]
   }
 }
 };
 export const portfolioHubs = {
  fr:{
-  products:{title:'Produits et instruments',kicker:'TENIR Labs · Produits',description:'Plusieurs outils, une question : quelle frontière devons-nous examiner ?',lede:'Des instruments distincts pour découvrir les hypothèses, traduire des exigences, préparer des contrôles ou gouverner une exécution.',opening:'Quel problème faut-il clarifier ?',intro:'Commencez par un besoin, pas par une technologie. Chaque instrument indique ce qu’il examine, ce qu’il produit et ce qu’il ne démontre pas.',keys:['prevent','prepare','discovery','xray','translation','gov','reg-arch','technical'],linkLabel:'Découvrir cet instrument',spotlight:'Deux démarches REG complémentaires, jamais imposées dans le même ordre.'},
-  services:{title:'Services et accompagnement',kicker:'TENIR Labs · Services',description:'Un accompagnement borné qui choisit le bon instrument sans entonnoir obligatoire.',lede:'Partir d’une décision réelle, réunir ce qui est disponible et convenir du prochain contrôle pertinent.',opening:'Une question précise mérite une réponse située.',intro:'Le Diagnostic accompagné est l’offre immédiate. Il sélectionne la démarche adaptée ; vous pouvez aussi explorer directement un produit ou une démonstration.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'Examiner cette approche',spotlight:'Le premier contact ne nécessite ni installation, ni remise de données sensibles.'},
-  demos:{title:'Expériences et démonstrations',kicker:'TENIR Labs · Expériences',description:'Des scénarios interactifs pour comprendre les frontières de décision sans confondre illustration et preuve.',lede:'Regarder une décision, examiner ce qui change, reconnaître ce qui reste inconnu.',opening:'Une bonne démonstration donne envie de poser une meilleure question.',intro:'La Control Tower est mise en avant sans lancement automatique. Les autres expériences offrent des angles complémentaires, avec leur état de maturité visible.',keys:['control-tower','experiences','gov','reg-arch'],linkLabel:'Explorer l’expérience',spotlight:'Fictions, états locaux et dossiers synthétiques : aucune de ces expériences ne certifie un déploiement.'}
+  products:{title:'Produits et instruments',kicker:'TENIR Labs · Produits',description:'Comparer les outils, leurs résultats et leur disponibilité.',lede:'Clarifier une exigence, retrouver les preuves ou encadrer une action : chaque instrument répond à une question différente.',opening:'Qu’est-ce qui vous manque pour avancer ?',intro:'Repérez la situation qui vous parle. Chaque fiche présente le résultat attendu, la disponibilité et les limites, pour choisir ce qui mérite d’être exploré.',keys:['prevent','prepare','discovery','xray','translation','gov','reg-arch','technical'],linkLabel:'Voir la fiche',spotlight:'Prevent part des exigences. Prepare part des éléments disponibles. Les deux démarches peuvent s’explorer séparément.'},
+  services:{title:'Services et accompagnement',kicker:'TENIR Labs · Services',description:'Comprendre le diagnostic, ses livrables et la façon de commencer.',lede:'Une situation à comprendre ensemble, des constats reliés à leurs sources et une prochaine décision à préparer.',opening:'Faisons le point sur une situation.',intro:'Le diagnostic accompagné part de la question et des éléments disponibles. Un premier échange permet de convenir du périmètre, des livrables et du devis.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'Voir la démarche',spotlight:'Quelques lignes suffisent pour le premier contact. Les accès et les documents utiles se conviennent ensuite.'},
+  demos:{title:'Expériences et démonstrations',kicker:'TENIR Labs · Expériences',description:'Explorer des scénarios simulés, à son rythme.',lede:'Suivre une action, changer de point de vue et voir ce qui reste à vérifier.',opening:'Que se passe-t-il quand le scénario change ?',intro:'La Control Tower propose quatre scénarios à explorer librement. D’autres expériences, le logiciel et l’architecture prolongent la lecture, avec leurs statuts propres.',keys:['control-tower','experiences','gov','reg-arch'],linkLabel:'Voir la fiche',spotlight:'La simulation utilise des données fictives. Vous choisissez quand commencer ; aucun système réel n’est connecté.'}
  },
  en:{
-  products:{title:'Products & instruments',kicker:'TENIR Labs · Products',description:'Different instruments, one useful question: which boundary matters here?',lede:'Separate instruments to surface assumptions, translate requirements, prepare controls or govern execution.',opening:'Which problem needs clarification?',intro:'Start with a need, not a technology. Every instrument states what it examines, produces and does not establish.',keys:['prevent','prepare','discovery','xray','translation','gov','reg-arch','technical'],linkLabel:'Explore this instrument',spotlight:'Two complementary REG approaches, with no mandatory sequence.'},
-  services:{title:'Services & guided work',kicker:'TENIR Labs · Services',description:'A bounded engagement that selects relevant instruments instead of forcing a generic funnel.',lede:'Start with a real decision, examine available materials and agree on a defensible next control.',opening:'A specific question deserves a situated answer.',intro:'The Guided Governance Diagnostic is the immediate offer. It selects the appropriate approach; products and demos also remain directly accessible.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'Explore this approach',spotlight:'Initial contact requires neither installation nor sensitive system access.'},
-  demos:{title:'Interactive experiences',kicker:'TENIR Labs · Experiences',description:'Interactive scenarios showing decision boundaries without mistaking illustration for evidence.',lede:'See a decision, inspect what changes, and understand what remains unknown.',opening:'A good demo helps you ask a better question.',intro:'The Control Tower is prominent but never autoplayed. Other experiences provide complementary angles with explicit maturity status.',keys:['control-tower','experiences','gov','reg-arch'],linkLabel:'Explore the experience',spotlight:'Fictional events and synthetic dossiers do not certify a production deployment.'}
+  products:{title:'Products & instruments',kicker:'TENIR Labs · Products',description:'Compare tools, their outputs and their availability.',lede:'Clarify a requirement, find supporting evidence or control an action: each instrument addresses a different question.',opening:'What would help you move forward?',intro:'Find a situation that feels familiar. Every profile explains the expected output, availability and limits, so you can decide what to explore.',keys:['prevent','prepare','discovery','xray','translation','gov','reg-arch','technical'],linkLabel:'Read the profile',spotlight:'Prevent starts with requirements. Prepare starts with available records. The two approaches can be explored separately.'},
+  services:{title:'Services & guided work',kicker:'TENIR Labs · Services',description:'Understand the diagnostic, its deliverables and how to begin.',lede:'Examine a situation together, connect findings to their sources and prepare the next decision.',opening:'Let’s make sense of a situation.',intro:'The Guided Governance Diagnostic starts with the question and available records. An initial conversation helps agree on scope, deliverables and a quote.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'See the approach',spotlight:'A few lines are enough for an initial conversation. Access and useful documents are agreed afterwards.'},
+  demos:{title:'Interactive experiences',kicker:'TENIR Labs · Experiences',description:'Explore simulated scenarios at your own pace.',lede:'Follow an action, change perspective and see what still needs verification.',opening:'What happens when the scenario changes?',intro:'Control Tower offers four scenarios to explore freely. Other experiences, software and architecture offer further reading, each with its own status.',keys:['control-tower','experiences','gov','reg-arch'],linkLabel:'Read the profile',spotlight:'The simulation uses fictional data. You choose when to start; no live system is connected.'}
  }
 } as const;

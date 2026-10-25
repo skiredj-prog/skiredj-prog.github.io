@@ -1,8 +1,8 @@
 ---
 title: Produits et Services
 kicker: REG — Prévention et préparation réglementaire
-description: Prévenir les risques de conformité et préparer les preuves disponibles avant un contrôle.
-lede: "Deux points de départ complémentaires : vos exigences et vos systèmes. Des constats qualifiés et des actions concrètes, sans certification automatique."
+description: Comprendre les exigences, examiner les contrôles et préparer une synthèse sourcée avec des actions prioritaires.
+lede: "Une règle à comprendre, un usage de l’IA à éclaircir ou un contrôle à préparer ? Un diagnostic accompagné peut aider à préciser les faits, les lacunes et la suite à décider."
 sources: REG v0.1 Working Draft — 21 octobre 2026
 ---
 
@@ -10,17 +10,31 @@ sources: REG v0.1 Working Draft — 21 octobre 2026
 
 ## Commencer par un diagnostic accompagné
 
-L'IA peut déjà être intégrée aux outils de messagerie, de bureautique, de relation client, de recrutement ou aux logiciels de fournisseurs. Sa présence et ses usages doivent être **vérifiés**, jamais présumés. Avant toute installation, nous proposons un premier échange à distance pour définir une question métier, puis un diagnostic à périmètre convenu.
+Vous portez une question métier, de conformité ou de conception. Le point de départ est une situation précise : comprendre ce qu'une exigence implique, retrouver les éléments qui soutiennent un contrôle, ou éclaircir un usage de l'IA dans un processus.
 
-**Ce que nous examinerons :** où l'IA intervient réellement, quelles données elle traite, quelles décisions ou actions elle influence, et quelles protections ou preuves manquent.
+**La restitution, selon le périmètre convenu :** une synthèse sourcée des constats, des inconnues et des lacunes, accompagnée d'un plan d'actions priorisé. Elle permet de préparer une décision et de retrouver ce qui la soutient.
 
-**Ce que vous recevrez selon le périmètre convenu :** une synthèse des usages observés et déclarés, des risques à examiner, des inconnues et un plan d'actions priorisé. Ce n'est ni un audit de conformité certifiant ni une validation de production.
+| Vous apportez | Nous examinons ensemble | Vous recevez |
+| --- | --- | --- |
+| Une règle ou un processus, avec les documents et éléments disponibles | Les exigences, les contrôles annoncés, les éléments vérifiables et les écarts | Une synthèse avec ses sources et ses limites, puis les prochaines vérifications ou décisions proposées |
 
-**Comment démarrer :** un échange exploratoire, puis une proposition précisant périmètre, accès autorisés, confidentialité, livrables et conditions commerciales. Aucun accès technique ou document sensible n'est requis pour prendre contact.
+Le diagnostic est un **accompagnement à cadrer**, pas un logiciel à installer. Un premier échange à distance sert à choisir la question. Une proposition précise ensuite le périmètre, les accès autorisés, la confidentialité, les livrables et les conditions commerciales. Aucun accès technique ou document sensible n'est requis pour prendre contact.
 
 [Discuter d'un diagnostic accompagné →](/contact/)
 
+La page de contact aide à préparer votre message ; vous le relisez avant de l'envoyer depuis votre messagerie.
+
+## REG : deux directions de travail
+
+Sur cette page, **REG désigne la démarche produit Prévenir · Préparer** de TENIR Labs. Ses outils ont des maturités différentes, précisées ci-dessous. Le standard technique **[Runtime Execution Governance (REG)](/standard/)** traite de la frontière d'exécution des actions ; ses contrats ne sont pas remplacés par cette démarche.
+
+- [Les produits et leur état d'avancement](/portfolio/products/) — capacités, accès et limites.
+- [Les accompagnements](/portfolio/services/) — périmètres, déroulement et livrables.
+- [Les démonstrations](/portfolio/demos/) — ce que vous pouvez explorer et ce que chaque exemple permet d'observer.
+
 ## Après le diagnostic : des étapes facultatives
+
+Si la question concerne l'IA, l'examen peut porter sur sa présence réelle dans les outils, les données traitées, les décisions ou actions influencées et les protections disponibles. Un usage déclaré et un usage observé restent distingués.
 
 Un pilote d'observation **non bloquant** peut ensuite être étudié si une intégration est justifiée et autorisée. Il nécessite une analyse des impacts techniques, des données et des responsabilités ; il n'est pas présenté comme sans risque ni comme déjà déployable chez tout client.
 
@@ -75,21 +89,18 @@ Lorsque les deux parcours sont alimentés, REG établit la correspondance :
 
 **Aucune case ne devient "conforme" sur simple présence.** Chaque conclusion porte son origine, sa date et ses limites.
 
-## Ce que REG n'est pas
+## Comment lire la restitution
 
-❌ Il ne délivre pas de certification automatique
-❌ Il ne remplace pas l'avis juridique
-❌ Il ne prétend pas auditer en temps réel vos systèmes
-❌ Il ne fabrique pas de preuve pour remplir les trous
-
-**Ce qu'il est :** un miroir honnête. Ce que vous voyez est ce que vous pouvez prouver — rien de plus, rien de moins.
+Une pièce disponible, une déclaration et un contrôle vérifié portent des statuts différents. Une lacune reste visible et précise ce qu'elle empêche de conclure. La restitution aide à décider de la prochaine vérification ; elle ne constitue ni une certification, ni un avis juridique, ni une validation de production. REG ne revendique pas un audit en temps réel des systèmes et ne produit pas de preuves pour combler les absences.
 
 ## État du projet
 
-**Version** : 0.1 — Cadrage consolidé · Working Draft
-**Statut** : Exemple simulé disponible · Discovery en aperçu privé, non publié
-**Prochaine étape** : Validation marché · Premier accompagnement réel
-**Maturité** : Discovery testé sur branche de travail · Translation Studio en prototype · Préparation en construction
+État de référence du **21 octobre 2026** :
+
+- **Version :** 0.1 — cadrage consolidé, Working Draft.
+- **Accessible :** un exemple simulé public, sans données client.
+- **En développement :** Discovery testé sur branche de travail, en aperçu privé ; Translation Studio en prototype ; Préparation en construction.
+- **À éprouver :** la valeur et le format de l'accompagnement lors des premières missions réelles.
 
 [Lire la spécification de cadrage REG v0.1 — Working Draft →](/publications/reg-v0.1/)
 [Voir le dossier simulé — aucune donnée client →](/offre/exemple/)
