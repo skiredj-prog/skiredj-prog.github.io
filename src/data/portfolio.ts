@@ -22,7 +22,7 @@ export interface PortfolioEntry {
   related: string[];
   sources: { label: string; href: string }[];
 }
-export const portfolioOrder = ['diagnostic','prevent','prepare','discovery','xray','translation','gov','reg-arch','technical','experiences','control-tower'] as const;
+export const portfolioOrder = ['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'] as const;
 export const portfolio: Record<PortfolioLocale, Record<string, PortfolioEntry>> = {
 fr: {
   diagnostic: {
@@ -73,16 +73,64 @@ fr: {
     nextHref:'/contact/',nextLabel:'Parler des éléments disponibles',related:['prevent','diagnostic','gov','technical'],
     sources:[{label:'Spécification REG v0.1',href:'/publications/reg-v0.1/'},{label:'Exemple de diagnostic simulé',href:'/offre/exemple/'}]
   },
+  explorer:{
+    id:'explorer',kind:'product',title:'REG Explorer v0.2',
+    tagline:'Explorer les hypothèses et les frontières avant une décision d’architecture.',
+    status:'Prototype v0.2 · READY WITH CONDITIONS · test navigateur final requis',
+    pain:'Les dépendances et les conditions d’un contrôle sont dispersées entre des exigences, une architecture et des hypothèses.',
+    when:'Lorsqu’une équipe veut parcourir un problème de gouvernance et rendre les questions techniques vérifiables avant une décision.',
+    examines:'Des vues exploratoires et des parcours conditionnés. Les corrections P1 annoncées ne valent pas validation en production.',
+    inputs:'Contexte et hypothèses explicitement bornés ; aucun accès client ou système réel n’est présumé.',
+    output:'Une exploration des dépendances et des questions à vérifier ; le parcours public reste suspendu au test navigateur final.',
+    relationships:'Outil exploratoire distinct de REG Discovery (catalogue d’hypothèses) et de REG Mediation (propositions PREVENT/PREPARE).',
+    maturity:'v0.2 avec correctifs P1 rapportés comme intégrés. READY WITH CONDITIONS : recette navigateur finale avant tout lien de publication.',
+    limits:'Pas de mise en service ni démonstration de conformité ; aucun lien public exécutable n’est actuellement qualifié dans le registre du site.',
+    next:'Examiner la portée du prototype et le résultat du test final avant tout lancement public.',
+    nextHref:'/contact/',nextLabel:'Demander un aperçu Explorer',related:['discovery','mediation','prevent','technical'],
+    sources:[{label:'Portefeuille REG · Working Draft',href:'/publications/reg-v0.1/'}]
+  },
+  mediation:{
+    id:'mediation',kind:'product',title:'REG Mediation',
+    tagline:'Formuler des propositions PREVENT / PREPARE sans les confondre avec une admission.',
+    status:'Prototype expérimental · propositions non admises',
+    pain:'Une intention métier peut générer plusieurs contrôles candidats. Leur formulation ne garantit ni leur complétude ni leur admission.',
+    when:'Pour comparer des interprétations et préparer une revue formelle de contraintes candidates.',
+    examines:'Propositions PREVENT/PREPARE, hypothèses d’applicabilité, lacunes de complétude et preuves manquantes.',
+    inputs:'Intention versionnée, sources, périmètre et autorité compétente pour arbitrer les hypothèses.',
+    output:'Propositions traçables en attente de vérification ; aucune propriété admise automatiquement.',
+    relationships:'Distinct de Translation Studio (traduction des exigences), de REG Discovery (hypothèses) et de REG+ (résolution/admission formelle).',
+    maturity:'Prototype expérimental. Preuve de complétude réelle et qualification du mécanisme d’admission non établies.',
+    limits:'Ni moteur de résolution normative démontré, ni profil admissible, ni autorisation d’exécuter.',
+    next:'Sélectionner une proposition et examiner les obligations de preuve avant admission éventuelle.',
+    nextHref:'/contact/',nextLabel:'Examiner une proposition',related:['translation','prevent','prepare','technical'],
+    sources:[{label:'Spécification de cadrage REG',href:'/publications/reg-v0.1/'}]
+  },
+  conformance:{
+    id:'conformance',kind:'product',title:'REG Conformance v0.6.1',
+    tagline:'Soumettre un profil borné à des tests de conformité reproductibles.',
+    status:'Release v0.6.1 publiée · 46/46 PASS · profil Raft loopback mono-hôte',
+    pain:'Un profil annoncé comme conforme nécessite des conditions, des vecteurs de tests et des résultats attribuables.',
+    when:'Pour évaluer le profil Raft mono-hôte loopback précisément couvert par la release.',
+    examines:'Harnais de conformance, manifeste du profil, preuves de tests et badge cryptographiquement vérifiable selon son format.',
+    inputs:'Version et commit, profil exact, environnement loopback, artefacts signés et chaîne de confiance appropriée.',
+    output:'Résultats et badge bornés au profil qualifié ; les autres topologies ne reçoivent aucune garantie par transitivité.',
+    relationships:'Implémentation de qualification indépendante de TENIR-Gov, complémentaire aux RFC et profils REG+ ; ne valide pas un déploiement physique.',
+    maturity:'Release GitHub v0.6.1 publiée le 21 octobre 2026. 46/46 tests rapportés PASS pour le seul profil explicitement qualifié.',
+    limits:'Aucune garantie C3, aucun cluster physique multi-hôte, aucune certification réglementaire. La signature seule n’authentifie pas une autorité non approuvée.',
+    next:'Lire les vecteurs et le manifeste de la release avant d’appliquer le badge à une instance.',
+    nextHref:'https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1',nextLabel:'Voir la release et les preuves',related:['technical','gov','reg-arch','prepare'],
+    sources:[{label:'Release REG Conformance v0.6.1',href:'https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1'},{label:'Code et tests',href:'https://github.com/skiredj-prog/reg-conformance'},{label:'Statut conformance',href:'/conformance/'}]
+  },
   discovery:{
     id:'discovery',kind:'product',title:'REG Discovery',tagline:'Et si une hypothèse importante nous échappait ?',
-    status:'Aperçu exploratoire · intégration web en PR #13',
+    status:'Moteur déterministe expérimental · Working Draft · site PR #13 non fusionnée',
     pain:'Les textes et les contrôles semblent couvrir le sujet. Certaines hypothèses sur le comportement du système restent pourtant sans examen.',
     when:'Au début d’un examen, face à une exigence qui paraît évidente ou pour préparer les questions à vérifier.',
     examines:'Un catalogue limité de sources et leurs hypothèses à interroger, sans prétendre analyser librement un système client.',
     inputs:'Sélection explicite de sources et hypothèses de contexte ; aucune donnée client requise pour l’aperçu présenté dans la PR.',
-    output:'Questions exploratoires sourcées et rapport borné. L’intégration proposée comprend cinq cartes de sources et 31 combinaisons.',
+    output:'Catalogue borné d’hypothèses, exploration déterministe et rapport imprimable ; cinq cartes et 31 combinaisons décrites dans la PR web.',
     relationships:'Peut alimenter Prevent ou un diagnostic. N’est ni AI Exposure X-Ray, ni Translation Studio, ni le prototype mobile de prise de rendez-vous.',
-    maturity:'PR #13 en brouillon, non fusionnée sur main ; intégration et publication non établies.',
+    maturity:'Moteur et rapport expérimentaux décrits ; PR d’intégration web #13 toujours en brouillon, version publique exécutable non établie.',
     limits:'Pas d’audit d’implémentation, analyse juridique, certification ou contrôle d’exécution. Pas de promesse de rapport sur données libres.',
     next:'Lire l’intention de Discovery et demander une présentation exploratoire ; ne pas confondre la prévisualisation avec un service publié.',
     nextHref:'/contact/',nextLabel:'Demander une présentation',related:['prevent','translation','xray','diagnostic'],
@@ -90,14 +138,14 @@ fr: {
   },
   xray:{
     id:'xray',kind:'product',title:'AI Exposure X-Ray',tagline:'L’IA intervient-elle déjà dans les outils du quotidien ?',
-    status:'Prototype · validation interne annoncée',
+    status:'Prototype X-Ray v0.2 · évaluation interne favorable · non qualifié production',
     pain:'Une fonction IA peut arriver dans un logiciel sans que ses usages, les données concernées et les décisions affectées soient clairement recensés.',
     when:'Pour préparer un inventaire des usages, une politique IA ou le périmètre d’un diagnostic.',
     examines:'Usages déclarés, exposition potentielle, rôles et contrôles connus ou incertains.',
     inputs:'Réponses attribuées, inventaire d’outils, processus, propriétaires métier et informations connues / inconnues.',
     output:'Carte exploratoire d’exposition et questions classées pour vérification.',
     relationships:'Peut aider à délimiter le Diagnostic ou REG Prevent/Prepare. Ne remplace pas REG Discovery.',
-    maturity:'Validation interne rapportée dans les artefacts de projet ; dépôt canonique et déploiement public non confirmés.',
+    maturity:'v0.2 évaluée favorablement dans le projet ; la fiche publique propose des exemples éditoriaux, pas une connexion au prototype. Révision source et déploiement du moteur non établis.',
     limits:'Les réponses déclaratives ne prouvent ni l’usage effectif, ni son absence, ni la conformité ou la couverture de contrôle.',
     next:'Commencer par un processus ou un ensemble d’outils, puis vérifier les expositions prioritaires à partir des sources.',
     nextHref:'/contact/',nextLabel:'Parler d’un processus à examiner',related:['diagnostic','discovery','prevent','prepare'],
@@ -149,18 +197,18 @@ fr: {
     sources:[{label:'Architecture illustrative',href:'/architecture/'},{label:'REG v0.1',href:'/publications/reg-v0.1/'}]
   },
   technical:{
-    id:'technical',kind:'foundation',title:'REG+, RFC et conformance',tagline:'À quelles conditions une garantie tient-elle ?',
-    status:'Spécifications, catalogue et harnais publics · périmètres distincts',
+    id:'technical',kind:'foundation',title:'REG+ et RFC · contrats et fondations',tagline:'À quelles conditions une garantie tient-elle ?',
+    status:'Fondations documentaires REG+ / RFC · statut distinct du logiciel Conformance',
     pain:'Une garantie annoncée ne dit pas encore dans quelle configuration elle tient, ni quels tests permettent de la vérifier.',
     when:'Pour vérifier un invariant, un profil, un test ou les conditions de déploiement dont dépend une garantie.',
     examines:'RFC-0 à RFC-7, profils REG+, compatibilité de configurations, contrats de preuve et tests de conformité limités.',
     inputs:'Version du contrat, hypothèses, source/commit de l’implémentation, manifeste, jeux de tests et preuves disponibles.',
     output:'Références, profils candidats, résultats de vérification attribués et limites non résolues.',
-    relationships:'Soutient Translation, Prevent, REG-ARCH et TENIR-Gov ; n’est ni produit autonome ni service commercial.',
+    relationships:'Fonde Translation, Mediation, REG-ARCH et TENIR-Gov ; l’outil publié REG Conformance v0.6.1 possède une fiche distincte.',
     maturity:'Dépôts publics en évolution. Catalogue signalant 144 configurations dont 42 admissibles structurellement ; cela ne prouve aucune garantie effective.',
     limits:'Admissibilité structurelle ≠ conformité effective ; tests laboratoire ≠ certification ; dépendance au manifeste de déploiement.',
     next:'Vérifier les versions des RFC, profils et tests avant de conclure sur une implémentation particulière.',
-    nextHref:'https://github.com/skiredj-prog/reg-conformance',nextLabel:'Lire reg-conformance',related:['gov','reg-arch','prepare','translation'],
+    nextHref:'/standard/',nextLabel:'Lire les RFC et le standard',related:['conformance','gov','reg-arch','mediation'],
     sources:[{label:'reg-conformance',href:'https://github.com/skiredj-prog/reg-conformance'},{label:'Site conformance',href:'/conformance/'},{label:'Standard REG',href:'/standard/'}]
   },
   experiences:{
@@ -240,16 +288,64 @@ en: {
     nextHref:'/en/contact/',nextLabel:'Discuss the available records',related:['prevent','diagnostic','gov','technical'],
     sources:[{label:'REG v0.1 specification',href:'/en/publications/reg-v0.1/'},{label:'Fictional diagnostic example',href:'/en/offer/example/'}]
   },
+  explorer:{
+    id:'explorer',kind:'product',title:'REG Explorer v0.2',
+    tagline:'Explore assumptions and boundaries before making an architecture decision.',
+    status:'v0.2 prototype · READY WITH CONDITIONS · final browser test pending',
+    pain:'Control conditions and dependencies are scattered across requirements, architecture and untested assumptions.',
+    when:'When a team needs to explore governance boundaries and make technical questions testable.',
+    examines:'Bounded exploratory views and conditional journeys. Reported P1 fixes do not establish production fitness.',
+    inputs:'Explicitly bounded context and assumptions; no customer system access is implied.',
+    output:'Dependency exploration and verification questions; public release remains gated by final browser acceptance.',
+    relationships:'Distinct from REG Discovery (assumption catalogue) and REG Mediation (PREVENT/PREPARE proposals).',
+    maturity:'Reported P1 fixes integrated in v0.2. READY WITH CONDITIONS pending final browser test; no approved public runnable link.',
+    limits:'Not production execution or demonstrated compliance; no publicly qualified interactive URL in the site registry.',
+    next:'Review bounded prototype scope and final browser results before public launch.',
+    nextHref:'/en/contact/',nextLabel:'Request an Explorer walkthrough',related:['discovery','mediation','prevent','technical'],
+    sources:[{label:'REG working-draft context',href:'/en/publications/reg-v0.1/'}]
+  },
+  mediation:{
+    id:'mediation',kind:'product',title:'REG Mediation',
+    tagline:'Propose PREVENT / PREPARE responses without presenting proposals as admissions.',
+    status:'Experimental prototype · proposals not admitted',
+    pain:'Business intent can generate several candidate controls without establishing their completeness or authoritative admission.',
+    when:'Comparing interpretations before formal review of candidate constraints.',
+    examines:'PREVENT/PREPARE proposals, applicability assumptions, completeness gaps and missing evidence.',
+    inputs:'Versioned intention, sources, scope and accountable authority for resolving ambiguities.',
+    output:'Traceable proposed controls pending qualification; no automatically admitted properties.',
+    relationships:'Distinct from Translation Studio (candidate translation), Discovery (hypotheses) and REG+ (formal resolution/admission).',
+    maturity:'Experimental prototype. Evidence of real completeness and qualification of the admission boundary not established.',
+    limits:'Not a demonstrated normative-resolution engine, admitted profile or permission to execute.',
+    next:'Review one proposed response and its proof obligations before possible admission.',
+    nextHref:'/en/contact/',nextLabel:'Discuss a proposed control',related:['translation','prevent','prepare','technical'],
+    sources:[{label:'REG working draft',href:'/en/publications/reg-v0.1/'}]
+  },
+  conformance:{
+    id:'conformance',kind:'product',title:'REG Conformance v0.6.1',
+    tagline:'Test one bounded execution-governance profile against reproducible contracts.',
+    status:'v0.6.1 released · 46/46 PASS · single-host loopback Raft profile',
+    pain:'A compliance claim requires a specific test contract, deployment profile and attributable evidence.',
+    when:'Testing the exact single-host loopback Raft profile covered by the release.',
+    examines:'Conformance harness, profile manifest, test records and a cryptographically verifiable badge under its verification contract.',
+    inputs:'Exact version/commit, matching profile, loopback environment, signed artifacts and appropriate trust anchor.',
+    output:'Profile-scoped test results and badge; no inherited guarantees for other topologies.',
+    relationships:'Independent qualification tool complementing REG+ RFCs and TENIR-Gov; not physical multi-host deployment certification.',
+    maturity:'Published GitHub v0.6.1 release dated October 21, 2026. Reported 46/46 PASS for the explicitly covered profile only.',
+    limits:'No C3 guarantee, no physical multi-host cluster, no regulatory certification. Cryptographic signature does not establish independent trust by itself.',
+    next:'Inspect release test vectors and manifest before applying the badge to an implementation.',
+    nextHref:'https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1',nextLabel:'Open release and evidence',related:['technical','gov','reg-arch','prepare'],
+    sources:[{label:'REG Conformance v0.6.1 release',href:'https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1'},{label:'Source and tests',href:'https://github.com/skiredj-prog/reg-conformance'},{label:'Conformance status',href:'/en/conformance/'}]
+  },
   discovery:{
     id:'discovery',kind:'product',title:'REG Discovery',tagline:'Could an important assumption be missing?',
-    status:'Exploratory preview · web integration in draft PR #13',
+    status:'Experimental deterministic engine · Working Draft · draft site PR #13',
     pain:'The texts and controls seem to cover the subject. Some assumptions about system behavior may still be unexamined.',
     when:'At the start of a review, when a requirement seems obvious or when preparing questions to verify.',
     examines:'A bounded catalogue of selected frameworks and candidate questions, not an unrestricted audit of a client system.',
     inputs:'Selected framework cards and context assumptions, no operational client telemetry for the preview.',
-    output:'Sourced exploratory questions and a bounded report; proposal includes five source cards and 31 combinations.',
+    output:'Bounded assumption catalogue, deterministic exploration and printable report; five source cards and 31 combinations described in the draft web PR.',
     relationships:'Can inform Prevent or a diagnostic; distinct from X-Ray, Translation and the mobile scheduling demo.',
-    maturity:'Draft PR #13 unmerged; public-site main integration and external release not established.',
+    maturity:'Experimental engine/report described; web integration PR #13 remains Draft and public runnable release is not established.',
     limits:'No implementation audit, legal finding, certification, free-text system analysis or runtime enforcement.',
     next:'Read the exploratory brief or request a private walkthrough while the integration remains gated.',
     nextHref:'/en/contact/',nextLabel:'Request a walkthrough',related:['prevent','translation','xray','diagnostic'],
@@ -257,14 +353,14 @@ en: {
   },
   xray:{
     id:'xray',kind:'product',title:'AI Exposure X-Ray',tagline:'Is AI already part of the everyday tools?',
-    status:'Prototype · reported internal validation',
+    status:'X-Ray v0.2 prototype · favorable internal assessment · not production-qualified',
     pain:'An AI feature can arrive in a familiar tool before its uses, affected data and influence on decisions have been recorded.',
     when:'When preparing an inventory of AI uses, an AI policy or the scope of a diagnostic.',
     examines:'Reported AI use, possible exposure, owners and unknown safeguards.',
     inputs:'Attributed interviews/surveys, tool inventory, processes, system owners and known unknowns.',
     output:'Exploratory exposure view and prioritized verification questions.',
     relationships:'Can frame a Diagnostic or Prevent/Prepare; not the same as REG Discovery.',
-    maturity:'Internal validation reported in project artifacts; canonical source revision and public deployment not confirmed.',
+    maturity:'v0.2 favorably evaluated in project context; the public page contains editorial examples, not a connected prototype. Source revision and runtime deployment remain unverified.',
     limits:'Self-reports do not prove actual use or its absence, compliance or control coverage.',
     next:'Select one process, then verify reported exposure against independent sources.',
     nextHref:'/en/contact/',nextLabel:'Discuss a process to examine',related:['diagnostic','discovery','prevent','prepare'],
@@ -316,18 +412,18 @@ en: {
     sources:[{label:'Illustrative architecture',href:'/en/architecture/'},{label:'REG v0.1',href:'/en/publications/reg-v0.1/'}]
   },
   technical:{
-    id:'technical',kind:'foundation',title:'REG+, RFCs & Conformance',tagline:'Under which conditions does a guarantee hold?',
-    status:'Public specifications and test tools · scoped evidence',
+    id:'technical',kind:'foundation',title:'REG+ & RFCs · Contracts and foundations',tagline:'Under which conditions does a guarantee hold?',
+    status:'REG+ / RFC reference foundations · distinct from released Conformance tool',
     pain:'A stated guarantee does not yet tell us which configuration supports it or which tests can verify it.',
     when:'When checking an invariant, profile, test or the deployment conditions a guarantee depends on.',
     examines:'RFC-0 to RFC-7, REG+ profiles, configuration compatibility, evidence contracts and scoped tests.',
     inputs:'Versioned contract, assumptions/profile, implementation commit, manifest and applicable test evidence.',
     output:'Specification and candidate profiles, attributable test outcomes and known gaps.',
-    relationships:'Supports Translation, Prevent, REG-ARCH and TENIR-Gov; not a separate commercial service.',
+    relationships:'Supports Translation, Mediation, REG-ARCH and TENIR-Gov; released REG Conformance v0.6.1 has a separate product profile.',
     maturity:'Public active repositories; catalogue reports 144 configurations, 42 structurally admissible—not demonstrated effective guarantees.',
     limits:'Structural admissibility is not effective conformance; lab tests are not certification; deployments require manifests.',
     next:'Inspect versioned RFCs, profiles and test artifacts before drawing a conclusion.',
-    nextHref:'https://github.com/skiredj-prog/reg-conformance',nextLabel:'Inspect reg-conformance',related:['gov','reg-arch','prepare','translation'],
+    nextHref:'/en/standard/',nextLabel:'Read the REG standard',related:['conformance','gov','reg-arch','mediation'],
     sources:[{label:'reg-conformance',href:'https://github.com/skiredj-prog/reg-conformance'},{label:'Conformance page',href:'/en/conformance/'},{label:'REG standard',href:'/en/standard/'}]
   },
   experiences:{
@@ -364,12 +460,12 @@ en: {
 };
 export const portfolioHubs = {
  fr:{
-  products:{title:'Produits et instruments',kicker:'TENIR Labs · Produits',description:'Comparer les outils, leurs résultats et leur disponibilité.',lede:'Clarifier une exigence, retrouver les preuves ou encadrer une action : chaque instrument répond à une question différente.',opening:'Qu’est-ce qui vous manque pour avancer ?',intro:'Repérez la situation qui vous parle. Chaque fiche présente le résultat attendu, la disponibilité et les limites, pour choisir ce qui mérite d’être exploré.',keys:['prevent','prepare','discovery','xray','translation','gov','reg-arch','technical'],linkLabel:'Voir la fiche',spotlight:'Prevent part des exigences. Prepare part des éléments disponibles. Les deux démarches peuvent s’explorer séparément.'},
+  products:{title:'Produits et instruments',kicker:'TENIR Labs · Produits',description:'Comparer les outils, leurs résultats et leur disponibilité.',lede:'Clarifier une exigence, retrouver les preuves ou encadrer une action : chaque instrument répond à une question différente.',opening:'Qu’est-ce qui vous manque pour avancer ?',intro:'Repérez la situation qui vous parle. Chaque fiche présente le résultat attendu, la disponibilité et les limites, pour choisir ce qui mérite d’être exploré.',keys:['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'],linkLabel:'Voir la fiche',spotlight:'Prevent part des exigences. Prepare part des éléments disponibles. Les deux démarches peuvent s’explorer séparément.'},
   services:{title:'Services et accompagnement',kicker:'TENIR Labs · Services',description:'Comprendre le diagnostic, ses livrables et la façon de commencer.',lede:'Une situation à comprendre ensemble, des constats reliés à leurs sources et une prochaine décision à préparer.',opening:'Faisons le point sur une situation.',intro:'Le diagnostic accompagné part de la question et des éléments disponibles. Un premier échange permet de convenir du périmètre, des livrables et du devis.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'Voir la démarche',spotlight:'Quelques lignes suffisent pour le premier contact. Les accès et les documents utiles se conviennent ensuite.'},
   demos:{title:'Expériences et démonstrations',kicker:'TENIR Labs · Expériences',description:'Explorer des scénarios simulés, à son rythme.',lede:'Suivre une action, changer de point de vue et voir ce qui reste à vérifier.',opening:'Que se passe-t-il quand le scénario change ?',intro:'La Control Tower propose quatre scénarios à explorer librement. D’autres expériences, le logiciel et l’architecture prolongent la lecture, avec leurs statuts propres.',keys:['control-tower','experiences','gov','reg-arch'],linkLabel:'Voir la fiche',spotlight:'La simulation utilise des données fictives. Vous choisissez quand commencer ; aucun système réel n’est connecté.'}
  },
  en:{
-  products:{title:'Products & instruments',kicker:'TENIR Labs · Products',description:'Compare tools, their outputs and their availability.',lede:'Clarify a requirement, find supporting evidence or control an action: each instrument addresses a different question.',opening:'What would help you move forward?',intro:'Find a situation that feels familiar. Every profile explains the expected output, availability and limits, so you can decide what to explore.',keys:['prevent','prepare','discovery','xray','translation','gov','reg-arch','technical'],linkLabel:'Read the profile',spotlight:'Prevent starts with requirements. Prepare starts with available records. The two approaches can be explored separately.'},
+  products:{title:'Products & instruments',kicker:'TENIR Labs · Products',description:'Compare tools, their outputs and their availability.',lede:'Clarify a requirement, find supporting evidence or control an action: each instrument addresses a different question.',opening:'What would help you move forward?',intro:'Find a situation that feels familiar. Every profile explains the expected output, availability and limits, so you can decide what to explore.',keys:['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'],linkLabel:'Read the profile',spotlight:'Prevent starts with requirements. Prepare starts with available records. The two approaches can be explored separately.'},
   services:{title:'Services & guided work',kicker:'TENIR Labs · Services',description:'Understand the diagnostic, its deliverables and how to begin.',lede:'Examine a situation together, connect findings to their sources and prepare the next decision.',opening:'Let’s make sense of a situation.',intro:'The Guided Governance Diagnostic starts with the question and available records. An initial conversation helps agree on scope, deliverables and a quote.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'See the approach',spotlight:'A few lines are enough for an initial conversation. Access and useful documents are agreed afterwards.'},
   demos:{title:'Interactive experiences',kicker:'TENIR Labs · Experiences',description:'Explore simulated scenarios at your own pace.',lede:'Follow an action, change perspective and see what still needs verification.',opening:'What happens when the scenario changes?',intro:'Control Tower offers four scenarios to explore freely. Other experiences, software and architecture offer further reading, each with its own status.',keys:['control-tower','experiences','gov','reg-arch'],linkLabel:'Read the profile',spotlight:'The simulation uses fictional data. You choose when to start; no live system is connected.'}
  }

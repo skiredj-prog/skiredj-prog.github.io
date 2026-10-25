@@ -1,6 +1,7 @@
 ---
 import '../styles/portfolio.css';
 import PortfolioCard from './PortfolioCard.astro';
+import { portfolioAccess } from '../data/portfolioAccess';
 import { portfolio, portfolioHubs, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
 import { portfolioContactHref } from '../data/contact';
@@ -9,6 +10,7 @@ const { locale, page } = Astro.props;
 const fr = locale === 'fr';
 const hub = (portfolioHubs[locale] as Record<string, any>)[page];
 const entry = portfolio[locale][page];
+const publicAccess = portfolioAccess[locale][page];
 const path = (route:string) => url((fr?'/':'/en/') + route + '/');
 const cardHref = (id:string) => path('portfolio/' + id);
 const kindName = (kind:string) => ({product:fr?'Produit ou instrument':'Product or instrument',service:'Service',demo:fr?'Démonstration':'Demo',foundation:fr?'Cadre et recherche':'Framework and research'} as Record<string,string>)[kind] ?? kind;
@@ -46,6 +48,7 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
       ? (fr?'Ressource externe sur GitHub · sources et documentation.':'External GitHub resource · source and documentation.')
       : (fr?'Explication ou démonstration sur ce site.':'Explanation or demonstration on this site.');
 const demos = [
+  {title:fr?'Scénario bancaire — éviter le double règlement':'Banking scenario — prevent duplicate settlement',text:fr?'Opération normale, doublon, interruption et réconciliation dans le laboratoire fictif PAY-MAR-001. Aucune banque réelle.':'Normal operation, duplicate, interruption and reconciliation in fictional laboratory PAY-MAR-001. No real bank.',format:fr?'Simulateur bancaire · français · synthétique':'Banking simulation · French · synthetic',href:url('/embeds/demonstration-bancaire.html'),label:fr?'Ouvrir le scénario bancaire':'Open the banking simulation'},
   {title:fr?'Une autorisation ne confirme pas l’effet.':'Authorization does not confirm an effect.',text:fr?'Suivez six scènes : autorisation, doublon, interruption et résultat inconnu.':'Follow six scenes: authorization, duplicate, interruption and unknown outcome.',format:fr?'Parcours illustratif · anglais':'Illustrative walkthrough · English',href:path('architecture/demo'),label:fr?'Ouvrir les six scènes':'Open the six scenes'},
   {title:fr?'Comment les pièces se relient-elles ?':'How do the pieces fit together?',text:fr?'Explorez les composants de l’architecture et les limites publiées dans le parcours.':'Explore the architecture components and the limits published in the walkthrough.',format:fr?'Schéma interactif · anglais':'Interactive diagram · English',href:path('architecture/interactive'),label:fr?'Explorer le schéma':'Explore the diagram'},
   {title:fr?'Une tâche de rendez-vous, pour essayer.':'An appointment task to try.',text:fr?'Proposez un créneau, simulez une réponse, puis mettez en pause avec des données d’exemple.':'Propose a slot, simulate a reply, then pause using example data.',format:fr?'Prototype mobile distinct · aucun vrai message':'Separate mobile prototype · no real messages',href:'https://mobile.tenirlabs.cc/discover',label:fr?'Ouvrir le prototype mobile':'Open the mobile prototype'},
@@ -73,6 +76,13 @@ const demos = [
         <div><p class="pf-overline">{fr?'À essayer ici':'Try it here'}</p><h2>{fr?'La réponse manque. Que faire ensuite ?':'The response is missing. What comes next?'}</h2><p>{fr?'La Control Tower met en scène quatre situations. Choisissez un scénario et observez les décisions et les états simulés.':'Control Tower presents four situations. Choose a scenario and inspect the simulated decisions and states.'}</p><a class="btn btn-primary" href={cardHref('control-tower')}>{fr?'Ouvrir la simulation interactive':'Open the interactive simulation'} →</a><small>{fr?'Artefact en anglais · aucune connexion au noyau réel':'English artifact · no live kernel connected'}</small></div>
         <div class="pf-scenario-preview" aria-hidden="true"><span>{fr?'APERÇU · SCÉNARIO SIMULÉ':'PREVIEW · SIMULATED SCENARIO'}</span><div>{fr?'Une proposition':'A proposal'} <b>→</b></div><div>{fr?'Une autorisation':'An authorization'} <b>→</b></div><div class="pf-scenario-unknown">{fr?'Un résultat à vérifier':'An outcome to verify'} <i>?</i></div><p>{fr?'Autoriser · envoyer · confirmer':'Authorize · dispatch · confirm'}</p></div>
       </section>
+      <section class="pf-demo-options" aria-labelledby="pf-pending-title">
+        <h2 id="pf-pending-title">{fr?'Autres prototypes à suivre':'Other prototypes in progress'}</h2>
+        <div class="pf-demo-grid">
+          <article class="pf-demo-card"><span class="pf-format">{fr?'Évalué v0.2 · publication non vérifiée':'Assessed v0.2 · public release unverified'}</span><h3>Point of No Return</h3><p>{fr?'Illustration du HOLD face à une action irréversible. Aucun lien public vérifié à afficher.':'Illustrates HOLD at an irreversible action boundary. No verified public runnable link.'}</p></article>
+          <article class="pf-demo-card"><span class="pf-format">{fr?'En file d’attente':'Pending'}</span><h3>Agent That Wouldn’t Stop</h3><p>{fr?'Expérience prévue, pas encore qualifiée comme livrée ou déployée.':'Planned experience, not yet qualified as delivered or deployed.'}</p></article>
+        </div>
+      </section>
       <section class="pf-demo-options" aria-labelledby="pf-demos-title"><h2 id="pf-demos-title">{fr?'D’autres façons de comprendre':'Other ways to explore'}</h2><div class="pf-demo-grid">{demos.map(d=><article class="pf-demo-card"><span class="pf-format">{d.format}</span><h3>{d.title}</h3><p>{d.text}</p><a href={d.href}>{d.label} {d.href.startsWith('https:')?'↗':'→'}</a></article>)}</div></section>
     </>}
     {cardGroups.map(group=><section class="pf-card-group"><header><h2>{group.title}</h2>{group.note&&<p>{group.note}</p>}</header><div class:list={['pf-card-grid',group.entries.length===1&&'pf-card-grid-single']}>{group.entries.map((item:any)=><PortfolioCard locale={locale} item={item}/>)}</div></section>)}
@@ -90,6 +100,12 @@ const demos = [
       <p class="pf-action-note">{fr?'Ces exemples donnent des repères de lecture. Ils n’analysent aucun de vos outils ; le statut du prototype X-Ray est précisé ci-dessous.':'These examples offer a way to look at a situation. They do not analyze any of your tools; the X-Ray prototype status is described below.'}</p>
     </section>}
     <section class="pf-detail-hero"><div><p class="pf-overline">{kindName(entry.kind)}</p><h2>{entry.tagline}</h2><p class="pf-detail-lead">{entry.pain}</p><dl class="pf-highlight"><div class="pf-field pf-output"><dt>{fr?'Ce que vous recevez':'What you receive'}</dt><dd>{entry.output}</dd></div></dl><div class="pf-actions"><a class="btn btn-primary" href={nextHref}>{entry.nextLabel} <span aria-hidden="true">{entry.nextHref.startsWith('http')?'↗':'→'}</span></a>{page!=='diagnostic'&&<a class="text-link" href={cardHref('diagnostic')}>{fr?'Voir l’accompagnement':'See the guided engagement'} →</a>}</div><p class="pf-action-note">{actionNote}</p></div><aside class="pf-status-card"><span class="pf-aside-label">{fr?'Disponibilité':'Availability'}</span><strong>{entry.status}</strong><p>{entry.limits}</p></aside></section>
+    {publicAccess && <div class="pf-direct-access" aria-label={fr?'Accès public identifié':'Identified public access'}>
+      <div><span class="pf-overline">{fr?'RESSOURCE ACCESSIBLE':'AVAILABLE RESOURCE'}</span>
+      <strong>{publicAccess.label}</strong>
+      <p>{publicAccess.scope}</p></div>
+      <a class="btn" href={url(publicAccess.href)}>{fr?'Accéder à la ressource':'Open resource'} ↗</a>
+    </div>}
     {page==='control-tower'&&<section id="control-tower-experience" class="pf-embed-section"><div class="pf-embed-heading"><div><span class="pf-overline">AUTONOMY CONTROL TOWER v1.0</span><h2>{fr?'Choisissez un scénario. Regardez ce qui change.':'Choose a scenario. See what changes.'}</h2><p>{fr?'Le simulateur est en anglais. Sélectionnez l’une des quatre situations, puis lancez le parcours quand vous le souhaitez.':'The simulator is in English. Select one of the four situations, then start when you are ready.'}</p></div><a href={url('/embeds/reg-autonomy-control-tower-v1.0.html')} target="_blank" rel="noopener noreferrer">{fr?'Ouvrir en plein écran':'Open full screen'} ↗</a></div><iframe loading="lazy" title="REG Autonomy Control Tower v1.0 — interactive English-language simulation, no live kernel" src={url('/embeds/reg-autonomy-control-tower-v1.0.html')} class="pf-demo-frame"></iframe><p class="pf-frame-note">{fr?'Scénario synthétique · noyau non connecté · sur mobile, le plein écran facilite la lecture.':'Synthetic scenario · no live kernel connected · full screen makes mobile reading easier.'}</p></section>}
     <section class="pf-details" aria-labelledby="pf-details-title"><header class="pf-details-head"><h2 id="pf-details-title">{fr?'Pour savoir si cela vous correspond':'See whether it fits your situation'}</h2></header><dl>{labels.map(([key,label])=><div class:list={['pf-field',key==='limits'&&'pf-field-limit']}><dt>{label}</dt><dd>{(entry as any)[key]}</dd></div>)}</dl></section>
     <section class="pf-related"><h2>{fr?'Cela se relie aussi à…':'It also connects to…'}</h2><div class="pf-related-grid">{entry.related.map(id=><a href={cardHref(id)}><span>{portfolio[locale][id].title} →</span><small>{kindName(portfolio[locale][id].kind)} · {portfolio[locale][id].tagline}</small></a>)}</div></section>

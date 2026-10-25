@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'src/data/portfolio.ts'
+      - 'src/data/portfolioAccess.ts'
+      - 'src/components/PortfolioCard.astro'
       - 'src/data/site.ts'
       - 'src/layouts/Base.astro'
       - 'src/components/PortfolioPage.astro'
@@ -12,6 +14,10 @@ on:
       - 'src/styles/portfolio.css'
       - 'public/embeds/reg-autonomy-control-tower-v1.0.html'
       - 'scripts/check-portfolio.mjs'
+      - 'scripts/check-portfolio-references.mjs'
+      - 'scripts/generate-sitemap.mjs'
+      - 'package.json'
+      - 'public/robots.txt'
       - '.github/workflows/portfolio-preview.yml'
   workflow_dispatch:
 
@@ -31,3 +37,4 @@ jobs:
       - run: npm run build
       - run: npm run check:links
       - run: node scripts/check-portfolio.mjs
+      - run: node scripts/check-portfolio-references.mjs

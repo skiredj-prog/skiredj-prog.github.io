@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4731",
-    "build": "astro build && node scripts/finalize-html.mjs",
+    "build": "astro build && node scripts/finalize-html.mjs && node scripts/generate-sitemap.mjs",
     "preview": "astro preview --host 127.0.0.1 --port 4731",
     "check:links": "node scripts/check-links.mjs"
   },
