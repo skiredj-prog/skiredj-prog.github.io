@@ -31,6 +31,11 @@ for(const c of cases){
   assert(!offer.includes('certifi&eacute;'),c.locale+': unintended certification HTML entity');
   assert(!offer.includes('Production-ready'),c.locale+': unjustified production claim');
   assert(offer.includes(c.locale==='fr'?'sur devis':'quoted after qualification'),c.locale+': no fixed price promise required');
+  assert(!/1\s*[à-–]\s*3\s*(semaines|weeks)/.test(offer),c.locale+': estimated duration must not be published as a firm engagement');
+  const generalOfferPath=c.locale==='fr'?'dist/offre/index.html':'dist/en/offer/index.html';
+  const generalOffer=readFileSync(generalOfferPath,'utf8');
+  assert(generalOffer.includes('href="'+c.route+'"'),c.locale+': general offer missing specialized diagnostic link');
+
 }
 for(const part of ['src/content/fr/diagnostic-execution.md','src/content/en/diagnostic-execution.md']){
   const text=readFileSync(part,'utf8');
