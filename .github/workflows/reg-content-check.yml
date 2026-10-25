@@ -14,6 +14,7 @@ on:
       - 'src/pages/en/publications/**'
       - 'src/components/Home.astro'
       - 'src/data/site.ts'
+      - 'src/layouts/Base.astro'
       - 'scripts/check-reg-content.mjs'
       - '.github/workflows/reg-content-check.yml'
 permissions:
