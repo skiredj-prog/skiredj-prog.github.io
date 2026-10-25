@@ -36,6 +36,12 @@ for (const c of cases) {
 
   assert(home.includes(c.hero), `${c.locale}: homepage hero missing REG entry`);
   assert(home.includes(c.productPath), `${c.locale}: homepage catalogue link missing`);
+  const needsMenuStart = home.indexOf('class="nav-menu needs-menu"');
+  assert(needsMenuStart >= 0, `${c.locale}: Your needs dropdown not found`);
+  const needsMenuEnd = home.indexOf('class="needs-question"', needsMenuStart);
+  assert(needsMenuEnd > needsMenuStart, `${c.locale}: Your needs dropdown boundary not found`);
+  const needsMenu = home.slice(needsMenuStart, needsMenuEnd);
+  assert(needsMenu.includes(`href="${c.productPath}"`), `${c.locale}: products link missing from Your needs dropdown`);
   assert(products.includes(c.specPath), `${c.locale}: spec link missing`);
   assert(products.includes(c.examplePath), `${c.locale}: example link missing`);
   assert(spec.includes(c.draft), `${c.locale}: draft qualification missing`);
