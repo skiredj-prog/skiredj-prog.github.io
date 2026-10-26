@@ -42,7 +42,7 @@ try {
    assert(caseWidth.page<=caseWidth.viewport+3,locale+'/'+width+': cases document overflow '+(caseWidth.page-caseWidth.viewport));
    const video=page.locator('video').first();
    assert((await video.getAttribute('src')).startsWith('/media/'),locale+'/'+width+': video path is not published under local media');
-   const alternative=page.locator('a[hreflang="'+(locale==='fr'?'en':'fr')+'"]');
+   const alternative=page.locator('link[rel="alternate"][hreflang="'+(locale==='fr'?'en':'fr')+'"]');
    assert(await alternative.count()>0,locale+'/'+width+': no alternate-language link');
    assert.equal(errors.length,0,locale+'/'+width+': JS errors '+errors.join('; '));
    await page.close();
