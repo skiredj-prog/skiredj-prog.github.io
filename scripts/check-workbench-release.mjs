@@ -32,11 +32,11 @@ function validate(meta, archive = null, finalArchive = null, names = []) {
   if(meta.public_path!=='/downloads/'+PINNED.filename)bad('release public route changed');
   if(meta.public_url!==null && meta.public_url!=='https://tenirlabs.cc'+meta.public_path)
     bad('public URL is inconsistent');
-  if(!meta.policy?.requires_exact_sha256||!meta.policy?.requires_public_binary_uploaded_with_review||
+  if(!meta.policy?.requires_exact_sha256||!meta.policy?.requires_signed_dossier_verification||!meta.policy?.requires_public_binary_uploaded_with_review||
     !meta.policy?.requires_owner_release_approval||!meta.policy?.no_certification||!meta.policy?.no_live_runtime)
     bad('release approval/nonclaims policy weakened');
   if(!['STAGED_PENDING_BINARY','PUBLISHED'].includes(meta.status))bad('unknown release state');
-  if(names.some(n=>n!==PINNED.filename))bad('unreviewed extra downloadable file');
+  if(names.some(n=>n!==PINNED.filename && n!=='.gitkeep'))bad('unreviewed extra downloadable file');
   if(meta.status==='STAGED_PENDING_BINARY') {
     if(archive!==null||finalArchive!==null)bad('private candidate accidentally shipped while gated');
     if(meta.public_url!==null)bad('unapproved public download URL advertised');
