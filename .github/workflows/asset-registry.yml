@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - 'data/asset-registry.v1.json'
+      - 'data/workbench-publication.v1.json'
+      - 'public/downloads/**'
+      - 'scripts/check-workbench-release.mjs'
       - 'src/data/portfolio.ts'
       - 'src/data/portfolioAccess.ts'
       - 'src/pages/portfolio/**'
@@ -41,6 +44,8 @@ jobs:
           cache: npm
       - name: Install locked site dependencies
         run: npm ci
+      - name: Workbench release-gate negative tests
+        run: npm run check:workbench-release:unit
       - name: Generate exact website pages and sitemap
         run: npm run build
       - name: Test fail-closed drift detection with adversarial mutations
