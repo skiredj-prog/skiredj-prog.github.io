@@ -22,7 +22,7 @@ const id = sector.id;
 
   <section class="sector-section" aria-labelledby={`${id}-sector-sequence-title`}>
     <div class="sector-section-heading"><span class="role">01</span><h3 id={`${id}-sector-sequence-title`}>{fr ? 'Séquence des événements' : 'Event sequence'}</h3></div>
-    <div class="sector-sequence">
+    <div class="sector-sequence" role="region" tabindex="0" aria-label={fr ? `Déroulé défilable : ${sector.title}` : `Scrollable sequence: ${sector.title}`} style={`grid-template-columns:repeat(${sector.sequence.length}, minmax(9rem, 1fr));`}>
       {sector.sequence.map((item, index) => <div class:list={['sector-step', index === 4 && 'sector-step-alert', index === 5 && 'sector-step-hold']}>
         <span class="sector-step-number">{item.step}</span><div><h4>{item.label}</h4><p>{item.detail}</p><small>{item.risk}</small></div>
       </div>)}
