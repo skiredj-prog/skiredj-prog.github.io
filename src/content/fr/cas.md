@@ -1,5 +1,5 @@
 ---
-title: Les cas
+title: Cas documentés et scénarios pédagogiques
 kicker: Lire un incident comme une chaîne de responsabilité
 description: Des cas sourcés pour comprendre comment une promesse d’IA devient une décision, un effet et parfois une responsabilité difficile à attribuer.
 lede: Un cas ne sert pas seulement à désigner un coupable. Il sert à voir les acteurs, la séquence, l’impact et la preuve disponible.
@@ -44,9 +44,13 @@ La question n’est pas seulement de savoir si la réponse était fausse. Il fau
 - Qui peut corriger une réponse fausse et dans quel délai ?
 - L’organisation peut-elle retrouver la version de la règle et de l’assistant qui ont produit la réponse ?
 
-**Source :** Civil Resolution Tribunal, *Moffatt v. Air Canada*, 2024 BCCRT 149. Cette décision ne permet pas, à elle seule, de conclure quelle technologie exacte se trouvait derrière l’assistant.
+**Statut :** cas documenté — chatbot fournissant une information erronée, et non agent autonome exécutant une transaction.
+
+**Source :** [Civil Resolution Tribunal, *Moffatt v. Air Canada*, 2024 BCCRT 149](https://www.canlii.org/en/bc/bccrt/doc/2024/2024bccrt149/2024bccrt149.html). Cette décision ne permet pas, à elle seule, de conclure quelle technologie exacte se trouvait derrière l’assistant.
 
 ## Cas 2 — Quand personne ne sait si l’opération est partie
+
+**Statut :** scénario pédagogique — aucun règlement bancaire réel démontré.
 
 **Secteur :** banque · assurance · paiement
 
@@ -58,9 +62,11 @@ Le réflexe le plus dangereux consiste à transformer le silence en échec, puis
 
 **À examiner :** l’identité unique de l’opération, l’état réel auprès du fournisseur, la trace de la première tentative et l’autorité qui décide de reprendre, suspendre ou réconcilier.
 
-**Statut éditorial :** scénario pédagogique. Il ne certifie aucun règlement bancaire réel et ne remplace pas un test autorisé chez un fournisseur.
+**Limite :** ce scénario ne certifie aucun règlement bancaire réel et ne remplace pas un test autorisé chez un fournisseur.
 
 ## Cas 3 — Le marché se renvoie la chaîne
+
+**Statut :** matrice d’analyse — à compléter par des sources avant toute présentation comme cas réel.
 
 **Secteur :** intégration IA · gouvernance fournisseur
 

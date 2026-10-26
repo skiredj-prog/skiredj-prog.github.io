@@ -60,7 +60,6 @@ for (const [url, html] of byUrl) {
       raw.startsWith("http://") ||
       raw.startsWith("https://") ||
       raw.startsWith("data:") ||
-      raw.startsWith("/manus-storage/") ||
       raw.startsWith("#")
     ) {
       if (raw.startsWith("#") && raw.length > 1 && !ids.get(url)?.has(decodeURIComponent(raw.slice(1)))) {

@@ -1,11 +1,9 @@
 ---
 import { url, type Locale } from '../data/site';
-import { frameworkIntro, introductions } from '../data/introductions';
 import ExecutionBoundaryVideo from './ExecutionBoundaryVideo.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
-const introduction = introductions[locale][0];
 const path = (f: string, e: string = f) => url(fr ? `/${f}/` : `/en/${e}/`);
 const steps = fr ? [
   ['01', 'Question', 'Partir de la décision à préparer.', 'Quelle action examine-t-on ? Quelle conséquence faut-il préserver ? La question définit le périmètre de travail.', 'Une question précise et un responsable identifié.'],
@@ -120,16 +118,6 @@ const entryPoints = fr ? [
   </details>
 </div>
 <script>
-  import { introductions } from '../data/introductions';
-  const hero=document.querySelector<HTMLElement>('[data-hero]');
-  if(hero){
-    const entries=introductions[hero.dataset.locale==='en'?'en':'fr'];
-    const entry=entries[Math.floor(Math.random()*entries.length)];
-    for(const [field,value] of Object.entries(entry)){
-      const target=hero.querySelector(`[data-hero-${field}]`);
-      if(target)target.textContent=value;
-    }
-  }
   function setupTabs(root: Element, tabSelector: string, panelSelector: string, next?: Element | null) {
     const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>(tabSelector));
     const panels = Array.from(root.querySelectorAll<HTMLElement>(panelSelector));
