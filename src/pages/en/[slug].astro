@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import ResponsibilityVisuals from "../../components/ResponsibilityVisuals.astro";
 
 const modules = import.meta.glob("../../content/en/*.md", { eager: true });
 
@@ -26,5 +27,7 @@ const { Content, frontmatter } = mod;
 ---
 
 <Base locale="en" slug={slug!} {...frontmatter}>
+  {slug === 'actors' && <ResponsibilityVisuals kind="actors" locale="en" />}
+  {slug === 'cases' && <ResponsibilityVisuals kind="cases" locale="en" />}
   <Content />
 </Base>

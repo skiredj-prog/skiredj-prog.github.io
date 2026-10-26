@@ -1,0 +1,124 @@
+.responsibility-visual {
+  margin: 2.6rem 0 3.6rem;
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-raised) 88%, var(--accent-soft));
+  box-shadow: var(--shadow);
+}
+
+.visual-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: end;
+  margin: 0 auto 1rem;
+  max-width: 72rem;
+}
+
+.visual-heading h2 {
+  margin: 0.25rem 0 0;
+  max-width: 22ch;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.visual-heading > p {
+  max-width: 32ch;
+  margin: 0;
+  color: var(--muted);
+}
+
+.actors-visual-frame,
+.cases-visual-frame {
+  overflow-x: auto;
+  padding: 0.25rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.actors-visual-frame svg,
+.cases-visual-frame svg {
+  display: block;
+  width: 100%;
+  min-width: 760px;
+  height: auto;
+  color: var(--ink);
+}
+
+.visual-node rect {
+  fill: var(--bg-raised);
+  stroke: var(--line-strong);
+  stroke-width: 1.5;
+}
+
+.visual-node-left rect { stroke: var(--accent); }
+.visual-node-right rect { stroke: var(--limit); }
+
+.visual-node-kicker,
+.visual-core-kicker,
+.case-step-kicker {
+  fill: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+
+.visual-node-title,
+.case-step-title {
+  fill: var(--ink);
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.visual-node-sub,
+.visual-core-sub,
+.case-step-sub {
+  fill: var(--muted);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+.visual-core circle:first-child {
+  fill: var(--ink);
+  stroke: var(--ink);
+}
+
+.visual-core circle:nth-child(2) { stroke: var(--accent); }
+.visual-core-kicker,
+.visual-core-title,
+.visual-core-sub { fill: var(--bg); }
+.visual-core-title { font-family: var(--serif); font-size: 28px; font-weight: 600; }
+.visual-core-kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; }
+
+.visual-footnote {
+  fill: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.case-step circle {
+  fill: var(--bg-raised);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.case-step text:not(.case-step-kicker):not(.case-step-title):not(.case-step-sub) {
+  fill: var(--ink);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.case-step-alert circle { fill: var(--limit-soft); stroke: var(--limit); stroke-width: 3; }
+.case-step-final circle { fill: var(--accent-soft); stroke: var(--accent); }
+.case-step-alert .case-step-title { fill: var(--limit); }
+
+@media (max-width: 720px) {
+  .responsibility-visual { margin-inline: -0.4rem; padding: 0.7rem; }
+  .visual-heading { display: block; }
+  .visual-heading > p { margin-top: 0.8rem; }
+  .actors-visual-frame svg,
+  .cases-visual-frame svg { min-width: 720px; }
+}
