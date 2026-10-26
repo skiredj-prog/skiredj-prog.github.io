@@ -35,6 +35,9 @@ const fr = locale === 'fr';
     </div>
   </section>
 
+  <details class="sector-advanced">
+    <summary><span>{fr ? 'Couche expert' : 'Expert layer'}</span><b>{fr ? 'Invariants, défense et verdicts' : 'Invariants, defense and verdicts'}</b><i>+</i></summary>
+    <div class="sector-advanced-body">
   <section class="sector-section" aria-labelledby="sector-invariants-title">
     <div class="sector-section-heading"><span class="role">03</span><h3 id="sector-invariants-title">{fr ? 'Invariants d’ingénierie bancaire' : 'Banking engineering invariants'}</h3></div>
     <div class="sector-invariant-grid">
@@ -51,6 +54,8 @@ const fr = locale === 'fr';
     <div class="sector-section-heading"><span class="role">05</span><h3 id="sector-verdict-title">{fr ? 'Verdict de restitution' : 'Reporting verdict'}</h3></div>
     <div class="sector-verdict-grid">{sector.verdicts.map((verdict) => <div><strong>{verdict.label}</strong><p>{verdict.meaning}</p></div>)}</div>
   </section>
+    </div>
+  </details>
 
   <p class="sector-source-note">{sector.sourceNote}</p>
 </section>

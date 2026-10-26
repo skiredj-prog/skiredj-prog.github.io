@@ -1,6 +1,7 @@
 ---
 import { url, type Locale } from '../data/site';
 import { frameworkIntro, introductions } from '../data/introductions';
+import ExecutionBoundaryVideo from './ExecutionBoundaryVideo.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
@@ -53,6 +54,7 @@ const entryPoints = fr ? [
       <small>{fr ? 'Exemples illustratifs · sans inscription · à votre rythme' : 'Illustrative examples · no sign-up · at your own pace'}</small>
     </aside>
   </section>
+  <ExecutionBoundaryVideo locale={locale} />
   <section class="home-offer-map" aria-labelledby="offer-map-title">
     <div class="home-offer-map-heading">
       <div><p class="eyebrow">{fr ? 'En un regard' : 'At a glance'}</p><h2 id="offer-map-title">{fr ? 'Faire examiner, explorer, comprendre.' : 'Engage, explore, understand.'}</h2></div>

@@ -59,6 +59,16 @@
 .sector-verdict-grid p { margin: .6rem 0 0; font-size: .92rem; }
 .sector-source-note { margin: 2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-family: var(--mono); font-size: .75rem; }
 
+.sector-advanced { margin-top: 2.5rem; border: 1px solid var(--line-strong); background: var(--bg); }
+.sector-advanced > summary { display: flex; align-items: baseline; gap: .8rem; cursor: pointer; list-style: none; padding: 1rem 1.1rem; }
+.sector-advanced > summary::-webkit-details-marker { display: none; }
+.sector-advanced > summary span { color: var(--accent); font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+.sector-advanced > summary b { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; }
+.sector-advanced > summary i { margin-left: auto; font-family: var(--mono); font-style: normal; color: var(--accent); font-size: 1.3rem; }
+.sector-advanced[open] > summary { border-bottom: 1px solid var(--line); }
+.sector-advanced[open] > summary i { transform: rotate(45deg); }
+.sector-advanced-body { padding: 0 1rem 1rem; }
+
 @media (max-width: 820px) {
   .sector-map-header, .sector-map-meta { grid-template-columns: 1fr; gap: 1rem; }
   .sector-player-grid, .sector-invariant-grid, .sector-verdict-grid { grid-template-columns: 1fr 1fr; }
