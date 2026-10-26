@@ -665,7 +665,13 @@
         "classification": "public_information_only",
         "has_runnable_embedded_kit": false
       },
-      "editorial_gate": "site_editorial_review_passing_ci_no_download"
+      "editorial_gate": "site_editorial_review_passing_ci_no_download",
+      "distribution_control": {
+        "contract": "data/workbench-publication.v1.json",
+        "state": "STAGED_PENDING_BINARY",
+        "immutable_candidate_sha256": "86b246dbfcdd57577dbec20f268f344c51220186336bfada32626c9a8d83f671",
+        "binary_public": false
+      }
     },
     {
       "asset_id": "control-tower-v1.1-fr-en-candidate",
