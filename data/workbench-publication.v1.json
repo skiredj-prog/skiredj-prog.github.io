@@ -1,0 +1,32 @@
+{
+  "schema": "tenir-labs-workbench-publication/v1",
+  "version": "v0.1.0",
+  "status": "STAGED_PENDING_BINARY",
+  "distribution_kind": "standalone_offline_synthetic_demo",
+  "filename": "TENIR-REG-public-consultation.zip",
+  "public_path": "/downloads/TENIR-REG-public-consultation.zip",
+  "sha256": "86b246dbfcdd57577dbec20f268f344c51220186336bfada32626c9a8d83f671",
+  "bytes": 180527,
+  "zip_entries": 15,
+  "manifest_files": 14,
+  "signed_receipt_sha256": "679ea50f34a51d5103c8afda589bfa1cfc15fce177fca8209b04204836b2c355",
+  "evidence_public_key_sha256": "7ab378c5ec41eb817dc1b356dd745fcd172c648520a74f747c71ad0fb17f77f5",
+  "candidate_private_pr": "skiredj-prog/tenir-reg-demo#4",
+  "candidate_source_commit": "b3993c9d64e9401ceb27052f200ff3908c2d817f",
+  "original_private_ci_run": 40199134077,
+  "public_url": null,
+  "policy": {
+    "requires_exact_sha256": true,
+    "requires_signed_dossier_verification": true,
+    "requires_public_binary_uploaded_with_review": true,
+    "requires_owner_release_approval": true,
+    "no_live_runtime": true,
+    "no_certification": true,
+    "no_external_effect_assertion": true
+  },
+  "release_notes": "docs/releases/workbench-v0.1.0.md",
+  "editorial_pages": {
+    "fr": "/portfolio/workbench/",
+    "en": "/en/portfolio/workbench/"
+  }
+}
