@@ -37,12 +37,12 @@ const entryPoints = fr ? [
 <div class="landing">
   <section class="landing-hero" aria-labelledby="home-title" data-hero data-locale={locale}>
     <div class="hero-copy">
-      <p class="eyebrow"><span class="status-dot"></span> {fr ? 'À votre rythme' : 'At your own pace'}</p>
-      <h1 id="home-title"><span data-hero-opening>{introduction.opening}</span><br /><em data-hero-emphasis>{introduction.emphasis}</em></h1>
-      <p class="hero-lead">{frameworkIntro[locale]}{' '}<span data-hero-body>{introduction.body}</span></p>
+      <p class="eyebrow"><span class="status-dot"></span> {fr ? 'Responsabilité du marché' : 'Market responsibility'}</p>
+      <h1 id="home-title"><span data-hero-opening>{fr ? 'Le marché vend' : 'The market sells'}</span><br /><em data-hero-emphasis>{fr ? 'l’autonomie.' : 'autonomy.'}</em></h1>
+      <p class="hero-lead">{fr ? 'TENIR rend visible la responsabilité que l’IA tend à disperser entre fournisseurs, intégrateurs, organisations et personnes impactées.' : 'TENIR makes visible the responsibility AI tends to disperse across vendors, integrators, organizations and affected people.'} <span data-hero-body>{fr ? 'Qui promet ? Qui autorise ? Qui peut prouver ?' : 'Who promises? Who authorizes? Who can prove?'}</span></p>
       <div class="actions">
-        <a class="btn btn-primary" href={path('diagnostic-execution')}>{fr ? 'Examiner un flux critique' : 'Examine one critical flow'} <span aria-hidden="true">→</span></a>
-        <a class="btn btn-quiet" href={path('portfolio/demos')}>{fr ? 'Essayer les démos' : 'Explore the demos'} <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-primary" href={path('cas','cases')}>{fr ? 'Explorer les cas' : 'Explore the cases'} <span aria-hidden="true">→</span></a>
+        <a class="btn btn-quiet" href={path('pourquoi-maintenant','why-now')}>{fr ? 'Comprendre le déplacement' : 'Understand the shift'} <span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <aside class="home-curiosity" aria-labelledby="curiosity-title">
@@ -75,6 +75,14 @@ const entryPoints = fr ? [
       <a class="journey-card" href={path('portfolio/prevent')}><span class="role">REG Prevent</span><h3>{fr ? 'Une règle change. Qu’est-ce que cela implique ?' : 'A rule changes. What does that mean in practice?'}</h3><p>{fr ? 'Repérer les décisions concernées et les vérifications à préparer.' : 'Identify the decisions affected and the checks to prepare.'}</p><span class="text-link">{fr ? 'Découvrir l’approche' : 'Discover the approach'} →</span></a>
       <a class="journey-card" href={path('portfolio/prepare')}><span class="role">REG Prepare</span><h3>{fr ? 'Une preuve est demandée. Où la retrouver ?' : 'Evidence is requested. Where can we find it?'}</h3><p>{fr ? 'Relier une affirmation aux pièces disponibles et rendre les manques visibles.' : 'Connect a claim to available records and make the gaps visible.'}</p><span class="text-link">{fr ? 'Voir ce que l’on examine' : 'See what is examined'} →</span></a>
       <a class="journey-card" href={path('portfolio/control-tower')}><span class="role">{fr ? 'Simulation interactive · anglais' : 'Interactive simulation · English'}</span><h3>{fr ? 'Un agent envoie une commande. La réponse manque.' : 'An agent sends an order. The response is missing.'}</h3><p>{fr ? 'Faut-il relancer ? Observer ce qui change dans un scénario simulé.' : 'Should it retry? See what changes in a simulated scenario.'}</p><span class="text-link">{fr ? 'Ouvrir la simulation' : 'Open the simulation'} →</span></a>
+    </div>
+  </section>
+  <section class="landing-section" aria-labelledby="responsibility-title">
+    <div class="section-heading"><div><p class="eyebrow">{fr ? 'La question centrale' : 'The central question'}</p><h2 id="responsibility-title">{fr ? 'Tout le monde veut l’agent. Qui répond de ce qu’il fait ?' : 'Everyone wants the agent. Who answers for what it does?'}</h2></div><p>{fr ? 'Une action traverse plusieurs promesses, mais la conséquence reste unique pour la personne qui la subit.' : 'An action crosses several promises, but the consequence remains singular for the person who bears it.'}</p></div>
+    <div class="journey-grid home-examples">
+      <a class="journey-card" href={path('acteurs','actors')}><span class="role">{fr ? 'Les joueurs' : 'The players'}</span><h3>{fr ? 'Qui promet, configure, autorise ou subit ?' : 'Who promises, configures, authorizes or bears the effect?'}</h3><p>{fr ? 'Cartographier les acteurs et leurs responsabilités réelles.' : 'Map the actors and their actual responsibilities.'}</p><span class="text-link">{fr ? 'Voir les acteurs' : 'See the players'} →</span></a>
+      <a class="journey-card" href={path('cas','cases')}><span class="role">{fr ? 'Les séquences' : 'The sequences'}</span><h3>{fr ? 'Comment une promesse devient-elle un incident ?' : 'How does a promise become an incident?'}</h3><p>{fr ? 'Rejouer la chaîne entre délégation, effet et preuve disponible.' : 'Replay the chain between delegation, effect and available evidence.'}</p><span class="text-link">{fr ? 'Lire les cas' : 'Read the cases'} →</span></a>
+      <a class="journey-card" href={path('apprendre','learn')}><span class="role">{fr ? 'Les distinctions' : 'The distinctions'}</span><h3>{fr ? 'Une politique est-elle une preuve ?' : 'Is a policy evidence?'}</h3><p>{fr ? 'Distinguer intention, contrôle, supervision, résultat et responsabilité.' : 'Separate intent, control, supervision, outcome and responsibility.'}</p><span class="text-link">{fr ? 'Apprendre à reconnaître' : 'Learn to recognize'} →</span></a>
     </div>
   </section>
   <section class="prototype-section" aria-labelledby="prototype-title">

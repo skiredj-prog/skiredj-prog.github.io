@@ -111,6 +111,16 @@ export const navGroups: Record<Locale, NavGroup[]> = {
         { slug: "publications/reg-v0.1", href: "/publications/reg-v0.1/", label: "REG v0.1 · document de travail" },
       ],
     },
+    {
+      id: "responsabilite",
+      label: "Responsabilité",
+      links: [
+        { slug: "pourquoi-maintenant", href: "/pourquoi-maintenant/", label: "Pourquoi maintenant" },
+        { slug: "acteurs", href: "/acteurs/", label: "Les acteurs" },
+        { slug: "cas", href: "/cas/", label: "Les cas" },
+        { slug: "apprendre", href: "/apprendre/", label: "Apprendre à reconnaître" },
+      ],
+    },
   ],
   en: [
     {
@@ -161,6 +171,16 @@ export const navGroups: Record<Locale, NavGroup[]> = {
         { slug: "publications/reg-v0.1", href: "/en/publications/reg-v0.1/", label: "REG v0.1 · working draft" },
       ],
     },
+    {
+      id: "responsibility",
+      label: "Responsibility",
+      links: [
+        { slug: "why-now", href: "/en/why-now/", label: "Why now" },
+        { slug: "actors", href: "/en/actors/", label: "The players" },
+        { slug: "cases", href: "/en/cases/", label: "The cases" },
+        { slug: "learn", href: "/en/learn/", label: "Learn to recognize" },
+      ],
+    },
   ],
 };
 
@@ -194,6 +214,10 @@ const frToEn: Record<string, string> = {
   contribuer: "/en/contribute/",
   contact: "/en/contact/",
   applications: "/en/applications/",
+  "pourquoi-maintenant": "/en/why-now/",
+  acteurs: "/en/actors/",
+  cas: "/en/cases/",
+  apprendre: "/en/learn/",
   offre: "/en/offer/",
   "diagnostic-execution": "/en/diagnostic-execution/",
   "offre/exemple": "/en/offer/example/",
