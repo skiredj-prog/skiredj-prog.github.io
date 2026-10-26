@@ -7,6 +7,10 @@ on:
       - 'src/content/fr/diagnostic-execution.md'
       - 'src/content/en/diagnostic-execution.md'
       - 'scripts/check-commercial-browser.mjs'
+      - 'src/components/WorkbenchPage.astro'
+      - 'src/pages/portfolio/workbench.astro'
+      - 'src/pages/en/portfolio/workbench.astro'
+      - 'scripts/check-workbench-browser.mjs'
       - 'scripts/check-ux-mobile-header.mjs'
       - '.github/workflows/mobile-ux-check.yml'
   push:
@@ -36,3 +40,4 @@ jobs:
           trap 'kill $SERVER_PID' EXIT
           node scripts/check-ux-mobile-header.mjs
           node scripts/check-commercial-browser.mjs
+          node scripts/check-workbench-browser.mjs

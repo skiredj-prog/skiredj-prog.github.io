@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import WorkbenchPage from '../../components/WorkbenchPage.astro';
+const locale = 'fr' as const;
+---
+<Base locale={locale} slug="portfolio/workbench"
+  title="TENIR/REG — Atelier de diagnostic et de preuve"
+  description="Explorer les configurations et les preuves d'une exécution fictive, en distinguant autorisation et résultat inconnu."
+  kicker="TENIR Labs · Expérience technique"
+  lede="Une démonstration locale pour apprendre à qualifier les faits, les inconnues et les contrôles."
+  sources="TENIR/REG local demo v0.1.0; CI-verified minimal consultation candidate; no production runtime connection.">
+  <WorkbenchPage locale={locale}/>
+</Base>

@@ -62,3 +62,7 @@ Les modifications de code, la connexion à un fournisseur réel, le déploiement
 Il suffit de préciser **l'action concernée**, son **effet externe**, **le coût d'un doublon ou d'un blocage** et **ce qu'on observe en cas de réponse perdue**. N'envoyez aucun identifiant secret, donnée financière nominative ou document confidentiel lors du premier contact.
 
 [Demander la qualification du flux →](/contact/) · [Lire l'offre générale de diagnostic accompagné →](/offre/) · [Examiner un rapport fictif →](/offre/exemple/)
+
+## Pour prolonger la lecture technique
+
+Le [TENIR/REG Diagnostic & Evidence Workbench](/portfolio/workbench/) présente comment un configurateur et un dossier synthétique signé aident à distinguer l'autorisation de l'effet externe. **Il s'agit pour l'instant d'une page explicative : le kit autonome n'est pas téléchargeable sur le site.** La démonstration bancaire reste un scénario distinct, fictif.

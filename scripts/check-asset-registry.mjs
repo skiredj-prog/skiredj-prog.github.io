@@ -111,6 +111,30 @@ function validate(registry, { built = true } = {}) {
   for (const h of history||[]) {
     if (h.public_url !== null) bad(h.asset_id+': historical/unreleased asset must not advertise public URL');
     if (!h.release_gate || !h.claims_scope) bad(h.asset_id+': history missing bounded claims');
+    if(h.asset_id==='workbench-private-candidate'){
+      const p=h.editorial_page;
+      if(!p||p.fr!=='/portfolio/workbench/'||p.en!=='/en/portfolio/workbench/')
+        bad('workbench: missing bilingual public editorial routes');
+      if(p?.classification!=='public_information_only'||p?.has_runnable_embedded_kit!==false)
+        bad('workbench: public explanatory page must not imply a released runnable kit');
+      if(h.release_gate!=='private_candidate_awaiting_release'||h.public_url!==null)
+        bad('workbench: private candidate release gate must remain closed');
+      if(built){
+        for(const locale of ['fr','en']){
+          const path=siteFile(p?.[locale]||'/missing-workbench/');
+          if(!existsSync(path))bad('workbench: '+locale+' editorial HTML missing');
+          else {
+            const text=readFileSync(path,'utf8');
+            if(!text.includes('5.7.0')||!text.includes('UNKNOWN'))
+              bad('workbench: '+locale+' historical/simulation boundary not visible');
+            if(text.includes('TENIR-REG-public-consultation.zip')||text.includes('https://github.com/skiredj-prog/tenir-reg-demo'))
+              bad('workbench: '+locale+' unqualified private kit or repo link leaked');
+          }
+        }
+        if(existsSync('dist/downloads/TENIR-REG-public-consultation.zip'))
+          bad('workbench: candidate ZIP must never be copied into the public site without release authorization');
+      }
+    }
   }
   const discrepancies=registry.open_discrepancies;
   const issueIds=new Set((discrepancies||[]).map(d=>d.id));

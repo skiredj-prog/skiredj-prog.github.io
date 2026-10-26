@@ -1,6 +1,6 @@
 {
   "schema_version": "tenir-labs-asset-registry/v1",
-  "updated_on": "2026-10-25",
+  "updated_on": "2026-10-26",
   "purpose": "Deterministic maintenance contract for public portfolio, not normative accreditation or publication approval",
   "historical_input": {
     "filename": "Tenirlabs-Products-consolidation-20261024.zip",
@@ -658,7 +658,14 @@
       },
       "public_url": null,
       "release_gate": "private_candidate_awaiting_release",
-      "claims_scope": "Signed synthetic dossier candidate; public site PR #27 remains draft"
+      "claims_scope": "A public Workbench overview may describe existing synthetic configuration and signatures. Signed-dossier ZIP from private PR #4 remains a non-distributed candidate; no live TENIR-Gov v5.7.0 connection, external effect, or client certification.",
+      "editorial_page": {
+        "fr": "/portfolio/workbench/",
+        "en": "/en/portfolio/workbench/",
+        "classification": "public_information_only",
+        "has_runnable_embedded_kit": false
+      },
+      "editorial_gate": "site_editorial_review_passing_ci_no_download"
     },
     {
       "asset_id": "control-tower-v1.1-fr-en-candidate",

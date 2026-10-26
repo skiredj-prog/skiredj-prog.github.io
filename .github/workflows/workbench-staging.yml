@@ -1,0 +1,41 @@
+name: Workbench editorial — P1/PMO FR/EN and private release gate
+
+on:
+  pull_request:
+    paths:
+      - 'src/components/WorkbenchPage.astro'
+      - 'src/components/PortfolioPage.astro'
+      - 'src/pages/portfolio/workbench.astro'
+      - 'src/pages/en/portfolio/workbench.astro'
+      - 'src/content/fr/diagnostic-execution.md'
+      - 'src/content/en/diagnostic-execution.md'
+      - 'data/asset-registry.v1.json'
+      - 'scripts/check-workbench-staging.mjs'
+      - '.github/workflows/workbench-staging.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    name: Bilingual pages, offers, PMO and no unpublished assets
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:links
+      - run: npm run check:assets
+      - run: node scripts/check-diagnostic-entry.mjs
+      - run: node scripts/check-portfolio-references.mjs
+      - run: node scripts/check-workbench-staging.mjs
+      - name: Scope boundary summary
+        if: always()
+        run: |
+          echo 'This workflow validates editorial navigation and metadata. It does NOT publish, load or authenticate the private Workbench ZIP.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The 14-item P1 product taxonomy, runtime conformance and execution guarantees are unchanged.' >> "$GITHUB_STEP_SUMMARY"

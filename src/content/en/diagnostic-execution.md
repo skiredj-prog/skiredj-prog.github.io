@@ -62,3 +62,7 @@ Code changes, real provider integration, governor deployment and any production 
 Describe **the action**, its **external effect**, **the cost of duplication or unnecessary blocking**, and **what happens when confirmation is lost**. Please do not send passwords, named financial records or confidential operational documents in your initial message.
 
 [Qualify one flow →](/en/contact/) · [Read the general guided diagnostic offer →](/en/offer/) · [Inspect a fictional report →](/en/offer/example/)
+
+## For a closer technical explanation
+
+The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. **This is currently an overview only: the offline kit is not downloadable from this website.** The banking demonstration is separate and fictional.
