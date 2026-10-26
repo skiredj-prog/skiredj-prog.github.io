@@ -4,10 +4,10 @@ import { existsSync, readFileSync } from 'node:fs';
 const cases=[
   {locale:'fr',home:'dist/index.html',offer:'dist/diagnostic-execution/index.html',
    route:'/diagnostic-execution/',other:'/en/diagnostic-execution/',
-   mainCta:'Examiner un flux critique',specific:'Un flux. Une frontière. Une conclusion vérifiable.'},
+   mainCta:'Examiner l’offre',specific:'Un flux. Une frontière. Une conclusion vérifiable.'},
   {locale:'en',home:'dist/en/index.html',offer:'dist/en/diagnostic-execution/index.html',
    route:'/en/diagnostic-execution/',other:'/diagnostic-execution/',
-   mainCta:'Examine one critical flow',specific:'One flow. One execution boundary. A qualified conclusion.'}
+   mainCta:'Examine the offer',specific:'One flow. One execution boundary. A qualified conclusion.'}
 ];
 const sitemap=readFileSync('dist/sitemap.xml','utf8');
 for(const c of cases){
@@ -16,7 +16,7 @@ for(const c of cases){
   assert(home.includes('home-offer-map'),c.locale+': offer orientation not visible on homepage');
   assert(home.includes('home-offer-grid'),c.locale+': offer choice grid missing');
   assert((home.match(/class="home-offer-item"/g)||[]).length===4,c.locale+': exactly four front-door options required');
-  assert(home.includes('>'+c.mainCta),c.locale+': service CTA missing');
+  assert(home.includes('>'+c.mainCta),c.locale+': secondary specialized service link missing');
   assert(home.includes('href="'+c.route+'"'),c.locale+': direct specialized offer navigation missing');
   assert(home.includes('href="/embeds/demonstration-bancaire.html"'),c.locale+': banking example not discoverable');
   assert(home.includes('<details class="reading-note"'),c.locale+': legacy long-form homepage explanation must remain in disclosure');

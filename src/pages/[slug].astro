@@ -1,5 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
+import ResponsibilityVisuals from "../components/ResponsibilityVisuals.astro";
+import SectorGovernanceMap from "../components/SectorGovernanceMap.astro";
+import { sectorCases } from "../data/sectorCases";
+import ExecutionBoundaryVideo from "../components/ExecutionBoundaryVideo.astro";
 
 const modules = import.meta.glob("../content/fr/*.md", { eager: true });
 
@@ -27,4 +31,6 @@ const { Content, frontmatter } = mod;
 
 <Base locale="fr" slug={slug!} {...frontmatter}>
   <Content />
+  {slug === 'acteurs' && <ResponsibilityVisuals kind="actors" locale="fr" />}
+  {slug === 'cas' && <><ExecutionBoundaryVideo locale="fr" /><ResponsibilityVisuals kind="cases" locale="fr" /><SectorGovernanceMap sector={sectorCases['banque-assurance']} locale="fr" /><SectorGovernanceMap sector={sectorCases['transport-mobilite']} locale="fr" /></>}
 </Base>

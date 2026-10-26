@@ -1,0 +1,62 @@
+---
+import type { SectorCase } from '../data/sectorCases';
+interface Props { sector: SectorCase; locale: 'fr' | 'en'; }
+const { sector, locale } = Astro.props;
+const fr = locale === 'fr';
+const id = sector.id;
+---
+
+<section class="sector-map" aria-labelledby={`${id}-sector-map-title`}>
+  <div class="sector-map-header">
+    <div>
+      <p class="eyebrow">{fr ? 'Carte sectorielle maître' : 'Master sector map'}</p>
+      <h2 id={`${id}-sector-map-title`}>{sector.title}</h2>
+    </div>
+    <p>{sector.lede}</p>
+  </div>
+
+  <div class="sector-map-meta">
+    <div><span class="role">{fr ? 'Scénario critique' : 'Critical scenario'}</span><p>{sector.scenario}</p></div>
+    <div><span class="role">{fr ? 'Personnes et actifs impactés' : 'People and assets affected'}</span><p>{sector.affected.join(' · ')}</p></div>
+  </div>
+
+  <section class="sector-section" aria-labelledby={`${id}-sector-sequence-title`}>
+    <div class="sector-section-heading"><span class="role">01</span><h3 id={`${id}-sector-sequence-title`}>{fr ? 'Séquence des événements' : 'Event sequence'}</h3></div>
+    <div class="sector-sequence" role="region" tabindex="0" aria-label={fr ? `Déroulé défilable : ${sector.title}` : `Scrollable sequence: ${sector.title}`} style={`grid-template-columns:repeat(${sector.sequence.length}, minmax(9rem, 1fr));`}>
+      {sector.sequence.map((item, index) => <div class:list={['sector-step', index === 4 && 'sector-step-alert', index === 5 && 'sector-step-hold']}>
+        <span class="sector-step-number">{item.step}</span><div><h4>{item.label}</h4><p>{item.detail}</p><small>{item.risk}</small></div>
+      </div>)}
+    </div>
+  </section>
+
+  <section class="sector-section" aria-labelledby={`${id}-sector-players-title`}>
+    <div class="sector-section-heading"><span class="role">02</span><h3 id={`${id}-sector-players-title`}>{fr ? 'Joueurs et preuves' : 'Players and evidence'}</h3></div>
+    <div class="sector-player-grid">
+      {sector.players.map((player) => <details class="sector-player"><summary><span>{player.role}</span><b>+</b></summary><p><strong>{fr ? 'Rôle :' : 'Role:'}</strong> {player.responsibility}</p><p><strong>{fr ? 'Preuve attendue :' : 'Expected evidence:'}</strong> {player.evidence}</p></details>)}
+    </div>
+  </section>
+
+  <details class="sector-advanced">
+    <summary><span>{fr ? 'Couche expert' : 'Expert layer'}</span><b>{fr ? 'Invariants, défense et verdicts' : 'Invariants, defense and verdicts'}</b><i>+</i></summary>
+    <div class="sector-advanced-body">
+  <section class="sector-section" aria-labelledby={`${id}-sector-invariants-title`}>
+    <div class="sector-section-heading"><span class="role">03</span><h3 id={`${id}-sector-invariants-title`}>{fr ? 'Invariants et règles critiques' : 'Invariants and critical rules'}</h3></div>
+    <div class="sector-invariant-grid">
+      {sector.invariants.map((item) => <article class="sector-invariant"><span class="role">{item.id}</span><h4>{item.title}</h4><p>{item.rule}</p><small><strong>{fr ? 'Échec évité :' : 'Failure avoided:'}</strong> {item.failure}</small></article>)}
+    </div>
+  </section>
+
+  <section class="sector-section" aria-labelledby={`${id}-sector-layers-title`}>
+    <div class="sector-section-heading"><span class="role">04</span><h3 id={`${id}-sector-layers-title`}>{fr ? 'Défense en profondeur' : 'Defense in depth'}</h3></div>
+    <ol class="sector-layers">{sector.layers.map((layer) => <li><strong>{layer.label}</strong><span>{layer.detail}</span></li>)}</ol>
+  </section>
+
+  <section class="sector-section sector-verdicts" aria-labelledby={`${id}-sector-verdict-title`}>
+    <div class="sector-section-heading"><span class="role">05</span><h3 id={`${id}-sector-verdict-title`}>{fr ? 'Verdict de restitution' : 'Reporting verdict'}</h3></div>
+    <div class="sector-verdict-grid">{sector.verdicts.map((verdict) => <div><strong>{verdict.label}</strong><p>{verdict.meaning}</p></div>)}</div>
+  </section>
+    </div>
+  </details>
+
+  <p class="sector-source-note">{sector.sourceNote}</p>
+</section>

@@ -1,0 +1,21 @@
+---
+interface Props { locale: 'fr' | 'en'; }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const src = fr
+  ? '/media/comment-securiser-actions-ia-agentique.mp4'
+  : '/media/how-execution-boundary-controls-ai-agents.mp4';
+---
+
+<section class="execution-video" aria-labelledby="execution-video-title">
+  <div class="execution-video-copy">
+    <p class="eyebrow">{fr ? 'Démonstration · 1 min 15' : 'Demonstration · 1 min 15'}</p>
+    <h2 id="execution-video-title">{fr ? 'Quand l’agent ne sait plus si le paiement est parti.' : 'When the agent no longer knows whether the payment went through.'}</h2>
+    <p>{fr ? 'Un seul scénario pour comprendre la frontière : l’action est préparée, la réponse disparaît, puis le système doit choisir entre répéter, suspendre ou réconcilier.' : 'One scenario to understand the boundary: the action is prepared, the response disappears, and the system must choose between retrying, holding or reconciling.'}</p>
+    <div class="execution-video-points"><span>01 · {fr ? 'Agent' : 'Agent'}</span><span>02 · {fr ? 'HOLD' : 'HOLD'}</span><span>03 · {fr ? 'Réconciliation' : 'Reconciliation'}</span></div>
+  </div>
+  <div class="execution-video-frame">
+    <video controls preload="metadata" playsinline src={src} aria-label={fr ? 'Démonstration vidéo de la frontière d’exécution et du blocage d’un double paiement.' : 'Video demonstration of an execution boundary preventing a duplicate payment.'}></video>
+    <p class="execution-video-note">{fr ? 'Démonstration pédagogique · aucun paiement réel · données fictives.' : 'Educational demonstration · no real payment · fictional data.'}</p>
+  </div>
+</section>

@@ -1,0 +1,70 @@
+---
+interface Props {
+  kind: 'actors' | 'cases';
+  locale: 'fr' | 'en';
+}
+const { kind, locale } = Astro.props;
+const fr = locale === 'fr';
+---
+
+{kind === 'actors' ? (
+  <section class="responsibility-visual responsibility-visual-actors" aria-labelledby="actors-visual-title">
+    <div class="visual-heading">
+      <div>
+        <p class="eyebrow">{fr ? 'Carte de responsabilité' : 'Responsibility map'}</p>
+        <h2 id="actors-visual-title">{fr ? 'Une conséquence. Plusieurs zones de responsabilité.' : 'One consequence. Several responsibility zones.'}</h2>
+      </div>
+      <p>{fr ? 'Chaque acteur possède une pièce de la chaîne. Aucun ne devrait posséder seulement le récit commercial.' : 'Each player owns one piece of the chain. None should own only the commercial story.'}</p>
+    </div>
+    <div class="actors-visual-frame" role="region" tabindex="0" aria-label={fr ? "Carte des responsabilités, faites défiler horizontalement pour voir tous les acteurs" : "Responsibility map, scroll horizontally to view all actors"}>
+      <svg viewBox="0 0 1120 620" role="img" aria-labelledby="actors-visual-title actors-visual-desc">
+        <desc id="actors-visual-desc">{fr ? 'Carte reliant les acteurs du marché à une conséquence unique et aux preuves attendues.' : 'Map connecting market players to one consequence and the evidence expected.'}</desc>
+        <defs>
+          <marker id="arrow-actors" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" /></marker>
+          <linearGradient id="actor-wash" x1="0" x2="1"><stop offset="0" stop-color="var(--accent-soft)" /><stop offset="1" stop-color="var(--note-soft)" /></linearGradient>
+        </defs>
+        <rect x="18" y="18" width="1084" height="584" rx="20" fill="url(#actor-wash)" stroke="var(--line)" />
+        <path d="M220 144 C330 144 360 280 476 310" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow-actors)" />
+        <path d="M220 282 C330 282 360 320 476 320" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow-actors)" />
+        <path d="M220 420 C330 420 360 350 476 330" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow-actors)" />
+        <path d="M900 144 C790 144 760 280 644 310" fill="none" stroke="var(--limit)" stroke-width="2" marker-end="url(#arrow-actors)" />
+        <path d="M900 282 C790 282 760 320 644 320" fill="none" stroke="var(--limit)" stroke-width="2" marker-end="url(#arrow-actors)" />
+        <path d="M900 420 C790 420 760 350 644 330" fill="none" stroke="var(--limit)" stroke-width="2" marker-end="url(#arrow-actors)" />
+        <g class="visual-node visual-node-left"><rect x="62" y="92" width="318" height="104" rx="14" /><text x="84" y="124" class="visual-node-kicker">{fr ? 'PROMET' : 'PROMISES'}</text><text x="84" y="158" class="visual-node-title">{fr ? 'Fournisseur · plateforme' : 'Vendor · platform'}</text><text x="84" y="180" class="visual-node-sub">{fr ? 'Capacité · limites · conditions' : 'Capability · limits · conditions'}</text></g>
+        <g class="visual-node visual-node-left"><rect x="62" y="230" width="318" height="104" rx="14" /><text x="84" y="262" class="visual-node-kicker">{fr ? 'CONNECTE' : 'CONNECTS'}</text><text x="84" y="296" class="visual-node-title">{fr ? 'Intégrateur · DSI' : 'Integrator · IT'}</text><text x="84" y="318" class="visual-node-sub">{fr ? 'Configuration · accès · tests' : 'Configuration · access · tests'}</text></g>
+        <g class="visual-node visual-node-left"><rect x="62" y="368" width="318" height="104" rx="14" /><text x="84" y="400" class="visual-node-kicker">{fr ? 'DÉLÈGUE' : 'DELEGATES'}</text><text x="84" y="434" class="visual-node-title">{fr ? 'Direction · métier' : 'Leadership · business'}</text><text x="84" y="456" class="visual-node-sub">{fr ? 'Mandat · règles · tolérance' : 'Mandate · rules · tolerance'}</text></g>
+        <g class="visual-core"><circle cx="560" cy="320" r="112" /><circle cx="560" cy="320" r="88" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 8" /><text x="560" y="293" text-anchor="middle" class="visual-core-kicker">{fr ? 'EFFET UNIQUE' : 'ONE EFFECT'}</text><text x="560" y="328" text-anchor="middle" class="visual-core-title">{fr ? 'La personne' : 'The person'}</text><text x="560" y="354" text-anchor="middle" class="visual-core-title">{fr ? 'impactée' : 'affected'}</text><text x="560" y="385" text-anchor="middle" class="visual-core-sub">{fr ? 'comprend · conteste · subit' : 'understands · challenges · bears'}</text></g>
+        <g class="visual-node visual-node-right"><rect x="740" y="92" width="318" height="104" rx="14" /><text x="762" y="124" class="visual-node-kicker">{fr ? 'PILOTE' : 'OPERATES'}</text><text x="762" y="158" class="visual-node-title">{fr ? 'Organisation cliente' : 'Customer organization'}</text><text x="762" y="180" class="visual-node-sub">{fr ? 'Décision · supervision · réponse' : 'Decision · supervision · response'}</text></g>
+        <g class="visual-node visual-node-right"><rect x="740" y="230" width="318" height="104" rx="14" /><text x="762" y="262" class="visual-node-kicker">{fr ? 'ENCADRE' : 'FRAMES'}</text><text x="762" y="296" class="visual-node-title">{fr ? 'Risque · conformité' : 'Risk · compliance'}</text><text x="762" y="318" class="visual-node-sub">{fr ? 'Contrôle · preuve · escalade' : 'Control · evidence · escalation'}</text></g>
+        <g class="visual-node visual-node-right"><rect x="740" y="368" width="318" height="104" rx="14" /><text x="762" y="400" class="visual-node-kicker">{fr ? 'RÉPARE' : 'REPAIRS'}</text><text x="762" y="434" class="visual-node-title">{fr ? 'Support · régulateur' : 'Support · regulator'}</text><text x="762" y="456" class="visual-node-sub">{fr ? 'Recours · assurance · réparation' : 'Recourse · insurance · repair'}</text></g>
+        <text x="62" y="552" class="visual-footnote">{fr ? 'La responsabilité devient visible quand la promesse est reliée à l’effet et à la preuve.' : 'Responsibility becomes visible when promise is connected to effect and evidence.'}</text>
+      </svg>
+    </div>
+  </section>
+) : (
+  <section class="responsibility-visual responsibility-visual-cases" aria-labelledby="cases-visual-title">
+    <div class="visual-heading">
+      <div>
+        <p class="eyebrow">{fr ? 'Replay d’un cas' : 'Case replay'}</p>
+        <h2 id="cases-visual-title">{fr ? 'La responsabilité se perd dans la séquence.' : 'Responsibility gets lost in the sequence.'}</h2>
+      </div>
+      <p>{fr ? 'Le marché vend une capacité. L’incident révèle la chaîne qu’il fallait posséder.' : 'The market sells a capability. The incident reveals the chain someone needed to own.'}</p>
+    </div>
+    <div class="cases-visual-frame" role="region" tabindex="0" aria-label={fr ? "Séquence de responsabilité, défilement horizontal" : "Responsibility sequence, horizontal scrolling"}>
+      <svg viewBox="0 0 1120 460" role="img" aria-labelledby="cases-visual-title cases-visual-desc">
+        <desc id="cases-visual-desc">{fr ? 'Séquence en sept étapes allant de la promesse du marché jusqu’à la preuve disponible ou absente.' : 'Seven-step sequence from market promise to available or missing evidence.'}</desc>
+        <defs><marker id="arrow-cases" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" /></marker></defs>
+        <rect x="18" y="18" width="1084" height="424" rx="20" fill="var(--bg-raised)" stroke="var(--line)" />
+        <line x1="120" y1="246" x2="1000" y2="246" stroke="var(--line-strong)" stroke-width="2" marker-end="url(#arrow-cases)" />
+        <g class="case-step"><circle cx="120" cy="246" r="34" /><text x="120" y="252" text-anchor="middle">01</text><text x="120" y="112" text-anchor="middle" class="case-step-kicker">{fr ? 'PROMESSE' : 'PROMISE'}</text><text x="120" y="142" text-anchor="middle" class="case-step-title">{fr ? 'Autonomie' : 'Autonomy'}</text><text x="120" y="164" text-anchor="middle" class="case-step-sub">{fr ? 'plus vite' : 'faster'}</text></g>
+        <g class="case-step"><circle cx="266" cy="246" r="34" /><text x="266" y="252" text-anchor="middle">02</text><text x="266" y="330" text-anchor="middle" class="case-step-kicker">{fr ? 'ACHAT' : 'PURCHASE'}</text><text x="266" y="360" text-anchor="middle" class="case-step-title">{fr ? 'Intégration' : 'Integration'}</text><text x="266" y="382" text-anchor="middle" class="case-step-sub">{fr ? 'sous délai' : 'under time pressure'}</text></g>
+        <g class="case-step"><circle cx="412" cy="246" r="34" /><text x="412" y="252" text-anchor="middle">03</text><text x="412" y="112" text-anchor="middle" class="case-step-kicker">{fr ? 'DÉLÉGATION' : 'DELEGATION'}</text><text x="412" y="142" text-anchor="middle" class="case-step-title">{fr ? 'Mandat' : 'Mandate'}</text><text x="412" y="164" text-anchor="middle" class="case-step-sub">{fr ? 'implicite' : 'implicit'}</text></g>
+        <g class="case-step case-step-alert"><circle cx="558" cy="246" r="38" /><text x="558" y="252" text-anchor="middle">04</text><text x="558" y="330" text-anchor="middle" class="case-step-kicker">{fr ? 'EFFET' : 'EFFECT'}</text><text x="558" y="360" text-anchor="middle" class="case-step-title">{fr ? 'Incident' : 'Incident'}</text><text x="558" y="382" text-anchor="middle" class="case-step-sub">{fr ? 'une personne subit' : 'someone bears it'}</text></g>
+        <g class="case-step"><circle cx="704" cy="246" r="34" /><text x="704" y="252" text-anchor="middle">05</text><text x="704" y="112" text-anchor="middle" class="case-step-kicker">{fr ? 'RECHERCHE' : 'SEARCH'}</text><text x="704" y="142" text-anchor="middle" class="case-step-title">{fr ? 'Qui répond ?' : 'Who answers?'}</text><text x="704" y="164" text-anchor="middle" class="case-step-sub">{fr ? 'périmètres séparés' : 'separate perimeters'}</text></g>
+        <g class="case-step"><circle cx="850" cy="246" r="34" /><text x="850" y="252" text-anchor="middle">06</text><text x="850" y="330" text-anchor="middle" class="case-step-kicker">{fr ? 'PREUVE' : 'EVIDENCE'}</text><text x="850" y="360" text-anchor="middle" class="case-step-title">{fr ? 'Ce qui manque' : 'What is missing'}</text><text x="850" y="382" text-anchor="middle" class="case-step-sub">{fr ? 'règle · version · trace' : 'rule · version · trace'}</text></g>
+        <g class="case-step case-step-final"><circle cx="996" cy="246" r="34" /><text x="996" y="252" text-anchor="middle">07</text><text x="996" y="112" text-anchor="middle" class="case-step-kicker">{fr ? 'SUITE' : 'NEXT'}</text><text x="996" y="142" text-anchor="middle" class="case-step-title">{fr ? 'Réparer' : 'Repair'}</text><text x="996" y="164" text-anchor="middle" class="case-step-sub">{fr ? 'ou renoncer' : 'or stop'}</text></g>
+        <text x="56" y="420" class="visual-footnote">{fr ? 'La question TENIR : quelle partie de la chaîne votre organisation possède-t-elle réellement ?' : 'TENIR asks: which part of the chain does your organization actually own?'}</text>
+      </svg>
+    </div>
+  </section>
+)}
