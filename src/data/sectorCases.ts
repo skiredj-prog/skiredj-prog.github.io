@@ -108,3 +108,103 @@ export const sectorCases: Record<string, SectorCase> = {
     ],
   },
 };
+
+
+/**
+ * English editorial counterparts. The original maps are FR source objects;
+ * rendering those in an English article would mix languages and mislead readers.
+ * These remain FICTIONAL sector models, not descriptions of deployed systems.
+ */
+export const sectorCasesEn: Record<string, SectorCase> = {
+  'banque-assurance': {
+    ...sectorCases['banque-assurance'],
+    locale: 'en',
+    title: 'Banking & insurance',
+    kicker: 'Illustrative sector map · uncertain payment settlement',
+    description: 'A teaching model for responsibilities, transitions and evidence around a consequential payment.',
+    lede: 'A transfer may be authorized without its external effect being confirmed. Accountability must remain clear during that uncertainty.',
+    sourceNote: 'Fictional TENIR Labs teaching model · DORA/EU AI Act applicability depends on the particular system · no real settlement or banking integration demonstrated.',
+    scenario: 'Fictional PAY-MAR-001 payment instruction sent to an external provider; a network interruption prevents confirmation.',
+    affected: ['Account holder','Beneficiary','Bank or fintech','Operations team','Risk and compliance','Payment provider'],
+    sequence: [
+      {step:'01',label:'Scope',detail:'Define boundaries, information sources, and business/technical owners.',risk:'An overly broad question cannot produce usable evidence.'},
+      {step:'02',label:'Intention',detail:'The AI agent prepares or proposes the transfer.',risk:'A legitimate goal does not authorize every available method.'},
+      {step:'03',label:'Admission',detail:'A policy service evaluates applicable rules.',risk:'Admission is neither a guarantee of safety nor confirmation of effect.'},
+      {step:'04',label:'Command',detail:'The request reaches the external payment service.',risk:'The decision crosses into the world of external effects.'},
+      {step:'05',label:'Lost response',detail:'The provider may have received the command; its acknowledgement is lost.',risk:'The result is UNKNOWN.'},
+      {step:'06',label:'HOLD',detail:'A blind automatic retry is paused.',risk:'A timeout is not proof that the first attempt failed.'},
+      {step:'07',label:'Reconciliation',detail:'Seek the provider’s actual recorded state before further action.',risk:'Without sufficient evidence, the effect remains unconfirmed.'},
+    ],
+    players: [
+      {role:'AI agent',responsibility:'Prepares or proposes an action.',evidence:'Intent, version, context and requested tools.'},
+      {role:'Control service',responsibility:'Evaluates applicable admission rules.',evidence:'Active policy, authority, epoch and verdict.'},
+      {role:'Payment provider',responsibility:'Receives or processes an external request.',evidence:'Receipt, transaction status and external identifier.'},
+      {role:'Human operator',responsibility:'Intervenes when the state remains ambiguous.',evidence:'Named owner, deadline, decision and escalation basis.'},
+      {role:'Bank / fintech',responsibility:'Owns the organizational response to the customer.',evidence:'Mandate, procedures, reconciliation and remediation.'},
+      {role:'Affected person',responsibility:'Experiences, challenges or waits for the effect.',evidence:'Clear information, complaint channel and attributable response.'},
+    ],
+    invariants: [
+      {id:'INV-BANK-01',title:'Retry under uncertainty',rule:'No action that can repeat the effect without proven non-execution or qualified idempotence.',failure:'Two settlements for one intention.'},
+      {id:'INV-BANK-02',title:'Accountable HOLD',rule:'Preserve operation, attempt, cause, owner, deadline and transitions.',failure:'An ownerless pause becomes invisible operational debt.'},
+      {id:'INV-BANK-03',title:'Execution authority',rule:'Tie the action to an active authority, epoch and consumption rules.',failure:'A decision receipt is mistaken for an external effect receipt.'},
+    ],
+    layers: [
+      {label:'1 · Legitimacy',detail:'Mandate, business rules and applicable regulatory scope.'},
+      {label:'2 · Governance',detail:'Permissions, accountable owners and escalation rules.'},
+      {label:'3 · Runtime safeguards',detail:'Interception, idempotence and HOLD state.'},
+      {label:'4 · Reconciliation',detail:'Evidence about the third-party system’s actual state.'},
+      {label:'5 · Evidence & remedy',detail:'Records, complaints, accountability and remediation.'},
+    ],
+    verdicts: [
+      {label:'[ACCEPT]',meaning:'Behavior demonstrated only within the defined test scope.'},
+      {label:'[HOLD]',meaning:'Ambiguous state: pause and reconcile before a new attempt.'},
+      {label:'[NOT DEMONSTRATED]',meaning:'Available evidence cannot establish non-repetition or external effect.'},
+    ],
+  },
+  'transport-mobilite': {
+    ...sectorCases['transport-mobilite'],
+    locale: 'en',
+    title: 'Transport & critical mobility',
+    kicker: 'Illustrative sector map · schedule or trajectory changes',
+    description: 'Teaching model for aviation, rail control and autonomous fleets; their real authorization systems differ.',
+    lede: 'Within a critical transport system, missing acknowledgement does not prove an action had no effect.',
+    sourceNote: 'Fictional TENIR Labs teaching matrix. Aviation, rail and fleet scenarios require distinct expert qualification; NOT a deployed controller, safety certification, or claim of aviation system access.',
+    scenario: 'A weather disruption, cascading delay or traffic bottleneck motivates a proposed change to a schedule or routing plan in a hypothetical system.',
+    affected: ['Passengers','Crew and operator','Controller or dispatcher','Infrastructure owner','Traffic system','Safety authority'],
+    sequence: [
+      {step:'01',label:'Intention',detail:'The agent detects an issue and proposes a revised plan.',risk:'A useful suggestion is not yet a physical-world command.'},
+      {step:'02',label:'Admission',detail:'The responsible system checks authority and operational margins.',risk:'A useful change may still exceed a permission or safety limit.'},
+      {step:'03',label:'Command',detail:'An authorized system issues a uniquely identified instruction.',risk:'Poor identity management can create conflicting commands.'},
+      {step:'04',label:'Critical system',detail:'An infrastructure or scheduling system processes the instruction.',risk:'Consequences may reach real operational schedules or routes.'},
+      {step:'05',label:'Ambiguous response',detail:'Network disruption obscures the confirmation of the instruction.',risk:'A blind replay may conflict with an existing command.'},
+      {step:'06',label:'HOLD',detail:'New automated attempts stop while the state is UNKNOWN.',risk:'A timeout must not be treated as proof of failure.'},
+      {step:'07',label:'Reconciliation',detail:'Authorized operators consult state from appropriate systems.',risk:'Without credible state evidence, a retry remains unsafe.'},
+      {step:'08',label:'Resolution',detail:'Proceed, safely recover or escalate to an authorized human.',risk:'Persistent ambiguity requires a qualified fallback procedure.'},
+    ],
+    players: [
+      {role:'AI agent',responsibility:'Detects a disruption and suggests a revised plan.',evidence:'Context, version, intention and tools requested.'},
+      {role:'Authorization layer',responsibility:'Checks operating authority and safety margins.',evidence:'Permissions, geographic scope, conditions and active policy.'},
+      {role:'Once-only control',responsibility:'Correlates a command with a unique operation identity.',evidence:'Stable operation identifier and idempotence assumptions.'},
+      {role:'Critical system',responsibility:'Receives or carries out a command.',evidence:'Acknowledgement, recorded state and operational log.'},
+      {role:'Qualified human operator',responsibility:'Handles degraded operation when the state remains unclear.',evidence:'Escalation path, timestamp, decision and reason.'},
+      {role:'Affected traveler',responsibility:'Faces a delay, rerouting or safety decision.',evidence:'Service information, continuity and avenues for redress.'},
+    ],
+    invariants: [
+      {id:'INV-TRANS-01',title:'Retry under uncertainty',rule:'No new operational instruction without a credible account of the current state.',failure:'Conflicting commands or inconsistent routing.'},
+      {id:'INV-TRANS-02',title:'Accountable HOLD',rule:'Do not infer failure or resend while completion remains ambiguous.',failure:'A system resumes without knowing what already happened.'},
+      {id:'INV-TRANS-03',title:'Safety escalation',rule:'Persistent uncertainty leads to a qualified degraded-mode procedure.',failure:'Critical activity remains trapped in an uncontrolled autonomous loop.'},
+    ],
+    layers: [
+      {label:'1 · Safety',detail:'Operating constraints, margins and qualified permissions.'},
+      {label:'2 · Admission',detail:'Current authority, scope, time window and active policy.'},
+      {label:'3 · Single operation',detail:'Stable identity, idempotence and runtime checks.'},
+      {label:'4 · Actual state',detail:'Reliable infrastructure and operational evidence.'},
+      {label:'5 · Degraded operation',detail:'Fallback, qualified human control and repair.'},
+    ],
+    verdicts: [
+      {label:'[ACCEPT]',meaning:'Instruction and external state demonstrably aligned within the test scope.'},
+      {label:'[RETRY]',meaning:'Non-receipt established and a controlled retry authorized.'},
+      {label:'[DEVIATE / STOP]',meaning:'Uncertainty persists: apply fallback procedure and escalate.'},
+    ],
+  },
+};
