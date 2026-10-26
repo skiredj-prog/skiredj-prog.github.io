@@ -1,0 +1,59 @@
+name: P2 Responsibility editorial — FR/EN and browser acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'src/content/fr/cas.md'
+      - 'src/content/en/cases.md'
+      - 'src/content/fr/apprendre.md'
+      - 'src/content/en/learn.md'
+      - 'src/content/fr/pourquoi-maintenant.md'
+      - 'src/content/en/why-now.md'
+      - 'src/content/fr/acteurs.md'
+      - 'src/content/en/actors.md'
+      - 'src/data/sectorCases.ts'
+      - 'src/data/site.ts'
+      - 'src/components/Home.astro'
+      - 'src/components/SectorGovernanceMap.astro'
+      - 'src/components/ResponsibilityVisuals.astro'
+      - 'src/components/ExecutionBoundaryVideo.astro'
+      - 'src/styles/responsibility.css'
+      - 'src/styles/sector-map.css'
+      - 'public/media/**'
+      - 'scripts/check-editorial-p2.mjs'
+      - 'scripts/check-editorial-browser.mjs'
+      - '.github/workflows/responsibility-editorial-p2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  p2-editorial-qa:
+    name: FR/EN source integrity, layout, accessible diagrams and safety boundaries
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          cache: npm
+      - run: npm ci
+      - run: npm run check:workbench-release:unit
+      - run: npm run build
+      - run: npm run check:links
+      - run: npm run check:assets
+      - run: node scripts/check-editorial-p2.mjs
+      - name: Responsive Chromium acceptance FR/EN
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          python -m http.server 4173 --bind 127.0.0.1 --directory dist >/tmp/editorial-p2-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/check-editorial-browser.mjs
+      - name: No certification or field proof inferred
+        if: always()
+        run: |
+          echo 'Tests cover bounded editorial pages and synthetic scenarios, not production safety or conformity.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Only Air Canada/Moffatt is a published external case; autonomous payment and transport scenarios remain fictional.' >> "$GITHUB_STEP_SUMMARY"
