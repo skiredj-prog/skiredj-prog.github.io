@@ -54,7 +54,7 @@ GitHub Actions applies these checks on PRs, pushes to `main`, every Monday and m
 - **Integrated UX:** old filename v0.3.1, title v0.3. Its historical AI/effect classifier must not be reused.
 - **REG-ARCH:** historical proposal v0.1 and later design references v0.4 must be versioned independently.
 
-**Additional exclusions:** the Workbench candidate belongs to private `tenir-reg-demo` PR #4 and remains separate from site PR #27; do not infer it is deployed. The live banking scenario has its own synthetic-only claims. REG Conformance v0.6.1's 46/46 PASS is restricted to Raft single-host loopback; no C3 or physical multi-host claim. G3.1 experimental PR #72 cannot be promoted into published TENIR-Gov v5.7.0 by a website metadata change.
+**Additional exclusions:** the Workbench signed candidate remains held in private `tenir-reg-demo` PR #4 (stacked on private PR #3). A *public explanatory page* at `/portfolio/workbench/` and `/en/portfolio/workbench/` can describe its capabilities and evidence limitations without redistributing the archive. The historical draft site PR #27 is superseded by a branch reconciled with the post-PMO/post-commercial homepage. **Do not infer the ZIP is deployed, independently authenticated or publicly downloadable.** The live banking scenario has its own synthetic-only claims. REG Conformance v0.6.1's 46/46 PASS is restricted to Raft single-host loopback; no C3 or physical multi-host claim. G3.1 experimental PR #72 cannot be promoted into published TENIR-Gov v5.7.0 by a website metadata change.
 
 ## Release-gate rule
 
