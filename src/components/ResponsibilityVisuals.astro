@@ -16,7 +16,7 @@ const fr = locale === 'fr';
       </div>
       <p>{fr ? 'Chaque acteur possède une pièce de la chaîne. Aucun ne devrait posséder seulement le récit commercial.' : 'Each player owns one piece of the chain. None should own only the commercial story.'}</p>
     </div>
-    <div class="actors-visual-frame">
+    <div class="actors-visual-frame" role="region" tabindex="0" aria-label={fr ? "Carte des responsabilités, faites défiler horizontalement pour voir tous les acteurs" : "Responsibility map, scroll horizontally to view all actors"}>
       <svg viewBox="0 0 1120 620" role="img" aria-labelledby="actors-visual-title actors-visual-desc">
         <desc id="actors-visual-desc">{fr ? 'Carte reliant les acteurs du marché à une conséquence unique et aux preuves attendues.' : 'Map connecting market players to one consequence and the evidence expected.'}</desc>
         <defs>
@@ -50,7 +50,7 @@ const fr = locale === 'fr';
       </div>
       <p>{fr ? 'Le marché vend une capacité. L’incident révèle la chaîne qu’il fallait posséder.' : 'The market sells a capability. The incident reveals the chain someone needed to own.'}</p>
     </div>
-    <div class="cases-visual-frame">
+    <div class="cases-visual-frame" role="region" tabindex="0" aria-label={fr ? "Séquence de responsabilité, défilement horizontal" : "Responsibility sequence, horizontal scrolling"}>
       <svg viewBox="0 0 1120 460" role="img" aria-labelledby="cases-visual-title cases-visual-desc">
         <desc id="cases-visual-desc">{fr ? 'Séquence en sept étapes allant de la promesse du marché jusqu’à la preuve disponible ou absente.' : 'Seven-step sequence from market promise to available or missing evidence.'}</desc>
         <defs><marker id="arrow-cases" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" /></marker></defs>
