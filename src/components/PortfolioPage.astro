@@ -84,6 +84,14 @@ const demos = [
         </div>
       </section>
       <section class="pf-demo-options" aria-labelledby="pf-demos-title"><h2 id="pf-demos-title">{fr?'D’autres façons de comprendre':'Other ways to explore'}</h2><div class="pf-demo-grid">{demos.map(d=><article class="pf-demo-card"><span class="pf-format">{d.format}</span><h3>{d.title}</h3><p>{d.text}</p><a href={d.href}>{d.label} {d.href.startsWith('https:')?'↗':'→'}</a></article>)}</div></section>
+      <section class="pf-conclusion" aria-label={fr?'Workbench — présentation':'Workbench overview'}>
+        <div>
+          <p class="pf-overline">{fr?'POUR APPROFONDIR · PRÉSENTATION':'NEXT STEP · OVERVIEW ONLY'}</p>
+          <h2>TENIR/REG · Diagnostic &amp; Evidence Workbench</h2>
+          <p>{fr?'Après ces scénarios, découvrez le configurateur et les preuves synthétiques que regroupe le Workbench. L’archive a passé les contrôles automatisés, mais elle n’est pas distribuée sur ce site.':'After these scenarios, read about the configuration tool and synthetic records in the Workbench. Its private candidate passed automated tests, but the archive is not distributed on this website.'}</p>
+        </div>
+        <a class="btn" href={path('portfolio/workbench')}>{fr?'Lire la présentation':'Read the overview'} →</a>
+      </section>
     </>}
     {cardGroups.map(group=><section class="pf-card-group"><header><h2>{group.title}</h2>{group.note&&<p>{group.note}</p>}</header><div class:list={['pf-card-grid',group.entries.length===1&&'pf-card-grid-single']}>{group.entries.map((item:any)=><PortfolioCard locale={locale} item={item}/>)}</div></section>)}
     <section class="pf-conclusion"><div><h2>{fr?'Vous ne savez pas encore lequel choisir ?':'Still not sure which one fits?'}</h2><p>{fr?'Décrivez ce que vous cherchez à comprendre. Quelques lignes suffisent pour ouvrir la conversation.':'Describe what you are trying to understand. A few lines are enough to start a conversation.'}</p></div><a class="btn" href={contactHref}>{fr?'Ouvrir la page de contact':'Open the contact page'} →</a></section>
@@ -106,6 +114,10 @@ const demos = [
       <p>{publicAccess.scope}</p></div>
       <a class="btn" href={url(publicAccess.href)}>{fr?'Accéder à la ressource':'Open resource'} ↗</a>
     </div>}
+    {page==='experiences'&&<section class="pf-conclusion" aria-label={fr?'Approfondir avec le Workbench':'Workbench follow-up'}>
+      <div><h2>TENIR/REG · Diagnostic &amp; Evidence Workbench</h2><p>{fr?'Une lecture plus technique de la configuration et des preuves simulées ; le kit reste non distribué publiquement.':'A deeper introduction to configuration and synthetic signed evidence; the kit is not publicly distributed.'}</p></div>
+      <a class="btn" href={path('portfolio/workbench')}>{fr?'Comprendre le Workbench':'Understand the Workbench'} →</a>
+    </section>}
     {page==='control-tower'&&<section id="control-tower-experience" class="pf-embed-section"><div class="pf-embed-heading"><div><span class="pf-overline">AUTONOMY CONTROL TOWER v1.0</span><h2>{fr?'Choisissez un scénario. Regardez ce qui change.':'Choose a scenario. See what changes.'}</h2><p>{fr?'Le simulateur est en anglais. Sélectionnez l’une des quatre situations, puis lancez le parcours quand vous le souhaitez.':'The simulator is in English. Select one of the four situations, then start when you are ready.'}</p></div><a href={url('/embeds/reg-autonomy-control-tower-v1.0.html')} target="_blank" rel="noopener noreferrer">{fr?'Ouvrir en plein écran':'Open full screen'} ↗</a></div><iframe loading="lazy" title="REG Autonomy Control Tower v1.0 — interactive English-language simulation, no live kernel" src={url('/embeds/reg-autonomy-control-tower-v1.0.html')} class="pf-demo-frame"></iframe><p class="pf-frame-note">{fr?'Scénario synthétique · noyau non connecté · sur mobile, le plein écran facilite la lecture.':'Synthetic scenario · no live kernel connected · full screen makes mobile reading easier.'}</p></section>}
     <section class="pf-details" aria-labelledby="pf-details-title"><header class="pf-details-head"><h2 id="pf-details-title">{fr?'Pour savoir si cela vous correspond':'See whether it fits your situation'}</h2></header><dl>{labels.map(([key,label])=><div class:list={['pf-field',key==='limits'&&'pf-field-limit']}><dt>{label}</dt><dd>{(entry as any)[key]}</dd></div>)}</dl></section>
     <section class="pf-related"><h2>{fr?'Cela se relie aussi à…':'It also connects to…'}</h2><div class="pf-related-grid">{entry.related.map(id=><a href={cardHref(id)}><span>{portfolio[locale][id].title} →</span><small>{kindName(portfolio[locale][id].kind)} · {portfolio[locale][id].tagline}</small></a>)}</div></section>
