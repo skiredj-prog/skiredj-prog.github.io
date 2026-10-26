@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
 const registry=JSON.parse(readFileSync('data/asset-registry.v1.json','utf8'));
+const publication=JSON.parse(readFileSync('data/workbench-publication.v1.json','utf8'));
+const released=publication.status==='PUBLISHED';
 const wb=registry.historical_or_staged_assets.find(a=>a.asset_id==='workbench-private-candidate');
 assert(wb, 'PMO staged Workbench entry missing');
 assert.equal(wb.public_url,null, 'Private Workbench kit must not gain public artifact URL');
@@ -24,9 +26,15 @@ for(const locale of ['fr','en']){
  assert(html.includes('TENIR/REG'),locale+': missing Workbench identity');
  assert(html.includes('UNKNOWN'),locale+': missing unknown outcome lesson');
  assert(html.includes('5.7.0'),locale+': omitted reference runtime caveat');
- assert(html.includes(locale==='fr'?'distribution publique encore en préparation':'public distribution is still gated'),
-   locale+': exact kit release gate disclaimer missing');
- assert(!html.includes('href="/downloads/TENIR-REG-public-consultation.zip"'),locale+': premature public kit download');
+ if(released){
+   assert(html.includes('href="'+publication.public_path+'"'),locale+': approved ZIP download button missing');
+   assert(html.includes(publication.sha256),locale+': SHA-256 verification information missing');
+   assert(html.includes(locale==='fr'?'Archive autonome disponible':'Standalone archive available'),locale+': deployed-state copy missing');
+ } else {
+   assert(html.includes(locale==='fr'?'distribution publique encore en préparation':'public distribution is still gated'),
+     locale+': pending distribution disclaimer missing');
+   assert(!html.includes('href="'+publication.public_path+'"'),locale+': premature ZIP download link');
+ }
  assert(!html.includes('/workbench/output/'),locale+': unapproved embed of private dossier');
  assert(!html.includes('https://github.com/skiredj-prog/tenir-reg-demo'),locale+': private repo link leaked');
  assert(sitemap.includes('https://tenirlabs.cc'+route),locale+': editorial route absent from sitemap');
@@ -42,5 +50,6 @@ for(const locale of ['fr','en']){
    assert(!html2.includes('href="/downloads/TENIR-REG-public-consultation.zip"'),locale+': premature kit link from '+name);
  }
 }
-assert(!existsSync('dist/downloads/TENIR-REG-public-consultation.zip'),'Site unexpectedly packages private Workbench candidate');
-console.log('PASS: current P1/PMO reconciliation, FR/EN editorial pages, sitemap, offer/demo navigation, no private ZIP or false release status.');
+if(released) assert(existsSync('dist/downloads/TENIR-REG-public-consultation.zip'),'PUBLISHED archive absent from dist');
+else assert(!existsSync('dist/downloads/TENIR-REG-public-consultation.zip'),'Site unexpectedly packages private Workbench candidate');
+console.log('PASS: FR/EN Workbench routes, PMO and distribution state '+publication.status+' validated without unapproved binary or false release claim.');

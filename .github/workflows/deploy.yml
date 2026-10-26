@@ -29,10 +29,16 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: npm ci
+      - name: Verify Workbench publication gate against adversarial mutations
+        run: npm run check:workbench-release:unit
       - name: Build
         run: npm run build
       - name: Check internal links
         run: npm run check:links
+      - name: Check Workbench release metadata and site claims
+        run: |
+          npm run check:assets
+          node scripts/check-workbench-staging.mjs
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,9 +1,11 @@
 ---
 import '../styles/portfolio.css';
 import { url } from '../data/site';
+import publication from '../../data/workbench-publication.v1.json';
 interface Props {locale:'fr'|'en';}
 const {locale}=Astro.props;
 const fr=locale==='fr';
+const published=publication.status==='PUBLISHED';
 const routes={
   demos: url(fr?'/portfolio/demos/':'/en/portfolio/demos/'),
   experiences: url(fr?'/portfolio/experiences/':'/en/portfolio/experiences/'),
@@ -53,10 +55,20 @@ const stages=fr?[
  </div>
  <aside class="pf-status-card">
   <span class="pf-aside-label">{fr?'ÉTAT DE PUBLICATION':'PUBLICATION STATUS'}</span>
-  <strong>{fr?'Kit autonome validé en CI ; distribution publique encore en préparation.':'Standalone kit passed automated QA; public distribution is still gated.'}</strong>
-  <p>{fr?'Aucun lien de téléchargement public n’est présenté avant vérification des octets destinés au site et validation de diffusion. Le dépôt de développement reste privé.':'No public download link is presented before the site-bound bytes and release authorization are verified. The development repository stays private.'}</p>
+  <strong>{published ? (fr?'Archive autonome disponible · édition de consultation v0.1.0.':'Standalone archive available · consultation edition v0.1.0.') : (fr?'Kit autonome validé en CI ; distribution publique encore en préparation.':'Standalone kit passed automated QA; public distribution is still gated.')}</strong>
+  <p>{published ? (fr?'Archive vérifiée par son empreinte SHA-256, à utiliser uniquement hors ligne. Les pièces sont synthétiques ; aucune connexion au noyau ni certification.':'Archive checked by its SHA-256 fingerprint; offline use only. The evidence is synthetic, with no live runtime or certification.') : (fr?'Aucun lien de téléchargement public n’est présenté avant vérification des octets destinés au site et validation de diffusion. Le dépôt de développement reste privé.':'No public download link is presented before the site-bound bytes and release authorization are verified. The development repository stays private.')}</p>
  </aside>
 </section>
+{published && <section class="pf-conclusion" aria-label={fr?'Télécharger le Workbench':'Download the Workbench'}>
+ <div>
+  <p class="pf-overline">{fr?'ARCHIVE VÉRIFIÉE · SYNTHÉTIQUE':'VERIFIED ARCHIVE · SYNTHETIC'}</p>
+  <h3>{fr?'Explorer le Workbench hors ligne':'Explore the Workbench offline'}</h3>
+  <p>{fr?'Téléchargez le ZIP, vérifiez l’empreinte SHA-256, puis ouvrez index.html après extraction. Les signatures nécessitent une clé publique authentifiée indépendamment.':'Download the ZIP, check its SHA-256, then extract it and open index.html. Independent public-key authentication is required for signer identity.'}</p>
+  <p><small>SHA-256 · <code>{publication.sha256}</code></small></p>
+  <p><small>{fr?'15 fichiers · 180 527 octets · kit autonome FR/EN':'15 files · 180,527 bytes · standalone FR/EN kit'}</small></p>
+ </div>
+ <a class="btn btn-primary" href={url(publication.public_path)} download={publication.filename}>{fr?'Télécharger le ZIP':'Download the ZIP'} →</a>
+</section>}
 <section class="pf-details">
  <div class="pf-details-head"><p class="pf-overline">{fr?'PARCOURS EN QUATRE TEMPS':'FOUR-STEP WORKFLOW'}</p><h3>{fr?'Ce que l’atelier rend vérifiable':'What the workbench makes inspectable'}</h3></div>
  <div class="pf-card-grid">

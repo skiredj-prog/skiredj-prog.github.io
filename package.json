@@ -8,12 +8,14 @@
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4731",
-    "build": "astro build && node scripts/finalize-html.mjs && node scripts/generate-sitemap.mjs",
+    "build": "node scripts/check-workbench-release.mjs && astro build && node scripts/finalize-html.mjs && node scripts/generate-sitemap.mjs && node scripts/check-workbench-release.mjs --dist",
     "preview": "astro preview --host 127.0.0.1 --port 4731",
     "check:links": "node scripts/check-links.mjs",
     "check:assets": "node --experimental-strip-types scripts/check-asset-registry.mjs",
     "check:assets:unit": "node --experimental-strip-types scripts/check-asset-registry.mjs --self-test",
-    "check:assets:remote": "node --experimental-strip-types scripts/check-asset-registry.mjs --remote"
+    "check:assets:remote": "node --experimental-strip-types scripts/check-asset-registry.mjs --remote",
+    "check:workbench-release": "node scripts/check-workbench-release.mjs",
+    "check:workbench-release:unit": "node scripts/check-workbench-release.mjs --self-test"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.8",
