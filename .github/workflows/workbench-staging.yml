@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - 'src/components/WorkbenchPage.astro'
+      - 'data/workbench-publication.v1.json'
+      - 'public/downloads/**'
+      - 'scripts/check-workbench-release.mjs'
+      - 'docs/releases/workbench-v0.1.0.md'
       - 'src/components/PortfolioPage.astro'
       - 'src/pages/portfolio/workbench.astro'
       - 'src/pages/en/portfolio/workbench.astro'
@@ -28,14 +32,16 @@ jobs:
           node-version: '22.22.0'
           cache: npm
       - run: npm ci
+      - run: npm run check:workbench-release:unit
       - run: npm run build
       - run: npm run check:links
       - run: npm run check:assets
       - run: node scripts/check-diagnostic-entry.mjs
       - run: node scripts/check-portfolio-references.mjs
       - run: node scripts/check-workbench-staging.mjs
+      - run: node scripts/check-workbench-release.mjs --dist
       - name: Scope boundary summary
         if: always()
         run: |
-          echo 'This workflow validates editorial navigation and metadata. It does NOT publish, load or authenticate the private Workbench ZIP.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'This workflow checks staged vs published exact-byte release gates. A green run does not imply that any ZIP was uploaded or externally reachable.' >> "$GITHUB_STEP_SUMMARY"
           echo 'The 14-item P1 product taxonomy, runtime conformance and execution guarantees are unchanged.' >> "$GITHUB_STEP_SUMMARY"
