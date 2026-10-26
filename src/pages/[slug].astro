@@ -31,6 +31,6 @@ const { Content, frontmatter } = mod;
 
 <Base locale="fr" slug={slug!} {...frontmatter}>
   {slug === 'acteurs' && <ResponsibilityVisuals kind="actors" locale="fr" />}
-  {slug === 'cas' && <><ExecutionBoundaryVideo locale="fr" /><ResponsibilityVisuals kind="cases" locale="fr" /><SectorGovernanceMap sector={sectorCases['banque-assurance']} locale="fr" /></>}
+  {slug === 'cas' && <><ExecutionBoundaryVideo locale="fr" /><ResponsibilityVisuals kind="cases" locale="fr" /><SectorGovernanceMap sector={sectorCases['banque-assurance']} locale="fr" /><SectorGovernanceMap sector={sectorCases['transport-mobilite']} locale="fr" /></>}
   <Content />
 </Base>
