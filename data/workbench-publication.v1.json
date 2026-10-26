@@ -1,7 +1,7 @@
 {
   "schema": "tenir-labs-workbench-publication/v1",
   "version": "v0.1.0",
-  "status": "STAGED_PENDING_BINARY",
+  "status": "PUBLISHED",
   "distribution_kind": "standalone_offline_synthetic_demo",
   "filename": "TENIR-REG-public-consultation.zip",
   "public_path": "/downloads/TENIR-REG-public-consultation.zip",
@@ -14,7 +14,7 @@
   "candidate_private_pr": "skiredj-prog/tenir-reg-demo#4",
   "candidate_source_commit": "b3993c9d64e9401ceb27052f200ff3908c2d817f",
   "original_private_ci_run": 40199134077,
-  "public_url": null,
+  "public_url": "https://tenirlabs.cc/downloads/TENIR-REG-public-consultation.zip",
   "policy": {
     "requires_exact_sha256": true,
     "requires_signed_dossier_verification": true,
@@ -28,5 +28,6 @@
   "editorial_pages": {
     "fr": "/portfolio/workbench/",
     "en": "/en/portfolio/workbench/"
-  }
+  },
+  "manual_approval_reference": "Controlled public Workbench publication approved in user GO 2026-10-26; exact SHA-256 shown in preceding review. Effective only upon the exact-byte binary upload, CI PASS and reviewed PR merge."
 }
