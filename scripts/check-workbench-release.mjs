@@ -63,7 +63,8 @@ const isPost=process.argv.includes('--dist');
 const outBytes=isPost && existsSync(outName)?readFileSync(outName):null;
 const names=existsSync(downloadRoot)?readdirSync(downloadRoot).filter(name=>statSync(downloadRoot+'/'+name).isFile()):[];
 if(process.argv.includes('--self-test')){
-  assert.deepEqual(validate(meta,null,null,[]),[],'known safe staging baseline');
+  const staging={...meta,status:'STAGED_PENDING_BINARY',public_url:null};
+  assert.deepEqual(validate(staging,null,null,[]),[],'known safe staging baseline');
   const mock=Buffer.from('tampered bytes');
   assert(validate({...meta,status:'PUBLISHED',public_url:'https://tenirlabs.cc'+meta.public_path,manual_approval_reference:'owner-approval'},mock,mock,[meta.filename]).some(x=>x.includes('differs')),'reject modified archive');
   assert(validate(meta,mock,null,[meta.filename]).some(x=>x.includes('accidentally shipped')),'reject premature download');
