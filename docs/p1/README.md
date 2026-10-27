@@ -1,17 +1,17 @@
 # P1 — Portfolio reconciliation decision package
 
-**State:** A1 + A2 **approved by project-owner instruction in this conversation**, decision note dated 2026-10-25; implementation and release gates remain pending. **As-of:** 2026-10-25.  
-**Website baseline:** [main 408eb2bff693](https://github.com/skiredj-prog/skiredj-prog.github.io/commit/408eb2bff6932c4ad7e43bbd0e44ffef4ff2960a).  
+**State:** A1 + A2 **approved by project-owner instruction in this conversation**, decision note dated 2026-10-25; implementation and release gates remain pending. **As-of:** 2026-10-25.
+**Website baseline:** [main 408eb2bff693](https://github.com/skiredj-prog/skiredj-prog.github.io/commit/408eb2bff6932c4ad7e43bbd0e44ffef4ff2960a).
 **No merge, deployment, product launch or visual redesign authorized by this documentation.**
 
-1. [Canonical portfolio map](./PORTFOLIO_MAP.md) — 11 entries covering **nine client-facing fields** (pain, use case, function, inputs, output, relationships, maturity/deployment, non-claims, next step) plus two internal governance fields (**source of truth and owner**).
+1. [P1 portfolio classification baseline](./PORTFOLIO_MAP.md) — 11 historical classification entries covering **nine client-facing fields** (pain, use case, function, inputs, output, relationships, maturity/deployment, non-claims, next step) plus two internal governance fields (**source of truth and owner**). It is not a replacement for the 14-profile rendered catalogue in `src/data/portfolio.ts`.
 2. [PR reconciliation register](./PR_RECONCILIATION.md) — #13, #15, #21, #22, #23; disposition proposal, evidence, collisions, gates, approval states.
 3. **Approval provenance:** the project owner explicitly wrote `A1 and A2 appeoved` in the current project conversation on 2026-10-25. This register captures that direction. A separately authenticated GitHub approval/sign-off, named delegates, deployment approval and release gate are **not yet recorded**. Preparing draft implementation PRs is allowed; merging, closing, publishing and redesign remain independently gated.
 
 ## P1 — Current Status (source-verified baseline)
 
 - **Baseline review:** [PR #24](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/24) (draft; documentation only), with the product map, PR register and this decision package.
-- **Coverage:** 11/11 portfolio entries now contain **9 page fields + source/owner governance metadata**; 5/5 selected PRs have **proposed** dispositions; **0 merges or closures were executed by P1**.
+- **Coverage:** 11/11 P1 baseline entries contain **9 page fields + source/owner governance metadata**; the rendered catalogue separately contains 14 profile IDs and three hubs; 5/5 selected PRs have **proposed** dispositions; **0 merges or closures were executed by P1**.
 - **Evidence-backed discrepancy:** GitHub [TENIR-Gov v5.7.0](https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0) published 2026-10-24; main website status remains at 5.6.0.
 - **Pending verification:** live website deployment equivalence, formal product/approval owners and canonical source revisions for X-Ray, Translation Studio, REG-ARCH and the named Labs experiences.
 - **Review state:** A1 + A2 **approved by owner direction, recorded here**; product-source ownership assignments, implementation and release/deployment remain unverified and separately gated. This is not a constitutional amendment or authorization to publish.

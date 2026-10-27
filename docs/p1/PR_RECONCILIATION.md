@@ -1,9 +1,9 @@
 # TENIR Labs — P1 pull-request reconciliation register (review candidate)
 
-**Register ID:** P1-PRS-20261025  
-**Verified:** 2026-10-25 UTC, website main [408eb2bff693](https://github.com/skiredj-prog/skiredj-prog.github.io/commit/408eb2bff6932c4ad7e43bbd0e44ffef4ff2960a)  
-**State:** **A2 dispositions APPROVED by project owner in this conversation on 2026-10-25.** No PR has been merged, closed or published by this approval. Individual PR actions still require safety checks and separately recorded authorization.  
-**Scope:** Website PRs #13, #15, #21, #22 and #23. Based on GitHub PR metadata and unified diffs, not solely PR descriptions.  
+**Register ID:** P1-PRS-20261025
+**Verified:** 2026-10-25 UTC, website main [408eb2bff693](https://github.com/skiredj-prog/skiredj-prog.github.io/commit/408eb2bff6932c4ad7e43bbd0e44ffef4ff2960a)
+**State:** **A2 dispositions APPROVED by project owner in this conversation on 2026-10-25.** No PR has been merged, closed or published by this approval. Individual PR actions still require safety checks and separately recorded authorization.
+**Scope:** Website PRs #13, #15, #21, #22 and #23. Based on GitHub PR metadata and unified diffs, not solely PR descriptions.
 **Source/reviewer custody:** Project-owner A2 instruction explicitly recorded in chat (2026-10-25); authenticated GitHub sign-off, second reviewer, accountable delegates and release approval remain open.
 
 ## A2-approved disposition matrix (approval of plan, not execution)

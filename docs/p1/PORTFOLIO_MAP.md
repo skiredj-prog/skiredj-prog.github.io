@@ -1,11 +1,19 @@
-# TENIR Labs — P1 canonical portfolio map (review candidate)
+# TENIR Labs — P1 portfolio classification baseline (review candidate)
 
-**Register ID:** P1-PORTFOLIO-20261025  
-**As-of:** 2026-10-25 UTC  
-**Baseline website main:** [408eb2bff693](https://github.com/skiredj-prog/skiredj-prog.github.io/commit/408eb2bff6932c4ad7e43bbd0e44ffef4ff2960a)  
-**State:** A1 **owner-approved as portfolio classification and nine-field content baseline** on 2026-10-25 by explicit instruction in current project conversation; **not normative, not a product-source ratification, not deployed**. Source custody and role ownership gaps remain outstanding.  
-**Scope:** Product/offer identity, commercial entry paths, maturity and limitations. It does not supersede TENIR doctrine, REG RFCs, REG-ARCH authoritative specifications, code or evidence records.  
+**Register ID:** P1-PORTFOLIO-20261025
+**As-of:** 2026-10-25 UTC
+**Baseline website main:** [408eb2bff693](https://github.com/skiredj-prog/skiredj-prog.github.io/commit/408eb2bff6932c4ad7e43bbd0e44ffef4ff2960a)
+**State:** A1 **owner-approved as a historical portfolio classification and nine-field content baseline** on 2026-10-25 by explicit instruction in current project conversation; **not the current rendered catalogue, not normative, not a product-source ratification, not deployed**. Source custody and role ownership gaps remain outstanding.
+**Scope:** Product/offer identity, commercial entry paths, maturity and limitations. It does not supersede TENIR doctrine, REG RFCs, REG-ARCH authoritative specifications, code or evidence records.
 **Source custody:** GitHub repository owner skiredj-prog is verifiable. **Accountable product owners and the final approving authority are not formally assigned in the reviewed public sources.** Each entry therefore distinguishes custodianship from pending ownership ratification.
+
+## Relationship to the rendered catalogue
+
+This document records the P1 decision baseline as-of 2026-10-25. It is deliberately **not** the canonical runtime catalogue. The rendered site catalogue is defined by `src/data/portfolio.ts` and currently contains 14 profile IDs (`diagnostic`, `prevent`, `prepare`, `explorer`, `discovery`, `mediation`, `xray`, `translation`, `gov`, `conformance`, `reg-arch`, `technical`, `experiences`, `control-tower`) plus three hubs.
+
+The two models have different purposes and counts: this P1 baseline contains 11 classification entries, while the rendered catalogue contains 14 public profiles. No identity-level mapping, route mapping or revision mapping is asserted by this document. Until such a mapping is reviewed, this file must be cited as a historical decision baseline, not as the current portfolio register.
+
+In particular, the current rendered X-Ray profile is **Prototype X-Ray v0.2**. Any reference in the P1 baseline to another X-Ray revision must be treated as an unresolved historical discrepancy, not as the current public version.
 
 ## Rules of interpretation
 
