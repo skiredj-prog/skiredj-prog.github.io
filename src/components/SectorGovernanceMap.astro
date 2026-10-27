@@ -6,7 +6,7 @@ const fr = locale === 'fr';
 const id = sector.id;
 ---
 
-<section class="sector-map" aria-labelledby={`${id}-sector-map-title`}>
+<section id={id} class="sector-map" aria-labelledby={`${id}-sector-map-title`}>
   <div class="sector-map-header">
     <div>
       <p class="eyebrow">{fr ? 'Carte sectorielle maître' : 'Master sector map'}</p>

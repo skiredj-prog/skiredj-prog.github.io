@@ -34,28 +34,46 @@ const entryPoints = fr ? [
 
 ---
 <div class="landing">
-  <section class="landing-hero" aria-labelledby="home-title" data-hero data-locale={locale}>
+  <section class="landing-hero guided-hero" aria-labelledby="home-title" data-hero data-locale={locale}>
     <div class="hero-copy">
-      <p class="eyebrow"><span class="status-dot"></span> {fr ? 'Responsabilité du marché' : 'Market responsibility'}</p>
-      <h1 id="home-title"><span data-hero-opening>{fr ? 'Le marché vend' : 'The market sells'}</span><br /><em data-hero-emphasis>{fr ? 'l’autonomie.' : 'autonomy.'}</em></h1>
-      <p class="hero-lead">{fr ? 'Un agent peut poursuivre l’objectif approuvé. Si une crise survient, qui rend compte de ses conséquences — et avec quelles preuves ?' : 'An agent can pursue its approved objective. If a crisis follows, who accounts for the consequences — and with what evidence?'} <span data-hero-body>{fr ? 'Qui promet ? Qui autorise ? Qui peut prouver ?' : 'Who promises? Who authorizes? Who can prove?'}</span></p>
+      <p class="eyebrow"><span class="status-dot"></span> {fr ? 'TENIR Labs · gouverner les conséquences' : 'TENIR Labs · governing consequences'}</p>
+      <h1 id="home-title">{fr ? 'Quand une décision produit un effet,' : 'When a decision creates an effect,'}<br /><em>{fr ? 'qui peut encore répondre ?' : 'who can still answer for it?'}</em></h1>
+      <p class="hero-lead">{fr ? 'TENIR relie la promesse, l’action, l’effet et la preuve. Si une crise survient, nous aidons à voir ce qui est établi, ce qui reste inconnu et quelle décision peut encore être prise.' : 'TENIR connects the promise, the action, the effect and the evidence. If a crisis follows, we help make clear what is established, what remains unknown and which decision is still possible.'}</p>
       <div class="actions">
-        <a class="btn btn-primary" href={path('cas','cases')}>{fr ? 'Explorer les cas' : 'Explore the cases'} <span aria-hidden="true">→</span></a>
-        <a class="btn btn-quiet" href={path('pourquoi-maintenant','why-now')}>{fr ? 'Comprendre le déplacement' : 'Understand the shift'} <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-primary" href={path('cas','cases')}>{fr ? 'Explorer les cas et les secteurs' : 'Explore the cases and sectors'} <span aria-hidden="true">→</span></a>
+        <a class="btn btn-quiet" href={path('pourquoi-maintenant','why-now')}>{fr ? 'Comprendre le problème' : 'Understand the problem'} <span aria-hidden="true">↗</span></a>
       </div>
     </div>
-    <aside class="home-curiosity" aria-labelledby="curiosity-title">
-      <p class="eyebrow">AI Exposure X-Ray</p>
-      <h2 id="curiosity-title">{fr ? 'L’IA est peut-être' : 'AI may already be'}<br /><em>{fr ? 'déjà là.' : 'part of the picture.'}</em></h2>
-      <p>{fr ? 'Un compte rendu automatique. Une réponse suggérée. Un document classé. Derrière ces gestes pratiques, quelles informations circulent ?' : 'An automatic summary. A suggested reply. A document sorted. What information travels behind these everyday shortcuts?'}</p>
-      <a class="btn" href={path('portfolio/xray')+'#explorer'}>{fr ? 'Explorer trois exemples' : 'Explore three examples'} <span aria-hidden="true">→</span></a>
-      <small>{fr ? 'Exemples illustratifs · sans inscription · à votre rythme' : 'Illustrative examples · no sign-up · at your own pace'}</small>
+    <aside class="home-curiosity guided-hero-value" aria-labelledby="curiosity-title">
+      <p class="eyebrow">{fr ? 'La valeur, en pratique' : 'The value, in practice'}</p>
+      <h2 id="curiosity-title">{fr ? 'Avant de conclure,' : 'Before concluding,'}<br /><em>{fr ? 'savoir ce que l’on sait.' : 'know what you know.'}</em></h2>
+      <ul class="hero-value-list"><li>{fr ? 'Relier chaque affirmation à sa source.' : 'Link each claim to its source.'}</li><li>{fr ? 'Arrêter une reprise quand l’état est inconnu.' : 'Stop a retry when the state is unknown.'}</li><li>{fr ? 'Donner à la personne responsable une suite praticable.' : 'Give the accountable person a practical next step.'}</li></ul>
+      <small>{fr ? 'Pas une promesse d’autonomie. Un cadre pour garder la main.' : 'Not a promise of autonomy. A framework for keeping control.'}</small>
     </aside>
   </section>
-  <section class="home-principles" aria-label={fr ? 'Ce qui guide TENIR' : 'What guides TENIR'}>
-    <div><h2>{fr ? 'Le contexte avant la conclusion.' : 'Context before conclusions.'}</h2><p>{fr ? 'Comprendre ce qui se joue, ce qui compte et ce qui doit être préservé.' : 'Understand what is at stake, what matters and what must be preserved.'}</p></div>
-    <div><h2>{fr ? 'Des constats reliés aux sources.' : 'Findings linked to sources.'}</h2><p>{fr ? 'Distinguer les faits, les interprétations et ce qui reste inconnu.' : 'Distinguish facts, interpretations and what remains unknown.'}</p></div>
-    <div><h2>{fr ? 'Pouvoir encore choisir.' : 'Keep choices open.'}</h2><p>{fr ? 'Examiner les conséquences et les possibilités de reprise avant de s’engager.' : 'Examine consequences and ways to recover before committing.'}</p></div>
+  <section class="home-orientation" aria-labelledby="orientation-title">
+    <div class="section-heading"><div><p class="eyebrow">{fr ? 'Commencer ici' : 'Start here'}</p><h2 id="orientation-title">{fr ? 'Vous cherchez quoi, exactement ?' : 'What are you trying to do?'}</h2></div><p>{fr ? 'Choisissez une situation. Le site vous conduit ensuite vers le cas, le secteur et la suite adaptés.' : 'Choose a situation. The site then leads you to the relevant case, sector and next step.'}</p></div>
+    <div class="home-orientation-grid">
+      <a class="orientation-card" href={path('pourquoi-maintenant','why-now')}><span class="role">01 · {fr ? 'Comprendre' : 'Understand'}</span><h3>{fr ? 'Je veux comprendre le problème.' : 'I want to understand the problem.'}</h3><p>{fr ? 'Pourquoi la responsabilité se disperse-t-elle entre fournisseur, intégrateur, équipe métier et personne impactée ?' : 'Why does responsibility spread across vendors, integrators, business teams and affected people?'}</p><span class="text-link">{fr ? 'Lire la thèse' : 'Read the thesis'} →</span></a>
+      <a class="orientation-card" href={path('cas','cases')}><span class="role">02 · {fr ? 'Examiner' : 'Examine'}</span><h3>{fr ? 'J’ai un cas dans mon secteur.' : 'I have a case in my sector.'}</h3><p>{fr ? 'Commencez par une séquence, les joueurs, l’impact et la preuve disponible.' : 'Start with the sequence, the players, the impact and the available evidence.'}</p><span class="text-link">{fr ? 'Voir les cas' : 'See the cases'} →</span></a>
+      <a class="orientation-card" href={fr ? '/parcours/concevoir/' : '/en/start/build/'}><span class="role">03 · {fr ? 'Préparer' : 'Prepare'}</span><h3>{fr ? 'Je prépare une action ou un agent.' : 'I am preparing an action or agent.'}</h3><p>{fr ? 'Nommer l’action, ses limites, son autorité et la preuve attendue avant de la laisser agir.' : 'Name the action, its limits, authority and expected evidence before letting it act.'}</p><span class="text-link">{fr ? 'Préparer l’examen' : 'Prepare the examination'} →</span></a>
+    </div>
+  </section>
+  <section class="home-industries" aria-labelledby="industries-title">
+    <div class="section-heading"><div><p class="eyebrow">{fr ? 'Industries et situations' : 'Industries and situations'}</p><h2 id="industries-title">{fr ? 'Où cela devient concret.' : 'Where it becomes concrete.'}</h2></div><a class="text-link" href={path('cas','cases')}>{fr ? 'Tous les cas et les cartes' : 'All cases and maps'} →</a></div>
+    <div class="home-industry-grid">
+      <a class="industry-card industry-card-featured" href={path('cas','cases')+'#banque-assurance'}><span class="role">{fr ? 'Banque · assurance · paiement' : 'Banking · insurance · payments'}</span><h3>{fr ? 'Un virement est autorisé. La confirmation disparaît.' : 'A transfer is authorized. Confirmation disappears.'}</h3><p>{fr ? 'Voir la séquence, les joueurs, le HOLD et la réconciliation avant toute reprise.' : 'See the sequence, players, HOLD and reconciliation before any retry.'}</p><span class="text-link">{fr ? 'Ouvrir la carte bancaire' : 'Open the banking map'} →</span></a>
+      <a class="industry-card" href={path('cas','cases')+'#transport-mobilite'}><span class="role">{fr ? 'Transport · mobilité critique' : 'Transport · critical mobility'}</span><h3>{fr ? 'Une trajectoire doit changer. L’état réel est incertain.' : 'A trajectory must change. The actual state is uncertain.'}</h3><p>{fr ? 'Comprendre l’escalade, la procédure dégradée et la responsabilité de l’opérateur.' : 'Understand escalation, degraded operation and operator accountability.'}</p><span class="text-link">{fr ? 'Ouvrir la carte transport' : 'Open the transport map'} →</span></a>
+      <a class="industry-card" href={path('cas','cases')}><span class="role">{fr ? 'Service client · intégration IA' : 'Customer service · AI integration'}</span><h3>{fr ? 'Une réponse devient une promesse.' : 'An answer becomes a promise.'}</h3><p>{fr ? 'Lire le cas Air Canada et distinguer le fait documenté de la matrice d’analyse.' : 'Read the Air Canada case and distinguish documented fact from analysis matrix.'}</p><span class="text-link">{fr ? 'Lire le cas sourcé' : 'Read the sourced case'} →</span></a>
+    </div>
+  </section>
+  <section class="home-products-demos" aria-labelledby="products-demos-title">
+    <div class="section-heading"><div><p class="eyebrow">{fr ? 'Produits et démonstrations' : 'Products and demos'}</p><h2 id="products-demos-title">{fr ? 'Voir ce qui existe déjà.' : 'See what already exists.'}</h2></div><a class="text-link" href={path('portfolio/products')}>{fr ? 'Ouvrir le portefeuille' : 'Open the portfolio'} →</a></div>
+    <div class="home-product-grid">
+      <a class="product-card" href={path('portfolio/diagnostic')}><span class="role">{fr ? 'Offre · cadrage' : 'Offer · scoping'}</span><h3>{fr ? 'Diagnostic des frontières d’exécution' : 'Execution Boundary Diagnostic'}</h3><p>{fr ? 'Un flux critique, ses responsabilités, ses inconnues et la prochaine décision.' : 'One critical flow, its responsibilities, unknowns and next decision.'}</p><span class="text-link">{fr ? 'Voir le livrable' : 'See the deliverable'} →</span></a>
+      <a class="product-card" href={path('portfolio/gov')}><span class="role">{fr ? 'Logiciel · bêta bornée' : 'Software · bounded beta'}</span><h3>TENIR-Gov v5.7.0</h3><p>{fr ? 'Gouvernance runtime mono-hôte, sources publiques et limites explicites.' : 'Single-host runtime governance, public sources and explicit limitations.'}</p><span class="text-link">{fr ? 'Examiner le logiciel' : 'Inspect the software'} →</span></a>
+      <a class="product-card" href={path('portfolio/demos')}><span class="role">{fr ? 'Données fictives · sans effet réel' : 'Fictional data · no live effect'}</span><h3>{fr ? 'Scénarios et Control Tower' : 'Scenarios and Control Tower'}</h3><p>{fr ? 'Voir HOLD, résultat inconnu, doublon et réconciliation dans des démonstrations inspectables.' : 'See HOLD, unknown outcomes, duplicates and reconciliation in inspectable demos.'}</p><span class="text-link">{fr ? 'Lancer une démo' : 'Launch a demo'} →</span></a>
+    </div>
   </section>
   <section class="landing-section" aria-labelledby="responsibility-title">
     <div class="section-heading"><div><p class="eyebrow">{fr ? 'La question centrale' : 'The central question'}</p><h2 id="responsibility-title">{fr ? 'Tout le monde veut l’agent. Qui répond de ce qu’il fait ?' : 'Everyone wants the agent. Who answers for what it does?'}</h2></div><p>{fr ? 'Une action traverse plusieurs promesses, mais la conséquence reste unique pour la personne qui la subit.' : 'An action crosses several promises, but the consequence remains singular for the person who bears it.'}</p></div>

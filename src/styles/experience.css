@@ -515,3 +515,23 @@ html:not(.js) [role="tablist"],html:not(.js) [data-walk-next] { display: none; }
 .home-offer-link{font-size:.87rem;font-weight:650;color:var(--accent)}
 @media(max-width:1020px){.home-offer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.home-offer-map-heading{display:block}.home-offer-map-heading>p{margin-top:.7rem}.home-offer-grid{grid-template-columns:1fr}.home-offer-item{padding:1rem;gap:.25rem}.home-offer-item p{margin-bottom:.3rem}}
+
+/* Guided homepage: problem -> cases/sectors -> products/demos -> next step */
+.guided-hero .hero-lead { max-width: 42rem; }
+.guided-hero-value { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.hero-value-list { list-style: none; margin: 1.2rem 0; padding: 0; display: grid; gap: .8rem; }
+.hero-value-list li { border-top: 1px solid var(--line); padding-top: .75rem; font-weight: 600; }
+.home-orientation, .home-industries, .home-products-demos { padding: 3.4rem 0 0; }
+.home-orientation-grid, .home-industry-grid, .home-product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.orientation-card, .industry-card, .product-card { display: flex; flex-direction: column; min-height: 17rem; padding: 1.25rem; border: 1px solid var(--line); background: var(--bg-raised); color: inherit; text-decoration: none; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+.orientation-card:hover, .industry-card:hover, .product-card:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--bg); }
+.orientation-card h3, .industry-card h3, .product-card h3 { margin: .8rem 0 .65rem; font-size: 1.2rem; line-height: 1.12; }
+.orientation-card p, .industry-card p, .product-card p { margin: 0; color: var(--muted); line-height: 1.55; }
+.orientation-card .text-link, .industry-card .text-link, .product-card .text-link { margin-top: auto; padding-top: 1.3rem; font-weight: 700; }
+.home-industries { border-top: 1px solid var(--line); margin-top: 3.5rem; }
+.industry-card-featured { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.industry-card-featured p, .industry-card-featured .role { color: var(--muted); }
+.industry-card-featured:hover { background: var(--ink); border-color: var(--accent); }
+.home-products-demos { border-top: 1px solid var(--line); margin-top: 3.5rem; }
+@media (max-width: 900px) { .home-orientation-grid, .home-industry-grid, .home-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .home-orientation, .home-industries, .home-products-demos { padding-top: 2.3rem; } .home-orientation-grid, .home-industry-grid, .home-product-grid { grid-template-columns: 1fr; } .orientation-card, .industry-card, .product-card { min-height: 14rem; } }
