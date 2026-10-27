@@ -3,7 +3,7 @@
 **État :** revue P2 — branche de consolidation, aucune fusion automatique vers `main`  
 **Dernière vérification GitHub :** 27 octobre 2026  
 **Branche auditée :** `feat/responsibility-market-editorial-20261026`  
-**HEAD audité :** `48f7338`  
+**HEAD audité :** `6da809e` — inclut les contrôles P2 partagés et la matrice présente
 **Référence de production :** `main` / `c62fca6`
 
 Cette matrice est la source de vérité opérationnelle pour relier le parcours public du site aux produits, versions, artefacts réellement distribuables et pull requests qui les gouvernent. Une CI verte ne vaut pas, à elle seule, autorisation de publication ni preuve d’équivalence avec le site visible.
@@ -23,7 +23,7 @@ Sinon, le site doit employer un statut borné : `Working Draft`, `Prototype`, `P
 
 | Domaine public | Route / surface | Statut publiable actuel | Source de vérité | Artefact / preuve | PR ou gate | Décision |
 |---|---|---|---|---|---|---|
-| Éditorial responsabilité du marché | `/pourquoi-maintenant/`, `/acteurs/`, `/cas/`, `/apprendre/` et équivalents EN | Contenu éditorial en revue, branche poussée | Branche `feat/responsibility-market-editorial-20261026` | Build Astro, liens, médias versionnés, cartes FR/EN | Commit `48f7338` | **GO pour revue ; HOLD pour fusion** |
+| Éditorial responsabilité du marché | `/pourquoi-maintenant/`, `/acteurs/`, `/cas/`, `/apprendre/` et équivalents EN | Contenu éditorial en revue, contrôles P2 présents | Branche `feat/responsibility-market-editorial-20261026` | Build Astro, liens, assets, contrôles P2 responsive/éditorial | HEAD `6da809e` | **GO pour revue ; HOLD pour fusion** |
 | Navigation FR/EN | Menus `Vos besoins / Your needs` et liens produits | CI verte mais PR non mergeable | PR #23 | `build-links-and-claims: SUCCESS`, merge state `DIRTY` | [PR #23](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/23) | **HOLD** — résoudre la base/convergence avant fusion |
 | Carte du portefeuille | Pages Products & Services / Portfolio FR/EN | Documentation P1 en draft | PR #24 et `src/data/portfolio.ts` | 11 entrées, champs de maturité, limites, sources et propriétaires | [PR #24](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/24) | **Consolider puis revue** — documentation avant UI concurrente |
 | TENIR-Gov runtime | `/statut/` et `/en/status/` | Release externe v5.7.0 ; statut site à aligner | Release GitHub `tenir_governance v5.7.0` | Scope mono-hôte borné ; pas de C3 ; pas d’effet externe exactly-once revendiqué | [PR #25](https://github.com/skiredj-prog/skiredj-prog.github.io/pull/25) | **Revue puis fusion possible** — CI verte, draft, autorisation humaine requise |
