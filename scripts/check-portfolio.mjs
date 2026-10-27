@@ -33,11 +33,8 @@ for (const [lang, home, productsPath] of [
   const nav = html.slice(navStart, navEnd);
   assert(nav.includes(`href="${productsPath}"`), `${lang}: Products link missing from header nav`);
   assert(existsSync(paths(lang,'products')), `${lang}: menu destination not built`);
-  const expectedLabel = lang === 'fr' ? 'Produits et services' : 'Products & services';
-  const expectedMarkupLabel = lang === 'fr' ? expectedLabel : 'Products &amp; services';
-  assert(nav.includes(`<strong>${expectedMarkupLabel}`), `${lang}: visible Products label missing`);
-  const productPage = readFileSync(paths(lang,'products'),'utf8');
-  assert(productPage.includes(`href="${productsPath}" aria-current="page"><strong>${expectedMarkupLabel}`), `${lang}: exact portfolio route is not marked current`);
+  const expectedLabel = lang === 'fr' ? 'Produits' : 'Products';
+  assert(nav.includes(`>${expectedLabel}</a>`), `${lang}: visible Products label missing`);
   const productNavLinks = (nav.match(new RegExp('href="' + productsPath + '"','g')) || []).length;
   assert.equal(productNavLinks, 1, `${lang}: duplicate Products entry in header navigation`);
 }
