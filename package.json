@@ -15,8 +15,7 @@
     "check:assets:unit": "node --experimental-strip-types scripts/check-asset-registry.mjs --self-test",
     "check:assets:remote": "node --experimental-strip-types scripts/check-asset-registry.mjs --remote",
     "check:workbench-release": "node scripts/check-workbench-release.mjs",
-    "check:workbench-release:unit": "node scripts/check-workbench-release.mjs --self-test",
-    "check:branch-whitespace": "node scripts/check-branch-whitespace.mjs"
+    "check:workbench-release:unit": "node scripts/check-workbench-release.mjs --self-test"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.8",
