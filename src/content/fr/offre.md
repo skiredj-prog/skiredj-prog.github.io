@@ -12,15 +12,22 @@ sources: proposition d’offre du 20 octobre 2026 ; format et charge à confirme
 
 <p><strong>Pour un flux agentique à effet externe :</strong> le <a href="/diagnostic-execution/">REG Execution Boundary Diagnostic</a> est notre proposition spécialisée pour analyser doublons, interruptions, résultats UNKNOWN et réconciliation. Ce parcours est distinct du diagnostic documentaire général présenté ci-dessous ; sa durée et son prix restent sur devis après cadrage.</p>
 
-## La promesse
+## Une question, des pièces, une suite à décider
 
-<p>Votre agent peut déclencher un paiement, modifier une donnée ou envoyer une commande. Qu’est-ce qui l’autorise ? Qu’est-ce qui doit l’arrêter ? Que faire lorsque la réponse manque ?</p>
+<p>Par exemple, un agent a envoyé une demande et la confirmation manque. Avant de recommencer, vous souhaitez savoir ce qui est établi, ce qui reste inconnu et qui peut vérifier la suite. Cette situation est illustrative.</p>
 
-<p>Avec votre équipe, nous examinons une action précise à partir des règles, documents et traces disponibles. Vous repartez avec une fiche de diagnostic qui distingue les faits établis, les inconnues et le prochain contrôle à vérifier, avec une responsabilité proposée et un critère observable.</p>
+<p><strong>Vous apportez</strong> une action, une question et les règles, documents ou traces disponibles. <strong>Nous examinons ensemble</strong> ce qui autorise l’action, ce qui a été envoyé et ce qui confirme réellement le résultat.</p>
+
+<p><strong>Vous recevez</strong> une fiche sourcée, des annexes courtes et jusqu’à trois priorités. Chaque priorité propose un contrôle à vérifier, une responsabilité à confirmer et un critère observable. Les informations manquantes restent explicites.</p>
 
 <p><strong>La décision préparée.</strong> Les éléments disponibles suffisent-ils pour poursuivre le projet, faut-il obtenir une information supplémentaire, ou faut-il préparer un essai ciblé ? Toute décision opérationnelle reste prise par le responsable compétent du client.</p>
 
-<p>Lorsqu’un dossier nomme PASS, FLAG, HOLD ou HARD_VETO, ce sont des verdicts d’exécution. Ils restent un champ distinct des postures NORMAL, CAUTION et HOLDING-FIRST. La membrane, dans le cadre TENIR, est la ligne qui tranche. Le diagnostic ne la remplace pas : il prépare une décision humaine, dans un périmètre écrit.</p>
+<div class="actions">
+  <a class="btn" href="/offre/exemple/">D’abord, voir une fiche simulée</a>
+  <a class="text-link" href="/contact/">Décrire une situation →</a>
+</div>
+
+<p>Le premier lien ouvre un exemple rédigé ; le second prépare un message à relire avant envoi. Le périmètre et le devis sont convenus avant le démarrage d’une mission.</p>
 
 ## Pour qui, et à quel moment
 
@@ -80,6 +87,8 @@ sources: proposition d’offre du 20 octobre 2026 ; format et charge à confirme
 <p>Une enveloppe initiale de deux à trois jours de travail prestataire, répartis sur une semaine après réception des éléments convenus, peut servir à chiffrer les premiers devis. Ce format reste à éprouver sur les premières missions. Il ne constitue pas un délai contractuel déjà garanti.</p>
 
 ## Ce que l’on examine
+
+<p>Lorsqu’un dossier nomme PASS, FLAG, HOLD ou HARD_VETO, ce sont des verdicts d’exécution. Ils restent un champ distinct des postures NORMAL, CAUTION et HOLDING-FIRST. La membrane, dans le cadre TENIR, est la ligne qui tranche. Le diagnostic ne la remplace pas : il prépare une décision humaine, dans un périmètre écrit.</p>
 
 <div class="table-scroll">
 <table>
