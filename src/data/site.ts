@@ -89,6 +89,7 @@ export const navGroups: Record<Locale, NavGroup[]> = {
         { slug: "architecture/demo", href: "/architecture/demo/", label: "Démonstration" },
         { slug: "architecture/interactive", href: "/architecture/interactive/", label: "Parcours interactif" },
         { slug: "architecture/drawing", href: "/architecture/drawing/", label: "Dessin illustratif" },
+        { slug: "demonstrations/journal", href: "/demonstrations/journal/", label: "Ce que le journal ne voit pas" },
       ],
     },
     {
@@ -150,6 +151,7 @@ export const navGroups: Record<Locale, NavGroup[]> = {
         { slug: "architecture/demo", href: "/en/architecture/demo/", label: "Demonstration" },
         { slug: "architecture/interactive", href: "/en/architecture/interactive/", label: "Interactive walkthrough" },
         { slug: "architecture/drawing", href: "/en/architecture/drawing/", label: "Illustrative drawing" },
+        { slug: "demos/log", href: "/en/demos/log/", label: "What the log cannot see" },
       ],
     },
     {
@@ -221,6 +223,7 @@ const frToEn: Record<string, string> = {
   cas: "/en/cases/",
   apprendre: "/en/learn/",
   rejouer: "/en/replay/",
+  "demonstrations/journal": "/en/demos/log/",
   offre: "/en/offer/",
   "diagnostic-execution": "/en/diagnostic-execution/",
   "offre/exemple": "/en/offer/example/",
