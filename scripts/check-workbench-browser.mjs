@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
-import { chromium } from 'playwright';
+const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.REPLAY_BROWSER_CHANNEL ? {channel:process.env.REPLAY_BROWSER_CHANNEL} : {})});
 try{
  for(const locale of ['fr','en']){
   const prefix=locale==='fr'?'':'/en';
@@ -9,7 +9,7 @@ try{
    const page=await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce'});
    const errors=[];
    page.on('pageerror',e=>errors.push(e.message));
-   const base='http://127.0.0.1:4173';
+   const base=process.env.REPLAY_BASE_URL || 'http://127.0.0.1:4173';
    const route=prefix+'/portfolio/workbench/';
    await page.goto(base+route,{waitUntil:'networkidle'});
    const headline=page.locator('.pf-detail-hero h2');

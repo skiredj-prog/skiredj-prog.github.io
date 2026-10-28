@@ -6,8 +6,8 @@ const publication=JSON.parse(readFileSync('data/workbench-publication.v1.json','
 const released=publication.status==='PUBLISHED';
 const wb=registry.historical_or_staged_assets.find(a=>a.asset_id==='workbench-private-candidate');
 assert(wb, 'PMO staged Workbench entry missing');
-assert.equal(wb.public_url,null, 'Private Workbench kit must not gain public artifact URL');
-assert.equal(wb.release_gate,'private_candidate_awaiting_release');
+assert.equal(wb.public_url,null, 'Consultation ZIP must not gain an unapproved download URL');
+assert.equal(wb.release_gate,'candidate_awaiting_release');
 assert.equal(wb.editorial_page?.classification,'public_information_only');
 assert.equal(wb.editorial_page?.has_runnable_embedded_kit,false);
 assert.equal(registry.assets.length,14,'Workbench overview must not add a fifteenth product');
@@ -36,7 +36,8 @@ for(const locale of ['fr','en']){
    assert(!html.includes('href="'+publication.public_path+'"'),locale+': premature ZIP download link');
  }
  assert(!html.includes('/workbench/output/'),locale+': unapproved embed of private dossier');
- assert(!html.includes('https://github.com/skiredj-prog/tenir-reg-demo'),locale+': private repo link leaked');
+ assert(!html.includes('https://github.com/skiredj-prog/tenir-reg-demo'),locale+': unapproved repository-to-download shortcut');
+ assert(!html.includes(locale==='fr'?'Le dépôt de développement reste privé':'The development repository stays private'),locale+': stale repository privacy claim');
  assert(sitemap.includes('https://tenirlabs.cc'+route),locale+': editorial route absent from sitemap');
 
  const demo=readFileSync('dist'+pref+'/portfolio/demos/index.html','utf8');
@@ -51,5 +52,5 @@ for(const locale of ['fr','en']){
  }
 }
 if(released) assert(existsSync('dist/downloads/TENIR-REG-public-consultation.zip'),'PUBLISHED archive absent from dist');
-else assert(!existsSync('dist/downloads/TENIR-REG-public-consultation.zip'),'Site unexpectedly packages private Workbench candidate');
+else assert(!existsSync('dist/downloads/TENIR-REG-public-consultation.zip'),'Site unexpectedly packages the gated consultation ZIP');
 console.log('PASS: FR/EN Workbench routes, PMO and distribution state '+publication.status+' validated without unapproved binary or false release claim.');
