@@ -1,6 +1,8 @@
 ---
 import { url, type Locale } from '../data/site';
 import { replayEvents } from '../data/actionReplay';
+import { replayReflections } from '../data/replayReflections';
+import ReplayReflection from './ReplayReflection.astro';
 import '../styles/action-replay.css';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -38,7 +40,7 @@ const outcomes = fr ? [
           <div class="replay-pieces"><h4>{fr ? 'Pièces disponibles' : 'Available evidence'}</h4><ul>{step.pieces.map(piece => <li>{piece}</li>)}</ul></div>
         </div>
         <p class="replay-impact">{step.impact}</p>
-        <details class="replay-question"><summary>{step.question}</summary><p>{step.answer}</p></details>
+        <details class="replay-question"><summary id={`replay-question-${step.id}`}>{step.question}</summary>{replayReflections[locale][step.id] ? <ReplayReflection locale={locale} eventId={step.id} reflection={replayReflections[locale][step.id]!} answer={step.answer} /> : <p>{step.answer}</p>}</details>
         {index === steps.length - 1 && <section class="replay-outcomes" aria-labelledby="replay-outcomes-title"><h4 id="replay-outcomes-title">{fr ? 'Trois termes, deux questions différentes' : 'Three terms, two different questions'}</h4><p>{fr ? 'Que peut-on établir ? Que fait-on ensuite ? Ici, l’effet est non démontré et la reprise reste en HOLD. ACCEPT ne remplace pas l’autorisation ALLOW.' : 'What can be established? What happens next? Here, the effect is not demonstrated and retry remains on HOLD. ACCEPT does not replace ALLOW authorization.'}</p><dl>{outcomes.map(([term, title, detail]) => <div><dt>{term}<span>{title}</span></dt><dd>{detail}</dd></div>)}</dl></section>}
       </article>)}
       <div class="replay-controls" data-replay-controls hidden><button type="button" class="btn" data-replay-prev>{fr ? 'Précédent' : 'Previous'}</button><button type="button" class="btn btn-primary" data-replay-next>{fr ? 'Suivant' : 'Next'} →</button></div>

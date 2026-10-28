@@ -3,16 +3,19 @@ on:
   pull_request:
     paths:
       - 'src/components/ActionReplay.astro'
+      - 'src/components/ReplayReflection.astro'
       - 'src/pages/rejouer.astro'
       - 'src/pages/en/replay.astro'
       - 'src/data/site.ts'
       - 'src/data/actionReplay.ts'
+      - 'src/data/replayReflections.ts'
       - 'src/styles/action-replay.css'
       - 'src/styles/experience.css'
       - 'src/styles/site.css'
       - 'src/scripts/site.ts'
       - 'src/layouts/Base.astro'
       - 'scripts/check-action-replay.mjs'
+      - 'scripts/check-replay-reflections.mjs'
       - 'scripts/check-replay-accessibility.mjs'
       - '.github/workflows/action-replay.yml'
 permissions:
@@ -38,3 +41,4 @@ jobs:
           trap 'kill $SERVER_PID' EXIT
           node scripts/check-action-replay.mjs
           node scripts/check-replay-accessibility.mjs
+          node scripts/check-replay-reflections.mjs

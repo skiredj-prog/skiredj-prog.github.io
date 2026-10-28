@@ -43,13 +43,18 @@ try {
       assert((await live.textContent()).startsWith(`2 / ${count}`));
       assert((await live.textContent()).includes('ALLOW'), 'The announcement must include the action status');
       assert(await steps.nth(1).evaluate(element => element === document.activeElement), 'Selecting an event must retain keyboard focus');
+      const reflection = panel.locator('[data-replay-reflection]');
+      if (await reflection.count()) {
+        await panel.locator('summary').click();
+        await reflection.locator('input[type="radio"]').first().check();
+      }
       const contrasts = await root.evaluate(element => {
         const parse = value => value.match(/[\d.]+/g)?.map(Number) || [];
         const luminance = channels => channels.slice(0, 3).reduce((sum, value, index) => {
           const s = value / 255;
           return sum + (s <= .04045 ? s / 12.92 : ((s + .055) / 1.055) ** 2.4) * [.2126, .7152, .0722][index];
         }, 0);
-        return [...element.querySelectorAll('.replay-action, .replay-knowledge .role, .replay-knowledge p, .replay-owner, .replay-impact, .replay-step')]
+        return [...element.querySelectorAll('.replay-action, .replay-knowledge .role, .replay-knowledge p, .replay-owner, .replay-impact, .replay-step, .replay-choice span, .replay-reflection legend, .replay-reflection p')]
           .filter(item => item.getClientRects().length)
           .map(item => {
             const style = getComputedStyle(item);

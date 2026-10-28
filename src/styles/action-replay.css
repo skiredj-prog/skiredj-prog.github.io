@@ -36,6 +36,13 @@
 .replay-page .replay-question { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 .replay-page .replay-question summary { cursor: pointer; color: var(--accent); font-weight: 600; }
 .replay-page .replay-question p { margin: .7rem 0 0; font-size: .95rem; }
+.replay-page .replay-reflection fieldset { border: 0; padding: 0; margin: .8rem 0 0; min-width: 0; }
+.replay-page .replay-reflection legend { padding: 0; margin-bottom: .5rem; color: var(--muted); font-size: .82rem; }
+.replay-page .replay-choice { display: flex; align-items: flex-start; gap: .6rem; min-height: 48px; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: 7px; cursor: pointer; font-size: .92rem; line-height: 1.45; }
+.replay-page .replay-choice + .replay-choice { margin-top: .4rem; }
+.replay-page .replay-choice:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.replay-page .replay-choice:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.replay-page .replay-choice input { flex: none; accent-color: var(--accent); width: 1rem; height: 1rem; margin: .2rem 0 0; }
 .replay-page .replay-controls { margin-top: 1rem; }
 .replay-page .replay-controls .btn:disabled { opacity: .45; cursor: default; }
 .replay-page .replay-outcomes { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: 1.3rem; }
