@@ -26,4 +26,6 @@ Validation locale du premier incrément : build Astro de 103 routes, 108 pages s
 
 ## Suite du sprint
 
+La revue indépendante du Sprint 1 a conclu « à corriger avant validation ». Les quatre P2 sont repris ici : titre désignant la demande envoyée, limite explicite de l’identifiant/réservation, récit intégral sans JavaScript et annonce des changements incluant le statut. Le correctif à six étapes reste séparément disponible dans PR48. Le contrôle complémentaire `scripts/check-replay-accessibility.mjs` est partagé entre les deux versions et le workflow surveille aussi les styles globaux et le script du site.
+
 Relire ce premier incrément avec le retour de la revue indépendante du Sprint 1. Évaluer la compréhension des termes et l’équilibre entre lecture courte et approfondissement avant clôture du Sprint 2.

@@ -20,7 +20,7 @@ const outcomes = fr ? [
 <section class="replay-page" aria-labelledby="replay-title">
   <header class="replay-hero">
     <p class="eyebrow">{fr ? 'Scénario bancaire · données fictives' : 'Banking scenario · fictional data'}</p>
-    <h2 id="replay-title">{fr ? 'Le virement est envoyé. La confirmation disparaît.' : 'The transfer is sent. Confirmation disappears.'}</h2>
+    <h2 id="replay-title">{fr ? 'La demande de virement a été envoyée. La confirmation disparaît.' : 'The transfer request was sent. Confirmation disappears.'}</h2>
     <p>{fr ? 'Une facture à régler, un agent chargé du paiement, puis un silence. Explorez ce que chacun sait et qui porte la suite. Aucune opération réelle n’est exécutée.' : 'An invoice to pay, an agent tasked with payment, then silence. Explore what each person knows and who owns the next step. No real operation is executed.'}</p>
   </header>
   <div class="replay-layout">
@@ -75,7 +75,7 @@ const outcomes = fr ? [
         if (selected.left < rail.left) timeline.scrollLeft -= rail.left - selected.left;
         else if (selected.right > rail.right) timeline.scrollLeft += selected.right - rail.right;
       }
-      if (announce) announcement.textContent = `${current + 1} / ${panels.length} · ${panels[current].querySelector('h3')?.textContent} · ${panels[current].querySelector('.role')?.textContent}`;
+      if (announce) announcement.textContent = `${current + 1} / ${panels.length} · ${panels[current].querySelector('h3')?.textContent} · ${panels[current].querySelector('[data-replay-status]')?.textContent} · ${panels[current].querySelector('.role')?.textContent} · ${panels[current].querySelector('.replay-action')?.textContent}`;
     };
     buttons.forEach((button, index) => button.addEventListener('click', () => show(index)));
     previous.addEventListener('click', () => show(current - 1));

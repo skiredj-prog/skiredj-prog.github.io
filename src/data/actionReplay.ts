@@ -41,7 +41,7 @@ export const replayEvents: Record<Locale, ReplayEvent[]> = {
     {
       id: 'reservation', label: 'Réservation', status: 'RÉSERVÉ', state: 'known',
       action: 'La tentative reçoit la référence V-042.',
-      knowledge: 'Le système local réserve cette référence et la relie à la facture. La banque n’a encore rien confirmé.',
+      knowledge: 'Le système local réserve cette référence et la relie à la facture. Cette réservation ne prouve ni la réception par la banque ni l’absence de double effet.',
       actors: ['Frontière TENIR', 'Service de paiement'], owner: 'Le service de paiement conserve le lien entre la demande et cette tentative.',
       pieces: ['Référence : V-042', 'Réservation locale', 'Lien avec la facture'],
       impact: 'Les vérifications suivantes peuvent porter sur la même opération.',
@@ -123,7 +123,7 @@ export const replayEvents: Record<Locale, ReplayEvent[]> = {
     {
       id: 'reservation', label: 'Reservation', status: 'RESERVED', state: 'known',
       action: 'The attempt receives reference V-042.',
-      knowledge: 'The local system reserves this reference and links it to the invoice. The bank has confirmed nothing yet.',
+      knowledge: 'The local system reserves this reference and links it to the invoice. This reservation proves neither receipt by the bank nor the absence of a duplicate effect.',
       actors: ['TENIR boundary', 'Payment service'], owner: 'The payment service keeps the link between the request and this attempt.',
       pieces: ['Reference: V-042', 'Local reservation', 'Invoice link'],
       impact: 'Later checks can refer to the same operation.',
