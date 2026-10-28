@@ -6,6 +6,8 @@ on:
       - 'src/pages/rejouer.astro'
       - 'src/pages/en/replay.astro'
       - 'src/data/site.ts'
+      - 'src/data/actionReplay.ts'
+      - 'src/styles/action-replay.css'
       - 'src/styles/experience.css'
       - 'src/layouts/Base.astro'
       - 'scripts/check-action-replay.mjs'

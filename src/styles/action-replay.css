@@ -1,0 +1,57 @@
+/* Scoped to the replay; other site journeys retain their layout. */
+.doc:has(.replay-page) { grid-template-columns: minmax(0, 1fr); }
+.doc:has(.replay-page) .prose { max-width: none; }
+.doc:has(.replay-page) .doc-head { margin-bottom: .5rem; padding-bottom: 0; border-bottom: 0; }
+.doc:has(.replay-page) .doc-head h1 { font-size: 1.6rem; margin: .4rem 0; }
+.doc:has(.replay-page) .doc-head .lede { font-size: .95rem; margin-top: .6rem; }
+.doc:has(.replay-page) .toc,
+.doc:has(.replay-page) .mobile-toc,
+.doc:has(.replay-page) .next-reading { display: none; }
+.replay-page { padding: 1rem 0 3rem; }
+.replay-page .replay-hero { max-width: 48rem; margin-bottom: 2rem; }
+.replay-page .replay-hero h2 { font: 500 clamp(2rem, 4vw, 3.5rem)/1.1 var(--serif); margin: 0; letter-spacing: -.025em; }
+.replay-page .replay-hero > p:last-child { font-size: 1.05rem; line-height: 1.6; }
+.replay-page .replay-layout { grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr); gap: 1.5rem; }
+.replay-page .replay-stage { min-width: 0; }
+.replay-page [hidden] { display: none; }
+.replay-page .replay-step { border-radius: 6px; }
+.replay-page .replay-step:focus-visible,
+.replay-page summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.replay-page .replay-event { padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 12px; background: var(--bg-raised); }
+.replay-page .replay-event + .replay-event { margin-top: 1.5rem; }
+.replay-page[data-replay-enhanced] .replay-event { margin-top: 0; }
+.replay-page .replay-meta { font-size: .72rem; }
+.replay-page .replay-event h3 { margin: 1.1rem 0 .6rem; font: 500 clamp(1.7rem, 3vw, 2.4rem)/1.15 var(--serif); }
+.replay-page .replay-action { font-size: 1.08rem; margin: 0 0 1rem; }
+.replay-page .replay-knowledge { border-left: 3px solid var(--accent); padding: .8rem 1rem; background: var(--accent-soft); }
+.replay-page .replay-knowledge .role { font-size: .68rem; color: var(--accent); }
+.replay-page .replay-knowledge p { margin: .4rem 0 0; }
+.replay-page .replay-context { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.4rem; }
+.replay-page .replay-context h4 { font-size: .85rem; margin: 0 0 .7rem; }
+.replay-page .replay-context ul { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; margin: 0; }
+.replay-page .replay-context li { border: 1px solid var(--line); border-radius: 6px; padding: .3rem .5rem; margin: 0; font-size: .8rem; }
+.replay-page .replay-owner { font-size: .88rem; line-height: 1.5; margin: .8rem 0 0; }
+.replay-page .replay-pieces { border: 0; padding: 0; }
+.replay-page .replay-impact { margin: 1.3rem 0 0; font-size: .95rem; }
+.replay-page .replay-question { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+.replay-page .replay-question summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+.replay-page .replay-question p { margin: .7rem 0 0; font-size: .95rem; }
+.replay-page .replay-controls { margin-top: 1rem; }
+.replay-page .replay-controls .btn:disabled { opacity: .45; cursor: default; }
+.replay-page .replay-outcomes { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: 1.3rem; }
+.replay-page .replay-outcomes h4 { margin: 0 0 .5rem; }
+.replay-page .replay-outcomes > p { font-size: .9rem; }
+.replay-page .replay-outcomes dl { margin: 1rem 0 0; }
+.replay-page .replay-outcomes dl > div + div { margin-top: 1rem; }
+.replay-page .replay-outcomes dt { color: var(--accent); font: 600 .75rem var(--mono); }
+.replay-page .replay-outcomes dt span { display: block; margin-top: .3rem; color: var(--ink); font: 600 .9rem var(--sans); }
+.replay-page .replay-outcomes dd { margin: .3rem 0 0; font-size: .9rem; color: var(--muted); }
+.replay-page .replay-announcement { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.replay-page:not([data-replay-enhanced]) .replay-layout { display: block; }
+@media (max-width: 720px) {
+  .replay-page .replay-layout { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+  .replay-page .replay-steps { min-width: 0; max-width: 100%; }
+  .replay-page .replay-context { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .replay-page .replay-controls { gap: .5rem; }
+  .replay-page .replay-meta { flex-wrap: wrap; }
+}
