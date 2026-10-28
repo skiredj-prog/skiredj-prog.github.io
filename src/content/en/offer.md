@@ -12,15 +12,22 @@ sources: offer proposal of 20 October 2026; format and effort to be confirmed in
 
 <p><strong>For one consequential agent-driven flow:</strong> the <a href="/en/diagnostic-execution/">REG Execution Boundary Diagnostic</a> focuses on duplicates, interruptions, UNKNOWN outcomes and reconciliation. This is distinct from the general document-based review below; scope, schedule and fees are determined in a written quotation.</p>
 
-## The promise
+## One question, its records, a next step to decide
 
-<p>Your agent can trigger a payment, change a record, or send an order. What authorizes it? What must stop it? What is to be done when the response is missing?</p>
+<p>For example, an agent dispatched a request and confirmation is missing. Before trying again, you want to know what is established, what remains unknown and who can check what happens next. This is an illustrative situation.</p>
 
-<p>With your team, we examine one precise action from the rules, documents, and traces that are available. You leave with a diagnostic sheet that separates established facts, unknowns, and the next control to check, with a proposed responsibility and an observable criterion.</p>
+<p><strong>You bring</strong> one action, a question and the rules, documents or traces available. <strong>We examine together</strong> what authorizes the action, what was dispatched and what actually confirms the outcome.</p>
+
+<p><strong>You receive</strong> a sourced sheet, short annexes and up to three priorities. Each priority proposes a control to check, an owner to confirm and an observable criterion. Missing information stays explicit.</p>
 
 <p><strong>The decision being prepared.</strong> Do the available elements suffice to continue the project, is further information required, or should a targeted trial be prepared? Every operational decision stays with the client’s competent owner.</p>
 
-<p>When a file names PASS, FLAG, HOLD, or HARD_VETO, those are execution verdicts. They stay a field apart from the postures NORMAL, CAUTION, and HOLDING-FIRST. In the TENIR frame, the membrane is the line that decides. The diagnostic does not replace it: it prepares a human decision, inside a written scope.</p>
+<div class="actions">
+  <a class="btn" href="/en/offer/example/">First, see a simulated sheet</a>
+  <a class="text-link" href="/en/contact/">Describe a situation →</a>
+</div>
+
+<p>The first link opens a written example; the second helps prepare a message to review before sending. Scope and fees are agreed before an engagement begins.</p>
 
 ## Who it is for, and when
 
@@ -80,6 +87,8 @@ sources: offer proposal of 20 October 2026; format and effort to be confirmed in
 <p>An initial envelope of two to three provider working days, spread over a week after the agreed material arrives, may be used to price the first quotes. This format still has to be tested on the first missions. It is not a contractual delay already guaranteed.</p>
 
 ## What is examined
+
+<p>When a file names PASS, FLAG, HOLD, or HARD_VETO, those are execution verdicts. They stay a field apart from the postures NORMAL, CAUTION, and HOLDING-FIRST. In the TENIR frame, the membrane is the line that decides. The diagnostic does not replace it: it prepares a human decision, inside a written scope.</p>
 
 <div class="table-scroll">
 <table>

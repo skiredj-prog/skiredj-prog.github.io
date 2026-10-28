@@ -8,13 +8,15 @@ sources: "TENIR Labs commercial proposal, 25 October 2026 · scope subject to qu
 
 ## One flow. One execution boundary. A qualified conclusion.
 
-An AI agent may propose a plausible decision yet leave an operation ambiguous: **was a command sent, was a reservation made, and did an external effect actually occur?**
+A refund request was dispatched. Confirmation does not arrive. Should you retry, wait or request a check? This fictional scenario introduces the question without making a real payment.
 
 The **REG Execution Boundary Diagnostic** examines **one critical flow**, its state transitions, hidden assumptions and what the available evidence can genuinely establish.
 
 **Deliverables:** a transition map, control and scenario matrices, a register of assumptions and unknowns, and a report distinguishing **acceptable within the tested scope**, **HOLD**, and **not demonstrated**. "Not demonstrated" is an acceptable result.
 
-[Discuss one flow →](/en/contact/) · [Open the fictional banking scenario →](/embeds/demonstration-bancaire.html)
+[Explore the fictional replay →](/en/replay/) · [Discuss one flow to examine →](/en/contact/)
+
+The replay is an educational illustration. For a real case, scope, available records, deliverables and commercial terms are agreed together before the engagement.
 
 ## Who it is for
 
@@ -61,8 +63,8 @@ Code changes, real provider integration, governor deployment and any production 
 
 Describe **the action**, its **external effect**, **the cost of duplication or unnecessary blocking**, and **what happens when confirmation is lost**. Please do not send passwords, named financial records or confidential operational documents in your initial message.
 
-[Qualify one flow →](/en/contact/) · [Read the general guided diagnostic offer →](/en/offer/) · [Inspect a fictional report →](/en/offer/example/)
+[Discuss one flow to examine →](/en/contact/) · [Read the general guided diagnostic offer →](/en/offer/) · [Inspect a fictional report →](/en/offer/example/)
 
 ## For a closer technical explanation
 
-The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. **This is currently an overview only: the offline kit is not downloadable from this website.** The banking demonstration is separate and fictional.
+The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. **This is currently an overview only: the offline kit is not downloadable from this website.** The [banking demonstration](/embeds/demonstration-bancaire.html) is separate and fictional, in French.

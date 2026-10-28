@@ -8,13 +8,15 @@ sources: "Pack commercial TENIR Labs du 25 octobre 2026 · proposition à qualif
 
 ## Un flux. Une frontière. Une conclusion vérifiable.
 
-Un agent IA peut produire une décision plausible tout en laissant une opération dans un état ambigu : **commande envoyée ou non, réservation créée ou non, effet exécuté ou non**.
+Une demande de remboursement a été envoyée. La confirmation n’arrive pas. Faut-il relancer, attendre ou demander une vérification ? Ce scénario fictif permet d’aborder la question sans effectuer de paiement réel.
 
 Le **REG Execution Boundary Diagnostic** examine **un seul flux critique**, ses transitions, ses hypothèses implicites et ce que les éléments accessibles permettent réellement de démontrer.
 
 **Vous recevez :** une cartographie des transitions, une matrice des contrôles et des scénarios examinés, un registre des hypothèses et des inconnues, puis un rapport qui indique si la revendication est **acceptable dans le périmètre testé**, en **HOLD**, ou **non démontrée**. L'issue peut légitimement être « non démontré ».
 
-[Présenter un flux pour qualification →](/contact/) · [Voir le scénario bancaire fictif →](/embeds/demonstration-bancaire.html)
+[Explorer le replay fictif →](/rejouer/) · [Parler d’un flux à examiner →](/contact/)
+
+Le replay est une illustration pédagogique. Pour un cas réel, le périmètre, les pièces accessibles, les livrables et les conditions commerciales sont définis ensemble avant la mission.
 
 ## À qui s'adresse ce diagnostic ?
 
@@ -61,8 +63,8 @@ Les modifications de code, la connexion à un fournisseur réel, le déploiement
 
 Il suffit de préciser **l'action concernée**, son **effet externe**, **le coût d'un doublon ou d'un blocage** et **ce qu'on observe en cas de réponse perdue**. N'envoyez aucun identifiant secret, donnée financière nominative ou document confidentiel lors du premier contact.
 
-[Demander la qualification du flux →](/contact/) · [Lire l'offre générale de diagnostic accompagné →](/offre/) · [Examiner un rapport fictif →](/offre/exemple/)
+[Parler d’un flux à examiner →](/contact/) · [Lire l'offre générale de diagnostic accompagné →](/offre/) · [Examiner un rapport fictif →](/offre/exemple/)
 
 ## Pour prolonger la lecture technique
 
-Le [TENIR/REG Diagnostic & Evidence Workbench](/portfolio/workbench/) présente comment un configurateur et un dossier synthétique signé aident à distinguer l'autorisation de l'effet externe. **Il s'agit pour l'instant d'une page explicative : le kit autonome n'est pas téléchargeable sur le site.** La démonstration bancaire reste un scénario distinct, fictif.
+Le [TENIR/REG Diagnostic & Evidence Workbench](/portfolio/workbench/) présente comment un configurateur et un dossier synthétique signé aident à distinguer l'autorisation de l'effet externe. **Il s'agit pour l'instant d'une page explicative : le kit autonome n'est pas téléchargeable sur le site.** La [démonstration bancaire](/embeds/demonstration-bancaire.html) reste un scénario distinct, fictif.
