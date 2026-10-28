@@ -14,7 +14,7 @@ try {
    await page.goto(server+prefix+'/',{waitUntil:'domcontentloaded'});
    await page.locator('#home-title').waitFor({state:'visible'});
    const hero=await page.locator('#home-title').innerText();
-   assert(hero.includes(locale==='fr'?'marché':'market'),locale+'/'+width+': no editorial headline');
+   assert(hero.includes(locale==='fr'?'répondre':'answer'),locale+'/'+width+': no responsibility headline');
    const positions=await page.evaluate(()=>({
      learning:document.querySelector('[aria-labelledby="responsibility-title"]')?.getBoundingClientRect().top,
      commerce:document.querySelector('.home-offer-map')?.getBoundingClientRect().top,
