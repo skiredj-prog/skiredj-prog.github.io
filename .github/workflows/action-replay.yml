@@ -4,12 +4,17 @@ on:
     paths:
       - 'src/components/ActionReplay.astro'
       - 'src/components/ReplayReflection.astro'
+      - 'src/components/CaptureLogDemo.astro'
+      - 'src/components/PortfolioPage.astro'
       - 'src/pages/rejouer.astro'
       - 'src/pages/en/replay.astro'
+      - 'src/pages/demonstrations/journal.astro'
+      - 'src/pages/en/demos/log.astro'
       - 'src/data/site.ts'
       - 'src/data/actionReplay.ts'
       - 'src/data/replayReflections.ts'
       - 'src/styles/action-replay.css'
+      - 'src/styles/capture-log-demo.css'
       - 'src/styles/experience.css'
       - 'src/styles/site.css'
       - 'src/scripts/site.ts'
@@ -17,6 +22,7 @@ on:
       - 'scripts/check-action-replay.mjs'
       - 'scripts/check-replay-reflections.mjs'
       - 'scripts/check-replay-accessibility.mjs'
+      - 'scripts/check-capture-log-demo.mjs'
       - '.github/workflows/action-replay.yml'
 permissions:
   contents: read
@@ -42,3 +48,4 @@ jobs:
           node scripts/check-action-replay.mjs
           node scripts/check-replay-accessibility.mjs
           node scripts/check-replay-reflections.mjs
+          node scripts/check-capture-log-demo.mjs

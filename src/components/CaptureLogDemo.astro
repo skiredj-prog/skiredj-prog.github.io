@@ -1,0 +1,59 @@
+---
+import { url, type Locale } from '../data/site';
+import '../styles/capture-log-demo.css';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const path = (f: string, e = f) => url(fr ? `/${f}/` : `/en/${e}/`);
+// Two fictional fixtures model distinct sources. This is not a live capture test.
+const captured = ['D-041', 'D-043'];
+const sent = ['D-041', 'D-042', 'D-043'];
+const missing = sent.filter(id => !captured.includes(id));
+---
+<section class="capture-demo" aria-labelledby="capture-heading">
+  <header class="capture-intro">
+    <h2 id="capture-heading">{fr ? 'Deux lignes. Tout semble en ordre.' : 'Two entries. Everything looks in order.'}</h2>
+    <p>{fr ? 'Un assistant transmet des demandes de remboursement. Voici ce que le journal interne a enregistré.' : 'An assistant sends refund requests. Here is what the internal log recorded.'}</p>
+    <p class="capture-note">{fr ? 'Exemple fictif : les deux registres de cette page simulent des sources distinctes. Aucun système réel n’est interrogé.' : 'Fictional example: the two records on this page simulate distinct sources. No live system is queried.'}</p>
+  </header>
+
+  <section class="capture-log" aria-labelledby="capture-log-title">
+    <div class="capture-log-heading"><h3 id="capture-log-title">{fr ? 'Journal interne' : 'Internal log'}</h3><span>{captured.length} {fr ? 'demandes capturées' : 'captured requests'}</span></div>
+    <ul data-capture-log>{captured.map(id => <li><span class="capture-id">{id}</span><span>{fr ? 'Demande reçue' : 'Request received'}</span></li>)}</ul>
+    <p>{fr ? 'Ces deux lignes sont cohérentes. Mais suffisent-elles pour affirmer qu’aucune demande ne manque ?' : 'These two entries are consistent. But are they enough to say no request is missing?'}</p>
+  </section>
+
+  <details class="capture-compare" data-capture-compare>
+    <summary>{fr ? 'Comparer avec le registre d’envoi' : 'Compare with the sending record'}</summary>
+    <div class="capture-comparison">
+      <h3>{fr ? 'Une autre source fait apparaître un écart.' : 'Another source reveals a gap.'}</h3>
+      <p>{fr ? 'Dans ce scénario, un registre tenu à la source recense trois demandes envoyées. Il est supposé indépendant du journal interne et complet pour cette fenêtre : cette page illustre ces hypothèses, elle ne les démontre pas.' : 'In this scenario, a record kept at the source lists three sent requests. It is assumed independent of the internal log and complete for this window: this page illustrates those assumptions; it does not prove them.'}</p>
+      <table data-capture-comparison>
+        <caption>{fr ? 'Comparaison des deux sources fictives, sur la même fenêtre' : 'Comparison of the two fictional sources over the same window'}</caption>
+        <thead><tr><th scope="col">{fr ? 'Demande' : 'Request'}</th><th scope="col">{fr ? 'Registre d’envoi' : 'Sending record'}</th><th scope="col">{fr ? 'Journal interne' : 'Internal log'}</th></tr></thead>
+        <tbody>{sent.map(id => <tr class:list={{ 'capture-missing': missing.includes(id) }} data-capture-row={id}><th scope="row">{id}</th><td>{fr ? 'Présente' : 'Present'}</td><td>{captured.includes(id) ? (fr ? 'Présente' : 'Present') : <strong>{fr ? 'Absente' : 'Absent'}</strong>}</td></tr>)}</tbody>
+      </table>
+      <div class="capture-finding" data-capture-finding>
+        <h3>{missing.join(', ')} {fr ? 'n’apparaît pas dans le journal observé.' : 'does not appear in the observed log.'}</h3>
+        <p>{fr ? 'Nous pouvons constater cet écart. Nous ne savons pas encore pourquoi la demande manque, ni si elle a été traitée ailleurs.' : 'We can observe this gap. We do not yet know why the request is missing or whether it was processed elsewhere.'}</p>
+        <p>{fr ? 'Le service émetteur et le responsable du journal doivent maintenant rapprocher leurs traces. La comparaison seule ne prouve pas l’effet d’un remboursement.' : 'The sending service and the log owner must now reconcile their records. The comparison alone does not prove a refund’s effect.'}</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="capture-unknown" data-capture-no-witness>
+    <summary>{fr ? 'Et si le registre d’envoi est indisponible ?' : 'What if the sending record is unavailable?'}</summary>
+    <div><h3>{fr ? 'La complétude reste non démontrée.' : 'Completeness remains unproven.'}</h3><p>{fr ? 'Avec le seul journal interne, nous ne pouvons pas distinguer « il n’y avait que deux demandes » de « une demande n’a jamais été capturée ». La conclusion est inconclusive, pas « tout est présent ».' : 'With only the internal log, we cannot distinguish “there were only two requests” from “a request was never captured”. The conclusion is inconclusive, not “everything is present”.'}</p><p>{fr ? 'Il faut rechercher une autre source dont la provenance et la couverture peuvent être examinées. Recopier le même journal ne crée pas un témoin indépendant.' : 'Another source is needed whose provenance and coverage can be examined. Copying the same log does not create an independent witness.'}</p></div>
+  </details>
+
+  <section class="capture-takeaway" aria-labelledby="capture-takeaway-title"><h2 id="capture-takeaway-title">{fr ? 'Un journal cohérent n’est pas nécessairement complet.' : 'A consistent log is not necessarily complete.'}</h2><p>{fr ? 'Pour rendre la responsabilité vérifiable, il faut aussi examiner ce que les traces peuvent laisser hors champ.' : 'Making responsibility verifiable also means examining what the records may leave out of view.'}</p></section>
+
+  <section class="capture-next" aria-labelledby="capture-next-title">
+    <h2 id="capture-next-title">{fr ? 'Pour prolonger' : 'Keep exploring'}</h2>
+    <p>{fr ? 'REG Prepare propose d’organiser les affirmations, les pièces disponibles et les vérifications qui manquent, dans un périmètre convenu.' : 'REG Prepare proposes organizing claims, available evidence and missing checks within an agreed scope.'}</p>
+    <p class="capture-note">{fr ? 'Démarche en Working Draft · pilotes à construire et éprouver.' : 'Working Draft approach · pilots remain to be built and tested.'}</p>
+    <div class="actions"><a class="btn btn-primary" href={path('portfolio/prepare')}>{fr ? 'Découvrir REG Prepare' : 'Explore REG Prepare'} →</a><a class="btn" href={path('rejouer', 'replay')}>{fr ? 'Rejouer une action' : 'Replay an action'} →</a><a class="btn btn-quiet" href={path('portfolio/demos')}>{fr ? 'Toutes les démonstrations' : 'All demos'} →</a></div>
+  </section>
+
+  <details class="capture-limits" data-capture-limits><summary>{fr ? 'Référence de conception et limites' : 'Design reference and limits'}</summary><div><p>{fr ? 'Cette expérience illustre le cas d’omission CB-T01 du banc de capture REG-ARCH, à partir d’une archive de travail du 26 octobre 2026. Les identifiants et les registres affichés sont fictifs.' : 'This experience illustrates the CB-T01 omission case from the REG-ARCH capture testbench, using a working archive dated 26 October 2026. The displayed identifiers and records are fictional.'}</p><p>{fr ? 'Elle ne lance aucun test contre TENIR-Gov ou G4-A et ne constitue pas un résultat de campagne CB. Dans le dossier consulté, les auto-tests du banc et la campagne sur une implémentation sont explicitement distingués ; cette dernière n’a pas été exécutée.' : 'It runs no test against TENIR-Gov or G4-A and is not a CB campaign result. The source material explicitly distinguishes testbench self-tests from a campaign against an implementation; the latter was not run.'}</p><p>{fr ? 'Dans un système réel, l’indépendance du témoin, sa couverture, la fenêtre observée et la provenance des pièces doivent elles-mêmes être établies. Aucun résultat de production ou de conformité n’est déduit de cette illustration.' : 'In a real system, witness independence, coverage, observation window and evidence provenance must themselves be established. No production or conformance result is inferred from this illustration.'}</p></div></details>
+</section>
