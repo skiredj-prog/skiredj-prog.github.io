@@ -1,6 +1,6 @@
 {
   "schema_version": "tenir-labs-asset-registry/v1",
-  "updated_on": "2026-10-26",
+  "updated_on": "2026-10-28",
   "purpose": "Deterministic maintenance contract for public portfolio, not normative accreditation or publication approval",
   "historical_input": {
     "filename": "Tenirlabs-Products-consolidation-20261024.zip",
@@ -651,14 +651,14 @@
       "source_archive": null,
       "source_path": null,
       "source_ref": {
-        "kind": "private_pr",
+        "kind": "pull_request",
         "repository": "skiredj-prog/tenir-reg-demo",
         "ref": "pull/4",
-        "access": "private"
+        "access": "public"
       },
       "public_url": null,
-      "release_gate": "private_candidate_awaiting_release",
-      "claims_scope": "A public Workbench overview may describe existing synthetic configuration and signatures. Signed-dossier ZIP from private PR #4 remains a non-distributed candidate; no live TENIR-Gov v5.7.0 connection, external effect, or client certification.",
+      "release_gate": "candidate_awaiting_release",
+      "claims_scope": "The consultation ZIP remains a candidate on this site's controlled download channel. Repository visibility or a separate web edition does not establish publication of this ZIP, a live TENIR-Gov v5.7.0 connection, an external effect or client certification. The legacy asset_id is not a current repository-visibility claim.",
       "editorial_page": {
         "fr": "/portfolio/workbench/",
         "en": "/en/portfolio/workbench/",
@@ -670,7 +670,8 @@
         "contract": "data/workbench-publication.v1.json",
         "state": "STAGED_PENDING_BINARY",
         "immutable_candidate_sha256": "86b246dbfcdd57577dbec20f268f344c51220186336bfada32626c9a8d83f671",
-        "binary_public": false
+        "binary_public": false,
+        "binary_public_scope": "Publication on this site's controlled download channel only, not all repository branches or external copies."
       }
     },
     {

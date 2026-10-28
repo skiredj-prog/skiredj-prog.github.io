@@ -119,8 +119,8 @@ function validate(registry, { built = true } = {}) {
         bad('workbench: missing bilingual public editorial routes');
       if(p?.classification!=='public_information_only'||p?.has_runnable_embedded_kit!==false)
         bad('workbench: public explanatory page must not imply a released runnable kit');
-      if(h.release_gate!=='private_candidate_awaiting_release'||h.public_url!==null)
-        bad('workbench: original private candidate history must not be recast as public');
+      if(h.release_gate!=='candidate_awaiting_release'||h.public_url!==null)
+        bad('workbench: consultation candidate must not be recast as a published download');
       if(h.distribution_control?.contract!==RELEASE_PATH ||
          h.distribution_control?.state!==release.status ||
          h.distribution_control?.immutable_candidate_sha256!==release.sha256 ||
@@ -135,7 +135,7 @@ function validate(registry, { built = true } = {}) {
             if(!text.includes('5.7.0')||!text.includes('UNKNOWN'))
               bad('workbench: '+locale+' historical/simulation boundary not visible');
             if(text.includes('https://github.com/skiredj-prog/tenir-reg-demo'))
-              bad('workbench: '+locale+' private repo link leaked');
+              bad('workbench: '+locale+' unapproved repository-to-download shortcut');
             const link='href="'+release.public_path+'"';
             if(release.status==='PUBLISHED'){
               if(!text.includes(link)||!text.includes(release.sha256))
