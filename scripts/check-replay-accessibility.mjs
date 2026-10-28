@@ -43,6 +43,33 @@ try {
       assert((await live.textContent()).startsWith(`2 / ${count}`));
       assert((await live.textContent()).includes('ALLOW'), 'The announcement must include the action status');
       assert(await steps.nth(1).evaluate(element => element === document.activeElement), 'Selecting an event must retain keyboard focus');
+      const contrasts = await root.evaluate(element => {
+        const parse = value => value.match(/[\d.]+/g)?.map(Number) || [];
+        const luminance = channels => channels.slice(0, 3).reduce((sum, value, index) => {
+          const s = value / 255;
+          return sum + (s <= .04045 ? s / 12.92 : ((s + .055) / 1.055) ** 2.4) * [.2126, .7152, .0722][index];
+        }, 0);
+        return [...element.querySelectorAll('.replay-action, .replay-knowledge .role, .replay-knowledge p, .replay-owner, .replay-impact, .replay-step')]
+          .filter(item => item.getClientRects().length)
+          .map(item => {
+            const style = getComputedStyle(item);
+            let current = item;
+            let background;
+            while (current) {
+              const candidate = parse(getComputedStyle(current).backgroundColor);
+              if (candidate.length === 3 || candidate[3] === 1) { background = candidate; break; }
+              current = current.parentElement;
+            }
+            if (!background) throw new Error('Unable to determine an opaque background');
+            const foreground = parse(style.color);
+            if (foreground.length !== 3 && foreground[3] !== 1) throw new Error('Translucent text requires a separate contrast check');
+            const a = luminance(foreground), b = luminance(background);
+            const large = parseFloat(style.fontSize) >= 24 || (parseFloat(style.fontSize) >= 18.66 && parseInt(style.fontWeight) >= 700);
+            return { text: item.textContent.trim().slice(0, 70), ratio: (Math.max(a, b) + .05) / (Math.min(a, b) + .05), minimum: large ? 3 : 4.5 };
+          });
+      });
+      assert(contrasts.length >= 8);
+      for (const item of contrasts) assert(item.ratio >= item.minimum, `${theme} text contrast ${item.ratio.toFixed(2)} < ${item.minimum}: ${item.text}`);
       const links = root.locator('.replay-takeaway .actions a');
       assert.equal(await links.count(), route.exits.length);
       for (let index = 0; index < route.exits.length; index++) {
@@ -54,7 +81,7 @@ try {
       assert(dimensions.scroll <= dimensions.width + 2);
       assert.deepEqual(errors, []);
       await page.close();
-      console.log(`PASS ${route.path} ${theme}: explicit request, heading, focus, live status, exit destinations, layout`);
+      console.log(`PASS ${route.path} ${theme}: explicit request, heading, focus, live status, sampled text contrast, exit destinations, layout`);
     }
     const page = await browser.newPage({ javaScriptEnabled: false, viewport: { width: 390, height: 900 } });
     await page.goto(base + route.path);
