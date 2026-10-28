@@ -6,6 +6,9 @@ lede: A case is not only about naming a culprit. It reveals actors, sequence, im
 sources: Primary sources or published references are named per case; TENIR interpretations remain separate
 ---
 
+## Replay the banking scenario
+To learn the distinction between authorization, external effect and evidence, [replay the uncertain transfer event by event](/en/replay/payment/). This is a teaching scenario: no real banking settlement is demonstrated.
+
 ## How to read a case
 
 ```text

@@ -1,0 +1,73 @@
+---
+interface ReplayStep {
+  label: string;
+  short: string;
+  players: string[];
+  pieces: string[];
+  knowledge: string;
+  state: 'known' | 'unknown' | 'decided';
+  impact: string;
+  question: string;
+  answer: string;
+}
+interface Props { locale: 'fr' | 'en'; }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const steps: ReplayStep[] = fr ? [
+  { label: 'Intention', short: 'L’agent prépare', players: ['Agent IA', 'Propriétaire du compte'], pieces: ['Intention', 'Identité', 'Contexte'], knowledge: 'Nous savons ce qui est demandé et pour quel compte.', state: 'known', impact: 'Aucun effet externe encore démontré.', question: 'Que veut-il faire, exactement ?', answer: 'Une intention décrit un but. Elle ne prouve ni l’autorisation ni l’exécution.' },
+  { label: 'Autorisation', short: 'La règle admet', players: ['Moteur de politique', 'Propriétaire du compte'], pieces: ['Permission', 'Autorité active', 'Règle appliquée'], knowledge: 'La demande est admise dans le périmètre de la règle active.', state: 'decided', impact: 'L’admission ouvre une possibilité ; elle ne prouve pas l’effet.', question: 'Qu’est-ce qui vient d’être autorisé ?', answer: 'Une méthode d’action dans un périmètre donné — pas la réussite de l’opération.' },
+  { label: 'Réservation', short: 'La transaction prend forme', players: ['Frontière TENIR', 'Système local'], pieces: ['Identifiant d’opération', 'État local', 'Montant'], knowledge: 'Un identifiant unique relie la demande à une tentative.', state: 'known', impact: 'Une reprise pourra être comparée à la première tentative.', question: 'Quelle pièce protège contre le double effet ?', answer: 'L’identifiant d’opération et la règle d’unicité, à condition qu’ils soient reconnus par le système externe.' },
+  { label: 'Commande envoyée', short: 'Le monde externe est sollicité', players: ['Frontière TENIR', 'Système cible', 'Fournisseur tiers'], pieces: ['Commande', 'Identifiant externe', 'Délai'], knowledge: 'La commande a quitté le système local.', state: 'decided', impact: 'La frontière entre décision et effet externe est franchie.', question: 'Que prouve le log local ?', answer: 'L’émission de la commande. Il ne prouve pas encore sa réception ni son effet.' },
+  { label: 'Réponse perdue', short: 'L’état devient inconnu', players: ['Fournisseur tiers', 'Réseau', 'Système local'], pieces: ['Réponse absente', 'Délai dépassé', 'État local'], knowledge: 'Nous ne savons pas si le fournisseur a reçu ou exécuté la commande.', state: 'unknown', impact: 'Un rejeu aveugle pourrait produire un double virement.', question: 'Le silence signifie-t-il échec ?', answer: 'Non. Une réponse absente crée un état inconnu ; elle ne permet pas de conclure.' },
+  { label: 'HOLD', short: 'La reprise est bloquée', players: ['Frontière TENIR', 'Opérateur responsable'], pieces: ['Statut HOLD', 'Responsable du HOLD', 'Échéance'], knowledge: 'L’incertitude est enregistrée et une personne porte la suite.', state: 'decided', impact: 'Le risque de répétition est suspendu, pas supprimé.', question: 'Où placer le HOLD ?', answer: 'Après la perte de réponse et avant toute commande susceptible de reproduire l’effet.' },
+  { label: 'Recherche de l’état externe', short: 'On vérifie avant d’agir', players: ['Opérateur responsable', 'Fournisseur tiers', 'Audit'], pieces: ['Preuve de réception', 'État externe', 'Trace de recherche'], knowledge: 'Une recherche indépendante tente d’établir l’état réel auprès du système cible.', state: 'unknown', impact: 'La décision dépend maintenant d’une preuve d’effet, pas d’une inférence.', question: 'Quelle preuve faut-il chercher ?', answer: 'L’état enregistré par le système externe, relié au même identifiant d’opération.' },
+  { label: 'Réconciliation', short: 'La suite peut être décidée', players: ['Opérateur responsable', 'Banque / fintech', 'Personne impactée'], pieces: ['Preuve d’effet', 'Décision', 'Dossier de réparation'], knowledge: 'L’organisation rapproche les traces et choisit une sortie documentée.', state: 'decided', impact: 'ACCEPT, reprise contrôlée ou réparation deviennent distinguables.', question: 'Qui décide de la suite ?', answer: 'La personne ou l’équipe désignée par le cadre de gouvernance, avec la preuve disponible et une trace de décision.' },
+] : [
+  { label: 'Intent', short: 'The agent prepares', players: ['AI agent', 'Account owner'], pieces: ['Intent', 'Identity', 'Context'], knowledge: 'We know what is requested and for which account.', state: 'known', impact: 'No external effect demonstrated yet.', question: 'What exactly is it trying to do?', answer: 'An intent describes a goal. It proves neither authorization nor execution.' },
+  { label: 'Authorization', short: 'Policy admits', players: ['Policy engine', 'Account owner'], pieces: ['Permission', 'Active authority', 'Applied rule'], knowledge: 'The request is admitted within the active policy scope.', state: 'decided', impact: 'Admission opens a possibility; it does not prove the effect.', question: 'What was just authorized?', answer: 'A method of action within a defined scope — not the success of the operation.' },
+  { label: 'Reservation', short: 'The transaction takes shape', players: ['TENIR boundary', 'Local system'], pieces: ['Operation ID', 'Local state', 'Amount'], knowledge: 'A unique identifier links the request to an attempt.', state: 'known', impact: 'A retry can be compared with the first attempt.', question: 'What protects against a duplicate effect?', answer: 'The operation identifier and uniqueness rule, if the external system recognizes them.' },
+  { label: 'Command sent', short: 'The external world is called', players: ['TENIR boundary', 'Target system', 'Third party'], pieces: ['Command', 'External identifier', 'Timeout'], knowledge: 'The command left the local system.', state: 'decided', impact: 'The boundary between decision and external effect is crossed.', question: 'What does the local log prove?', answer: 'That the command was emitted. Not yet that it was received or applied.' },
+  { label: 'Lost response', short: 'State becomes unknown', players: ['Third party', 'Network', 'Local system'], pieces: ['Missing response', 'Timeout', 'Local state'], knowledge: 'We do not know whether the provider received or executed the command.', state: 'unknown', impact: 'A blind retry could create a duplicate transfer.', question: 'Does silence mean failure?', answer: 'No. A missing response creates an unknown state; it does not support a conclusion.' },
+  { label: 'HOLD', short: 'Retry is blocked', players: ['TENIR boundary', 'Accountable operator'], pieces: ['HOLD status', 'HOLD owner', 'Deadline'], knowledge: 'Uncertainty is recorded and a person owns the next step.', state: 'decided', impact: 'The repetition risk is paused, not erased.', question: 'Where should HOLD be placed?', answer: 'After the lost response and before any command that could reproduce the effect.' },
+  { label: 'External state lookup', short: 'Verify before acting', players: ['Accountable operator', 'Third party', 'Audit'], pieces: ['Receipt evidence', 'External state', 'Lookup trace'], knowledge: 'An independent lookup seeks the target system’s actual state.', state: 'unknown', impact: 'The decision now depends on effect evidence, not inference.', question: 'Which evidence should be sought?', answer: 'The state recorded by the external system, linked to the same operation identifier.' },
+  { label: 'Reconciliation', short: 'The next step is decided', players: ['Accountable operator', 'Bank / fintech', 'Affected person'], pieces: ['Effect evidence', 'Decision', 'Remediation record'], knowledge: 'The organization compares traces and chooses a documented outcome.', state: 'decided', impact: 'ACCEPT, controlled retry or remediation become distinguishable.', question: 'Who decides what happens next?', answer: 'The person or team named by governance, using available evidence and a recorded decision.' },
+];
+---
+<section class="action-replay" aria-labelledby="action-replay-title">
+  <header class="action-replay-header">
+    <div>
+      <p class="eyebrow">{fr ? 'Replay pédagogique · scénario illustratif' : 'Teaching replay · illustrative scenario'}</p>
+      <h2 id="action-replay-title">{fr ? 'Un virement est autorisé. La confirmation disparaît.' : 'A transfer is authorized. Confirmation disappears.'}</h2>
+      <p>{fr ? 'Cliquez sur une étape pour voir les joueurs actifs, les pièces disponibles, l’état de connaissance et la question de responsabilité.' : 'Select a step to see the active players, available pieces, state of knowledge and accountability question.'}</p>
+    </div>
+    <span class="replay-note">{fr ? 'Aucun règlement réel · données fictives' : 'No real settlement · fictional data'}</span>
+  </header>
+  <div class="replay-layout">
+    <nav class="replay-timeline" aria-label={fr ? 'Étapes du scénario' : 'Scenario steps'}>
+      {steps.map((step, index) => <button type="button" class:list={['replay-step-button', index === 0 && 'is-active']} data-replay-step={index} aria-current={index === 0 ? 'step' : undefined}><span>{String(index + 1).padStart(2, '0')}</span><strong>{step.label}</strong><small>{step.short}</small></button>)}
+    </nav>
+    <div class="replay-detail" aria-live="polite">
+      {steps.map((step, index) => <article class:list={['replay-panel', index !== 0 && 'is-hidden']} data-replay-panel={index}>
+        <div class="replay-panel-top"><span class:list={['knowledge-badge', `knowledge-${step.state}`]}>{step.state === 'known' ? (fr ? 'ÉTABLI' : 'KNOWN') : step.state === 'unknown' ? 'UNKNOWN' : (fr ? 'DÉCISION' : 'DECISION')}</span><span class="replay-counter">{String(index + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}</span></div>
+        <h3>{step.label}</h3>
+        <p class="replay-knowledge"><strong>{fr ? 'Ce que l’on sait :' : 'What we know:'}</strong> {step.knowledge}</p>
+        <div class="replay-columns"><div><span class="role">{fr ? 'Joueurs actifs' : 'Active players'}</span><ul>{step.players.map(player => <li>{player}</li>)}</ul></div><div><span class="role">{fr ? 'Pièces mouvantes' : 'Moving pieces'}</span><ul>{step.pieces.map(piece => <li>{piece}</li>)}</ul></div></div>
+        <div class="replay-impact"><span class="role">{fr ? 'Impact possible' : 'Possible impact'}</span><p>{step.impact}</p></div>
+        <div class="replay-question"><span class="role">{fr ? 'Question à se poser' : 'Question to ask'}</span><h4>{step.question}</h4><p>{step.answer}</p></div>
+      </article>)}
+    </div>
+  </div>
+  <footer class="replay-footer"><p>{fr ? 'La leçon du replay : une autorisation n’est pas une preuve d’effet. Quand l’état devient inconnu, la suite doit être tenue, attribuée et réconciliée.' : 'The replay lesson: authorization is not proof of effect. When state becomes unknown, the next step must be held, owned and reconciled.'}</p><div class="replay-verdicts"><span>[ACCEPT]</span><span class="is-hold">[HOLD]</span><span>[{fr ? 'NON DÉMONTRÉ' : 'NOT DEMONSTRATED'}]</span></div></footer>
+</section>
+<script>
+  const root = document.querySelector('.action-replay');
+  if (root) {
+    const buttons = [...root.querySelectorAll('[data-replay-step]')];
+    const panels = [...root.querySelectorAll('[data-replay-panel]')];
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const active = button.getAttribute('data-replay-step');
+      buttons.forEach(item => { const on = item === button; item.classList.toggle('is-active', on); if (on) item.setAttribute('aria-current', 'step'); else item.removeAttribute('aria-current'); });
+      panels.forEach(panel => panel.classList.toggle('is-hidden', panel.getAttribute('data-replay-panel') !== active));
+    }));
+  }
+</script>

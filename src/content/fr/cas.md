@@ -6,6 +6,9 @@ lede: Un cas ne sert pas seulement à désigner un coupable. Il sert à voir les
 sources: Sources primaires ou références publiées indiquées dans chaque cas · interprétations TENIR explicitement séparées des faits
 ---
 
+## Rejouer le scénario bancaire
+Pour apprendre la distinction entre autorisation, effet externe et preuve, [rejouer le virement ambigu événement par événement](/rejouer/virement/). Le scénario est pédagogique : aucun règlement bancaire réel n’est démontré.
+
 ## Comment lire un cas
 
 Chaque fiche suit la même séquence :
