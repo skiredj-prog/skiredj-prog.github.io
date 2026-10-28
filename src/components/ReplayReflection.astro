@@ -1,0 +1,26 @@
+---
+import type { Locale } from '../data/site';
+import type { ReplayReflection } from '../data/replayReflections';
+interface Props { locale: Locale; eventId: string; reflection: ReplayReflection; answer: string }
+const { locale, eventId, reflection, answer } = Astro.props;
+const feedbackId = `reflection-feedback-${eventId}`;
+---
+<div class="replay-reflection" data-replay-reflection={eventId}>
+  <fieldset data-reflection-choices aria-labelledby={`replay-question-${eventId}`} hidden>
+    <legend>{locale === 'fr' ? 'Une piste à examiner' : 'A possibility to examine'}</legend>
+    {reflection.choices.map(choice => <label class="replay-choice"><input type="radio" name={`reflection-${eventId}`} value={choice.id} data-reflection-feedback={choice.feedback} aria-controls={feedbackId} /><span>{choice.label}</span></label>)}
+  </fieldset>
+  <p id={feedbackId} role="status" aria-live="polite" aria-atomic="true" data-reflection-response>{answer}</p>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-replay-reflection]').forEach(root => {
+    const choices = root.querySelector<HTMLFieldSetElement>('[data-reflection-choices]');
+    const response = root.querySelector<HTMLElement>('[data-reflection-response]');
+    const inputs = [...root.querySelectorAll<HTMLInputElement>('input[type="radio"]')];
+    if (!choices || !response || !inputs.length) return;
+    inputs.forEach(input => input.addEventListener('change', () => {
+      if (input.checked) response.textContent = input.dataset.reflectionFeedback || '';
+    }));
+    choices.hidden = false;
+  });
+</script>
