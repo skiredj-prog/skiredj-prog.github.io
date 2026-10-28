@@ -7,8 +7,11 @@ on:
       - 'src/pages/en/replay.astro'
       - 'src/data/site.ts'
       - 'src/styles/experience.css'
+      - 'src/styles/site.css'
+      - 'src/scripts/site.ts'
       - 'src/layouts/Base.astro'
       - 'scripts/check-action-replay.mjs'
+      - 'scripts/check-replay-accessibility.mjs'
       - '.github/workflows/action-replay.yml'
 permissions:
   contents: read
@@ -32,3 +35,4 @@ jobs:
           SERVER_PID=$!
           trap 'kill $SERVER_PID' EXIT
           node scripts/check-action-replay.mjs
+          node scripts/check-replay-accessibility.mjs

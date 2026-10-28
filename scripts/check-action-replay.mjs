@@ -25,16 +25,16 @@ try {
         assert.equal(await root.getAttribute('data-replay-index'), String(index));
         assert.equal(await steps.nth(index).getAttribute('aria-current'), 'step');
         assert.equal(await root.locator('[aria-current="step"]').count(), 1);
-        assert.equal(await root.locator('[data-replay-pieces] li').count(), 3);
+        assert.equal(await root.locator('[data-replay-panel]:visible [data-replay-pieces] li').count(), 3);
         if (index === 3) {
-          assert.equal(await root.locator('[data-replay-status]').textContent(), 'UNKNOWN');
-          assert((await root.locator('[data-replay-pieces]').textContent()).includes(scenario.missing));
+          assert.equal(await root.locator('[data-replay-panel]:visible [data-replay-status]').textContent(), 'UNKNOWN');
+          assert((await root.locator('[data-replay-panel]:visible [data-replay-pieces]').textContent()).includes(scenario.missing));
         }
-        if (index === 4) assert.equal(await root.locator('[data-replay-status]').textContent(), 'HOLD');
+        if (index === 4) assert.equal(await root.locator('[data-replay-panel]:visible [data-replay-status]').textContent(), 'HOLD');
         if (index < 5) await next.click();
       }
       assert(await next.isDisabled());
-      assert.deepEqual(await root.locator('[data-replay-pieces] li').allTextContents(), scenario.last);
+      assert.deepEqual(await root.locator('[data-replay-panel]:visible [data-replay-pieces] li').allTextContents(), scenario.last);
       await previous.click();
       assert.equal(await root.getAttribute('data-replay-index'), '4');
       await steps.first().focus();

@@ -2,6 +2,8 @@
 
 Clôture : 28 octobre 2026.
 
+Livraison clôturée ; la revue indépendante de cette version a ensuite conclu « à corriger avant validation ». Les corrections et les limites de leur vérification sont suivies dans `sprint-1-peer-review-response.md`. La revalidation indépendante reste à obtenir sur la version corrigée.
+
 ## Livré
 
 PR44 constitue le premier incrément : `/rejouer/` et `/en/replay/`, une séquence fictive de remboursement en six étapes, de l’intention à la réconciliation. Le visiteur peut avancer, revenir ou choisir une étape, consulter l’acteur et les pièces visibles, puis explorer les démonstrations ou les cas. Aucune opération réelle n’est exécutée.
