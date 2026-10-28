@@ -227,6 +227,7 @@ const frToEn: Record<string, string> = {
   "architecture/demo": "/en/architecture/demo/",
   "architecture/interactive": "/en/architecture/interactive/",
   "architecture/drawing": "/en/architecture/drawing/",
+  "rejouer/virement": "/en/replay/payment/",
 };
 
 const enToFr: Record<string, string> = Object.fromEntries(
