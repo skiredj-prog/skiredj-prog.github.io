@@ -6,17 +6,17 @@ const fr = locale === 'fr';
 const steps = fr ? [
   ['01','Intention','Rembourser le client.','Agent IA','Une demande légitime ne précise pas encore le compte, le montant ni l’état du remboursement.','INTENTION','À préciser'],
   ['02','Autorisation','La politique autorise l’action.','Moteur de politique','L’autorisation est située dans un contexte ; elle ne prouve pas encore l’effet externe.','ALLOW','Autorisé'],
-  ['03','Commande','La commande part vers le fournisseur.','Frontière TENIR','L’identifiant d’opération et la réservation permettent d’éviter une reprise aveugle.','ENVOYÉ','Trace locale'],
+  ['03','Commande','La commande part vers le fournisseur.','Frontière TENIR','L’identifiant et la réservation peuvent aider à comparer une reprise. Ils ne prouvent ni la réception ni l’absence de double effet ; leur valeur dépend de leur reconnaissance par le système externe.','ENVOYÉ','Trace locale'],
   ['04','Réponse perdue','Le fournisseur ne confirme plus.','Fournisseur tiers','Le silence ne prouve ni l’échec ni la réussite. L’état devient inconnu.','UNKNOWN','À établir'],
   ['05','HOLD','La reprise est suspendue.','Opérateur humain','Le système garde la main et désigne la prochaine vérification.','HOLD','Décision attendue'],
-  ['06','Réconciliation','L’état externe est recherché.','Opérateur + fournisseur','Une reprise peut être autorisée ou refusée selon ce que les sources établissent.','SUITE','À décider'],
+  ['06','Réconciliation','Les traces locales sont comparées à l’état enregistré par le fournisseur.','Opérateur + fournisseur','Une reprise peut être autorisée ou refusée selon ce que les sources établissent.','SUITE','À décider'],
 ] : [
   ['01','Intent','Refund the customer.','AI agent','A legitimate request still does not specify the account, amount or refund state.','INTENT','To clarify'],
   ['02','Authorization','Policy allows the action.','Policy engine','Authorization is situated in context; it does not prove the external effect.','ALLOW','Allowed'],
-  ['03','Dispatch','The command is sent to the provider.','TENIR boundary','An operation ID and reservation help avoid a blind retry.','SENT','Local trace'],
+  ['03','Dispatch','The command is sent to the provider.','TENIR boundary','An operation ID and reservation can help compare a retry. They prove neither receipt nor the absence of a duplicate effect; their value depends on recognition by the external system.','SENT','Local trace'],
   ['04','Lost response','The provider stops confirming.','Third party','Silence proves neither failure nor success. The state becomes unknown.','UNKNOWN','To establish'],
   ['05','HOLD','The retry is paused.','Human operator','The system keeps control and identifies the next check.','HOLD','Decision needed'],
-  ['06','Reconciliation','The external state is checked.','Operator + provider','A retry can be allowed or refused according to what the sources establish.','NEXT','To decide'],
+  ['06','Reconciliation','Local traces are compared with the state recorded by the provider.','Operator + provider','A retry can be allowed or refused according to what the sources establish.','NEXT','To decide'],
 ];
 const pieces = fr ? [
   ['intention', 'responsable', 'question'],
@@ -35,18 +35,51 @@ const pieces = fr ? [
 ];
 ---
 <section class="replay-page" aria-labelledby="replay-title">
-  <header class="replay-hero"><p class="eyebrow">{fr ? 'Rejouer · expérience pédagogique' : 'Replay · learning experience'}</p><h1 id="replay-title">{fr ? 'Le remboursement est parti. La confirmation disparaît.' : 'The refund was sent. The confirmation disappears.'}</h1><p>{fr ? 'Suivez l’intention, les autorisations, les systèmes touchés et les preuves disponibles. Rien n’est exécuté : vous explorez une séquence fictive.' : 'Follow the intent, authorizations, systems touched and available evidence. Nothing is executed: you are exploring a fictional sequence.'}</p></header>
-  <div class="replay-layout"><nav class="replay-steps" aria-label={fr ? 'Étapes de la séquence' : 'Sequence steps'}>{steps.map(([number,label], index) => <button type="button" class:list={['replay-step',index===0&&'is-active']} data-replay-step={index} aria-current={index===0?'step':undefined}><span>{number}</span>{label}</button>)}</nav>
-    <article class="replay-panel"><div class="replay-meta"><span data-replay-number>{steps[0][0]}</span><span data-replay-role>{steps[0][3]}</span></div><h2 data-replay-label>{steps[0][1]}</h2><p class="replay-action" data-replay-action>{steps[0][2]}</p><p data-replay-detail>{steps[0][4]}</p><div class="replay-status"><strong data-replay-status>{steps[0][5]}</strong><span data-replay-status-note>{steps[0][6]}</span></div><div class="replay-pieces"><span>{fr ? 'Pièces visibles à cette étape' : 'Pieces visible at this step'}</span><ul data-replay-pieces>{pieces[0].map(piece => <li>{piece}</li>)}</ul></div><div class="replay-controls"><button type="button" class="btn" data-replay-prev disabled>{fr ? 'Étape précédente' : 'Previous step'}</button><button type="button" class="btn btn-primary" data-replay-next>{fr ? 'Étape suivante' : 'Next step'} →</button></div></article>
+  <header class="replay-hero"><p class="eyebrow">{fr ? 'Rejouer · expérience pédagogique' : 'Replay · learning experience'}</p><h2 id="replay-title">{fr ? 'La demande de remboursement a été envoyée. La confirmation disparaît.' : 'The refund request was sent. Confirmation disappears.'}</h2><p>{fr ? 'Suivez l’intention, les autorisations, les systèmes touchés et les preuves disponibles. Rien n’est exécuté : vous explorez une séquence fictive.' : 'Follow the intent, authorizations, systems touched and available evidence. Nothing is executed: you are exploring a fictional sequence.'}</p></header>
+  <div class="replay-layout"><nav class="replay-steps" aria-label={fr ? 'Étapes de la séquence' : 'Sequence steps'} data-replay-timeline hidden>{steps.map(([number,label], index) => <button type="button" class="replay-step" data-replay-step={index} aria-controls={`replay-panel-${index}`}><span>{number}</span>{label}</button>)}</nav>
+    <div class="replay-stage">
+      {steps.map((step, index) => <article class="replay-panel" data-replay-panel={index} id={`replay-panel-${index}`} aria-labelledby={`replay-label-${index}`}>
+        <div class="replay-meta"><span data-replay-number>{step[0]}</span><span data-replay-role>{step[3]}</span></div><h3 id={`replay-label-${index}`} data-replay-label>{step[1]}</h3><p class="replay-action" data-replay-action>{step[2]}</p><p data-replay-detail>{step[4]}</p><div class="replay-status"><strong data-replay-status>{step[5]}</strong><span data-replay-status-note>{step[6]}</span></div><div class="replay-pieces"><span>{fr ? 'Pièces visibles à cette étape' : 'Pieces visible at this step'}</span><ul data-replay-pieces>{pieces[index].map(piece => <li>{piece}</li>)}</ul></div>
+      </article>)}
+      <div class="replay-controls" data-replay-controls hidden><button type="button" class="btn" data-replay-prev>{fr ? 'Étape précédente' : 'Previous step'}</button><button type="button" class="btn btn-primary" data-replay-next>{fr ? 'Étape suivante' : 'Next step'} →</button></div>
+      <p class="replay-announcement" role="status" aria-live="polite" aria-atomic="true" data-replay-announcement></p>
+    </div>
   </div>
   <section class="replay-takeaway"><p class="eyebrow">{fr ? 'À retenir' : 'Takeaway'}</p><h2>{fr ? 'Une autorisation n’est pas une preuve d’effet.' : 'Authorization is not proof of effect.'}</h2><p>{fr ? 'Lorsque la réponse disparaît, HOLD protège la décision. La prochaine étape est une réconciliation, pas une supposition.' : 'When the response disappears, HOLD protects the decision. The next step is reconciliation, not a guess.'}</p><div class="actions"><a class="btn btn-primary" href={url(fr?'/portfolio/demos/':'/en/portfolio/demos/')}>{fr ? 'Explorer les démonstrations' : 'Explore the demos'} →</a><a class="btn btn-quiet" href={url(fr?'/cas/':'/en/cases/')}>{fr ? 'Voir les cartes sectorielles' : 'See the sector maps'} ↗</a></div></section>
 </section>
-<script define:vars={{ steps, pieces }}>
-  const root = document.querySelector('.replay-page');
-  if (root) {
-    const buttons = [...root.querySelectorAll('[data-replay-step]')];
-    const list = root.querySelector('[data-replay-pieces]');
-    const show = (index) => { const s = steps[index]; root.querySelector('[data-replay-number]').textContent=s[0]; root.querySelector('[data-replay-label]').textContent=s[1]; root.querySelector('[data-replay-action]').textContent=s[2]; root.querySelector('[data-replay-role]').textContent=s[3]; root.querySelector('[data-replay-detail]').textContent=s[4]; root.querySelector('[data-replay-status]').textContent=s[5]; root.querySelector('[data-replay-status-note]').textContent=s[6]; list.innerHTML=pieces[index].map((piece) => '<li>'+piece+'</li>').join(''); buttons.forEach((button,i)=>{button.classList.toggle('is-active',i===index);if(i===index)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');}); root.querySelector('[data-replay-prev]').disabled=index===0; root.querySelector('[data-replay-next]').disabled=index===steps.length-1; root.dataset.replayIndex=String(index); };
-    buttons.forEach((button,index)=>button.addEventListener('click',()=>show(index))); root.querySelector('[data-replay-prev]').addEventListener('click',()=>show(Math.max(0,Number(root.dataset.replayIndex||0)-1))); root.querySelector('[data-replay-next]').addEventListener('click',()=>show(Math.min(steps.length-1,Number(root.dataset.replayIndex||0)+1))); show(0);
-  }
+<script>
+  document.querySelectorAll<HTMLElement>('.replay-page').forEach(root => {
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-replay-step]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-replay-panel]')];
+    const previous = root.querySelector<HTMLButtonElement>('[data-replay-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-replay-next]');
+    const timeline = root.querySelector<HTMLElement>('[data-replay-timeline]');
+    const controls = root.querySelector<HTMLElement>('[data-replay-controls]');
+    const announcement = root.querySelector<HTMLElement>('[data-replay-announcement]');
+    if (!previous || !next || !timeline || !controls || !announcement || !panels.length || panels.length !== buttons.length) return;
+    let current = 0;
+    const show = (index: number, announce = true) => {
+      current = Math.max(0, Math.min(panels.length - 1, index));
+      panels.forEach((panel, i) => { panel.hidden = i !== current; });
+      buttons.forEach((button, i) => {
+        button.classList.toggle('is-active', i === current);
+        if (i === current) button.setAttribute('aria-current', 'step');
+        else button.removeAttribute('aria-current');
+      });
+      previous.disabled = current === 0;
+      next.disabled = current === panels.length - 1;
+      root.dataset.replayIndex = String(current);
+      if (announce) {
+        const panel = panels[current];
+        announcement.textContent = `${current + 1} / ${panels.length} · ${panel.querySelector('[data-replay-label]')?.textContent} · ${panel.querySelector('[data-replay-role]')?.textContent} · ${panel.querySelector('[data-replay-status]')?.textContent} · ${panel.querySelector('[data-replay-action]')?.textContent}`;
+      }
+    };
+    buttons.forEach((button, index) => button.addEventListener('click', () => show(index)));
+    previous.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    show(0, false);
+    timeline.hidden = false;
+    controls.hidden = false;
+    root.dataset.replayEnhanced = 'true';
+  });
 </script>
