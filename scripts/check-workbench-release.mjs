@@ -67,10 +67,11 @@ if(process.argv.includes('--self-test')){
   assert.deepEqual(validate(staging,null,null,[]),[],'known safe staging baseline');
   const mock=Buffer.from('tampered bytes');
   assert(validate({...meta,status:'PUBLISHED',public_url:'https://tenirlabs.cc'+meta.public_path,manual_approval_reference:'owner-approval'},mock,mock,[meta.filename]).some(x=>x.includes('differs')),'reject modified archive');
-  assert(validate(meta,mock,null,[meta.filename]).some(x=>x.includes('accidentally shipped')),'reject premature download');
+  assert(validate(staging,mock,null,[meta.filename]).some(x=>x.includes('accidentally shipped')),'reject premature download');
   assert(validate({...meta,sha256:'0'.repeat(64)},null,null,[]).some(x=>x.includes('identity changed')),'reject unapproved digest');
   assert(validate({...meta,status:'PUBLISHED'},null,null,[]).some(x=>x.includes('binary not committed')),'reject missing published artifact');
   console.log('PASS: four adversarial checks fail closed (tampering, premature shipping, digest drift, missing binary).');
+  process.exit(0);
 }
 const errors=validate(meta,inBytes,outBytes,names);
 if(isPost&&meta.status==='PUBLISHED'&&!outBytes)errors.push('release is marked published but dist artifact is absent');
