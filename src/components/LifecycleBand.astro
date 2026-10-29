@@ -1,0 +1,49 @@
+---
+import '../styles/lifecycle-band.css';
+import { url, type Locale } from '../data/site';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const path = (name: string) => url((fr ? '/portfolio/' : '/en/portfolio/') + name + '/');
+---
+<section class="home-lifecycle" aria-labelledby="lifecycle-title">
+  <div class="section-heading">
+    <div><p class="eyebrow">{fr ? 'Lecture d’un scénario' : 'Reading a scenario'}</p><h2 id="lifecycle-title">{fr ? 'Avant, pendant, après : trois moments à examiner.' : 'Before, during, after: three moments to examine.'}</h2></div>
+    <p>{fr
+      ? 'Une action peut être préparée, contrôlée à l’exécution, puis examinée à partir de ses traces. Ce parcours illustre des rôles possibles, pas une chaîne de produits imposée.'
+      : 'An action can be prepared, governed as it executes, and then examined through its records. This illustrates possible roles, not a mandatory product sequence.'}</p>
+  </div>
+  <div class="lifecycle-flow">
+    <div class="lifecycle-node">
+      <strong>{fr ? 'Avant' : 'Before'}<small>{fr ? 'Clarifier · concevoir' : 'Clarify · design'}</small></strong>
+      <ul>
+        <li><a href={path('prevent')}>REG Prevent<span class="role">{fr ? 'Méthode' : 'Method'}</span></a></li>
+        <li><a href={path('technical')}>REG+<span class="role">{fr ? 'Médiation hors runtime' : 'Out-of-runtime mediation'}</span></a></li>
+        <li><a href={path('diagnostic')}>{fr ? 'Diagnostic' : 'Diagnostic'}<span class="role">{fr ? 'Service' : 'Service'}</span></a></li>
+      </ul>
+    </div>
+    <span class="lifecycle-arrow" aria-hidden="true">→</span>
+    <div class="lifecycle-node is-core">
+      <strong>{fr ? 'Pendant' : 'During'}<small>{fr ? 'Frontière d’exécution' : 'Execution boundary'}</small></strong>
+      <ul>
+        <li><a href={path('gov')}>TENIR-Gov<span class="role">{fr ? 'Runtime bêta borné' : 'Bounded beta runtime'}</span></a></li>
+        <li><a href={path('control-tower')}>Control Tower<span class="role">{fr ? 'Simulation' : 'Simulation'}</span></a></li>
+      </ul>
+    </div>
+    <span class="lifecycle-arrow" aria-hidden="true">→</span>
+    <div class="lifecycle-node">
+      <strong>{fr ? 'Après' : 'After'}<small>{fr ? 'Établir · vérifier' : 'Establish · verify'}</small></strong>
+      <ul>
+        <li><a href={path('prepare')}>REG Prepare<span class="role">{fr ? 'Méthode' : 'Method'}</span></a></li>
+        <li><a href={path('conformance')}>REG Conformance<span class="role">{fr ? 'Tests bornés' : 'Bounded tests'}</span></a></li>
+        <li><a href={path('diagnostic')}>{fr ? 'Diagnostic' : 'Diagnostic'}<span class="role">{fr ? 'Investigation' : 'Investigation'}</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="section-note">
+    {fr
+      ? 'Prévenir et préparer peuvent intervenir à plusieurs moments. TENIR est le cadre transversal ; REG spécifie les contrats d’exécution. Une simulation ne vérifie aucun effet réel.'
+      : 'Prevent and Prepare can apply at more than one point. TENIR is the cross-cutting framework; REG specifies execution contracts. A simulation verifies no real-world effect.'}
+    <a href={url(fr ? '/portfolio/products/' : '/en/portfolio/products/')}>{fr ? 'Voir la matrice de classification 2D' : 'View the 2D product matrix'} →</a>
+  </p>
+</section>
