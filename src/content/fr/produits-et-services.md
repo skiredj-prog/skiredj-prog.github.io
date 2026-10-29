@@ -1,12 +1,12 @@
 ---
 title: Produits et Services
-kicker: REG — Prévention et préparation réglementaire
-description: Comprendre les exigences, examiner les contrôles et préparer une synthèse sourcée avec des actions prioritaires.
+kicker: TENIR Labs · offres et instruments
+description: Distinguer le cadre TENIR, le standard REG, la médiation REG+, le runtime TENIR-Gov et les prestations de TENIR Labs.
 lede: "Une règle à comprendre, un usage de l’IA à éclaircir ou un contrôle à préparer ? Un diagnostic accompagné peut aider à préciser les faits, les lacunes et la suite à décider."
 sources: REG v0.1 Working Draft — 21 octobre 2026
 ---
 
-# REG — Prévenir · Préparer · Démontrer
+## Des exigences à l'exécution : comprendre les rôles
 
 ## Commencer par un diagnostic accompagné
 
@@ -24,9 +24,48 @@ Le diagnostic est un **accompagnement à cadrer**, pas un logiciel à installer.
 
 La page de contact aide à préparer votre message ; vous le relisez avant de l'envoyer depuis votre messagerie.
 
-## REG : deux directions de travail
+## Cinq rôles distincts, une même question : que peut-on autoriser et prouver ?
 
-Sur cette page, **REG désigne la démarche produit Prévenir · Préparer** de TENIR Labs. Ses outils ont des maturités différentes, précisées ci-dessous. Le standard technique **[Runtime Execution Governance (REG)](/standard/)** traite de la frontière d'exécution des actions ; ses contrats ne sont pas remplacés par cette démarche.
+| Couche | Son rôle | Ce qu'elle ne prétend pas faire |
+| --- | --- | --- |
+| **TENIR** | Cadre de diagnostic des systèmes sous pression et des options à préserver. | Ce n'est ni une API ni un produit de conformité. |
+| **[REG](/standard/)** | Standard **proposé** de gouvernance de l'exécution : autorité (standing), structure, engagement (commit), preuves et comportement en échec. | Une spécification ne démontre pas qu'un système la respecte. |
+| **[REG+](/architecture/)** | Médiation **hors runtime** entre intention normative versionnée, hypothèses de déploiement et contraintes. Elle vise un profil candidat et ses invariants, ou un rejet motivé. | Pas un moteur autonome d'admission livré ou certifié ; la formalisation et les conditions de vérification restent à compléter. |
+| **[TENIR-Gov](/portfolio/gov/)** | Logiciel d'application du contrôle à la frontière d'exécution, dans un périmètre de déploiement déclaré. | La bêta mono-hôte ne garantit ni un effet externe exactement une fois ni la conformité de tout environnement. |
+| **Prevent / Prepare** | Deux méthodes d'examen proposées par TENIR Labs : exigences → contrôles candidats ; systèmes → pièces vérifiables. | Ce sont des parcours de travail, **pas une seconde définition de REG**. |
+
+**Différenciation centrale :** les modèles et les politiques peuvent proposer une action ; le droit de l'engager et la preuve de son effet sont des questions séparées. Une décision locale signée n'est pas un reçu du fournisseur externe.
+
+## Architecture logique et frontière d'intégration
+
+```text
+Exigence métier + hypothèses vérifiables + contraintes
+               │
+         REG+ (médiation hors runtime)
+               │ profil candidat / rejet / inconnues
+               ▼
+Agent ou application ── intention d'action versionnée
+               │
+               ▼
+[Contrôle REG à la frontière d'exécution]
+  1. Standing : autorité, portée, durée et révocation
+  2. Structure : état, engagements, fraîcheur, contraintes
+  3. Commit   : liaison action/grant/état, anti-rejeu et concurrence
+               │ décision admissible et encore valide
+               ▼
+Connecteur autorisé ── API / fournisseur externe
+               │ reçu ou résultat indéterminé
+               ▼
+Réconciliation + registre de décisions et de preuves
+```
+
+**Contrat d'intégration minimal à convenir :** identité et délégation de l'agent ; identifiant de l'intention et clé d'idempotence ; action et paramètres canoniques ; version du profil et état consulté ; validité temporelle ; réponse du connecteur ; corrélation et provenance des reçus. Les champs exacts doivent être alignés avec les RFC et la version de l'implémentation retenue.
+
+**Cas limites à éprouver avant ENFORCE :** ordre concurrent, révocation entre évaluation et engagement, réessai après réponse perdue, journal périmé, disponibilité du registre, contournement du connecteur et attestation indépendante du fournisseur. **UNKNOWN ne vaut ni succès ni échec** ; la reprise doit être explicitement conditionnée.
+
+Cette architecture est **une vue logique cible**, non une preuve d'intégration active. Lisez l'[architecture détaillée](/architecture/), le [statut publié](/statut/) et les [démonstrations simulées](/portfolio/demos/) pour séparer contrats, implémentation et comportement observé.
+
+## Deux parcours d'accompagnement : Prévenir et Préparer
 
 - [Les produits et leur état d'avancement](/portfolio/products/) — capacités, accès et limites.
 - [Les accompagnements](/portfolio/services/) — périmètres, déroulement et livrables.
@@ -48,7 +87,7 @@ Deux écarts peuvent apparaître dans les organisations :
 
 **En aval** : des systèmes fonctionnent, des procédures existent — mais au moment de rendre des comptes, on ne peut pas démontrer clairement ce qui est couvert, partiellement vérifié ou absent.
 
-**REG** répond aux deux, séparément puis ensemble.
+Les deux parcours d'accompagnement peuvent examiner ces écarts séparément puis ensemble.
 
 ## Parcours A — PRÉVENIR
 
@@ -77,7 +116,7 @@ Deux écarts peuvent apparaître dans les organisations :
 
 ## Convergence : la matrice des écarts
 
-Lorsque les deux parcours sont alimentés, REG établit la correspondance :
+Lorsque les deux parcours sont alimentés, la méthode met en regard :
 
 | Ce qui est attendu    | Ce qui est disponible | État                             |
 | --------------------- | --------------------- | -------------------------------- |
@@ -91,7 +130,7 @@ Lorsque les deux parcours sont alimentés, REG établit la correspondance :
 
 ## Comment lire la restitution
 
-Une pièce disponible, une déclaration et un contrôle vérifié portent des statuts différents. Une lacune reste visible et précise ce qu'elle empêche de conclure. La restitution aide à décider de la prochaine vérification ; elle ne constitue ni une certification, ni un avis juridique, ni une validation de production. REG ne revendique pas un audit en temps réel des systèmes et ne produit pas de preuves pour combler les absences.
+Une pièce disponible, une déclaration et un contrôle vérifié portent des statuts différents. Une lacune reste visible et précise ce qu'elle empêche de conclure. La restitution aide à décider de la prochaine vérification ; elle ne constitue ni une certification, ni un avis juridique, ni une validation de production. Cet accompagnement ne revendique pas un audit en temps réel des systèmes et ne produit pas de preuves pour combler les absences.
 
 ## État du projet
 
