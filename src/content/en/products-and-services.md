@@ -1,12 +1,12 @@
 ---
 title: Products & Services
-kicker: REG — Regulatory Prevention & Readiness
-description: Understand requirements, examine controls and prepare a sourced summary with prioritized next steps.
+kicker: TENIR Labs · offerings and instruments
+description: Distinguish the TENIR framework, REG standard, REG+ mediation, TENIR-Gov runtime and TENIR Labs services.
 lede: "A rule to understand, an AI use to clarify or a review to prepare? A guided diagnostic can help establish the facts, the gaps and the next decision."
 sources: REG v0.1 Working Draft — October 21, 2026
 ---
 
-# REG — Prevent · Prepare · Demonstrate
+## From requirements to execution: distinct roles
 
 ## Start with a guided diagnostic
 
@@ -24,9 +24,48 @@ The diagnostic is a **service to scope together**, rather than software to insta
 
 The contact page helps prepare your message; you review it before sending it through your own email app.
 
-## REG: two directions of work
+## Five distinct roles, one question: what can be authorized and evidenced?
 
-On this page, **REG names TENIR Labs' Prevent · Prepare product approach**. Its tools have different levels of maturity, described below. The technical standard **[Runtime Execution Governance (REG)](/en/standard/)** concerns the execution boundary of actions; this approach does not replace its contracts.
+| Layer | Purpose | What it does not claim |
+| --- | --- | --- |
+| **TENIR** | Diagnostic framework for systems under pressure and the options they must preserve. | Not an API or a compliance product. |
+| **[REG](/en/standard/)** | **Proposed** Runtime Execution Governance standard: standing, structure, commit, evidence and failure behavior. | A specification is not proof that an implementation conforms. |
+| **[REG+](/en/architecture/)** | **Out-of-runtime** mediation of versioned normative intent, deployment assumptions and constraints, aiming at a candidate profile with invariants or an explicit rejection. | Not a shipped or certified autonomous admission engine; formalization and verification criteria remain incomplete. |
+| **[TENIR-Gov](/en/portfolio/gov/)** | Software implementation of controls at the execution boundary, within a declared deployment scope. | The bounded single-host beta does not establish exactly-once external effects or universal compliance. |
+| **Prevent / Prepare** | Two TENIR Labs service methods: requirements → candidate controls; systems → verifiable evidence. | Working approaches, **not another definition of REG**. |
+
+**Core difference:** models and policies may propose an action; the authority to commit it and evidence that an external effect occurred are separate questions. A locally signed decision does not prove the provider's effect.
+
+## Logical architecture and integration boundary
+
+```text
+Business requirement + testable assumptions + constraints
+               │
+        REG+ (out-of-runtime mediation)
+               │ candidate profile / rejection / unknowns
+               ▼
+Agent or app ─────── versioned action intent
+               │
+               ▼
+[REG controls at the execution boundary]
+  1. Standing: authority, scope, expiry, revocation
+  2. Structure: state, commitments, freshness, constraints
+  3. Commit: action/grant/state binding, replay and race safety
+               │ admissible and still-valid decision
+               ▼
+Authorized connector ─── external API / provider
+               │ receipt or indeterminate outcome
+               ▼
+Reconciliation + decision and evidence ledger
+```
+
+**Minimum integration contract to agree:** agent identity and delegation; intent ID and idempotency key; canonical action and parameters; profile version and observed state; validity bounds; connector outcome; correlation and receipt provenance. Exact fields must be checked against the applicable RFCs and implementation version.
+
+**Failure cases to test before ENFORCE:** concurrent commits, revocation between evaluation and commit, retry after lost response, stale telemetry, ledger unavailability, connector bypass and independent provider attestation. **UNKNOWN is neither success nor failure**; recovery is conditional.
+
+This is a **target logical view**, not evidence of a live integration. Read the [detailed architecture](/en/architecture/), [published status](/en/status/) and [simulated demonstrations](/en/portfolio/demos/) to distinguish contracts, implementations and observed behavior.
+
+## Two service methods: Prevent and Prepare
 
 - [Products and their current status](/en/portfolio/products/) — capabilities, access and limits.
 - [Services](/en/portfolio/services/) — scope, process and deliverables.
@@ -48,7 +87,7 @@ Two recurring gaps may arise in organizations:
 
 **Downstream** : systems run, procedures exist — but when accountability is needed, you cannot clearly show what is covered, partially verified, or missing.
 
-**REG** addresses both — separately, then together.
+These two service methods can examine both gaps independently or together.
 
 ## Track A — PREVENT
 
@@ -77,7 +116,7 @@ Two recurring gaps may arise in organizations:
 
 ## Convergence : the gap matrix
 
-When both tracks are fed, REG produces the alignment:
+When both tracks are populated, the method aligns:
 
 | Expected              | Available          | Status                     |
 | --------------------- | ------------------ | -------------------------- |
@@ -91,7 +130,7 @@ When both tracks are fed, REG produces the alignment:
 
 ## Reading the findings
 
-An available document, a statement and a verified control carry different statuses. A gap remains visible and explains which conclusions it prevents. The summary helps choose the next check; it is neither certification, legal advice nor production validation. REG does not claim real-time auditing of systems or manufacture evidence to fill gaps.
+An available document, a statement and a verified control carry different statuses. A gap remains visible and explains which conclusions it prevents. The summary helps choose the next check; it is neither certification, legal advice nor production validation. This engagement does not claim real-time auditing of systems or manufacture evidence to fill gaps.
 
 ## Project status
 
