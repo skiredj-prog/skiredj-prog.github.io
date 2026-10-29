@@ -39,6 +39,24 @@ for (const [lang, home, productsPath] of [
   assert.equal(productNavLinks, 1, `${lang}: duplicate Products entry in header navigation`);
 }
 
+// The product matrix is a genuinely two-dimensional classification, not the
+// illustrative before/during/after sequence on the homepage.
+const mappedProducts = ['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'];
+for(const lang of ['fr','en']){
+  const matrixPage=readFileSync(paths(lang,'products'),'utf8');
+  assert(matrixPage.includes('portfolio-matrix-title'),`${lang}: 2D classification heading missing`);
+  assert(matrixPage.includes('pm-table'),`${lang}: semantic matrix table missing`);
+  assert(matrixPage.includes('scope="row"') && matrixPage.includes('scope="col"'),`${lang}: accessible axes missing`);
+  assert(matrixPage.includes('class="pm-scroller"') && matrixPage.includes('tabindex="0"'),`${lang}: keyboard-accessible horizontal scroll missing`);
+  for(const id of mappedProducts){
+    assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: ${id} not placed in the matrix`);
+  }
+  const homePage=readFileSync(lang==='fr'?'dist/index.html':'dist/en/index.html','utf8');
+  assert(homePage.includes('class="home-lifecycle"'),`${lang}: lifecycle reading missing on homepage`);
+  assert(homePage.includes('lifecycle-flow'),`${lang}: lifecycle stages missing on homepage`);
+  assert(homePage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/products/"`),`${lang}: product map not reachable from homepage`);
+}
+
 const htmlArtifact='dist/embeds/reg-autonomy-control-tower-v1.0.html';
 assert(existsSync(htmlArtifact),'Missing standalone Control Tower asset');
 const simulation=readFileSync(htmlArtifact,'utf8');
