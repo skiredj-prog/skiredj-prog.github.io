@@ -1,0 +1,106 @@
+---
+import { portfolio, type PortfolioLocale } from '../data/portfolio';
+import { url } from '../data/site';
+
+interface Props { locale: PortfolioLocale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const path = (id: string) => url((fr ? '/portfolio/' : '/en/portfolio/') + id + '/');
+
+// Editorial classification. The REG-ARCH lanes remain independent; this table does
+// not define a lifecycle, normative admission rule or product dependency.
+const lanes = [
+  { id: 'claim', fr: 'Prétention', en: 'Claim', detailFr: 'Ce qui est affirmé ou exigé', detailEn: 'What is claimed or required' },
+  { id: 'action', fr: 'Action', en: 'Action', detailFr: 'Ce qui peut être engagé', detailEn: 'What may be committed' },
+  { id: 'representation', fr: 'Représentation', en: 'Representation', detailFr: 'Ce qui peut être décrit et étayé', detailEn: 'What can be represented and evidenced' },
+] as const;
+const functions = [
+  { id: 'explore', fr: 'Explorer et diagnostiquer', en: 'Explore and diagnose' },
+  { id: 'mediate', fr: 'Formaliser et relier', en: 'Formalize and connect' },
+  { id: 'verify', fr: 'Contrôler et vérifier', en: 'Control and verify' },
+] as const;
+const placements: Record<string, Record<string, string[]>> = {
+  explore: {
+    claim: ['discovery', 'prevent'],
+    action: ['xray', 'explorer'],
+    representation: ['prepare'],
+  },
+  mediate: {
+    claim: ['translation', 'mediation'],
+    action: ['technical'],
+    representation: ['reg-arch'],
+  },
+  verify: {
+    claim: ['conformance'],
+    action: ['gov'],
+    representation: ['prepare', 'conformance'],
+  },
+};
+const note: Record<string,string> = {
+  discovery: fr ? 'Hypothèses à examiner' : 'Assumptions to examine',
+  prevent: fr ? 'Exigence vers contrôle candidat' : 'Requirement to candidate control',
+  xray: fr ? 'Exposition à l’IA' : 'AI exposure',
+  explorer: fr ? 'Frontières et scénarios' : 'Boundaries and scenarios',
+  prepare: fr ? 'État des preuves et lacunes' : 'Evidence status and gaps',
+  translation: fr ? 'Traduction des exigences' : 'Requirement translation',
+  mediation: fr ? 'Propositions non admises' : 'Non-admitted proposals',
+  technical: fr ? 'REG+ · profils candidats / RFC' : 'REG+ · candidate profiles / RFCs',
+  'reg-arch': fr ? 'Relations et contrats transversaux' : 'Cross-cutting relationships and contracts',
+  conformance: fr ? 'Tests bornés, pas certification' : 'Bounded tests, not certification',
+  gov: fr ? 'Contrôle à la frontière d’exécution' : 'Execution-boundary controls',
+};
+const label: Record<string,string> = {
+  technical: 'REG+',
+  'reg-arch': 'REG-ARCH',
+  conformance: 'REG Conformance',
+  gov: 'TENIR-Gov',
+};
+---
+<section class="portfolio-matrix" aria-labelledby="portfolio-matrix-title">
+  <header class="pm-heading">
+    <div>
+      <p class="pf-overline">{fr ? 'Cartographie du portefeuille · 2 dimensions' : 'Portfolio map · two dimensions'}</p>
+      <h2 id="portfolio-matrix-title">{fr ? 'Ce que l’on examine × ce que l’on fait' : 'What we examine × what we do'}</h2>
+    </div>
+    <p>{fr
+      ? 'Les colonnes reprennent les trois objets de REG-ARCH ; les lignes décrivent une fonction. Une même offre peut couvrir plusieurs cases.'
+      : 'Columns use the three REG-ARCH objects; rows describe a function. An offering can span more than one cell.'}</p>
+  </header>
+  <div class="pm-scroller" role="region" tabindex="0" aria-label={fr ? 'Matrice des instruments TENIR Labs' : 'TENIR Labs instrument matrix'}>
+    <table class="pm-table">
+      <caption>{fr ? 'Axes éditoriaux de classement, non normatifs' : 'Editorial classification axes, not normative'}</caption>
+      <thead>
+        <tr>
+          <th class="pm-axis" scope="col">{fr ? 'Fonction ↓ / Objet →' : 'Function ↓ / Object →'}</th>
+          {lanes.map(lane => <th scope="col"><strong>{fr ? lane.fr : lane.en}</strong><span>{fr ? lane.detailFr : lane.detailEn}</span></th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {functions.map(fn => <tr>
+          <th scope="row"><strong>{fr ? fn.fr : fn.en}</strong></th>
+          {lanes.map(lane => <td>
+            <ul class="pm-items">
+              {placements[fn.id][lane.id].map(id => <li>
+                <a href={path(id)}><strong>{label[id] ?? portfolio[locale][id].title}</strong><span aria-hidden="true">↗</span></a>
+                <small>{note[id]}</small>
+              </li>)}
+            </ul>
+          </td>)}
+        </tr>)}
+      </tbody>
+    </table>
+  </div>
+  <div class="pm-transverse">
+    <p><strong>{fr ? 'Transversal :' : 'Cross-cutting:'}</strong> {fr
+      ? 'TENIR est le cadre de référence ; REG est le standard proposé. REG-ARCH relie les trois objets sans les réduire à une séquence temporelle.'
+      : 'TENIR is the overarching framework; REG is the proposed standard. REG-ARCH relates the three objects without turning them into a timeline.'}</p>
+    <p>{fr ? 'À côté des instruments :' : 'Alongside these instruments:'}
+      {' '}<a href={path('diagnostic')}>{fr ? 'Diagnostic accompagné' : 'Guided diagnostic'}</a>
+      {' · '}<a href={path('control-tower')}>Control Tower</a>
+      {' · '}<a href={path('experiences')}>{fr ? 'Expériences simulées' : 'Simulated experiences'}</a>.
+    </p>
+    <p class="pm-disclaimer">{fr
+      ? 'Lecture éditoriale indicative, non issue d’une matrice canonique approuvée. Chaque fiche précise sa maturité, ses sources, sa disponibilité et ses limites. Placement dans une case ≠ capacité intégrée ni garantie établie.'
+      : 'Provisional editorial map, not an approved canonical matrix. Each profile states its maturity, sources, availability and limits. Placement in a cell does not establish a live integration or a proven guarantee.'}</p>
+  </div>
+</section>
