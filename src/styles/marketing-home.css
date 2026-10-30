@@ -111,3 +111,8 @@ body.marketing-page .site-header .menu-toggle{color:#fff;background:#173251;bord
 
 .ml-story-link{display:inline-block;color:#2563eb!important;font-size:.82rem;font-weight:700;margin-top:1rem}
 .ml-story-link:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Full-bleed layout without using 100vw (which can cause scrollbar overflow). */
+body.marketing-page .home-main{width:100%;max-width:none;margin:0}
+body.marketing-page .market-root{width:100%;margin-left:0}
+@media(min-width:761px) and (max-width:1100px){.market-root .ml-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
