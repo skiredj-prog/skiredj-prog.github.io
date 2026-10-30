@@ -16,6 +16,7 @@ interface Props { locale: Locale; slug: string; title: string; description: stri
 const { locale, slug, title, description, kicker, lede, sources } = Astro.props;
 const fr=locale==='fr', t=copy[locale], groups=navGroups[locale], products=navProducts[locale], contact=navContact[locale];
 const home=slug==='';
+const isCredibility=slug==='credibilite'||slug==='credibility';
 const isJourney=slug.startsWith('parcours/')||slug.startsWith('start/');
 const isBusiness=slug==='parcours/activite'||slug==='start/business';
 const isPortfolio=slug.startsWith('portfolio/');
@@ -61,7 +62,7 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
       try { var saved=localStorage.getItem('tenir-theme'); document.documentElement.dataset.theme=(saved==='dark'||saved==='light')?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); } catch(e) {}
     </script>
   </head>
-  <body class:list={[home&&'marketing-page']}>
+  <body class:list={[home&&'marketing-page',isCredibility&&'credibility-page']}>
     <a class="skip" href="#content">{t.skip}</a>
     <header class="site-header">
       <div class="header-inner">
@@ -80,8 +81,8 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
         <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={readerContact}>{home?(fr?'Mon rapport gratuit':'My free report'):(fr?'Poser une question':'Ask a question')} <span aria-hidden="true">↗</span></a></div>
       </div>
     </header>
-    <main id="content" class:list={[home?'home-main':'doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page']} tabindex="-1">
-      {home ? <><MarketingHome locale={locale}/><details class="reading-note"><summary>{fr?'Statut, sources et limites de cette présentation':'Status, sources and limits of this presentation'}</summary><div class="prose"><p class="sources">{t.sources} : {sources}</p><slot /></div></details></> : <>
+    <main id="content" class:list={[(home||isCredibility)?'home-main':'doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page']} tabindex="-1">
+      {isCredibility ? <slot/> : home ? <><MarketingHome locale={locale}/><details class="reading-note"><summary>{fr?'Statut, sources et limites de cette présentation':'Status, sources and limits of this presentation'}</summary><div class="prose"><p class="sources">{t.sources} : {sources}</p><slot /></div></details></> : <>
         <article>
           <nav class="breadcrumb" aria-label={fr?'Fil d’Ariane':'Breadcrumb'}><a href={url(fr?'/':'/en/')}>{fr?'Accueil':'Home'}</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
           <header class="doc-head"><p class="kicker">{pageKinds[slug]&&<span>{pageKinds[slug]} · </span>}{kicker}</p><h1>{title}</h1>{!isPortfolio&&<><p class="lede">{lede}</p>{slug!=='contact'&&<details class="source-disclosure"><summary>{fr?'Sources et contexte de lecture':'Sources and reading context'}</summary><p class="sources">{sources}</p><p>{t.status} <a href={path('statut','status')}>{fr?'Lire le statut détaillé':'Read the detailed status'} →</a></p></details>}</>}</header>
