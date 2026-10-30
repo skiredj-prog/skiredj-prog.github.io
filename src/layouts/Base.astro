@@ -43,8 +43,8 @@ const footerGroups=[
   {id:'study',label:fr?'Approfondir':'Go deeper',links:[groups[3].links[1],groups[3].links[3],...groups[4].links.slice(1)]},
   {id:'talk',label:fr?'Échanger':'Talk',links:[contact,{slug:fr?'offre':'offer',href:fr?'/offre/':'/en/offer/',label:fr?'Un accompagnement':'Accompanied work'},{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}]},
 ];
-const mainTitle=home?(fr?'TENIR Labs — Contrôle de l’exécution des agents IA':'TENIR Labs — Execution Control for Agentic AI'):`${title} — TENIR`;
-const mainDescription=home?(fr?'Vos agents IA ont le droit d’agir. Mais devraient-ils ? TENIR Labs : diagnostic des frontières d’exécution, gouvernance des actions et démonstrations interactives.':'AI agents have permission to act. But should they? TENIR Labs: execution-boundary diagnostics, agent governance and interactive demonstrations.'):description;
+const mainTitle=home?(fr?'TENIR Labs — L’IA agit. Vous gardez la main.':'TENIR Labs — AI takes action. You stay in control.'):`${title} — TENIR`;
+const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de votre entreprise. TENIR Labs aide à encadrer les actions des agents IA, anticiper les risques et reprendre la main lorsque le résultat est incertain.':'Give AI the work, not the keys to your business. TENIR Labs helps you govern AI-agent actions, anticipate risk and respond when the outcome is uncertain.'):description;
 ---
 <!doctype html>
 <html lang={locale} data-theme="light">
