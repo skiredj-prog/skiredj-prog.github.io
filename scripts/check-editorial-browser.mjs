@@ -14,7 +14,7 @@ try {
    await page.goto(server+prefix+'/',{waitUntil:'domcontentloaded'});
    await page.locator('#market-heading').waitFor({state:'visible'});
    const hero=await page.locator('#market-heading').innerText();
-   assert(hero.includes(locale==='fr'?'Autorisé':'Authorized'),locale+'/'+width+': marketing headline missing');
+   assert(hero.includes(locale==='fr'?'Vous gardez la main':'You stay in control'),locale+'/'+width+': marketing headline missing');
    const positions=await page.evaluate(()=>({
      story:document.querySelector('#comprendre')?.getBoundingClientRect().top,
      offers:document.querySelector('#ml-offerings-title')?.getBoundingClientRect().top,
