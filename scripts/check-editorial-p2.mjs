@@ -20,14 +20,15 @@ for(const locale of ['fr','en']){
  assert(c.includes('https://www.canlii.org/en/bc/bccrt/doc/2024/2024bccrt149/2024bccrt149.html'),locale+': primary source link missing');
  assert(c.includes(locale==='fr'?'scénario pédagogique':'teaching scenario'),locale+': synthetic banking case must be distinguished');
  assert(c.includes('PAY-MAR-001')||c.includes('payment instruction'),locale+': fictional payment illustration missing');
- assert(h.indexOf('id="responsibility-title"')>0,locale+': responsible-action learning route missing');
- assert(h.includes(locale==='fr'?'Si une crise survient':'If a crisis follows'),locale+': no accountability crisis narrative');
- assert(h.includes(locale==='fr'?'Explorer les cas':'Explore the cases'),locale+': reader-first CTA missing');
- assert(h.indexOf('id="responsibility-title"')<h.indexOf('home-offer-map'),locale+': commercial offer shown before learning');
- assert(h.indexOf('id="responsibility-title"')<h.indexOf('execution-video'),locale+': technical video shown before reading route');
- assert(h.indexOf('id="responsibility-title"')<h.indexOf('prototype-section'),locale+': live prototype shown before education');
- assert(h.includes(locale==='fr'?'Crise':'crisis')||h.includes(locale==='fr'?'crise':'crisis'),locale+': consequences missing');
- assert(h.includes(locale==='fr'?'/cas/':'/en/cases/'),locale+': editorial entry link missing');
+ // Marketing homepage presents the consequential action first, then the offers, and preserves case-study access.
+ assert(h.includes('id="ml-threat-title"'),locale+': consequential-action narrative missing');
+ assert(h.includes(locale==='fr'?'Un agent déclenche un paiement':'An agent initiates a payment'),locale+': concrete illustrative scenario missing');
+ assert(h.includes(locale==='fr'?'Explorer les cas réels et simulés':'Explore real and simulated cases'),locale+': sourced case invitation missing');
+ assert(h.indexOf('id="ml-threat-title"')<h.indexOf('id="ml-offerings-title"'),locale+': offers displayed before the problem narrative');
+ assert(h.indexOf('id="ml-offerings-title"')<h.indexOf('id="ml-demo-title"'),locale+': demo must follow the offer selection');
+ assert(h.includes(locale==='fr'?'confirmation disparaît':'confirmation disappears'),locale+': missing consequence/unknown-outcome narrative');
+ assert(h.includes(locale==='fr'?'/cas/':'/en/cases/'),locale+': editorial case route missing');
+ assert(h.includes('id="market-heading"'),locale+': executive-ready landing proposition missing');
  for(const id of ['banque-assurance','transport-mobilite']){
    assert(c.includes('id="'+id+'-sector-map-title"'),locale+': missing unique sector-map title ID '+id);
    assert(c.includes('id="'+id+'-sector-sequence-title"'),locale+': missing sequence heading ID '+id);

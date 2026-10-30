@@ -1,0 +1,131 @@
+---
+import '../styles/fonts.css';
+import '../styles/pathway.css';
+import {url, type Locale} from '../data/site';
+interface Props { locale: Locale }
+const {locale}=Astro.props;
+const fr=locale==='fr';
+const home=url(fr?'/':'/en/');
+const other=url(fr?'/en/ai-readiness/':'/parcours-ia/');
+const here=url(fr?'/parcours-ia/':'/en/ai-readiness/');
+const canonical=new URL(here,Astro.site);
+const t=fr?{
+title:"Votre rapport de parcours IA — TENIR Labs",
+desc:"En dix questions, découvrez les priorités pour garder la maîtrise des actions confiées à vos agents IA. Gratuit, sans compte.",
+label:"RAPPORT DE PARCOURS · TENIR LABS",
+tag:"L’IA avance. Vous gardez la main.",
+head:"Votre entreprise est-elle prête à laisser l’IA agir ?",
+lead:"En 10 questions, découvrez ce que votre organisation maîtrise déjà, ce qui mérite votre attention et par où commencer.",
+b1:"10 questions",b2:"5 minutes environ",b3:"Rapport gratuit",b4:"Sans compte",
+start:"Découvrir mon parcours",more:"Comment ça marche ?",
+pitch:"Un regard utile, pas une certification.",
+pitchText:"Le rapport donne des pistes à partir de vos réponses, pas une note d’audit. Vous pouvez le télécharger, le partager ou l’utiliser pour préparer une discussion.",
+steps:"Ce que vous allez recevoir",
+s1:"Votre point de départ",s1d:"Une synthèse lisible de vos forces et des zones à clarifier.",
+s2:"Vos trois priorités",s2d:"Des actions concrètes, ordonnées selon vos réponses.",
+s3:"Votre prochaine étape",s3d:"Une suggestion d’accompagnement si elle peut vous aider.",
+privacy:"Les réponses restent dans votre navigateur. Aucun compte, aucun envoi automatique. Vous choisissez si vous partagez le rapport.",
+progress:"QUESTIONNAIRE", back:"Précédent",next:"Suivant",finish:"Voir mon rapport",startOver:"Recommencer",
+reportKicker:"VOTRE RAPPORT DE PARCOURS · AUTO-ÉVALUATION",
+reportHeading:"Votre prochaine étape est plus claire.",
+reportIntro:"Voici ce que suggèrent vos réponses. Ce résultat est indicatif et ne vérifie ni vos systèmes ni vos preuves.",
+dimensions:"Six regards sur votre situation",
+priorities:"Les trois actions à considérer",
+recommend:"La prochaine étape avec TENIR Labs",
+recommendBody:"Vous pouvez avancer seul avec ce rapport ou discuter d’un cas précis avec nous.",
+share:"Partager mon rapport",copy:"Copier le rapport",download:"Télécharger",print:"Imprimer / PDF",copied:"Rapport copié",
+contact:"Discuter de mon parcours",demo:"Essayer une démo",home:"Retour au site",limits:"Évaluation déclarative. Aucune vérification technique ou certification. Les recommandations sont indicatives ; un diagnostic peut les confirmer ou les nuancer.",
+missing:"Non évalué",backToTop:"Revenir au début",
+}:{
+title:"Your AI readiness pathway — TENIR Labs",
+desc:"In ten questions, uncover your priorities for governing AI-agent actions. Free, no account required.",
+label:"YOUR AI PATHWAY REPORT · TENIR LABS",
+tag:"AI takes action. You stay in control.",
+head:"Is your business ready to let AI take action?",
+lead:"Ten questions to see what you already have under control, what deserves attention, and where to begin.",
+b1:"10 questions",b2:"About 5 minutes",b3:"Free report",b4:"No account",
+start:"Discover my pathway",more:"How it works",
+pitch:"A useful starting point, not a certification.",
+pitchText:"Your report offers suggestions based on your answers, not an audit score. Download it, share it or use it to prepare a discussion.",
+steps:"What you'll take away",
+s1:"Your starting point",s1d:"A clear overview of strengths and areas to clarify.",
+s2:"Your top three priorities",s2d:"Concrete next steps ordered around your answers.",
+s3:"Your next move",s3d:"A suggested engagement if professional help would be useful.",
+privacy:"Your answers stay in your browser. No account and no automatic submission. You choose whether to share the report.",
+progress:"ASSESSMENT",back:"Previous",next:"Next",finish:"See my report",startOver:"Start again",
+reportKicker:"YOUR AI PATHWAY REPORT · SELF-ASSESSMENT",
+reportHeading:"Your next step is clearer.",
+reportIntro:"These findings reflect your answers. We haven't verified your systems or supporting evidence.",
+dimensions:"Six views of your situation",
+priorities:"Three actions worth considering",
+recommend:"Your next move with TENIR Labs",
+recommendBody:"Use this report independently or talk to us about one specific scenario.",
+share:"Share my report",copy:"Copy report",download:"Download",print:"Print / PDF",copied:"Report copied",
+contact:"Discuss my pathway",demo:"Explore the demo",home:"Back to website",limits:"Self-reported assessment only. Not a technical verification or certification. Recommendations are indicative and can be confirmed or adjusted during a diagnostic.",
+missing:"Not assessed",backToTop:"Back to start"
+};
+const demo=url(fr?'/portfolio/control-tower/':'/en/portfolio/control-tower/');
+const contact=url(fr?'/contact/':'/en/contact/');
+---
+<!doctype html>
+<html lang={locale}>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta name="theme-color" content="#071629"/>
+  <title>{t.title}</title><meta name="description" content={t.desc}/>
+  <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml"/>
+  <link rel="canonical" href={canonical}/>
+  <link rel="alternate" hreflang="fr" href={new URL(url('/parcours-ia/'),Astro.site)}/>
+  <link rel="alternate" hreflang="en" href={new URL(url('/en/ai-readiness/'),Astro.site)}/>
+  <meta property="og:title" content={t.title}/><meta property="og:description" content={t.desc}/>
+</head>
+<body data-pathway-app data-locale={locale} data-contact-href={contact} data-demo-href={demo} data-home-href={home}>
+  <header class="pa-header">
+    <a href={home} class="pa-brand" aria-label={fr?'TENIR Labs — accueil':'TENIR Labs — home'}>TENIR<span>·</span>Labs</a>
+    <div class="pa-header-right"><span class="pa-header-label">{t.label}</span><a class="pa-lang" href={other} lang={fr?'en':'fr'}>{fr?'EN':'FR'}</a></div>
+  </header>
+  <main id="pa-main">
+    <section class="pa-intro" id="pa-intro" aria-labelledby="pa-title">
+      <div class="pa-intro-inner">
+        <span class="pa-eyebrow">{t.tag}</span>
+        <h1 id="pa-title">{t.head}</h1>
+        <p class="pa-lead">{t.lead}</p>
+        <div class="pa-facts"><span>{t.b1}</span><span>{t.b2}</span><span>{t.b3}</span><span>{t.b4}</span></div>
+        <div class="pa-buttons"><button class="pa-button pa-primary" id="pa-start" type="button">{t.start} <span aria-hidden="true">→</span></button><a class="pa-button pa-outline" href="#pa-steps">{t.more} ↓</a></div>
+        <p class="pa-privacy">{t.privacy}</p>
+      </div>
+    </section>
+    <section class="pa-steps" id="pa-steps" aria-labelledby="pa-steps-title">
+      <div class="pa-wrap">
+        <div class="pa-heading"><span class="pa-eyebrow">{t.steps}</span><h2 id="pa-steps-title">{t.pitch}</h2><p>{t.pitchText}</p></div>
+        <div class="pa-step-grid"><article><span>01</span><h3>{t.s1}</h3><p>{t.s1d}</p></article><article><span>02</span><h3>{t.s2}</h3><p>{t.s2d}</p></article><article><span>03</span><h3>{t.s3}</h3><p>{t.s3d}</p></article></div>
+      </div>
+    </section>
+    <section class="pa-question" id="pa-question" aria-labelledby="pa-question-title" hidden>
+      <div class="pa-question-inner">
+        <div class="pa-progress"><span id="pa-progress-label" aria-live="polite"></span><span id="pa-count"></span></div>
+        <div class="pa-track" aria-hidden="true"><div id="pa-progress-fill"></div></div>
+        <span class="pa-qsection" id="pa-qsection"></span>
+        <h2 id="pa-question-title" tabindex="-1"></h2>
+        <div class="pa-options" id="pa-options" role="radiogroup" aria-labelledby="pa-question-title"></div>
+        <div class="pa-qnav"><button class="pa-button pa-muted" type="button" id="pa-back">{t.back}</button><button class="pa-button pa-primary" type="button" id="pa-next" disabled>{t.next} →</button></div>
+      </div>
+    </section>
+    <section class="pa-report" id="pa-report" aria-labelledby="pa-report-title" hidden>
+      <div class="pa-report-hero"><div class="pa-wrap"><span class="pa-eyebrow">{t.reportKicker}</span><h1 id="pa-report-title" tabindex="-1">{t.reportHeading}</h1><p>{t.reportIntro}</p><div class="pa-report-summary" id="pa-report-summary" aria-live="polite"></div></div></div>
+      <div class="pa-wrap pa-report-content">
+        <div class="pa-report-grid">
+          <section class="pa-report-card" aria-labelledby="pa-dimensions-title"><h2 id="pa-dimensions-title">{t.dimensions}</h2><div id="pa-dimensions"></div></section>
+          <section class="pa-report-card" aria-labelledby="pa-priorities-title"><h2 id="pa-priorities-title">{t.priorities}</h2><ol id="pa-priorities"></ol></section>
+        </div>
+        <section class="pa-offer" aria-labelledby="pa-offer-title"><span class="pa-eyebrow">{t.recommend}</span><h2 id="pa-offer-title"></h2><p id="pa-offer-description"></p><div class="pa-report-actions"><a class="pa-button pa-primary" id="pa-talk" href={contact}>{t.contact} ↗</a><a class="pa-button pa-outline" id="pa-learn" href={demo}>{t.demo} →</a></div><p class="pa-footnote">{t.recommendBody}</p></section>
+        <div class="pa-report-toolbar"><button class="pa-button pa-muted" type="button" id="pa-download">{t.download} ↓</button><button class="pa-button pa-muted" type="button" id="pa-copy">{t.copy}</button><button class="pa-button pa-muted" type="button" id="pa-print">{t.print}</button><button class="pa-restart" type="button" id="pa-restart">{t.startOver}</button><span id="pa-feedback" role="status"></span></div>
+        <p class="pa-limits">{t.limits}</p>
+      </div>
+    </section>
+  </main>
+  <footer class="pa-footer"><a href={home}>{t.home}</a><span>© 2026 TENIR Labs · Casablanca</span><a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a></footer>
+  <script src={url('/pathway.js')} defer></script>
+</body>
+</html>

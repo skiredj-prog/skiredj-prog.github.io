@@ -1,0 +1,27 @@
+.cr-root{background:#fff;color:#12243b;font-family:var(--sans);font-size:1rem;line-height:1.6;width:100%;overflow:hidden}
+.cr-root *{box-sizing:border-box}.cr-wrap{width:min(1120px,calc(100% - 2.7rem));margin:auto}.cr-hero,.cr-next{background:#071629;color:white;padding:clamp(4rem,8vw,6.5rem) 0}
+.cr-eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.07em;color:#d5a754;display:block;margin:0 0 1rem}
+.cr-hero h1,.cr-next h2{font-family:var(--serif);font-size:clamp(2.7rem,5.8vw,5.2rem);font-weight:500;letter-spacing:-.04em;line-height:1.08;max-width:19ch;margin:0 0 1.25rem;color:white}
+.cr-lead{font-size:clamp(1rem,1.7vw,1.2rem);color:#b9c9db;max-width:67ch;line-height:1.7}
+.cr-actions{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:1.65rem}.cr-btn{display:inline-flex;justify-content:center;align-items:center;min-height:47px;padding:.65rem 1.25rem;border-radius:6px;font-size:.9rem;font-weight:650;text-decoration:none;border:1px solid transparent}
+.cr-btn-primary{background:#2563eb;color:white!important}.cr-btn-outline{border-color:#60758d;color:white!important;background:rgba(255,255,255,.05)}
+.cr-btn:hover{filter:brightness(1.15)}.cr-micro{color:#89a0bd;font-family:var(--mono);font-size:.7rem;margin-top:1.5rem}
+.cr-evidence{background:#f7f9fc;padding:4.5rem 0}.cr-evidence .cr-eyebrow{color:#32629f}.cr-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#d8e2ec;border:1px solid #d8e2ec;border-radius:9px;overflow:hidden;margin:1rem 0 2rem}
+.cr-stats>div{background:#fff;padding:1.35rem;min-width:0}.cr-stats strong{font-size:1.9rem;line-height:1;display:block;color:#0e2946}.cr-stats span{display:block;font-size:.78rem;color:#607187;margin-top:.5rem}
+.cr-evidence-grid{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:1rem}.cr-panel{background:white;border:1px solid #dce5ee;border-radius:9px;padding:1.4rem;min-width:0}.cr-panel small{display:block;font:600 .67rem var(--mono);color:#2b5e9f;letter-spacing:.05em;text-transform:uppercase}.cr-panel h2{font-family:var(--serif);font-size:1.6rem;margin:.6rem 0;color:#15283f}.cr-panel p{font-size:.86rem;color:#536780;line-height:1.65}.cr-panel a,.cr-boundaries a{color:#1d4ed8;font-weight:700;text-decoration:none;font-size:.84rem}
+.cr-panel code{overflow-wrap:anywhere;font-size:.76rem}.cr-panel .cr-note{color:#6b7e91;font-size:.8rem}.cr-panel .cr-digest{font-family:var(--mono);font-size:.65rem;color:#536780}
+.cr-capabilities{padding:4.5rem 0}.cr-capabilities h2,.cr-architecture h2{font-family:var(--serif);font-size:clamp(2.1rem,4vw,3.2rem);letter-spacing:-.03em;line-height:1.15;margin:0 0 1.6rem}
+.cr-cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.cr-cap-grid article{border:1px solid #dfe7ef;border-radius:8px;padding:1.4rem}.cr-cap-grid span{color:#2767b3;font:600 .75rem var(--mono)}.cr-cap-grid h3{margin:.7rem 0;font-size:1.12rem;color:#16304a}.cr-cap-grid p{font-size:.86rem;color:#657589}
+.cr-boundaries{margin-top:1.2rem;padding:1.7rem;background:#f6f8fb;border:1px solid #dfe7ef;border-radius:9px}.cr-boundaries h3{font-size:1.15rem;margin:0 0 .5rem}.cr-boundaries ul{padding-left:1.4rem;display:grid;gap:.3rem;font-size:.88rem;color:#5a6e85;margin:.8rem 0 1rem}
+.cr-architecture{background:#0b192b;padding:4rem 0 0;color:#fff}.cr-architecture .cr-wrap>p{max-width:69ch;font-size:.94rem;color:#b0c1d6}.cr-architecture h2{color:#fff}.cr-frame-toolbar{display:flex;gap:1.2rem;flex-wrap:wrap;margin:1.2rem 0 2rem}.cr-frame-toolbar a{color:#adcaff;text-decoration:none;font-size:.85rem;font-weight:700}
+.cr-architecture iframe{display:block;width:100%;height:min(78vh,850px);border:0;border-top:1px solid #32435a;background:#0a0a14}
+.cr-next h2{font-size:clamp(2.2rem,4.5vw,3.7rem)}.cr-next p{color:#bac7d8;max-width:60ch}.cr-root a:focus-visible{outline:3px solid #f4ad3b;outline-offset:3px}
+:root[data-theme=dark] .cr-root .cr-evidence,:root[data-theme=dark] .cr-root .cr-capabilities{background:#0c1e33;color:#f2f5fa}
+:root[data-theme=dark] .cr-root .cr-panel,:root[data-theme=dark] .cr-root .cr-stats>div,:root[data-theme=dark] .cr-root .cr-cap-grid article,:root[data-theme=dark] .cr-root .cr-boundaries{background:#152c46;border-color:#37526c;color:#f2f5fa}
+:root[data-theme=dark] .cr-root .cr-panel h2,:root[data-theme=dark] .cr-root .cr-capabilities h2,:root[data-theme=dark] .cr-root .cr-cap-grid h3{color:#f2f5fa}
+:root[data-theme=dark] .cr-root .cr-panel p,:root[data-theme=dark] .cr-root .cr-boundaries li,:root[data-theme=dark] .cr-root .cr-cap-grid p,:root[data-theme=dark] .cr-root .cr-stats strong{color:#bed0e3}
+@media(max-width:940px){.cr-evidence-grid{grid-template-columns:1fr 1fr}.cr-evidence-grid .cr-panel:last-child{grid-column:1/-1}.cr-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cr-wrap{width:calc(100% - 2rem)}.cr-evidence-grid,.cr-cap-grid{grid-template-columns:1fr}.cr-evidence-grid .cr-panel:last-child{grid-column:auto}.cr-stats strong{font-size:1.55rem}.cr-stats>div{padding:1rem}.cr-architecture iframe{height:76vh}.cr-btn{width:100%}}
+/* Credibility route is a full-width marketing journey, not a prose article. */
+body.credibility-page main.home-main{width:100%;max-width:none;margin:0;padding:0}
+body.credibility-page .cr-root{max-width:none}

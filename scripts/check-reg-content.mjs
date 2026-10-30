@@ -10,7 +10,7 @@ const cases = [
     productPath: '/produits-et-services/',
     specPath: '/publications/reg-v0.1/',
     examplePath: '/offre/exemple/',
-    hero: 'Explorer les cas',
+    hero: 'Vous gardez la main.',
     demoPath:'/portfolio/demos/',
     draft: 'Working Draft',
     fictional: 'Exemple simulé',
@@ -23,7 +23,7 @@ const cases = [
     productPath: '/en/products-and-services/',
     specPath: '/en/publications/reg-v0.1/',
     examplePath: '/en/offer/example/',
-    hero: 'Explore the cases',
+    hero: 'You stay in control.',
     demoPath:'/en/portfolio/demos/',
     draft: 'Working Draft',
     fictional: 'Simulated example',
@@ -36,7 +36,7 @@ for (const c of cases) {
   const spec = readFileSync(c.spec, 'utf8');
   const example = readFileSync(c.example, 'utf8');
 
-  assert(home.includes(c.hero), `${c.locale}: reader-first case invitation missing`);
+  assert(home.includes(c.hero), `${c.locale}: conversion hero missing`);
   assert(home.includes('href="'+c.demoPath+'"'), `${c.locale}: technical demo catalogue no longer reachable at second level`);
   assert(home.includes(c.productPath), `${c.locale}: homepage catalogue link missing`);
   assert(products.includes(c.specPath), `${c.locale}: spec link missing`);

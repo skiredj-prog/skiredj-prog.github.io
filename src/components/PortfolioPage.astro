@@ -1,6 +1,7 @@
 ---
 import '../styles/portfolio.css';
 import PortfolioCard from './PortfolioCard.astro';
+import PortfolioMatrix from './PortfolioMatrix.astro';
 import { portfolioAccess } from '../data/portfolioAccess';
 import { portfolio, portfolioHubs, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
@@ -68,6 +69,7 @@ const demos = [
       <div class="pf-intro-body"><h2>{hub.opening}</h2><p>{hub.intro}</p></div>
       <aside class="pf-aside"><span class="pf-aside-label">{fr?'À votre rythme':'At your own pace'}</span><strong>{hub.spotlight}</strong><p>{fr?'Vous pouvez passer d’un instrument à une démo, puis revenir aux sources ou à une conversation.':'Move from an instrument to a demo, then return to the sources or a conversation.'}</p></aside>
     </section>}
+    {page==='products'&&<PortfolioMatrix locale={locale} />}
     {page==='services'&&<section class="pf-service-example" aria-labelledby="pf-service-result">
       <div><p class="pf-overline">{fr?'Un exemple de travail ensemble':'An example of working together'}</p><h2 id="pf-service-result">{hub.opening}</h2><p>{fr?'Par exemple, un agent a envoyé une action et la confirmation manque. Avant de recommencer, regardons ce que les éléments permettent d’établir.':'For example, an agent sent an action and the confirmation is missing. Before trying again, examine what the available evidence establishes.'}</p><a href={path(fr?'offre/exemple':'offer/example')}>{fr?'Lire la fiche simulée et ses sources':'Read the simulated sheet and its sources'} →</a></div>
       <dl class="pf-exchange"><div><dt>{fr?'Vous apportez':'You bring'}</dt><dd>{fr?'Une action, une question et les éléments disponibles.':'An action, a question and the available materials.'}</dd></div><div><dt>{fr?'Nous examinons':'We examine'}</dt><dd>{fr?'Autorisation, envoi, résultat, inconnues et conditions de reprise.':'Authorization, dispatch, outcome, unknowns and recovery conditions.'}</dd></div><div><dt>{fr?'Vous repartez avec':'You leave with'}</dt><dd>{fr?'Une fiche sourcée, des annexes courtes et jusqu’à trois priorités.':'A sourced sheet, short annexes and up to three priorities.'}</dd></div></dl>

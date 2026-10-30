@@ -6,7 +6,7 @@ import '../styles/journeys.css';
 import '../styles/responsibility.css';
 import '../styles/sector-map.css';
 import '../styles/execution-video.css';
-import Home from '../components/Home.astro';
+import MarketingHome from '../components/MarketingHome.astro';
 import ContactBrief from '../components/ContactBrief.astro';
 import { journeys, journeyHref } from '../data/journeys';
 import { businessHref } from '../data/business';
@@ -16,6 +16,7 @@ interface Props { locale: Locale; slug: string; title: string; description: stri
 const { locale, slug, title, description, kicker, lede, sources } = Astro.props;
 const fr=locale==='fr', t=copy[locale], groups=navGroups[locale], products=navProducts[locale], contact=navContact[locale];
 const home=slug==='';
+const isCredibility=slug==='credibilite'||slug==='credibility';
 const isJourney=slug.startsWith('parcours/')||slug.startsWith('start/');
 const isBusiness=slug==='parcours/activite'||slug==='start/business';
 const isPortfolio=slug.startsWith('portfolio/');
@@ -24,10 +25,11 @@ const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}
 const canonical=new URL(url(here),Astro.site);
 const path=(f:string,e:string=f)=>url(fr?`/${f}/`:`/en/${e}/`);
 const selectedJourney=journeys[locale].find(j=>slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`));
-const readerContact=isPortfolio?portfolioContactHref(locale,slug.split('/')[1]):path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
+const readerContact=home?path('parcours-ia','ai-readiness'):isPortfolio?portfolioContactHref(locale,slug.split('/')[1]):path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
 const pageKinds: Record<string, string> = {
   offre: fr?'Service':'Service', offer:'Service',
   'diagnostic-execution': fr?'Diagnostic spécialisé':'Specialized diagnostic',
+  'credibilite': fr?'Parcours Crédibilité':'Credibility Journey', 'credibility': fr?'Parcours Crédibilité':'Credibility Journey',
   'produits-et-services': 'Service · REG', 'products-and-services': 'Service · REG',
   'offre/exemple': fr?'Exemple simulé':'Simulated example', 'offer/example':'Simulated example',
   'architecture/demo': fr?'Démonstration':'Demo', 'architecture/interactive': fr?'Démonstration interactive':'Interactive demo',
@@ -38,13 +40,13 @@ const pageKinds: Record<string, string> = {
 const demo=groups[2];
 const resources=[...groups[3].links,...groups[4].links,...groups[0].links.filter(x=>x.slug!=='concepts'),groups[1].links[0],groups[1].links[4],{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}];
 const footerGroups=[
-  {id:'discover',label:fr?'Découvrir':'Discover',links:[{slug:fr?'parcours/decouvrir':'start/discover',href:journeyHref(locale,journeys[locale][0]),label:fr?'Comprendre TENIR':'Understand TENIR'},{slug:'portfolio/products',href:fr?'/portfolio/products/':'/en/portfolio/products/',label:fr?'Produits':'Products'},{slug:fr?'parcours/activite':'start/business',href:businessHref(locale),label:fr?'En pratique':'In practice'}]},
+  {id:'discover',label:fr?'Découvrir':'Discover',links:[{slug:'credibility',href:fr?'/credibilite/':'/en/credibility/',label:fr?'Parcours Crédibilité':'Credibility Journey'},{slug:'ai-pathway',href:fr?'/parcours-ia/':'/en/ai-readiness/',label:fr?'Mon rapport de parcours':'My AI pathway report'},{slug:fr?'parcours/decouvrir':'start/discover',href:journeyHref(locale,journeys[locale][0]),label:fr?'Comprendre TENIR':'Understand TENIR'},{slug:'portfolio/products',href:fr?'/portfolio/products/':'/en/portfolio/products/',label:fr?'Produits':'Products'},{slug:fr?'parcours/activite':'start/business',href:businessHref(locale),label:fr?'En pratique':'In practice'}]},
   {id:'try',label:fr?'Explorer et essayer':'Explore and try',links:[{slug:'prototype',href:'https://mobile.tenirlabs.cc/discover',label:fr?'Prototype mobile':'Mobile prototype'},demo.links[0],{slug:fr?'offre/exemple':'offer/example',href:fr?'/offre/exemple/':'/en/offer/example/',label:fr?'Un exemple sourcé':'A sourced example'}]},
   {id:'study',label:fr?'Approfondir':'Go deeper',links:[groups[3].links[1],groups[3].links[3],...groups[4].links.slice(1)]},
   {id:'talk',label:fr?'Échanger':'Talk',links:[contact,{slug:fr?'offre':'offer',href:fr?'/offre/':'/en/offer/',label:fr?'Un accompagnement':'Accompanied work'},{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}]},
 ];
-const mainTitle=home?(fr?'TENIR — Diagnostic et gouvernance sous pression':'TENIR — Diagnosis and governance under pressure'):`${title} — TENIR`;
-const mainDescription=home?(fr?'TENIR : cadre de diagnostic et de gouvernance des systèmes sous pression. Individus, organisations, institutions, États : ce qui doit être préservé, les options et les bases d’une décision.':'TENIR: a diagnostic and governance framework for systems under pressure. Individuals, organizations, institutions and states: what must be preserved, the options and the basis for a decision.'):description;
+const mainTitle=home?(fr?'TENIR Labs — L’IA agit. Vous gardez la main.':'TENIR Labs — AI takes action. You stay in control.'):`${title} — TENIR`;
+const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de votre entreprise. TENIR Labs aide à encadrer les actions des agents IA, anticiper les risques et reprendre la main lorsque le résultat est incertain.':'Give AI the work, not the keys to your business. TENIR Labs helps you govern AI-agent actions, anticipate risk and respond when the outcome is uncertain.'):description;
 ---
 <!doctype html>
 <html lang={locale} data-theme="light">
@@ -60,25 +62,28 @@ const mainDescription=home?(fr?'TENIR : cadre de diagnostic et de gouvernance de
       try { var saved=localStorage.getItem('tenir-theme'); document.documentElement.dataset.theme=(saved==='dark'||saved==='light')?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); } catch(e) {}
     </script>
   </head>
-  <body>
+  <body class:list={[home&&'marketing-page',isCredibility&&'credibility-page']}>
     <a class="skip" href="#content">{t.skip}</a>
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href={url(fr?'/':'/en/')} aria-label={fr?'TENIR — accueil':'TENIR — home'}><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="1.2"></rect><path d="M10 8h12M16 8v16M10 24h12" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg><span class="brand-name">TENIR<span class="brand-labs">LABS</span></span></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span>Menu</span><span class="menu-symbol" aria-hidden="true">☰</span></button>
         <nav class="site-nav" id="main-navigation" aria-label={t.nav}>
-          <a href={url(journeyHref(locale,journeys[locale][0]))} aria-current={slug===(fr?'parcours/decouvrir':'start/discover')?'page':undefined}>{fr?'Découvrir':'Discover'}</a>
+          <a href={home?url(fr?'/':'/en/'):url(journeyHref(locale,journeys[locale][0]))} aria-current={home?'page':slug===(fr?'parcours/decouvrir':'start/discover')?'page':undefined}>{home?(fr?'Accueil':'Overview'):(fr?'Découvrir':'Discover')}</a>
+          {!home&&<a href={path('parcours-ia','ai-readiness')}>{fr?'Rapport gratuit':'Free report'}</a>}
           <a href={path('portfolio/products')} aria-current={slug==='portfolio/products'?'page':undefined}>{fr?'Produits':'Products'}</a>
-          <a href={url(businessHref(locale))} aria-current={slug===(fr?'parcours/activite':'start/business')?'page':undefined}>{fr?'En pratique':'In practice'}</a>
-          <details class="nav-group"><summary>{fr?'Essayer':'Try it'}</summary><div class="nav-menu"><a href={path('portfolio/demos')}><strong>{fr?'Voir les démonstrations':'Browse the demos'}</strong><small>{fr?'Scénarios, schémas et exemples à explorer':'Scenarios, diagrams and examples to explore'}</small></a><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Une tâche de rendez-vous':'An appointment task'}</strong><small>{fr?'Prototype mobile · aucun vrai message envoyé':'Mobile prototype · no real messages sent'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
-          <details class:list={['nav-group',resources.some(x=>x.slug===slug)&&'is-current']}><summary>{fr?'Ressources':'Resources'}</summary><div class="nav-menu resource-menu">{resources.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
+          <a href={home?path('portfolio/demos'):url(businessHref(locale))} aria-current={slug===(fr?'parcours/activite':'start/business')?'page':undefined}>{home?(fr?'Démos':'Demos'):(fr?'En pratique':'In practice')}</a>
+          <details class="nav-group" hidden={home}><summary>{fr?'Essayer':'Try it'}</summary><div class="nav-menu"><a href={path('portfolio/demos')}><strong>{fr?'Voir les démonstrations':'Browse the demos'}</strong><small>{fr?'Scénarios, schémas et exemples à explorer':'Scenarios, diagrams and examples to explore'}</small></a><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Une tâche de rendez-vous':'An appointment task'}</strong><small>{fr?'Prototype mobile · aucun vrai message envoyé':'Mobile prototype · no real messages sent'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
+          {home&&<a href={path('credibilite','credibility')}>{fr?'Crédibilité':'Evidence'}</a>}
+          {home&&<a href={path('produits-et-services','products-and-services')}>{fr?'Approche':'Approach'}</a>}
+          <details hidden={home} class:list={['nav-group',resources.some(x=>x.slug===slug)&&'is-current']}><summary>{fr?'Ressources':'Resources'}</summary><div class="nav-menu resource-menu">{resources.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
           <div class="nav-mobile-tools"><a href={url(other)} lang={fr?'en':'fr'}>{fr?'Read in English':'Lire en français'}</a></div>
         </nav>
-        <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={readerContact}>{fr?'Poser une question':'Ask a question'} <span aria-hidden="true">↗</span></a></div>
+        <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={readerContact}>{home?(fr?'Mon rapport gratuit':'My free report'):(fr?'Poser une question':'Ask a question')} <span aria-hidden="true">↗</span></a></div>
       </div>
     </header>
-    <main id="content" class:list={[home?'home-main':'doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page']} tabindex="-1">
-      {home ? <><Home locale={locale}/><details class="reading-note"><summary>{fr?'Statut, sources et limites de cette présentation':'Status, sources and limits of this presentation'}</summary><div class="prose"><p class="sources">{t.sources} : {sources}</p><slot /></div></details></> : <>
+    <main id="content" class:list={[(home||isCredibility)?'home-main':'doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page']} tabindex="-1">
+      {isCredibility ? <slot/> : home ? <><MarketingHome locale={locale}/><details class="reading-note"><summary>{fr?'Statut, sources et limites de cette présentation':'Status, sources and limits of this presentation'}</summary><div class="prose"><p class="sources">{t.sources} : {sources}</p><slot /></div></details></> : <>
         <article>
           <nav class="breadcrumb" aria-label={fr?'Fil d’Ariane':'Breadcrumb'}><a href={url(fr?'/':'/en/')}>{fr?'Accueil':'Home'}</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
           <header class="doc-head"><p class="kicker">{pageKinds[slug]&&<span>{pageKinds[slug]} · </span>}{kicker}</p><h1>{title}</h1>{!isPortfolio&&<><p class="lede">{lede}</p>{slug!=='contact'&&<details class="source-disclosure"><summary>{fr?'Sources et contexte de lecture':'Sources and reading context'}</summary><p class="sources">{sources}</p><p>{t.status} <a href={path('statut','status')}>{fr?'Lire le statut détaillé':'Read the detailed status'} →</a></p></details>}</>}</header>

@@ -1,0 +1,155 @@
+name: Publication review — exact-commit site preview (no deployment)
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/publication-review-preview.yml'
+      - 'src/**'
+      - 'public/**'
+      - 'data/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'astro.config.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-review-package:
+    name: Reproducible source + rendered website
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout EXACT source commit, not synthetic PR merge
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Identify commit
+        id: version
+        shell: bash
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "short=$(git rev-parse --short=8 HEAD)" >> "$GITHUB_OUTPUT"
+          echo "Preview source: $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          cache: npm
+      - name: Install pinned dependencies
+        run: npm ci
+      - name: Build exact-source site
+        run: npm run build
+      - name: Check navigable FR/EN routes and evidence
+        run: |
+          npm run check:links
+          node scripts/check-portfolio.mjs
+          node scripts/check-portfolio-references.mjs
+      - name: Bundle sources and complete rendered preview
+        shell: bash
+        run: |
+          mkdir -p review-package/dist
+          cp -a dist/. review-package/dist/
+          git archive --format=zip --output=review-package/PR54-sources-exact-commit.zip HEAD
+          cat > review-package/README.txt <<'README'
+          TENIR LABS — PRE-PUBLICATION REVIEW (not deployed)
+          =================================================
+          This preview is generated from the EXACT source commit in COMMIT.txt.
+          The matching source archive is PR54-sources-exact-commit.zip.
+
+          WINDOWS
+          1. Unzip the GitHub Actions artifact ZIP.
+          2. Double-click OPEN-PREVIEW-WINDOWS.bat.
+          3. Browse http://127.0.0.1:8765/
+          4. Keep the console open. Close it to stop the preview.
+          Requires Python 3 or Node.js.
+
+          MAC / LINUX
+          Run: sh ./open-preview-macos-linux.sh
+          Browse http://127.0.0.1:8765/
+          Requires Python 3 or Node.js.
+
+          IMPORTANT
+          - Do NOT open dist/index.html with file://. Absolute site links need a local server.
+          - Nothing here deploys, merges or changes tenirlabs.cc.
+          - The static preview is not a live TENIR-Gov runtime.
+          - Review routes: /, /en/, /parcours-ia/, /en/ai-readiness/,
+            /credibilite/, /en/credibility/.
+          README
+          git rev-parse HEAD > review-package/COMMIT.txt
+          cat > review-package/OPEN-PREVIEW-WINDOWS.bat <<'BAT'
+          @echo off
+          cd /d "%~dp0"
+          where py >nul 2>nul
+          if not errorlevel 1 (
+            start "" "http://127.0.0.1:8765/"
+            py -3 -m http.server 8765 --directory dist
+            goto :eof
+          )
+          where python >nul 2>nul
+          if not errorlevel 1 (
+            start "" "http://127.0.0.1:8765/"
+            python -m http.server 8765 --directory dist
+            goto :eof
+          )
+          where node >nul 2>nul
+          if not errorlevel 1 (
+            start "" "http://127.0.0.1:8765/"
+            node preview-server.mjs
+            goto :eof
+          )
+          echo Install Python 3 or Node.js to run this preview.
+          pause
+          BAT
+          cat > review-package/open-preview-macos-linux.sh <<'SH'
+          #!/bin/sh
+          cd "$(dirname "$0")"
+          if command -v python3 >/dev/null 2>&1; then
+            python3 -m http.server 8765 --directory dist
+          elif command -v node >/dev/null 2>&1; then
+            node preview-server.mjs
+          else
+            echo "Install Python 3 or Node.js to preview the site"
+            exit 1
+          fi
+          SH
+          chmod +x review-package/open-preview-macos-linux.sh
+          cat > review-package/preview-server.mjs <<'NODE'
+          import http from 'node:http';
+          import fs from 'node:fs';
+          import path from 'node:path';
+          const root=path.resolve(import.meta.dirname,'dist');
+          const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.woff':'font/woff','.pdf':'application/pdf'};
+          http.createServer((req,res)=>{
+            try {
+              const pathname=decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname);
+              let file=path.resolve(root,'.'+pathname);
+              if(file!==root && !file.startsWith(root+path.sep)){res.writeHead(403);res.end('Forbidden');return;}
+              if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');
+              if(!fs.existsSync(file)||!fs.statSync(file).isFile()){res.writeHead(404);res.end('Not found');return;}
+              res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store'});
+              fs.createReadStream(file).pipe(res);
+            }catch(e){res.writeHead(400);res.end('Bad request');}
+          }).listen(8765,'127.0.0.1',()=>console.log('Preview: http://127.0.0.1:8765/'));
+          NODE
+          echo "Preview and source archive built from $(cat review-package/COMMIT.txt)" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload downloadable preview + matching source archive
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: TENIR-Labs-review-${{ steps.version.outputs.short }}
+          path: review-package/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
+      - name: Publish review-artifact link in workflow summary
+        shell: bash
+        run: |
+          echo "### Exact-source preview ready" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Commit:** ${{ steps.version.outputs.sha }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Download:** ${{ steps.upload.outputs.artifact-url }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Package:** rendered dist/, matching source ZIP, Windows/macOS/Linux launchers." >> "$GITHUB_STEP_SUMMARY"
+          echo "- **No production deployment or merge occurred.**" >> "$GITHUB_STEP_SUMMARY"

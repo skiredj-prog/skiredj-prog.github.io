@@ -10,32 +10,104 @@ try {
       const errors=[];
       page.on('pageerror', e=>errors.push(e.message));
       await page.goto('http://127.0.0.1:4173'+prefix+'/', {waitUntil:'networkidle'});
-      const cards=page.locator('.home-offer-item');
-      assert.equal(await cards.count(),4,locale+' / '+width+': expected four paths');
-      assert(await page.locator('.home-offer-map').isVisible(),locale+' / '+width+': offer map hidden');
-      const grid=await page.locator('.home-offer-grid').evaluate(el=>({
+      const cards=page.locator('.ml-card');
+      assert.equal(await cards.count(),3,locale+' / '+width+': expected three primary offers');
+      assert(await page.locator('.ml-offerings').isVisible(),locale+' / '+width+': marketing offers hidden');
+      const grid=await page.locator('.ml-cards').evaluate(el=>({
         columns:getComputedStyle(el).gridTemplateColumns.split(' ').filter(Boolean).length,
         width:el.getBoundingClientRect().width
       }));
       if(width<=390)assert.equal(grid.columns,1,locale+' / '+width+': narrow grid must stack');
       if(width===768)assert.equal(grid.columns,2,locale+': tablet grid must use two columns');
-      if(width===1280)assert.equal(grid.columns,4,locale+': desktop grid should use four compact columns');
+      if(width===1280)assert.equal(grid.columns,3,locale+': desktop grid should use three offer columns');
       const dims=await page.evaluate(()=>({
         scroll:document.documentElement.scrollWidth,
         viewport:document.documentElement.clientWidth
       }));
       assert(dims.scroll<=dims.viewport+2,locale+'/'+width+': page horizontal overflow ('+(dims.scroll-dims.viewport)+'px)');
-      const diagnostic=page.locator('.home-offer-item').first();
+      assert(await page.locator('#market-heading').isVisible(),locale+'/'+width+': main marketing message hidden');
+      assert(await page.locator('.ml-demo-panel iframe').count()===1,locale+'/'+width+': interactive demo missing');
+      assert(await page.locator('.ml-hero .ml-btn-primary').count()===1,locale+'/'+width+': direct diagnostic CTA missing');
+      const diagnostic=page.locator('.ml-card').first();
       await diagnostic.click();
       await page.waitForURL('**/diagnostic-execution/');
       assert(await page.locator('h1').first().isVisible(),locale+': offer page heading missing');
       assert(await page.locator('main').isVisible(),locale+': offer page body missing');
+      const freeReport=page.locator('.site-nav a[href="'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/')+'"]');
+      assert.equal(await freeReport.count(),1,locale+': interior navigation must link directly to the free report');
+      if(width<=1100)await page.locator('[data-menu-toggle]').click();
+      assert(await freeReport.isVisible(),locale+'/'+width+': free report not visible in the interior primary navigation');
+
       const offerWidth=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
       assert(offerWidth.scroll<=offerWidth.viewport+2,locale+'/'+width+': offer page horizontal overflow ('+(offerWidth.scroll-offerWidth.viewport)+'px)');
       assert.equal(errors.length,0,locale+'/'+width+': browser JavaScript error: '+errors.join(', '));
       await page.close();
-      console.log('Chromium '+locale.toUpperCase()+' '+width+'px: four offer paths, responsive layout and linked diagnostic PASS.');
+      console.log('Chromium '+locale.toUpperCase()+' '+width+'px: three offer paths, responsive layout and linked diagnostic PASS.');
     }
+  }
+
+  // Customer acquisition route: complete the full ungated questionnaire in FR and EN.
+  for(const locale of ['fr','en']){
+    const route=locale==='fr'?'/parcours-ia/':'/en/ai-readiness/';
+    for(const profile of ['weak','structured']){
+      const page=await browser.newPage({viewport:{width:390,height:844},acceptDownloads:true,reducedMotion:'reduce'});
+      const errors=[];
+      page.on('pageerror',err=>errors.push(err.message));
+      await page.goto('http://127.0.0.1:4173'+route,{waitUntil:'networkidle'});
+      assert(await page.locator('#pa-start').isVisible(),locale+': pathway start missing');
+      assert.equal(await page.locator('input[type=email]').count(),0,locale+': report must not demand an email address');
+      await page.locator('#pa-start').click();
+      for(let i=0;i<10;i++){
+        const options=page.locator('.pa-option');
+        assert(await options.count()>=3,locale+': missing answer options for question '+(i+1));
+        const selectIndex=i<2?0:profile==='weak'?2:0;
+        await options.nth(selectIndex).click();
+        await page.locator('#pa-next').click();
+      }
+      assert(await page.locator('#pa-report').isVisible(),locale+': report did not render');
+      assert.equal(await page.locator('.pa-dimension').count(),6,locale+': missing six assessment dimensions');
+      assert.equal(await page.locator('#pa-priorities li').count(),3,locale+': expected exactly three practical priorities');
+      assert(await page.locator('#pa-report-summary').innerText(),locale+': narrative must be substantive');
+      const mail=await page.locator('#pa-talk').getAttribute('href');
+      assert(mail.startsWith('mailto:skiredj@tenirlabs.cc'),locale+': explicit share-by-email action missing');
+      const download=page.waitForEvent('download');
+      await page.locator('#pa-download').click();
+      const file=await download;
+      assert(file.suggestedFilename().endsWith('.txt'),locale+': report download missing');
+      const dimensions=await page.locator('.pa-dim-top').allTextContents();
+      if(profile==='weak')assert(dimensions.some(x=>x.includes(locale==='fr'?'À clarifier':'Needs work')),locale+': weak self-report not reflected');
+      else assert(dimensions.some(x=>x.includes(locale==='fr'?'Structuré':'Structured')),locale+': structured self-report not reflected');
+      const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+      assert(dims.scroll<=dims.client+2,locale+': pathway mobile horizontal overflow '+(dims.scroll-dims.client));
+      assert.equal(errors.length,0,locale+': report browser errors '+errors.join('; '));
+      await page.close();
+      console.log('Pathway '+locale.toUpperCase()+' '+profile+': 10 questions, 6 dimensions, 3 actions and report download PASS.');
+    }
+  }
+
+  // Credibility route: real browser loads the updated 5.7.0 artifact and exercises a simulator.
+  for(const locale of ['fr','en']){
+    const route=locale==='fr'?'/credibilite/':'/en/credibility/';
+    const page=await browser.newPage({viewport:{width:390,height:850},reducedMotion:'reduce'});
+    const errors=[];
+    page.on('pageerror',err=>errors.push(err.message));
+    await page.goto('http://127.0.0.1:4173'+route,{waitUntil:'networkidle'});
+    assert(await page.locator('.cr-hero h1').isVisible(),locale+': credibility route hero not rendered');
+    assert(await page.locator('.cr-panel').count()===3,locale+': expected release, internal, external proof panels');
+    assert((await page.locator('.cr-evidence').innerText()).includes('81 / 81'),locale+': independent rerun evidence missing');
+    assert(await page.locator('.cr-architecture iframe').count()===1,locale+': architecture iframe missing');
+    await page.locator('.cr-architecture iframe').scrollIntoViewIfNeeded();
+    const frame=page.frameLocator('.cr-architecture iframe');
+    await frame.locator('#release').waitFor({state:'visible'});
+    assert((await frame.locator('#release').innerText()).includes('282.08'),locale+': updated artifact evidence missing');
+    await frame.locator('#finReset').click();
+    await frame.locator('#finExecute').click();
+    assert(await frame.locator('#finLog .log-entry').count()>0,locale+': budget simulator not interactive');
+    const dimensions=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+    assert(dimensions.scroll<=dimensions.client+2,locale+': credibility route horizontal overflow '+(dimensions.scroll-dimensions.client));
+    assert.equal(errors.length,0,locale+': interactive credibility browser errors '+errors.join('; '));
+    await page.close();
+    console.log('Credibility '+locale.toUpperCase()+': v5.7 exact-tag proof, 81 external rerun, interactive simulator and mobile layout PASS.');
   }
 } finally {
   await browser.close();
