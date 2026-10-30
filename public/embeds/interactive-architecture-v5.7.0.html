@@ -774,7 +774,7 @@ footer {
     <p class="section-subtitle reveal">
       The five-level REG+ model is a conceptual design, not a claim that each depicted component is deployed. A business intention may be translated into a substantive rule,
       resolved into a profile, decomposed into invariants, and only then executed by the runtime.
-      Each level has a distinct owner and produces a distinct artifact.
+      The diagram describes possible responsibilities and outputs; implementation and evidence depend on the deployment.
     </p>
     <div class="level-stack reveal">
       <div class="level-row">
@@ -923,7 +923,7 @@ footer {
           <div class="pipeline-level">Level 4 → 5 · Record</div>
           <div class="pipeline-title">All Artifacts → EvidenceRecord</div>
           <div class="pipeline-desc">The reference evidence schema illustrates traceability. Actual signature custody, provider effects, cryptographic independence and deployed configuration each require their own validation.</div>
-          <div class="pipeline-artifact">EvidenceRecord (JSON, signed)</div>
+          <div class="pipeline-artifact">EvidenceRecord (reference schema)</div>
         </div>
       </div>
       <div class="pipeline-step" data-step="7">
@@ -1100,7 +1100,7 @@ footer {
 <!-- ── INTERACTIVE USE CASES ────────────────────────────── -->
 <section id="usecases">
   <div class="container-wide">
-    <div class="section-label reveal">Live Simulators · Built-in Use Cases</div>
+    <div class="section-label reveal">Illustrative browser models · no live runtime</div>
     <h2 class="section-title reveal">Three <em>Interactive</em> Use Cases</h2>
     <p class="section-subtitle reveal">
       All three scenarios are JavaScript-only illustrations. They do not run the 5.7.0 SQLite WAL backend, connect to external providers, or execute real consensus. The resulting logs are synthetic.
