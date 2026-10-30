@@ -6,11 +6,13 @@ for(const [locale,page,home,route,other] of [
 ]){
   assert(existsSync(page),locale+': credibility journey page missing');
   const c=readFileSync(page,'utf8'),h=readFileSync(home,'utf8');
-  for(const claim of ['1 286','81 / 81','282.08s','47ef67e3efc5f3008896a7d88bebf929fa0a98f0','0e0cbafda8c90735bf277d783d69ce91df36c5abcad26ac81de4a2d82fe7ff03','interactive-architecture-v5.7.0.html','pysyncobj']){
+  for(const claim of ['1 286','81 / 81',locale==='fr'?'282,08 s':'282.08 s',locale==='fr'?'Durée totale des 81 tests (rapportée)':'Reported duration of the full 81-test run',locale==='fr'?'SHA-256 du journal (communiqué, non revérifié)':'Reported log SHA-256 (not independently rechecked)','47ef67e3efc5f3008896a7d88bebf929fa0a98f0','0e0cbafda8c90735bf277d783d69ce91df36c5abcad26ac81de4a2d82fe7ff03','interactive-architecture-v5.7.0.html','pysyncobj']){
     assert(c.toLowerCase().includes(claim.toLowerCase()),locale+': credibility evidence missing '+claim);
   }
   assert(c.includes('hreflang="fr"')&&c.includes('hreflang="en"'),locale+': bilingual links missing');
   assert(c.includes(other),locale+': link to other language missing');
+  assert(c.includes('href="'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/')+'"'),locale+': free assessment missing from primary interior navigation');
+  assert(!c.includes('282.08s ·'),locale+': unlabelled test-run duration must not reappear');
   assert(h.includes('href="'+route+'"'),locale+': credibility not discoverable on homepage');
   assert(c.includes(locale==='fr'?'Pas de production Raft multi-hôtes':'No production multi-host Raft'),locale+': important exclusion absent');
 }
