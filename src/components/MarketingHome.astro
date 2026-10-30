@@ -9,18 +9,17 @@ const path = (p: string) => url((fr ? '/' : '/en/') + p + '/');
 const contact = path('contact') + '?sujet=diagnostic';
 const demo = path('portfolio/control-tower');
 const t = fr ? {
-  eyebrow: 'AI AGENTS · EXECUTION CONTROL · TENIR LABS',
-  big: 'Autorisé',
-  neq: '≠',
-  admissible: 'admissible.',
-  tagline: 'Donner accès à une IA ne suffit pas à garder le contrôle.',
-  summary: 'Vos agents peuvent décider, déclencher et engager des opérations. TENIR Labs aide à définir la frontière entre ce qu’un agent peut faire et ce qu’il devrait pouvoir engager.',
+  eyebrow: 'TENIR LABS · DES AGENTS IA SOUS CONTRÔLE',
+  headlineStart: 'L’IA agit.',
+  headlineEnd: 'Vous gardez la main.',
+  tagline: 'Confiez des tâches à l’IA. Pas les clés de votre entreprise.',
+  summary: 'Vos agents IA peuvent déclencher des paiements, modifier des dossiers ou engager votre entreprise. TENIR Labs vous aide à fixer leurs limites, repérer les actions à risque et gérer les situations où personne ne sait exactement ce qui s’est passé.',
   primary: 'Parler de mon projet',
   secondary: 'Voir la démo',
   heroNote: 'Pour les organisations qui passent de l’IA qui répond à l’IA qui agit.',
-  tension: 'LA FAILLE QUI COMPTE',
-  tensionTitle: 'Le vrai risque commence après le feu vert.',
-  tensionBody: 'Un agent déclenche un paiement. La confirmation disparaît. Faut-il recommencer ? Une décision autorisée peut encore produire un doublon, un engagement irréversible ou un résultat inconnu.',
+  tension: 'L’EXEMPLE QUI CHANGE TOUT',
+  tensionTitle: 'Et si votre IA payait deux fois ?',
+  tensionBody: 'Un agent déclenche un paiement. La confirmation disparaît. L’IA pense devoir recommencer. Mais le premier paiement a peut-être déjà eu lieu. Comment éviter une deuxième opération à l’aveugle ?',
   without: 'Sans frontière claire',
   withoutHead: 'Relancer à l’aveugle.',
   withoutBody: 'Une réponse absente est prise pour un échec. La même opération peut partir deux fois.',
@@ -50,24 +49,23 @@ const t = fr ? {
   source: 'Code source public',
   papers: 'Publications et recherche',
   status: 'Statut et périmètres',
-  closeTitle: 'Votre prochain incident peut commencer par une action parfaitement autorisée.',
-  closeSub: 'Choisissons une seule décision critique. Identifions ensemble la frontière à tenir.',
+  closeTitle: 'L’IA avance vite. Gardez une longueur d’avance.',
+  closeSub: 'Montrez-nous une action que vous souhaitez confier à l’IA. Ensemble, identifions ce qu’il faut maîtriser avant de la laisser agir.',
   closePrimary: 'Cadrer un diagnostic',
   closeSecondary: 'Écrire directement',
   smallPrint: 'Diagnostic sur devis · logiciels et prototypes à maturité distincte',
 } : {
-  eyebrow: 'AI AGENTS · EXECUTION CONTROL · TENIR LABS',
-  big: 'Authorized',
-  neq: '≠',
-  admissible: 'admissible.',
-  tagline: 'Giving AI permission is not the same as staying in control.',
-  summary: 'Your agents can decide, dispatch and commit real-world operations. TENIR Labs helps define the boundary between what an agent can do and what it should be allowed to commit.',
+  eyebrow: 'TENIR LABS · AI AGENTS UNDER CONTROL',
+  headlineStart: 'AI takes action.',
+  headlineEnd: 'You stay in control.',
+  tagline: 'Give AI the work. Not the keys to your business.',
+  summary: 'AI agents can initiate payments, update records and make commitments on your behalf. TENIR Labs helps you set the limits, spot risky actions and handle those moments when no one knows exactly what happened.',
   primary: 'Discuss my project',
   secondary: 'Watch the demo',
   heroNote: 'For organizations moving from AI that answers to AI that acts.',
-  tension: 'THE GAP THAT MATTERS',
-  tensionTitle: 'The real risk starts after the green light.',
-  tensionBody: 'An agent initiates a payment. The confirmation disappears. Should it try again? An authorized decision can still create a duplicate, an irreversible commitment, or an unknown outcome.',
+  tension: 'THE EXAMPLE THAT CHANGES EVERYTHING',
+  tensionTitle: 'What if your AI paid twice?',
+  tensionBody: 'An agent initiates a payment. The confirmation disappears. The AI thinks it should try again. But the first payment might already have gone through. How do you avoid a second payment in the dark?',
   without: 'Without a clear boundary',
   withoutHead: 'Retry in the dark.',
   withoutBody: 'A missing response is mistaken for failure. The same operation may be dispatched twice.',
@@ -97,8 +95,8 @@ const t = fr ? {
   source: 'Open-source code',
   papers: 'Research and publications',
   status: 'Status and scope',
-  closeTitle: 'Your next incident may start with a perfectly authorized action.',
-  closeSub: 'Start with one critical decision. Let’s make its execution boundary visible.',
+  closeTitle: 'AI is moving fast. Stay one step ahead.',
+  closeSub: 'Show us one action you want AI to handle. Together, we can identify what needs to stay under your control.',
   closePrimary: 'Scope a diagnostic',
   closeSecondary: 'Email us',
   smallPrint: 'Diagnostic quoted by scope · software and prototypes at different maturity levels',
@@ -117,7 +115,7 @@ const cards = fr ? [
   <section class="ml-hero" aria-labelledby="market-heading">
     <div class="ml-wrap">
       <p class="ml-eyebrow"><span class="ml-dot" aria-hidden="true"></span>{t.eyebrow}</p>
-      <h1 id="market-heading" class="ml-headline"><span>{t.big}</span><span class="ml-not-equal">{t.neq}</span><em>{t.admissible}</em></h1>
+      <h1 id="market-heading" class="ml-headline"><span>{t.headlineStart}</span><em>{t.headlineEnd}</em></h1>
       <p class="ml-hero-tagline">{t.tagline}</p>
       <p class="ml-hero-body">{t.summary}</p>
       <div class="ml-actions">
