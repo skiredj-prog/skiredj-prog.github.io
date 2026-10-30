@@ -22,7 +22,7 @@ export interface PortfolioEntry {
   related: string[];
   sources: { label: string; href: string }[];
 }
-export const portfolioOrder = ['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','reg-demo','experiences','control-tower'] as const;
+export const portfolioOrder = ['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'] as const;
 export const portfolio: Record<PortfolioLocale, Record<string, PortfolioEntry>> = {
 fr: {
   diagnostic: {
