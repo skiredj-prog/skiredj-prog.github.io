@@ -66,6 +66,19 @@ missing:"Not assessed",backToTop:"Back to start"
 };
 const demo=url(fr?'/portfolio/control-tower/':'/en/portfolio/control-tower/');
 const contact=url(fr?'/contact/':'/en/contact/');
+const navItems=fr?[
+  {label:'Accueil',href:url('/')},
+  {label:'Produits',href:url('/portfolio/products/')},
+  {label:'Démos',href:url('/portfolio/demos/')},
+  {label:'Crédibilité',href:url('/credibilite/')},
+  {label:'Approche',href:url('/produits-et-services/')},
+]:[
+  {label:'Home',href:url('/en/')},
+  {label:'Products',href:url('/en/portfolio/products/')},
+  {label:'Demos',href:url('/en/portfolio/demos/')},
+  {label:'Evidence',href:url('/en/credibility/')},
+  {label:'Approach',href:url('/en/products-and-services/')},
+];
 ---
 <!doctype html>
 <html lang={locale}>
@@ -83,16 +96,28 @@ const contact=url(fr?'/contact/':'/en/contact/');
 <body data-pathway-app data-locale={locale} data-contact-href={contact} data-demo-href={demo} data-home-href={home}>
   <header class="pa-header">
     <a href={home} class="pa-brand" aria-label={fr?'TENIR Labs — accueil':'TENIR Labs — home'}>TENIR<span>·</span>Labs</a>
-    <div class="pa-header-right"><span class="pa-header-label">{t.label}</span><a class="pa-lang" href={other} lang={fr?'en':'fr'}>{fr?'EN':'FR'}</a></div>
+    <div class="pa-header-right">
+      <nav class="pa-desktop-nav" aria-label={fr?'Navigation principale':'Main navigation'}>
+        {navItems.map(item=><a href={item.href}>{item.label}</a>)}
+      </nav>
+      <span class="pa-header-label">{t.label}</span>
+      <details class="pa-mobile-menu">
+        <summary>{fr?'Menu':'Menu'} <span aria-hidden="true">☰</span></summary>
+        <nav aria-label={fr?'Navigation principale':'Main navigation'}>
+          {navItems.map(item=><a href={item.href}>{item.label}</a>)}
+        </nav>
+      </details>
+      <a class="pa-lang" href={other} lang={fr?'en':'fr'}>{fr?'EN':'FR'}</a>
+    </div>
   </header>
   <main id="pa-main">
     <section class="pa-intro" id="pa-intro" aria-labelledby="pa-title">
       <div class="pa-intro-inner">
         <span class="pa-eyebrow">{t.tag}</span>
         <h1 id="pa-title">{t.head}</h1>
-        <p class="pa-lead">{t.lead}</p>
-        <div class="pa-facts"><span>{t.b1}</span><span>{t.b2}</span><span>{t.b3}</span><span>{t.b4}</span></div>
         <div class="pa-buttons"><button class="pa-button pa-primary" id="pa-start" type="button">{t.start} <span aria-hidden="true">→</span></button><a class="pa-button pa-outline" href="#pa-steps">{t.more} ↓</a></div>
+        <div class="pa-facts"><span>{t.b1}</span><span>{t.b2}</span><span>{t.b3}</span><span>{t.b4}</span></div>
+        <p class="pa-lead">{t.lead}</p>
         <p class="pa-privacy">{t.privacy}</p>
       </div>
     </section>
