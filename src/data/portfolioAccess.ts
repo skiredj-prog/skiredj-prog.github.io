@@ -13,7 +13,6 @@ export const portfolioAccess: Record<'fr'|'en', Record<string, PortfolioAccess>>
     conformance:{href:'https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1',label:'Release REG Conformance v0.6.1',scope:'46/46 PASS sur profil Raft loopback mono-hôte seulement',kind:'release'},
     'reg-arch':{href:'/architecture/interactive/',label:'Voir l’architecture interactive',scope:'Schéma pédagogique',kind:'demo'},
     technical:{href:'/standard/',label:'Consulter le standard REG',scope:'Références et contrats, non une validation',kind:'documentation'},
-    'reg-demo':{href:'/diagnostic-execution/',label:'Voir son rôle dans le diagnostic',scope:'Instrument interne, sans exécution client ni téléchargement public',kind:'documentation'},
     experiences:{href:'/embeds/demonstration-bancaire.html',label:'Ouvrir le scénario bancaire',scope:'Simulation synthétique PAY-MAR-001',kind:'demo'},
     'control-tower':{href:'/embeds/reg-autonomy-control-tower-v1.0.html',label:'Ouvrir la Control Tower v1.0',scope:'Simulation autonome en anglais ; v1.1 FR/EN non déployée',kind:'demo'},
   },
@@ -27,7 +26,6 @@ export const portfolioAccess: Record<'fr'|'en', Record<string, PortfolioAccess>>
     conformance:{href:'https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1',label:'REG Conformance v0.6.1 release',scope:'46/46 PASS for single-host loopback Raft profile only',kind:'release'},
     'reg-arch':{href:'/en/architecture/interactive/',label:'View interactive architecture',scope:'Illustrative diagram',kind:'demo'},
     technical:{href:'/en/standard/',label:'Read the REG standard',scope:'Reference contracts, not deployment conformance',kind:'documentation'},
-    'reg-demo':{href:'/en/diagnostic-execution/',label:'See its role in the diagnostic',scope:'Internal instrument, no client execution or public download',kind:'documentation'},
     experiences:{href:'/embeds/demonstration-bancaire.html',label:'Open banking scenario',scope:'Synthetic PAY-MAR-001 simulation (French)',kind:'demo'},
     'control-tower':{href:'/embeds/reg-autonomy-control-tower-v1.0.html',label:'Open Control Tower v1.0',scope:'English standalone simulation; FR/EN v1.1 not yet deployed',kind:'demo'},
   }

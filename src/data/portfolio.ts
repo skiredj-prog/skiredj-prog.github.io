@@ -22,7 +22,7 @@ export interface PortfolioEntry {
   related: string[];
   sources: { label: string; href: string }[];
 }
-export const portfolioOrder = ['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','reg-demo','experiences','control-tower'] as const;
+export const portfolioOrder = ['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'] as const;
 export const portfolio: Record<PortfolioLocale, Record<string, PortfolioEntry>> = {
 fr: {
   diagnostic: {
@@ -210,21 +210,6 @@ fr: {
     next:'Vérifier les versions des RFC, profils et tests avant de conclure sur une implémentation particulière.',
     nextHref:'/standard/',nextLabel:'Lire les RFC et le standard',related:['conformance','gov','reg-arch','mediation'],
     sources:[{label:'reg-conformance',href:'https://github.com/skiredj-prog/reg-conformance'},{label:'Site conformance',href:'/conformance/'},{label:'Standard REG',href:'/standard/'}]
-  },
-  'reg-demo':{
-    id:'reg-demo',kind:'demo',title:'REG DEMO · Instrument de diagnostic',tagline:'Une action autorisée. Un résultat incertain. Que peut-on réellement établir ?',
-    status:'Outil interne de TENIR Labs · prototype local non officiel',
-    pain:'Les équipes confondent facilement autorisation, envoi, résultat et preuve. REG DEMO rend ces distinctions manipulables dans un cas borné.',
-    when:'Pour exécuter un diagnostic accompagné, animer un atelier technique ou préparer une restitution à partir d’un incident UNKNOWN.',
-    examines:'Quatre situations : autorisation, blocage, attente et issue inconnue. Le participant suit la décision, les compteurs, la trace et les sources sans déclencher de nouvel envoi.',
-    inputs:'Un parcours local, des scénarios fictifs et un dossier de preuves embarqué. Aucun compte, fournisseur ou système de production n’est connecté.',
-    output:'Une lecture commune des faits établis, des inconnues et du prochain contrôle à préparer ; le configurateur et les fichiers de preuve servent de supports au diagnostic.',
-    relationships:'Instrument opératoire du Diagnostic accompagné de gouvernance, entre le cadrage et la restitution. Distinct du prototype mobile de délégation et du moteur TENIR-Gov.',
-    maturity:'Version locale réhabilitée pour consultation et atelier. Tests techniques présents ; validation indépendante, sessions utilisateurs et publication autonome restent à organiser.',
-    limits:'Ne prouve ni conformité, ni certification, ni protection juridique, ni exécution réelle. Les traces locales ne constituent pas une preuve indépendante de production.',
-    next:'Utiliser REG DEMO pendant un diagnostic cadré, puis convertir les inconnues en points de contrôle sourcés.',
-    nextHref:'/offre/',nextLabel:'Voir le diagnostic accompagné',related:['diagnostic','experiences','reg-arch','technical'],
-    sources:[{label:'Offre de diagnostic',href:'/offre/'},{label:'Référence interne REG DEMO',href:'https://github.com/skiredj-prog/tenir-reg-demo'}]
   },
   experiences:{
     id:'experiences',kind:'demo',title:'Expériences TENIR Labs',tagline:'Voir une situation se dérouler, puis explorer ce qui change.',
@@ -440,21 +425,6 @@ en: {
     next:'Inspect versioned RFCs, profiles and test artifacts before drawing a conclusion.',
     nextHref:'/en/standard/',nextLabel:'Read the REG standard',related:['conformance','gov','reg-arch','mediation'],
     sources:[{label:'reg-conformance',href:'https://github.com/skiredj-prog/reg-conformance'},{label:'Conformance page',href:'/en/conformance/'},{label:'REG standard',href:'/en/standard/'}]
-  },
-  'reg-demo':{
-    id:'reg-demo',kind:'demo',title:'REG DEMO · Diagnostic instrument',tagline:'An authorised action. An uncertain outcome. What can actually be established?',
-    status:'TENIR Labs internal tool · unofficial local prototype',
-    pain:'Teams can easily conflate authorization, dispatch, outcome and evidence. REG DEMO makes those distinctions inspectable in a bounded case.',
-    when:'To run a guided diagnostic, facilitate a technical workshop or prepare a readout from an UNKNOWN incident.',
-    examines:'Four situations: authorization, block, hold and unknown outcome. Participants follow the decision, counters, trace and sources without triggering a new dispatch.',
-    inputs:'A local walkthrough, fictional scenarios and an embedded evidence dossier. No account, provider or production system is connected.',
-    output:'A shared reading of established facts, unknowns and the next control to prepare; the configurator and evidence files support the diagnostic.',
-    relationships:'Operating instrument for the Guided Governance Diagnostic, between scoping and readout. Distinct from the mobile delegation prototype and the TENIR-Gov engine.',
-    maturity:'Local version rehabilitated for consultation and workshops. Technical tests exist; independent validation, user sessions and standalone publication remain open.',
-    limits:'It proves neither compliance, certification, legal protection nor real execution. Local traces are not independent production evidence.',
-    next:'Use REG DEMO during a scoped diagnostic, then turn unknowns into sourced control points.',
-    nextHref:'/en/offer/',nextLabel:'View the guided diagnostic',related:['diagnostic','experiences','reg-arch','technical'],
-    sources:[{label:'Guided diagnostic offer',href:'/en/offer/'},{label:'REG DEMO internal reference',href:'https://github.com/skiredj-prog/tenir-reg-demo'}]
   },
   experiences:{
     id:'experiences',kind:'demo',title:'TENIR Labs Experiences',tagline:'Watch a situation unfold, then explore what changes.',
