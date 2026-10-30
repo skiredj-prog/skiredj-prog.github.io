@@ -33,6 +33,11 @@ try {
       await page.waitForURL('**/diagnostic-execution/');
       assert(await page.locator('h1').first().isVisible(),locale+': offer page heading missing');
       assert(await page.locator('main').isVisible(),locale+': offer page body missing');
+      const freeReport=page.locator('.site-nav a[href="'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/')+'"]');
+      assert.equal(await freeReport.count(),1,locale+': interior navigation must link directly to the free report');
+      if(width<=1100)await page.locator('[data-menu-toggle]').click();
+      assert(await freeReport.isVisible(),locale+'/'+width+': free report not visible in the interior primary navigation');
+
       const offerWidth=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
       assert(offerWidth.scroll<=offerWidth.viewport+2,locale+'/'+width+': offer page horizontal overflow ('+(offerWidth.scroll-offerWidth.viewport)+'px)');
       assert.equal(errors.length,0,locale+'/'+width+': browser JavaScript error: '+errors.join(', '));
