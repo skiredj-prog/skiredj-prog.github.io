@@ -5,7 +5,7 @@ const browser = await chromium.launch({ headless:true });
 try {
   for (const locale of ['fr','en']) {
     const prefix = locale==='fr'?'':'/en';
-    for (const width of [320,390,768,1280]) {
+    for (const width of [320,390,768,1280,1710]) {
       const page = await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce'});
       const errors=[];
       page.on('pageerror', e=>errors.push(e.message));
@@ -28,6 +28,14 @@ try {
       assert(await page.locator('#market-heading').isVisible(),locale+'/'+width+': main marketing message hidden');
       assert(await page.locator('.ml-demo-panel iframe').count()===1,locale+'/'+width+': interactive demo missing');
       assert(await page.locator('.ml-hero .ml-btn-primary').count()===1,locale+'/'+width+': direct diagnostic CTA missing');
+      // Acceptance: landing-page visitors can start the free report without scrolling,
+      // at the observed 1710x900 desktop viewport and across responsive widths.
+      const heroCta=await page.locator('.ml-hero .ml-btn-primary').boundingBox();
+      assert(heroCta && heroCta.y>=0 && heroCta.y+heroCta.height<=900-16,
+        locale+'/'+width+': the primary hero action must fit the first viewport (bottom='+(heroCta?.y+heroCta?.height)+')');
+      const heroDemo=await page.locator('.ml-hero .ml-btn-outline').boundingBox();
+      assert(heroDemo && heroDemo.y+heroDemo.height<=900-16,
+        locale+'/'+width+': the secondary demo action must be above the fold');
       const diagnostic=page.locator('.ml-card').first();
       await diagnostic.click();
       await page.waitForURL('**/diagnostic-execution/');
