@@ -507,6 +507,55 @@
       ]
     },
     {
+      "asset_id": "reg-demo",
+      "lineage": "reg-demo",
+      "kind": "demo",
+      "site": {
+        "fr": {
+          "route": "/portfolio/reg-demo/",
+          "title": "REG DEMO · Instrument de diagnostic",
+          "status": "Outil interne de TENIR Labs · prototype local non officiel"
+        },
+        "en": {
+          "route": "/en/portfolio/reg-demo/",
+          "title": "REG DEMO · Diagnostic instrument",
+          "status": "TENIR Labs internal tool · unofficial local prototype"
+        },
+        "claimed_version": null,
+        "version_basis": "not_applicable"
+      },
+      "version_embedded": null,
+      "source_ref": {
+        "kind": "repository",
+        "repository": "skiredj-prog/tenir-reg-demo",
+        "ref": "main",
+        "path": "index.html"
+      },
+      "build_ref": null,
+      "test_ref": {
+        "status": "local_evidence_and_theme_checks_verified",
+        "url": "https://github.com/skiredj-prog/tenir-reg-demo/actions"
+      },
+      "release_gate": {
+        "state": "experimental_unpublished",
+        "conditions": [
+          "Use only as a TENIR Labs diagnostic workshop instrument until independent sessions and publication review are complete"
+        ]
+      },
+      "public_artifact_url": null,
+      "public_access": "documentation",
+      "claims_scope": [
+        "Bounded local instrument for separating authorization, dispatch, outcome and evidence during a diagnostic"
+      ],
+      "non_claims": [
+        "No public runtime, client execution, production evidence, certification or compliance conclusion"
+      ],
+      "dependencies": [
+        "diagnostic",
+        "technical"
+      ]
+    },
+    {
       "asset_id": "experiences",
       "lineage": "experiences",
       "kind": "demo",
