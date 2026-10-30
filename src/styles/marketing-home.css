@@ -11,10 +11,9 @@
 .ml-hero .ml-wrap{max-width:1120px}
 .ml-eyebrow{display:flex;align-items:center;gap:.65rem;color:#8f9eb3;font-size:.67rem;line-height:1.5;margin:0 0 2.3rem}
 .ml-dot{width:8px;height:8px;border-radius:50%;background:var(--ml-amber);box-shadow:0 0 0 5px rgba(248,174,57,.12);flex:none}
-.ml-headline{font-size:clamp(3.7rem,9.3vw,7.9rem);line-height:.96;max-width:15ch;margin:0 0 2.25rem;color:#fff}
-.ml-headline span:first-child{display:inline}
-.ml-headline .ml-not-equal{color:var(--ml-amber);padding:0 .19em}
-.ml-headline em{font-style:normal;color:#fff}
+.ml-headline{font-size:clamp(3.2rem,7.4vw,6.3rem);line-height:1.02;max-width:19ch;margin:0 0 2.25rem;color:#fff}
+.ml-headline span:first-child{display:block}
+.ml-headline em{display:block;font-style:normal;color:var(--ml-amber);max-width:18ch}
 .ml-hero-tagline{font-size:clamp(1.2rem,2.2vw,1.55rem);font-weight:650;max-width:39ch;line-height:1.4;color:#fff;margin:0 0 .8rem}
 .ml-hero-body{color:#adbbce;font-size:1rem;line-height:1.75;max-width:60ch;margin:0 0 1.8rem}
 .ml-actions{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
