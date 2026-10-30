@@ -13,7 +13,8 @@ const t=fr?{
  p0:'Preuve de publication',p1:'1 286 tests réussis',p2:'81 tests Raft réussis',p3:'Un périmètre explicite',
  result:'Un résultat précis',tests:'La suite complète de la release a réussi dans GitHub Actions sur Python 3.12/Ubuntu. Les 81 tests Raft sont inclus dans le total, et non ajoutés.',
  reviewer:'Harv Banning a rapporté une exécution indépendante de 81 tests sur macOS, à partir du même SHA, sans modification du code. La première tentative avait rencontré 61 erreurs de configuration dues à une dépendance manquante ; la seconde a réussi après installation.',
- externalNote:"Résultat rapporté par e-mail le 26 octobre 2026 et corroboré par un extrait pytest communiqué. Le fichier journal brut et son empreinte n'ont pas été revérifiés ici.",
+ externalNote:"Résultat rapporté par e-mail le 26 octobre 2026 et corroboré par un extrait pytest communiqué. Le journal brut et son empreinte n’ont pas été revérifiés ici.",
+ testDurationLabel:'Durée totale des 81 tests (rapportée)',testDuration:'282,08 s',logHashLabel:'SHA-256 du journal (communiqué, non revérifié)',
  exact:"Source exacte :",
  proof:'Preuves et sources',
  inspect:'Inspecter les tests de la release',release:'Voir la release GitHub',docs:'Conditions de déploiement',
@@ -45,6 +46,7 @@ const t=fr?{
  result:'One precise result',tests:'The full release suite passed in GitHub Actions with Python 3.12 on Ubuntu. The 81 Raft tests are included in, not added to, the total.',
  reviewer:'Harv Banning reported independently running the 81 tests on macOS against the same SHA, without source changes. The first run had 61 setup errors due to a missing dependency; the second passed after installing it.',
  externalNote:'Reported via email on October 26, 2026 and corroborated by a supplied pytest excerpt. The raw log file and its digest were not independently rechecked here.',
+ testDurationLabel:'Reported duration of the full 81-test run',testDuration:'282.08 s',logHashLabel:'Reported log SHA-256 (not independently rechecked)',
  exact:'Exact source:',
  proof:'Evidence and sources',
  inspect:'Inspect the release tests',release:'GitHub release',docs:'Deployment boundaries',
@@ -95,7 +97,7 @@ const report=url(fr?'/parcours-ia/':'/en/ai-readiness/');
       <div class="cr-evidence-grid">
         <article class="cr-panel"><small>{t.version}</small><h2>TENIR-Gov v5.7.0</h2><p>{t.exact} <code>47ef67e3efc5f3008896a7d88bebf929fa0a98f0</code></p><a href={release} target="_blank" rel="noopener">{t.release} ↗</a></article>
         <article class="cr-panel"><small>{t.internal}</small><h2>1 286 PASS</h2><p>{t.tests}</p><a href={run} target="_blank" rel="noopener">{t.inspect} ↗</a></article>
-        <article class="cr-panel"><small>{t.external}</small><h2>Harv Banning · 81/81</h2><p>{t.reviewer}</p><p class="cr-note">{t.externalNote}</p><p class="cr-digest">282.08s · macOS 26.6.2 · Python 3.12.7 · pytest 8.4.2 · PySyncObj 0.3.17</p><p class="cr-digest">Log SHA-256 (déclaré / reported): <code>0e0cbafda8c90735bf277d783d69ce91df36c5abcad26ac81de4a2d82fe7ff03</code></p></article>
+        <article class="cr-panel"><small>{t.external}</small><h2>Harv Banning · 81/81</h2><p>{t.reviewer}</p><p class="cr-note">{t.externalNote}</p><p class="cr-digest"><strong>{t.testDurationLabel} : {t.testDuration}</strong></p><p class="cr-digest">macOS 26.6.2 · Python 3.12.7 · pytest 8.4.2 · PySyncObj 0.3.17</p><p class="cr-digest">{t.logHashLabel} : <code>0e0cbafda8c90735bf277d783d69ce91df36c5abcad26ac81de4a2d82fe7ff03</code></p></article>
       </div>
     </div>
   </section>
