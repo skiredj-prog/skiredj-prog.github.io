@@ -140,6 +140,7 @@ const navItems=fr?[
     <section class="pa-report" id="pa-report" aria-labelledby="pa-report-title" hidden>
       <div class="pa-report-hero"><div class="pa-wrap"><span class="pa-eyebrow">{t.reportKicker}</span><h1 id="pa-report-title" tabindex="-1">{t.reportHeading}</h1><p>{t.reportIntro}</p><div class="pa-report-summary" id="pa-report-summary" aria-live="polite"></div></div></div>
       <div class="pa-wrap pa-report-content">
+        <section class="pa-journey-panel" aria-labelledby="pa-journey-title"><span class="pa-eyebrow">{fr?'PARCOURS DE MATURITÉ ET D’USAGE':'MATURITY AND USAGE JOURNEYS'}</span><h2 id="pa-journey-title">{fr?'Deux cartes pour situer la prochaine vérification':'Two maps to locate the next check'}</h2><div id="pa-usage-meta"></div><div id="pa-usage-map"></div><div id="pa-maturity-map"></div></section>
         <div class="pa-report-grid">
           <section class="pa-report-card" aria-labelledby="pa-dimensions-title"><h2 id="pa-dimensions-title">{t.dimensions}</h2><div id="pa-dimensions"></div></section>
           <section class="pa-report-card" aria-labelledby="pa-priorities-title"><h2 id="pa-priorities-title">{t.priorities}</h2><ol id="pa-priorities"></ol></section>

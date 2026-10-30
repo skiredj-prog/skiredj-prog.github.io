@@ -69,4 +69,4 @@ Il suffit de préciser **l'action concernée**, son **effet externe**, **le coû
 
 ## Pour prolonger la lecture technique
 
-Le [TENIR/REG Diagnostic & Evidence Workbench](/portfolio/workbench/) présente comment un configurateur et un dossier synthétique signé aident à distinguer l'autorisation de l'effet externe. **Il s'agit pour l'instant d'une page explicative : le kit autonome n'est pas téléchargeable sur le site.** [REG DEMO](/portfolio/reg-demo/) est l'instrument interne utilisé lorsque le diagnostic nécessite un parcours scénarisé. La [démonstration bancaire](/embeds/demonstration-bancaire.html) reste un scénario distinct, fictif.
+Le [TENIR/REG Diagnostic & Evidence Workbench](/portfolio/workbench/) présente comment un configurateur et un dossier synthétique signé aident à distinguer l'autorisation de l'effet externe. **Il s'agit pour l'instant d'une page explicative : le kit autonome n'est pas téléchargeable sur le site.** **REG DEMO** est l'instrument interne utilisé lorsque le diagnostic nécessite un parcours scénarisé. La [démonstration bancaire](/embeds/demonstration-bancaire.html) reste un scénario distinct, fictif.

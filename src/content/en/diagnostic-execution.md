@@ -69,4 +69,4 @@ Describe **the action**, its **external effect**, **the cost of duplication or u
 
 ## For a closer technical explanation
 
-The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. **This is currently an overview only: the offline kit is not downloadable from this website.** [REG DEMO](/en/portfolio/reg-demo/) is the internal instrument used when a diagnostic needs a scenario-based walkthrough. The [banking demonstration](/embeds/demonstration-bancaire.html) is separate and fictional, in French.
+The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. **This is currently an overview only: the offline kit is not downloadable from this website.** **REG DEMO** is the internal instrument used when a diagnostic needs a scenario-based walkthrough. The [banking demonstration](/embeds/demonstration-bancaire.html) is separate and fictional, in French.
