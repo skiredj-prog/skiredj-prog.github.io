@@ -91,6 +91,7 @@ try {
     assert(await page.locator('.cr-panel').count()===3,locale+': expected release, internal, external proof panels');
     assert((await page.locator('.cr-evidence').innerText()).includes('81 / 81'),locale+': independent rerun evidence missing');
     assert(await page.locator('.cr-architecture iframe').count()===1,locale+': architecture iframe missing');
+    await page.locator('.cr-architecture iframe').scrollIntoViewIfNeeded();
     const frame=page.frameLocator('.cr-architecture iframe');
     await frame.locator('#release').waitFor({state:'visible'});
     assert((await frame.locator('#release').innerText()).includes('282.08'),locale+': updated artifact evidence missing');
