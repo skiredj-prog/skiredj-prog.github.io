@@ -40,6 +40,45 @@ try {
       console.log('Chromium '+locale.toUpperCase()+' '+width+'px: three offer paths, responsive layout and linked diagnostic PASS.');
     }
   }
+
+  // Customer acquisition route: complete the full ungated questionnaire in FR and EN.
+  for(const locale of ['fr','en']){
+    const route=locale==='fr'?'/parcours-ia/':'/en/ai-readiness/';
+    for(const profile of ['weak','structured']){
+      const page=await browser.newPage({viewport:{width:390,height:844},acceptDownloads:true,reducedMotion:'reduce'});
+      const errors=[];
+      page.on('pageerror',err=>errors.push(err.message));
+      await page.goto('http://127.0.0.1:4173'+route,{waitUntil:'networkidle'});
+      assert(await page.locator('#pa-start').isVisible(),locale+': pathway start missing');
+      assert.equal(await page.locator('input[type=email]').count(),0,locale+': report must not demand an email address');
+      await page.locator('#pa-start').click();
+      for(let i=0;i<10;i++){
+        const options=page.locator('.pa-option');
+        assert(await options.count()>=3,locale+': missing answer options for question '+(i+1));
+        const selectIndex=i<2?0:profile==='weak'?2:0;
+        await options.nth(selectIndex).click();
+        await page.locator('#pa-next').click();
+      }
+      assert(await page.locator('#pa-report').isVisible(),locale+': report did not render');
+      assert.equal(await page.locator('.pa-dimension').count(),6,locale+': missing six assessment dimensions');
+      assert.equal(await page.locator('#pa-priorities li').count(),3,locale+': expected exactly three practical priorities');
+      assert(await page.locator('#pa-report-summary').innerText(),locale+': narrative must be substantive');
+      const mail=await page.locator('#pa-talk').getAttribute('href');
+      assert(mail.startsWith('mailto:skiredj@tenirlabs.cc'),locale+': explicit share-by-email action missing');
+      const download=page.waitForEvent('download');
+      await page.locator('#pa-download').click();
+      const file=await download;
+      assert(file.suggestedFilename().endsWith('.txt'),locale+': report download missing');
+      const dimensions=await page.locator('.pa-dim-top').allTextContents();
+      if(profile==='weak')assert(dimensions.some(x=>x.includes(locale==='fr'?'À clarifier':'Needs work')),locale+': weak self-report not reflected');
+      else assert(dimensions.some(x=>x.includes(locale==='fr'?'Structuré':'Structured')),locale+': structured self-report not reflected');
+      const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+      assert(dims.scroll<=dims.client+2,locale+': pathway mobile horizontal overflow '+(dims.scroll-dims.client));
+      assert.equal(errors.length,0,locale+': report browser errors '+errors.join('; '));
+      await page.close();
+      console.log('Pathway '+locale.toUpperCase()+' '+profile+': 10 questions, 6 dimensions, 3 actions and report download PASS.');
+    }
+  }
 } finally {
   await browser.close();
 }
