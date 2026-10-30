@@ -7,6 +7,7 @@ const { locale } = Astro.props;
 const fr = locale === 'fr';
 const path = (p: string) => url((fr ? '/' : '/en/') + p + '/');
 const contact = path('contact') + '?sujet=diagnostic';
+const pathway = url(fr ? '/parcours-ia/' : '/en/ai-readiness/');
 const demo = path('portfolio/control-tower');
 const t = fr ? {
   eyebrow: 'TENIR LABS · DES AGENTS IA SOUS CONTRÔLE',
@@ -14,9 +15,9 @@ const t = fr ? {
   headlineEnd: 'Vous gardez la main.',
   tagline: 'Confiez des tâches à l’IA. Pas les clés de votre entreprise.',
   summary: 'Vos agents IA peuvent déclencher des paiements, modifier des dossiers ou engager votre entreprise. TENIR Labs vous aide à fixer leurs limites, repérer les actions à risque et gérer les situations où personne ne sait exactement ce qui s’est passé.',
-  primary: 'Parler de mon projet',
+  primary: 'Recevoir mon rapport gratuit',
   secondary: 'Voir la démo',
-  heroNote: 'Pour les organisations qui passent de l’IA qui répond à l’IA qui agit.',
+  heroNote: '10 questions · 5 minutes · Sans compte · Résultat immédiat',
   tension: 'L’EXEMPLE QUI CHANGE TOUT',
   tensionTitle: 'Et si votre IA payait deux fois ?',
   tensionBody: 'Un agent déclenche un paiement. La confirmation disparaît. L’IA pense devoir recommencer. Mais le premier paiement a peut-être déjà eu lieu. Comment éviter une deuxième opération à l’aveugle ?',
@@ -49,9 +50,9 @@ const t = fr ? {
   source: 'Code source public',
   papers: 'Publications et recherche',
   status: 'Statut et périmètres',
-  closeTitle: 'L’IA avance vite. Gardez une longueur d’avance.',
-  closeSub: 'Montrez-nous une action que vous souhaitez confier à l’IA. Ensemble, identifions ce qu’il faut maîtriser avant de la laisser agir.',
-  closePrimary: 'Cadrer un diagnostic',
+  closeTitle: 'Vous savez ce que votre IA peut faire. Découvrez comment garder la main.',
+  closeSub: 'Dix questions. Votre rapport personnalisé. Trois prochaines actions possibles, avant même de nous parler.',
+  closePrimary: 'Découvrir mon parcours',
   closeSecondary: 'Écrire directement',
   smallPrint: 'Diagnostic sur devis · logiciels et prototypes à maturité distincte',
 } : {
@@ -60,9 +61,9 @@ const t = fr ? {
   headlineEnd: 'You stay in control.',
   tagline: 'Give AI the work. Not the keys to your business.',
   summary: 'AI agents can initiate payments, update records and make commitments on your behalf. TENIR Labs helps you set the limits, spot risky actions and handle those moments when no one knows exactly what happened.',
-  primary: 'Discuss my project',
+  primary: 'Get my free report',
   secondary: 'Watch the demo',
-  heroNote: 'For organizations moving from AI that answers to AI that acts.',
+  heroNote: '10 questions · 5 minutes · No account · Instant results',
   tension: 'THE EXAMPLE THAT CHANGES EVERYTHING',
   tensionTitle: 'What if your AI paid twice?',
   tensionBody: 'An agent initiates a payment. The confirmation disappears. The AI thinks it should try again. But the first payment might already have gone through. How do you avoid a second payment in the dark?',
@@ -95,9 +96,9 @@ const t = fr ? {
   source: 'Open-source code',
   papers: 'Research and publications',
   status: 'Status and scope',
-  closeTitle: 'AI is moving fast. Stay one step ahead.',
-  closeSub: 'Show us one action you want AI to handle. Together, we can identify what needs to stay under your control.',
-  closePrimary: 'Scope a diagnostic',
+  closeTitle: 'You know what AI can do. Find out how to stay in control.',
+  closeSub: 'Ten questions. Your personalized report. Three practical next steps, before you ever speak to us.',
+  closePrimary: 'Discover my pathway',
   closeSecondary: 'Email us',
   smallPrint: 'Diagnostic quoted by scope · software and prototypes at different maturity levels',
 };
@@ -119,7 +120,7 @@ const cards = fr ? [
       <p class="ml-hero-tagline">{t.tagline}</p>
       <p class="ml-hero-body">{t.summary}</p>
       <div class="ml-actions">
-        <a class="ml-btn ml-btn-primary" href={contact}>{t.primary} <span aria-hidden="true">↗</span></a>
+        <a class="ml-btn ml-btn-primary" href={pathway}>{t.primary} <span aria-hidden="true">↗</span></a>
         <a class="ml-btn ml-btn-outline" href="#essayer">{t.secondary} <span aria-hidden="true">→</span></a>
       </div>
       <p class="ml-hero-foot">{t.heroNote}</p>
@@ -188,7 +189,7 @@ const cards = fr ? [
 
   <section class="ml-closing" aria-labelledby="ml-closing-title">
     <div class="ml-wrap"><span class="ml-kicker">TENIR LABS</span><h2 id="ml-closing-title">{t.closeTitle}</h2><p>{t.closeSub}</p>
-      <div class="ml-actions"><a class="ml-btn ml-btn-primary" href={contact}>{t.closePrimary} ↗</a><a class="ml-btn ml-btn-outline" href="mailto:skiredj@tenirlabs.cc">{t.closeSecondary} →</a></div>
+      <div class="ml-actions"><a class="ml-btn ml-btn-primary" href={pathway}>{t.closePrimary} ↗</a><a class="ml-btn ml-btn-outline" href="mailto:skiredj@tenirlabs.cc">{t.closeSecondary} →</a></div>
       <p class="ml-hero-foot">{t.smallPrint}</p>
     </div>
   </section>
