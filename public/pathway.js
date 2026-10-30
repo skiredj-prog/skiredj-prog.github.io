@@ -77,12 +77,12 @@
     {id:'adaptability',name:L('Capacité d’adaptation','Adaptability'),keys:[9]}
   ];
   const steps=[
-    {id:'purpose',title:L('Définir ce que le projet doit accomplir','Define the outcome the project must deliver'),desc:L('Écrivez un objectif mesurable pour une action précise et définissez comment savoir si elle a réussi.','Document one measurable outcome for a specific action and how you will know it succeeded.'),url:'portfolio/diagnostic/'},
-    {id:'accountability',title:L('Nommer la personne qui décide','Name the person who is accountable'),desc:L('Désignez un responsable du parcours, y compris lorsque l’IA se trompe ou que le résultat reste inconnu.','Name an owner for the workflow, including when AI makes a mistake or the outcome is unknown.'),url:'portfolio/diagnostic/'},
-    {id:'control',title:L('Fixer et tester les limites de l’IA','Set and test the limits of AI actions'),desc:L('Identifiez les actions sensibles, leurs conditions d’approbation et ce qui doit se passer en cas de panne.','Identify sensitive actions, approval rules and what should happen when a system fails.'),url:'portfolio/prevent/'},
-    {id:'visibility',title:L('Rendre les actions traçables','Make actions traceable'),desc:L('Reliez chaque décision importante à sa demande, son exécution et au résultat réellement connu.','Link each important decision to its request, execution and actually known outcome.'),url:'portfolio/prepare/'},
-    {id:'evidence',title:L('Rassembler des preuves utilisables','Build evidence you can use'),desc:L('Associez les tests et journaux aux contrôles et à la version du système réellement concernés.','Tie tests and records to the controls and system version they actually describe.'),url:'portfolio/prepare/'},
-    {id:'adaptability',title:L('Sécuriser les changements','Make changes safely'),desc:L('Prévoyez comment approuver, tester et surveiller les modifications des règles de l’IA.','Define how AI rules will be approved, tested and monitored as they change.'),url:'portfolio/services/'}
+    {id:'purpose',title:L('Définir ce que le projet doit accomplir','Define the outcome the project must deliver'),desc:L('Écrivez un objectif mesurable pour une action précise et définissez comment savoir si elle a réussi.','Document one measurable outcome for a specific action and how you will know it succeeded.')},
+    {id:'accountability',title:L('Nommer la personne qui décide','Name the person who is accountable'),desc:L('Désignez un responsable du parcours, y compris lorsque l’IA se trompe ou que le résultat reste inconnu.','Name an owner for the workflow, including when AI makes a mistake or the outcome is unknown.')},
+    {id:'control',title:L('Fixer et tester les limites de l’IA','Set and test the limits of AI actions'),desc:L('Identifiez les actions sensibles, leurs conditions d’approbation et ce qui doit se passer en cas de panne.','Identify sensitive actions, approval rules and what should happen when a system fails.')},
+    {id:'visibility',title:L('Rendre les actions traçables','Make actions traceable'),desc:L('Reliez chaque décision importante à sa demande, son exécution et au résultat réellement connu.','Link each important decision to its request, execution and actually known outcome.')},
+    {id:'evidence',title:L('Rassembler des preuves utilisables','Build evidence you can use'),desc:L('Associez les tests et journaux aux contrôles et à la version du système réellement concernés.','Tie tests and records to the controls and system version they actually describe.')},
+    {id:'adaptability',title:L('Sécuriser les changements','Make changes safely'),desc:L('Prévoyez comment approuver, tester et surveiller les modifications des règles de l’IA.','Define how AI rules will be approved, tested and monitored as they change.')}
   ];
   const textStatus={
     strong:L('Structuré (déclaré)','Structured (reported)'),
@@ -147,9 +147,9 @@
     const structured=dims.filter(d=>d.level==='strong');
     const main=prioritized[0];
     const summary=weak.length
-      ?L('Premier chantier à examiner : ','First issue to address: ')+main.title.toLowerCase()+'. '+L('Vos réponses suggèrent des points à clarifier, notamment autour de ','Your answers suggest areas to investigate, especially around ')+riskLabel(answers[1])+'.'
+      ?L('Premier chantier à examiner : ','First issue to address: ')+main.title+'. '+L('Vos réponses suggèrent des points à clarifier, notamment autour de ','Your answers suggest areas to investigate, especially around ')+riskLabel(answers[1])+'.'
       :partial.length
-      ?L('Votre organisation semble avoir posé plusieurs bases. La prochaine étape est de consolider les pratiques encore partielles, en particulier : ','You appear to have some foundations in place. The next move is to strengthen partial practices, especially: ')+main.title.toLowerCase()+'.'
+      ?L('Votre organisation semble avoir posé plusieurs bases. La prochaine étape est de consolider les pratiques encore partielles, en particulier : ','You appear to have some foundations in place. The next move is to strengthen partial practices, especially: ')+main.title+'.'
       :L('Votre parcours semble bien structuré d’après vos réponses. Il reste à vérifier les preuves et la résistance des contrôles sur un cas concret.','Your pathway appears structured based on your answers. The next step is to validate evidence and test controls against a real scenario.');
     // Select the most helpful engagement, without turning the self-assessment into a certification.
     let offer;
