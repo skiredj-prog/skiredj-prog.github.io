@@ -108,3 +108,6 @@ body.marketing-page .site-header .menu-toggle{color:#fff;background:#173251;bord
 :root[data-theme="dark"] .market-root .ml-short-journey{border-color:#294563}
 :root[data-theme="dark"] .market-root .ml-trust-links a{border-color:#2c4665}
 :root[data-theme="dark"] .market-root .ml-indicator{border-color:#294563}
+
+.ml-story-link{display:inline-block;color:#2563eb!important;font-size:.82rem;font-weight:700;margin-top:1rem}
+.ml-story-link:hover{text-decoration:underline;text-underline-offset:4px}
