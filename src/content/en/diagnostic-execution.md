@@ -14,6 +14,8 @@ The **REG Execution Boundary Diagnostic** examines **one critical flow**, its st
 
 **Deliverables:** a transition map, control and scenario matrices, a register of assumptions and unknowns, and a report distinguishing **acceptable within the tested scope**, **HOLD**, and **not demonstrated**. "Not demonstrated" is an acceptable result.
 
+To run this work in a workshop, TENIR Labs may use **REG DEMO**, a local instrument for reading scenarios and evidence. It does not connect to the client system: it helps separate authorization, dispatch, outcome and evidence before defining the next control.
+
 [Explore the fictional replay →](/en/replay/) · [Discuss one flow to examine →](/en/contact/)
 
 The replay is an educational illustration. For a real case, scope, available records, deliverables and commercial terms are agreed together before the engagement.
@@ -67,4 +69,4 @@ Describe **the action**, its **external effect**, **the cost of duplication or u
 
 ## For a closer technical explanation
 
-The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. **This is currently an overview only: the offline kit is not downloadable from this website.** The [banking demonstration](/embeds/demonstration-bancaire.html) is separate and fictional, in French.
+The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. **This is currently an overview only: the offline kit is not downloadable from this website.** [REG DEMO](/en/portfolio/reg-demo/) is the internal instrument used when a diagnostic needs a scenario-based walkthrough. The [banking demonstration](/embeds/demonstration-bancaire.html) is separate and fictional, in French.
