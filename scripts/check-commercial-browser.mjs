@@ -79,6 +79,30 @@ try {
       console.log('Pathway '+locale.toUpperCase()+' '+profile+': 10 questions, 6 dimensions, 3 actions and report download PASS.');
     }
   }
+
+  // Credibility route: real browser loads the updated 5.7.0 artifact and exercises a simulator.
+  for(const locale of ['fr','en']){
+    const route=locale==='fr'?'/credibilite/':'/en/credibility/';
+    const page=await browser.newPage({viewport:{width:390,height:850},reducedMotion:'reduce'});
+    const errors=[];
+    page.on('pageerror',err=>errors.push(err.message));
+    await page.goto('http://127.0.0.1:4173'+route,{waitUntil:'networkidle'});
+    assert(await page.locator('.cr-hero h1').isVisible(),locale+': credibility route hero not rendered');
+    assert(await page.locator('.cr-panel').count()===3,locale+': expected release, internal, external proof panels');
+    assert((await page.locator('.cr-evidence').innerText()).includes('81 / 81'),locale+': independent rerun evidence missing');
+    assert(await page.locator('.cr-architecture iframe').count()===1,locale+': architecture iframe missing');
+    const frame=page.frameLocator('.cr-architecture iframe');
+    await frame.locator('#release').waitFor({state:'visible'});
+    assert((await frame.locator('#release').innerText()).includes('282.08'),locale+': updated artifact evidence missing');
+    await frame.locator('#finReset').click();
+    await frame.locator('#finExecute').click();
+    assert(await frame.locator('#finLog .log-entry').count()>0,locale+': budget simulator not interactive');
+    const dimensions=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+    assert(dimensions.scroll<=dimensions.client+2,locale+': credibility route horizontal overflow '+(dimensions.scroll-dimensions.client));
+    assert.equal(errors.length,0,locale+': interactive credibility browser errors '+errors.join('; '));
+    await page.close();
+    console.log('Credibility '+locale.toUpperCase()+': v5.7 exact-tag proof, 81 external rerun, interactive simulator and mobile layout PASS.');
+  }
 } finally {
   await browser.close();
 }
