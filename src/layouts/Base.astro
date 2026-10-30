@@ -28,6 +28,7 @@ const readerContact=home?path('parcours-ia','ai-readiness'):isPortfolio?portfoli
 const pageKinds: Record<string, string> = {
   offre: fr?'Service':'Service', offer:'Service',
   'diagnostic-execution': fr?'Diagnostic spécialisé':'Specialized diagnostic',
+  'credibilite': fr?'Parcours Crédibilité':'Credibility Journey', 'credibility': fr?'Parcours Crédibilité':'Credibility Journey',
   'produits-et-services': 'Service · REG', 'products-and-services': 'Service · REG',
   'offre/exemple': fr?'Exemple simulé':'Simulated example', 'offer/example':'Simulated example',
   'architecture/demo': fr?'Démonstration':'Demo', 'architecture/interactive': fr?'Démonstration interactive':'Interactive demo',
@@ -38,7 +39,7 @@ const pageKinds: Record<string, string> = {
 const demo=groups[2];
 const resources=[...groups[3].links,...groups[4].links,...groups[0].links.filter(x=>x.slug!=='concepts'),groups[1].links[0],groups[1].links[4],{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}];
 const footerGroups=[
-  {id:'discover',label:fr?'Découvrir':'Discover',links:[{slug:'ai-pathway',href:fr?'/parcours-ia/':'/en/ai-readiness/',label:fr?'Mon rapport de parcours':'My AI pathway report'},{slug:fr?'parcours/decouvrir':'start/discover',href:journeyHref(locale,journeys[locale][0]),label:fr?'Comprendre TENIR':'Understand TENIR'},{slug:'portfolio/products',href:fr?'/portfolio/products/':'/en/portfolio/products/',label:fr?'Produits':'Products'},{slug:fr?'parcours/activite':'start/business',href:businessHref(locale),label:fr?'En pratique':'In practice'}]},
+  {id:'discover',label:fr?'Découvrir':'Discover',links:[{slug:'credibility',href:fr?'/credibilite/':'/en/credibility/',label:fr?'Parcours Crédibilité':'Credibility Journey'},{slug:'ai-pathway',href:fr?'/parcours-ia/':'/en/ai-readiness/',label:fr?'Mon rapport de parcours':'My AI pathway report'},{slug:fr?'parcours/decouvrir':'start/discover',href:journeyHref(locale,journeys[locale][0]),label:fr?'Comprendre TENIR':'Understand TENIR'},{slug:'portfolio/products',href:fr?'/portfolio/products/':'/en/portfolio/products/',label:fr?'Produits':'Products'},{slug:fr?'parcours/activite':'start/business',href:businessHref(locale),label:fr?'En pratique':'In practice'}]},
   {id:'try',label:fr?'Explorer et essayer':'Explore and try',links:[{slug:'prototype',href:'https://mobile.tenirlabs.cc/discover',label:fr?'Prototype mobile':'Mobile prototype'},demo.links[0],{slug:fr?'offre/exemple':'offer/example',href:fr?'/offre/exemple/':'/en/offer/example/',label:fr?'Un exemple sourcé':'A sourced example'}]},
   {id:'study',label:fr?'Approfondir':'Go deeper',links:[groups[3].links[1],groups[3].links[3],...groups[4].links.slice(1)]},
   {id:'talk',label:fr?'Échanger':'Talk',links:[contact,{slug:fr?'offre':'offer',href:fr?'/offre/':'/en/offer/',label:fr?'Un accompagnement':'Accompanied work'},{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}]},
@@ -71,6 +72,7 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
           <a href={path('portfolio/products')} aria-current={slug==='portfolio/products'?'page':undefined}>{fr?'Produits':'Products'}</a>
           <a href={home?path('portfolio/demos'):url(businessHref(locale))} aria-current={slug===(fr?'parcours/activite':'start/business')?'page':undefined}>{home?(fr?'Démos':'Demos'):(fr?'En pratique':'In practice')}</a>
           <details class="nav-group" hidden={home}><summary>{fr?'Essayer':'Try it'}</summary><div class="nav-menu"><a href={path('portfolio/demos')}><strong>{fr?'Voir les démonstrations':'Browse the demos'}</strong><small>{fr?'Scénarios, schémas et exemples à explorer':'Scenarios, diagrams and examples to explore'}</small></a><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Une tâche de rendez-vous':'An appointment task'}</strong><small>{fr?'Prototype mobile · aucun vrai message envoyé':'Mobile prototype · no real messages sent'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
+          {home&&<a href={path('credibilite','credibility')}>{fr?'Crédibilité':'Evidence'}</a>}
           {home&&<a href={path('produits-et-services','products-and-services')}>{fr?'Approche':'Approach'}</a>}
           <details hidden={home} class:list={['nav-group',resources.some(x=>x.slug===slug)&&'is-current']}><summary>{fr?'Ressources':'Resources'}</summary><div class="nav-menu resource-menu">{resources.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
           <div class="nav-mobile-tools"><a href={url(other)} lang={fr?'en':'fr'}>{fr?'Read in English':'Lire en français'}</a></div>
