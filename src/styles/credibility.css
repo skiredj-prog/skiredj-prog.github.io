@@ -22,3 +22,6 @@
 :root[data-theme=dark] .cr-root .cr-panel p,:root[data-theme=dark] .cr-root .cr-boundaries li,:root[data-theme=dark] .cr-root .cr-cap-grid p,:root[data-theme=dark] .cr-root .cr-stats strong{color:#bed0e3}
 @media(max-width:940px){.cr-evidence-grid{grid-template-columns:1fr 1fr}.cr-evidence-grid .cr-panel:last-child{grid-column:1/-1}.cr-stats{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.cr-wrap{width:calc(100% - 2rem)}.cr-evidence-grid,.cr-cap-grid{grid-template-columns:1fr}.cr-evidence-grid .cr-panel:last-child{grid-column:auto}.cr-stats strong{font-size:1.55rem}.cr-stats>div{padding:1rem}.cr-architecture iframe{height:76vh}.cr-btn{width:100%}}
+/* Credibility route is a full-width marketing journey, not a prose article. */
+body.credibility-page main.home-main{width:100%;max-width:none;margin:0;padding:0}
+body.credibility-page .cr-root{max-width:none}
