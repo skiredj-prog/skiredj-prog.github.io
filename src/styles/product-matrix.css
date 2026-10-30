@@ -32,3 +32,17 @@
 .pm-transverse .pm-disclaimer{color:var(--muted);font-size:.74rem}
 @media(max-width:900px){.pm-heading{display:block}.pm-heading>p{margin:.65rem 0 0}.portfolio-matrix{margin:2rem 0}}
 @media(max-width:760px){.pm-scroller{margin-right:-.7rem}.pm-heading h2{font-size:1.8rem}.pm-table{min-width:690px}.pm-table th,.pm-table td{padding:.7rem}}
+
+/* v2: a capability map for visitors, with standards/architecture separate. */
+.pm-table .pm-row-help{display:block;margin-top:.35rem;color:var(--muted);font-size:.71rem;line-height:1.45;font-weight:400}
+.pm-empty{display:block;color:var(--muted);font-size:.75rem;font-style:italic;line-height:1.55;max-width:12rem}
+.pm-items .pm-item-status{display:block;margin-top:.45rem;padding-top:.38rem;border-top:1px solid var(--line);font-size:.67rem;line-height:1.4;color:var(--muted)}
+.pm-foundations{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:1.4rem;align-items:start;border-bottom:1px solid var(--line);padding:1.25rem 0}
+.pm-foundations p{color:var(--muted);font-size:.85rem;line-height:1.5;margin:.4rem 0 0}
+.pm-foundation-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.pm-foundation-links>a{display:grid;gap:.25rem;padding:.9rem 1rem;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:var(--bg-raised)}
+.pm-foundation-links>a:hover,.pm-foundation-links>a:focus-visible{border-color:var(--accent)}
+.pm-foundation-links strong{font-size:.85rem;color:var(--ink)}
+.pm-foundation-links span{font-size:.74rem;line-height:1.45;color:var(--muted)}
+@media(max-width:900px){.pm-foundations{grid-template-columns:1fr}.pm-foundation-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.pm-foundation-links{grid-template-columns:1fr}.pm-table{min-width:690px}}
