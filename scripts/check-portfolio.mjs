@@ -69,7 +69,7 @@ for(const lang of ['fr','en']){
   assert(homePage.includes('id="essayer"'),`${lang}: live simulation destination missing`);
   assert(homePage.includes('/embeds/reg-autonomy-control-tower-v1.0.html'),`${lang}: embedded interactive demo missing`);
   assert(homePage.includes('id="comprendre"') && homePage.includes('id="demarche"'),`${lang}: legacy deep links must remain valid`);
-  assert(homePage.includes(`href="${lang==='fr'?'/':'/en/'}contact/?sujet=diagnostic"`),`${lang}: diagnostic CTA must be directly actionable`);
+  assert(homePage.includes(`href="${lang==='fr'?'/parcours-ia/':'/en/ai-readiness/'}"`),`${lang}: free personalized pathway CTA must be on the homepage`);
   assert(homePage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/products/"`),`${lang}: product map not reachable from homepage`);
 }
 
@@ -85,3 +85,6 @@ for(const lang of ['fr','en']){
   assert(frame.includes('/embeds/reg-autonomy-control-tower-v1.0.html'),'Control Tower source missing');
 }
 console.log('Portfolio: 34 FR/EN routes, 28 nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.');
+
+// The free self-assessment is the new commercial front door.
+await import('./check-pathway.mjs');
