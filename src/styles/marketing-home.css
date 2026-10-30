@@ -95,3 +95,16 @@ body.marketing-page .site-header .tools .lang a[aria-current]{color:#fff}
 body.marketing-page .site-header .theme{color:#fff}
 body.marketing-page .site-header .menu-toggle{color:#fff;background:#173251;border-color:#385574}
 @media(max-width:920px){body.marketing-page .site-header .site-nav{background:#071629}body.marketing-page .site-header .site-nav .nav-group .nav-menu{background:#fff;color:#0d1b2a}body.marketing-page .site-header .nav-mobile-tools a{color:#fff}}
+
+/* The site's existing light/dark toggle also applies to the new landing page. */
+:root[data-theme="dark"] .market-root{background:#071629;color:#f3f6fa}
+:root[data-theme="dark"] .market-root .ml-threat,:root[data-theme="dark"] .market-root .ml-trust{background:#0d2037}
+:root[data-theme="dark"] .market-root .ml-offerings{background:#08182d}
+:root[data-theme="dark"] .market-root .ml-story h2,:root[data-theme="dark"] .market-root .ml-section-top h2,:root[data-theme="dark"] .market-root .ml-short-journey h3{color:#f3f6fa}
+:root[data-theme="dark"] .market-root .ml-story>p,:root[data-theme="dark"] .market-root .ml-section-top>p{color:#afc0d4}
+:root[data-theme="dark"] .market-root .ml-card,:root[data-theme="dark"] .market-root .ml-outcome,:root[data-theme="dark"] .market-root .ml-trust-links{background:#112842;border-color:#2c4665;color:#f3f6fa}
+:root[data-theme="dark"] .market-root .ml-outcome strong,:root[data-theme="dark"] .market-root .ml-card>strong,:root[data-theme="dark"] .market-root .ml-card h3,:root[data-theme="dark"] .market-root .ml-trust-links a,:root[data-theme="dark"] .market-root .ml-short-journey .lifecycle-flow p{color:#f3f6fa}
+:root[data-theme="dark"] .market-root .ml-outcome p,:root[data-theme="dark"] .market-root .ml-card>p,:root[data-theme="dark"] .market-root .ml-mini-label{color:#b7c7d9}
+:root[data-theme="dark"] .market-root .ml-short-journey{border-color:#294563}
+:root[data-theme="dark"] .market-root .ml-trust-links a{border-color:#2c4665}
+:root[data-theme="dark"] .market-root .ml-indicator{border-color:#294563}
