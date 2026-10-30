@@ -31,7 +31,7 @@ for(const forbidden of ['fetch(','XMLHttpRequest','localStorage.setItem','sessio
   assert(!js.includes(forbidden),'Unexpected network dependency or storage in questionnaire: '+forbidden);
 }
 assert(js.includes('Self-reported assessment')&&js.includes('Auto-évaluation déclarative'),'Report must label itself self-reported');
-assert(!/,url:'portfolio\\//.test(js),'Advisory priority steps must not silently carry unused commercial destinations');
+assert(!js.includes(",url:'portfolio/"),'Advisory priority steps must not silently carry unused commercial destinations');
 assert(!js.includes('main.title.toLowerCase()'),'Do not inadvertently lowercase proper nouns in future recommendation titles');
 
 console.log('PASS: FR/EN pathway routes, 10 questions, six dimensions, local-only results, user-initiated sharing.');
