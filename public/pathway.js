@@ -130,6 +130,18 @@
       sort:rank[dims.find(d=>d.id===s.id).level],
       i
     })).sort((a,b)=>a.sort-b.sort||a.i-b.i).slice(0,3);
+    // A fully structured self-report needs validation and ongoing value review,
+    // not introductory instructions to name an owner or define a first objective.
+    if(dims.every(d=>d.level==='strong')){
+      prioritized.splice(0,prioritized.length,
+        {title:L('Tester les limites avec un incident simulé','Stress-test the controls with a simulated incident'),
+         desc:L('Choisissez un cas d’échec réaliste : indisponibilité d’un outil, résultat inconnu ou tentative de doublon. Vérifiez la réaction attendue.','Pick a realistic failure: unavailable tool, unknown outcome or duplicate attempt. Validate the expected response.')},
+        {title:L('Relier les preuves à ce qui est réellement déployé','Connect evidence to the actual deployment'),
+         desc:L('Vérifiez que les journaux, tests et règles correspondent à la version utilisée, puis faites examiner les écarts par un tiers.','Check that logs, tests and rules match the deployed version, then have a reviewer challenge the gaps.')},
+        {title:L('Mesurer la valeur et entretenir le dispositif','Measure value and keep controls current'),
+         desc:L('Fixez une revue périodique des incidents, des coûts, des améliorations et des changements de règles.','Schedule periodic reviews of incidents, costs, improvements and rule changes.')}
+      );
+    }
     const weak=dims.filter(d=>d.level==='weak');
     const partial=dims.filter(d=>d.level==='partial');
     const structured=dims.filter(d=>d.level==='strong');
