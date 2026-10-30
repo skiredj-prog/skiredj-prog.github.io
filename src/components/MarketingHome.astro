@@ -1,0 +1,193 @@
+---
+import '../styles/marketing-home.css';
+import { url, type Locale } from '../data/site';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const path = (p: string) => url((fr ? '/' : '/en/') + p + '/');
+const contact = path('contact') + '?sujet=diagnostic';
+const demo = path('portfolio/control-tower');
+const t = fr ? {
+  eyebrow: 'AI AGENTS · EXECUTION CONTROL · TENIR LABS',
+  big: 'Autorisé',
+  neq: '≠',
+  admissible: 'admissible.',
+  tagline: 'Donner accès à une IA ne suffit pas à garder le contrôle.',
+  summary: 'Vos agents peuvent décider, déclencher et engager des opérations. TENIR Labs aide à définir la frontière entre ce qu’un agent peut faire et ce qu’il devrait pouvoir engager.',
+  primary: 'Parler de mon projet',
+  secondary: 'Voir la démo',
+  heroNote: 'Pour les organisations qui passent de l’IA qui répond à l’IA qui agit.',
+  tension: 'LA FAILLE QUI COMPTE',
+  tensionTitle: 'Le vrai risque commence après le feu vert.',
+  tensionBody: 'Un agent déclenche un paiement. La confirmation disparaît. Faut-il recommencer ? Une décision autorisée peut encore produire un doublon, un engagement irréversible ou un résultat inconnu.',
+  without: 'Sans frontière claire',
+  withoutHead: 'Relancer à l’aveugle.',
+  withoutBody: 'Une réponse absente est prise pour un échec. La même opération peut partir deux fois.',
+  with: 'Avec une frontière gouvernée',
+  withHead: 'Savoir quand s’arrêter.',
+  withBody: 'Le scénario de gouvernance passe en HOLD et exige un rapprochement avant une nouvelle tentative.',
+  fictional: 'Scénario illustratif · pas de transaction réelle',
+  promise: 'DES SOLUTIONS, PAS UN LABYRINTHE',
+  solutions: 'Trois façons de reprendre le contrôle.',
+  solutionsSub: 'Commencez par une décision critique. Nous adaptons ensuite l’approche à vos systèmes et à votre niveau de maturité.',
+  choose: 'Découvrir',
+  stepsEyebrow: 'UN PARCOURS SIMPLE',
+  stepsTitle: 'Avant. Pendant. Après.',
+  before: 'Anticiper les angles morts.',
+  during: 'Gouverner le point d’action.',
+  after: 'Retrouver les faits et les preuves.',
+  demoEyebrow: 'À VOUS DE JOUER',
+  demoTitle: 'Moins de slides. Plus de scénarios.',
+  demoSub: 'Explorez les décisions HOLD, les requêtes en double et les résultats inconnus dans une simulation interactive. Aucune connexion à un système réel.',
+  demoLaunch: 'Ouvrir la démo en plein écran',
+  demoAll: 'Toutes les expériences',
+  trust: 'LA CRÉDIBILITÉ, EN ACCÈS LIBRE',
+  trustTitle: 'Une idée ambitieuse. Du code que l’on peut examiner.',
+  trustSub: 'La démarche s’appuie sur des logiciels ouverts, des publications et des tests contextualisés. Les périmètres et limites sont documentés.',
+  source: 'Code source public',
+  papers: 'Publications et recherche',
+  status: 'Statut et périmètres',
+  closeTitle: 'Votre prochain incident peut commencer par une action parfaitement autorisée.',
+  closeSub: 'Choisissons une seule décision critique. Identifions ensemble la frontière à tenir.',
+  closePrimary: 'Cadrer un diagnostic',
+  closeSecondary: 'Écrire directement',
+  smallPrint: 'Diagnostic sur devis · logiciels et prototypes à maturité distincte',
+} : {
+  eyebrow: 'AI AGENTS · EXECUTION CONTROL · TENIR LABS',
+  big: 'Authorized',
+  neq: '≠',
+  admissible: 'admissible.',
+  tagline: 'Giving AI permission is not the same as staying in control.',
+  summary: 'Your agents can decide, dispatch and commit real-world operations. TENIR Labs helps define the boundary between what an agent can do and what it should be allowed to commit.',
+  primary: 'Discuss my project',
+  secondary: 'Watch the demo',
+  heroNote: 'For organizations moving from AI that answers to AI that acts.',
+  tension: 'THE GAP THAT MATTERS',
+  tensionTitle: 'The real risk starts after the green light.',
+  tensionBody: 'An agent initiates a payment. The confirmation disappears. Should it try again? An authorized decision can still create a duplicate, an irreversible commitment, or an unknown outcome.',
+  without: 'Without a clear boundary',
+  withoutHead: 'Retry in the dark.',
+  withoutBody: 'A missing response is mistaken for failure. The same operation may be dispatched twice.',
+  with: 'With a governed boundary',
+  withHead: 'Know when to stop.',
+  withBody: 'The governance scenario enters HOLD and requires reconciliation before another attempt.',
+  fictional: 'Illustrative scenario · no live transaction',
+  promise: 'SOLUTIONS, NOT A MAZE',
+  solutions: 'Three ways to take back control.',
+  solutionsSub: 'Start with one consequential decision. Then match the approach to your systems and maturity.',
+  choose: 'Explore',
+  stepsEyebrow: 'ONE CLEAR JOURNEY',
+  stepsTitle: 'Before. During. After.',
+  before: 'Reveal the blind spots.',
+  during: 'Govern the point of action.',
+  after: 'Recover the facts and evidence.',
+  demoEyebrow: 'TRY IT YOURSELF',
+  demoTitle: 'Fewer slides. More scenarios.',
+  demoSub: 'Explore HOLD decisions, duplicate requests and unknown outcomes in an interactive simulation. No connection to a live external system.',
+  demoLaunch: 'Open the full demo',
+  demoAll: 'Browse all experiences',
+  trust: 'CREDIBILITY IN THE OPEN',
+  trustTitle: 'An ambitious idea. Code you can inspect.',
+  trustSub: 'Our approach is grounded in open software, published research and scoped tests. Boundaries and limitations are documented.',
+  source: 'Open-source code',
+  papers: 'Research and publications',
+  status: 'Status and scope',
+  closeTitle: 'Your next incident may start with a perfectly authorized action.',
+  closeSub: 'Start with one critical decision. Let’s make its execution boundary visible.',
+  closePrimary: 'Scope a diagnostic',
+  closeSecondary: 'Email us',
+  smallPrint: 'Diagnostic quoted by scope · software and prototypes at different maturity levels',
+};
+const cards = fr ? [
+ {tag:'SERVICE', name:'Execution Boundary Diagnostic', headline:'Découvrez votre point de non-retour.', desc:'Une analyse ciblée d’un flux critique, de ses responsabilités et des angles morts entre autorisation et conséquence.', href:path('portfolio/diagnostic'),action:'Explorer le diagnostic',mark:'01'},
+ {tag:'MÉTHODES', name:'REG Prevent · Prepare',headline:'Transformez les politiques en décisions concrètes.',desc:'Passez des exigences aux contrôles candidats, puis des systèmes aux preuves disponibles. Deux approches, indépendantes ou complémentaires.',href:path('produits-et-services'),action:'Explorer les méthodes',mark:'02'},
+ {tag:'SOFTWARE · BÊTA',name:'TENIR-Gov',headline:'Placez un contrôle entre l’intention et l’impact.',desc:'Une couche de gouvernance de l’exécution pour les actions intégrées, avec décisions bornées, HOLD et traçabilité. Logiciel open source.',href:path('portfolio/gov'),action:'Découvrir le logiciel',mark:'03'},
+] : [
+ {tag:'SERVICE',name:'Execution Boundary Diagnostic',headline:'Find your point of no return.',desc:'A focused review of one critical flow, its owners, and the blind spots between authorization and consequence.',href:path('portfolio/diagnostic'),action:'Explore the diagnostic',mark:'01'},
+ {tag:'METHODS',name:'REG Prevent · Prepare',headline:'Turn policies into operational decisions.',desc:'Move from requirements to candidate controls, then from systems to available evidence. Independent or complementary approaches.',href:path('products-and-services'),action:'Explore the methods',mark:'02'},
+ {tag:'SOFTWARE · BETA',name:'TENIR-Gov',headline:'Put control between intention and impact.',desc:'Execution governance for integrated agent actions, with bounded verdicts, HOLD and traceability. Open-source software.',href:path('portfolio/gov'),action:'Explore the software',mark:'03'},
+];
+---
+<div class="market-root">
+  <section class="ml-hero" aria-labelledby="market-heading">
+    <div class="ml-wrap">
+      <p class="ml-eyebrow"><span class="ml-dot" aria-hidden="true"></span>{t.eyebrow}</p>
+      <h1 id="market-heading" class="ml-headline"><span>{t.big}</span><span class="ml-not-equal">{t.neq}</span><em>{t.admissible}</em></h1>
+      <p class="ml-hero-tagline">{t.tagline}</p>
+      <p class="ml-hero-body">{t.summary}</p>
+      <div class="ml-actions">
+        <a class="ml-btn ml-btn-primary" href={contact}>{t.primary} <span aria-hidden="true">↗</span></a>
+        <a class="ml-btn ml-btn-outline" href="#essayer">{t.secondary} <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="ml-hero-foot">{t.heroNote}</p>
+    </div>
+  </section>
+
+  <section class="ml-threat" aria-labelledby="ml-threat-title">
+    <div class="ml-wrap ml-threat-grid">
+      <div class="ml-story">
+        <span class="ml-kicker">{t.tension}</span>
+        <h2 id="ml-threat-title">{t.tensionTitle}</h2>
+        <p>{t.tensionBody}</p>
+        <span class="ml-fiction">{t.fictional}</span>
+      </div>
+      <div class="ml-outcomes">
+        <div class="ml-outcome ml-risk"><span class="ml-mini-label">{t.without}</span><strong>{t.withoutHead}</strong><p>{t.withoutBody}</p><span class="ml-indicator">RETRY? <span aria-hidden="true">↻</span></span></div>
+        <div class="ml-outcome ml-safe"><span class="ml-mini-label">{t.with}</span><strong>{t.withHead}</strong><p>{t.withBody}</p><span class="ml-indicator">HOLD <span aria-hidden="true">●</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ml-offerings ml-section" aria-labelledby="ml-offerings-title" id="offres">
+    <div class="ml-wrap">
+      <div class="ml-section-top"><span class="ml-kicker">{t.promise}</span><h2 id="ml-offerings-title">{t.solutions}</h2><p>{t.solutionsSub}</p></div>
+      <div class="ml-cards">
+        {cards.map(card => <a class="ml-card" href={card.href}>
+          <div class="ml-card-top"><span class="ml-card-number">{card.mark}</span><span class="ml-card-type">{card.tag}</span></div>
+          <h3>{card.name}</h3><strong>{card.headline}</strong><p>{card.desc}</p><span class="ml-card-action">{card.action} <span aria-hidden="true">↗</span></span>
+        </a>)}
+      </div>
+      <div class="ml-short-journey home-lifecycle">
+        <span class="ml-kicker">{t.stepsEyebrow}</span><h3>{t.stepsTitle}</h3>
+        <div class="lifecycle-flow">
+          <p><span>01</span>{t.before}</p>
+          <p><span>02</span>{t.during}</p>
+          <p><span>03</span>{t.after}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ml-demo ml-section" aria-labelledby="ml-demo-title" id="essayer">
+    <div class="ml-wrap">
+      <div class="ml-demo-copy">
+        <div class="ml-section-top"><span class="ml-kicker">{t.demoEyebrow}</span><h2 id="ml-demo-title">{t.demoTitle}</h2><p>{t.demoSub}</p></div>
+        <div class="ml-demo-actions"><a class="ml-btn ml-btn-primary" href={demo}>{t.demoLaunch} <span aria-hidden="true">↗</span></a><a class="ml-text-link" href={path('portfolio/demos')}>{t.demoAll} →</a></div>
+        <p class="ml-demo-disclaimer">{t.fictional}</p>
+      </div>
+      <div class="ml-demo-panel">
+        <div class="ml-panel-bar"><span aria-hidden="true">● ● ●</span><span>CONTROL TOWER / SIMULATION</span></div>
+        <iframe src={url('/embeds/reg-autonomy-control-tower-v1.0.html')} loading="lazy" title={fr ? 'Control Tower — simulation de gouvernance avec données fictives' : 'Control Tower — fictional execution-governance simulation'}></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="ml-trust ml-section" aria-labelledby="ml-trust-title">
+    <div class="ml-wrap">
+      <div class="ml-section-top"><span class="ml-kicker">{t.trust}</span><h2 id="ml-trust-title">{t.trustTitle}</h2><p>{t.trustSub}</p></div>
+      <div class="ml-trust-links">
+        <a href="https://github.com/skiredj-prog/tenir_governance" rel="noopener" target="_blank"><span class="ml-trust-icon" aria-hidden="true">⌘</span>{t.source}<span aria-hidden="true">↗</span></a>
+        <a href={path('publications')}><span class="ml-trust-icon" aria-hidden="true">§</span>{t.papers}<span aria-hidden="true">↗</span></a>
+        <a href={path(fr?'statut':'status')}><span class="ml-trust-icon" aria-hidden="true">◎</span>{t.status}<span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ml-closing" aria-labelledby="ml-closing-title">
+    <div class="ml-wrap"><span class="ml-kicker">TENIR LABS</span><h2 id="ml-closing-title">{t.closeTitle}</h2><p>{t.closeSub}</p>
+      <div class="ml-actions"><a class="ml-btn ml-btn-primary" href={contact}>{t.closePrimary} ↗</a><a class="ml-btn ml-btn-outline" href="mailto:skiredj@tenirlabs.cc">{t.closeSecondary} →</a></div>
+      <p class="ml-hero-foot">{t.smallPrint}</p>
+    </div>
+  </section>
+</div>
