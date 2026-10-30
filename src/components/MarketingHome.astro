@@ -28,6 +28,8 @@ const t = fr ? {
   withHead: 'Savoir quand s’arrêter.',
   withBody: 'Le scénario de gouvernance passe en HOLD et exige un rapprochement avant une nouvelle tentative.',
   fictional: 'Scénario illustratif · pas de transaction réelle',
+  caseLink: 'Explorer les cas réels et simulés',
+  bankLink: 'Voir le scénario bancaire · français',
   promise: 'DES SOLUTIONS, PAS UN LABYRINTHE',
   solutions: 'Trois façons de reprendre le contrôle.',
   solutionsSub: 'Commencez par une décision critique. Nous adaptons ensuite l’approche à vos systèmes et à votre niveau de maturité.',
@@ -73,6 +75,8 @@ const t = fr ? {
   withHead: 'Know when to stop.',
   withBody: 'The governance scenario enters HOLD and requires reconciliation before another attempt.',
   fictional: 'Illustrative scenario · no live transaction',
+  caseLink: 'Explore real and simulated cases',
+  bankLink: 'View the banking scenario · French',
   promise: 'SOLUTIONS, NOT A MAZE',
   solutions: 'Three ways to take back control.',
   solutionsSub: 'Start with one consequential decision. Then match the approach to your systems and maturity.',
@@ -100,11 +104,11 @@ const t = fr ? {
   smallPrint: 'Diagnostic quoted by scope · software and prototypes at different maturity levels',
 };
 const cards = fr ? [
- {tag:'SERVICE', name:'Execution Boundary Diagnostic', headline:'Découvrez votre point de non-retour.', desc:'Une analyse ciblée d’un flux critique, de ses responsabilités et des angles morts entre autorisation et conséquence.', href:path('portfolio/diagnostic'),action:'Explorer le diagnostic',mark:'01'},
+ {tag:'SERVICE', name:'Execution Boundary Diagnostic', headline:'Découvrez votre point de non-retour.', desc:'Une analyse ciblée d’un flux critique, de ses responsabilités et des angles morts entre autorisation et conséquence.', href:path('diagnostic-execution'),action:'Explorer le diagnostic',mark:'01'},
  {tag:'MÉTHODES', name:'REG Prevent · Prepare',headline:'Transformez les politiques en décisions concrètes.',desc:'Passez des exigences aux contrôles candidats, puis des systèmes aux preuves disponibles. Deux approches, indépendantes ou complémentaires.',href:path('produits-et-services'),action:'Explorer les méthodes',mark:'02'},
  {tag:'SOFTWARE · BÊTA',name:'TENIR-Gov',headline:'Placez un contrôle entre l’intention et l’impact.',desc:'Une couche de gouvernance de l’exécution pour les actions intégrées, avec décisions bornées, HOLD et traçabilité. Logiciel open source.',href:path('portfolio/gov'),action:'Découvrir le logiciel',mark:'03'},
 ] : [
- {tag:'SERVICE',name:'Execution Boundary Diagnostic',headline:'Find your point of no return.',desc:'A focused review of one critical flow, its owners, and the blind spots between authorization and consequence.',href:path('portfolio/diagnostic'),action:'Explore the diagnostic',mark:'01'},
+ {tag:'SERVICE',name:'Execution Boundary Diagnostic',headline:'Find your point of no return.',desc:'A focused review of one critical flow, its owners, and the blind spots between authorization and consequence.',href:path('diagnostic-execution'),action:'Explore the diagnostic',mark:'01'},
  {tag:'METHODS',name:'REG Prevent · Prepare',headline:'Turn policies into operational decisions.',desc:'Move from requirements to candidate controls, then from systems to available evidence. Independent or complementary approaches.',href:path('products-and-services'),action:'Explore the methods',mark:'02'},
  {tag:'SOFTWARE · BETA',name:'TENIR-Gov',headline:'Put control between intention and impact.',desc:'Execution governance for integrated agent actions, with bounded verdicts, HOLD and traceability. Open-source software.',href:path('portfolio/gov'),action:'Explore the software',mark:'03'},
 ];
@@ -130,7 +134,7 @@ const cards = fr ? [
         <span class="ml-kicker">{t.tension}</span>
         <h2 id="ml-threat-title">{t.tensionTitle}</h2>
         <p>{t.tensionBody}</p>
-        <span class="ml-fiction">{t.fictional}</span>
+        <span class="ml-fiction">{t.fictional}</span><a class="ml-story-link" href={path(fr?'cas':'cases')}>{t.caseLink} →</a>
       </div>
       <div class="ml-outcomes">
         <div class="ml-outcome ml-risk"><span class="ml-mini-label">{t.without}</span><strong>{t.withoutHead}</strong><p>{t.withoutBody}</p><span class="ml-indicator">RETRY? <span aria-hidden="true">↻</span></span></div>
@@ -163,7 +167,7 @@ const cards = fr ? [
     <div class="ml-wrap">
       <div class="ml-demo-copy">
         <div class="ml-section-top"><span class="ml-kicker">{t.demoEyebrow}</span><h2 id="ml-demo-title">{t.demoTitle}</h2><p>{t.demoSub}</p></div>
-        <div class="ml-demo-actions"><a class="ml-btn ml-btn-primary" href={demo}>{t.demoLaunch} <span aria-hidden="true">↗</span></a><a class="ml-text-link" href={path('portfolio/demos')}>{t.demoAll} →</a></div>
+        <div class="ml-demo-actions"><a class="ml-btn ml-btn-primary" href={demo}>{t.demoLaunch} <span aria-hidden="true">↗</span></a><a class="ml-text-link" href={path('portfolio/demos')}>{t.demoAll} →</a><a class="ml-text-link" href={url('/embeds/demonstration-bancaire.html')}>{t.bankLink} →</a></div>
         <p class="ml-demo-disclaimer">{t.fictional}</p>
       </div>
       <div class="ml-demo-panel">
