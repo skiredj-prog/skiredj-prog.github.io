@@ -24,7 +24,7 @@ const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}
 const canonical=new URL(url(here),Astro.site);
 const path=(f:string,e:string=f)=>url(fr?`/${f}/`:`/en/${e}/`);
 const selectedJourney=journeys[locale].find(j=>slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`));
-const readerContact=isPortfolio?portfolioContactHref(locale,slug.split('/')[1]):path('contact')+(home?'?sujet=diagnostic':selectedJourney?`?situation=${selectedJourney.id}`:'');
+const readerContact=home?path('parcours-ia','ai-readiness'):isPortfolio?portfolioContactHref(locale,slug.split('/')[1]):path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
 const pageKinds: Record<string, string> = {
   offre: fr?'Service':'Service', offer:'Service',
   'diagnostic-execution': fr?'Diagnostic spécialisé':'Specialized diagnostic',
@@ -38,7 +38,7 @@ const pageKinds: Record<string, string> = {
 const demo=groups[2];
 const resources=[...groups[3].links,...groups[4].links,...groups[0].links.filter(x=>x.slug!=='concepts'),groups[1].links[0],groups[1].links[4],{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}];
 const footerGroups=[
-  {id:'discover',label:fr?'Découvrir':'Discover',links:[{slug:fr?'parcours/decouvrir':'start/discover',href:journeyHref(locale,journeys[locale][0]),label:fr?'Comprendre TENIR':'Understand TENIR'},{slug:'portfolio/products',href:fr?'/portfolio/products/':'/en/portfolio/products/',label:fr?'Produits':'Products'},{slug:fr?'parcours/activite':'start/business',href:businessHref(locale),label:fr?'En pratique':'In practice'}]},
+  {id:'discover',label:fr?'Découvrir':'Discover',links:[{slug:'ai-pathway',href:fr?'/parcours-ia/':'/en/ai-readiness/',label:fr?'Mon rapport de parcours':'My AI pathway report'},{slug:fr?'parcours/decouvrir':'start/discover',href:journeyHref(locale,journeys[locale][0]),label:fr?'Comprendre TENIR':'Understand TENIR'},{slug:'portfolio/products',href:fr?'/portfolio/products/':'/en/portfolio/products/',label:fr?'Produits':'Products'},{slug:fr?'parcours/activite':'start/business',href:businessHref(locale),label:fr?'En pratique':'In practice'}]},
   {id:'try',label:fr?'Explorer et essayer':'Explore and try',links:[{slug:'prototype',href:'https://mobile.tenirlabs.cc/discover',label:fr?'Prototype mobile':'Mobile prototype'},demo.links[0],{slug:fr?'offre/exemple':'offer/example',href:fr?'/offre/exemple/':'/en/offer/example/',label:fr?'Un exemple sourcé':'A sourced example'}]},
   {id:'study',label:fr?'Approfondir':'Go deeper',links:[groups[3].links[1],groups[3].links[3],...groups[4].links.slice(1)]},
   {id:'talk',label:fr?'Échanger':'Talk',links:[contact,{slug:fr?'offre':'offer',href:fr?'/offre/':'/en/offer/',label:fr?'Un accompagnement':'Accompanied work'},{slug:fr?'contribuer':'contribute',href:fr?'/contribuer/':'/en/contribute/',label:fr?'Contribuer':'Contribute'}]},
@@ -75,7 +75,7 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
           <details hidden={home} class:list={['nav-group',resources.some(x=>x.slug===slug)&&'is-current']}><summary>{fr?'Ressources':'Resources'}</summary><div class="nav-menu resource-menu">{resources.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
           <div class="nav-mobile-tools"><a href={url(other)} lang={fr?'en':'fr'}>{fr?'Read in English':'Lire en français'}</a></div>
         </nav>
-        <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={readerContact}>{home?(fr?'Cadrer un diagnostic':'Request a diagnostic'):(fr?'Poser une question':'Ask a question')} <span aria-hidden="true">↗</span></a></div>
+        <div class="tools"><nav class="lang" aria-label={t.lang}><a href={url(fr?here:other)} lang="fr" aria-current={fr&&slug!=='404'?'true':undefined}>FR</a><a href={url(fr?other:here)} lang="en" aria-current={!fr&&slug!=='404'?'true':undefined}>EN</a></nav><button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button><a class="btn btn-primary header-cta" href={readerContact}>{home?(fr?'Mon rapport gratuit':'My free report'):(fr?'Poser une question':'Ask a question')} <span aria-hidden="true">↗</span></a></div>
       </div>
     </header>
     <main id="content" class:list={[home?'home-main':'doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page']} tabindex="-1">
