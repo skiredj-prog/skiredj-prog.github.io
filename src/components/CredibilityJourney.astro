@@ -1,0 +1,119 @@
+---
+import '../styles/credibility.css';
+import {url,type Locale} from '../data/site';
+interface Props { locale: Locale }
+const {locale}=Astro.props;
+const fr=locale==='fr';
+const t=fr?{
+ eyebrow:'PARCOURS CRÉDIBILITÉ · TENIR-GOV 5.7.0',
+ title:'Voir ce qui fonctionne. Comprendre ce qui reste à prouver.',
+ lead:"Une architecture peut être séduisante. Une preuve doit être vérifiable. Explorez les mécanismes de TENIR-Gov 5.7.0, les tests publiés, une reproduction externe rapportée et les limites des déploiements actuels.",
+ cta:'Explorer l’architecture interactive',secondary:'Examiner la version publiée',
+ scope:'Périmètre de validation',internal:'Validation de la version publiée',external:'Reproduction externe rapportée',version:'Code de référence',
+ p0:'Preuve de publication',p1:'1 286 tests réussis',p2:'81 tests Raft réussis',p3:'Un périmètre explicite',
+ result:'Un résultat précis',tests:'La suite complète de la release a réussi dans GitHub Actions sur Python 3.12/Ubuntu. Les 81 tests Raft sont inclus dans le total, et non ajoutés.',
+ reviewer:'Harv Banning a rapporté une exécution indépendante de 81 tests sur macOS, à partir du même SHA, sans modification du code. La première tentative avait rencontré 61 erreurs de configuration dues à une dépendance manquante ; la seconde a réussi après installation.',
+ externalNote:"Résultat rapporté par e-mail le 26 octobre 2026 et corroboré par un extrait pytest communiqué. Le fichier journal brut et son empreinte n'ont pas été revérifiés ici.",
+ exact:"Source exacte :",
+ proof:'Preuves et sources',
+ inspect:'Inspecter les tests de la release',release:'Voir la release GitHub',docs:'Conditions de déploiement',
+ shape:'Ce que le produit sait faire — dans son périmètre',
+ local:'Contrôle local de l’exécution',
+ localD:'Décisions déterministes, contrôle des limites avant action, rattachement du contenu autorisé et comptabilité budgétaire locale par SQLite WAL.',
+ hold:'Traiter l’incertitude',
+ holdD:'Un résultat externe inconnu reste UNKNOWN. HOLD et la réconciliation empêchent de traiter le silence comme une preuve d’échec.',
+ record:'Conserver des traces examinables',
+ recordD:'Décisions, états et éléments de preuve peuvent être enregistrés et reliés au déploiement — sans prétendre que le journal confirme à lui seul la réalité externe.',
+ exclusions:'Ce que ces preuves ne permettent pas d’affirmer',
+ e1:'Pas de production Raft multi-hôtes en 5.7.0 (FM-20 ouvert).',
+ e2:'Pas de garantie exactement une fois chez un fournisseur externe.',
+ e3:'Pas de certification réglementaire ou de preuve de tolérance de panne inter-hôtes.',
+ e4:'Pas de garantie générale de performance, de disponibilité ou de garde humaine indépendante.',
+ simulation:'Explorez l’architecture interactive',
+ simDesc:'Le schéma conserve les cinq niveaux, les signaux, les noyaux, le cycle de vie, les preuves et trois simulations. Le contenu a été actualisé pour la version 5.7.0 ; les animations restent des simulations, sans connexion au runtime.',
+ open:'Ouvrir en plein écran',historical:'Consulter l’illustration historique 5.6.0',
+ next:'Et maintenant ?',cta2:'Découvrir votre propre parcours',cta2Desc:'Répondez à dix questions et obtenez votre rapport de parcours gratuit, avec trois prochaines étapes adaptées à vos réponses.',
+ email:'Discuter d’un cas réel',
+ labelSummary:'Version 5.7.0 · Source datée du 24 octobre 2026',
+} : {
+ eyebrow:'CREDIBILITY JOURNEY · TENIR-GOV 5.7.0',
+ title:'See what works. Understand what remains to be proven.',
+ lead:'Architecture can be compelling. Evidence must be inspectable. Explore the mechanics of TENIR-Gov 5.7.0, its published test results, one reported external reproduction and its current deployment boundaries.',
+ cta:'Explore interactive architecture',secondary:'Inspect the published release',
+ scope:'Validation scope',internal:'Published release validation',external:'Reported external reproduction',version:'Reference source',
+ p0:'Published source',p1:'1,286 tests passed',p2:'81 Raft tests passed',p3:'A clearly bounded scope',
+ result:'One precise result',tests:'The full release suite passed in GitHub Actions with Python 3.12 on Ubuntu. The 81 Raft tests are included in, not added to, the total.',
+ reviewer:'Harv Banning reported independently running the 81 tests on macOS against the same SHA, without source changes. The first run had 61 setup errors due to a missing dependency; the second passed after installing it.',
+ externalNote:'Reported via email on October 26, 2026 and corroborated by a supplied pytest excerpt. The raw log file and its digest were not independently rechecked here.',
+ exact:'Exact source:',
+ proof:'Evidence and sources',
+ inspect:'Inspect the release tests',release:'GitHub release',docs:'Deployment boundaries',
+ shape:'What the product supports — within scope',
+ local:'Local execution control',
+ localD:'Deterministic decisions, pre-action controls, payload binding and local SQLite WAL budget accounting.',
+ hold:'Handle uncertainty',
+ holdD:'An unknown external outcome remains UNKNOWN. HOLD and reconciliation avoid treating silence as proof of failure.',
+ record:'Preserve inspectable evidence',
+ recordD:'Decision records, states and supporting evidence can be tied to the deployment — without claiming that logs alone prove external reality.',
+ exclusions:'What these tests do not establish',
+ e1:'No production multi-host Raft in 5.7.0 (FM-20 open).',
+ e2:'No exactly-once effects at an external provider.',
+ e3:'No regulatory certification or cross-host fault-tolerance proof.',
+ e4:'No universal performance, uptime or independently verified human-approval guarantee.',
+ simulation:'Explore the interactive architecture',
+ simDesc:'The walkthrough retains five levels, signals, kernels, lifecycle, evidence and three simulations. Its content has been updated to v5.7.0; animations remain simulations with no runtime connection.',
+ open:'Open full screen',historical:'View historical 5.6.0 illustration',
+ next:'What next?',cta2:'Discover your own AI pathway',cta2Desc:'Answer ten questions and get a free pathway report with three next steps matched to your answers.',
+ email:'Discuss one real use case',
+ labelSummary:'Version 5.7.0 · Source dated October 24, 2026'
+};
+const embed='/embeds/interactive-architecture-v5.7.0.html';
+const release='https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0';
+const run='https://github.com/skiredj-prog/tenir_governance/actions/runs/40119786756';
+const deploy='https://github.com/skiredj-prog/tenir_governance/blob/main/docs/DEPLOYMENT_BOUNDARIES_V5.7.0.md';
+const report=url(fr?'/parcours-ia/':'/en/ai-readiness/');
+---
+<div class="cr-root">
+  <section class="cr-hero" id="cr-top">
+    <div class="cr-wrap">
+      <p class="cr-eyebrow">{t.eyebrow}</p>
+      <h1>{t.title}</h1>
+      <p class="cr-lead">{t.lead}</p>
+      <div class="cr-actions"><a class="cr-btn cr-btn-primary" href="#cr-architecture">{t.cta} →</a><a class="cr-btn cr-btn-outline" href={release} rel="noopener" target="_blank">{t.secondary} ↗</a></div>
+      <p class="cr-micro">{t.labelSummary}</p>
+    </div>
+  </section>
+  <section class="cr-evidence" id="cr-proof">
+    <div class="cr-wrap">
+      <span class="cr-eyebrow">{t.scope}</span>
+      <div class="cr-stats">
+        <div><strong>5.7.0</strong><span>{t.p0}</span></div>
+        <div><strong>1 286</strong><span>{t.p1}</span></div>
+        <div><strong>81 / 81</strong><span>{t.p2}</span></div>
+        <div><strong>1 host</strong><span>{t.p3}</span></div>
+      </div>
+      <div class="cr-evidence-grid">
+        <article class="cr-panel"><small>{t.version}</small><h2>TENIR-Gov v5.7.0</h2><p>{t.exact} <code>47ef67e3efc5f3008896a7d88bebf929fa0a98f0</code></p><a href={release} target="_blank" rel="noopener">{t.release} ↗</a></article>
+        <article class="cr-panel"><small>{t.internal}</small><h2>1 286 PASS</h2><p>{t.tests}</p><a href={run} target="_blank" rel="noopener">{t.inspect} ↗</a></article>
+        <article class="cr-panel"><small>{t.external}</small><h2>Harv Banning · 81/81</h2><p>{t.reviewer}</p><p class="cr-note">{t.externalNote}</p><p class="cr-digest">282.08s · macOS 26.6.2 · Python 3.12.7 · pytest 8.4.2 · PySyncObj 0.3.17</p><p class="cr-digest">Log SHA-256 (déclaré / reported): <code>0e0cbafda8c90735bf277d783d69ce91df36c5abcad26ac81de4a2d82fe7ff03</code></p></article>
+      </div>
+    </div>
+  </section>
+  <section class="cr-capabilities">
+    <div class="cr-wrap">
+      <h2>{t.shape}</h2>
+      <div class="cr-cap-grid"><article><span>01</span><h3>{t.local}</h3><p>{t.localD}</p></article><article><span>02</span><h3>{t.hold}</h3><p>{t.holdD}</p></article><article><span>03</span><h3>{t.record}</h3><p>{t.recordD}</p></article></div>
+      <div class="cr-boundaries"><h3>{t.exclusions}</h3><ul><li>{t.e1}</li><li>{t.e2}</li><li>{t.e3}</li><li>{t.e4}</li></ul><a href={deploy} target="_blank" rel="noopener">{t.docs} ↗</a></div>
+    </div>
+  </section>
+  <section class="cr-architecture" id="cr-architecture">
+    <div class="cr-wrap">
+      <span class="cr-eyebrow">INTERACTIVE ARCHITECTURE · 5.7.0</span><h2>{t.simulation}</h2><p>{t.simDesc}</p>
+      <div class="cr-frame-toolbar"><a href={url(embed)} target="_blank" rel="noopener">{t.open} ↗</a><a href={url('/embeds/interactive-architecture.html')} target="_blank" rel="noopener">{t.historical} ↗</a></div>
+    </div>
+    <iframe src={url(embed)} title={fr?'TENIR-Gov 5.7.0, architecture interactive illustrative':'TENIR-Gov 5.7.0, illustrative interactive architecture'} loading="lazy"></iframe>
+  </section>
+  <section class="cr-next">
+    <div class="cr-wrap"><span class="cr-eyebrow">{t.next}</span><h2>{t.cta2}</h2><p>{t.cta2Desc}</p><div class="cr-actions"><a href={report} class="cr-btn cr-btn-primary">{t.cta2} →</a><a class="cr-btn cr-btn-outline" href="mailto:skiredj@tenirlabs.cc">{t.email} ↗</a></div></div>
+  </section>
+</div>
