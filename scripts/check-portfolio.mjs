@@ -48,6 +48,17 @@ for(const lang of ['fr','en']){
   assert(matrixPage.includes('pm-table'),`${lang}: semantic matrix table missing`);
   assert(matrixPage.includes('scope="row"') && matrixPage.includes('scope="col"'),`${lang}: accessible axes missing`);
   assert(matrixPage.includes('class="pm-scroller"') && matrixPage.includes('tabindex="0"'),`${lang}: keyboard-accessible horizontal scroll missing`);
+  assert(matrixPage.includes(lang==='fr'?'Exigences et intentions':'Requirements and intent'),`${lang}: visitor-friendly problem axis missing`);
+  assert(matrixPage.includes(lang==='fr'?'Contrôler / vérifier':'Control / verify'),`${lang}: intervention axis missing`);
+  assert(matrixPage.includes('pm-item-status'),`${lang}: product maturity not visible in matrix`);
+  const matrixStart=matrixPage.indexOf('<table class="pm-table"');
+  const matrixEnd=matrixPage.indexOf('</table>',matrixStart);
+  assert(matrixStart>=0 && matrixEnd>matrixStart,`${lang}: matrix table boundaries missing`);
+  const table=matrixPage.slice(matrixStart,matrixEnd);
+  for(const id of ['reg-arch','technical','diagnostic','control-tower']){
+    assert(!table.includes(`portfolio/${id}/`),`${lang}: foundation, service or demo incorrectly placed inside product grid: ${id}`);
+    assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: missing cross-cutting link ${id}`);
+  }
   for(const id of mappedProducts){
     assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: ${id} not placed in the matrix`);
   }
