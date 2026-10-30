@@ -12,19 +12,19 @@ try {
    const errors=[];
    page.on('pageerror',e=>errors.push(e.message));
    await page.goto(server+prefix+'/',{waitUntil:'domcontentloaded'});
-   await page.locator('#home-title').waitFor({state:'visible'});
-   const hero=await page.locator('#home-title').innerText();
-   assert(hero.includes(locale==='fr'?'répondre':'answer'),locale+'/'+width+': no responsibility headline');
+   await page.locator('#market-heading').waitFor({state:'visible'});
+   const hero=await page.locator('#market-heading').innerText();
+   assert(hero.includes(locale==='fr'?'Autorisé':'Authorized'),locale+'/'+width+': marketing headline missing');
    const positions=await page.evaluate(()=>({
-     learning:document.querySelector('[aria-labelledby="responsibility-title"]')?.getBoundingClientRect().top,
-     commerce:document.querySelector('.home-offer-map')?.getBoundingClientRect().top,
-     video:document.querySelector('.execution-video')?.getBoundingClientRect().top,
+     story:document.querySelector('#comprendre')?.getBoundingClientRect().top,
+     offers:document.querySelector('#ml-offerings-title')?.getBoundingClientRect().top,
+     demo:document.querySelector('#ml-demo-title')?.getBoundingClientRect().top,
      width:document.documentElement.scrollWidth,
      viewport:document.documentElement.clientWidth
    }));
-   assert(positions.learning<positions.commerce,locale+'/'+width+': sales before learning');
-   assert(positions.learning<positions.video,locale+'/'+width+': video before learning');
-   assert(positions.width<=positions.viewport+3,locale+'/'+width+': home horizontal overflow '+(positions.width-positions.viewport));
+   assert(positions.story<positions.offers,locale+'/'+width+': offer appears before the consequential-action story');
+   assert(positions.offers<positions.demo,locale+'/'+width+': simulation appears before the offer choices');
+   assert(positions.width<=positions.viewport+3,locale+'/'+width+': homepage horizontal overflow '+(positions.width-positions.viewport));
    await page.locator('a[href="'+casePath+'"]').first().click();
    await page.waitForURL('**'+casePath);
    assert(await page.locator('main').isVisible(),locale+'/'+width+': cases missing');
@@ -46,7 +46,7 @@ try {
    assert(await alternative.count()>0,locale+'/'+width+': no alternate-language link');
    assert.equal(errors.length,0,locale+'/'+width+': JS errors '+errors.join('; '));
    await page.close();
-   console.log('P2 Chromium '+locale.toUpperCase()+' '+width+'px PASS: learning-first, source path, locale, 8-step scroll, keyboard and layout.');
+   console.log('P2 Chromium '+locale.toUpperCase()+' '+width+'px PASS: marketing story first, source path, locale, 8-step scroll, keyboard and layout.');
   }
  }
 } finally { await browser.close(); }
