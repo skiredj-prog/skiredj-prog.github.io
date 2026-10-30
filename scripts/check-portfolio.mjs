@@ -88,3 +88,4 @@ console.log('Portfolio: 34 FR/EN routes, 28 nine-field profiles, standalone 4-sc
 
 // The free self-assessment is the new commercial front door.
 await import('./check-pathway.mjs');
+await import('./check-credibility.mjs');
