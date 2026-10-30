@@ -14,7 +14,7 @@ for(const r of routes){
   }
   assert(page.includes('hreflang="fr"')&&page.includes('hreflang="en"'),r.locale+': language alternatives missing');
   assert(page.includes(r.alternate),r.locale+': alternate pathway not linked');
-  assert(page.includes('href="'+r.url+'"'),r.locale+': self route missing');
+  assert(page.includes('href="https://tenirlabs.cc'+r.url+'"'),r.locale+': canonical route missing');
   assert(home.includes('href="'+r.url+'"'),r.locale+': free report not exposed from homepage');
   assert(page.includes(r.locale==='fr'?'Sans compte':'No account'),r.locale+': ungated entry missing');
   assert(page.includes(r.locale==='fr'?'Aucun compte, aucun envoi automatique':'No account and no automatic submission'),r.locale+': explicit privacy statement missing');
