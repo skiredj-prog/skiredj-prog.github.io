@@ -84,11 +84,30 @@
     {id:'evidence',title:L('Rassembler des preuves utilisables','Build evidence you can use'),desc:L('Associez les tests et journaux aux contrôles et à la version du système réellement concernés.','Tie tests and records to the controls and system version they actually describe.')},
     {id:'adaptability',title:L('Sécuriser les changements','Make changes safely'),desc:L('Prévoyez comment approuver, tester et surveiller les modifications des règles de l’IA.','Define how AI rules will be approved, tested and monitored as they change.')}
   ];
+  const maturityStages=[
+    {n:0,title:L('Dossier traçable','Traceable dossier'),status:L('Base à documenter','Baseline to document'),desc:L('Relier le périmètre, les versions, les responsabilités et les pièces disponibles.','Connect scope, versions, ownership and available evidence.'),gate:L('Archive, sources et versions rattachables.','Archive, sources and versions can be linked.')},
+    {n:1,title:L('Démonstration locale','Local demonstration'),status:L('Point de départ probable','Likely starting point'),desc:L('Montrer le comportement attendu sur des scénarios simulés, sans conclure sur les intégrations réelles.','Show expected behaviour on simulated scenarios without concluding on real integrations.'),gate:L('Captation conforme au scénario et au runbook.','Capture matches the scenario and runbook.')},
+    {n:2,title:L('Prototype corrigé','Corrected prototype'),status:L('Prochaine étape probable','Likely next step'),desc:L('Corriger les écarts identifiés et relier les actions aux tests de régression.','Address identified gaps and connect actions to regression tests.'),gate:L('Requête documentée et tests de régression.','Documented request and regression tests.')},
+    {n:3,title:L('Intégration contrôlée','Controlled integration'),status:L('À démontrer','To be demonstrated'),desc:L('Tester le canal réel dans un environnement borné : délais, refus, doublons, reprise et état inconnu.','Test the real channel in a bounded environment: delays, refusals, duplicates, recovery and unknown state.'),gate:L('Preuves de bout en bout et limites publiées.','End-to-end evidence and published limits.')},
+    {n:4,title:L('Autorité indépendante','Independent authority'),status:L('Cible avancée','Advanced target'),desc:L('Lier la reprise à l’action et à son contexte, puis tester interception, rejeu et auto-approbation.','Link recovery to the action and its context, then test interception, replay and self-approval.'),gate:L('Résistance établie dans un modèle de menace.','Resistance established against a threat model.')},
+    {n:5,title:L('Pilote borné','Bounded pilot'),status:L('Décision à prendre','Decision required'),desc:L('Définir périmètre, responsable, critères d’arrêt, surveillance, incidents et retour arrière.','Define scope, owner, stop criteria, monitoring, incidents and rollback.'),gate:L('Décision de pilote ; aucune garantie générale.','Pilot decision; no general guarantee.')}
+  ];
   const textStatus={
     strong:L('Structuré (déclaré)','Structured (reported)'),
     partial:L('Partiel','Partial'),
     weak:L('À clarifier','Needs work'),
     na:L('À préparer','Not yet applicable')
+  };
+  const getMaturity=(dims)=>{
+    const level=id=>dims.find(d=>d.id===id)?.level;
+    let current=1;
+    if(level('purpose')==='weak'&&level('accountability')==='weak') current=0;
+    // A self-reported questionnaire cannot establish independent authority;
+    // cap the suggested position at controlled integration (stage 3).
+    else if(level('control')==='strong'&&level('visibility')==='strong'&&level('evidence')==='strong'&&level('adaptability')==='strong') current=3;
+    else if(level('control')==='strong'&&level('visibility')!=='weak'&&level('evidence')!=='weak') current=3;
+    else if(level('purpose')!=='weak'&&level('accountability')!=='weak') current=2;
+    return {current,next:Math.min(current+1,5),stages:maturityStages};
   };
   let index=0;
   let answers=Array(questions.length).fill(null);
@@ -162,7 +181,7 @@
     }else{
       offer={title:L('Échange sur une mise en pratique ciblée','Discuss a focused next step'),desc:L('Vos réponses ouvrent la voie à une revue concrète d’un parcours sensible, sans présumer de sa conformité.','Your answers suggest a focused review of one consequential workflow, without assuming it is compliant.'),link:route('portfolio/services/')};
     }
-    return{dims,prioritized,summary,offer,structured:structured.length};
+    return{dims,prioritized,summary,offer,structured:structured.length,maturity:getMaturity(dims)};
   }
   function optionNode(o,selected){
     const label=document.createElement('label');label.className='pa-option';
@@ -193,13 +212,16 @@
   function reportText(){
     if(!report)return'';
     const rows=[
-      'TENIR LABS — '+L('RAPPORT DE PARCOURS IA','AI PATHWAY REPORT'),
+      'TENIR LABS — '+L('APERÇU DU PARCOURS DE MATURITÉ','MATURITY JOURNEY PREVIEW'),
       L('Auto-évaluation déclarative','Self-reported assessment')+' · '+new Date().toLocaleDateString(fr?'fr-FR':'en-GB'),
       '',
       L('TYPE D’ACTION','TYPE OF ACTION')+' : '+contextLabel(0,answers[0]),
       L('RISQUE PRINCIPAL','MAIN CONCERN')+' : '+contextLabel(1,answers[1]),
       '',
       L('SYNTHÈSE','SUMMARY')+': '+report.summary,
+      '',
+      L('PARCOURS DE MATURITÉ','MATURITY JOURNEY')+': '+report.maturity.stages[report.maturity.current].title,
+      L('PROCHAINE ÉTAPE','NEXT STEP')+': '+report.maturity.stages[report.maturity.next].title,
       '',
       L('SIX DIMENSIONS','SIX DIMENSIONS')
     ];
@@ -214,6 +236,15 @@
   function renderReport(){
     report=evaluate();
     $('pa-report-summary').textContent=report.summary;
+    const maturityCards=report.maturity.stages.map(stage=>{
+      const card=makeElement('article','pa-maturity-card'+(stage.n===report.maturity.current?' is-current':'')+(stage.n===report.maturity.next?' is-next':''));
+      if(stage.n===report.maturity.current)card.setAttribute('aria-current','step');
+      card.append(makeElement('span','pa-maturity-index',String(stage.n).padStart(2,'0')),
+        makeElement('span','pa-maturity-status',stage.n===report.maturity.current?L('Votre position','Your position'):stage.n===report.maturity.next?L('Prochaine étape','Next step'):stage.status),
+        makeElement('h3','',stage.title),makeElement('p','pa-maturity-desc',stage.desc),makeElement('p','pa-maturity-gate',stage.gate));
+      return card;
+    });
+    $('pa-maturity-map').replaceChildren(...maturityCards);
     const rows=report.dims.map(d=>{
       const container=makeElement('div','pa-dimension');
       const top=makeElement('div','pa-dim-top');
@@ -249,7 +280,7 @@
     const text=reportText();
     const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
     const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');a.href=url;a.download='TENIR-'+(fr?'rapport-parcours':'pathway-report')+'-'+new Date().toISOString().slice(0,10)+'.txt';
+    const a=document.createElement('a');a.href=url;a.download='TENIR-'+(fr?'aperçu-maturité':'maturity-journey-preview')+'-'+new Date().toISOString().slice(0,10)+'.txt';
     document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   $('pa-start').addEventListener('click',()=>{index=0;answers=Array(questions.length).fill(null);renderQuestion();show('question');$('pa-question-title').focus({preventScroll:true});});
