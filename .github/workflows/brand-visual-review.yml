@@ -1,0 +1,63 @@
+name: TENIR Labs — visual brand review (no deployment)
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/capture-brand-review.mjs'
+      - '.github/workflows/brand-visual-review.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact PR HEAD
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Identify source
+        id: source
+        shell: bash
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "short=$(git rev-parse --short=8 HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Install Playwright browser for screenshots
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Capture FR/EN cross-page snapshots
+        env:
+          REVIEW_SHA: ${{ steps.source.outputs.sha }}
+        shell: bash
+        run: |
+          python -m http.server 4173 --bind 127.0.0.1 --directory dist >/tmp/brand-review-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/capture-brand-review.mjs
+      - name: Upload screenshots and HTML contact sheet
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: TENIR-Labs-visual-review-${{ steps.source.outputs.short }}
+          path: brand-review/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
+      - name: Instructions for human visual review
+        run: |
+          echo "## Human visual sign-off required — no deployment" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Commit:** ${{ steps.source.outputs.sha }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Artifact:** ${{ steps.upload.outputs.artifact-url }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download ZIP and open index.html for 36 comparison screenshots (FR/EN, portfolio and report, light/dark, desktop/mobile)." >> "$GITHUB_STEP_SUMMARY"
+          echo "- CI validates viewport/action presence and internal consistency, **not human aesthetic approval**." >> "$GITHUB_STEP_SUMMARY"

@@ -7,15 +7,15 @@
 .ml-eyebrow,.ml-kicker,.ml-mini-label,.ml-fiction,.ml-card-number,.ml-card-type,.ml-panel-bar,.ml-hero-foot{font-family:var(--mono);letter-spacing:.045em}
 .ml-kicker{color:#4771ac;font-size:.69rem;font-weight:600;letter-spacing:.075em}
 .ml-section{padding:clamp(3.4rem,7vw,5.6rem) 0}
-.ml-hero{background:var(--ml-deep);padding:clamp(4.5rem,9vw,8rem) 0 clamp(3.6rem,7vw,6.3rem);color:var(--ml-white)}
+.ml-hero{background:var(--ml-deep);padding:clamp(2.25rem,5vh,3.75rem) 0 clamp(3rem,5vw,4.8rem);color:var(--ml-white)}
 .ml-hero .ml-wrap{max-width:1120px}
-.ml-eyebrow{display:flex;align-items:center;gap:.65rem;color:#8f9eb3;font-size:.67rem;line-height:1.5;margin:0 0 2.3rem}
+.ml-eyebrow{display:flex;align-items:center;gap:.65rem;color:#8f9eb3;font-size:.67rem;line-height:1.5;margin:0 0 1.2rem}
 .ml-dot{width:8px;height:8px;border-radius:50%;background:var(--ml-amber);box-shadow:0 0 0 5px rgba(248,174,57,.12);flex:none}
-.ml-headline{font-size:clamp(3.2rem,7.4vw,6.3rem);line-height:1.02;max-width:19ch;margin:0 0 2.25rem;color:#fff}
+.ml-headline{font-size:clamp(3rem,5.8vw,5.3rem);line-height:1.04;max-width:19ch;margin:0 0 1.1rem;color:#fff}
 .ml-headline span:first-child{display:block}
 .ml-headline em{display:block;font-style:normal;color:var(--ml-amber);max-width:18ch}
-.ml-hero-tagline{font-size:clamp(1.2rem,2.2vw,1.55rem);font-weight:650;max-width:39ch;line-height:1.4;color:#fff;margin:0 0 .8rem}
-.ml-hero-body{color:#adbbce;font-size:1rem;line-height:1.75;max-width:60ch;margin:0 0 1.8rem}
+.ml-hero-tagline{font-size:clamp(1.12rem,2vw,1.5rem);font-weight:650;max-width:45ch;line-height:1.4;color:#fff;margin:0 0 1.15rem}
+.ml-hero-body{color:#adbbce;font-size:.96rem;line-height:1.6;max-width:62ch;margin:1.35rem 0 0}
 .ml-actions{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
 .ml-btn{display:inline-flex;gap:.8rem;align-items:center;justify-content:center;min-height:48px;padding:.8rem 1.2rem;border:1px solid transparent;border-radius:5px;font-size:.9rem;line-height:1.4;font-weight:650;transition:background .15s,transform .15s}
 .ml-btn:hover{transform:translateY(-2px)}
@@ -24,7 +24,7 @@
 .ml-btn-primary:hover{background:#1d4ed8}
 .ml-btn-outline{border-color:rgba(255,255,255,.26);color:#fff!important;background:rgba(255,255,255,.05)}
 .ml-btn-outline:hover{background:rgba(255,255,255,.12)}
-.ml-hero-foot{font-size:.7rem;line-height:1.5;color:#8292a8;margin:1.8rem 0 0}
+.ml-hero-foot{font-size:.7rem;line-height:1.5;color:#93a5be;margin:.8rem 0 0}
 .ml-threat{padding:clamp(3.8rem,7vw,5.2rem) 0;background:#f8fafc}
 .ml-threat-grid{display:grid;grid-template-columns:.94fr 1.2fr;gap:3.2rem;align-items:center}
 .ml-story h2,.ml-section-top h2{font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.1;margin:.7rem 0 1rem}
@@ -80,7 +80,7 @@
 .market-root .ml-demo-panel iframe:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
 @media(max-width:940px){.ml-threat-grid{grid-template-columns:1fr;gap:1.8rem}.ml-demo>.ml-wrap{grid-template-columns:1fr}.ml-demo-copy{max-width:680px}.ml-demo-panel iframe{height:480px}}
 @media(max-width:760px){.market-root .ml-wrap{width:calc(100% - 2.2rem)}.ml-cards{grid-template-columns:1fr}.ml-card{min-height:0}.ml-short-journey .lifecycle-flow{grid-template-columns:1fr;gap:.6rem}.ml-headline{font-size:clamp(3.15rem,11vw,5.6rem)}.ml-outcomes{grid-template-columns:1fr 1fr}.ml-trust-links{grid-template-columns:1fr}.ml-trust-links a{border-right:0;border-bottom:1px solid var(--ml-line)}.ml-trust-links a:last-child{border-bottom:0}}
-@media(max-width:480px){.ml-outcomes{grid-template-columns:1fr}.ml-outcome{min-height:0}.ml-hero{padding:4rem 0}.ml-headline{letter-spacing:-.05em}.ml-headline .ml-not-equal{padding:0 .08em}.ml-demo-panel iframe{height:410px}.ml-actions .ml-btn{width:100%}.ml-panel-bar{font-size:.54rem}}
+@media(max-width:480px){.ml-outcomes{grid-template-columns:1fr}.ml-outcome{min-height:0}.ml-hero{padding:2.45rem 0 3rem}.ml-headline{letter-spacing:-.05em}.ml-headline .ml-not-equal{padding:0 .08em}.ml-demo-panel iframe{height:410px}.ml-actions .ml-btn{width:100%}.ml-panel-bar{font-size:.54rem}}
 @media(prefers-reduced-motion:reduce){.market-root *{transition:none!important}}
 /* Apply the concept's midnight-and-cobalt navigation only to the marketing landing page.
    Preserve the already tested responsive navigation, language controls and links. */

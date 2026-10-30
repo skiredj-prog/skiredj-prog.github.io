@@ -120,12 +120,12 @@ const cards = fr ? [
       <p class="ml-eyebrow"><span class="ml-dot" aria-hidden="true"></span>{t.eyebrow}</p>
       <h1 id="market-heading" class="ml-headline"><span>{t.headlineStart}</span><em>{t.headlineEnd}</em></h1>
       <p class="ml-hero-tagline">{t.tagline}</p>
-      <p class="ml-hero-body">{t.summary}</p>
-      <div class="ml-actions">
+      <div class="ml-actions" aria-label={fr ? 'Choisir votre prochaine étape' : 'Choose your next step'}>
         <a class="ml-btn ml-btn-primary" href={pathway}>{t.primary} <span aria-hidden="true">↗</span></a>
         <a class="ml-btn ml-btn-outline" href="#essayer">{t.secondary} <span aria-hidden="true">→</span></a>
       </div>
       <p class="ml-hero-foot">{t.heroNote}</p>
+      <p class="ml-hero-body">{t.summary}</p>
     </div>
   </section>
 
