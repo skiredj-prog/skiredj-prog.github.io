@@ -10,31 +10,26 @@ const other=url(fr?'/en/ai-readiness/':'/parcours-ia/');
 const here=url(fr?'/parcours-ia/':'/en/ai-readiness/');
 const canonical=new URL(here,Astro.site);
 const t=fr?{
-title:"Votre aperçu du parcours de maturité IA — TENIR Labs",
-desc:"En dix questions, obtenez un aperçu graphique de votre position sur le parcours de maturité TENIR pour encadrer les actions confiées à vos agents IA.",
-label:"APERÇU DU PARCOURS DE MATURITÉ · TENIR LABS",
+title:"Votre rapport de parcours IA — TENIR Labs",
+desc:"En dix questions, découvrez les priorités pour garder la maîtrise des actions confiées à vos agents IA. Gratuit, sans compte.",
+label:"RAPPORT DE PARCOURS · TENIR LABS",
 tag:"L’IA avance. Vous gardez la main.",
-head:"Obtenez un aperçu de votre parcours de maturité IA",
-lead:"En 10 questions, situez votre organisation sur un parcours en six étapes : de la démonstration locale à une autorisation humaine indépendante.",
-b1:"10 questions",b2:"5 minutes environ",b3:"Aperçu graphique",b4:"Sans compte",
-start:"Voir mon parcours",more:"À quoi sert cet aperçu ?",
-pitch:"Un aperçu graphique, pas un audit.",
-pitchText:"Vos réponses indiquent une position probable, la prochaine étape à préparer et les preuves à renforcer. Elles ne vérifient ni vos systèmes ni vos preuves.",
+head:"Votre entreprise est-elle prête à laisser l’IA agir ?",
+lead:"En 10 questions, découvrez ce que votre organisation maîtrise déjà, ce qui mérite votre attention et par où commencer.",
+b1:"10 questions",b2:"5 minutes environ",b3:"Rapport gratuit",b4:"Sans compte",
+start:"Découvrir mon parcours",more:"Comment ça marche ?",
+pitch:"Un regard utile, pas une certification.",
+pitchText:"Le rapport donne des pistes à partir de vos réponses, pas une note d’audit. Vous pouvez le télécharger, le partager ou l’utiliser pour préparer une discussion.",
 steps:"Ce que vous allez recevoir",
-s1:"Votre position actuelle",s1d:"Une étape indicative sur le parcours de maturité TENIR, avec les dimensions qui la soutiennent.",
-s2:"Votre prochaine étape",s2d:"Le prochain passage à préparer, avec son gate et les questions à résoudre.",
-s3:"Les preuves à renforcer",s3d:"Les éléments à documenter avant de présenter une capacité comme établie.",
-usecaseLabel:"Usage examiné (facultatif)",usecasePlaceholder:"Ex. : agent de prise de rendez-vous",
+s1:"Votre point de départ",s1d:"Une synthèse lisible de vos forces et des zones à clarifier.",
+s2:"Vos trois priorités",s2d:"Des actions concrètes, ordonnées selon vos réponses.",
+s3:"Votre prochaine étape",s3d:"Une suggestion d’accompagnement si elle peut vous aider.",
 privacy:"Les réponses restent dans votre navigateur. Aucun compte, aucun envoi automatique. Vous choisissez si vous partagez le rapport.",
 progress:"QUESTIONNAIRE", back:"Précédent",next:"Suivant",finish:"Voir mon rapport",startOver:"Recommencer",
-reportKicker:"APERÇU DE VOTRE PARCOURS DE MATURITÉ · AUTO-ÉVALUATION",
-reportHeading:"Voici où vous vous situez aujourd’hui.",
-reportIntro:"Cette position est une estimation déclarative à partir de vos réponses. Elle indique un point de départ et non une preuve de maturité.",
-usageTitle:"Votre parcours d’usage",
-usageNote:"Une lecture simple de la relation entre votre organisation et cet usage de l’IA — pas une note globale.",
-maturityTitle:"Votre parcours de preuve en six étapes",
-maturityNote:"Ce parcours indique ce qui doit être démontré avant de présenter une capacité comme établie.",
-dimensions:"Six dimensions qui soutiennent votre parcours",
+reportKicker:"VOTRE RAPPORT DE PARCOURS · AUTO-ÉVALUATION",
+reportHeading:"Votre prochaine étape est plus claire.",
+reportIntro:"Voici ce que suggèrent vos réponses. Ce résultat est indicatif et ne vérifie ni vos systèmes ni vos preuves.",
+dimensions:"Six regards sur votre situation",
 priorities:"Les trois actions à considérer",
 recommend:"La prochaine étape avec TENIR Labs",
 recommendBody:"Vous pouvez avancer seul avec ce rapport ou discuter d’un cas précis avec nous.",
@@ -42,31 +37,26 @@ share:"Partager mon rapport",copy:"Copier le rapport",download:"Télécharger",p
 contact:"Discuter de mon parcours",demo:"Essayer une démo",home:"Retour au site",limits:"Évaluation déclarative. Aucune vérification technique ou certification. Les recommandations sont indicatives ; un diagnostic peut les confirmer ou les nuancer.",
 missing:"Non évalué",backToTop:"Revenir au début",
 }:{
-title:"Your AI maturity journey preview — TENIR Labs",
-desc:"In ten questions, get a graphical view of your position on the TENIR maturity journey for governing AI-agent actions.",
-label:"MATURITY JOURNEY PREVIEW · TENIR LABS",
+title:"Your AI readiness pathway — TENIR Labs",
+desc:"In ten questions, uncover your priorities for governing AI-agent actions. Free, no account required.",
+label:"YOUR AI PATHWAY REPORT · TENIR LABS",
 tag:"AI takes action. You stay in control.",
-head:"Get a graphical view of your AI maturity journey",
-lead:"Ten questions place your organisation on a six-step journey, from local demonstration to independent human authorisation.",
-b1:"10 questions",b2:"About 5 minutes",b3:"Graphical preview",b4:"No account",
-start:"See my journey",more:"What is this preview for?",
-pitch:"A graphical preview, not an audit.",
-pitchText:"Your answers suggest a likely position, the next step to prepare and the evidence to strengthen. They do not verify your systems or evidence.",
+head:"Is your business ready to let AI take action?",
+lead:"Ten questions to see what you already have under control, what deserves attention, and where to begin.",
+b1:"10 questions",b2:"About 5 minutes",b3:"Free report",b4:"No account",
+start:"Discover my pathway",more:"How it works",
+pitch:"A useful starting point, not a certification.",
+pitchText:"Your report offers suggestions based on your answers, not an audit score. Download it, share it or use it to prepare a discussion.",
 steps:"What you'll take away",
-s1:"Your current position",s1d:"An indicative TENIR maturity step, with the dimensions supporting it.",
-s2:"Your next step",s2d:"The next passage to prepare, with its gate and open questions.",
-s3:"Evidence to strengthen",s3d:"What to document before presenting a capability as established.",
-usecaseLabel:"Usage examined (optional)",usecasePlaceholder:"E.g. appointment scheduling agent",
+s1:"Your starting point",s1d:"A clear overview of strengths and areas to clarify.",
+s2:"Your top three priorities",s2d:"Concrete next steps ordered around your answers.",
+s3:"Your next move",s3d:"A suggested engagement if professional help would be useful.",
 privacy:"Your answers stay in your browser. No account and no automatic submission. You choose whether to share the report.",
 progress:"ASSESSMENT",back:"Previous",next:"Next",finish:"See my report",startOver:"Start again",
-reportKicker:"MATURITY JOURNEY PREVIEW · SELF-ASSESSMENT",
-reportHeading:"Here is where you appear to be today.",
-reportIntro:"This is a self-reported estimate based on your answers. It indicates a starting point, not proof of maturity.",
-usageTitle:"Your usage journey",
-usageNote:"A simple view of the relationship between your organisation and this AI use case — not an organisation-wide score.",
-maturityTitle:"Your six-step evidence journey",
-maturityNote:"This journey shows what must be demonstrated before presenting a capability as established.",
-dimensions:"Six dimensions supporting your journey",
+reportKicker:"YOUR AI PATHWAY REPORT · SELF-ASSESSMENT",
+reportHeading:"Your next step is clearer.",
+reportIntro:"These findings reflect your answers. We haven't verified your systems or supporting evidence.",
+dimensions:"Six views of your situation",
 priorities:"Three actions worth considering",
 recommend:"Your next move with TENIR Labs",
 recommendBody:"Use this report independently or talk to us about one specific scenario.",
@@ -125,7 +115,6 @@ const navItems=fr?[
       <div class="pa-intro-inner">
         <span class="pa-eyebrow">{t.tag}</span>
         <h1 id="pa-title">{t.head}</h1>
-        <div class="pa-usecase"><label for="pa-usecase">{t.usecaseLabel}</label><input id="pa-usecase" type="text" maxlength="140" placeholder={t.usecasePlaceholder}/><small>{fr?'Le résultat porte sur cet usage, pas sur toute votre organisation.':'The result concerns this use case, not your whole organisation.'}</small></div>
         <div class="pa-buttons"><button class="pa-button pa-primary" id="pa-start" type="button">{t.start} <span aria-hidden="true">→</span></button><a class="pa-button pa-outline" href="#pa-steps">{t.more} ↓</a></div>
         <div class="pa-facts"><span>{t.b1}</span><span>{t.b2}</span><span>{t.b3}</span><span>{t.b4}</span></div>
         <p class="pa-lead">{t.lead}</p>
@@ -151,8 +140,6 @@ const navItems=fr?[
     <section class="pa-report" id="pa-report" aria-labelledby="pa-report-title" hidden>
       <div class="pa-report-hero"><div class="pa-wrap"><span class="pa-eyebrow">{t.reportKicker}</span><h1 id="pa-report-title" tabindex="-1">{t.reportHeading}</h1><p>{t.reportIntro}</p><div class="pa-report-summary" id="pa-report-summary" aria-live="polite"></div></div></div>
       <div class="pa-wrap pa-report-content">
-        <section class="pa-usage" aria-labelledby="pa-usage-title"><div class="pa-maturity-heading"><h2 id="pa-usage-title">{t.usageTitle}</h2><p>{t.usageNote}</p></div><div class="pa-usage-meta" id="pa-usage-meta"></div><div class="pa-usage-map" id="pa-usage-map"></div></section>
-        <section class="pa-maturity" aria-labelledby="pa-maturity-title"><div class="pa-maturity-heading"><h2 id="pa-maturity-title">{t.maturityTitle}</h2><p>{t.maturityNote}</p></div><div class="pa-maturity-map" id="pa-maturity-map"></div></section>
         <div class="pa-report-grid">
           <section class="pa-report-card" aria-labelledby="pa-dimensions-title"><h2 id="pa-dimensions-title">{t.dimensions}</h2><div id="pa-dimensions"></div></section>
           <section class="pa-report-card" aria-labelledby="pa-priorities-title"><h2 id="pa-priorities-title">{t.priorities}</h2><ol id="pa-priorities"></ol></section>
