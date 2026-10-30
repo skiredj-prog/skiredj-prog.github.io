@@ -63,8 +63,13 @@ for(const lang of ['fr','en']){
     assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: ${id} not placed in the matrix`);
   }
   const homePage=readFileSync(lang==='fr'?'dist/index.html':'dist/en/index.html','utf8');
-  assert(homePage.includes('class="home-lifecycle"'),`${lang}: lifecycle reading missing on homepage`);
+  assert(homePage.includes('home-lifecycle'),`${lang}: concise lifecycle reading missing on marketing homepage`);
   assert(homePage.includes('lifecycle-flow'),`${lang}: lifecycle stages missing on homepage`);
+  assert(homePage.includes('id="market-heading"'),`${lang}: conversion hero missing`);
+  assert(homePage.includes('id="essayer"'),`${lang}: live simulation destination missing`);
+  assert(homePage.includes('/embeds/reg-autonomy-control-tower-v1.0.html'),`${lang}: embedded interactive demo missing`);
+  assert(homePage.includes('id="comprendre"') && homePage.includes('id="demarche"'),`${lang}: legacy deep links must remain valid`);
+  assert(homePage.includes(`href="${lang==='fr'?'/':'/en/'}contact/?sujet=diagnostic"`),`${lang}: diagnostic CTA must be directly actionable`);
   assert(homePage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/products/"`),`${lang}: product map not reachable from homepage`);
 }
 
