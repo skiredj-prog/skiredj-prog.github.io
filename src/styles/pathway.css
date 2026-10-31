@@ -3,6 +3,8 @@
 html{scroll-behavior:smooth}
 body{margin:0;line-height:1.6;background:#fff;font-size:17px}
 [hidden]{display:none!important}
+.pa-skip{position:absolute;left:1rem;top:-4rem;z-index:100;background:#fff;color:var(--pa-deep);padding:.55rem .8rem;border-radius:4px;font-weight:700;text-decoration:none}
+.pa-skip:focus{top:1rem}
 button,a{font:inherit}
 button{cursor:pointer}
 a{color:inherit}
@@ -72,7 +74,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f7b8
 .pa-option small{display:block;margin-top:.15rem;color:#60748a;font-size:.8rem;font-weight:400}
 .pa-qnav{display:flex;justify-content:space-between;gap:1rem;margin-top:1.7rem}
 .pa-report-hero{background:var(--pa-deep);padding:4.3rem 0;color:white}
-.pa-report-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5vw,4.4rem);letter-spacing:-.02em;line-height:1.09;margin:0 0 1rem;font-weight:500}
+.pa-report-hero h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5vw,4.4rem);letter-spacing:-.02em;line-height:1.09;margin:0 0 1rem;font-weight:500}
 .pa-report-hero p{color:#c0cede;margin:0;max-width:67ch}
 .pa-report-summary{border-left:3px solid var(--pa-amber);padding:.9rem 1.3rem;background:rgba(255,255,255,.06);margin-top:2rem;max-width:770px;font-size:1.08rem;color:white;line-height:1.55}
 .pa-report-content{padding:3.3rem 0 4rem}

@@ -6,6 +6,17 @@ lede: Runtime Execution Governance (REG) proposes requirements for the boundary 
 sources: RFC-0 through RFC-7 in reg-conformance; spec.md v0.3.1; KB3, posture and execution kept separate
 ---
 
+## In one sentence
+
+**REG is a proposed set of rules for deciding whether a consequential action may proceed and for recording that decision.** It is not a certification, not a customer installation, and not proof that an external provider produced the expected effect.
+
+### What this page helps separate
+
+- **The proposal:** the RFCs describe what a system should check.
+- **The software:** TENIR-Gov is a published implementation with a precise scope.
+- **The evidence:** tests and simulations show only what they actually covered.
+- **The external reality:** a local authorisation does not by itself confirm an effect at the provider.
+
 <p>The mantra of RFC-0, dated 3 October 2026, status “Proposed Standard (Frozen Draft)”, is: “The agent proposes. The membrane decides. Authorised / Admissible.” The text’s declared origin is the convergence of TENIR-Gov, CCEAF, and CommitGate. The public repositories that were read do not document CCEAF or CommitGate beyond that line.</p>
 
 <div class="callout callout-limit">

@@ -9,15 +9,16 @@ const path = (p: string) => url((fr ? '/' : '/en/') + p + '/');
 const contact = path('contact') + '?sujet=diagnostic';
 const pathway = url(fr ? '/parcours-ia/' : '/en/ai-readiness/');
 const demo = path('portfolio/control-tower');
+const whyNow = path(fr ? 'pourquoi-maintenant' : 'why-now');
 const t = fr ? {
   eyebrow: 'TENIR LABS · DES AGENTS IA SOUS CONTRÔLE',
   headlineStart: 'L’IA agit.',
   headlineEnd: 'Vous gardez la main.',
   tagline: 'Confiez des tâches à l’IA. Pas les clés de votre entreprise.',
   summary: 'Vos agents IA peuvent déclencher des paiements, modifier des dossiers ou engager votre entreprise. TENIR Labs vous aide à fixer leurs limites, repérer les actions à risque et gérer les situations où personne ne sait exactement ce qui s’est passé.',
-  primary: 'Recevoir mon rapport gratuit',
-  secondary: 'Voir la démo',
-  heroNote: '10 questions · 5 minutes · Sans compte · Résultat immédiat',
+  primary: 'Comprendre pourquoi maintenant',
+  secondary: 'Voir un cas concret',
+  heroNote: 'Une question de marché · des situations reconnaissables · une première lecture',
   tension: 'L’EXEMPLE QUI CHANGE TOUT',
   tensionTitle: 'Et si votre IA payait deux fois ?',
   tensionBody: 'Un agent déclenche un paiement. La confirmation disparaît. L’IA pense devoir recommencer. Mais le premier paiement a peut-être déjà eu lieu. Comment éviter une deuxième opération à l’aveugle ?',
@@ -51,9 +52,9 @@ const t = fr ? {
   papers: 'Publications et recherche',
   status: 'Statut et périmètres',
   credibility: 'Parcours Crédibilité · 5.7.0',
-  closeTitle: 'Vous savez ce que votre IA peut faire. Découvrez comment garder la main.',
-  closeSub: 'Dix questions. Votre rapport personnalisé. Trois prochaines actions possibles, avant même de nous parler.',
-  closePrimary: 'Découvrir mon parcours',
+  closeTitle: 'Vous savez ce que votre IA peut faire. Découvrez par où commencer.',
+  closeSub: 'Dix questions pour situer votre point de départ sur un parcours de maturité, repérer la prochaine vérification utile et décider si un accompagnement est nécessaire.',
+  closePrimary: 'Voir mon aperçu de maturité',
   closeSecondary: 'Écrire directement',
   smallPrint: 'Diagnostic sur devis · logiciels et prototypes à maturité distincte',
 } : {
@@ -62,9 +63,9 @@ const t = fr ? {
   headlineEnd: 'You stay in control.',
   tagline: 'Give AI the work. Not the keys to your business.',
   summary: 'AI agents can initiate payments, update records and make commitments on your behalf. TENIR Labs helps you set the limits, spot risky actions and handle those moments when no one knows exactly what happened.',
-  primary: 'Get my free report',
-  secondary: 'Explore the demo',
-  heroNote: '10 questions · 5 minutes · No account · Instant results',
+  primary: 'Understand why now',
+  secondary: 'See one concrete case',
+  heroNote: 'A market question · recognizable situations · a first explanation',
   tension: 'THE EXAMPLE THAT CHANGES EVERYTHING',
   tensionTitle: 'What if your AI paid twice?',
   tensionBody: 'An agent initiates a payment. The confirmation disappears. The AI thinks it should try again. But the first payment might already have gone through. How do you avoid a second payment in the dark?',
@@ -98,9 +99,9 @@ const t = fr ? {
   papers: 'Research and publications',
   status: 'Status and scope',
   credibility: 'Credibility Journey · 5.7.0',
-  closeTitle: 'You know what AI can do. Find out how to stay in control.',
-  closeSub: 'Ten questions. Your personalized report. Three practical next steps, before you ever speak to us.',
-  closePrimary: 'Discover my pathway',
+  closeTitle: 'You know what AI can do. Find out where to begin.',
+  closeSub: 'Ten questions to place your starting point on a maturity journey, identify the next useful check and decide whether outside help is needed.',
+  closePrimary: 'See my maturity preview',
   closeSecondary: 'Email us',
   smallPrint: 'Diagnostic quoted by scope · software and prototypes at different maturity levels',
 };
@@ -121,11 +122,18 @@ const cards = fr ? [
       <h1 id="market-heading" class="ml-headline"><span>{t.headlineStart}</span><em>{t.headlineEnd}</em></h1>
       <p class="ml-hero-tagline">{t.tagline}</p>
       <div class="ml-actions" aria-label={fr ? 'Choisir votre prochaine étape' : 'Choose your next step'}>
-        <a class="ml-btn ml-btn-primary" href={pathway}>{t.primary} <span aria-hidden="true">↗</span></a>
-        <a class="ml-btn ml-btn-outline" href="#essayer">{t.secondary} <span aria-hidden="true">→</span></a>
+        <a class="ml-btn ml-btn-primary" href={whyNow}>{t.primary} <span aria-hidden="true">↗</span></a>
+        <a class="ml-btn ml-btn-outline" href="#comprendre">{t.secondary} <span aria-hidden="true">→</span></a>
       </div>
       <p class="ml-hero-foot">{t.heroNote}</p>
       <p class="ml-hero-body">{t.summary}</p>
+    </div>
+  </section>
+
+  <section class="ml-why-now" aria-labelledby="ml-why-now-title">
+    <div class="ml-wrap ml-why-now-grid">
+      <div><span class="ml-kicker">{fr ? 'POURQUOI MAINTENANT' : 'WHY NOW'}</span><h2 id="ml-why-now-title">{fr ? 'L’IA ne se contente plus de répondre. Elle peut faire des choses à votre place.' : 'AI no longer only answers. It can do things on your behalf.'}</h2><p>{fr ? 'C’est pratique — jusqu’au jour où elle envoie le mauvais paiement, modifie le mauvais dossier ou répond au client sans que personne ne sache exactement ce qui s’est passé.' : 'That is useful — until it sends the wrong payment, changes the wrong record or replies to a customer and no one knows exactly what happened.'}</p><a class="ml-story-link" href={whyNow}>{fr ? 'Voir les situations concrètes' : 'See the concrete situations'} →</a></div>
+      <div class="ml-why-now-list"><article><b>01</b><span>{fr ? 'Un paiement est lancé. La confirmation n’arrive pas. Faut-il recommencer ?' : 'A payment is sent. The confirmation never arrives. Should it be tried again?'}</span></article><article><b>02</b><span>{fr ? 'Un dossier est modifié automatiquement. Qui vérifie que c’est bien le bon ?' : 'A record is changed automatically. Who checks that it is the right one?'}</span></article><article><b>03</b><span>{fr ? 'Une réponse est envoyée au nom de l’entreprise. Qui la relit avant qu’elle parte ?' : 'A reply is sent in the company’s name. Who reads it before it goes out?'}</span></article></div>
     </div>
   </section>
 

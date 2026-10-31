@@ -217,7 +217,7 @@
     $('pa-options').replaceChildren(...q.options.map(o=>optionNode(o,answers[index])));
     $('pa-back').disabled=index===0;
     $('pa-next').disabled=!answers[index];
-    $('pa-next').textContent=index===questions.length-1?L('Voir mon rapport →','See my report →'):L('Suivant →','Next →');
+    $('pa-next').textContent=index===questions.length-1?L('Voir mon aperçu →','See my preview →'):L('Suivant →','Next →');
   }
   function makeElement(tag,cls,content){
     const el=document.createElement(tag);
@@ -235,7 +235,7 @@
       L('TYPE D’ACTION','TYPE OF ACTION')+' : '+contextLabel(0,answers[0]),
       L('RISQUE PRINCIPAL','MAIN CONCERN')+' : '+contextLabel(1,answers[1]),
       '',
-      L('SYNTHÈSE','SUMMARY')+': '+report.summary,
+      L('SYNTHÈSE DE VOTRE APERÇU','PREVIEW SUMMARY')+': '+report.summary,
       '',
       L('PARCOURS DE MATURITÉ','MATURITY JOURNEY')+': '+report.maturity.stages[report.maturity.current].title,
       L('PROCHAINE ÉTAPE','NEXT STEP')+': '+report.maturity.stages[report.maturity.next].title,
@@ -248,7 +248,7 @@
     rows.push('',L('TROIS PRIORITÉS','THREE PRIORITIES'));
     report.prioritized.forEach((step,i)=>rows.push(String(i+1)+'. '+step.title+' — '+step.desc));
     rows.push('',L('PARCOURS SUGGÉRÉ','SUGGESTED PATHWAY')+': '+report.offer.title,report.offer.desc,'',
-      L('Ce rapport s’appuie uniquement sur les réponses fournies. Aucune preuve technique n’a été vérifiée. Ce n’est ni un audit ni une certification.','This report uses only the answers provided. No technical evidence was verified. It is neither an audit nor a certification.'),
+      L('Cet aperçu s’appuie uniquement sur vos réponses. Aucune preuve technique n’a été vérifiée. Ce n’est ni un audit ni une certification.','This preview uses only your answers. No technical evidence was verified. It is neither an audit nor a certification.'),
       'tenirlabs.cc');
     return rows.join('\n');
   }
@@ -292,7 +292,7 @@
     $('pa-offer-description').textContent=report.offer.desc;
     $('pa-learn').href=report.offer.link;
     $('pa-learn').textContent=L('Découvrir cette approche →','Explore this approach →');
-    $('pa-talk').href='mailto:skiredj@tenirlabs.cc?subject='+encodeURIComponent(L('Parlons de mon rapport de parcours IA','Discuss my AI pathway report'))+'&body='+encodeURIComponent(L('Bonjour,\n\nJe souhaite discuter des prochaines étapes suggérées par mon rapport TENIR Labs.\n\n','Hello,\n\nI would like to discuss the next steps suggested by my TENIR Labs report.\n\n')+reportText()+'\n\n'+L('Cordialement,','Best regards,'));
+    $('pa-talk').href='mailto:skiredj@tenirlabs.cc?subject='+encodeURIComponent(L('Parlons de mon aperçu de maturité IA','Discuss my AI maturity preview'))+'&body='+encodeURIComponent(L('Bonjour,\n\nJe souhaite discuter des prochaines étapes suggérées par mon aperçu TENIR Labs.\n\n','Hello,\n\nI would like to discuss the next steps suggested by my TENIR Labs preview.\n\n')+reportText()+'\n\n'+L('Cordialement,','Best regards,'));
     $('pa-feedback').textContent='';
     show('report');
     $('pa-report-title').focus({preventScroll:true});

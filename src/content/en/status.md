@@ -6,6 +6,12 @@ lede: KB3 is the active doctrinal rendering line and the REG RFCs remain propose
 sources: KB3 and versioning policy; REG RFCs; TENIR-Gov v5.7.0 release (24 October 2026), README and pyproject.toml; historical 5.6.x change logs; harness STATUS.md
 ---
 
+## Read this first
+
+- **The framework and the standard are not the software:** KB3 and REG describe meaning lines or proposed rules.
+- **The software exists as a beta:** TENIR-Gov v5.7.0 is published, but its stated scope remains bounded and single-host.
+- **Published does not mean certified:** nothing on this page proves a customer deployment, multi-host tolerance, or exactly-once external effect.
+
 ## Where each namespace stands
 
 <table>
