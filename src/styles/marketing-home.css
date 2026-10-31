@@ -25,11 +25,12 @@
 .ml-btn-outline{border-color:rgba(255,255,255,.26);color:#fff!important;background:rgba(255,255,255,.05)}
 .ml-btn-outline:hover{background:rgba(255,255,255,.12)}
 .ml-hero-foot{font-size:.7rem;line-height:1.5;color:#93a5be;margin:.8rem 0 0}
+.ml-why-now{background:#eef4ff;padding:clamp(3.2rem,6vw,5rem) 0;border-bottom:1px solid #dbe6f5}.ml-why-now-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}.ml-why-now h2{font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.08;margin:.7rem 0 1rem;color:#102a4a}.ml-why-now p{font-size:.98rem;line-height:1.7;color:#52647d;max-width:54ch;margin:0}.ml-why-now-list{border-left:2px solid #8bb2ef;padding-left:1.4rem;display:grid;gap:.9rem}.ml-why-now-list article{display:grid;grid-template-columns:2rem 1fr;gap:.8rem;align-items:start;padding:.8rem 0;border-bottom:1px solid #d4e1f3;color:#193452}.ml-why-now-list article:last-child{border-bottom:0}.ml-why-now-list b{font:600 .68rem var(--mono);color:#2563eb;padding-top:.2rem}.ml-why-now-list span{font-size:.98rem;line-height:1.5;font-weight:650}
 .ml-threat{padding:clamp(3.8rem,7vw,5.2rem) 0;background:#f8fafc}
 .ml-threat-grid{display:grid;grid-template-columns:.94fr 1.2fr;gap:3.2rem;align-items:center}
 .ml-story h2,.ml-section-top h2{font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.1;margin:.7rem 0 1rem}
 .ml-story>p,.ml-section-top>p{font-size:.98rem;line-height:1.7;color:var(--ml-muted);max-width:55ch;margin:0}
-.ml-fiction{display:block;font-size:.63rem;color:#66758b;margin-top:1.5rem}
+.ml-fiction{display:block;font-size:.63rem;color:#52647d;margin-top:1.5rem}
 .ml-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
 .ml-outcome{background:white;border:1px solid var(--ml-line);border-top:3px solid;padding:1.5rem 1.25rem;display:flex;flex-direction:column;min-height:245px;border-radius:7px}
 .ml-risk{border-top-color:#ef4444}.ml-safe{border-top-color:#f59e0b}
@@ -78,7 +79,7 @@
 .ml-closing>div>p:not(.ml-hero-foot){color:#b6c4d6;max-width:54ch;margin:0 0 1.9rem}
 .ml-closing .ml-kicker{color:#e8b354}
 .market-root .ml-demo-panel iframe:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
-@media(max-width:940px){.ml-threat-grid{grid-template-columns:1fr;gap:1.8rem}.ml-demo>.ml-wrap{grid-template-columns:1fr}.ml-demo-copy{max-width:680px}.ml-demo-panel iframe{height:480px}}
+@media(max-width:940px){.ml-threat-grid{grid-template-columns:1fr;gap:1.8rem}.ml-why-now-grid{grid-template-columns:1fr;gap:1.8rem}.ml-demo>.ml-wrap{grid-template-columns:1fr}.ml-demo-copy{max-width:680px}.ml-demo-panel iframe{height:480px}}
 @media(max-width:760px){.market-root .ml-wrap{width:calc(100% - 2.2rem)}.ml-cards{grid-template-columns:1fr}.ml-card{min-height:0}.ml-short-journey .lifecycle-flow{grid-template-columns:1fr;gap:.6rem}.ml-headline{font-size:clamp(3.15rem,11vw,5.6rem)}.ml-outcomes{grid-template-columns:1fr 1fr}.ml-trust-links{grid-template-columns:1fr}.ml-trust-links a{border-right:0;border-bottom:1px solid var(--ml-line)}.ml-trust-links a:last-child{border-bottom:0}}
 @media(max-width:480px){.ml-outcomes{grid-template-columns:1fr}.ml-outcome{min-height:0}.ml-hero{padding:2.45rem 0 3rem}.ml-headline{letter-spacing:-.05em}.ml-headline .ml-not-equal{padding:0 .08em}.ml-demo-panel iframe{height:410px}.ml-actions .ml-btn{width:100%}.ml-panel-bar{font-size:.54rem}}
 @media(prefers-reduced-motion:reduce){.market-root *{transition:none!important}}
@@ -88,6 +89,7 @@ body.marketing-page .site-header{background:#071629;border-bottom-color:#18324e;
 body.marketing-page .site-header .brand,body.marketing-page .site-header .brand-name,body.marketing-page .site-header .brand-labs,body.marketing-page .site-header .site-nav>a,body.marketing-page .site-header .nav-group>summary{color:#fff}
 body.marketing-page .site-header .brand .mark{color:#f8b145}
 body.marketing-page .site-header .site-nav>a:hover,body.marketing-page .site-header .nav-group>summary:hover{background:#16345b}
+body.marketing-page .site-header .site-nav>a[aria-current="page"],body.marketing-page .site-header .tools .lang a[aria-current]{background:#16345b;color:#fff}
 body.marketing-page .site-header .header-cta{background:#2563eb;border-color:#2563eb;color:#fff}
 body.marketing-page .site-header .tools .lang a{color:#b6c9e1}
 body.marketing-page .site-header .tools .lang a[aria-current]{color:#fff}
@@ -98,6 +100,7 @@ body.marketing-page .site-header .menu-toggle{color:#fff;background:#173251;bord
 /* The site's existing light/dark toggle also applies to the new landing page. */
 :root[data-theme="dark"] .market-root{background:#071629;color:#f3f6fa}
 :root[data-theme="dark"] .market-root .ml-threat,:root[data-theme="dark"] .market-root .ml-trust{background:#0d2037}
+:root[data-theme="dark"] .market-root .ml-why-now{background:#102a4a;border-color:#294563}:root[data-theme="dark"] .market-root .ml-why-now h2,:root[data-theme="dark"] .market-root .ml-why-now-list article{color:#f3f6fa}:root[data-theme="dark"] .market-root .ml-why-now p{color:#b7c7d9}:root[data-theme="dark"] .market-root .ml-why-now-list article{border-color:#294563}
 :root[data-theme="dark"] .market-root .ml-offerings{background:#08182d}
 :root[data-theme="dark"] .market-root .ml-story h2,:root[data-theme="dark"] .market-root .ml-section-top h2,:root[data-theme="dark"] .market-root .ml-short-journey h3{color:#f3f6fa}
 :root[data-theme="dark"] .market-root .ml-story>p,:root[data-theme="dark"] .market-root .ml-section-top>p{color:#afc0d4}

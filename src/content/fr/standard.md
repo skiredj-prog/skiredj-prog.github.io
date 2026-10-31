@@ -6,6 +6,17 @@ lede: Runtime Execution Governance (REG) propose des exigences pour la frontièr
 sources: RFC-0 à RFC-7 dans reg-conformance ; spec.md v0.3.1 ; KB3, séparation posture et exécution
 ---
 
+## En une phrase
+
+**REG est une proposition de règles pour décider si une action sensible peut partir et pour garder la trace de cette décision.** Ce n’est ni une certification, ni un produit installé chez un client, ni la preuve qu’un fournisseur externe a bien produit l’effet attendu.
+
+### Ce que cette page vous aide à distinguer
+
+- **La proposition :** les RFC décrivent ce qu’un système devrait vérifier.
+- **Le logiciel :** TENIR-Gov est une implémentation publiée, avec un périmètre précis.
+- **La preuve :** les tests et simulations montrent seulement ce qu’ils ont réellement couvert.
+- **La réalité externe :** une autorisation locale ne confirme pas à elle seule l’effet chez le fournisseur.
+
 <p>Le mantra de RFC-0, daté du 3 octobre 2026, statut « Proposed Standard (Frozen Draft) », est : « The agent proposes. The membrane decides. Authorised / Admissible. » L’origine déclarée du texte est la convergence de TENIR-Gov, CCEAF et CommitGate. Les dépôts publics lus ne documentent pas CCEAF ni CommitGate au-delà de cette ligne.</p>
 
 <div class="callout callout-limit">

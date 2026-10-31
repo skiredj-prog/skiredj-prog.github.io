@@ -6,6 +6,17 @@ lede: Une intention ne devient pas un effet parce qu’un composant a dit oui. E
 sources: TENIR / REG — Architecture illustrative ; parcours interactif REG+ v5.6.0 ; démo Execution Control Plane ; KB3, ligne instituée ; dépôts tenir_governance et reg-conformance
 ---
 
+## En une phrase
+
+Cette page explique **comment TENIR imagine le passage d’une demande à une action réelle** : ce qui est proposé, ce qui est vérifié, ce qui est effectivement envoyé et ce qui peut encore rester inconnu. C’est une carte de conception, pas la preuve qu’un système client fonctionne déjà ainsi.
+
+### Comment lire cette page
+
+- **Vous cherchez l’idée :** commencez par les trois piliers.
+- **Vous cherchez le fonctionnement :** lisez les cinq niveaux et les quatre fonctions.
+- **Vous cherchez une preuve de version :** consultez plutôt la page [Statut](/statut/).
+- **Vous cherchez un exemple :** ouvrez les [démonstrations](/portfolio/demos/), qui restent des simulations lorsque cela est indiqué.
+
 <div class="callout callout-note">
   <p><strong>Statut du dessin.</strong> Classe : illustrative only. Le document source se dit illustratif. Il n’est pas le schéma normatif, ni le YAML du catalogue, ni un rapport d’audit complet. Là où il nomme V « volatilité », la ligne antérieure dit « vitesse ». KB3 ne reformule pas V et interdit de renommer en silence un champ du contrat machine. Le dessin du runtime est conservé. Cette page ne choisit pas un nom souverain pour V.</p>
 </div>

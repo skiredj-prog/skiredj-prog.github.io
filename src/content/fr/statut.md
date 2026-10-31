@@ -6,6 +6,12 @@ lede: KB3 est la ligne de rendu doctrinale active ; les RFC REG restent des brou
 sources: KB3 et politique v2 ; RFC REG ; TENIR-Gov release v5.7.0 (24 octobre 2026), README et pyproject.toml ; anciens journaux 5.6.x à titre historique ; STATUS.md du harnais
 ---
 
+## À retenir avant de lire le détail
+
+- **Le cadre et le standard ne sont pas le logiciel :** KB3 et REG décrivent des lignes de sens ou des règles proposées.
+- **Le logiciel existe en bêta :** TENIR-Gov v5.7.0 est publié, mais son périmètre annoncé reste mono-hôte et borné.
+- **Publié ne veut pas dire certifié :** aucune ligne de cette page ne prouve un déploiement client, une tolérance multi-hôte ou un effet externe exactement une fois.
+
 ## Où en est chaque espace
 
 <table>

@@ -8,15 +8,17 @@ const fr=locale==='fr';
 const href=url((fr?'/portfolio/':'/en/portfolio/')+item.id+'/');
 const publicAccess=portfolioAccess[locale][item.id];
 const kind=({product:fr?'Produit ou instrument':'Product or instrument',service:'Service',demo:fr?'Démonstration':'Demo',foundation:fr?'Cadre et recherche':'Framework and research'} as Record<string,string>)[item.kind];
+const publicStatus = item.kind === 'service' ? (fr?'Accompagnement proposé':'Guided engagement') : item.status.includes('Release') || item.status.includes('publiée') ? (fr?'Publié · périmètre précis':'Published · precise scope') : item.kind === 'demo' ? (fr?'Simulation':'Simulation') : (fr?'En exploration':'In exploration');
 ---
 <article class:list={['pf-card','pf-card-'+item.kind]}>
   <span class="pf-format">{kind}</span>
   <h3><a href={href}>{item.title} <span aria-hidden="true">↗</span></a></h3>
   <p class="pf-tagline">{item.tagline}</p>
+  <div class="pf-card-context"><span>{fr?'Cela peut vous concerner si…':'This may concern you if…'}</span><p>{item.when}</p></div>
   <div class="pf-card-result"><span>{fr?'Ce que cela apporte':'What it provides'}</span><p>{item.output}</p></div>
   {publicAccess&&<div class="pf-public-access">
     <a href={url(publicAccess.href)}>{publicAccess.label} <span aria-hidden="true">↗</span></a>
     <small>{publicAccess.scope}</small>
   </div>}
-  <div class="pf-card-bottom"><small>{item.status}</small><a href={href} aria-label={(fr?'Voir la fiche : ':'View profile: ')+item.title}>{fr?'Voir la fiche':'View profile'} →</a></div>
+  <div class="pf-card-bottom"><small><b class="pf-status-pill">{publicStatus}</b>{item.status}</small><a href={href} aria-label={(fr?'Voir la fiche : ':'View profile: ')+item.title}>{fr?'Voir la fiche':'View profile'} →</a></div>
 </article>

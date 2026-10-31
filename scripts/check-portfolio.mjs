@@ -41,22 +41,21 @@ for (const [lang, home, productsPath] of [
 
 // The product matrix is a genuinely two-dimensional classification, not the
 // illustrative before/during/after sequence on the homepage.
-const mappedProducts = ['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'];
+const mappedProducts = ['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance'];
 for(const lang of ['fr','en']){
   const matrixPage=readFileSync(paths(lang,'products'),'utf8');
   assert(matrixPage.includes('portfolio-matrix-title'),`${lang}: 2D classification heading missing`);
-  assert(matrixPage.includes('pm-table'),`${lang}: semantic matrix table missing`);
-  assert(matrixPage.includes('scope="row"') && matrixPage.includes('scope="col"'),`${lang}: accessible axes missing`);
-  assert(matrixPage.includes('class="pm-scroller"') && matrixPage.includes('tabindex="0"'),`${lang}: keyboard-accessible horizontal scroll missing`);
-  assert(matrixPage.includes(lang==='fr'?'Exigences et intentions':'Requirements and intent'),`${lang}: visitor-friendly problem axis missing`);
-  assert(matrixPage.includes(lang==='fr'?'Contrôler / vérifier':'Control / verify'),`${lang}: intervention axis missing`);
-  assert(matrixPage.includes('pm-item-status'),`${lang}: product maturity not visible in matrix`);
-  const matrixStart=matrixPage.indexOf('<table class="pm-table"');
-  const matrixEnd=matrixPage.indexOf('</table>',matrixStart);
-  assert(matrixStart>=0 && matrixEnd>matrixStart,`${lang}: matrix table boundaries missing`);
-  const table=matrixPage.slice(matrixStart,matrixEnd);
-  for(const id of ['reg-arch','technical','diagnostic','control-tower']){
-    assert(!table.includes(`portfolio/${id}/`),`${lang}: foundation, service or demo incorrectly placed inside product grid: ${id}`);
+  assert(matrixPage.includes('class="pm-2x2"') && matrixPage.includes('role="region"') && matrixPage.includes('tabindex="0"'),`${lang}: keyboard-accessible 2x2 matrix missing`);
+  assert((matrixPage.match(/class="pm-cell"/g)||[]).length===4,`${lang}: expected four matrix cells`);
+  assert(matrixPage.includes(lang==='fr'?'Avant de laisser agir · comprendre':'Before AI acts · understand'),`${lang}: before-action axis missing`);
+  assert(matrixPage.includes(lang==='fr'?'Après une action · vérifier':'After an action · verify'),`${lang}: after-effect axis missing`);
+  assert(matrixPage.includes(lang==='fr'?'Commencez par la situation':'Start with the situation'),`${lang}: visitor-friendly matrix guidance missing`);
+  assert(matrixPage.includes('pm-transverse'),`${lang}: cross-cutting matrix guidance missing`);
+  const matrixStart=matrixPage.indexOf('<div class="pm-2x2"');
+  const matrixEnd=matrixPage.indexOf('</div><div class="pm-transverse"',matrixStart);
+  const matrix=matrixPage.slice(matrixStart,matrixEnd+6);
+  for(const id of ['reg-arch','technical','diagnostic']){
+    assert(!matrix.includes(`portfolio/${id}/`),`${lang}: foundation, service or demo incorrectly placed inside product grid: ${id}`);
     assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: missing cross-cutting link ${id}`);
   }
   for(const id of mappedProducts){

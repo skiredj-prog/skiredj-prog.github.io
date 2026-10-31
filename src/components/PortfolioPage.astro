@@ -15,15 +15,15 @@ const publicAccess = portfolioAccess[locale][page];
 const path = (route:string) => url((fr?'/':'/en/') + route + '/');
 const cardHref = (id:string) => path('portfolio/' + id);
 const kindName = (kind:string) => ({product:fr?'Produit ou instrument':'Product or instrument',service:'Service',demo:fr?'Démonstration':'Demo',foundation:fr?'Cadre et recherche':'Framework and research'} as Record<string,string>)[kind] ?? kind;
-const sections = [
-  {id:'products',label:fr?'Produits':'Products',detail:fr?'Trouver un instrument':'Find an instrument'},
-  {id:'services',label:'Services',detail:fr?'Examiner un cas ensemble':'Examine a case together'},
-  {id:'demos',label:fr?'Démonstrations':'Demos',detail:fr?'Voir et essayer':'See and try'},
+  const sections = [
+  {id:'products',label:fr?'Produits':'Products',detail:fr?'Choisir selon votre situation':'Choose by situation'},
+  {id:'services',label:'Services',detail:fr?'Faire examiner un cas':'Examine one case'},
+  {id:'demos',label:fr?'Démonstrations':'Demos',detail:fr?'Voir un scénario':'See a scenario'},
 ];
 const category = entry?.kind === 'service' ? 'services' : entry?.kind === 'demo' ? 'demos' : 'products';
 const hubEntries = hub ? hub.keys.map((id:string)=>portfolio[locale][id]) : [];
 const cardGroups = page === 'products' ? [
-  {title:fr?'Les instruments':'The instruments',note:'',entries:hubEntries.filter((item:any)=>item.kind==='product')},
+  {title:fr?'Pour comprendre ou préparer':'To understand or prepare',note:fr?'Choisissez la situation qui vous ressemble, puis ouvrez une fiche à la fois.':'Choose the situation that looks like yours, then open one profile at a time.',entries:hubEntries.filter((item:any)=>item.kind==='product')},
   {title:fr?'Pour examiner les fondations':'Explore the foundations',note:fr?'Architecture, textes et contrats techniques à lire.':'Architecture, texts and technical contracts to read.',entries:hubEntries.filter((item:any)=>item.kind==='foundation')},
 ] : page === 'services' ? [
   {title:fr?'Un accompagnement à partir de votre question':'An engagement that starts with your question',note:fr?'Le périmètre, les livrables et le devis se conviennent avant de commencer.':'Scope, deliverables and the quote are agreed before work begins.',entries:hubEntries.filter((item:any)=>item.kind==='service')},

@@ -6,6 +6,17 @@ lede: An intention does not become an effect because a component said yes. It pa
 sources: TENIR / REG — illustrative architecture; REG+ v5.6.0 interactive walkthrough; Execution Control Plane demo; KB3, enacted rendering line; tenir_governance and reg-conformance
 ---
 
+## In one sentence
+
+This page explains **how TENIR thinks about the path from a request to a real action**: what is proposed, what is checked, what is actually sent, and what may still be unknown. It is a design map, not proof that a customer system already works this way.
+
+### How to read this page
+
+- **Looking for the idea:** start with the three pillars.
+- **Looking for the mechanics:** read the five levels and four functions.
+- **Looking for release evidence:** use the [Status](/en/status/) page instead.
+- **Looking for an example:** open the [demos](/en/portfolio/demos/), which remain simulations where stated.
+
 <div class="callout callout-note">
   <p><strong>Status of the drawing.</strong> Class: illustrative only. The source document calls itself illustrative. It is not the normative schema, not the catalogue YAML, and not a full audit report. Where it names V “volatility”, the prior rendering line says “velocity”. KB3 does not restate V and forbids silently renaming a machine-contract field. The runtime drawing is kept. This page does not elect a sovereign name for V.</p>
 </div>
