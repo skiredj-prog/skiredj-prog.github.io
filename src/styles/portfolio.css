@@ -34,11 +34,15 @@
 .pf-card h3 a:hover { color:var(--accent); }
 .pf-card h3 span { font:400 .9rem var(--sans); color:var(--accent); }
 .pf-tagline { color:var(--ink-soft); font-size:1rem; margin:0 0 1.25rem; }
+.pf-card-context { border-left:2px solid var(--accent-soft); padding-left:.85rem; margin:0 0 1.2rem; }
+.pf-card-context>span { font-size:.75rem; font-weight:600; color:var(--accent); }
+.pf-card-context>p { font-size:.86rem; line-height:1.55; color:var(--muted); margin:.25rem 0 0; }
 .pf-card-result { margin-top:auto; border-left:2px solid var(--line); padding-left:.85rem; }
 .pf-card-result>span { font-size:.75rem; font-weight:600; color:var(--accent); }
 .pf-card-result>p { font-size:.88rem; line-height:1.6; color:var(--muted); margin:.3rem 0 0; }
 .pf-card-bottom { border-top:1px solid var(--line); margin-top:1.4rem; padding-top:.9rem; display:flex; align-items:center; gap:1rem; justify-content:space-between; }
 .pf-card-bottom small { font-size:.74rem; color:var(--muted); max-width:70%; line-height:1.5; }
+.pf-status-pill { display:inline-block; margin:0 .4rem .25rem 0; padding:.12rem .38rem; border-radius:999px; background:var(--accent-soft); color:var(--accent); font-size:.67rem; font-weight:700; }
 .pf-card-bottom>a { font-size:.82rem; font-weight:600; text-decoration:none; white-space:nowrap; }
 .pf-card-grid-single { grid-template-columns:minmax(0,1fr); }
 .pf-card-grid-single .pf-card { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); column-gap:2rem; }

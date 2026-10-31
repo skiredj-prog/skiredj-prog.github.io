@@ -26,7 +26,7 @@
 
 .sector-sequence { display: grid; grid-template-columns: repeat(7, minmax(9rem, 1fr)); gap: .5rem; overflow-x: auto; padding: 1.2rem 0 .4rem; }
 .sector-step { min-width: 9rem; padding: .9rem; border-top: 3px solid var(--line-strong); background: var(--bg); }
-.sector-step-number { display: block; color: var(--accent); font-family: var(--mono); font-size: .75rem; }
+.sector-step-number { display: block; color: #174ea6; font-family: var(--mono); font-size: .75rem; }
 .sector-step h4 { margin: .7rem 0 .25rem; font-family: var(--serif); font-size: 1.25rem; }
 .sector-step p { margin: 0 0 .7rem; font-size: .9rem; line-height: 1.35; }
 .sector-step small { display: block; color: var(--muted); font-family: var(--mono); font-size: .68rem; line-height: 1.35; }

@@ -6,107 +6,38 @@ interface Props { locale: PortfolioLocale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
 const href = (id: string) => url((fr ? '/portfolio/' : '/en/portfolio/') + id + '/');
-
-// This is a visitor-oriented capability map, not a REG / REG-ARCH taxonomy.
-// Only instruments go into the matrix. Standards, architectural foundations,
-// services and simulated demos retain distinct categories outside the grid.
-const domains = [
-  { id: 'intent', fr: 'Exigences et intentions', en: 'Requirements and intent', detailFr: 'Règles, politiques, mandats', detailEn: 'Rules, policies, authority' },
-  { id: 'action', fr: 'Systèmes et actions', en: 'Systems and actions', detailFr: 'Usages, dépendances, exécution', detailEn: 'Uses, dependencies, execution' },
-  { id: 'evidence', fr: 'Preuves et résultats', en: 'Evidence and outcomes', detailFr: 'Traces, confirmations, garanties', detailEn: 'Records, receipts, guarantees' },
-] as const;
-const functions = [
-  { id: 'discover', fr: 'Comprendre', en: 'Understand', detailFr: 'Voir ce qui est connu ou inconnu', detailEn: 'Find what is known or unknown' },
-  { id: 'shape', fr: 'Formaliser', en: 'Formalize', detailFr: 'Définir les contrôles candidats', detailEn: 'Specify candidate controls' },
-  { id: 'assure', fr: 'Contrôler / vérifier', en: 'Control / verify', detailFr: 'Agir dans des limites ou tester', detailEn: 'Enforce bounded actions or test' },
-] as const;
-const placements: Record<string, Record<string, string[]>> = {
-  discover: {
-    intent: ['discovery'],
-    action: ['xray', 'explorer'],
-    evidence: ['prepare'],
+const cells = [
+  {
+    title: fr ? 'Avant de laisser agir · comprendre' : 'Before AI acts · understand',
+    intro: fr ? 'Un outil ou un usage d’IA apparaît. Vous voulez savoir ce qu’il peut toucher et qui doit regarder.' : 'An AI tool or use appears. You want to know what it can affect and who should look.',
+    items: [['discovery', fr ? 'Faire l’inventaire d’un usage IA' : 'Map an AI use'], ['xray', fr ? 'Repérer une exposition déjà présente' : 'Spot existing exposure']]
   },
-  shape: {
-    intent: ['prevent', 'translation', 'mediation'],
-    action: [],
-    evidence: [],
+  {
+    title: fr ? 'Avant de laisser agir · préparer' : 'Before AI acts · prepare',
+    intro: fr ? 'Une décision se prépare. Il faut savoir quelles conditions vérifier avant de laisser partir l’action.' : 'A decision is being prepared. You need to know what to check before the action goes out.',
+    items: [['prevent', fr ? 'Traduire une règle en contrôles candidats' : 'Turn a rule into candidate controls'], ['translation', fr ? 'Rendre une exigence testable' : 'Make a requirement testable'], ['mediation', fr ? 'Comparer des profils et hypothèses' : 'Compare profiles and assumptions']]
   },
-  assure: {
-    intent: [],
-    action: ['gov'],
-    evidence: ['conformance', 'prepare'],
+  {
+    title: fr ? 'Après une action · comprendre' : 'After an action · understand',
+    intro: fr ? 'Une action a eu lieu. Vous devez distinguer ce qui était prévu, envoyé, confirmé ou reste inconnu.' : 'An action happened. You need to separate what was intended, sent, confirmed or remains unknown.',
+    items: [['prepare', fr ? 'Rassembler une preuve lisible' : 'Assemble readable evidence'], ['explorer', fr ? 'Explorer les frontières et dépendances' : 'Explore boundaries and dependencies']]
   },
-};
-const note: Record<string, string> = {
-  discovery: fr ? 'Mettre les hypothèses à l’épreuve' : 'Explore assumptions',
-  prevent: fr ? 'Du texte aux contrôles candidats' : 'From text to candidate controls',
-  xray: fr ? 'Repérer une exposition à l’IA' : 'Identify AI exposure',
-  explorer: fr ? 'Examiner frontières et dépendances' : 'Examine boundaries and dependencies',
-  prepare: fr ? 'Qualifier ce que les pièces établissent' : 'Qualify what records establish',
-  translation: fr ? 'Traduire les exigences en conditions' : 'Translate requirements into conditions',
-  mediation: fr ? 'Propositions à faire valider' : 'Proposals awaiting validation',
-  conformance: fr ? 'Tester un profil de manière bornée' : 'Test a bounded profile',
-  gov: fr ? 'Contrôler avant engagement' : 'Control before commit',
-};
-const shortName: Record<string,string> = {conformance:'REG Conformance',gov:'TENIR-Gov'};
-const foundationIds=['technical','reg-arch'];
+  {
+    title: fr ? 'Après une action · vérifier' : 'After an action · verify',
+    intro: fr ? 'Une action sensible doit rester dans un cadre déclaré, avec une réponse claire quand on ne sait pas encore ce qui s’est passé.' : 'A sensitive action needs a declared frame and a clear response when you do not yet know what happened.',
+    items: [['gov', fr ? 'Encadrer une action d’agent' : 'Bound an agent action'], ['conformance', fr ? 'Tester un profil de manière bornée' : 'Test a bounded profile']]
+  }
+];
+const status = (id: string) => portfolio[locale][id].status;
+const title = (id: string) => id === 'gov' ? 'TENIR-Gov' : id === 'conformance' ? 'REG Conformance' : portfolio[locale][id].title;
 ---
 <section class="portfolio-matrix" aria-labelledby="portfolio-matrix-title">
   <header class="pm-heading">
-    <div>
-      <p class="pf-overline">{fr ? 'Carte des capacités · produits et instruments' : 'Capability map · products and instruments'}</p>
-      <h2 id="portfolio-matrix-title">{fr ? 'Quel problème ? Quelle fonction ?' : 'Which problem? Which function?'}</h2>
-    </div>
-    <p>{fr
-      ? 'Les colonnes décrivent l’objet de votre question. Les lignes montrent la manière dont les instruments peuvent vous aider. Les cases vides ne sont pas des produits fictifs.'
-      : 'Columns identify the object of your question. Rows show how instruments may help. Empty cells are deliberate; they do not represent fictional products.'}</p>
+    <div><p class="pf-overline">{fr ? 'Récapitulatif · choisir un point de départ' : 'Recap · choose a starting point'}</p><h2 id="portfolio-matrix-title">{fr ? 'Avant ou après l’action ?' : 'Before or after the action?'}</h2></div>
+    <p>{fr ? 'Commencez par la situation que vous reconnaissez. Les fiches détaillent ensuite le résultat, le statut et les limites de chaque instrument.' : 'Start with the situation you recognize. Each profile then explains its output, status and limits.'}</p>
   </header>
-  <div class="pm-scroller" role="region" tabindex="0" aria-label={fr ? 'Matrice 2D des produits TENIR Labs' : 'TENIR Labs 2D product matrix'}>
-    <table class="pm-table">
-      <caption>{fr ? 'Matrice indicative : domaines de problème par fonction des instruments' : 'Indicative matrix: problem domains by instrument functions'}</caption>
-      <thead><tr>
-        <th class="pm-axis" scope="col">{fr ? 'Fonction ↓ / Problème →' : 'Function ↓ / Problem →'}</th>
-        {domains.map(domain => <th scope="col"><strong>{fr ? domain.fr : domain.en}</strong><span>{fr ? domain.detailFr : domain.detailEn}</span></th>)}
-      </tr></thead>
-      <tbody>{functions.map(fn => <tr>
-        <th scope="row"><strong>{fr ? fn.fr : fn.en}</strong><span class="pm-row-help">{fr ? fn.detailFr : fn.detailEn}</span></th>
-        {domains.map(domain => <td>
-          {placements[fn.id][domain.id].length ? <ul class="pm-items">
-            {placements[fn.id][domain.id].map(id => <li>
-              <a href={href(id)}><strong>{shortName[id] ?? portfolio[locale][id].title}</strong><span aria-hidden="true">↗</span></a>
-              <small>{note[id]}</small>
-              <small class="pm-item-status">{portfolio[locale][id].status}</small>
-            </li>)}
-          </ul> : <span class="pm-empty">{fr ? 'Pas d’instrument autonome répertorié' : 'No standalone instrument listed'}</span>}
-        </td>)}
-      </tr>)}</tbody>
-    </table>
+  <div class="pm-2x2" role="region" tabindex="0" aria-label={fr ? 'Matrice 2 par 2 des produits TENIR Labs' : 'TENIR Labs 2 by 2 product matrix'}>
+    {cells.map(cell => <section class="pm-cell"><h3>{cell.title}</h3><p>{cell.intro}</p><ul>{cell.items.map(([id, label]) => <li><a href={href(id)}><strong>{label}</strong><span aria-hidden="true">↗</span></a><small>{title(id)} · {status(id)}</small></li>)}</ul></section>)}
   </div>
-  <div class="pm-foundations" aria-label={fr ? 'Fondations transversales' : 'Cross-cutting foundations'}>
-    <div><span class="pf-overline">{fr ? 'Les fondations, hors matrice' : 'Foundations, outside the matrix'}</span>
-      <p>{fr
-        ? 'Elles encadrent plusieurs cases ; les assigner à une seule donnerait une image trompeuse de leur portée.'
-        : 'They inform several cells. Assigning each to only one would misrepresent its scope.'}</p>
-    </div>
-    <div class="pm-foundation-links">
-      {foundationIds.map(id => <a href={href(id)}>
-        <strong>{id==='technical'?'REG+ · RFC':'REG-ARCH'}</strong>
-        <span>{id==='technical'
-          ? (fr ? 'Médiation de profils et contrats · hors runtime' : 'Profile mediation and contracts · out of runtime')
-          : (fr ? 'Architecture des prétentions, actions et représentations' : 'Architecture of claims, actions and representations')}</span>
-      </a>)}
-    </div>
-  </div>
-  <div class="pm-transverse">
-    <p>{fr
-      ? 'TENIR est le cadre ; REG le standard proposé. Les services et les démos ne sont ni des normes ni des produits de contrôle en production.'
-      : 'TENIR is the framework; REG the proposed standard. Services and demos are neither standards nor live production controls.'}</p>
-    <p><a href={href('diagnostic')}>{fr ? 'Diagnostic accompagné' : 'Guided diagnostic'}</a>
-      {' · '}<a href={href('control-tower')}>Control Tower</a>
-      {' · '}<a href={href('experiences')}>{fr ? 'Expériences simulées' : 'Simulated experiences'}</a>
-    </p>
-    <p class="pm-disclaimer">{fr
-      ? 'Lecture éditoriale révisable. Un instrument peut apparaître plusieurs fois ; cela ne signifie ni intégration démontrée ni garantie de production. Ouvrir une fiche pour consulter son statut, son périmètre et ses limites.'
-      : 'Revisable editorial map. An instrument may appear more than once; this does not demonstrate integration or production guarantees. Open its profile for status, scope and limitations.'}</p>
-  </div>
+  <div class="pm-transverse"><p>{fr ? 'TENIR aide à poser la question ; les produits et services répondent à des moments différents. Une simulation ne vaut pas preuve de production.' : 'TENIR frames the question; products and services address different moments. A simulation is not proof of production.'}</p><p><a href={href('diagnostic')}>{fr ? 'Commencer par un diagnostic accompagné' : 'Start with a guided diagnostic'}</a>{' · '}<a href={url(fr ? '/pourquoi-maintenant/' : '/en/why-now/')}>{fr ? 'Pourquoi maintenant ?' : 'Why now?'}</a></p></div>
 </section>
