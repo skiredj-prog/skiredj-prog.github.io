@@ -141,6 +141,6 @@ Une pièce disponible, une déclaration et un contrôle vérifié portent des st
 - **En développement :** Discovery testé sur branche de travail, en aperçu privé ; Translation Studio en prototype ; Préparation en construction.
 - **À éprouver :** la valeur et le format de l'accompagnement lors des premières missions réelles.
 
-[Lire la spécification de cadrage REG v0.1 — Working Draft →](/publications/reg-v0.1/)
+**Spécification REG v0.1 — Working Draft :** document de cadrage en préparation pour publication. Le texte intégral n’est pas encore accessible sur ce site.
 [Voir le dossier simulé — aucune donnée client →](/offre/exemple/)
 [Nous contacter →](/contact/)

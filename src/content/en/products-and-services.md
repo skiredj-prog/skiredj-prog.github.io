@@ -141,6 +141,6 @@ Reference status as of **October 21, 2026**:
 - **In development:** Discovery tested on a development branch, in private preview; Translation Studio prototype; Readiness in progress.
 - **To validate:** the value and format of the service through the first real engagements.
 
-[Read the REG v0.1 framing specification — Working Draft →](/en/publications/reg-v0.1/)
+**REG v0.1 specification — Working Draft:** publication in preparation. The full text is not yet available on this site.
 [See the simulated file — no client data →](/en/offer/example/)
 [Contact us →](/en/contact/)
