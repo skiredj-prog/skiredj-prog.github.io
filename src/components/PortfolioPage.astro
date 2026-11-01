@@ -22,9 +22,9 @@ const kindName = (kind:string) => ({product:fr?'Produit ou instrument':'Product 
 ];
 const category = entry?.kind === 'service' ? 'services' : entry?.kind === 'demo' ? 'demos' : 'products';
 const hubEntries = hub ? hub.keys.map((id:string)=>portfolio[locale][id]) : [];
-const cardGroups = page === 'products' ? [
-  {title:fr?'Pour comprendre ou préparer':'To understand or prepare',note:fr?'Choisissez la situation qui vous ressemble, puis ouvrez une fiche à la fois.':'Choose the situation that looks like yours, then open one profile at a time.',entries:hubEntries.filter((item:any)=>item.kind==='product')},
-  {title:fr?'Pour examiner les fondations':'Explore the foundations',note:fr?'Architecture, textes et contrats techniques à lire.':'Architecture, texts and technical contracts to read.',entries:hubEntries.filter((item:any)=>item.kind==='foundation')},
+  const cardGroups = page === 'products' ? [
+  {layout:'stories',title:fr?'Commencez par une situation':'Start with a situation',note:fr?'Une fiche à la fois : ce qui vous amène, ce que le produit apporte et la suite possible.':'One profile at a time: what brings you here, what it provides and what comes next.',entries:hubEntries.filter((item:any)=>item.kind==='product')},
+  {layout:'foundations',title:fr?'Pour aller dans les fondations':'For the deeper foundations',note:fr?'À consulter seulement si vous cherchez l’architecture, les textes ou les contrats techniques.':'Open this only if you are looking for architecture, texts or technical contracts.',entries:hubEntries.filter((item:any)=>item.kind==='foundation')},
 ] : page === 'services' ? [
   {title:fr?'Un accompagnement à partir de votre question':'An engagement that starts with your question',note:fr?'Le périmètre, les livrables et le devis se conviennent avant de commencer.':'Scope, deliverables and the quote are agreed before work begins.',entries:hubEntries.filter((item:any)=>item.kind==='service')},
   {title:fr?'Des instruments selon le besoin':'Instruments to suit the question',note:fr?'Leur utilisation et une éventuelle intégration se cadrent séparément.':'Their use and any integration are scoped separately.',entries:hubEntries.filter((item:any)=>item.kind!=='service')},
@@ -69,7 +69,6 @@ const demos = [
       <div class="pf-intro-body"><h2>{hub.opening}</h2><p>{hub.intro}</p></div>
       <aside class="pf-aside"><span class="pf-aside-label">{fr?'À votre rythme':'At your own pace'}</span><strong>{hub.spotlight}</strong><p>{fr?'Vous pouvez passer d’un instrument à une démo, puis revenir aux sources ou à une conversation.':'Move from an instrument to a demo, then return to the sources or a conversation.'}</p></aside>
     </section>}
-    {page==='products'&&<PortfolioMatrix locale={locale} />}
     {page==='services'&&<section class="pf-service-example" aria-labelledby="pf-service-result">
       <div><p class="pf-overline">{fr?'Un exemple de travail ensemble':'An example of working together'}</p><h2 id="pf-service-result">{hub.opening}</h2><p>{fr?'Par exemple, un agent a envoyé une action et la confirmation manque. Avant de recommencer, regardons ce que les éléments permettent d’établir.':'For example, an agent sent an action and the confirmation is missing. Before trying again, examine what the available evidence establishes.'}</p><a href={path(fr?'offre/exemple':'offer/example')}>{fr?'Lire la fiche simulée et ses sources':'Read the simulated sheet and its sources'} →</a></div>
       <dl class="pf-exchange"><div><dt>{fr?'Vous apportez':'You bring'}</dt><dd>{fr?'Une action, une question et les éléments disponibles.':'An action, a question and the available materials.'}</dd></div><div><dt>{fr?'Nous examinons':'We examine'}</dt><dd>{fr?'Autorisation, envoi, résultat, inconnues et conditions de reprise.':'Authorization, dispatch, outcome, unknowns and recovery conditions.'}</dd></div><div><dt>{fr?'Vous repartez avec':'You leave with'}</dt><dd>{fr?'Une fiche sourcée, des annexes courtes et jusqu’à trois priorités.':'A sourced sheet, short annexes and up to three priorities.'}</dd></div></dl>
@@ -96,7 +95,8 @@ const demos = [
         <a class="btn" href={path('portfolio/workbench')}>{fr?'Lire la présentation':'Read the overview'} →</a>
       </section>
     </>}
-    {cardGroups.map(group=><section class="pf-card-group"><header><h2>{group.title}</h2>{group.note&&<p>{group.note}</p>}</header><div class:list={['pf-card-grid',group.entries.length===1&&'pf-card-grid-single']}>{group.entries.map((item:any)=><PortfolioCard locale={locale} item={item}/>)}</div></section>)}
+    {cardGroups.map(group=><section class:list={['pf-card-group',group.layout==='stories'&&'pf-product-stories',group.layout==='foundations'&&'pf-foundation-group']}><header><h2>{group.title}</h2>{group.note&&<p>{group.note}</p>}</header><div class:list={['pf-card-grid',group.layout==='stories'&&'pf-product-list',group.entries.length===1&&'pf-card-grid-single']}>{group.entries.map((item:any)=><PortfolioCard locale={locale} item={item}/>)}</div></section>)}
+    {page==='products'&&<section class="pf-matrix-summary" aria-labelledby="pf-matrix-summary-title"><p class="pf-overline">{fr?'Récapitulatif':'Recap'}</p><h2 id="pf-matrix-summary-title">{fr?'La matrice, en un coup d’œil':'The matrix, at a glance'}</h2><p>{fr?'Si vous préférez comparer avant de choisir, retrouvez ici les produits par moment de décision.':'If you prefer to compare before choosing, find the products grouped here by decision moment.'}</p><PortfolioMatrix locale={locale} /></section>}
     <section class="pf-conclusion"><div><h2>{fr?'Vous ne savez pas encore lequel choisir ?':'Still not sure which one fits?'}</h2><p>{fr?'Décrivez ce que vous cherchez à comprendre. Quelques lignes suffisent pour ouvrir la conversation.':'Describe what you are trying to understand. A few lines are enough to start a conversation.'}</p></div><a class="btn" href={contactHref}>{fr?'Ouvrir la page de contact':'Open the contact page'} →</a></section>
   </> : entry ? <>
     {page==='xray'&&<section id="explorer" class="pf-xray-explore" aria-labelledby="xray-explore-title">
