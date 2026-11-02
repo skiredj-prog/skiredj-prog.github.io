@@ -229,6 +229,7 @@ const frToEn: Record<string, string> = {
   "offre/exemple": "/en/offer/example/",
   souverainete: "/en/sovereignty/",
   "produits-et-services": "/en/products-and-services/",
+  "processus-et-roles": "/en/processus-et-roles/",
   "publications/reg-v0.1": "/en/publications/reg-v0.1/",
   "architecture/demo": "/en/architecture/demo/",
   "architecture/interactive": "/en/architecture/interactive/",

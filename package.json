@@ -14,6 +14,7 @@
     "check:assets": "node --experimental-strip-types scripts/check-asset-registry.mjs",
     "check:assets:unit": "node --experimental-strip-types scripts/check-asset-registry.mjs --self-test",
     "check:assets:remote": "node --experimental-strip-types scripts/check-asset-registry.mjs --remote",
+    "check:process-roles": "node scripts/check-process-roles.mjs",
     "check:workbench-release": "node scripts/check-workbench-release.mjs",
     "check:workbench-release:unit": "node scripts/check-workbench-release.mjs --self-test"
   },

@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import { processRoles, type ProcessRolesLocale } from '../data/processRoles';
+import { url } from '../data/site';
+interface Props { locale: ProcessRolesLocale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const copy = fr ? {
+  slug:'processus-et-roles', title:'Processus & rôles', kicker:'TENIR Labs · Contexte organisationnel', description:'Comprendre où TENIR intervient dans le cycle de décision et de travail autour de l’IA.', lede:'Vous ne cherchez pas un produit de plus. Vous cherchez à savoir quoi décider, qui doit intervenir, quelle activité changer et ce qu’il faudra pouvoir démontrer.', cycle:'Le cycle de travail', cycleNote:'Choisissez un moment du cycle pour voir la question, les personnes concernées, le bénéfice attendu et les instruments à relier.', roles:'Entrer par son rôle', rolesNote:'Le même cycle ne se lit pas de la même façon selon la responsabilité portée.', methods:'Voir les méthodes et leur statut', maturity:'Repère de maturité — tag de liaison, pas une échelle expliquée ici', users:'Personnes généralement impliquées', outputs:'Ce que le travail doit produire', benefit:'Ce que TENIR aide à obtenir', question:'La question de ce moment', instruments:'Instruments reliés', demo:'Scénario illustratif', cross:'M5 Coordinated', crossText:'Ce repère transversal s’applique lorsque plusieurs processus gouvernés partagent des ressources ou une même autorité.', approach:'Approche', back:'Retour au début du cycle'
+} : {
+  slug:'processus-et-roles', title:'Process & Roles', kicker:'TENIR Labs · Organizational context', description:'Understand where TENIR fits in the decision and work cycle around AI.', lede:'You are not looking for one more product. You need to know what to decide, who must be involved, which activity should change and what will need to be demonstrated.', cycle:'The work cycle', cycleNote:'Choose a moment in the cycle to see the question, people involved, expected benefit and related instruments.', roles:'Enter by role', rolesNote:'The same cycle looks different depending on the responsibility you carry.', methods:'See the related methods and their current status', maturity:'Maturity reference — a join tag, not the ladder explained here', users:'People typically involved', outputs:'What the work should produce', benefit:'What TENIR helps you obtain', question:'The question at this moment', instruments:'Related instruments', demo:'Illustrative scenario', cross:'M5 Coordinated', crossText:'This cross-cutting reference applies whenever several governed processes share resources or authority.', approach:'Approach', back:'Back to the beginning of the cycle'
+};
+const data = processRoles[locale];
+const stageHref = (id:string) => `#${id}`;
+const productHref = (id:string) => url(fr?`/portfolio/${id}/`:`/en/portfolio/${id}/`);
+---
+<Base locale={locale} slug={fr?'processus-et-roles':'processus-et-roles'} title={copy.title} description={copy.description} kicker={copy.kicker} lede={copy.lede} sources={fr?'Spécification de navigation Processus & rôles v1.0 · labels canoniques, périmètre organisationnel et liens vers le portefeuille public.':'Process & Roles navigation specification v1.0 · canonical labels, organizational scope and links to the public portfolio.'}>
+  <div class="pr-root">
+    <section class="pr-intro" aria-labelledby="pr-cycle-title">
+      <div><p class="pr-overline">{fr?'Une page, deux entrées':'One page, two entry points'}</p><h2 id="pr-cycle-title">{copy.cycle}</h2><p>{copy.cycleNote}</p></div>
+      <aside class="pr-intro-aside"><strong>{fr?'Situation → rôle → activité → bénéfice':'Situation → role → activity → benefit'}</strong><span>{fr?'Les produits restent dans leur catalogue. Ici, ils sont remis dans le contexte du travail.':'Products stay in their catalogue. Here, they are placed back in the context of work.'}</span></aside>
+    </section>
+    <nav class="pr-stage-strip" aria-label={fr?'Étapes du cycle':'Cycle stages'}>{data.stages.map((stage,index)=><a data-stage-link={stage.id} href={stageHref(stage.id)}><span>0{index+1}</span><strong>{stage.name}</strong><small>{stage.tag}</small></a>)}</nav>
+    <div class="pr-cross"><strong>{copy.cross}</strong><span>{copy.crossText}</span></div>
+    <section class="pr-stages" aria-label={copy.cycle}>
+      {data.stages.map((stage,index)=><article class="pr-stage" data-stage={stage.id} id={stage.id} aria-labelledby={`${stage.id}-title`}>
+        <div class="pr-stage-index"><span>0{index+1}</span><small>{stage.tag}</small></div>
+        <div class="pr-stage-main"><p class="pr-overline">{fr?'Moment du cycle':'Cycle moment'}</p><h2 id={`${stage.id}-title`}>{stage.name}</h2><p class="pr-question"><strong>{copy.question}</strong> {stage.question}</p>
+          <div class="pr-stage-grid"><div><h3>{copy.benefit}</h3><p>{stage.benefit}</p><h3>{copy.users}</h3><ul>{stage.users.map(user=><li>{user}</li>)}</ul></div><div><h3>{copy.outputs}</h3><ul>{stage.outputs.map(output=><li>{output}</li>)}</ul>{stage.approach&&<a class="pr-inline-link" href={url(stage.approach.href)}>{copy.approach} →</a>}{stage.demo&&<a class="pr-demo-link" href={url(stage.demo.href)}>{copy.demo} · {stage.demo.label} ↗</a>}</div></div>
+          <div class="pr-instruments"><div class="pr-instruments-head"><h3>{copy.instruments}</h3><a href={url(fr?'/portfolio/products/':'/en/portfolio/products/')}>{copy.methods} →</a></div><div class="pr-chips">{stage.instruments.map(item=><a class="pr-chip" href={productHref(item.id)}>{item.name}</a>)}</div></div>
+        </div>
+      </article>)}
+    </section>
+    <section class="pr-roles" aria-labelledby="pr-roles-title"><p class="pr-overline">{fr?'Deuxième entrée':'Second entry point'}</p><h2 id="pr-roles-title">{copy.roles}</h2><p class="pr-section-note">{copy.rolesNote}</p><div class="pr-role-grid">{data.roles.map(role=><article class="pr-role" id={role.id}><p class="pr-role-number">{role.id.replace('role-','0')}</p><h3>{role.name}</h3><p class="pr-mandate">{role.mandate}</p><div class="pr-role-stages"><strong>{fr?'Moments concernés':'Relevant moments'}</strong>{role.stages.map(id=>{const stage=data.stages.find(item=>item.id===id)!; return <a href={stageHref(id)}>{stage.name}</a>})}</div><div class="pr-role-benefits"><strong>{fr?'Bénéfices':'Benefits'}</strong><ul>{role.benefits.map(benefit=><li>{benefit}</li>)}</ul></div></article>)}</div></section>
+    <nav class="pr-end" aria-label={fr?'Poursuivre':'Continue'}><div><span class="pr-overline">{fr?'Après le contexte':'After context'}</span><h2>{copy.methods}</h2></div><a class="btn btn-primary" href={url(fr?'/portfolio/products/':'/en/portfolio/products/')}>{fr?'Ouvrir Produits et services':'Open Products & services'} →</a><a class="text-link" href="#pr-cycle-title">{copy.back} ↑</a></nav>
+  </div>
+</Base>
+
+<script>
+  const stageLinks = [...document.querySelectorAll('[data-stage-link]')];
+  const stages = [...document.querySelectorAll('[data-stage]')];
+  const setActiveStage = (id) => {
+    stageLinks.forEach((link) => {
+      const active = link.getAttribute('data-stage-link') === id;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'step');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  const initial = window.location.hash.replace('#', '');
+  let pinnedUntil = initial ? Date.now() + 900 : 0;
+  stageLinks.forEach((link) => link.addEventListener('click', () => {
+    setActiveStage(link.getAttribute('data-stage-link'));
+    pinnedUntil = Date.now() + 900;
+  }));
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (Date.now() < pinnedUntil) return;
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveStage(visible.target.getAttribute('data-stage'));
+    }, { rootMargin: '-18% 0px -64% 0px', threshold: [0.1, 0.35, 0.7] });
+    stages.forEach((stage) => observer.observe(stage));
+  }
+  setActiveStage(initial || stages[0]?.getAttribute('data-stage'));
+</script>
