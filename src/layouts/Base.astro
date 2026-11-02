@@ -6,6 +6,7 @@ import '../styles/journeys.css';
 import '../styles/responsibility.css';
 import '../styles/sector-map.css';
 import '../styles/execution-video.css';
+import '../styles/process-roles.css';
 import MarketingHome from '../components/MarketingHome.astro';
 import ContactBrief from '../components/ContactBrief.astro';
 import { journeys, journeyHref } from '../data/journeys';
@@ -20,6 +21,7 @@ const isCredibility=slug==='credibilite'||slug==='credibility';
 const isJourney=slug.startsWith('parcours/')||slug.startsWith('start/');
 const isBusiness=slug==='parcours/activite'||slug==='start/business';
 const isPortfolio=slug.startsWith('portfolio/');
+const isProcessRoles=slug==='processus-et-roles';
 const other=slug==='404'?(fr?'/en/':'/'):alternate(locale,slug);
 const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}`;
 const canonical=new URL(url(here),Astro.site);
@@ -71,7 +73,9 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
         <nav class="site-nav" id="main-navigation" aria-label={t.nav}>
           <a href={home?url(fr?'/':'/en/'):url(journeyHref(locale,journeys[locale][0]))} aria-current={home?'page':slug===(fr?'parcours/decouvrir':'start/discover')?'page':undefined}>{home?(fr?'Accueil':'Overview'):(fr?'Découvrir':'Discover')}</a>
           {!home&&<a href={path('parcours-ia','ai-readiness')}>{fr?'Aperçu de maturité':'Maturity preview'}</a>}
+          <a href={path('processus-et-roles')} aria-current={isProcessRoles?'page':undefined}>{fr?'Processus & rôles':'Process & Roles'}</a>
           <a href={path('portfolio/products')} aria-current={slug==='portfolio/products'?'page':undefined}>{fr?'Produits':'Products'}</a>
+          {!home&&<a href={path('credibilite','credibility')} aria-current={isCredibility?'page':undefined}>{fr?'Crédibilité':'Credibility'}</a>}
           <a href={home?path('portfolio/demos'):url(businessHref(locale))} aria-current={slug===(fr?'parcours/activite':'start/business')?'page':undefined}>{home?(fr?'Démos':'Demos'):(fr?'En pratique':'In practice')}</a>
           <details class="nav-group" hidden={home}><summary>{fr?'Essayer':'Try it'}</summary><div class="nav-menu"><a href={path('portfolio/demos')}><strong>{fr?'Voir les démonstrations':'Browse the demos'}</strong><small>{fr?'Scénarios, schémas et exemples à explorer':'Scenarios, diagrams and examples to explore'}</small></a><a href="https://mobile.tenirlabs.cc/discover"><strong>{fr?'Une tâche de rendez-vous':'An appointment task'}</strong><small>{fr?'Prototype mobile · aucun vrai message envoyé':'Mobile prototype · no real messages sent'}</small></a>{demo.links.map(link=><a href={url(link.href)} aria-current={link.slug===slug?'page':undefined}>{link.label}</a>)}</div></details>
           {home&&<a href={path('credibilite','credibility')}>{fr?'Crédibilité':'Evidence'}</a>}
