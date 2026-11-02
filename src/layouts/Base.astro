@@ -72,7 +72,7 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span>Menu</span><span class="menu-symbol" aria-hidden="true">☰</span></button>
         <nav class="site-nav" id="main-navigation" aria-label={t.nav}>
           <a href={home?url(fr?'/':'/en/'):url(journeyHref(locale,journeys[locale][0]))} aria-current={home?'page':slug===(fr?'parcours/decouvrir':'start/discover')?'page':undefined}>{home?(fr?'Accueil':'Overview'):(fr?'Découvrir':'Discover')}</a>
-          {!home&&<a href={path('parcours-ia','ai-readiness')}>{fr?'Aperçu de maturité':'Maturity preview'}</a>}
+          <a href={path('parcours-ia','ai-readiness')} aria-current={slug===(fr?'parcours-ia':'ai-readiness')?'page':undefined}>{fr?'Aperçu de maturité':'Maturity preview'}</a>
           <a href={path('processus-et-roles')} aria-current={isProcessRoles?'page':undefined}>{fr?'Processus & rôles':'Process & Roles'}</a>
           <a href={path('portfolio/products')} aria-current={slug==='portfolio/products'?'page':undefined}>{fr?'Produits':'Products'}</a>
           {!home&&<a href={path('credibilite','credibility')} aria-current={isCredibility?'page':undefined}>{fr?'Crédibilité':'Credibility'}</a>}
