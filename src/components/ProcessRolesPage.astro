@@ -20,10 +20,10 @@ const productHref = (id:string) => url(fr?`/portfolio/${id}/`:`/en/portfolio/${i
       <div><p class="pr-overline">{fr?'Une page, deux entrées':'One page, two entry points'}</p><h2 id="pr-cycle-title">{copy.cycle}</h2><p>{copy.cycleNote}</p></div>
       <aside class="pr-intro-aside"><strong>{fr?'Situation → rôle → activité → bénéfice':'Situation → role → activity → benefit'}</strong><span>{fr?'Les produits restent dans leur catalogue. Ici, ils sont remis dans le contexte du travail.':'Products stay in their catalogue. Here, they are placed back in the context of work.'}</span></aside>
     </section>
-    <nav class="pr-stage-strip" aria-label={fr?'Étapes du cycle':'Cycle stages'}>{data.stages.map((stage,index)=><a href={stageHref(stage.id)}><span>0{index+1}</span><strong>{stage.name}</strong><small>{stage.tag}</small></a>)}</nav>
+    <nav class="pr-stage-strip" aria-label={fr?'Étapes du cycle':'Cycle stages'}>{data.stages.map((stage,index)=><a data-stage-link={stage.id} href={stageHref(stage.id)}><span>0{index+1}</span><strong>{stage.name}</strong><small>{stage.tag}</small></a>)}</nav>
     <div class="pr-cross"><strong>{copy.cross}</strong><span>{copy.crossText}</span></div>
     <section class="pr-stages" aria-label={copy.cycle}>
-      {data.stages.map((stage,index)=><article class="pr-stage" id={stage.id} aria-labelledby={`${stage.id}-title`}>
+      {data.stages.map((stage,index)=><article class="pr-stage" data-stage={stage.id} id={stage.id} aria-labelledby={`${stage.id}-title`}>
         <div class="pr-stage-index"><span>0{index+1}</span><small>{stage.tag}</small></div>
         <div class="pr-stage-main"><p class="pr-overline">{fr?'Moment du cycle':'Cycle moment'}</p><h2 id={`${stage.id}-title`}>{stage.name}</h2><p class="pr-question"><strong>{copy.question}</strong> {stage.question}</p>
           <div class="pr-stage-grid"><div><h3>{copy.benefit}</h3><p>{stage.benefit}</p><h3>{copy.users}</h3><ul>{stage.users.map(user=><li>{user}</li>)}</ul></div><div><h3>{copy.outputs}</h3><ul>{stage.outputs.map(output=><li>{output}</li>)}</ul>{stage.approach&&<a class="pr-inline-link" href={url(stage.approach.href)}>{copy.approach} →</a>}{stage.demo&&<a class="pr-demo-link" href={url(stage.demo.href)}>{copy.demo} · {stage.demo.label} ↗</a>}</div></div>
@@ -35,3 +35,31 @@ const productHref = (id:string) => url(fr?`/portfolio/${id}/`:`/en/portfolio/${i
     <nav class="pr-end" aria-label={fr?'Poursuivre':'Continue'}><div><span class="pr-overline">{fr?'Après le contexte':'After context'}</span><h2>{copy.methods}</h2></div><a class="btn btn-primary" href={url(fr?'/portfolio/products/':'/en/portfolio/products/')}>{fr?'Ouvrir Produits et services':'Open Products & services'} →</a><a class="text-link" href="#pr-cycle-title">{copy.back} ↑</a></nav>
   </div>
 </Base>
+
+<script>
+  const stageLinks = [...document.querySelectorAll('[data-stage-link]')];
+  const stages = [...document.querySelectorAll('[data-stage]')];
+  const setActiveStage = (id) => {
+    stageLinks.forEach((link) => {
+      const active = link.getAttribute('data-stage-link') === id;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'step');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  const initial = window.location.hash.replace('#', '');
+  let pinnedUntil = initial ? Date.now() + 900 : 0;
+  stageLinks.forEach((link) => link.addEventListener('click', () => {
+    setActiveStage(link.getAttribute('data-stage-link'));
+    pinnedUntil = Date.now() + 900;
+  }));
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (Date.now() < pinnedUntil) return;
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveStage(visible.target.getAttribute('data-stage'));
+    }, { rootMargin: '-18% 0px -64% 0px', threshold: [0.1, 0.35, 0.7] });
+    stages.forEach((stage) => observer.observe(stage));
+  }
+  setActiveStage(initial || stages[0]?.getAttribute('data-stage'));
+</script>
