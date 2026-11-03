@@ -34,7 +34,7 @@ for (const [lang, home, productsPath] of [
   assert(nav.includes(`href="${productsPath}"`), `${lang}: Products link missing from header nav`);
   assert(existsSync(paths(lang,'products')), `${lang}: menu destination not built`);
   const expectedLabel = lang === 'fr' ? 'Produits' : 'Products';
-  assert(nav.includes(`>${expectedLabel}</a>`), `${lang}: visible Products label missing`);
+  assert(nav.includes(`<summary>${expectedLabel}</summary>`), `${lang}: visible Products label missing`);
   const productNavLinks = (nav.match(new RegExp('href="' + productsPath + '"','g')) || []).length;
   assert.equal(productNavLinks, 1, `${lang}: duplicate Products entry in header navigation`);
 }
