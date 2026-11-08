@@ -42,10 +42,12 @@ try {
       await page.waitForURL('**/diagnostic-execution/');
       assert(await page.locator('h1').first().isVisible(),locale+': offer page heading missing');
       assert(await page.locator('main').isVisible(),locale+': offer page body missing');
-      const freeReport=page.locator('.site-nav a[href="'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/')+'"]');
-      assert.equal(await freeReport.count(),1,locale+': interior navigation must link directly to the free report');
+      // The free report is the permanent header call to action: in the bar, or at the top of the menu on narrow screens.
+      const freeReport=page.locator('.site-header a[href="'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/')+'"]');
+      assert.equal(await freeReport.count(),2,locale+': header must link to the free report (bar and menu)');
       if(width<=1100)await page.locator('[data-menu-toggle]').click();
-      assert(await freeReport.isVisible(),locale+'/'+width+': free report not visible in the interior primary navigation');
+      assert.equal(await freeReport.filter({visible:true}).count(),1,locale+'/'+width+': exactly one free-report link must be visible in the header');
+      assert.equal(await page.locator('.site-nav > a').count(),4,locale+': header must expose the four sections');
 
       const offerWidth=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
       assert(offerWidth.scroll<=offerWidth.viewport+2,locale+'/'+width+': offer page horizontal overflow ('+(offerWidth.scroll-offerWidth.viewport)+'px)');
@@ -64,14 +66,15 @@ try {
       page.on('pageerror',err=>errors.push(err.message));
       await page.goto('http://127.0.0.1:4173'+route,{waitUntil:'networkidle'});
       assert(await page.locator('#pa-start').isVisible(),locale+': pathway start missing');
-      const menu=page.locator('.pa-mobile-menu');
-      assert(await menu.isVisible(),locale+': mobile pathway navigation must be visible');
-      await menu.locator('summary').click();
-      const navLinks=menu.locator('nav a');
-      assert.equal(await navLinks.count(),5,locale+': pathway menu must expose five links');
-      assert(await navLinks.first().isVisible(),locale+': pathway home link must be reachable');
-      assert((await navLinks.first().getAttribute('href'))===(locale==='fr'?'/':'/en/'),locale+': pathway home destination wrong');
-      await menu.locator('summary').click();
+      // The report page uses the site header: the menu opens and the brand leads home.
+      const toggle=page.locator('[data-menu-toggle]');
+      assert(await toggle.isVisible(),locale+': site menu button must be visible on the report page');
+      await toggle.click();
+      const navLinks=page.locator('#main-navigation > a');
+      assert.equal(await navLinks.count(),4,locale+': report page menu must expose the four sections');
+      assert(await navLinks.first().isVisible(),locale+': report page menu must open');
+      assert((await page.locator('.site-header .brand').getAttribute('href'))===(locale==='fr'?'/':'/en/'),locale+': brand must lead home');
+      await toggle.click();
 
       assert.equal(await page.locator('input[type=email]').count(),0,locale+': report must not demand an email address');
       await page.locator('#pa-start').click();
@@ -129,8 +132,8 @@ try {
   for(const locale of ['fr','en']){
     const page=await browser.newPage({viewport:{width:1710,height:740},reducedMotion:'reduce'});
     await page.goto('http://127.0.0.1:4173'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/'),{waitUntil:'networkidle'});
-    assert(await page.locator('.pa-desktop-nav').isVisible(),locale+': desktop pathway navigation absent');
-    assert.equal(await page.locator('.pa-desktop-nav a').count(),5,locale+': desktop pathway menu incomplete');
+    assert(await page.locator('#main-navigation').isVisible(),locale+': desktop site navigation absent on the report page');
+    assert.equal(await page.locator('#main-navigation > a').count(),4,locale+': desktop site navigation incomplete');
     const start=await page.locator('#pa-start').boundingBox();
     assert(start && start.y+start.height<=724,locale+': start questionnaire below first visible desktop viewport');
     await page.close();

@@ -1,12 +1,11 @@
 /* Scoped to the replay; other site journeys retain their layout. */
 .doc:has(.replay-page) { grid-template-columns: minmax(0, 1fr); }
 .doc:has(.replay-page) .prose { max-width: none; }
-.doc:has(.replay-page) .doc-head { margin-bottom: .5rem; padding-bottom: 0; border-bottom: 0; }
-.doc:has(.replay-page) .doc-head h1 { font-size: 1.6rem; margin: .4rem 0; }
-.doc:has(.replay-page) .doc-head .lede { font-size: .95rem; margin-top: .6rem; }
+.page-main:has(.replay-page) .page-hero-inner { padding-block: 1.1rem 1.3rem; }
+.page-main:has(.replay-page) .page-hero h1 { font-size: 1.6rem; margin: .4rem 0; }
+.page-main:has(.replay-page) .page-hero .lede { font-size: .95rem; margin-top: .6rem; }
 .doc:has(.replay-page) .toc,
 .doc:has(.replay-page) .mobile-toc,
-.doc:has(.replay-page) .next-reading { display: none; }
 .replay-page { padding: 1rem 0 3rem; }
 .replay-page .replay-hero { max-width: 48rem; margin-bottom: 2rem; }
 .replay-page .replay-hero h2 { font: 500 clamp(2rem, 4vw, 3.5rem)/1.1 var(--serif); margin: 0; letter-spacing: -.025em; }

@@ -1,14 +1,11 @@
 ---
-import '../styles/fonts.css';
 import '../styles/pathway.css';
+import Base from '../layouts/Base.astro';
 import {url, type Locale} from '../data/site';
 interface Props { locale: Locale }
 const {locale}=Astro.props;
 const fr=locale==='fr';
 const home=url(fr?'/':'/en/');
-const other=url(fr?'/en/ai-readiness/':'/parcours-ia/');
-const here=url(fr?'/parcours-ia/':'/en/ai-readiness/');
-const canonical=new URL(here,Astro.site);
 const t=fr?{
 title:"Votre aperçu de maturité IA — TENIR Labs",
 desc:"En dix questions, situez votre point de départ sur un parcours de maturité et identifiez la prochaine vérification utile. Sans compte.",
@@ -66,52 +63,10 @@ missing:"Not assessed",backToTop:"Back to start"
 };
 const demo=url(fr?'/portfolio/control-tower/':'/en/portfolio/control-tower/');
 const contact=url(fr?'/contact/':'/en/contact/');
-const navItems=fr?[
-  {label:'Accueil',href:url('/')},
-  {label:'Produits',href:url('/portfolio/products/')},
-  {label:'Démos',href:url('/portfolio/demos/')},
-  {label:'Crédibilité',href:url('/credibilite/')},
-  {label:'Approche',href:url('/produits-et-services/')},
-]:[
-  {label:'Home',href:url('/en/')},
-  {label:'Products',href:url('/en/portfolio/products/')},
-  {label:'Demos',href:url('/en/portfolio/demos/')},
-  {label:'Evidence',href:url('/en/credibility/')},
-  {label:'Approach',href:url('/en/products-and-services/')},
-];
 ---
-<!doctype html>
-<html lang={locale}>
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-  <meta name="theme-color" content="#071629"/>
-  <title>{t.title}</title><meta name="description" content={t.desc}/>
-  <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml"/>
-  <link rel="canonical" href={canonical}/>
-  <link rel="alternate" hreflang="fr" href={new URL(url('/parcours-ia/'),Astro.site)}/>
-  <link rel="alternate" hreflang="en" href={new URL(url('/en/ai-readiness/'),Astro.site)}/>
-  <meta property="og:title" content={t.title}/><meta property="og:description" content={t.desc}/>
-</head>
-<body data-pathway-app data-locale={locale} data-contact-href={contact} data-demo-href={demo} data-home-href={home}>
-  <a class="pa-skip" href="#pa-main">{fr?'Aller au contenu':'Skip to content'}</a>
-  <header class="pa-header">
-    <a href={home} class="pa-brand" aria-label={fr?'TENIR Labs — accueil':'TENIR Labs — home'}>TENIR<span>·</span>Labs</a>
-    <div class="pa-header-right">
-      <nav class="pa-desktop-nav" aria-label={fr?'Navigation principale':'Main navigation'}>
-        {navItems.map(item=><a href={item.href}>{item.label}</a>)}
-      </nav>
-      <span class="pa-header-label">{t.label}</span>
-      <details class="pa-mobile-menu">
-        <summary>{fr?'Menu':'Menu'} <span aria-hidden="true">☰</span></summary>
-        <nav aria-label={fr?'Navigation principale':'Main navigation'}>
-          {navItems.map(item=><a href={item.href}>{item.label}</a>)}
-        </nav>
-      </details>
-      <a class="pa-lang" href={other} lang={fr?'en':'fr'}>{fr?'EN':'FR'}</a>
-    </div>
-  </header>
-  <main id="pa-main">
+<Base locale={locale} slug={fr?'parcours-ia':'ai-readiness'} documentTitle={t.title} title={fr?'Aperçu de maturité':'Maturity preview'} description={t.desc} kicker={t.label} lede={t.lead} sources="">
+<div class="pa-app" data-pathway-app data-locale={locale} data-contact-href={contact} data-demo-href={demo} data-home-href={home}>
+  <div id="pa-main">
     <section class="pa-intro" id="pa-intro" aria-labelledby="pa-title">
       <div class="pa-intro-inner">
         <span class="pa-eyebrow">{t.tag}</span>
@@ -151,8 +106,7 @@ const navItems=fr?[
         <p class="pa-limits">{t.limits}</p>
       </div>
     </section>
-  </main>
-  <footer class="pa-footer"><a href={home}>{t.home}</a><span>© 2026 TENIR Labs · Casablanca</span><a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a></footer>
-  <script src={url('/pathway.js')} defer></script>
-</body>
-</html>
+  </div>
+</div>
+<script src={url('/pathway.js')} defer></script>
+</Base>

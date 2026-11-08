@@ -1,0 +1,20 @@
+---
+// Closing band of doc-template pages: one next step, stated plainly.
+import { url, type Locale } from '../data/site';
+import { bandFor } from '../data/navigation';
+interface Props { locale: Locale; slug: string; contactHref: string; }
+const { locale, slug, contactHref } = Astro.props;
+const band = bandFor(locale, slug, contactHref);
+const id = 'cta-band-title';
+---
+<section class="cta-band" aria-labelledby={id}>
+  <div class="cta-band-inner">
+    <p class="cta-band-kicker">{band.kicker}</p>
+    <h2 id={id}>{band.title}</h2>
+    <p class="cta-band-text">{band.text}</p>
+    <div class="cta-band-actions">
+      <a class="btn btn-primary" href={url(band.primary.href)}>{band.primary.label} <span aria-hidden="true">→</span></a>
+      {band.secondary && <a class="btn cta-band-secondary" href={band.secondary.resolved ? band.secondary.href : url(band.secondary.href)}>{band.secondary.label} <span aria-hidden="true">{band.secondary.external ? '↗' : '→'}</span></a>}
+    </div>
+  </div>
+</section>

@@ -80,7 +80,8 @@ try {
       [scenario.replay, '[data-capture-replay-link]'],
     ]) {
       await navigation.goto(base + from);
-      assert.equal(await navigation.locator(`#main-navigation a[href="${scenario.route}"]`).count(), 1);
+      // Since the four-section header (Nov. 2026), individual demos are listed in the footer site map on every page.
+      assert.equal(await navigation.locator(`.footer-links a[href="${scenario.route}"]`).count(), 1);
       await navigation.locator(selector).click();
       await navigation.waitForURL(base + scenario.route);
       assert(await navigation.locator('.capture-demo').isVisible());
