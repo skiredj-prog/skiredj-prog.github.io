@@ -36,6 +36,13 @@ const t=fr?{
  next:'Et maintenant ?',cta2:'Découvrir votre propre parcours',cta2Desc:'Répondez à dix questions et obtenez votre rapport de parcours gratuit, avec trois prochaines étapes adaptées à vos réponses.',
  email:'Discuter d’un cas réel',
  labelSummary:'Version 5.7.0 · Source datée du 24 octobre 2026',
+ holdPanel:'Expérience E1-A6 · HOLD',
+ holdPanelNote:'Artefact distinct : 99 runs sur skiredj-prog/hold · commit f3bb683. Ne couvre pas la suite Raft ci-contre.',
+ holdH1:'H1 acceptée — 33/33 violations arrêtées (cond. A)',
+ holdH2:'H2 acceptée — 8 complétions légitimes (cond. C)',
+ holdH3:'H3 non évaluée dans E1-A6',
+ holdAudit:'Audit Harv Banning · 21 894 contrôles · verdict : qualified support',
+ holdCta:"Voir l’expérience complète",
 } : {
  eyebrow:'CREDIBILITY JOURNEY · TENIR-GOV 5.7.0',
  title:'See what works. Understand what remains to be proven.',
@@ -67,7 +74,14 @@ const t=fr?{
  open:'Open full screen',historical:'View historical 5.6.0 illustration',
  next:'What next?',cta2:'Discover your own AI pathway',cta2Desc:'Answer ten questions and get a free pathway report with three next steps matched to your answers.',
  email:'Discuss one real use case',
- labelSummary:'Version 5.7.0 · Source dated October 24, 2026'
+ labelSummary:'Version 5.7.0 · Source dated October 24, 2026',
+ holdPanel:'E1-A6 Experiment · HOLD',
+ holdPanelNote:'Separate artefact: 99 runs on skiredj-prog/hold · commit f3bb683. Does not cover the Raft suite opposite.',
+ holdH1:'H1 accepted — 33/33 violations stopped (cond. A)',
+ holdH2:'H2 accepted — 8 legitimate completions (cond. C)',
+ holdH3:'H3 not evaluated in E1-A6',
+ holdAudit:'Harv Banning audit · 21,894 checks · verdict: qualified support',
+ holdCta:'See full experiment',
 };
 const embed='/embeds/interactive-architecture-v5.7.0.html';
 const release='https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0';
@@ -98,6 +112,7 @@ const report=url(fr?'/parcours-ia/':'/en/ai-readiness/');
         <article class="cr-panel"><small>{t.version}</small><h2>TENIR-Gov v5.7.0</h2><p>{t.exact} <code>47ef67e3efc5f3008896a7d88bebf929fa0a98f0</code></p><a href={release} target="_blank" rel="noopener">{t.release} ↗</a></article>
         <article class="cr-panel"><small>{t.internal}</small><h2>1 286 PASS</h2><p>{t.tests}</p><a href={run} target="_blank" rel="noopener">{t.inspect} ↗</a></article>
         <article class="cr-panel"><small>{t.external}</small><h2>Harv Banning · 81/81</h2><p>{t.reviewer}</p><p class="cr-note">{t.externalNote}</p><p class="cr-digest"><strong>{t.testDurationLabel} : {t.testDuration}</strong></p><p class="cr-digest">macOS 26.6.2 · Python 3.12.7 · pytest 8.4.2 · PySyncObj 0.3.17</p><p class="cr-digest">{t.logHashLabel} : <code>0e0cbafda8c90735bf277d783d69ce91df36c5abcad26ac81de4a2d82fe7ff03</code></p></article>
+        <article class="cr-panel cr-panel--hold"><small>{t.holdPanel}</small><p class="cr-panel-note">{t.holdPanelNote}</p><ul class="cr-hold-results"><li>{t.holdH1}</li><li>{t.holdH2}</li><li class="cr-hold-open">{t.holdH3}</li></ul><p class="cr-digest">{t.holdAudit}</p><a href={url(fr?'/hold/':'/en/hold/')}>{t.holdCta} →</a></article>
       </div>
     </div>
   </section>

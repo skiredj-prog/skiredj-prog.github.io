@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import { publishableClaims, holdE1A6Stats, type Claim } from '../data/claims';
+import { url } from '../data/site';
+const locale = 'fr';
+const claims = publishableClaims;
+const tenirClaims = claims.filter((c: Claim) => c.product === 'tenir-gov');
+const holdClaims = claims.filter((c: Claim) => c.product === 'hold');
+const statusLabel: Record<string, string> = {
+  supported: "Supportée",
+  partial: "Partielle",
+  withdrawn: "Retraitée",
+  experimental: "Expérimentale",
+};
+const statusClass: Record<string, string> = {
+  supported: "claim-badge--supported",
+  partial: "claim-badge--partial",
+  withdrawn: "claim-badge--withdrawn",
+  experimental: "claim-badge--experimental",
+};
+---
+<Base locale="fr" slug="affirmations" title="Registre d&rsquo;affirmations &middot; TENIR Labs" description="Ce que TENIR Labs affirme — et ce qu’il n’affirme pas. Toutes les affirmations vérifiées, avec ancres, limites et statuts." kicker="Registre d’affirmations" lede="Ce que nous affirmons. Et ce que nous n’affirmons pas." sources="TENIR-Gov v5.7.0 · HOLD E1-A6 · commit f3bb683">
+
+  <div class="aff-root">
+
+    <section class="aff-hero">
+      <div class="aff-wrap">
+        <p class="aff-eyebrow">REGISTRE D&rsquo;AFFIRMATIONS &middot; TENIR LABS</p>
+        <h1>Ce que nous affirmons. Et ce que nous n&rsquo;affirmons pas.</h1>
+        <p class="aff-lead">Chaque affirmation est ancr&eacute;e sur un commit pr&eacute;cis, un run d&rsquo;exp&eacute;rience ou un audit documentaire. Les limites font partie du registre.</p>
+      </div>
+    </section>
+
+    <section class="aff-quick-stats">
+      <div class="aff-wrap">
+        <div class="aff-stat-row">
+          <div class="aff-stat">
+            <strong>{holdE1A6Stats.totalRuns}</strong>
+            <span>runs HOLD E1-A6</span>
+          </div>
+          <div class="aff-stat">
+            <strong>{holdE1A6Stats.conditions.A.violations}/{holdE1A6Stats.conditions.A.runs}</strong>
+            <span>violations arr&ecirc;t&eacute;es (cond. A)</span>
+          </div>
+          <div class="aff-stat">
+            <strong>{holdE1A6Stats.audit.passed.toLocaleString('fr')}</strong>
+            <span>contr&ocirc;les d&rsquo;audit r&eacute;ussis</span>
+          </div>
+          <div class="aff-stat">
+            <strong>{claims.length}</strong>
+            <span>affirmations publiables</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="aff-claims">
+      <div class="aff-wrap">
+        <div class="aff-filter-bar">
+          <button class="claims-filter-btn active" data-filter="all">Toutes</button>
+          <button class="claims-filter-btn" data-filter="tenir-gov">TENIR-Gov</button>
+          <button class="claims-filter-btn" data-filter="hold">HOLD</button>
+        </div>
+
+        <ul class="aff-claims-list">
+          {claims.map((c: Claim) => (
+            <li class="claims-item" data-product={c.product}>
+              <div class="claims-item-header">
+                <code class="claims-id">{c.id}</code>
+                <span class={`claim-badge ${statusClass[c.status]}`}>{statusLabel[c.status]}</span>
+                <span class="claims-product">{c.product}</span>
+              </div>
+              <p class="claims-statement">{c.statement.fr}</p>
+              <p class="claims-basis">{c.basis.fr}</p>
+              <p class="claims-limit"><em>Limite :&nbsp;</em>{c.limit.fr}</p>
+              <code class="claims-anchor">{c.anchor}</code>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="aff-nonclaims">
+      <div class="aff-wrap">
+        <h2>Ce que nous n&rsquo;affirmons pas</h2>
+        <ul class="aff-nonclaims-list">
+          <li>Que TENIR-Gov &eacute;limine tout risque d&rsquo;action illigitime d&rsquo;un agent IA.</li>
+          <li>Que les r&eacute;sultats de E1-A6 sont g&eacute;n&eacute;ralisables sans nouvelle exp&eacute;rience.</li>
+          <li>Que l&rsquo;audit Harv Banning constitue une certification formelle.</li>
+          <li>Que l&rsquo;isolation du Governor est compl&egrave;te dans le lot B1 (voir branche exp&eacute;rimentale).</li>
+        </ul>
+        <p class="aff-nav"><a href={url('/hold/')}>D&eacute;tails exp&eacute;rience HOLD E1-A6 &rarr;</a>&ensp;&middot;&ensp;<a href={url('/credibilite/')}>Parcours Cr&eacute;dibilit&eacute; TENIR-Gov &rarr;</a></p>
+      </div>
+    </section>
+
+  </div>
+
+  <style>
+    .aff-root{background:var(--bg);color:var(--text)}
+    .aff-wrap{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+    .aff-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border,#e5e7eb)}
+    .aff-eyebrow{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-bottom:.75rem}
+    .aff-hero h1{font-size:clamp(1.5rem,4vw,2.4rem);line-height:1.2;max-width:44rem}
+    .aff-lead{font-size:1.05rem;max-width:42rem;opacity:.8;margin:1rem 0 0}
+    .aff-quick-stats{padding:2.5rem 0;background:var(--bg-alt,#f9fafb)}
+    .aff-stat-row{display:flex;gap:2rem;flex-wrap:wrap}
+    .aff-stat strong{display:block;font-size:1.3rem;font-weight:700;color:var(--accent,#3fbf9a)}
+    .aff-stat span{font-size:.82rem;opacity:.7}
+    .aff-claims{padding:3rem 0}
+    .aff-filter-bar{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+    .claims-filter-btn{padding:.35rem .9rem;border:1px solid var(--border,#e5e7eb);border-radius:2rem;background:transparent;cursor:pointer;font-size:.82rem;color:var(--text);transition:background .15s,color .15s}
+    .claims-filter-btn.active,.claims-filter-btn:hover{background:var(--accent,#3fbf9a);color:#fff;border-color:var(--accent,#3fbf9a)}
+    .aff-claims-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:1.25rem}
+    .claims-item{border:1px solid var(--border,#e5e7eb);border-radius:.5rem;padding:1.25rem}
+    .claims-item-header{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.75rem}
+    .claims-id{font-size:.8rem;background:var(--bg-alt,#f3f4f6);padding:.15rem .4rem;border-radius:.2rem}
+    .claim-badge{font-size:.7rem;font-weight:700;padding:.2rem .55rem;border-radius:2rem;letter-spacing:.03em}
+    .claim-badge--supported{background:#d1fae5;color:#065f46}
+    .claim-badge--partial{background:#fef3c7;color:#92400e}
+    .claim-badge--withdrawn{background:#fee2e2;color:#991b1b}
+    .claim-badge--experimental{background:#ede9fe;color:#4c1d95}
+    .claims-product{font-size:.75rem;opacity:.5;text-transform:uppercase;letter-spacing:.06em}
+    .claims-statement{font-weight:600;margin:.5rem 0 .4rem;line-height:1.5}
+    .claims-basis{font-size:.88rem;opacity:.8;margin:0 0 .4rem;line-height:1.6}
+    .claims-limit{font-size:.82rem;opacity:.65;margin:0 0 .5rem;line-height:1.5}
+    .claims-anchor{font-size:.75rem;opacity:.45}
+    .aff-nonclaims{padding:3rem 0 5rem;background:var(--bg-alt,#f9fafb)}
+    .aff-nonclaims h2{font-size:1.1rem;font-weight:600;margin-bottom:1rem}
+    .aff-nonclaims-list{padding-left:1.25rem;display:flex;flex-direction:column;gap:.5rem;font-size:.92rem;opacity:.8;max-width:52rem}
+    .aff-nav{margin-top:1.5rem;font-size:.88rem}
+    .aff-nav a{color:var(--accent,#3fbf9a);text-decoration:underline}
+  </style>
+
+  <script>
+    const btns = document.querySelectorAll('.claims-filter-btn');
+    const items = document.querySelectorAll('.claims-item');
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var filter = btn.getAttribute('data-filter') || 'all';
+        btns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        items.forEach(function(item) {
+          var el = item as HTMLElement;
+          el.style.display = (filter === 'all' || el.getAttribute('data-product') === filter) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+
+</Base>
