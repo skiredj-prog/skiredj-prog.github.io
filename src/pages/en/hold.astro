@@ -12,27 +12,27 @@ const n = (v: number) => v.toLocaleString('en-GB');
   title="HOLD — Experiment E1-A6"
   description="Results of the E1-A6 experiment: 99 runs, three conditions, hypotheses H1/H2/H3, independent audit by Harv Banning."
   kicker="Experiment"
-  lede="HOLD stops violations. Legitimate completions still go through. 99 runs, three conditions, one independent audit — and what none of it shows."
+  lede="The same model, left alone, executed 66 violations. Under HOLD, none — and 8 missions completed with a receipt. 99 runs, three conditions, one independent audit, and what none of it shows."
   sources="HOLD · skiredj-prog/hold repository · commit f3bb683 · Harv Banning audit archive of 3 November 2026"
 >
 
   <div class="hold-stats">
-    <div><strong>{s.totalRuns}</strong><span>runs in total</span></div>
-    <div><strong class="is-stop">{s.conditions.A.violations}/{s.conditions.A.runs}</strong><span>violations stopped (cond. A)</span></div>
-    <div><strong class="is-warn">{s.conditions.B.violations}/{s.conditions.B.runs}</strong><span>residual violations (cond. B)</span></div>
-    <div><strong class="is-ok">{s.conditions.C.completed}/{s.conditions.C.runs}</strong><span>CLOSED_COMPLETED (cond. C)</span></div>
+    <div><strong class="is-stop">{s.conditions.A.violations}</strong><span>violations executed — A, agent alone</span></div>
+    <div><strong class="is-warn">{s.conditions.B.violations}</strong><span>violations — B, cautious agent + human</span></div>
+    <div><strong class="is-ok">{s.conditions.C.violations}</strong><span>violations — C, under HOLD</span></div>
+    <div><strong class="is-ok">{s.conditions.C.completed}/{s.conditions.C.runs}</strong><span>missions completed with a receipt — C</span></div>
   </div>
 
   <h2>Distribution of the 99 runs</h2>
 
-  <p>Each dot is one run. Three conditions, 33 runs each, across 11 scenarios.</p>
+  <p>Each dot is one run. Three conditions, 33 runs each, across 11 scenarios. Only condition C carries HOLD: A is the same model left to itself, B a cautious agent assisted by a simulated human.</p>
 
   <div class="hold-chart">
     <div class="hold-row">
       <span class="hold-row-label">A</span>
       <div class="hold-dots">
-        {Array.from({ length: s.conditions.A.violations }, (_, i) => (
-          <span class="hold-dot is-violation" title={`A-${i + 1} · violation stopped`}></span>
+        {Array.from({ length: s.conditions.A.runsWithExecutedBooking }, (_, i) => (
+          <span class="hold-dot is-violation" title={`A-${i + 1} · booking executed on invented values`}></span>
         ))}
       </div>
     </div>
@@ -62,13 +62,13 @@ const n = (v: number) => v.toLocaleString('en-GB');
       </div>
     </div>
     <ul class="hold-legend">
-      <li><span class="hold-dot is-violation"></span>Violation</li>
+      <li><span class="hold-dot is-violation"></span>Run with an executed violation</li>
       <li><span class="hold-dot is-completed"></span>CLOSED_COMPLETED</li>
       <li><span class="hold-dot is-unconfirmed"></span>CLOSED_UNCONFIRMED</li>
       <li><span class="hold-dot is-noeffect"></span>CLOSED_NO_EFFECT</li>
       <li><span class="hold-dot is-other"></span>Other outcome</li>
     </ul>
-    <p class="hold-source-line">Source: <code>run_counts.csv</code> · audit archive of 3 November 2026 · commit <code>f3bb683</code></p>
+    <p class="hold-source-line">A counts 33 runs with an executed booking, for 66 violation categories (values never observed + price not verifiable). Source: <code>E1_A6_RESULTS.md</code>, the “What happened” table · commit <code>f3bb683</code></p>
   </div>
 
   <h2>Hypotheses</h2>
@@ -77,12 +77,12 @@ const n = (v: number) => v.toLocaleString('en-GB');
     <article class="is-accepted">
       <p class="hold-verdict">Accepted — E1-A6 scope</p>
       <h3>H1 — Execution integrity</h3>
-      <p>Condition A: 33 violations out of 33 stopped. HOLD holds the non-violating state across every run of the strict condition.</p>
+      <p>Zero violations executed across the 33 runs under HOLD, with a floor genuinely exercised: 164 effect proposals reached it. Counterfactual on the same model, tools and messages: left alone, that model booked on invented values in 33 runs out of 33.</p>
     </article>
     <article class="is-accepted">
       <p class="hold-verdict">Accepted</p>
       <h3>H2 — Legitimate progress</h3>
-      <p>Condition C: 8 CLOSED_COMPLETED, 22 CLOSED_UNCONFIRMED, 3 CLOSED_NO_EFFECT. Legitimate completions proceed without artificial blocking.</p>
+      <p>Condition C: 8 CLOSED_COMPLETED, 22 CLOSED_UNCONFIRMED, 3 CLOSED_NO_EFFECT, 0 violations. Condition B: 0 legitimate completions for 3 violations. Legitimate completions proceed without artificial blocking.</p>
     </article>
     <article class="is-open">
       <p class="hold-verdict">Not evaluated</p>
@@ -99,14 +99,15 @@ const n = (v: number) => v.toLocaleString('en-GB');
 
   <blockquote class="hold-quote">
     <p>Verdict returned: <strong>qualified support, not certification</strong>.</p>
-    <p class="hold-quote-note">AI-assisted audit. No human reviewer has signed it to date.</p>
+    <p class="hold-quote-note">The auditor adds that unqualified frozen-protocol acceptance is not established: 22 of 23 raw fingerprints fail (all resolve under CRLF→LF normalisation), H1’s full stated condition scope is absent from the delivered source, and B’s completion wording is ambiguous. AI-assisted audit, with no human reviewer signature.</p>
   </blockquote>
 
   <h2>Explicit limits</h2>
 
   <ul>
     <li>The results belong to E1-A6 (Llama 3.2 3B, synthetic hotel environment). They do not generalise without a new experiment.</li>
-    <li>The experiment does not establish that the effect is unique to HOLD: there is no control arm without HOLD.</li>
+    <li>The experiment does not isolate which component of the HOLD condition produces the effect: H2 compares the whole — floor, reconciliation, agent contract — against condition B, not the floor alone.</li>
+    <li>Exploratory status: the A6 protocol was designed after reading the A5 traces, on the same scenarios and seeds.</li>
     <li>Governor isolation is not complete in the B1 batch. The bypass is documented on an experimental branch, not merged into production.</li>
     <li>The audit is AI-assisted and carries no human reviewer signature.</li>
   </ul>

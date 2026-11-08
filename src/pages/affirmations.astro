@@ -63,7 +63,7 @@ const counts = {
 
   <ul class="cl-negatives">
     {allNonClaims.map((item: NonClaim) => (
-      <li><strong>{item.statement.fr}</strong> <span>{item.reason.fr}</span></li>
+      <li>{item.relatedClaim && <code class="cl-nc-id">{item.relatedClaim}</code>}<strong>{item.statement.fr}</strong> <span>{item.reason.fr}</span></li>
     ))}
   </ul>
 
@@ -73,7 +73,7 @@ const counts = {
 
   <div class="cl-stats">
     <div><strong>{s.totalRuns}</strong><span>runs HOLD E1-A6</span></div>
-    <div><strong>{s.conditions.A.violations}/{s.conditions.A.runs}</strong><span>violations arrêtées (cond. A)</span></div>
+    <div><strong>{s.conditions.A.violations} → {s.conditions.C.violations}</strong><span>violations : agent seul → sous HOLD</span></div>
     <div><strong>{s.audit.passed.toLocaleString('fr-FR').replace(/ | /g, ' ')}</strong><span>contrôles d’audit réussis</span></div>
     <div><strong>{claims.length}</strong><span>affirmations publiables</span></div>
   </div>
@@ -133,6 +133,7 @@ const counts = {
   .cl-negatives li { margin-bottom: .6rem; }
   .cl-negatives strong { color: var(--ink); }
   .cl-negatives span { color: var(--muted); }
+  .cl-nc-id { font: 600 .7rem var(--mono); background: var(--code-bg); padding: .1rem .35rem; border-radius: 4px; margin-right: .3rem; }
 
   .cl-stats {
     display: grid;

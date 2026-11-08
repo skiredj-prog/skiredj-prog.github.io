@@ -44,6 +44,8 @@ export interface Claim {
 export interface NonClaim {
   id: string;
   product: ClaimProduct;
+  /** Code de l'affirmation retenue hors publication que cette limite recouvre, s'il y en a une. */
+  relatedClaim?: string;
   statement: { fr: string; en: string };
   reason: { fr: string; en: string };
 }
@@ -135,6 +137,7 @@ export const tenirGovNonClaims: NonClaim[] = [
   {
     id: "TG-NC-1",
     product: "tenir-gov",
+    relatedClaim: "TG-4",
     statement: {
       fr: "TENIR-Gov ne prétend pas couvrir les déploiements multi-hôtes (FM-20 / Raft en production).",
       en: "TENIR-Gov does not claim to cover multi-host deployments (FM-20 / Raft in production).",
@@ -151,21 +154,35 @@ export const tenirGovNonClaims: NonClaim[] = [
 // ─────────────────────────────────────────────────────────────
 
 /**
- * Données brutes de l'expérience, calculées à partir de run_counts.csv
- * (extrait de l'archive d'audit Harv Banning, 2026-11-03).
+ * Données de l'expérience, relevées sur E1_A6_RESULTS.md et README.md
+ * au commit f3bb683 (dépôt skiredj-prog/hold), tableau « What happened ».
  *
- * Condition A  : 33 runs — 33 violations, 0 complétés
- * Condition B  : 33 runs —  3 violations, 0 complétés (30 autres états)
- * Condition C  : 33 runs —  0 violations, 8 CLOSED_COMPLETED,
- *                           22 CLOSED_UNCONFIRMED, 3 CLOSED_NO_EFFECT
+ * ATTENTION — A n'est PAS un bras HOLD. A est le contrefactuel : le même
+ * modèle, seul, sans HOLD. C'est C (« C-llama ») qui porte HOLD.
+ * Le résultat publiable est donc A 66 -> C 0, pas « HOLD arrête A ».
+ *
+ * A — agent seul        : 33 runs, booking exécuté sur valeurs inventées
+ *                         dans 33/33 runs ; 66 catégories de violation
+ *                         (valeurs jamais observées + prix invérifiable)
+ * B — agent prudent +   : 33 runs, 3 violations (S11, prix invérifiable
+ *     humain simulé       sous le plafond), 0 complétion légitime,
+ *                         33 sollicitations humaines
+ * C-llama — HOLD        : 33 runs, 0 violation exécutée, 164 propositions
+ *                         d'effet arrivées au plancher, 8 CLOSED_COMPLETED,
+ *                         22 CLOSED_UNCONFIRMED, 3 CLOSED_NO_EFFECT,
+ *                         45 sollicitations
  */
 export const holdE1A6Stats = {
   totalRuns: 99,
+  /** Le bras qui porte HOLD. Les autres sont des comparateurs. */
+  holdArm: "C",
   conditions: {
-    A: { runs: 33, violations: 33, completed: 0 },
-    B: { runs: 33, violations: 3,  completed: 0 },
-    C: { runs: 33, violations: 0,  completed: 8, unconfirmed: 22, noEffect: 3 },
+    A: { runs: 33, arm: "agent seul (sans HOLD)", violations: 66, runsWithExecutedBooking: 33, completed: 0 },
+    B: { runs: 33, arm: "agent prudent + humain simulé", violations: 3, completed: 0, solicitations: 33 },
+    C: { runs: 33, arm: "HOLD", violations: 0, completed: 8, unconfirmed: 22, noEffect: 3, effectProposals: 164, solicitations: 45 },
   },
+  /** Exploratoire : le protocole A6 a été conçu après lecture des traces A5. */
+  exploratory: true,
   audit: {
     auditor: "Harv Banning",
     date: "2026-11-03",
@@ -178,6 +195,11 @@ export const holdE1A6Stats = {
     verdict: "qualified support, not certification",
     aiAssisted: true,
     humanSigned: false,
+    /** Réserves explicites de l'auditeur, à ne pas omettre quand on cite le verdict. */
+    reservations: {
+      fr: "L'acceptation inconditionnelle du protocole gelé n'est pas établie : 22 des 23 empreintes brutes échouent (toutes se résolvent sous normalisation CRLF→LF), la portée complète de la condition H1 est absente de la source livrée, et la formulation de complétion de B est ambiguë.",
+      en: "Unqualified frozen-protocol acceptance is not established: 22 of 23 raw fingerprints fail (all resolve under CRLF→LF normalisation), H1's full stated condition scope is absent from the delivered source, and B's completion wording is ambiguous.",
+    },
   },
 } as const;
 
@@ -188,16 +210,16 @@ export const holdClaims: Claim[] = [
     status: "partial",
     anchor: "f3bb683",
     statement: {
-      fr: "HOLD préserve l'intégrité d'exécution dans la condition A (violation stricte) de l'expérience E1-A6.",
-      en: "HOLD preserves execution integrity under condition A (strict violation) of experiment E1-A6.",
+      fr: "Dans E1-A6, le modèle sous HOLD (condition C) n'a exécuté aucune violation sur 33 runs, alors que le même modèle seul (condition A) en a exécuté 66.",
+      en: "In E1-A6 the model under HOLD (condition C) executed no violation across 33 runs, while the same model alone (condition A) executed 66.",
     },
     basis: {
-      fr: "99 runs (11 scénarios × 3 rep. × 3 conditions). Condition A : 33/33 violations arrêtées. Hypothèse H1 acceptée pour E1-A6 uniquement.",
-      en: "99 runs (11 scenarios × 3 reps × 3 conditions). Condition A: 33/33 violations stopped. Hypothesis H1 accepted for E1-A6 only.",
+      fr: "99 runs (11 scénarios × 3 rep. × 3 conditions). C : 0 violation exécutée, plancher effectivement sollicité (164 propositions d'effet). Contrefactuel A, mêmes modèle, outils et messages : booking exécuté sur valeurs inventées dans 33/33 runs, 66 catégories de violation. Hypothèse H1 acceptée.",
+      en: "99 runs (11 scenarios × 3 reps × 3 conditions). C: 0 executed violations, floor genuinely exercised (164 effect proposals). Counterfactual A, same model, tools and messages: booking executed on invented values in 33/33 runs, 66 violation categories. Hypothesis H1 accepted.",
     },
     limit: {
-      fr: "Résultat propre à E1-A6 (Llama 3.2 3B, hôtel synthétique). Non généralisable sans nouvelle expérience.",
-      en: "Result specific to E1-A6 (Llama 3.2 3B, synthetic hotel). Not generalisable without a new experiment.",
+      fr: "Résultat propre à E1-A6 (Llama 3.2 3B, hôtel synthétique) et exploratoire : le protocole A6 a été conçu après lecture des traces A5. H1 n'est pas établie au-delà de E1. L'auditeur relève que la portée complète de la condition H1 est absente de la source livrée.",
+      en: "Result specific to E1-A6 (Llama 3.2 3B, synthetic hotel) and exploratory: the A6 protocol was designed after reading the A5 traces. H1 is not established beyond E1. The auditor notes that H1's full stated condition scope is absent from the delivered source.",
     },
     publishable: true,
   },
@@ -264,6 +286,7 @@ export const holdNonClaims: NonClaim[] = [
   {
     id: "HOLD-NC-1",
     product: "hold",
+    relatedClaim: "B1-HTTP-1",
     statement: {
       fr: "HOLD ne prétend pas que l'isolation Governor est complète dans le lot B1 (branche expérimentale).",
       en: "HOLD does not claim complete Governor isolation in the B1 lot (experimental branch).",
@@ -277,12 +300,12 @@ export const holdNonClaims: NonClaim[] = [
     id: "HOLD-NC-2",
     product: "hold",
     statement: {
-      fr: "L'expérience E1-A6 n'établit pas l'unicité de l'effet HOLD (absence de groupe contrôle sans HOLD actif).",
-      en: "The E1-A6 experiment does not establish uniqueness of the HOLD effect (no control group without active HOLD).",
+      fr: "L'expérience E1-A6 n'isole pas lequel des composants de la condition HOLD produit l'effet.",
+      en: "The E1-A6 experiment does not isolate which component of the HOLD condition produces the effect.",
     },
     reason: {
-      fr: "Design expérimental : trois conditions avec HOLD actif à des niveaux différents — pas de bras sans HOLD.",
-      en: "Experimental design: three conditions with HOLD active at different levels — no arm without HOLD.",
+      fr: "H2 compare la condition HOLD prise comme un tout — plancher, réconciliation menée par HOLD, contrat passé à l'agent — à la condition B, et non le plancher seul. Le protocole déclare le contrat comme partie intégrante de la condition. Il existe bien un bras sans HOLD (condition A, agent seul), mais il sert de contrefactuel global, pas de démontage composant par composant.",
+      en: "H2 compares the HOLD condition as a whole — floor, HOLD-run reconciliation, agent contract — against condition B, not the floor alone. The protocol declares the contract as part of the condition. There is an arm without HOLD (condition A, agent alone), but it serves as a global counterfactual, not a component-by-component teardown.",
     },
   },
 ];
