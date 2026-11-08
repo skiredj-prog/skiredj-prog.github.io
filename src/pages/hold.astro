@@ -1,0 +1,239 @@
+---
+import Base from '../layouts/Base.astro';
+import { holdE1A6Stats } from '../data/claims';
+import { url } from '../data/site';
+
+const s = holdE1A6Stats;
+const n = (v: number) => v.toLocaleString('fr-FR').replace(/ | /g, ' ');
+---
+<Base
+  locale="fr"
+  slug="hold"
+  title="HOLD — Expérience E1-A6"
+  description="Résultats de l’expérience E1-A6 : 99 runs, trois conditions, hypothèses H1/H2/H3, audit indépendant Harv Banning."
+  kicker="Expérience"
+  lede="Le même modèle, seul, a exécuté 66 violations. Sous HOLD, zéro — et 8 missions achevées avec reçu. 99 runs, trois conditions, un audit indépendant, et ce que tout cela ne montre pas."
+  sources="HOLD · dépôt skiredj-prog/hold · commit f3bb683 · archive d’audit Harv Banning du 3 novembre 2026"
+>
+
+  <div class="hold-stats">
+    <div><strong class="is-stop">{s.conditions.A.violations}</strong><span>violations exécutées — A, agent seul</span></div>
+    <div><strong class="is-warn">{s.conditions.B.violations}</strong><span>violations — B, agent prudent + humain</span></div>
+    <div><strong class="is-ok">{s.conditions.C.violations}</strong><span>violation — C, sous HOLD</span></div>
+    <div><strong class="is-ok">{s.conditions.C.completed}/{s.conditions.C.runs}</strong><span>missions achevées avec reçu — C</span></div>
+  </div>
+
+  <h2>Distribution des 99 runs</h2>
+
+  <p>Chaque point représente un run. Trois conditions, 33 runs chacune, sur 11 scénarios. Seule la condition C porte HOLD : A est le même modèle livré à lui-même, B un agent prudent assisté d&rsquo;un humain simulé.</p>
+
+  <div class="hold-chart">
+    <div class="hold-row">
+      <span class="hold-row-label">A</span>
+      <div class="hold-dots">
+        {Array.from({ length: s.conditions.A.runsWithExecutedBooking }, (_, i) => (
+          <span class="hold-dot is-violation" title={`A-${i + 1} · réservation exécutée sur valeurs inventées`}></span>
+        ))}
+      </div>
+    </div>
+    <div class="hold-row">
+      <span class="hold-row-label">B</span>
+      <div class="hold-dots">
+        {Array.from({ length: s.conditions.B.violations }, (_, i) => (
+          <span class="hold-dot is-violation" title={`B-${i + 1} · violation`}></span>
+        ))}
+        {Array.from({ length: s.conditions.B.runs - s.conditions.B.violations }, (_, i) => (
+          <span class="hold-dot is-other" title={`B-${i + 4} · autre issue`}></span>
+        ))}
+      </div>
+    </div>
+    <div class="hold-row">
+      <span class="hold-row-label">C</span>
+      <div class="hold-dots">
+        {Array.from({ length: s.conditions.C.completed }, (_, i) => (
+          <span class="hold-dot is-completed" title={`C-${i + 1} · CLOSED_COMPLETED`}></span>
+        ))}
+        {Array.from({ length: s.conditions.C.unconfirmed }, (_, i) => (
+          <span class="hold-dot is-unconfirmed" title={`C-${i + 9} · CLOSED_UNCONFIRMED`}></span>
+        ))}
+        {Array.from({ length: s.conditions.C.noEffect }, (_, i) => (
+          <span class="hold-dot is-noeffect" title={`C-${i + 31} · CLOSED_NO_EFFECT`}></span>
+        ))}
+      </div>
+    </div>
+    <ul class="hold-legend">
+      <li><span class="hold-dot is-violation"></span>Run avec violation exécutée</li>
+      <li><span class="hold-dot is-completed"></span>CLOSED_COMPLETED</li>
+      <li><span class="hold-dot is-unconfirmed"></span>CLOSED_UNCONFIRMED</li>
+      <li><span class="hold-dot is-noeffect"></span>CLOSED_NO_EFFECT</li>
+      <li><span class="hold-dot is-other"></span>Autre issue</li>
+    </ul>
+    <p class="hold-source-line">A compte 33 runs avec réservation exécutée, pour 66 catégories de violation (valeurs jamais observées + prix invérifiable). Source : <code>E1_A6_RESULTS.md</code>, tableau « What happened » · commit <code>f3bb683</code></p>
+  </div>
+
+  <h2>Hypothèses</h2>
+
+  <div class="hold-hyp">
+    <article class="is-accepted">
+      <p class="hold-verdict">Acceptée — portée E1-A6</p>
+      <h3>H1 — Intégrité d’exécution</h3>
+      <p>Zéro violation exécutée sur les 33 runs sous HOLD, avec un plancher réellement sollicité : 164 propositions d’effet y sont remontées. Contrefactuel à modèle, outils et messages identiques : seul, le même modèle a réservé sur des valeurs inventées dans 33 runs sur 33.</p>
+    </article>
+    <article class="is-accepted">
+      <p class="hold-verdict">Acceptée</p>
+      <h3>H2 — Progression légitime</h3>
+      <p>Condition C : 8 CLOSED_COMPLETED, 22 CLOSED_UNCONFIRMED, 3 CLOSED_NO_EFFECT, 0 violation. Condition B : 0 complétion légitime pour 3 violations. Les complétions légitimes avancent sans blocage artificiel.</p>
+    </article>
+    <article class="is-open">
+      <p class="hold-verdict">Non évaluée</p>
+      <h3>H3 — Discernement contextuel</h3>
+      <p>Hors périmètre de E1-A6. Hypothèse ouverte, à traiter par une expérience distincte.</p>
+    </article>
+  </div>
+
+  <h2>Audit indépendant — Harv Banning, 3 novembre 2026</h2>
+
+  <p>{n(s.audit.totalChecks)} contrôles repassés sur les 99 traces : {n(s.audit.passed)} réussis, {s.audit.failed} en écart. Les {s.audit.failed} écarts relèvent tous de la catégorie <code>source_fingerprint_raw</code> — un artefact de fins de ligne CRLF, sans portée sémantique.</p>
+
+  <p>{n(s.audit.eventHashesRecomputed)} hachages d’événements ont été recalculés et {s.audit.mutationControlsDetected} contrôles de mutation détectés.</p>
+
+  <blockquote class="hold-quote">
+    <p>Verdict rendu : <strong>qualified support, not certification</strong>.</p>
+    <p class="hold-quote-note">L’auditeur précise que l’acceptation inconditionnelle du protocole gelé n’est pas établie : 22 des 23 empreintes brutes échouent (toutes se résolvent sous normalisation CRLF→LF), la portée complète de la condition H1 est absente de la source livrée, et la formulation de complétion de B est ambiguë. Audit assisté par IA, sans relecteur humain signataire.</p>
+  </blockquote>
+
+  <h2>Limites explicites</h2>
+
+  <ul>
+    <li>Les résultats sont propres à E1-A6 (Llama 3.2 3B, environnement hôtelier synthétique). Ils ne se généralisent pas sans nouvelle expérience.</li>
+    <li>L’expérience n’isole pas lequel des composants de la condition HOLD produit l’effet : H2 compare le tout — plancher, réconciliation, contrat passé à l’agent — à la condition B, pas le plancher seul.</li>
+    <li>Statut exploratoire : le protocole A6 a été conçu après lecture des traces A5, sur les mêmes scénarios et graines.</li>
+    <li>L’isolation du Governor n’est pas complète dans le lot B1. Le contournement est documenté dans une branche expérimentale, non fusionnée en production.</li>
+    <li>L’audit est assisté par IA et ne porte aucune signature de relecteur humain.</li>
+  </ul>
+
+  <h2>Sources et ancres</h2>
+
+  <ul>
+    <li><a href="https://github.com/skiredj-prog/hold/tree/f3bb683" target="_blank" rel="noopener">Dépôt HOLD, commit <code>f3bb683</code> ↗</a></li>
+    <li><code>docs/audit/harv-banning-2026-11-03/</code> — archive complète de l’audit</li>
+  </ul>
+
+  <p><a href={url('/affirmations/')}>Registre d’affirmations complet →</a><br /><a href={url('/credibilite/')}>Parcours Crédibilité TENIR-Gov →</a></p>
+
+</Base>
+
+<style>
+  .hold-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 0 2.2rem;
+  }
+  .hold-stats > div { background: var(--bg-raised); padding: 1.1rem; min-width: 0; }
+  .hold-stats strong {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .hold-stats strong.is-stop { color: #c0564d; }
+  .hold-stats strong.is-warn { color: #9a6b1e; }
+  .hold-stats strong.is-ok { color: var(--ok); }
+  .hold-stats span { display: block; font-size: .76rem; color: var(--muted); margin-top: .45rem; line-height: 1.4; }
+
+  .hold-chart {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.4rem;
+    background: var(--bg-raised);
+    margin: 1.2rem 0 2.4rem;
+  }
+  .hold-row { display: flex; align-items: center; gap: .85rem; margin-bottom: .7rem; }
+  .hold-row-label {
+    font: 600 .78rem var(--mono);
+    color: var(--muted);
+    width: 1.1rem;
+    flex-shrink: 0;
+  }
+  .hold-dots { display: flex; gap: .32rem; flex-wrap: wrap; }
+  .hold-dot {
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .hold-dot.is-violation { background: #c0564d; }
+  .hold-dot.is-completed { background: #2d7a63; }
+  .hold-dot.is-unconfirmed { background: #7d93a2; }
+  .hold-dot.is-noeffect { background: #c08a35; }
+  .hold-dot.is-other { background: var(--line); border: 1px solid var(--muted); }
+
+  .hold-legend {
+    list-style: none;
+    padding: 0;
+    margin: 1.1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.1rem;
+    font-size: .76rem;
+    color: var(--muted);
+  }
+  .hold-legend li { display: flex; align-items: center; gap: .4rem; margin: 0; }
+  .hold-legend .hold-dot { width: .65rem; height: .65rem; }
+  .hold-source-line { font-size: .74rem; color: var(--muted); margin: .9rem 0 0; }
+
+  .hold-hyp {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: .9rem;
+    margin: 1.2rem 0 2.4rem;
+  }
+  .hold-hyp article {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: 8px;
+    padding: 1.15rem;
+    background: var(--bg-raised);
+  }
+  .hold-hyp article.is-accepted { border-left-color: #2d7a63; }
+  .hold-hyp article.is-open { border-left-color: var(--muted); }
+  .hold-verdict {
+    font: 600 .68rem var(--mono);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin: 0 0 .45rem;
+    color: var(--muted);
+  }
+  .hold-hyp article.is-accepted .hold-verdict { color: #2d7a63; }
+  .hold-hyp h3 { font-size: 1rem; margin: 0 0 .5rem; color: var(--ink); }
+  .hold-hyp p { font-size: .86rem; line-height: 1.6; margin: 0; color: var(--ink-soft); }
+
+  .hold-quote {
+    border-left: 3px solid var(--accent);
+    padding: .2rem 0 .2rem 1.1rem;
+    margin: 1.4rem 0 2rem;
+  }
+  .hold-quote p { margin: 0 0 .4rem; }
+  .hold-quote-note { font-size: .82rem; color: var(--muted); margin: 0; }
+
+  :root[data-theme='dark'] .hold-stats strong.is-stop { color: #e39a93; }
+  :root[data-theme='dark'] .hold-stats strong.is-warn { color: #dfb871; }
+  :root[data-theme='dark'] .hold-dot.is-violation { background: #d9766c; }
+  :root[data-theme='dark'] .hold-dot.is-completed { background: #5aba9b; }
+  :root[data-theme='dark'] .hold-dot.is-unconfirmed { background: #8ba3b2; }
+  :root[data-theme='dark'] .hold-dot.is-noeffect { background: #dcaa5e; }
+  :root[data-theme='dark'] .hold-hyp article.is-accepted { border-left-color: #5aba9b; }
+  :root[data-theme='dark'] .hold-hyp article.is-accepted .hold-verdict { color: #5aba9b; }
+
+  @media (max-width: 560px) {
+    .hold-stats { grid-template-columns: repeat(2, 1fr); }
+    .hold-hyp { grid-template-columns: 1fr; }
+  }
+</style>
