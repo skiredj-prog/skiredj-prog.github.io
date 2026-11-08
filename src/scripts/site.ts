@@ -1,6 +1,6 @@
 const root=document.documentElement;
 const themeButton=document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
-function syncTheme(){const dark=root.dataset.theme==='dark';themeButton?.setAttribute('aria-pressed',String(dark));themeButton?.setAttribute('aria-label',(dark?themeButton.dataset.labelLight:themeButton.dataset.labelDark)||'Theme');document.querySelector('meta[name="theme-color"]')?.setAttribute('content',dark?'#111c1a':'#f6f7f2');}
+function syncTheme(){const dark=root.dataset.theme==='dark';themeButton?.setAttribute('aria-pressed',String(dark));themeButton?.setAttribute('aria-label',(dark?themeButton.dataset.labelLight:themeButton.dataset.labelDark)||'Theme');document.querySelector('meta[name="theme-color"]')?.setAttribute('content','#071629');}
 syncTheme();
 themeButton?.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('tenir-theme',root.dataset.theme);}catch(e){}syncTheme();});
 const menuButton=document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
@@ -8,19 +8,17 @@ const nav=document.querySelector<HTMLElement>('#main-navigation');
 const contactSituation=new URLSearchParams(location.search).get('situation');
 const businessProfile=new URLSearchParams(location.search).get('profil');
 if(document.querySelector('.contact-page')&&businessProfile&&['services','produit','operations'].includes(businessProfile)){
-  document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-tools a').forEach(link=>{const destination=new URL(link.href);destination.searchParams.set('profil',businessProfile);link.href=destination.href;});
+  document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-lang').forEach(link=>{const destination=new URL(link.href);destination.searchParams.set('profil',businessProfile);link.href=destination.href;});
 }
 if(document.querySelector('.contact-page')&&contactSituation&&['decouvrir','deleguer','concevoir','examiner','etudier'].includes(contactSituation)){
-  document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-tools a').forEach(link=>{const destination=new URL(link.href);destination.searchParams.set('situation',contactSituation);link.href=destination.href;});
+  document.querySelectorAll<HTMLAnchorElement>('.lang a,.nav-mobile-lang').forEach(link=>{const destination=new URL(link.href);destination.searchParams.set('situation',contactSituation);link.href=destination.href;});
 }
-const groups=Array.from(document.querySelectorAll<HTMLDetailsElement>('.site-nav details'));
 const openBusinessProfile=()=>{const id=location.hash.slice(1);document.querySelectorAll<HTMLDetailsElement>('.persona-card').forEach(card=>{if(card.id===id)card.open=true;});};
 openBusinessProfile();
 window.addEventListener('hashchange',openBusinessProfile);
-const closeMenu=(focus=false)=>{menuButton?.setAttribute('aria-expanded','false');nav?.removeAttribute('data-open');groups.forEach(group=>group.open=false);if(focus)menuButton?.focus();};
+const closeMenu=(focus=false)=>{menuButton?.setAttribute('aria-expanded','false');nav?.removeAttribute('data-open');if(focus)menuButton?.focus();};
 menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));nav?.toggleAttribute('data-open',open);});
-groups.forEach(group=>group.addEventListener('toggle',()=>{if(group.open)groups.forEach(other=>{if(other!==group)other.open=false;});}));
-document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const open=groups.find(g=>g.open);if(open){open.open=false;open.querySelector('summary')?.focus();}else if(menuButton?.getAttribute('aria-expanded')==='true')closeMenu(true);});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menuButton?.getAttribute('aria-expanded')==='true')closeMenu(true);});
 document.addEventListener('click',event=>{const target=event.target as Node;if(nav?.contains(target)||menuButton?.contains(target))return;closeMenu();});
 nav?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>closeMenu()));
 matchMedia('(min-width: 1101px)').addEventListener('change',()=>closeMenu());

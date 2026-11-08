@@ -79,11 +79,7 @@
 .demo-shelf a { font-size: .94rem; text-decoration: none; padding: .5rem; }
 .demo-shelf small { display: block; font-size: .75rem; color: var(--muted); margin-top: .3rem; }
 .doc.business-page { display: block; max-width: 76rem; }
-.business-page .doc-head { max-width: 52rem; padding-bottom: 1rem; margin-bottom: 1.5rem; }
-.business-page .breadcrumb { margin-bottom: 1.3rem; }
-.business-page .doc-head h1 { font-size: clamp(2.4rem,4vw,3.3rem); }
-.business-page .doc-head .kicker { margin-bottom: .6rem; }
-.business-page .source-disclosure { margin-top: .8rem; }
+.page-hero.page-hero--business h1 { font-size: clamp(2.4rem,4vw,3.3rem); }
 .business-journey h2 { font: 500 1.8rem/1.2 var(--serif); margin: 0 0 .7rem; }
 .business-personas { margin-top: 1.5rem; }
 .persona-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; align-items: start; margin-top: 1.5rem; }

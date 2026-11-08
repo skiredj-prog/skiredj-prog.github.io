@@ -1,12 +1,22 @@
 ---
-title: Products & Services
-kicker: TENIR Labs · offerings and instruments
-description: Distinguish the TENIR framework, REG standard, REG+ mediation, TENIR-Gov runtime and TENIR Labs services.
-lede: "A rule to understand, an AI use to clarify or a review to prepare? A guided diagnostic can help establish the facts, the gaps and the next decision."
+title: Approach & Method
+kicker: TENIR Labs · how we work
+description: "How TENIR Labs works, from discovery to pilot: guided diagnostic, the Prevent and Prepare methods, an observation pilot, and what TENIR, REG, REG+ and TENIR-Gov do not claim to do."
+lede: "From discovery to pilot, each step produces a readable record and a decision to take: continue, adjust or stop. The starting point is always one precise situation."
 sources: REG v0.1 Working Draft — October 21, 2026
 ---
 
-## From requirements to execution: distinct roles
+## How we work: from discovery to pilot
+
+Each step produces a record you can read and a decision to take. None commits you to the next one.
+
+| Step | What happens | What you receive |
+| --- | --- | --- |
+| **1. Discovery** | A first conversation, or the ten-question [free report](/en/ai-readiness/), to choose one precise situation. | A framed question and an indicative starting point, not a certification. |
+| **2. Guided diagnostic** | A document-based review of a requirement, a control or an AI use. | A sourced summary: findings, unknowns, gaps and a prioritised action plan. |
+| **3. Prevent / Prepare** | Two methods: from requirements to candidate controls, from systems to verifiable evidence. | The gap matrix and the checks still to run. |
+| **4. Observation pilot** | Considered only if an integration is justified and authorised; it blocks no operation. | Decisions and records to review within a declared scope. |
+| **5. ENFORCE** | A later step, after the invariants, failure modes and guarantees have been validated. | A blocking control within a defined scope; never automatic. |
 
 ## Start with a guided diagnostic
 

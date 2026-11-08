@@ -137,6 +137,13 @@ const cards = fr ? [
     </div>
   </section>
 
+  <section class="ml-maturity-entry" aria-labelledby="ml-maturity-entry-title">
+    <div class="ml-wrap ml-maturity-entry-inner">
+      <div><span class="ml-kicker">{fr ? 'POUR SE SITUER' : 'A PLACE TO START'}</span><h2 id="ml-maturity-entry-title">{fr ? 'Vous vous demandez par où commencer ?' : 'Not sure where to begin?'}</h2><p>{fr ? 'En dix questions, obtenez un aperçu indicatif de votre point de départ sur un parcours de maturité IA — et de la prochaine vérification utile.' : 'In ten questions, get an indicative view of your starting point on an AI maturity journey — and the next useful check.'}</p></div>
+      <a class="ml-btn ml-btn-primary" href={pathway}>{fr ? 'Faire l’aperçu de maturité' : 'Take the maturity preview'} <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
   <section class="ml-threat" id="comprendre" aria-labelledby="ml-threat-title">
     <div class="ml-wrap ml-threat-grid">
       <div class="ml-story">

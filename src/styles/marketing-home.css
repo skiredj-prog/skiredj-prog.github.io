@@ -83,19 +83,6 @@
 @media(max-width:760px){.market-root .ml-wrap{width:calc(100% - 2.2rem)}.ml-cards{grid-template-columns:1fr}.ml-card{min-height:0}.ml-short-journey .lifecycle-flow{grid-template-columns:1fr;gap:.6rem}.ml-headline{font-size:clamp(3.15rem,11vw,5.6rem)}.ml-outcomes{grid-template-columns:1fr 1fr}.ml-trust-links{grid-template-columns:1fr}.ml-trust-links a{border-right:0;border-bottom:1px solid var(--ml-line)}.ml-trust-links a:last-child{border-bottom:0}}
 @media(max-width:480px){.ml-outcomes{grid-template-columns:1fr}.ml-outcome{min-height:0}.ml-hero{padding:2.45rem 0 3rem}.ml-headline{letter-spacing:-.05em}.ml-headline .ml-not-equal{padding:0 .08em}.ml-demo-panel iframe{height:410px}.ml-actions .ml-btn{width:100%}.ml-panel-bar{font-size:.54rem}}
 @media(prefers-reduced-motion:reduce){.market-root *{transition:none!important}}
-/* Apply the concept's midnight-and-cobalt navigation only to the marketing landing page.
-   Preserve the already tested responsive navigation, language controls and links. */
-body.marketing-page .site-header{background:#071629;border-bottom-color:#18324e;color:#fff}
-body.marketing-page .site-header .brand,body.marketing-page .site-header .brand-name,body.marketing-page .site-header .brand-labs,body.marketing-page .site-header .site-nav>a,body.marketing-page .site-header .nav-group>summary{color:#fff}
-body.marketing-page .site-header .brand .mark{color:#f8b145}
-body.marketing-page .site-header .site-nav>a:hover,body.marketing-page .site-header .nav-group>summary:hover{background:#16345b}
-body.marketing-page .site-header .site-nav>a[aria-current="page"],body.marketing-page .site-header .tools .lang a[aria-current]{background:#16345b;color:#fff}
-body.marketing-page .site-header .header-cta{background:#2563eb;border-color:#2563eb;color:#fff}
-body.marketing-page .site-header .tools .lang a{color:#b6c9e1}
-body.marketing-page .site-header .tools .lang a[aria-current]{color:#fff}
-body.marketing-page .site-header .theme{color:#fff}
-body.marketing-page .site-header .menu-toggle{color:#fff;background:#173251;border-color:#385574}
-@media(max-width:920px){body.marketing-page .site-header .site-nav{background:#071629}body.marketing-page .site-header .site-nav .nav-group .nav-menu{background:#fff;color:#0d1b2a}body.marketing-page .site-header .nav-mobile-tools a{color:#fff}}
 
 /* The site's existing light/dark toggle also applies to the new landing page. */
 :root[data-theme="dark"] .market-root{background:#071629;color:#f3f6fa}
@@ -118,3 +105,14 @@ body.marketing-page .site-header .menu-toggle{color:#fff;background:#173251;bord
 body.marketing-page .home-main{width:100%;max-width:none;margin:0}
 body.marketing-page .market-root{width:100%;margin-left:0}
 @media(min-width:761px) and (max-width:1100px){.market-root .ml-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.ml-maturity-entry{border-block:1px solid var(--ml-line,var(--line));background:var(--ml-soft,var(--accent-soft));}
+.ml-maturity-entry-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding-block:clamp(1.5rem,3vw,2.4rem);}
+.ml-maturity-entry h2{font:500 clamp(1.55rem,2.8vw,2.25rem)/1.15 var(--serif);color:var(--ml-ink,var(--ink));margin:.15rem 0 .5rem;max-width:28ch;}
+.ml-maturity-entry p{color:var(--ml-muted,var(--ink-soft));font-size:.95rem;max-width:62ch;margin:0;}
+.ml-maturity-entry .ml-btn{flex:none;}
+:root[data-theme="dark"] .ml-maturity-entry{background:#102a4a;border-color:#294563}
+:root[data-theme="dark"] .ml-maturity-entry h2{color:#f3f6fa}
+:root[data-theme="dark"] .ml-maturity-entry p{color:#b7c7d9}
+:root[data-theme="dark"] .ml-maturity-entry .ml-kicker{color:#93bbff}
+@media(max-width:700px){.ml-maturity-entry-inner{align-items:flex-start;flex-direction:column;gap:1rem}.ml-maturity-entry .ml-btn{width:100%;text-align:center}}

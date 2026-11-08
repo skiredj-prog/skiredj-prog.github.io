@@ -1,0 +1,31 @@
+---
+// One header for every page: four sections, the free report as permanent call to action,
+// language and theme controls. The active section is underlined.
+import { copy, url, type Locale } from '../data/site';
+import { primaryNav, reportLink, sectionOf } from '../data/navigation';
+interface Props { locale: Locale; slug: string; here: string; other: string; }
+const { locale, slug, here, other } = Astro.props;
+const fr = locale === 'fr', t = copy[locale];
+const home = slug === '';
+const section = sectionOf(slug);
+const report = reportLink[locale];
+const onReport = slug === report.slug;
+const missing = slug === '404';
+const current = (itemSlug: string, itemSection: string) => itemSlug === slug ? 'page' : itemSection === section ? 'true' : undefined;
+---
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href={url(fr ? '/' : '/en/')} aria-current={home ? 'page' : undefined}><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="1.2"></rect><path d="M10 8h12M16 8v16M10 24h12" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg><span class="brand-name">TENIR <span class="brand-labs">LABS</span></span><span class="visually-hidden">{fr ? ' — accueil' : ' — home'}</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span>Menu</span><span class="menu-symbol" aria-hidden="true">☰</span></button>
+    <nav class="site-nav" id="main-navigation" aria-label={t.nav}>
+      {primaryNav[locale].map(item => <a href={url(item.href)} aria-current={current(item.slug, item.section)}>{item.label}</a>)}
+      <div class="nav-mobile-report"><a class="btn btn-primary nav-mobile-cta" href={url(report.href)} aria-current={onReport ? 'page' : undefined}>{report.label}</a></div>
+      <div class="nav-mobile-tools"><a class="nav-mobile-lang" href={url(other)} lang={fr ? 'en' : 'fr'}>{fr ? 'Read in English' : 'Lire en français'}</a></div>
+    </nav>
+    <div class="tools">
+      <nav class="lang" aria-label={t.lang}><a href={url(fr ? here : other)} lang="fr" aria-current={fr && !missing ? 'true' : undefined}>FR</a><a href={url(fr ? other : here)} lang="en" aria-current={!fr && !missing ? 'true' : undefined}>EN</a></nav>
+      <button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button>
+      <a class="btn btn-primary header-cta" href={url(report.href)} aria-current={onReport ? 'page' : undefined}>{report.label}</a>
+    </div>
+  </div>
+</header>

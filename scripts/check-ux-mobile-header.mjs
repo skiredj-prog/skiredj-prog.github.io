@@ -23,11 +23,31 @@ try {
     await page.close();
   }
   const desktop = await browser.newPage({ viewport: { width: 1280, height: 720 } });
-  await desktop.goto('http://127.0.0.1:4173/', { waitUntil: 'networkidle' });
-  assert.equal(await desktop.locator('.site-header').evaluate(x => getComputedStyle(x).position), 'sticky', 'desktop remains sticky');
-  assert(await desktop.locator('#main-navigation').isVisible(), 'desktop links visible');
+  for (const locale of ['fr', 'en']) {
+    const prefix = locale === 'fr' ? '' : '/en';
+    for (const route of [`${prefix}/`, `${prefix}/portfolio/demos/`]) {
+      await desktop.goto(`http://127.0.0.1:4173${route}`);
+      await desktop.evaluate(() => document.fonts.ready);
+      assert.equal(await desktop.locator('.site-header').evaluate(x => getComputedStyle(x).position), 'sticky', 'desktop remains sticky');
+      assert(await desktop.locator('#main-navigation').isVisible(), 'desktop links visible');
+      if (route.endsWith('/portfolio/demos/')) {
+        const active = desktop.locator('#main-navigation > a[aria-current]');
+        assert.deepEqual(await active.allTextContents(), [locale === 'fr' ? 'Démos' : 'Demos'], `${route}: only the Demos section is active`);
+      }
+      for (const width of [1101, 1280, 1440]) {
+        await desktop.setViewportSize({ width, height: 720 });
+        const bounds = await desktop.evaluate(() => ({
+          viewport: document.documentElement.clientWidth,
+          scroll: document.documentElement.scrollWidth,
+          action: document.querySelector('.header-cta').getBoundingClientRect().right,
+        }));
+        assert(bounds.action <= bounds.viewport, `${route} at ${width}px: header action overflows`);
+        assert(bounds.scroll <= bounds.viewport + 2, `${route} at ${width}px: page overflows`);
+      }
+    }
+  }
   await desktop.close();
-  console.log('UX mobile navigation: 320/390/768/1024/1100 and desktop passed.');
+  console.log('UX navigation: mobile menu, bilingual desktop layout, and active Demos group passed.');
 } finally {
   await browser.close();
 }

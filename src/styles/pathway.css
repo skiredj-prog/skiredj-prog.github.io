@@ -3,31 +3,14 @@
 html{scroll-behavior:smooth}
 body{margin:0;line-height:1.6;background:#fff;font-size:17px}
 [hidden]{display:none!important}
-.pa-skip{position:absolute;left:1rem;top:-4rem;z-index:100;background:#fff;color:var(--pa-deep);padding:.55rem .8rem;border-radius:4px;font-weight:700;text-decoration:none}
-.pa-skip:focus{top:1rem}
-button,a{font:inherit}
-button{cursor:pointer}
-a{color:inherit}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f7b844;outline-offset:3px}
-.pa-header{background:var(--pa-deep);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem max(1.25rem,calc((100vw - 1130px)/2));min-height:70px;border-bottom:1px solid #1b344f}
-.pa-brand{text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:600;line-height:1}
-.pa-brand span{color:var(--pa-amber)}
-.pa-header-right{display:flex;align-items:center;gap:1.15rem}
-.pa-header-label{font-size:.6rem;letter-spacing:.075em;font-weight:700;color:#a3b6cf;white-space:nowrap}
-.pa-desktop-nav{display:flex;align-items:center;gap:.1rem}
-.pa-desktop-nav a{text-decoration:none;font-size:.84rem;font-weight:600;color:#d9e6f5;padding:.55rem .65rem;border-radius:5px;white-space:nowrap}
-.pa-desktop-nav a:hover,.pa-desktop-nav a:focus-visible{background:#153458;color:#fff}
-.pa-mobile-menu{display:none;position:relative}
-.pa-mobile-menu summary{display:flex;align-items:center;gap:.45rem;padding:.42rem .65rem;min-height:44px;border:1px solid #3a5573;border-radius:5px;cursor:pointer;font-size:.8rem;font-weight:700;list-style:none}
-.pa-mobile-menu summary::-webkit-details-marker{display:none}
-.pa-mobile-menu summary span{color:#f8ae39}
-.pa-mobile-menu[open] summary{background:#163458}
-.pa-mobile-menu nav{position:absolute;right:0;top:calc(100% + .45rem);z-index:50;display:grid;min-width:min(280px,calc(100vw - 2rem));background:#0d2440;border:1px solid #365473;box-shadow:0 14px 35px #0007;border-radius:8px;padding:.4rem}
-.pa-mobile-menu nav a{display:block;text-decoration:none;padding:.65rem .8rem;color:#edf5ff;font-size:.9rem;border-radius:5px}
-.pa-mobile-menu nav a:hover,.pa-mobile-menu nav a:focus-visible{background:#163e69}
-@media(max-width:1150px){.pa-header-label{display:none}}
-@media(max-width:960px){.pa-desktop-nav{display:none}.pa-mobile-menu{display:block}.pa-header-right{gap:.6rem}}
-.pa-lang{border:1px solid #3a5573;border-radius:4px;text-decoration:none;font-size:.8rem;font-weight:700;padding:.32rem .6rem;min-width:44px;text-align:center}
+/* The report now sits inside the site layout: keep its own ink and white page, as when it was a standalone page
+   (it stays light in both themes, as before). */
+.pa-app{color:var(--pa-ink);background:#fff}
+/* Scoped to the report with :where() so specificity stays that of the former global rules. */
+:where(.pa-app) button,:where(.pa-app) a{font:inherit}
+:where(.pa-app) button{cursor:pointer}
+:where(.pa-app) a{color:inherit}
+:where(.pa-app) button:focus-visible,:where(.pa-app) a:focus-visible,:where(.pa-app) input:focus-visible{outline:3px solid #f7b844;outline-offset:3px}
 .pa-wrap{width:min(1130px,calc(100% - 2.6rem));margin:auto}
 .pa-intro{background:var(--pa-deep);color:white;padding:clamp(2.2rem,4.5vw,3.8rem) 1.3rem clamp(3rem,6vw,5rem)}
 .pa-intro-inner{width:min(1000px,100%);margin:0 auto}
@@ -104,9 +87,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f7b8
 .pa-restart{background:transparent;border:0;color:#3b6696;text-decoration:underline;font-size:.85rem;margin-left:auto;padding:.6rem}
 #pa-feedback{font-size:.78rem;color:#235a3c}
 .pa-limits{font-size:.73rem;color:#697c8f;border-top:1px solid #e5ebf3;padding-top:1rem;margin-top:1.3rem}
-.pa-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;border-top:1px solid #e0e8ef;padding:1.5rem max(1.25rem,calc((100vw - 1130px)/2));color:#5f728b;font-size:.78rem}
-.pa-footer a{text-decoration:none;color:#3368a6}
-@media(max-width:760px){.pa-step-grid,.pa-report-grid{grid-template-columns:1fr}.pa-header-label{display:none}.pa-report-content{padding:2rem 0 3rem}}
-@media(max-width:480px){.pa-header{padding-inline:1rem}.pa-wrap{width:calc(100% - 2rem)}.pa-intro{padding:2.5rem 1rem 3rem}.pa-intro h1{font-size:clamp(2.9rem,10vw,3.2rem)}.pa-buttons .pa-button{width:100%}.pa-question{padding:2.2rem 1rem}.pa-qnav .pa-button{padding:.7rem 1rem}.pa-report-card{padding:1.25rem}.pa-report-toolbar .pa-button{flex:1}.pa-report-toolbar .pa-restart{margin-left:0}}
+@media(max-width:760px){.pa-step-grid,.pa-report-grid{grid-template-columns:1fr}.pa-report-content{padding:2rem 0 3rem}}
+@media(max-width:480px){.pa-wrap{width:calc(100% - 2rem)}.pa-intro{padding:2.5rem 1rem 3rem}.pa-intro h1{font-size:clamp(2.9rem,10vw,3.2rem)}.pa-buttons .pa-button{width:100%}.pa-question{padding:2.2rem 1rem}.pa-qnav .pa-button{padding:.7rem 1rem}.pa-report-card{padding:1.25rem}.pa-report-toolbar .pa-button{flex:1}.pa-report-toolbar .pa-restart{margin-left:0}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
-@media print{.pa-header,.pa-footer,.pa-intro,.pa-steps,.pa-question,.pa-report-actions,.pa-report-toolbar,.pa-privacy{display:none!important}.pa-report,.pa-report-hero,.pa-report-content{display:block!important;background:white!important;color:#13243c!important;padding:.3rem 0!important}.pa-report-hero h1,.pa-report-hero p,.pa-report-summary{color:#13243c!important}.pa-report-summary{border-left-color:#666;background:white;border:1px solid #ddd}.pa-report-grid{display:block}.pa-report-card{break-inside:avoid;margin-bottom:1rem}.pa-report-card h2{color:#13243c}.pa-offer{background:white;color:#13243c;border:1px solid #888;break-inside:avoid}.pa-offer h2,.pa-offer>p,.pa-offer .pa-eyebrow{color:#13243c}.pa-limits{color:#444}.pa-dim-fill{print-color-adjust:exact}}
+@media print{.site-header,.site-footer,.pa-intro,.pa-steps,.pa-question,.pa-report-actions,.pa-report-toolbar,.pa-privacy{display:none!important}.pa-report,.pa-report-hero,.pa-report-content{display:block!important;background:white!important;color:#13243c!important;padding:.3rem 0!important}.pa-report-hero h1,.pa-report-hero p,.pa-report-summary{color:#13243c!important}.pa-report-summary{border-left-color:#666;background:white;border:1px solid #ddd}.pa-report-grid{display:block}.pa-report-card{break-inside:avoid;margin-bottom:1rem}.pa-report-card h2{color:#13243c}.pa-offer{background:white;color:#13243c;border:1px solid #888;break-inside:avoid}.pa-offer h2,.pa-offer>p,.pa-offer .pa-eyebrow{color:#13243c}.pa-limits{color:#444}.pa-dim-fill{print-color-adjust:exact}}
