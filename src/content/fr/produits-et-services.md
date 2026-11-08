@@ -1,12 +1,22 @@
 ---
-title: Produits et Services
-kicker: TENIR Labs · offres et instruments
-description: Distinguer le cadre TENIR, le standard REG, la médiation REG+, le runtime TENIR-Gov et les prestations de TENIR Labs.
-lede: "Une règle à comprendre, un usage de l’IA à éclaircir ou un contrôle à préparer ? Un diagnostic accompagné peut aider à préciser les faits, les lacunes et la suite à décider."
+title: Approche & Méthode
+kicker: TENIR Labs · comment nous travaillons
+description: "Comment TENIR Labs travaille, de la découverte au pilote : diagnostic accompagné, méthodes Prevent et Prepare, pilote d’observation, et ce que TENIR, REG, REG+ et TENIR-Gov ne prétendent pas faire."
+lede: "De la découverte au pilote, chaque étape produit une pièce lisible et une décision à prendre : continuer, ajuster ou s’arrêter. Le point de départ reste une situation précise."
 sources: REG v0.1 Working Draft — 21 octobre 2026
 ---
 
-## Des exigences à l'exécution : comprendre les rôles
+## Comment nous travaillons : de la découverte au pilote
+
+Chaque étape produit une pièce que vous pouvez relire et une décision à prendre. Aucune n'engage automatiquement la suivante.
+
+| Étape | Ce qui se passe | Ce que vous obtenez |
+| --- | --- | --- |
+| **1. Découverte** | Un premier échange, ou le [rapport gratuit](/parcours-ia/) en dix questions, pour choisir une situation précise. | Une question cadrée et un point de départ indicatif, pas une certification. |
+| **2. Diagnostic accompagné** | L'examen, sur pièces, d'une exigence, d'un contrôle ou d'un usage de l'IA. | Une synthèse sourcée : constats, inconnues, lacunes et plan d'actions priorisé. |
+| **3. Prevent / Prepare** | Deux méthodes : des exigences vers des contrôles candidats, des systèmes vers des pièces vérifiables. | La matrice des écarts et les vérifications à mener. |
+| **4. Pilote d'observation** | Étudié seulement si une intégration est justifiée et autorisée ; il ne bloque aucune opération. | Des décisions et des traces à examiner dans un périmètre déclaré. |
+| **5. ENFORCE** | Étape ultérieure, après validation des invariants, des modes de défaillance et des garanties. | Un contrôle bloquant dans un périmètre défini ; jamais automatique. |
 
 ## Commencer par un diagnostic accompagné
 

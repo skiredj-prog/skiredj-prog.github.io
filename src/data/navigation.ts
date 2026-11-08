@@ -196,7 +196,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
     },
     {
       id: "approche", label: "Approche", links: [
-        { slug: "produits-et-services", href: "/produits-et-services/", label: "L’approche" },
+        { slug: "produits-et-services", href: "/produits-et-services/", label: "Approche & Méthode" },
         { slug: "processus-et-roles", href: "/processus-et-roles/", label: "Processus & rôles" },
         { slug: "pourquoi-maintenant", href: "/pourquoi-maintenant/", label: "Pourquoi maintenant" },
         { slug: "parcours/decouvrir", href: "/parcours/decouvrir/", label: "Comprendre TENIR" },
@@ -253,7 +253,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
     },
     {
       id: "approche", label: "Approach", links: [
-        { slug: "products-and-services", href: "/en/products-and-services/", label: "The approach" },
+        { slug: "products-and-services", href: "/en/products-and-services/", label: "Approach & Method" },
         { slug: "processus-et-roles", href: "/en/processus-et-roles/", label: "Process & Roles" },
         { slug: "why-now", href: "/en/why-now/", label: "Why now" },
         { slug: "start/discover", href: "/en/start/discover/", label: "Understand TENIR" },

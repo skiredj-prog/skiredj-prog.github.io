@@ -189,8 +189,8 @@ export const navGroups: Record<Locale, NavGroup[]> = {
 };
 
 export const navProducts: Record<Locale, NavItem> = {
-  fr: { slug: "produits-et-services", href: "/produits-et-services/", label: "Produits et services" },
-  en: { slug: "products-and-services", href: "/en/products-and-services/", label: "Products & services" },
+  fr: { slug: "produits-et-services", href: "/produits-et-services/", label: "Approche & Méthode" },
+  en: { slug: "products-and-services", href: "/en/products-and-services/", label: "Approach & Method" },
 };
 
 export const navContact: Record<Locale, NavItem> = {
