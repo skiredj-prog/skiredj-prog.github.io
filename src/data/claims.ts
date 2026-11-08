@@ -269,8 +269,8 @@ export const holdNonClaims: NonClaim[] = [
       en: "HOLD does not claim complete Governor isolation in the B1 lot (experimental branch).",
     },
     reason: {
-      fr: "docs/B1_GOVERNOR_UID_LAB.md (PR #120, non mergée) documente un contournement connu : un worker avec une requête signée valide peut appeler le service directement, sans décision Governor. Test marqué XFAIL.",
-      en: "docs/B1_GOVERNOR_UID_LAB.md (PR #120, not merged) documents a known bypass: a worker with a valid signed request can call the service directly without a Governor decision. Test marked XFAIL.",
+      fr: "Un worker muni d'une requête signée valide peut appeler le service directement, sans décision Governor. Sur 8398eef (PR #123, branche expérimentale), le test reste marqué XFAIL sous Linux et Windows : il prouve activement que le vecteur existe toujours. La correction des anciens chemins W2 ne ferme pas ce contournement.",
+      en: "A worker holding a valid signed request can call the service directly, without a Governor decision. At 8398eef (PR #123, experimental branch) the test is still marked XFAIL on Linux and Windows: it actively proves the vector is still there. Fixing the legacy W2 paths does not close this bypass.",
     },
   },
   {
@@ -296,20 +296,20 @@ export const holdB1Claims: Claim[] = [
     id: "B1-HTTP-1",
     product: "hold-b1",
     status: "experimental",
-    anchor: "310065c", // merge tree = 5edfe6c ; branche fix/b1-governor-uid-lab, PAS sur main
+    anchor: "8398eef", // PR #123 sur fix/b1-governor-uid-lab (base 310065c = #121+#122) ; PAS sur main
     statement: {
       fr: "Les contrats HTTP et Stripe de HOLD passent sur mocks avec double-autorité Governor+approbateur dans l'environnement de test.",
       en: "HOLD's HTTP and Stripe contracts pass on mocks with dual Governor+approver authority in the test environment.",
     },
     basis: {
-      fr: "36 tests HTTP + 31 tests Stripe reproduits localement (commit 5edfe6c). Conditions : TENIR_ENV=test|lab, HOST_SCOPE=single-host.",
-      en: "36 HTTP tests + 31 Stripe tests reproduced locally (commit 5edfe6c). Conditions: TENIR_ENV=test|lab, HOST_SCOPE=single-host.",
+      fr: "36 tests HTTP + 31 tests Stripe sur mocks. Sur 8398eef : Linux 1 737 PASS / 0 FAIL / 16 SKIP / 1 XFAIL ; Windows profil W2 320 PASS / 0 FAIL / 10 SKIP / 1 XFAIL ; 8/8 mutants détectés. Les 13 régressions W2 historiques passent sur les 8 points d'entrée E01–E08. Conditions : TENIR_ENV=test|lab, HOST_SCOPE=single-host.",
+      en: "36 HTTP tests + 31 Stripe tests on mocks. At 8398eef: Linux 1,737 PASS / 0 FAIL / 16 SKIP / 1 XFAIL; Windows W2 profile 320 PASS / 0 FAIL / 10 SKIP / 1 XFAIL; 8/8 mutants detected. The 13 historical W2 regressions pass across the 8 documented entry points E01–E08. Conditions: TENIR_ENV=test|lab, HOST_SCOPE=single-host.",
     },
     limit: {
-      fr: "Mocks uniquement. 13 anciens chemins W2 échouent encore. Branche expérimentale — pas sur main. Ne pas publier avant merge sur main et correction des W2.",
-      en: "Mocks only. 13 legacy W2 paths still failing. Experimental branch — not on main. Do not publish until merged to main and W2 paths fixed.",
+      fr: "Mocks uniquement, périmètre mono-host. La levée W2 est bornée aux 8 points d'entrée E01–E08 et ne couvre pas les chemins hors de ce périmètre. Le contournement par l'ancien service signé reste ouvert (1 XFAIL maintenu). Collecte pytest globale bloquée sous Windows hors profil W2 (import fcntl dans 3 modules EP02). Branche expérimentale fix/b1-governor-uid-lab — pas sur main. Ne pas publier avant merge sur main.",
+      en: "Mocks only, single-host scope. The W2 lifting is bounded to the 8 entry points E01–E08 and does not cover paths outside that scope. The legacy signed-service bypass remains open (1 XFAIL maintained). Global pytest collection fails on Windows outside the W2 profile (fcntl import in 3 EP02 modules). Experimental branch fix/b1-governor-uid-lab — not on main. Do not publish until merged to main.",
     },
-    publishable: false, // expérimental — bloqué jusqu'à merge main + fix W2
+    publishable: false, // expérimental — branche fix/b1-governor-uid-lab, bloqué jusqu'à merge main
   },
 ];
 

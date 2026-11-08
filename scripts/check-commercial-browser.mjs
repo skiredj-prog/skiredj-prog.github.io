@@ -147,7 +147,9 @@ try {
     page.on('pageerror',err=>errors.push(err.message));
     await page.goto('http://127.0.0.1:4173'+route,{waitUntil:'networkidle'});
     assert(await page.locator('.cr-hero h1').isVisible(),locale+': credibility route hero not rendered');
-    assert(await page.locator('.cr-panel').count()===3,locale+': expected release, internal, external proof panels');
+    assert(await page.locator('.cr-panel').count()===4,locale+': expected release, internal, external and HOLD E1-A6 panels');
+    assert(await page.locator('.cr-panel--hold').count()===1,locale+': HOLD E1-A6 panel missing');
+    assert((await page.locator('.cr-panel--hold').innerText()).includes('f3bb683'),locale+': HOLD panel must name its own artifact commit, distinct from the Raft suite');
     assert((await page.locator('.cr-evidence').innerText()).includes('81 / 81'),locale+': independent rerun evidence missing');
     assert(await page.locator('.cr-architecture iframe').count()===1,locale+': architecture iframe missing');
     await page.locator('.cr-architecture iframe').scrollIntoViewIfNeeded();
