@@ -21,8 +21,7 @@
   font-family: var(--serif);
   font-size: clamp(1.8rem, 4vw, 3rem);
   line-height: 0.98;
-  letter-spacing: -0.02em;
-}
+  letter-spacing: -0.02em;font-size-adjust:.44}
 
 .visual-heading > p {
   max-width: 32ch;
@@ -70,8 +69,7 @@
   fill: var(--ink);
   font-family: var(--serif);
   font-size: 21px;
-  font-weight: 600;
-}
+  font-weight: 600;font-size-adjust:.44}
 
 .visual-node-sub,
 .visual-core-sub,
@@ -90,7 +88,7 @@
 .visual-core-kicker,
 .visual-core-title,
 .visual-core-sub { fill: var(--bg); }
-.visual-core-title { font-family: var(--serif); font-size: 28px; font-weight: 600; }
+.visual-core-title { font-family: var(--serif); font-size: 28px; font-weight:700;font-size-adjust:.44 }
 .visual-core-kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; }
 
 .visual-footnote {

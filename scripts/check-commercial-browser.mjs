@@ -106,7 +106,7 @@ try {
     }
   }
 
-  // Portfolio hubs must share TENIR navy/blue identity, not the obsolete green tokens.
+  // Portfolio hubs share the HOLD identity (Nov. 2026): console navy surfaces and mint accent.
   for(const locale of ['fr','en']){
     const prefix=locale==='fr'?'':'/en';
     for(const theme of ['dark','light']){
@@ -120,8 +120,8 @@ try {
           scroll:document.documentElement.scrollWidth,
           client:document.documentElement.clientWidth
         }));
-        assert.equal(colors.bg,theme==='dark'?'rgb(7, 22, 41)':'rgb(247, 249, 252)',locale+'/'+hub+'/'+theme+': stale portfolio page background '+colors.bg);
-        assert.equal(colors.accent,theme==='dark'?'#82aefa':'#2563eb',locale+'/'+hub+'/'+theme+': legacy green accent '+colors.accent);
+        assert.equal(colors.bg,theme==='dark'?'rgb(12, 20, 29)':'rgb(245, 248, 250)',locale+'/'+hub+'/'+theme+': stale portfolio page background '+colors.bg);
+        assert.equal(colors.accent,theme==='dark'?'#3fbf9a':'#157a5e',locale+'/'+hub+'/'+theme+': accent is not the HOLD mint/sage '+colors.accent);
         assert(colors.scroll<=colors.client+2,locale+'/'+hub+'/'+theme+': horizontal overflow');
         assert(await page.locator('.pf-local-nav').isVisible(),locale+'/'+hub+'/'+theme+': portfolio navigation hidden');
         await page.close();

@@ -19,9 +19,6 @@
     "check:workbench-release:unit": "node scripts/check-workbench-release.mjs --self-test"
   },
   "dependencies": {
-    "@fontsource/cormorant-garamond": "^5.2.8",
-    "@fontsource/ibm-plex-mono": "^5.2.7",
-    "@fontsource/source-sans-3": "^5.2.9",
     "astro": "^7.4.1"
   }
 }

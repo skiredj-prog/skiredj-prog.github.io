@@ -18,7 +18,7 @@
 .capture-demo summary { cursor: pointer; color: var(--accent); font-weight: 600; padding: 1rem 1.2rem; }
 .capture-demo summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .capture-demo details > div { padding: 0 clamp(1rem, 3vw, 1.7rem) 1.3rem; }
-.capture-demo details h3 { font: 500 clamp(1.35rem, 2.5vw, 1.7rem)/1.2 var(--serif); margin: .5rem 0; }
+.capture-demo details h3 { font: 700 clamp(1.35rem, 2.5vw, 1.7rem)/1.2 var(--serif); margin: .5rem 0;font-size-adjust:.44 }
 .doc .capture-demo table { width: 100%; min-width: 0; table-layout: fixed; margin: 1.3rem 0; font-size: .9rem; }
 .capture-demo caption { text-align: left; white-space: normal; font-size: .82rem; color: var(--muted); margin-bottom: .6rem; }
 .doc .capture-demo th, .doc .capture-demo td { min-width: 0; overflow-wrap: anywhere; }
@@ -32,7 +32,7 @@
 .capture-demo .capture-takeaway { margin: 2rem 0; }
 .capture-demo .capture-takeaway h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: .7rem; }
 .capture-demo .capture-next { padding: 1.5rem; border-radius: 12px; background: var(--accent-soft); }
-.capture-demo .capture-next h2 { font: 500 1.7rem var(--serif); margin: 0; }
+.capture-demo .capture-next h2 { font: 700 1.7rem var(--serif); margin: 0;font-size-adjust:.44 }
 .capture-demo .capture-next .actions { margin-top: 1.2rem; }
 .capture-demo .capture-limits { background: transparent; border: 0; margin-top: 1.5rem; font-size: .88rem; }
 .capture-demo .capture-limits summary { font-weight: 400; padding: .7rem 0; }

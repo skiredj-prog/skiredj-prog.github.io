@@ -1,6 +1,6 @@
 const root=document.documentElement;
 const themeButton=document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
-function syncTheme(){const dark=root.dataset.theme==='dark';themeButton?.setAttribute('aria-pressed',String(dark));themeButton?.setAttribute('aria-label',(dark?themeButton.dataset.labelLight:themeButton.dataset.labelDark)||'Theme');document.querySelector('meta[name="theme-color"]')?.setAttribute('content','#071629');}
+function syncTheme(){const dark=root.dataset.theme==='dark';themeButton?.setAttribute('aria-pressed',String(dark));themeButton?.setAttribute('aria-label',(dark?themeButton.dataset.labelLight:themeButton.dataset.labelDark)||'Theme');document.querySelector('meta[name="theme-color"]')?.setAttribute('content','#0c141d');}
 syncTheme();
 themeButton?.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('tenir-theme',root.dataset.theme);}catch(e){}syncTheme();});
 const menuButton=document.querySelector<HTMLButtonElement>('[data-menu-toggle]');

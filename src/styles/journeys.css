@@ -31,7 +31,7 @@
 .invitation-prompts { padding: 1.3rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--accent-soft); }
 .invitation-prompts > p { font: .62rem var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-top: 0; }
 .invitation-prompts ul { list-style: none; padding: 0; margin: 1.4rem 0 0; }
-.invitation-prompts li { font: 500 1.25rem/1.35 var(--serif); padding: .7rem 0; color: var(--accent); }
+.invitation-prompts li { font: 500 1.25rem/1.35 var(--serif); padding: .7rem 0; color: var(--accent);font-size-adjust:.44 }
 .invitation-prompts li + li { border-top: 1px solid var(--line); }
 .depth-section { margin: 1.2rem 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-raised); }
 .depth-section > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.3rem 1.5rem; cursor: pointer; list-style: none; }
@@ -70,7 +70,7 @@
 .substance-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.2rem; }
 .substance-grid > a { display: flex; flex-direction: column; padding: 1.2rem; border: 1px solid var(--line); background: var(--bg-raised); border-radius: var(--radius); text-decoration: none; color: var(--ink); }
 .substance-grid > a:hover { border-color: var(--accent); }
-.landing .substance-grid h3 { font: 600 1.9rem/1.2 var(--serif); margin: .7rem 0; }
+.landing .substance-grid h3 { font: 700 1.9rem/1.2 var(--serif); margin: .7rem 0;font-size-adjust:.44 }
 .substance-grid p { color: var(--muted); font-size: .95rem; flex: 1; }
 .substance-grid .text-link { font-size: .9rem; }
 .demo-shelf { margin-top: 1.6rem; display: grid; grid-template-columns: 1.2fr repeat(3,minmax(0,1fr)); gap: 1rem; padding: 1.3rem 0; border-block: 1px solid var(--line); align-items: center; }
@@ -80,7 +80,7 @@
 .demo-shelf small { display: block; font-size: .75rem; color: var(--muted); margin-top: .3rem; }
 .doc.business-page { display: block; max-width: 76rem; }
 .page-hero.page-hero--business h1 { font-size: clamp(2.4rem,4vw,3.3rem); }
-.business-journey h2 { font: 500 1.8rem/1.2 var(--serif); margin: 0 0 .7rem; }
+.business-journey h2 { font: 700 1.8rem/1.2 var(--serif); margin: 0 0 .7rem;font-size-adjust:.44 }
 .business-personas { margin-top: 1.5rem; }
 .persona-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; align-items: start; margin-top: 1.5rem; }
 .persona-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-raised); scroll-margin-top: 110px; }
@@ -89,7 +89,7 @@
 .persona-card > summary::-webkit-details-marker { display: none; }
 .persona-industry { font-size: .76rem; color: var(--muted); line-height: 1.5; }
 .persona-card summary strong { font-size: 1.05rem; line-height: 1.4; font-weight: 600; margin: .55rem 0 .8rem; }
-.persona-need { font: 500 1.25rem/1.35 var(--serif); color: var(--accent); }
+.persona-need { font: 500 1.25rem/1.35 var(--serif); color: var(--accent);font-size-adjust:.44 }
 .persona-open { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-top: 1rem; font-size: .84rem; color: var(--accent); min-height: 32px; }
 .persona-open > span { font-size: 1.3rem; }
 .persona-card[open] .persona-open > span { transform: rotate(45deg); }
@@ -103,7 +103,7 @@
 .business-next { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start; margin-top: 2.3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
 .business-next > div > p:not(.eyebrow) { color: var(--muted); font-size: 1rem; }
 .business-offer { background: var(--accent-soft); border-radius: var(--radius); padding: 1.3rem; }
-.business-offer h3 { font: 500 1.45rem/1.3 var(--serif); margin: .7rem 0; }
+.business-offer h3 { font: 700 1.45rem/1.3 var(--serif); margin: .7rem 0;font-size-adjust:.44 }
 .business-offer .actions { align-items: flex-start; flex-direction: column; }
 .business-offer .section-note { font-size: .8rem; margin-bottom: 0; }
 .business-page .reader-contact { margin-top: 2.5rem; }
