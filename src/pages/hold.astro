@@ -2,215 +2,237 @@
 import Base from '../layouts/Base.astro';
 import { holdE1A6Stats } from '../data/claims';
 import { url } from '../data/site';
+
+const s = holdE1A6Stats;
+const n = (v: number) => v.toLocaleString('fr-FR').replace(/ | /g, ' ');
 ---
-<Base locale="fr" slug="hold" title="HOLD — Expérience E1-A6 · TENIR Labs" description="Résultats de l’expérience E1-A6 : 99 runs, 3 conditions, hypothèses H1/H2/H3, audit indépendant Harv Banning." kicker="HOLD · E1-A6" lede="HOLD stoppe les violations. Les complétions légitimes avancent." sources="HOLD E1-A6 · commit f3bb683 · audit Harv Banning 2026-11-03">
+<Base
+  locale="fr"
+  slug="hold"
+  title="HOLD — Expérience E1-A6"
+  description="Résultats de l’expérience E1-A6 : 99 runs, trois conditions, hypothèses H1/H2/H3, audit indépendant Harv Banning."
+  kicker="Expérience"
+  lede="HOLD stoppe les violations. Les complétions légitimes avancent. 99 runs, trois conditions, un audit indépendant — et ce que tout cela ne montre pas."
+  sources="HOLD · dépôt skiredj-prog/hold · commit f3bb683 · archive d’audit Harv Banning du 3 novembre 2026"
+>
 
-  <div class="hold-root">
-
-    <section class="hold-hero">
-      <div class="hold-wrap">
-        <p class="hold-eyebrow">HOLD &middot; EXP&Eacute;RIENCE E1-A6</p>
-        <h1>HOLD stoppe les violations. Les compl&eacute;tions l&eacute;gitimes avancent.</h1>
-        <p class="hold-lead">99 runs sur 11 sc&eacute;narios. Trois conditions. Deux hypoth&egrave;ses accept&eacute;es, une non &eacute;valu&eacute;e. Un audit ind&eacute;pendant. Voici ce que cela montre &mdash; et ce que cela ne montre pas.</p>
-      </div>
-    </section>
-
-    <section class="hold-stats">
-      <div class="hold-wrap">
-        <div class="hold-stat-grid">
-          <div class="hold-stat">
-            <strong>{holdE1A6Stats.totalRuns}</strong>
-            <span>runs au total</span>
-          </div>
-          <div class="hold-stat hold-stat--a">
-            <strong>{holdE1A6Stats.conditions.A.violations}/{holdE1A6Stats.conditions.A.runs}</strong>
-            <span>violations arr&ecirc;t&eacute;es (cond. A)</span>
-          </div>
-          <div class="hold-stat hold-stat--b">
-            <strong>{holdE1A6Stats.conditions.B.violations}/{holdE1A6Stats.conditions.B.runs}</strong>
-            <span>violations (cond. B)</span>
-          </div>
-          <div class="hold-stat hold-stat--c">
-            <strong>{holdE1A6Stats.conditions.C.completed}/{holdE1A6Stats.conditions.C.runs}</strong>
-            <span>CLOSED_COMPLETED (cond. C)</span>
-          </div>
-          <div class="hold-stat">
-            <strong>{holdE1A6Stats.audit.passed.toLocaleString('fr')}/{holdE1A6Stats.audit.totalChecks.toLocaleString('fr')}</strong>
-            <span>contr&ocirc;les d&rsquo;audit r&eacute;ussis</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="hold-chart-section" id="chart">
-      <div class="hold-wrap">
-        <h2 class="hold-section-title">Distribution des 99 runs</h2>
-        <p class="hold-chart-caption">A = violation stricte &middot; B = violation partielle &middot; C = compl&eacute;tion l&eacute;gitime &mdash; chaque point = 1 run</p>
-        <div class="hold-unit-chart" aria-label="Diagramme en unit&eacute;s des 99 runs HOLD E1-A6">
-          <div class="hold-uc-row">
-            <span class="hold-uc-label">A</span>
-            <div class="hold-uc-dots">
-              {Array.from({length: holdE1A6Stats.conditions.A.runs}, (_, i) => (
-                <span class="hold-dot hold-dot--violation" title={`A-${i+1}: VIOLATION`} />
-              ))}
-            </div>
-          </div>
-          <div class="hold-uc-row">
-            <span class="hold-uc-label">B</span>
-            <div class="hold-uc-dots">
-              {Array.from({length: holdE1A6Stats.conditions.B.violations}, (_, i) => (
-                <span class="hold-dot hold-dot--violation" title={`B-${i+1}: VIOLATION`} />
-              ))}
-              {Array.from({length: holdE1A6Stats.conditions.B.runs - holdE1A6Stats.conditions.B.violations}, (_, i) => (
-                <span class="hold-dot hold-dot--other" title={`B-${i+4}: AUTRE`} />
-              ))}
-            </div>
-          </div>
-          <div class="hold-uc-row">
-            <span class="hold-uc-label">C</span>
-            <div class="hold-uc-dots">
-              {Array.from({length: holdE1A6Stats.conditions.C.completed}, (_, i) => (
-                <span class="hold-dot hold-dot--completed" title={`C-${i+1}: CLOSED_COMPLETED`} />
-              ))}
-              {Array.from({length: holdE1A6Stats.conditions.C.unconfirmed}, (_, i) => (
-                <span class="hold-dot hold-dot--unconfirmed" title={`C-${i+9}: CLOSED_UNCONFIRMED`} />
-              ))}
-              {Array.from({length: holdE1A6Stats.conditions.C.noEffect}, (_, i) => (
-                <span class="hold-dot hold-dot--noeffect" title={`C-${i+31}: CLOSED_NO_EFFECT`} />
-              ))}
-            </div>
-          </div>
-          <div class="hold-uc-legend">
-            <span><span class="hold-dot hold-dot--violation"></span> Violation</span>
-            <span><span class="hold-dot hold-dot--completed"></span> CLOSED_COMPLETED</span>
-            <span><span class="hold-dot hold-dot--unconfirmed"></span> CLOSED_UNCONFIRMED</span>
-            <span><span class="hold-dot hold-dot--noeffect"></span> CLOSED_NO_EFFECT</span>
-            <span><span class="hold-dot hold-dot--other"></span> Autre</span>
-          </div>
-          <p class="hold-chart-note">Source : run_counts.csv &middot; archive audit Harv Banning 2026-11-03 &middot; commit f3bb683</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="hold-hyp">
-      <div class="hold-wrap">
-        <h2 class="hold-section-title">Hypoth&egrave;ses</h2>
-        <div class="hold-hyp-grid">
-          <article class="hold-hyp-card hold-hyp-card--accepted">
-            <div class="hold-hyp-header">
-              <span class="hold-hyp-badge hold-hyp-badge--accepted">ACCEPT&Eacute;E (E1-A6 uniquement)</span>
-              <h3>H1 &mdash; Int&eacute;grit&eacute; d&rsquo;ex&eacute;cution</h3>
-            </div>
-            <p>Condition A : 33/33 violations arr&ecirc;t&eacute;es. HOLD maintient l&rsquo;&eacute;tat hors-violation sur tous les runs de la condition stricte.</p>
-          </article>
-          <article class="hold-hyp-card hold-hyp-card--accepted">
-            <div class="hold-hyp-header">
-              <span class="hold-hyp-badge hold-hyp-badge--accepted">ACCEPT&Eacute;E</span>
-              <h3>H2 &mdash; Progression l&eacute;gitime</h3>
-            </div>
-            <p>Condition C : 8 CLOSED_COMPLETED, 22 CLOSED_UNCONFIRMED, 3 CLOSED_NO_EFFECT. Les compl&eacute;tions l&eacute;gitimes progressent sans blocage artificiel.</p>
-          </article>
-          <article class="hold-hyp-card hold-hyp-card--open">
-            <div class="hold-hyp-header">
-              <span class="hold-hyp-badge hold-hyp-badge--open">NON &Eacute;VALU&Eacute;E</span>
-              <h3>H3 &mdash; Discernement contextuel</h3>
-            </div>
-            <p>Hors p&eacute;rim&egrave;tre de E1-A6. Hypoth&egrave;se ouverte pour une exp&eacute;rience future.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="hold-audit">
-      <div class="hold-wrap">
-        <h2 class="hold-section-title">Audit ind&eacute;pendant &mdash; Harv Banning &middot; 3 nov. 2026</h2>
-        <p>Harv Banning a repass&eacute; {holdE1A6Stats.audit.totalChecks.toLocaleString('fr')} contr&ocirc;les sur les 99 traces. {holdE1A6Stats.audit.passed.toLocaleString('fr')} r&eacute;ussis. {holdE1A6Stats.audit.failed} &eacute;carts &mdash; tous dans la cat&eacute;gorie <code>source_fingerprint_raw</code> (artefact CRLF, non s&eacute;mantique).</p>
-        <p>{holdE1A6Stats.audit.eventHashesRecomputed.toLocaleString('fr')} hachages d&rsquo;&eacute;v&eacute;nements recalcul&eacute;s. {holdE1A6Stats.audit.mutationControlsDetected} contr&ocirc;les de mutation d&eacute;tect&eacute;s.</p>
-        <p class="hold-audit-verdict">Verdict : &laquo;&nbsp;{holdE1A6Stats.audit.verdict}&nbsp;&raquo;. Audit assist&eacute; par IA. Aucun relecteur humain signataire.</p>
-      </div>
-    </section>
-
-    <section class="hold-limits">
-      <div class="hold-wrap">
-        <h2 class="hold-section-title">Limites explicites</h2>
-        <ul class="hold-limits-list">
-          <li>R&eacute;sultats propres &agrave; E1-A6 (Llama 3.2 3B, h&ocirc;tel synth&eacute;tique). Non g&eacute;n&eacute;ralisables sans nouvelle exp&eacute;rience.</li>
-          <li>L&rsquo;exp&eacute;rience n&rsquo;&eacute;tablit pas l&rsquo;unicit&eacute; de l&rsquo;effet HOLD (absence de bras sans HOLD).</li>
-          <li>L&rsquo;isolation Governor n&rsquo;est pas compl&egrave;te dans le lot B1 &mdash; contournement document&eacute; dans la branche exp&eacute;rimentale (non merg&eacute;e en production).</li>
-          <li>Audit assist&eacute; IA, sans relecteur humain signataire.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="hold-sources">
-      <div class="hold-wrap">
-        <h2 class="hold-section-title">Sources et ancres</h2>
-        <ul class="hold-source-list">
-          <li><a href="https://github.com/skiredj-prog/hold/tree/f3bb683" target="_blank" rel="noopener">D&eacute;p&ocirc;t HOLD &mdash; commit f3bb683 &nearr;</a></li>
-          <li><code>docs/audit/harv-banning-2026-11-03/</code> &mdash; Archive audit Harv Banning (2026-11-03)</li>
-        </ul>
-        <div class="hold-nav-links">
-          <a href={url('/affirmations/')}>Registre d&rsquo;affirmations complet &rarr;</a>
-          <a href={url('/credibilite/')}>Parcours Cr&eacute;dibilit&eacute; TENIR-Gov &rarr;</a>
-        </div>
-      </div>
-    </section>
-
+  <div class="hold-stats">
+    <div><strong>{s.totalRuns}</strong><span>runs au total</span></div>
+    <div><strong class="is-stop">{s.conditions.A.violations}/{s.conditions.A.runs}</strong><span>violations arrêtées (cond. A)</span></div>
+    <div><strong class="is-warn">{s.conditions.B.violations}/{s.conditions.B.runs}</strong><span>violations résiduelles (cond. B)</span></div>
+    <div><strong class="is-ok">{s.conditions.C.completed}/{s.conditions.C.runs}</strong><span>CLOSED_COMPLETED (cond. C)</span></div>
   </div>
 
-  <style>
-    .hold-root{background:var(--bg);color:var(--text)}
-    .hold-wrap{max-width:72rem;margin:0 auto;padding:0 1.5rem}
-    .hold-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border,#e5e7eb)}
-    .hold-eyebrow{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-bottom:.75rem}
-    .hold-hero h1{font-size:clamp(1.5rem,4vw,2.4rem);line-height:1.2;max-width:44rem}
-    .hold-lead{font-size:1.05rem;max-width:42rem;opacity:.8;margin:1rem 0 0}
-    .hold-stats{padding:3rem 0}
-    .hold-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1.5rem}
-    .hold-stat strong{display:block;font-size:1.4rem;font-weight:700;color:var(--accent,#3fbf9a)}
-    .hold-stat--a strong{color:#e2726a}
-    .hold-stat--b strong{color:#e0a44b}
-    .hold-stat--c strong{color:#3fbf9a}
-    .hold-stat span{font-size:.82rem;opacity:.7}
-    .hold-section-title{font-size:1.15rem;font-weight:600;margin-bottom:1.25rem}
-    .hold-chart-section{padding:3rem 0;background:var(--bg-alt,#f9fafb)}
-    .hold-chart-caption{font-size:.82rem;opacity:.6;margin-bottom:1.25rem}
-    .hold-unit-chart{padding:1.5rem;background:var(--surface,#fff);border:1px solid var(--border,#e5e7eb);border-radius:.5rem}
-    .hold-uc-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
-    .hold-uc-label{font-size:.8rem;font-weight:700;width:1.2rem;flex-shrink:0;opacity:.6}
-    .hold-uc-dots{display:flex;gap:.3rem;flex-wrap:wrap}
-    .hold-dot{display:inline-block;width:.85rem;height:.85rem;border-radius:50%;cursor:default;transition:transform .1s}
-    .hold-dot:hover{transform:scale(1.4)}
-    .hold-dot--violation{background:#e2726a}
-    .hold-dot--completed{background:#3fbf9a}
-    .hold-dot--unconfirmed{background:#71899a}
-    .hold-dot--noeffect{background:#e0a44b}
-    .hold-dot--other{background:#c5cdd3}
-    .hold-uc-legend{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;font-size:.8rem;opacity:.75;align-items:center}
-    .hold-uc-legend span{display:flex;align-items:center;gap:.35rem}
-    .hold-uc-legend .hold-dot{width:.7rem;height:.7rem}
-    .hold-chart-note{font-size:.75rem;opacity:.5;margin-top:.75rem}
-    .hold-hyp{padding:3rem 0}
-    .hold-hyp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.25rem}
-    .hold-hyp-card{border:1px solid var(--border,#e5e7eb);border-radius:.5rem;padding:1.25rem}
-    .hold-hyp-card--accepted{border-left:3px solid #3fbf9a}
-    .hold-hyp-card--open{border-left:3px solid #71899a}
-    .hold-hyp-header{display:flex;align-items:flex-start;gap:.75rem;flex-wrap:wrap;margin-bottom:.75rem}
-    .hold-hyp-card h3{font-size:.95rem;margin:0}
-    .hold-hyp-badge{font-size:.7rem;font-weight:700;padding:.2rem .55rem;border-radius:2rem;letter-spacing:.03em;white-space:nowrap}
-    .hold-hyp-badge--accepted{background:#d1fae5;color:#065f46}
-    .hold-hyp-badge--open{background:#f3f4f6;color:#374151}
-    .hold-hyp-card p{font-size:.88rem;opacity:.8;margin:0;line-height:1.6}
-    .hold-audit{padding:3rem 0;background:var(--bg-alt,#f9fafb)}
-    .hold-audit p{font-size:.92rem;opacity:.8;max-width:56rem;margin-bottom:.75rem;line-height:1.65}
-    .hold-audit-verdict{font-style:italic;opacity:.65 !important}
-    .hold-limits{padding:3rem 0}
-    .hold-limits-list{padding-left:1.25rem;display:flex;flex-direction:column;gap:.6rem;font-size:.92rem;opacity:.8;max-width:56rem}
-    .hold-sources{padding:3rem 0 5rem;background:var(--bg-alt,#f9fafb)}
-    .hold-source-list{list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.5rem;font-size:.88rem}
-    .hold-source-list a{color:var(--accent,#3fbf9a);text-decoration:underline}
-    .hold-nav-links{display:flex;gap:1.5rem;flex-wrap:wrap}
-    .hold-nav-links a{font-size:.9rem;color:var(--accent,#3fbf9a);text-decoration:underline}
-  </style>
+  <h2>Distribution des 99 runs</h2>
+
+  <p>Chaque point représente un run. Trois conditions, 33 runs chacune, sur 11 scénarios.</p>
+
+  <div class="hold-chart">
+    <div class="hold-row">
+      <span class="hold-row-label">A</span>
+      <div class="hold-dots">
+        {Array.from({ length: s.conditions.A.violations }, (_, i) => (
+          <span class="hold-dot is-violation" title={`A-${i + 1} · violation arrêtée`}></span>
+        ))}
+      </div>
+    </div>
+    <div class="hold-row">
+      <span class="hold-row-label">B</span>
+      <div class="hold-dots">
+        {Array.from({ length: s.conditions.B.violations }, (_, i) => (
+          <span class="hold-dot is-violation" title={`B-${i + 1} · violation`}></span>
+        ))}
+        {Array.from({ length: s.conditions.B.runs - s.conditions.B.violations }, (_, i) => (
+          <span class="hold-dot is-other" title={`B-${i + 4} · autre issue`}></span>
+        ))}
+      </div>
+    </div>
+    <div class="hold-row">
+      <span class="hold-row-label">C</span>
+      <div class="hold-dots">
+        {Array.from({ length: s.conditions.C.completed }, (_, i) => (
+          <span class="hold-dot is-completed" title={`C-${i + 1} · CLOSED_COMPLETED`}></span>
+        ))}
+        {Array.from({ length: s.conditions.C.unconfirmed }, (_, i) => (
+          <span class="hold-dot is-unconfirmed" title={`C-${i + 9} · CLOSED_UNCONFIRMED`}></span>
+        ))}
+        {Array.from({ length: s.conditions.C.noEffect }, (_, i) => (
+          <span class="hold-dot is-noeffect" title={`C-${i + 31} · CLOSED_NO_EFFECT`}></span>
+        ))}
+      </div>
+    </div>
+    <ul class="hold-legend">
+      <li><span class="hold-dot is-violation"></span>Violation</li>
+      <li><span class="hold-dot is-completed"></span>CLOSED_COMPLETED</li>
+      <li><span class="hold-dot is-unconfirmed"></span>CLOSED_UNCONFIRMED</li>
+      <li><span class="hold-dot is-noeffect"></span>CLOSED_NO_EFFECT</li>
+      <li><span class="hold-dot is-other"></span>Autre issue</li>
+    </ul>
+    <p class="hold-source-line">Source : <code>run_counts.csv</code> · archive d’audit du 3 novembre 2026 · commit <code>f3bb683</code></p>
+  </div>
+
+  <h2>Hypothèses</h2>
+
+  <div class="hold-hyp">
+    <article class="is-accepted">
+      <p class="hold-verdict">Acceptée — portée E1-A6</p>
+      <h3>H1 — Intégrité d’exécution</h3>
+      <p>Condition A : 33 violations sur 33 arrêtées. HOLD maintient l’état hors-violation sur l’intégralité des runs de la condition stricte.</p>
+    </article>
+    <article class="is-accepted">
+      <p class="hold-verdict">Acceptée</p>
+      <h3>H2 — Progression légitime</h3>
+      <p>Condition C : 8 CLOSED_COMPLETED, 22 CLOSED_UNCONFIRMED, 3 CLOSED_NO_EFFECT. Les complétions légitimes avancent sans blocage artificiel.</p>
+    </article>
+    <article class="is-open">
+      <p class="hold-verdict">Non évaluée</p>
+      <h3>H3 — Discernement contextuel</h3>
+      <p>Hors périmètre de E1-A6. Hypothèse ouverte, à traiter par une expérience distincte.</p>
+    </article>
+  </div>
+
+  <h2>Audit indépendant — Harv Banning, 3 novembre 2026</h2>
+
+  <p>{n(s.audit.totalChecks)} contrôles repassés sur les 99 traces : {n(s.audit.passed)} réussis, {s.audit.failed} en écart. Les {s.audit.failed} écarts relèvent tous de la catégorie <code>source_fingerprint_raw</code> — un artefact de fins de ligne CRLF, sans portée sémantique.</p>
+
+  <p>{n(s.audit.eventHashesRecomputed)} hachages d’événements ont été recalculés et {s.audit.mutationControlsDetected} contrôles de mutation détectés.</p>
+
+  <blockquote class="hold-quote">
+    <p>Verdict rendu : <strong>qualified support, not certification</strong>.</p>
+    <p class="hold-quote-note">Audit assisté par IA. Aucun relecteur humain signataire à ce jour.</p>
+  </blockquote>
+
+  <h2>Limites explicites</h2>
+
+  <ul>
+    <li>Les résultats sont propres à E1-A6 (Llama 3.2 3B, environnement hôtelier synthétique). Ils ne se généralisent pas sans nouvelle expérience.</li>
+    <li>L’expérience n’établit pas l’unicité de l’effet HOLD : il n’y a pas de bras de contrôle sans HOLD.</li>
+    <li>L’isolation du Governor n’est pas complète dans le lot B1. Le contournement est documenté dans une branche expérimentale, non fusionnée en production.</li>
+    <li>L’audit est assisté par IA et ne porte aucune signature de relecteur humain.</li>
+  </ul>
+
+  <h2>Sources et ancres</h2>
+
+  <ul>
+    <li><a href="https://github.com/skiredj-prog/hold/tree/f3bb683" target="_blank" rel="noopener">Dépôt HOLD, commit <code>f3bb683</code> ↗</a></li>
+    <li><code>docs/audit/harv-banning-2026-11-03/</code> — archive complète de l’audit</li>
+  </ul>
+
+  <p><a href={url('/affirmations/')}>Registre d’affirmations complet →</a><br /><a href={url('/credibilite/')}>Parcours Crédibilité TENIR-Gov →</a></p>
 
 </Base>
+
+<style>
+  .hold-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 0 2.2rem;
+  }
+  .hold-stats > div { background: var(--bg-raised); padding: 1.1rem; min-width: 0; }
+  .hold-stats strong {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .hold-stats strong.is-stop { color: #c0564d; }
+  .hold-stats strong.is-warn { color: #9a6b1e; }
+  .hold-stats strong.is-ok { color: var(--ok); }
+  .hold-stats span { display: block; font-size: .76rem; color: var(--muted); margin-top: .45rem; line-height: 1.4; }
+
+  .hold-chart {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.4rem;
+    background: var(--bg-raised);
+    margin: 1.2rem 0 2.4rem;
+  }
+  .hold-row { display: flex; align-items: center; gap: .85rem; margin-bottom: .7rem; }
+  .hold-row-label {
+    font: 600 .78rem var(--mono);
+    color: var(--muted);
+    width: 1.1rem;
+    flex-shrink: 0;
+  }
+  .hold-dots { display: flex; gap: .32rem; flex-wrap: wrap; }
+  .hold-dot {
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .hold-dot.is-violation { background: #c0564d; }
+  .hold-dot.is-completed { background: #2d7a63; }
+  .hold-dot.is-unconfirmed { background: #7d93a2; }
+  .hold-dot.is-noeffect { background: #c08a35; }
+  .hold-dot.is-other { background: var(--line); border: 1px solid var(--muted); }
+
+  .hold-legend {
+    list-style: none;
+    padding: 0;
+    margin: 1.1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.1rem;
+    font-size: .76rem;
+    color: var(--muted);
+  }
+  .hold-legend li { display: flex; align-items: center; gap: .4rem; margin: 0; }
+  .hold-legend .hold-dot { width: .65rem; height: .65rem; }
+  .hold-source-line { font-size: .74rem; color: var(--muted); margin: .9rem 0 0; }
+
+  .hold-hyp {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: .9rem;
+    margin: 1.2rem 0 2.4rem;
+  }
+  .hold-hyp article {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: 8px;
+    padding: 1.15rem;
+    background: var(--bg-raised);
+  }
+  .hold-hyp article.is-accepted { border-left-color: #2d7a63; }
+  .hold-hyp article.is-open { border-left-color: var(--muted); }
+  .hold-verdict {
+    font: 600 .68rem var(--mono);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin: 0 0 .45rem;
+    color: var(--muted);
+  }
+  .hold-hyp article.is-accepted .hold-verdict { color: #2d7a63; }
+  .hold-hyp h3 { font-size: 1rem; margin: 0 0 .5rem; color: var(--ink); }
+  .hold-hyp p { font-size: .86rem; line-height: 1.6; margin: 0; color: var(--ink-soft); }
+
+  .hold-quote {
+    border-left: 3px solid var(--accent);
+    padding: .2rem 0 .2rem 1.1rem;
+    margin: 1.4rem 0 2rem;
+  }
+  .hold-quote p { margin: 0 0 .4rem; }
+  .hold-quote-note { font-size: .82rem; color: var(--muted); margin: 0; }
+
+  :root[data-theme='dark'] .hold-stats strong.is-stop { color: #e39a93; }
+  :root[data-theme='dark'] .hold-stats strong.is-warn { color: #dfb871; }
+  :root[data-theme='dark'] .hold-dot.is-violation { background: #d9766c; }
+  :root[data-theme='dark'] .hold-dot.is-completed { background: #5aba9b; }
+  :root[data-theme='dark'] .hold-dot.is-unconfirmed { background: #8ba3b2; }
+  :root[data-theme='dark'] .hold-dot.is-noeffect { background: #dcaa5e; }
+  :root[data-theme='dark'] .hold-hyp article.is-accepted { border-left-color: #5aba9b; }
+  :root[data-theme='dark'] .hold-hyp article.is-accepted .hold-verdict { color: #5aba9b; }
+
+  @media (max-width: 560px) {
+    .hold-stats { grid-template-columns: repeat(2, 1fr); }
+    .hold-hyp { grid-template-columns: 1fr; }
+  }
+</style>

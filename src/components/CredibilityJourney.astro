@@ -37,6 +37,7 @@ const t=fr?{
  email:'Discuter d’un cas réel',
  labelSummary:'Version 5.7.0 · Source datée du 24 octobre 2026',
  holdPanel:'Expérience E1-A6 · HOLD',
+ holdPanelTitle:'HOLD · 33/33 arrêtées',
  holdPanelNote:'Artefact distinct : 99 runs sur skiredj-prog/hold · commit f3bb683. Ne couvre pas la suite Raft ci-contre.',
  holdH1:'H1 acceptée — 33/33 violations arrêtées (cond. A)',
  holdH2:'H2 acceptée — 8 complétions légitimes (cond. C)',
@@ -76,6 +77,7 @@ const t=fr?{
  email:'Discuss one real use case',
  labelSummary:'Version 5.7.0 · Source dated October 24, 2026',
  holdPanel:'E1-A6 Experiment · HOLD',
+ holdPanelTitle:'HOLD · 33/33 stopped',
  holdPanelNote:'Separate artefact: 99 runs on skiredj-prog/hold · commit f3bb683. Does not cover the Raft suite opposite.',
  holdH1:'H1 accepted — 33/33 violations stopped (cond. A)',
  holdH2:'H2 accepted — 8 legitimate completions (cond. C)',
@@ -112,7 +114,7 @@ const report=url(fr?'/parcours-ia/':'/en/ai-readiness/');
         <article class="cr-panel"><small>{t.version}</small><h2>TENIR-Gov v5.7.0</h2><p>{t.exact} <code>47ef67e3efc5f3008896a7d88bebf929fa0a98f0</code></p><a href={release} target="_blank" rel="noopener">{t.release} ↗</a></article>
         <article class="cr-panel"><small>{t.internal}</small><h2>1 286 PASS</h2><p>{t.tests}</p><a href={run} target="_blank" rel="noopener">{t.inspect} ↗</a></article>
         <article class="cr-panel"><small>{t.external}</small><h2>Harv Banning · 81/81</h2><p>{t.reviewer}</p><p class="cr-note">{t.externalNote}</p><p class="cr-digest"><strong>{t.testDurationLabel} : {t.testDuration}</strong></p><p class="cr-digest">macOS 26.6.2 · Python 3.12.7 · pytest 8.4.2 · PySyncObj 0.3.17</p><p class="cr-digest">{t.logHashLabel} : <code>0e0cbafda8c90735bf277d783d69ce91df36c5abcad26ac81de4a2d82fe7ff03</code></p></article>
-        <article class="cr-panel cr-panel--hold"><small>{t.holdPanel}</small><p class="cr-panel-note">{t.holdPanelNote}</p><ul class="cr-hold-results"><li>{t.holdH1}</li><li>{t.holdH2}</li><li class="cr-hold-open">{t.holdH3}</li></ul><p class="cr-digest">{t.holdAudit}</p><a href={url(fr?'/hold/':'/en/hold/')}>{t.holdCta} →</a></article>
+        <article class="cr-panel cr-panel--hold"><small>{t.holdPanel}</small><h2>{t.holdPanelTitle}</h2><p class="cr-panel-note">{t.holdPanelNote}</p><ul class="cr-hold-results"><li>{t.holdH1}</li><li>{t.holdH2}</li><li class="cr-hold-open">{t.holdH3}</li></ul><p class="cr-digest">{t.holdAudit}</p><a href={url(fr?'/hold/':'/en/hold/')}>{t.holdCta} →</a></article>
       </div>
     </div>
   </section>
