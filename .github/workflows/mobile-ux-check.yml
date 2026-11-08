@@ -2,7 +2,10 @@ name: UX mobile header regression
 on:
   pull_request:
     paths:
+      - 'src/layouts/Base.astro'
+      - 'src/styles/site.css'
       - 'src/styles/experience.css'
+      - 'src/styles/marketing-home.css'
       - 'src/components/Home.astro'
       - 'src/content/fr/diagnostic-execution.md'
       - 'src/content/en/diagnostic-execution.md'
