@@ -1,0 +1,43 @@
+/* HOLD identity, last layer (Nov. 2026).
+   Primary actions use the console's mint with ink text; amber marks attention and the active place;
+   the wordmark is set like the console's "HOLD." label. Colours elsewhere come from the shared tokens
+   and from the luminance-preserving remap of the page stylesheets. */
+
+.ml-btn-primary, .pa-primary, .cr-btn-primary { background: #3fbf9a !important; border-color: #3fbf9a !important; color: #0c141d !important; }
+.ml-btn-primary:hover, .pa-primary:hover, .cr-btn-primary:hover { background: #5fcdae !important; border-color: #5fcdae !important; color: #0c141d !important; filter: none; }
+
+/* Light theme keeps the darker sage for buttons drawn from the --accent token (white text, 5.3:1). */
+:root[data-theme="dark"] .btn-primary { color: #0c141d; }
+
+.brand-name { font-weight: 800; letter-spacing: .1em; }
+.site-header .brand-name, .site-footer .brand-name { font-size: 1.55rem; }
+.brand-labs { font-family: var(--mono); font-weight: 500; }
+
+/* The home headline's second line keeps the amber of the HOLD wordmark. */
+.ml-headline em { color: #e0a44b; }
+
+/* Body-size text that used the old serif keeps its natural size (no x-height compensation). */
+.lede, .page-hero .lede, .doc .lede { font-size-adjust: none; }
+.prose h2, .prose h3 { font-weight: 700; }
+
+/* Page-specific stylesheets load after this file, so the primary-action rule needs their specificity. */
+.market-root .ml-btn-primary, .pa-app .pa-primary, .cr-root .cr-btn-primary { background: #3fbf9a !important; border-color: #3fbf9a !important; color: #0c141d !important; }
+.market-root .ml-btn-primary:hover, .pa-app .pa-primary:hover, .cr-root .cr-btn-primary:hover { background: #5fcdae !important; border-color: #5fcdae !important; }
+
+/* Contrast in the default dark theme (AA): accents become mint, small labels a light grey. */
+.market-root .ml-kicker { color: #4a5f6e; }
+:root[data-theme="dark"] .market-root .ml-kicker,
+:root[data-theme="dark"] .market-root .ml-fiction,
+:root[data-theme="dark"] .market-root .ml-card-number,
+:root[data-theme="dark"] .cr-root .cr-eyebrow { color: #93a5b0; }
+:root[data-theme="dark"] .cr-root .cr-stats span { color: #a8bcc6; }
+:root[data-theme="dark"] .market-root .ml-story-link,
+:root[data-theme="dark"] .market-root .ml-why-now-list b,
+:root[data-theme="dark"] .market-root .ml-card-action,
+:root[data-theme="dark"] .market-root .lifecycle-flow span,
+:root[data-theme="dark"] .cr-root .cr-panel small,
+:root[data-theme="dark"] .cr-root .cr-panel a,
+:root[data-theme="dark"] .cr-root .cr-boundaries a,
+:root[data-theme="dark"] .cr-root .cr-cap-grid article > span { color: #3fbf9a !important; }
+:root[data-theme="dark"] .market-root .ml-risk .ml-indicator { color: #e2726a; }
+:root[data-theme="dark"] .market-root .ml-safe .ml-indicator { color: #e0a44b; }

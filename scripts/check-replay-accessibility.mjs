@@ -15,6 +15,8 @@ try {
       const page = await browser.newPage({ viewport: { width: theme === 'dark' ? 320 : 1280, height: 900 }, colorScheme: theme });
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
+      // Since the HOLD identity (Nov. 2026) the site opens in dark by default; the visitor's choice is stored.
+      await page.addInitScript(mode => { try { localStorage.setItem('tenir-theme', mode); } catch (e) {} }, theme);
       await page.goto(base + route.path);
       await page.waitForFunction(() => document.querySelector('.replay-page')?.dataset.replayEnhanced === 'true');
       assert.equal(await page.locator('html').getAttribute('data-theme'), theme);
