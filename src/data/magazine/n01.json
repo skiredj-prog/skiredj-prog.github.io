@@ -218,7 +218,7 @@
   "ports_ask_title": "À demander à chaque mise à jour",
   "ports_ask": "Quelle hypothèse a changé ? Quel coût est devenu irréversible ? Que se passe-t-il si le trafic reste sous la prévision ?",
   "ia_title": "Une IA qui parle darija : qui garde la main ?",
-  "ia_fact": "La feuille de route « Maroc IA 2030 », dévoilée en janvier 2026, vise 50 000 emplois et 200 000 talents formés. Le 29 septembre 2026, le ministère de la Transition numérique et Mistral AI ont annoncé deux premiers modèles pour la darija et leur publication en open source.",
+  "ia_fact": "La feuille de route « Maroc IA 2030 », dévoilée en janvier 2026, vise 50 000 emplois et 200 000 talents à former ou à certifier. Le 29 septembre 2026, le ministère de la Transition numérique et Mistral AI ont annoncé deux premiers modèles pour la darija et leur publication en open source.",
   "ia_think": "Une avancée concrète, qui permet de poser trois questions valables pour toute IA d’un service public :",
   "ia_qs": [
    [
@@ -426,7 +426,7 @@
     "L’enveloppe initialement annoncée était d’environ 5 milliards de DH. En octobre 2026, Le Desk a recensé 13,6 milliards de DH de marchés lancés ou attribués autour du chantier. Les périmètres diffèrent ; ce second montant n’est pas un coût final."
    ]
   ],
-  "cdm_ma_think": "Deux leçons sont déjà retenues : un club résident est annoncé, le train est prévu avec le stade. Reste un risque plus discret : remplir un stade peut en vider un autre. Mohammed V vient d’être rénové, Moulay Abdellah reconstruit à Rabat : un même public pour trois grands stades.",
+  "cdm_ma_think": "Deux leçons sont déjà retenues : un club résident est annoncé, le train est prévu avec le stade. Reste un risque plus discret : remplir un stade peut en vider un autre. Mohammed V a été rénové et rouvert en avril 2025, Moulay Abdellah reconstruit à Rabat : un même public pour trois grands stades.",
   "cdm_ma_unknown_title": "Pas trouvé dans les documents publics",
   "cdm_ma_unknown": [
    "Le contrat avec les clubs : durée, loyer, matchs par an",
@@ -606,6 +606,7 @@
    "languages": "Langues",
    "answers_show": "Voir les réponses",
    "corrections": "Corrections : aucune à ce jour (9 novembre 2026).",
+   "checked": "Sources vérifiées le 9 novembre 2026.",
    "published_by": "Publié par TENIR Labs",
    "toc_label": "Sommaire",
    "back_to_site": "tenirlabs.cc",
@@ -834,7 +835,7 @@
   "ports_ask_title": "To ask at every update",
   "ports_ask": "Which assumption has changed? Which cost has become irreversible? What happens if traffic stays below the forecast?",
   "ia_title": "An AI that speaks Darija: who stays in charge?",
-  "ia_fact": "The “Morocco AI 2030” roadmap, unveiled in January 2026, targets 50,000 jobs and 200,000 trained people. On 29 September 2026, the Ministry of Digital Transition and Mistral AI announced two initial models for Darija and plans to release them as open source.",
+  "ia_fact": "The “Morocco AI 2030” roadmap, unveiled in January 2026, targets 50,000 jobs and 200,000 people to train or certify. On 29 September 2026, the Ministry of Digital Transition and Mistral AI announced two initial models for Darija and plans to release them as open source.",
   "ia_think": "Real progress, which lets us ask three questions that apply to any AI used by a public service:",
   "ia_qs": [
    [
@@ -1042,7 +1043,7 @@
     "The initial envelope announced was about MAD 5 billion. In October 2026, Le Desk counted MAD 13.6 billion in contracts launched or awarded around the project. The scopes differ; the second figure is not a final cost."
    ]
   ],
-  "cdm_ma_think": "Two lessons are already learned: a resident club is announced, the train is planned with the stadium. A quieter risk remains: filling one stadium can empty another. Mohammed V has just been renovated, Rabat’s Moulay Abdellah rebuilt: one crowd for three big stadiums.",
+  "cdm_ma_think": "Two lessons are already learned: a resident club is announced, the train is planned with the stadium. A quieter risk remains: filling one stadium can empty another. Mohammed V was renovated and reopened in April 2025, Rabat’s Moulay Abdellah rebuilt: one crowd for three big stadiums.",
   "cdm_ma_unknown_title": "Not found in public documents",
   "cdm_ma_unknown": [
    "The contract with the clubs: length, rent, matches per year",
@@ -1222,6 +1223,7 @@
    "languages": "Languages",
    "answers_show": "Show the answers",
    "corrections": "Corrections: none so far (9 November 2026).",
+   "checked": "Sources checked on 9 November 2026.",
    "published_by": "Published by TENIR Labs",
    "toc_label": "Contents",
    "back_to_site": "tenirlabs.cc",
@@ -1450,7 +1452,7 @@
   "ports_ask_title": "يُسأل عند كل تحديث",
   "ports_ask": "أي فرضية تغيّرت؟ أي كلفة أصبحت غير قابلة للاسترجاع؟ ماذا يحدث إذا بقيت الحركة دون التوقعات؟",
   "ia_title": "ذكاء اصطناعي يتكلم الدارجة: من يبقى صاحب القرار؟",
-  "ia_fact": "تستهدف خارطة الطريق «المغرب للذكاء الاصطناعي 2030»، التي كُشف عنها في يناير 2026، خلق 50 ألف منصب شغل وتكوين 200 ألف كفاءة. وفي 29 شتنبر 2026، أعلنت وزارة الانتقال الرقمي وشركة Mistral AI عن نموذجين أوليين للدارجة وخطة نشرهما بمصدر مفتوح.",
+  "ia_fact": "تستهدف خارطة الطريق «المغرب للذكاء الاصطناعي 2030»، التي كُشف عنها في يناير 2026، خلق 50 ألف منصب شغل وتكوين أو إشهاد 200 ألف كفاءة. وفي 29 شتنبر 2026، أعلنت وزارة الانتقال الرقمي وشركة Mistral AI عن نموذجين أوليين للدارجة وخطة نشرهما بمصدر مفتوح.",
   "ia_think": "تقدّم ملموس يسمح بطرح ثلاثة أسئلة تصلح لكل ذكاء اصطناعي تستعمله مصلحة عمومية:",
   "ia_qs": [
    [
@@ -1658,7 +1660,7 @@
     "بلغ الغلاف المعلن في البداية نحو 5 مليارات درهم. وفي أكتوبر 2026، أحصى موقع «لوديسك» صفقات أُطلقت أو أُسندت حول المشروع بقيمة 13,6 مليار درهم. يختلف نطاق الرقمين، ولا يمثّل الثاني الكلفة النهائية."
    ]
   ],
-  "cdm_ma_think": "استُوعب درسان: هناك نادٍ مقيم معلن، والقطار مبرمج مع الملعب. ويبقى خطر أخفى: ملء ملعب قد يُفرغ آخر. فقد جُدّد مركب محمد الخامس، وأُعيد بناء ملعب مولاي عبد الله بالرباط، وسيتقاسم الجمهور نفسه ثلاثة ملاعب كبرى.",
+  "cdm_ma_think": "استُوعب درسان: هناك نادٍ مقيم معلن، والقطار مبرمج مع الملعب. ويبقى خطر أخفى: ملء ملعب قد يُفرغ آخر. فقد جُدّد مركب محمد الخامس وأُعيد افتتاحه في أبريل 2025، وأُعيد بناء ملعب مولاي عبد الله بالرباط، وسيتقاسم الجمهور نفسه ثلاثة ملاعب كبرى.",
   "cdm_ma_unknown_title": "لم نجده في الوثائق العمومية",
   "cdm_ma_unknown": [
    "العقد مع الأندية: المدة، والكراء، وعدد المباريات",
@@ -1838,6 +1840,7 @@
    "languages": "اللغات",
    "answers_show": "عرض الأجوبة",
    "corrections": "التصحيحات: لا شيء حتى الآن (9 نونبر 2026).",
+   "checked": "تم التحقق من المصادر في 9 نونبر 2026.",
    "published_by": "نشر TENIR Labs",
    "toc_label": "المحتويات",
    "back_to_site": "tenirlabs.cc",

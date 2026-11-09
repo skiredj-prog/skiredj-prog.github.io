@@ -24,7 +24,7 @@
   margin: 0; background: #ffffff; color: var(--navy); font-family: var(--body);
   font-size: 1.0625rem; line-height: 1.6; -webkit-text-size-adjust: 100%;
 }
-.mag[dir="rtl"] { --head: "Mag Kufi", "Mag Fraunces", Tahoma, sans-serif; --body: "Mag Naskh", "Mag Inter", Tahoma, serif; font-size: 1.125rem; line-height: 1.75; }
+.mag[dir="rtl"], .mag [dir="rtl"] { --head: "Mag Kufi", "Mag Fraunces", Tahoma, sans-serif; --body: "Mag Naskh", "Mag Inter", Tahoma, serif; font-size: 1.125rem; line-height: 1.75; }
 .mag *, .mag *::before, .mag *::after { box-sizing: border-box; }
 .mag a { color: var(--teal); text-underline-offset: 0.18em; }
 .mag a:hover { color: var(--navy); }
@@ -52,10 +52,10 @@
 .mag-hero figcaption { position: absolute; bottom: 0.75rem; inset-inline-start: 0.75rem; background: rgba(11, 28, 51, 0.85); color: #fff; font-size: 0.8125rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 999px; }
 .mag-hero-text { padding: 2.5rem 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; justify-content: center; }
 .mag-kicker { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
-.mag[dir="rtl"] .mag-kicker { letter-spacing: 0; text-transform: none; font-family: var(--head); }
+.mag[dir="rtl"] .mag-kicker, .mag [dir="rtl"] .mag-kicker { letter-spacing: 0; text-transform: none; font-family: var(--head); }
 .mag-hero .mag-kicker { color: var(--copper-on-dark); }
 .mag-hero h1 { font-family: var(--head); font-weight: 800; font-size: clamp(2.6rem, 6vw, 4rem); line-height: 1.02; letter-spacing: -0.015em; }
-.mag[dir="rtl"] .mag-hero h1 { line-height: 1.25; letter-spacing: 0; }
+.mag[dir="rtl"] .mag-hero h1, .mag [dir="rtl"] .mag-hero h1 { line-height: 1.25; letter-spacing: 0; }
 .mag-hero .mag-sub { font-family: var(--head); font-weight: 600; font-size: clamp(1.25rem, 2.6vw, 1.6rem); color: var(--copper-on-dark); line-height: 1.3; }
 .mag-hero .mag-tagline { color: #d6dee8; }
 .mag-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
@@ -71,7 +71,7 @@
 .mag-section { padding: 2.5rem 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 1.1rem; scroll-margin-top: 1rem; }
 .mag-section:first-child { border-top: 0; padding-top: 0; }
 .mag-section h2 { font-family: var(--head); font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
-.mag[dir="rtl"] .mag-section h2 { line-height: 1.45; letter-spacing: 0; }
+.mag[dir="rtl"] .mag-section h2, .mag .mag-section[dir="rtl"] h2 { line-height: 1.45; letter-spacing: 0; }
 .mag-section h3 { font-family: var(--head); font-weight: 800; font-size: 1.25rem; line-height: 1.3; }
 .mag p { text-wrap: pretty; }
 .mag .mag-muted { color: var(--muted); }
@@ -80,7 +80,7 @@
 /* Evidence tags */
 .mag-tagged { display: flex; flex-direction: column; align-items: flex-start; gap: 0.45rem; }
 .mag-tag { display: inline-flex; align-items: center; padding: 0.15rem 0.7rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.5; white-space: nowrap; border: 1.5px solid; }
-.mag[dir="rtl"] .mag-tag { letter-spacing: 0; text-transform: none; font-family: var(--head); font-size: 0.8125rem; }
+.mag[dir="rtl"] .mag-tag, .mag [dir="rtl"] .mag-tag { letter-spacing: 0; text-transform: none; font-family: var(--head); font-size: 0.8125rem; }
 .mag-tag--fact { background: var(--navy); color: #fff; border-color: var(--navy); }
 .mag-tag--think { background: #fff; color: var(--teal); border-color: var(--teal); }
 .mag-tag--suggest { background: #fff; color: var(--copper-d); border-color: var(--copper-d); border-style: dashed; }
@@ -118,7 +118,7 @@
 .mag-duo .v { font-family: "Mag Fraunces", "Mag Kufi", Georgia, serif; font-weight: 800; font-size: 2.3rem; line-height: 1.05; }
 .mag-duo .v--hi { color: var(--copper-on-dark); }
 .mag-duo .v { white-space: nowrap; }
-.mag[dir="rtl"] .mag-duo .v { font-size: 1.9rem; }
+.mag[dir="rtl"] .mag-duo .v, .mag [dir="rtl"] .mag-duo .v { font-size: 1.9rem; }
 .mag-where { font-size: 0.8125rem; font-weight: 600; color: var(--teal); white-space: nowrap; }
 .mag-locks.mag-locks--plain li { grid-template-columns: minmax(0, 1fr); }
 .mag-section h3.mag-sub-h[id^="cdm-"] { margin-top: 0.75rem; padding-top: 1rem; border-top: 2px solid var(--navy); font-size: 1.4rem; scroll-margin-top: 1rem; }
@@ -134,7 +134,7 @@
 
 /* Path diagram */
 .mag-path svg { width: 100%; height: auto; display: block; }
-.mag[dir="rtl"] .mag-path svg { transform: scaleX(-1); }
+.mag[dir="rtl"] .mag-path svg, .mag [dir="rtl"] .mag-path svg { transform: scaleX(-1); }
 .mag-path .labels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; font-family: var(--head); font-weight: 700; font-size: 0.875rem; color: var(--muted); margin-top: 0.4rem; }
 .mag-locks li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: 0.5rem; padding: 0.55rem 0; border-top: 1px solid var(--rule); }
 .mag-locks .n { font-family: "Mag Fraunces", Georgia, serif; font-weight: 800; color: var(--copper-d); }
@@ -146,7 +146,7 @@
 .mag-needs svg, .mag-card svg, .mag-sub-h svg { color: var(--teal); flex: none; }
 .mag-qs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); gap: 0.6rem; }
 .mag-qs li { background: var(--sky); border-radius: 6px; padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
-.mag-qs .n { font-family: "Mag Fraunces", Georgia, serif; font-weight: 800; font-size: 1.4rem; color: var(--copper); line-height: 1; }
+.mag-qs .n { font-family: "Mag Fraunces", Georgia, serif; font-weight: 800; font-size: 1.4rem; color: var(--copper-d); line-height: 1; }
 .mag-qs strong { font-family: var(--head); }
 .mag-sub-h { display: flex; gap: 0.55rem; align-items: center; }
 
@@ -164,11 +164,11 @@
 
 /* Method */
 .mag-step { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
-.mag-step .n { width: 2.2rem; height: 2.2rem; border-radius: 999px; background: var(--copper); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-family: "Mag Fraunces", Georgia, serif; font-weight: 800; }
+.mag-step .n { width: 2.2rem; height: 2.2rem; border-radius: 999px; background: var(--copper-d); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-family: "Mag Fraunces", Georgia, serif; font-weight: 800; }
 
 /* Quiz */
 .mag-quiz li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: 0.5rem; padding: 0.7rem 0; border-top: 1px solid var(--rule); }
-.mag-quiz .n { font-family: "Mag Fraunces", Georgia, serif; font-weight: 800; color: var(--copper); }
+.mag-quiz .n { font-family: "Mag Fraunces", Georgia, serif; font-weight: 800; color: var(--copper-d); }
 .mag details { border: 1px solid var(--rule); border-radius: 6px; padding: 0.7rem 1rem; }
 .mag summary { cursor: pointer; font-weight: 700; color: var(--teal); min-height: 2rem; }
 .mag-sources li { padding: 0.35rem 0; border-top: 1px solid var(--rule); font-size: 0.9375rem; }
@@ -189,5 +189,5 @@
 .mag-foot { border-top: 1px solid var(--rule); background: var(--sky); }
 .mag-foot-inner { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; font-size: 0.875rem; color: var(--muted); display: grid; gap: 0.5rem; }
 
-@media print { .mag-bar, .mag-actions, .mag-foot { display: none; } .mag-hero { background: #fff; color: var(--navy); } }
+@media print { .mag-bar, .mag-actions, .mag-foot { display: none; } .mag-hero { background: #fff; color: var(--navy); } .mag-hero .mag-kicker, .mag-hero .mag-sub { color: var(--copper-d); } .mag-hero .mag-tagline { color: var(--muted); } }
 .mag .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

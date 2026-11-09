@@ -50,7 +50,9 @@ RULE = colors.HexColor("#d8e0e7")
 
 
 def register_fonts():
-    fonts = Path("C:/Windows/Fonts")
+    # Remplaçable hors Windows : TENIR_FONTS_DIR doit contenir arial.ttf, arialbd.ttf,
+    # georgiab.ttf, tahoma.ttf et tahomabd.ttf (ou des équivalents renommés ainsi).
+    fonts = Path(os.environ.get("TENIR_FONTS_DIR", "C:/Windows/Fonts"))
     for name, file in [
         ("Body", "arial.ttf"), ("BodyBold", "arialbd.ttf"),
         ("Head", "georgiab.ttf"), ("Arabic", "tahoma.ttf"),
@@ -272,7 +274,7 @@ class Edition:
         self.page_no += 1
         c = self.c
         image = Image.open(ROOT / "public/magazine/n01/couverture.jpg").convert("RGB")
-        image = ImageOps.fit(image, (1200, 830), method=Image.Resampling.LANCZOS)
+        image = ImageOps.fit(image, (1200, round(1200 * PAGE_H * .52 / PAGE_W)), method=Image.Resampling.LANCZOS)
         c.drawImage(ImageReader(image), 0, PAGE_H * .48, PAGE_W, PAGE_H * .52)
         c.setFillColor(NAVY)
         c.rect(0, 0, PAGE_W, PAGE_H * .48, stroke=0, fill=1)
@@ -478,6 +480,9 @@ class Edition:
         y = self.start(d["sections"]["cdm"])
         y = self.title(d["cdm_ch_title"], y)
         y = self.tagged("fact", d["cdm_ch_fact"], y)
+        assert "35.25" in d["sources_links"][5][12]["label"], (
+            "sources_links[5][12] doit rester la loi 35.25 (Bulletin officiel) : "
+            + d["sources_links"][5][12]["label"])
         y = self.paragraph(d["sources_links"][5][12]["label"], y,
                            size=7.5, color=TEAL, after=7,
                            link=d["sources_links"][5][12]["href"])

@@ -23,9 +23,9 @@ const { lang, title, description, path, alternates = [], image = '/magazine/n01/
 const dir = lang === 'ar' ? 'rtl' : 'ltr';
 const canonical = new URL(url(path), Astro.site);
 const ui = {
-  fr: { skip: 'Aller au contenu', tagline: 'Les grands choix, expliqués', issue: 'Le numéro', avis: 'Donner mon avis', site: 'Publié par TENIR Labs', langs: 'Langue' },
-  en: { skip: 'Skip to content', tagline: 'Big choices, explained', issue: 'The issue', avis: 'Give your view', site: 'Published by TENIR Labs', langs: 'Language' },
-  ar: { skip: 'انتقل إلى المحتوى', tagline: 'الاختيارات الكبرى، بوضوح', issue: 'العدد', avis: 'أبدِ رأيك', site: 'نشر TENIR Labs', langs: 'اللغة' },
+  fr: { skip: 'Aller au contenu', nav: 'Navigation', tagline: 'Les grands choix, expliqués', issue: 'Le numéro', avis: 'Donner mon avis', site: 'Publié par TENIR Labs', langs: 'Langue' },
+  en: { skip: 'Skip to content', nav: 'Navigation', tagline: 'Big choices, explained', issue: 'The issue', avis: 'Give your view', site: 'Published by TENIR Labs', langs: 'Language' },
+  ar: { skip: 'انتقل إلى المحتوى', nav: 'التنقل', tagline: 'الاختيارات الكبرى، بوضوح', issue: 'العدد', avis: 'أبدِ رأيك', site: 'نشر TENIR Labs', langs: 'اللغة' },
 }[lang];
 const langNames: Record<Lang, string> = { fr: 'Français', en: 'English', ar: 'العربية' };
 const ogLocale: Record<Lang, string> = { fr: 'fr_FR', en: 'en_GB', ar: 'ar_MA' };
@@ -55,7 +55,7 @@ const ogLocale: Record<Lang, string> = { fr: 'fr_FR', en: 'en_GB', ar: 'ar_MA' }
     <header class="mag-bar">
       <div class="mag-bar-inner">
         <a class="mag-mast" href={url(issueHref ?? '/magazine/n01/')} dir="ltr">TENIR<span class="visually-hidden"> — {ui.tagline}</span></a>
-        <nav aria-label={ui.tagline}>
+        <nav aria-label={ui.nav}>
           {issueHref && <a href={url(issueHref)} aria-current={current === 'issue' ? 'true' : undefined}>{ui.issue}</a>}
           {pdfHref && <a href={url(pdfHref)} download>{pdfLabel}</a>}
           {avisHref && <a href={url(avisHref)} aria-current={current === 'avis' ? 'true' : undefined}>{ui.avis}</a>}

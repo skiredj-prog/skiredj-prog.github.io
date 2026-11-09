@@ -69,6 +69,8 @@ const keys = ['utile', 'sujet', 'langue'];
         if (on) { document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'; document.body.dir = document.documentElement.dir; }
       });
       document.querySelectorAll('[data-lang-link]').forEach(function (a) {
+        // Conserver le marqueur de provenance (s=papier|web) quand on change de langue.
+        a.setAttribute('href', '?n=01&l=' + a.getAttribute('data-lang-link') + '&s=' + source);
         if (a.getAttribute('data-lang-link') === lang) a.setAttribute('aria-current', 'true');
       });
       document.querySelectorAll('input[data-param="s"]').forEach(function (i) { i.value = source; });
