@@ -362,10 +362,10 @@
   function downloadReport(){
     const text=reportText();
     const name='TENIR-'+(fr?'apercu-maturite':'maturity-journey-preview')+'-'+new Date().toISOString().slice(0,10)+'.txt';
-    const a=document.createElement('a');
-    a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(text);
-    a.download=name;
-    document.body.append(a);a.click();a.remove();
+    // ASCII file name: an accented name came back as a bare "download" in headless Chromium.
+    const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));
+    const a=document.createElement('a');a.href=url;a.download=name;
+    document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   const beginAssessment=(focus)=>{
     index=0;answers=Array(questions.length).fill(null);renderQuestion();show('question');
