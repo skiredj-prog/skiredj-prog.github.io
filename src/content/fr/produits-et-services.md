@@ -6,6 +6,79 @@ lede: "De la découverte au pilote, chaque étape produit une pièce lisible et 
 sources: REG v0.1 Working Draft — 21 octobre 2026
 ---
 
+## Le problème
+
+Deux écarts peuvent apparaître dans les organisations :
+
+**En amont** : une exigence est publiée, mais ses conditions d'application, ses dépendances et ses hypothèses implicites restent dans l'ombre. On applique sans savoir ce qui est réellement requis.
+
+**En aval** : des systèmes fonctionnent, des procédures existent — mais au moment de rendre des comptes, on ne peut pas démontrer clairement ce qui est couvert, partiellement vérifié ou absent.
+
+Les deux parcours d'accompagnement peuvent examiner ces écarts séparément puis ensemble.
+
+## Parcours A — PRÉVENIR
+
+### De l'exigence vers la maîtrise
+
+*« Qu'implique réellement cette règle pour nos systèmes, nos décisions et nos risques ? »*
+
+- **Découvrir** : extraire le texte, conserver la distinction entre source et interprétation
+- **Révéler** : faire apparaître les conditions implicites, les dépendances cachées, les ambiguïtés
+- **Clarifier** : transformer l'intention en règles candidates, sans masquer ce qui reste incertain
+- **Rapprocher** : identifier les contrôles qui répondent — ou devraient répondre — à chaque exigence
+- **Livrer** : un plan de prévention avec risques identifiés, hypothèses critiques et prochaines vérifications
+
+## Parcours B — PRÉPARER
+
+### Des systèmes vers la preuve
+
+*« Si un auditeur ou un régulateur demande demain, que pouvons-nous démontrer ? »*
+
+- **Définir le périmètre** : ce qui est inclus, ce qui est laissé de côté
+- **Recenser** : documents, configurations, traces, tests — et marquer ce qui est déclaré mais absent
+- **Qualifier** : origine, date, validité, lien avec l'exigence, niveau de confiance
+- **Rapprocher** : faire correspondre ce qui est attendu à ce qui est disponible
+- **Constituer** : un dossier structuré, exportable, avec un registre explicite des lacunes
+- **Agir** : lister ce qui doit être retrouvé, vérifié ou créé pour compléter la réponse
+
+## Convergence : la matrice des écarts
+
+Lorsque les deux parcours sont alimentés, la méthode met en regard :
+
+| Ce qui est attendu    | Ce qui est disponible | État                             |
+| --------------------- | --------------------- | -------------------------------- |
+| Exigence clarifiée    | Contrôle identifié    | Couverture candidate — à vérifier |
+| Exigence clarifiée    | Contrôle déclaré ⚠️   | À vérifier                       |
+| Exigence clarifiée    | Preuve absente ❌      | Lacune — action requise          |
+| Hypothèse non résolue | —                     | À clarifier avant décision       |
+| Référence ambiguë     | —                     | En attente de formulation stable |
+
+**Aucune case ne devient "conforme" sur simple présence.** Chaque conclusion porte son origine, sa date et ses limites.
+
+## Ce que ces parcours ne sont pas
+
+Une pièce disponible, une déclaration et un contrôle vérifié portent des statuts différents. Une lacune reste visible et précise ce qu'elle empêche de conclure. La restitution aide à décider de la prochaine vérification.
+
+- ❌ Ils ne délivrent pas de certification automatique
+- ❌ Ils ne remplacent pas l'avis juridique
+- ❌ Ils ne prétendent pas auditer en temps réel vos systèmes
+- ❌ Ils ne fabriquent pas de preuve pour remplir les trous
+
+**Ce qu'ils sont :** un miroir honnête. Ce que vous voyez est ce que vous pouvez prouver — rien de plus, rien de moins.
+
+## État du projet
+
+État de référence du **21 octobre 2026** :
+
+- **Version :** 0.1 — cadrage consolidé, Working Draft.
+- **Accessible :** un exemple simulé public, sans données client.
+- **En développement :** Discovery testé sur branche de travail, en aperçu privé ; Translation Studio en prototype ; Préparation en construction.
+- **À éprouver :** la valeur et le format de l'accompagnement lors des premières missions réelles.
+
+[Lire la spécification de cadrage REG v0.1 — Working Draft →](/publications/reg-v0.1/)
+[Voir le dossier simulé — aucune donnée client →](/offre/exemple/)
+[Nous contacter →](/contact/)
+
 ## Comment nous travaillons : de la découverte au pilote
 
 Chaque étape produit une pièce que vous pouvez relire et une décision à prendre. Aucune n'engage automatiquement la suivante.
@@ -89,68 +162,4 @@ Un pilote d'observation **non bloquant** peut ensuite être étudié si une int�
 
 La gouvernance bloquante (**ENFORCE**) est une étape ultérieure soumise à validation des invariants, des modes de défaillance et des garanties dans un périmètre défini. Elle n'est ni automatique ni incluse dans le diagnostic.
 
-## Le problème
-
-Deux écarts peuvent apparaître dans les organisations :
-
-**En amont** : une exigence est publiée, mais ses conditions d'application, ses dépendances et ses hypothèses implicites restent dans l'ombre. On applique sans savoir ce qui est réellement requis.
-
-**En aval** : des systèmes fonctionnent, des procédures existent — mais au moment de rendre des comptes, on ne peut pas démontrer clairement ce qui est couvert, partiellement vérifié ou absent.
-
-Les deux parcours d'accompagnement peuvent examiner ces écarts séparément puis ensemble.
-
-## Parcours A — PRÉVENIR
-
-### De l'exigence vers la maîtrise
-
-*« Qu'implique réellement cette règle pour nos systèmes, nos décisions et nos risques ? »*
-
-- **Découvrir** : extraire le texte, conserver la distinction entre source et interprétation
-- **Révéler** : faire apparaître les conditions implicites, les dépendances cachées, les ambiguïtés
-- **Clarifier** : transformer l'intention en règles candidates, sans masquer ce qui reste incertain
-- **Rapprocher** : identifier les contrôles qui répondent — ou devraient répondre — à chaque exigence
-- **Livrer** : un plan de prévention avec risques identifiés, hypothèses critiques et prochaines vérifications
-
-## Parcours B — PRÉPARER
-
-### Des systèmes vers la preuve
-
-*« Si un auditeur ou un régulateur demande demain, que pouvons-nous démontrer ? »*
-
-- **Définir le périmètre** : ce qui est inclus, ce qui est laissé de côté
-- **Recenser** : documents, configurations, traces, tests — et marquer ce qui est déclaré mais absent
-- **Qualifier** : origine, date, validité, lien avec l'exigence, niveau de confiance
-- **Rapprocher** : faire correspondre ce qui est attendu à ce qui est disponible
-- **Constituer** : un dossier structuré, exportable, avec un registre explicite des lacunes
-- **Agir** : lister ce qui doit être retrouvé, vérifié ou créé pour compléter la réponse
-
-## Convergence : la matrice des écarts
-
-Lorsque les deux parcours sont alimentés, la méthode met en regard :
-
-| Ce qui est attendu    | Ce qui est disponible | État                             |
-| --------------------- | --------------------- | -------------------------------- |
-| Exigence clarifiée    | Contrôle identifié    | Couverture candidate — à vérifier |
-| Exigence clarifiée    | Contrôle déclaré ⚠️   | À vérifier                       |
-| Exigence clarifiée    | Preuve absente ❌      | Lacune — action requise          |
-| Hypothèse non résolue | —                     | À clarifier avant décision       |
-| Référence ambiguë     | —                     | En attente de formulation stable |
-
-**Aucune case ne devient "conforme" sur simple présence.** Chaque conclusion porte son origine, sa date et ses limites.
-
-## Comment lire la restitution
-
-Une pièce disponible, une déclaration et un contrôle vérifié portent des statuts différents. Une lacune reste visible et précise ce qu'elle empêche de conclure. La restitution aide à décider de la prochaine vérification ; elle ne constitue ni une certification, ni un avis juridique, ni une validation de production. Cet accompagnement ne revendique pas un audit en temps réel des systèmes et ne produit pas de preuves pour combler les absences.
-
-## État du projet
-
-État de référence du **21 octobre 2026** :
-
-- **Version :** 0.1 — cadrage consolidé, Working Draft.
-- **Accessible :** un exemple simulé public, sans données client.
-- **En développement :** Discovery testé sur branche de travail, en aperçu privé ; Translation Studio en prototype ; Préparation en construction.
-- **À éprouver :** la valeur et le format de l'accompagnement lors des premières missions réelles.
-
-[Lire la spécification de cadrage REG v0.1 — Working Draft →](/publications/reg-v0.1/)
-[Voir le dossier simulé — aucune donnée client →](/offre/exemple/)
-[Nous contacter →](/contact/)
+**Rien ici n'est une certification.**
