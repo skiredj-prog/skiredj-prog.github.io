@@ -27,8 +27,8 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
 
 /** The free report (maturity preview): permanent header call to action. */
 export const reportLink: Record<Locale, NavItem> = {
-  fr: { slug: "parcours-ia", href: "/parcours-ia/", label: "Rapport gratuit" },
-  en: { slug: "ai-readiness", href: "/en/ai-readiness/", label: "Free report" },
+  fr: { slug: "parcours-ia", href: "/parcours-ia/", label: "Rapport IA personnalisé gratuit" },
+  en: { slug: "ai-readiness", href: "/en/ai-readiness/", label: "Free personalized AI report" },
 };
 
 // Portfolio pages that are demonstrations rather than products, services or foundations.
@@ -92,7 +92,8 @@ export interface Band {
  */
 export function bandFor(locale: Locale, slug: string, contactHref: string): Band {
   const fr = locale === "fr";
-  const report = { label: fr ? "Faire le point en 10 questions" : "Take stock in 10 questions", href: reportLink[locale].href };
+  // #start opens question 1 directly rather than the page that describes the check.
+  const report = { label: fr ? "Commencer les 10 questions" : "Start the 10 questions", href: `${reportLink[locale].href}?start=1` };
   // contactHref is already resolved against the base path by the caller.
   const ask = { label: fr ? "Poser une question" : "Ask a question", href: contactHref, external: true, resolved: true };
   const kicker = fr ? "Prochaine étape" : "Next step";
@@ -212,7 +213,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
     },
     {
       id: "echanger", label: "Échanger", links: [
-        { slug: "parcours-ia", href: "/parcours-ia/", label: "Rapport gratuit" },
+        { slug: "parcours-ia", href: "/parcours-ia/", label: "Rapport IA personnalisé gratuit" },
         { slug: "contact", href: "/contact/", label: "Contact" },
         { slug: "contribuer", href: "/contribuer/", label: "Contribuer" },
       ],
@@ -271,7 +272,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
     },
     {
       id: "echanger", label: "Talk", links: [
-        { slug: "ai-readiness", href: "/en/ai-readiness/", label: "Free report" },
+        { slug: "ai-readiness", href: "/en/ai-readiness/", label: "Free personalized AI report" },
         { slug: "contact", href: "/en/contact/", label: "Contact" },
         { slug: "contribute", href: "/en/contribute/", label: "Contribute" },
       ],

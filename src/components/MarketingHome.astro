@@ -8,6 +8,8 @@ const fr = locale === 'fr';
 const path = (p: string) => url((fr ? '/' : '/en/') + p + '/');
 const contact = path('contact') + '?sujet=diagnostic';
 const pathway = url(fr ? '/parcours-ia/' : '/en/ai-readiness/');
+// Deep link straight to question 1: the reader asked for the check, not for a page about it.
+const pathwayStart = `${pathway}?start=1`;
 const demo = path('portfolio/control-tower');
 const whyNow = path(fr ? 'pourquoi-maintenant' : 'why-now');
 const t = fr ? {
@@ -54,7 +56,7 @@ const t = fr ? {
   credibility: 'Parcours Crédibilité · 5.7.0',
   closeTitle: 'Vous savez ce que votre IA peut faire. Découvrez par où commencer.',
   closeSub: 'Dix questions pour situer votre point de départ sur un parcours de maturité, repérer la prochaine vérification utile et décider si un accompagnement est nécessaire.',
-  closePrimary: 'Voir mon aperçu de maturité',
+  closePrimary: 'Commencer les 10 questions',
   closeSecondary: 'Écrire directement',
   smallPrint: 'Diagnostic sur devis · logiciels et prototypes à maturité distincte',
 } : {
@@ -101,7 +103,7 @@ const t = fr ? {
   credibility: 'Credibility Journey · 5.7.0',
   closeTitle: 'You know what AI can do. Find out where to begin.',
   closeSub: 'Ten questions to place your starting point on a maturity journey, identify the next useful check and decide whether outside help is needed.',
-  closePrimary: 'See my maturity preview',
+  closePrimary: 'Start the 10 questions',
   closeSecondary: 'Email us',
   smallPrint: 'Diagnostic quoted by scope · software and prototypes at different maturity levels',
 };
@@ -140,7 +142,7 @@ const cards = fr ? [
   <section class="ml-maturity-entry" aria-labelledby="ml-maturity-entry-title">
     <div class="ml-wrap ml-maturity-entry-inner">
       <div><span class="ml-kicker">{fr ? 'POUR SE SITUER' : 'A PLACE TO START'}</span><h2 id="ml-maturity-entry-title">{fr ? 'Vous vous demandez par où commencer ?' : 'Not sure where to begin?'}</h2><p>{fr ? 'En dix questions, obtenez un aperçu indicatif de votre point de départ sur un parcours de maturité IA — et de la prochaine vérification utile.' : 'In ten questions, get an indicative view of your starting point on an AI maturity journey — and the next useful check.'}</p></div>
-      <a class="ml-btn ml-btn-primary" href={pathway}>{fr ? 'Faire l’aperçu de maturité' : 'Take the maturity preview'} <span aria-hidden="true">↗</span></a>
+      <a class="ml-btn ml-btn-primary" href={pathwayStart}>{fr ? 'Commencer les 10 questions' : 'Start the 10 questions'} <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -206,7 +208,7 @@ const cards = fr ? [
 
   <section class="ml-closing" aria-labelledby="ml-closing-title">
     <div class="ml-wrap"><span class="ml-kicker">TENIR LABS</span><h2 id="ml-closing-title">{t.closeTitle}</h2><p>{t.closeSub}</p>
-      <div class="ml-actions"><a class="ml-btn ml-btn-primary" href={pathway}>{t.closePrimary} ↗</a><a class="ml-btn ml-btn-outline" href="mailto:skiredj@tenirlabs.cc">{t.closeSecondary} →</a></div>
+      <div class="ml-actions"><a class="ml-btn ml-btn-primary" href={pathwayStart}>{t.closePrimary} ↗</a><a class="ml-btn ml-btn-outline" href="mailto:skiredj@tenirlabs.cc">{t.closeSecondary} →</a></div>
       <p class="ml-hero-foot">{t.smallPrint}</p>
     </div>
   </section>
