@@ -138,10 +138,10 @@
   "cards": [
    [
     "Eau",
-    "420",
+    "447",
     "millions de m³ par an",
-    "d’eau de mer dessalée. Objectif : 1,7 milliard.",
-    "Ministre de l’Équipement et de l’Eau, mai 2026"
+    "de capacité de dessalement. Horizon 2031 : près de 1,8 milliard.",
+    "Ministre de l’Équipement et de l’Eau, 2 novembre 2026"
    ],
    [
     "Train",
@@ -198,7 +198,7 @@
   ],
   "lock_suggest": "Un test simple : si une hypothèse importante devient fausse demain, que peut-on changer en premier ? Pas tout arrêter : savoir où sont les portes de sortie, qui en a la clé et combien de temps il faut pour les ouvrir.",
   "eau_title": "L’eau de mer au robinet",
-  "eau_fact": "Face à la sécheresse, le Maroc mise sur le dessalement : rendre l’eau de mer potable. En mai 2026, le ministre de l’Équipement et de l’Eau a annoncé 420 millions de m³ par an, avec l’ambition d’atteindre 1,7 milliard.",
+  "eau_fact": "Face à la sécheresse, le Maroc mise sur le dessalement : rendre l’eau de mer potable. Le 2 novembre 2026, le ministre de l’Équipement et de l’Eau a indiqué une capacité de 447 millions de m³ par an, avec un objectif proche de 1,8 milliard en 2031.",
   "eau_need_title": "Une usine ne suffit pas. Pour que l’eau arrive chez vous, il faut aussi :",
   "eau_needs": [
    "de l’électricité, beaucoup",
@@ -218,7 +218,7 @@
   "ports_ask_title": "À demander à chaque mise à jour",
   "ports_ask": "Quelle hypothèse a changé ? Quel coût est devenu irréversible ? Que se passe-t-il si le trafic reste sous la prévision ?",
   "ia_title": "Une IA qui parle darija : qui garde la main ?",
-  "ia_fact": "La feuille de route « Maroc IA 2030 », dévoilée en janvier 2026, vise 50 000 emplois et 200 000 talents formés. Le 29 septembre 2026, le ministère de la Transition numérique et Mistral AI ont présenté deux premiers outils libres pour la darija.",
+  "ia_fact": "La feuille de route « Maroc IA 2030 », dévoilée en janvier 2026, vise 50 000 emplois et 200 000 talents formés. Le 29 septembre 2026, le ministère de la Transition numérique et Mistral AI ont annoncé deux premiers modèles pour la darija et leur publication en open source.",
   "ia_think": "Une avancée concrète, qui permet de poser trois questions valables pour toute IA d’un service public :",
   "ia_qs": [
    [
@@ -262,17 +262,17 @@
    "La liste des travaux retenus",
    "Ce que coûterait un changement"
   ],
-  "cas_note": "Cette page décrit des documents publics. Elle ne juge pas le projet. TENIR n’a contacté ni l’ONEE ni la BERD.",
+  "cas_note": "Cette page décrit les documents publics cités. Les acteurs concernés peuvent transmettre des précisions à TENIR.",
   "tool_title": "Deux questions à poser avant de signer",
-  "tool_q1": "Aura-t-on le temps de corriger ?",
-  "tool_a1": "On compare le temps qui reste avant la signature au temps qu’il faut pour repérer un problème, décider et corriger.",
+  "tool_q1": "MC · Marge de correction",
+  "tool_a1": "Aura-t-on encore le temps de corriger ? MC = jours restants avant le jalon moins jours nécessaires pour détecter, décider et corriger. Un résultat négatif signale un délai insuffisant.",
   "tool_ex_label": "Exemple imaginaire",
   "tool_ex": "45 jours avant la signature, 52 jours pour corriger : 7 jours de retard. Il faut décaler, réduire la commande ou corriger plus vite.",
-  "tool_q2": "Combien d’argent part avant la preuve ?",
-  "tool_a2": "La somme qu’on ne récupérerait plus si l’on signe avant d’avoir vérifié l’essentiel : la demande, le prix de l’énergie, un raccordement.",
+  "tool_q2": "EHV · Exposition sous hypothèses non vérifiées",
+  "tool_a2": "Combien engage-t-on avant la preuve ? EHV additionne la part non récupérable des engagements qui dépendent d’hypothèses déterminantes encore non vérifiées, en DH ou en euros.",
   "tool_nc_label": "Et si on ne peut pas calculer ?",
   "tool_nc": "On le dit, et on nomme les pièces qui manquent : une inconnue publiée vaut mieux qu’une précision inventée. Pour les projets de ce numéro, les documents publics ne suffisent pas.",
-  "tool_note": "Deux mesures proposées par TENIR, encore expérimentales. Ce ne sont pas des notes officielles.",
+  "tool_note": "MC et EHV sont deux mesures expérimentales TENIR, sans score global ni évaluation des projets de ce numéro.",
   "quiz_title": "Vrai ou faux ?",
   "quiz": [
    [
@@ -304,15 +304,15 @@
   "quiz_answers_label": "Réponses (page)",
   "src_title": "Nos sources",
   "sources": [
-   "Eau : maroc.ma, 6 mai 2026, déclaration du ministre de l’Équipement et de l’Eau.",
+   "Eau : maroc.ma, 3 novembre 2026, compte rendu de la déclaration du ministre du 2 novembre.",
    "Rail : ONCF ; Le360, 27 octobre 2026.",
    "Port : Marsa Maroc et Tanger Med, communiqués de 2025.",
    "IA : ministère de la Transition numérique, janvier et septembre 2026 ; annonce avec Mistral AI, 29 septembre 2026.",
    "Prêt ONEE : BERD, projet 57587 et rapport au Conseil, juillet 2026.",
-   "Coupe du monde : FIFA, ONCF, loi 35.25, presse marocaine et internationale."
+   "Coupe du monde : FIFA, SONARGES, loi 35.25, Le Desk et presse internationale."
   ],
   "src_note": "Liens complets et corrections : tenirlabs.cc/n01. Vérifié le 9 novembre 2026. Une erreur signalée est corrigée en ligne, avec sa date.",
-  "back_title": "Ce numéro est un essai. Votre avis décide de la suite.",
+  "back_title": "Ce numéro est un essai. Votre avis compte pour la suite.",
   "back_qs": [
    [
     "Ce magazine vous a-t-il été utile ?",
@@ -344,7 +344,7 @@
   "back_qr": "Scannez pour répondre",
   "back_cta": "Répondez en une minute",
   "back_link": "ou sur tenirlabs.cc/n01",
-  "back_suggest": "Un grand projet près de chez vous ? Dites-nous lequel : il pourrait être expliqué dans un prochain numéro.",
+  "back_suggest": "Vous portez un projet public ou privé ? Proposez-le comme prochain dossier TENIR. La sélection est éditoriale et ne garantit aucune conclusion favorable.",
   "back_legal": "TENIR · N° 01, édition pilote gratuite, novembre 2026. Publication d’essai, non périodique. Éditeur : TENIR Labs, Casablanca. Aucune publicité. Couverture : illustration conceptuelle. Les erreurs signalées sont corrigées dans la version en ligne.",
   "social_line": "Un magazine gratuit pour comprendre les grands choix du pays, en français, en arabe et en anglais.",
   "social_cta": "Lire : tenirlabs.cc/n01",
@@ -374,14 +374,14 @@
   "cdm_big": [
    [
     "115 000",
-    "places prévues à Benslimane"
+    "places de capacité brute annoncée à Benslimane"
    ],
    [
     "80 000",
-    "places : le minimum de la FIFA pour une finale"
+    "places assises : minimum FIFA pour une finale"
    ]
   ],
-  "cdm_think": "L’écart est un choix du pays, pas une exigence de la FIFA. Il vaudra ce que vaudra l’usage du stade après 2030. Le tournoi dure un peu plus d’un mois ; un stade sert des décennies. La vraie question vient après le dernier match : qui remplira les tribunes, et qui paiera l’entretien ?",
+  "cdm_think": "Ces deux jauges ne se comparent pas place pour place : l’une est une capacité brute annoncée, l’autre un minimum de places assises. Elles posent néanmoins la question du dimensionnement au quotidien. Le tournoi dure un peu plus d’un mois ; un stade sert des décennies. Après le dernier match, qui remplira les tribunes et paiera l’entretien ?",
   "cdm_prec_title": "Ce que les autres pays ont appris",
   "cdm_prec": [
    [
@@ -410,7 +410,7 @@
     "Après l’Euro 2004, Leiria et Aveiro ont envisagé de démolir des stades trop chers à entretenir. Pour 2030, le Portugal ne présente que les trois stades de ses grands clubs."
    ]
   ],
-  "cdm_prec_think": "Point commun des stades qui vivent : leur usage a été décidé avant le tournoi. Ailleurs, on a attendu une solution après.",
+  "cdm_prec_think": "Ces cas ne donnent pas une recette unique. Ils posent la même question : qui utilisera le stade toute l’année, et avec quel budget d’entretien ?",
   "cdm_ma_title": "Benslimane : ce qui est prévu, ce qui reste ouvert",
   "cdm_ma_rows": [
    [
@@ -422,8 +422,8 @@
     "Une gare se construit près du stade (marché attribué en mars 2026) ; des trains de proximité doivent la relier à Casa-Port et à l’aéroport."
    ],
    [
-    "Le coût",
-    "Annoncé au départ : environ 5 milliards de DH. Selon un décompte du site Le Desk, relayé en octobre 2026, les marchés lancés ou attribués atteignent 13,6 milliards."
+    "Les marchés recensés",
+    "L’enveloppe initialement annoncée était d’environ 5 milliards de DH. En octobre 2026, Le Desk a recensé 13,6 milliards de DH de marchés lancés ou attribués autour du chantier. Les périmètres diffèrent ; ce second montant n’est pas un coût final."
    ]
   ],
   "cdm_ma_think": "Deux leçons sont déjà retenues : un club résident est annoncé, le train est prévu avec le stade. Reste un risque plus discret : remplir un stade peut en vider un autre. Mohammed V vient d’être rénové, Moulay Abdellah reconstruit à Rabat : un même public pour trois grands stades.",
@@ -434,9 +434,9 @@
    "L’avenir du complexe Mohammed V",
    "Une jauge réduite pour les matchs ordinaires"
   ],
-  "cdm_ma_note": "TENIR n’a contacté ni la Fédération, ni la Fondation Maroc 2030, ni l’ONCF.",
+  "cdm_ma_note": "Ce dossier repose sur les documents publics cités. Les acteurs concernés peuvent transmettre des précisions à TENIR.",
   "cdm_ch_title": "Ce qui peut encore se décider avant 2030",
-  "cdm_ch_fact": "La Fondation Maroc 2030, créée par la loi 35.25 en 2025, coordonne les préparatifs. Sa mission est prévue jusqu’en 2030, avec une prolongation possible.",
+  "cdm_ch_fact": "Créée par la loi 35.25 en 2025, la Fondation Maroc 2030 prépare, organise et valorise les compétitions internationales de football confiées au Maroc jusqu’à la Coupe du monde 2030. La loi ne précise pas qui exploitera les équipements après le tournoi.",
   "cdm_ch": [
    [
     "Signer l’usage avant l’inauguration",
@@ -452,7 +452,7 @@
    ],
    [
     "Dater chaque promesse",
-    "Qui reprend quoi après 2030, et qui en répond quand la mission de la Fondation s’achève."
+    "Qui exploitera chaque équipement après 2030, sous quel contrat et avec quel contrôle ?"
    ]
   ],
   "cdm_ask_title": "Trois questions pour la suite",
@@ -460,8 +460,8 @@
   "sources_links": [
    [
     {
-     "label": "maroc.ma",
-     "href": "https://maroc.ma/fr/actualites/dessalement-une-capacite-de-production-annuelle-de-420-millions-m3"
+     "label": "maroc.ma, 02/11/2026",
+     "href": "https://maroc.ma/fr/actualites/securite-hydrique-lancement-dune-nouvelle-strategie-adaptee-aux-mutations-climatiques-majeures"
     }
    ],
    [
@@ -506,8 +506,12 @@
      "href": "https://inside.fifa.com/fr/news/congres-extraordinaire-fifa-hotes-coupe-du-monde-editions-2030-et-2034"
     },
     {
-     "label": "Wikipedia, FIFA 2030 requirements",
-     "href": "https://en.wikipedia.org/wiki/2030_FIFA_World_Cup_bids"
+     "label": "FIFA, exigences 2030",
+     "href": "https://digitalhub.fifa.com/m/2a76876ef04ed7b9/original/FIFA-World-Cup-2030-Overview-of-Hosting-Requirements.pdf"
+    },
+    {
+     "label": "SONARGES, Grand Stade Hassan II",
+     "href": "https://www.sonarges.ma/infrastructures/grand-stade-hassan-ii/"
     },
     {
      "label": "Hespress, 11/09/2026",
@@ -534,8 +538,8 @@
      "href": "https://ledesk.ma/encontinu/a-benslimane-le-nouveau-grand-stade-de-casablanca-coutera-5-milliards-de-dirhams/"
     },
     {
-     "label": "Afrik-Foot, 01/10/2026",
-     "href": "https://www.afrik-foot.com/maroc-le-grand-stade-hassan-ii-va-couter-plus-de-27-fois-plus-cher-que-prevu"
+     "label": "Le Desk, 06/10/2026",
+     "href": "https://mobile.ledesk.ma/datadesk/grand-stade-hassan-ii-qui-sont-les-acteurs-dun-chantier-desormais-a-136-mmdh/"
     },
     {
      "label": "Médias24, 14/04/2025",
@@ -546,8 +550,8 @@
      "href": "https://telquel.ma/instant-t/2025/09/04/le-prince-moulay-el-hassan-inaugure-a-rabat-le-stade-prince-moulay-abdellah-apres-sa-reconstruction_1949001/"
     },
     {
-     "label": "maroc.ma, 10/07/2025",
-     "href": "https://maroc.ma/fr/actualites/le-conseil-de-gouvernement-adopte-le-projet-de-loi-portant-creation-de-la-fondation-maroc-2030"
+     "label": "Bulletin officiel, loi 35.25",
+     "href": "https://www.sgg.gov.ma/BO/FR/2873/2025/BO_7428_Fr.pdf"
     },
     {
      "label": "TelQuel, 14/07/2025",
@@ -749,10 +753,10 @@
   "cards": [
    [
     "Water",
-    "420",
+    "447",
     "million m³ a year",
-    "of desalinated seawater today. Target: 1.7 billion.",
-    "Minister of Equipment and Water, May 2026"
+    "of desalination capacity. About 1.8 billion targeted for 2031.",
+    "Minister of Equipment and Water, 2 November 2026"
    ],
    [
     "Rail",
@@ -809,7 +813,7 @@
   ],
   "lock_suggest": "A simple test: if a key assumption turns out wrong tomorrow, what can be changed first? Not stopping everything: knowing where the exits are, who holds the key, and how long it takes to open them.",
   "eau_title": "Seawater to tap",
-  "eau_fact": "Facing drought, Morocco is betting on desalination: turning seawater into drinking water. In May 2026, the Minister of Equipment and Water announced 420 million m³ a year, with the aim of reaching 1.7 billion.",
+  "eau_fact": "Facing drought, Morocco is investing in desalination: turning seawater into drinking water. On 2 November 2026, the Minister of Equipment and Water reported annual capacity of 447 million m³, with a target of about 1.8 billion by 2031.",
   "eau_need_title": "A plant is not enough. For the water to reach your home, you also need:",
   "eau_needs": [
    "electricity, and lots of it",
@@ -829,7 +833,7 @@
   "ports_ask_title": "To ask at every update",
   "ports_ask": "Which assumption has changed? Which cost has become irreversible? What happens if traffic stays below the forecast?",
   "ia_title": "An AI that speaks Darija: who stays in charge?",
-  "ia_fact": "The “Morocco AI 2030” roadmap, unveiled in January 2026, targets 50,000 jobs and 200,000 trained people. On 29 September 2026, the Ministry of Digital Transition and Mistral AI presented two first open-source tools for Darija.",
+  "ia_fact": "The “Morocco AI 2030” roadmap, unveiled in January 2026, targets 50,000 jobs and 200,000 trained people. On 29 September 2026, the Ministry of Digital Transition and Mistral AI announced two initial models for Darija and plans to release them as open source.",
   "ia_think": "Real progress, which lets us ask three questions that apply to any AI used by a public service:",
   "ia_qs": [
    [
@@ -873,17 +877,17 @@
    "Which works will be chosen",
    "What a change would cost"
   ],
-  "cas_note": "This page describes public documents. It does not judge the project. TENIR has not contacted ONEE or the EBRD.",
+  "cas_note": "This page describes the public documents cited. The organisations concerned may send clarifications to TENIR.",
   "tool_title": "Two questions to ask before signing",
-  "tool_q1": "Will there be time to correct?",
-  "tool_a1": "Compare the time left before signing with the time needed to spot a problem, decide and fix it.",
+  "tool_q1": "MC · Correction margin",
+  "tool_a1": "Will there still be time to correct? MC = days left before the decision point minus days needed to spot, decide and fix a problem. A negative result signals too little time.",
   "tool_ex_label": "Imaginary example",
   "tool_ex": "45 days before signing, 52 days to correct: 7 days short. Move the date, shrink the order or correct faster.",
-  "tool_q2": "How much money goes out before the proof?",
-  "tool_a2": "The amount you could no longer recover if you sign before checking the essentials: demand, energy prices, a grid connection.",
+  "tool_q2": "EHV · Exposure under unverified assumptions",
+  "tool_a2": "How much is committed before the evidence? EHV adds the unrecoverable portion of commitments that depend on decisive assumptions still unverified, in dirhams or euros.",
   "tool_nc_label": "And if it can’t be calculated?",
   "tool_nc": "We say so, and we name the missing documents: a published unknown is better than invented precision. For the projects in this issue, public documents are not enough.",
-  "tool_note": "Two measures proposed by TENIR, still experimental. They are not official ratings.",
+  "tool_note": "MC and EHV are two experimental TENIR measures, not an overall score or an assessment of projects in this issue.",
   "quiz_title": "True or false?",
   "quiz": [
    [
@@ -915,15 +919,15 @@
   "quiz_answers_label": "Answers (page)",
   "src_title": "Our sources",
   "sources": [
-   "Water: maroc.ma, 6 May 2026, statement by the Minister of Equipment and Water.",
+   "Water: maroc.ma, 3 November 2026, reporting the minister’s statement of 2 November.",
    "Rail: ONCF; Le360, 27 October 2026.",
    "Port: Marsa Maroc and Tanger Med, 2025 releases.",
    "AI: Ministry of Digital Transition, January and September 2026; announcement with Mistral AI, 29 September 2026.",
    "ONEE loan: EBRD, project 57587 and Board report, July 2026.",
-   "World Cup: FIFA, ONCF, Law 35.25, Moroccan and international press."
+   "World Cup: FIFA, SONARGES, Law 35.25, Le Desk and international reporting."
   ],
   "src_note": "Full links and corrections: tenirlabs.cc/n01. Checked on 9 November 2026. Reported errors are corrected online, with their date.",
-  "back_title": "This issue is a trial. Your view decides what comes next.",
+  "back_title": "This issue is a pilot. Your feedback will shape what comes next.",
   "back_qs": [
    [
     "Was this magazine useful to you?",
@@ -955,7 +959,7 @@
   "back_qr": "Scan to answer",
   "back_cta": "Answer in one minute",
   "back_link": "or at tenirlabs.cc/n01",
-  "back_suggest": "A big project near you? Tell us which one: it could be explained in a future issue.",
+  "back_suggest": "Do you lead a public or private project? Propose it for a future TENIR report. Selection is editorial and does not promise favourable coverage.",
   "back_legal": "TENIR · No. 01, free pilot edition, November 2026. Trial publication, not periodical. Publisher: TENIR Labs, Casablanca. No advertising. Cover: conceptual illustration. Reported errors are corrected in the online version.",
   "social_line": "A free magazine to understand the country’s big choices, in English, French and Arabic.",
   "social_cta": "Read: tenirlabs.cc/n01",
@@ -985,14 +989,14 @@
   "cdm_big": [
    [
     "115,000",
-    "seats planned in Benslimane"
+    "announced gross capacity in Benslimane"
    ],
    [
     "80,000",
-    "seats: FIFA’s minimum for a final"
+    "all-seater minimum set by FIFA for a final"
    ]
   ],
-  "cdm_think": "The gap is the country’s choice, not a FIFA requirement. It will be worth what the stadium’s use after 2030 is worth. The tournament lasts just over a month; a stadium serves for decades. The real question comes after the last match: who will fill the stands, and who will pay for upkeep?",
+  "cdm_think": "These figures are not directly comparable: one is announced gross capacity, the other a minimum number of seats. They still raise the question of everyday scale. The tournament lasts just over a month; a stadium serves for decades. After the last match, who will fill the stands and pay for upkeep?",
   "cdm_prec_title": "What earlier hosts learned",
   "cdm_prec": [
    [
@@ -1021,7 +1025,7 @@
     "After Euro 2004, Leiria and Aveiro considered demolishing stadiums too costly to maintain. For 2030, Portugal is offering only the three stadiums of its big clubs."
    ]
   ],
-  "cdm_prec_think": "What thriving stadiums share: their use was decided before the tournament. Elsewhere, people waited for a solution afterwards.",
+  "cdm_prec_think": "These cases offer no single recipe. They ask the same question: who will use the stadium year-round, and with what upkeep budget?",
   "cdm_ma_title": "Benslimane: what is planned, what is still open",
   "cdm_ma_rows": [
    [
@@ -1033,8 +1037,8 @@
     "A station is being built near the stadium (contract awarded in March 2026); commuter trains are to link it to Casa-Port and the airport."
    ],
    [
-    "The cost",
-    "Initially announced: about MAD 5 billion. According to a count by the news site Le Desk, reported in October 2026, contracts launched or awarded reach MAD 13.6 billion."
+    "Contracts counted",
+    "The initial envelope announced was about MAD 5 billion. In October 2026, Le Desk counted MAD 13.6 billion in contracts launched or awarded around the project. The scopes differ; the second figure is not a final cost."
    ]
   ],
   "cdm_ma_think": "Two lessons are already learned: a resident club is announced, the train is planned with the stadium. A quieter risk remains: filling one stadium can empty another. Mohammed V has just been renovated, Rabat’s Moulay Abdellah rebuilt: one crowd for three big stadiums.",
@@ -1045,9 +1049,9 @@
    "The future of the Mohammed V complex",
    "A reduced capacity for ordinary matches"
   ],
-  "cdm_ma_note": "TENIR has not contacted the Federation, the Morocco 2030 Foundation or ONCF.",
+  "cdm_ma_note": "This report draws on the public documents cited. The organisations concerned may send clarifications to TENIR.",
   "cdm_ch_title": "What can still be decided before 2030",
-  "cdm_ch_fact": "The Morocco 2030 Foundation, created by Law 35.25 in 2025, coordinates the preparations. Its mission runs until 2030, with a possible extension.",
+  "cdm_ch_fact": "Created by Law 35.25 in 2025, the Morocco 2030 Foundation prepares, organises and promotes international football competitions entrusted to Morocco up to the 2030 World Cup. The law does not specify who will operate the facilities after the tournament.",
   "cdm_ch": [
    [
     "Sign the use before opening day",
@@ -1063,7 +1067,7 @@
    ],
    [
     "Put a date on every promise",
-    "Who takes over what after 2030, and who answers for it when the Foundation’s mission ends."
+    "Who will operate each facility after 2030, under which contract, and with what oversight?"
    ]
   ],
   "cdm_ask_title": "Three questions for what comes next",
@@ -1071,8 +1075,8 @@
   "sources_links": [
    [
     {
-     "label": "maroc.ma",
-     "href": "https://maroc.ma/fr/actualites/dessalement-une-capacite-de-production-annuelle-de-420-millions-m3"
+     "label": "maroc.ma, 02/11/2026",
+     "href": "https://maroc.ma/fr/actualites/securite-hydrique-lancement-dune-nouvelle-strategie-adaptee-aux-mutations-climatiques-majeures"
     }
    ],
    [
@@ -1117,8 +1121,12 @@
      "href": "https://inside.fifa.com/fr/news/congres-extraordinaire-fifa-hotes-coupe-du-monde-editions-2030-et-2034"
     },
     {
-     "label": "Wikipedia, FIFA 2030 requirements",
-     "href": "https://en.wikipedia.org/wiki/2030_FIFA_World_Cup_bids"
+     "label": "FIFA, 2030 hosting requirements",
+     "href": "https://digitalhub.fifa.com/m/2a76876ef04ed7b9/original/FIFA-World-Cup-2030-Overview-of-Hosting-Requirements.pdf"
+    },
+    {
+     "label": "SONARGES, Grand Stade Hassan II",
+     "href": "https://www.sonarges.ma/infrastructures/grand-stade-hassan-ii/"
     },
     {
      "label": "Hespress, 11/09/2026",
@@ -1145,8 +1153,8 @@
      "href": "https://ledesk.ma/encontinu/a-benslimane-le-nouveau-grand-stade-de-casablanca-coutera-5-milliards-de-dirhams/"
     },
     {
-     "label": "Afrik-Foot, 01/10/2026",
-     "href": "https://www.afrik-foot.com/maroc-le-grand-stade-hassan-ii-va-couter-plus-de-27-fois-plus-cher-que-prevu"
+     "label": "Le Desk, 06/10/2026",
+     "href": "https://mobile.ledesk.ma/datadesk/grand-stade-hassan-ii-qui-sont-les-acteurs-dun-chantier-desormais-a-136-mmdh/"
     },
     {
      "label": "Médias24, 14/04/2025",
@@ -1157,8 +1165,8 @@
      "href": "https://telquel.ma/instant-t/2025/09/04/le-prince-moulay-el-hassan-inaugure-a-rabat-le-stade-prince-moulay-abdellah-apres-sa-reconstruction_1949001/"
     },
     {
-     "label": "maroc.ma, 10/07/2025",
-     "href": "https://maroc.ma/fr/actualites/le-conseil-de-gouvernement-adopte-le-projet-de-loi-portant-creation-de-la-fondation-maroc-2030"
+     "label": "Official Bulletin, Law 35.25",
+     "href": "https://www.sgg.gov.ma/BO/FR/2873/2025/BO_7428_Fr.pdf"
     },
     {
      "label": "TelQuel, 14/07/2025",
@@ -1360,10 +1368,10 @@
   "cards": [
    [
     "الماء",
-    "420",
+    "447",
     "مليون م³ سنوياً",
-    "من مياه البحر المحلّاة حالياً. الهدف: 1,7 مليار.",
-    "وزير التجهيز والماء، ماي 2026"
+    "من القدرة الحالية لتحلية المياه. الهدف: نحو 1,8 مليار بحلول 2031.",
+    "وزير التجهيز والماء، 2 نونبر 2026"
    ],
    [
     "القطار",
@@ -1420,7 +1428,7 @@
   ],
   "lock_suggest": "اختبار بسيط: إذا تبيّن غداً أن فرضية مهمة خاطئة، ما أول شيء يمكن تغييره؟ لا إيقاف كل شيء، بل معرفة أين أبواب الخروج، ومن يملك مفتاحها، وكم يلزم من الوقت لفتحها.",
   "eau_title": "من البحر إلى الصنبور",
-  "eau_fact": "في مواجهة الجفاف، يراهن المغرب على تحلية مياه البحر، أي جعلها صالحة للشرب. وفي ماي 2026، أعلن وزير التجهيز والماء عن 420 مليون متر مكعب سنوياً، مع طموح لبلوغ 1,7 مليار.",
+  "eau_fact": "في مواجهة الجفاف، يستثمر المغرب في تحلية مياه البحر لجعلها صالحة للشرب. وفي 2 نونبر 2026، أعلن وزير التجهيز والماء أن القدرة السنوية بلغت 447 مليون متر مكعب، مع هدف يقارب 1,8 مليار بحلول 2031.",
   "eau_need_title": "المحطة وحدها لا تكفي. لكي يصل الماء إلى بيتك، يلزم أيضاً:",
   "eau_needs": [
    "كهرباء بكميات كبيرة",
@@ -1440,7 +1448,7 @@
   "ports_ask_title": "يُسأل عند كل تحديث",
   "ports_ask": "أي فرضية تغيّرت؟ أي كلفة أصبحت غير قابلة للاسترجاع؟ ماذا يحدث إذا بقيت الحركة دون التوقعات؟",
   "ia_title": "ذكاء اصطناعي يتكلم الدارجة: من يبقى صاحب القرار؟",
-  "ia_fact": "تستهدف خارطة الطريق «المغرب للذكاء الاصطناعي 2030»، التي كُشف عنها في يناير 2026، خلق 50 ألف منصب شغل وتكوين 200 ألف كفاءة. وفي 29 شتنبر 2026، قدّمت وزارة الانتقال الرقمي وشركة Mistral AI أول أداتين مفتوحتي المصدر للدارجة.",
+  "ia_fact": "تستهدف خارطة الطريق «المغرب للذكاء الاصطناعي 2030»، التي كُشف عنها في يناير 2026، خلق 50 ألف منصب شغل وتكوين 200 ألف كفاءة. وفي 29 شتنبر 2026، أعلنت وزارة الانتقال الرقمي وشركة Mistral AI عن نموذجين أوليين للدارجة وخطة نشرهما بمصدر مفتوح.",
   "ia_think": "تقدّم ملموس يسمح بطرح ثلاثة أسئلة تصلح لكل ذكاء اصطناعي تستعمله مصلحة عمومية:",
   "ia_qs": [
    [
@@ -1484,17 +1492,17 @@
    "لائحة الأشغال المختارة",
    "كلفة أي تغيير"
   ],
-  "cas_note": "تصف هذه الصفحة وثائق عمومية ولا تحكم على المشروع. لم تتصل TENIR بالمكتب ولا بالبنك.",
+  "cas_note": "تعرض هذه الصفحة الوثائق العمومية المذكورة. ويمكن للجهات المعنية إرسال توضيحات إلى TENIR.",
   "tool_title": "سؤالان قبل التوقيع",
-  "tool_q1": "هل سيكفي الوقت للتصحيح؟",
-  "tool_a1": "نقارن الوقت المتبقي قبل التوقيع بالوقت اللازم لاكتشاف مشكلة واتخاذ القرار والتصحيح.",
+  "tool_q1": "MC · هامش التصحيح",
+  "tool_a1": "هل بقي وقت للتصحيح؟ هامش التصحيح = الأيام المتبقية قبل القرار ناقص الأيام اللازمة لاكتشاف المشكلة واتخاذ القرار وتصحيحها. النتيجة السلبية تعني أن الوقت غير كافٍ.",
   "tool_ex_label": "مثال تخيّلي",
   "tool_ex": "45 يوماً قبل التوقيع، و52 يوماً للتصحيح: تأخّر بسبعة أيام. يجب تأجيل الموعد، أو تقليص الطلبية، أو التصحيح بسرعة أكبر.",
-  "tool_q2": "كم من المال يُصرف قبل الدليل؟",
-  "tool_a2": "المبلغ الذي لن يمكن استرجاعه إذا وقّعنا قبل التحقق من الأساسي: الطلب، وسعر الطاقة، والربط بالشبكة.",
+  "tool_q2": "EHV · التعرض لفرضيات غير متحقق منها",
+  "tool_a2": "كم نلتزم قبل الحصول على الدليل؟ يجمع هذا المقياس الجزء غير القابل للاسترجاع من الالتزامات المرتبطة بفرضيات حاسمة لم تُتحقق بعد، بالدرهم أو اليورو.",
   "tool_nc_label": "وإذا تعذّر الحساب؟",
   "tool_nc": "نقول ذلك، ونسمّي الوثائق الناقصة: مجهول معلَن خير من دقة مختلَقة. بالنسبة لمشاريع هذا العدد، لا تكفي الوثائق العمومية.",
-  "tool_note": "مقياسان تقترحهما TENIR، وما زالا تجريبيين. ليسا تنقيطاً رسمياً.",
+  "tool_note": "هذان مقياسان تجريبيان تقترحهما TENIR، وليسا تنقيطاً إجمالياً أو تقييماً لمشاريع هذا العدد.",
   "quiz_title": "صحيح أم خطأ؟",
   "quiz": [
    [
@@ -1526,15 +1534,15 @@
   "quiz_answers_label": "الأجوبة (الصفحة)",
   "src_title": "مصادرنا",
   "sources": [
-   "الماء: maroc.ma، 6 ماي 2026، تصريح وزير التجهيز والماء.",
+   "الماء: maroc.ma، 3 نونبر 2026، تقرير عن تصريح الوزير يوم 2 نونبر.",
    "السكك الحديدية: المكتب الوطني للسكك الحديدية؛ Le360، 27 أكتوبر 2026.",
    "الميناء: مرسى المغرب وطنجة المتوسط، بلاغات 2025.",
    "الذكاء الاصطناعي: وزارة الانتقال الرقمي، يناير وشتنبر 2026؛ إعلان مع Mistral AI، 29 شتنبر 2026.",
    "قرض المكتب الوطني: البنك الأوروبي، المشروع 57587 وتقرير المجلس، يوليوز 2026.",
-   "كأس العالم: فيفا، المكتب الوطني للسكك الحديدية، القانون 35.25، صحافة مغربية ودولية."
+   "كأس العالم: فيفا، سونارجيس، القانون 35.25، لوديسك وصحافة دولية."
   ],
   "src_note": "الروابط الكاملة والتصحيحات: tenirlabs.cc/n01. تم التحقق في 9 نونبر 2026. يُصحَّح كل خطأ مبلَّغ عنه في النسخة الإلكترونية مع ذكر تاريخه.",
-  "back_title": "هذا العدد تجربة. رأيك يحدّد ما سيأتي.",
+  "back_title": "هذا العدد تجربة أولى. رأيك يساعدنا على تحديد الخطوة التالية.",
   "back_qs": [
    [
     "هل كانت هذه المجلة مفيدة لك؟",
@@ -1566,7 +1574,7 @@
   "back_qr": "امسح الرمز للإجابة",
   "back_cta": "أجب في دقيقة واحدة",
   "back_link": "أو عبر tenirlabs.cc/n01",
-  "back_suggest": "مشروع كبير قرب بيتك؟ أخبرنا به، فقد نشرحه في عدد مقبل.",
+  "back_suggest": "هل تحمل مشروعاً عمومياً أو خاصاً؟ اقترحه موضوعاً لملف قادم في TENIR. الاختيار تحريري ولا يضمن تغطية مؤيدة.",
   "back_legal": "TENIR · العدد 01، نسخة تجريبية مجانية، نونبر 2026. منشور تجريبي غير دوري. الناشر: TENIR Labs، الدار البيضاء. بدون إشهار. الغلاف: رسم تخيّلي. تُصحَّح الأخطاء المبلَّغ عنها في النسخة الإلكترونية.",
   "social_line": "مجلة مجانية لفهم الاختيارات الكبرى للبلاد، بالعربية والفرنسية والإنجليزية.",
   "social_cta": "اقرأ: tenirlabs.cc/n01",
@@ -1596,14 +1604,14 @@
   "cdm_big": [
    [
     "115 ألف",
-    "مقعد مبرمج في بنسليمان"
+    "الطاقة الاستيعابية الإجمالية المعلنة في بنسليمان"
    ],
    [
     "80 ألف",
-    "مقعد: الحد الأدنى الذي يشترطه الاتحاد الدولي للنهائي"
+    "مقعد جلوس: الحد الأدنى الذي تشترطه فيفا للنهائي"
    ]
   ],
-  "cdm_think": "الفرق اختيار وطني، لا شرط من شروط الاتحاد الدولي، وقيمته رهينة باستعمال الملعب بعد 2030. فالبطولة تدوم أكثر من شهر بقليل، أما الملعب فيخدم لعقود. السؤال الحقيقي يأتي بعد المباراة الأخيرة: من سيملأ المدرجات، ومن سيتحمّل كلفة الصيانة؟",
+  "cdm_think": "لا يقارن الرقمان مباشرة: الأول قدرة استيعابية إجمالية معلنة، والثاني حد أدنى للمقاعد. لكنهما يطرحان سؤال الحجم المناسب للاستعمال اليومي. تدوم البطولة أكثر من شهر بقليل، ويُستعمل الملعب لعقود. بعد المباراة الأخيرة، من سيملأ المدرجات ويتحمّل الصيانة؟",
   "cdm_prec_title": "ما تعلّمته دول استضافت قبلنا",
   "cdm_prec": [
    [
@@ -1632,7 +1640,7 @@
     "بعد كأس أوروبا 2004، فكّرت ليريا وأفيرو في هدم ملاعب صارت صيانتها مكلفة جداً. ولسنة 2030، لا تقدّم البرتغال سوى ملاعب أنديتها الكبرى الثلاثة."
    ]
   ],
-  "cdm_prec_think": "القاسم المشترك بين الملاعب التي بقيت حيّة: تحديد استعمالها قبل البطولة. أما غيرها، فانتظرت حلاً بعدها.",
+  "cdm_prec_think": "لا تقدّم هذه التجارب وصفة واحدة، لكنها تطرح السؤال نفسه: من سيستعمل الملعب طوال السنة، وبأي ميزانية للصيانة؟",
   "cdm_ma_title": "بنسليمان: ما هو مبرمج، وما يبقى مفتوحاً",
   "cdm_ma_rows": [
    [
@@ -1644,8 +1652,8 @@
     "محطة قطار في طور البناء قرب الملعب (أُسندت صفقتها في مارس 2026)، ومن المرتقب أن تربطها قطارات القرب بمحطة الدار البيضاء الميناء وبمطار محمد الخامس."
    ],
    [
-    "الكلفة",
-    "المعلن في البداية: نحو 5 مليارات درهم. وحسب إحصاء لموقع «لوديسك» نُقل في أكتوبر 2026، بلغت الصفقات المعلنة أو المُسندة 13,6 مليار درهم."
+    "الصفقات المحصاة",
+    "بلغ الغلاف المعلن في البداية نحو 5 مليارات درهم. وفي أكتوبر 2026، أحصى موقع «لوديسك» صفقات أُطلقت أو أُسندت حول المشروع بقيمة 13,6 مليار درهم. يختلف نطاق الرقمين، ولا يمثّل الثاني الكلفة النهائية."
    ]
   ],
   "cdm_ma_think": "استُوعب درسان: هناك نادٍ مقيم معلن، والقطار مبرمج مع الملعب. ويبقى خطر أخفى: ملء ملعب قد يُفرغ آخر. فقد جُدّد مركب محمد الخامس، وأُعيد بناء ملعب مولاي عبد الله بالرباط، وسيتقاسم الجمهور نفسه ثلاثة ملاعب كبرى.",
@@ -1656,9 +1664,9 @@
    "مستقبل المركب الرياضي محمد الخامس",
    "سعة مخفّضة للمباريات العادية"
   ],
-  "cdm_ma_note": "لم تتصل TENIR بالجامعة ولا بمؤسسة المغرب 2030 ولا بالمكتب الوطني للسكك الحديدية.",
+  "cdm_ma_note": "يستند هذا الملف إلى الوثائق العمومية المذكورة. ويمكن للجهات المعنية إرسال توضيحات إلى TENIR.",
   "cdm_ch_title": "ما يمكن أن يُقرَّر قبل 2030",
-  "cdm_ch_fact": "تنسّق مؤسسة المغرب 2030، المحدثة بالقانون 35.25 سنة 2025، التحضيرات. ومهمتها مبرمجة إلى غاية 2030، مع إمكانية تمديدها.",
+  "cdm_ch_fact": "أُحدثت مؤسسة المغرب 2030 بالقانون 35.25 سنة 2025 لتحضير وتنظيم وتثمين مسابقات كرة القدم الدولية المسندة إلى المغرب حتى كأس العالم 2030. ولا يحدد القانون من سيتولى تشغيل المنشآت بعد البطولة.",
   "cdm_ch": [
    [
     "توقيع الاستعمال قبل الافتتاح",
@@ -1674,7 +1682,7 @@
    ],
    [
     "تحديد موعد لكل وعد",
-    "من يتسلّم ماذا بعد 2030، ومن يُسأل عن ذلك حين تنتهي مهمة المؤسسة."
+    "من سيشغّل كل منشأة بعد 2030، وبموجب أي عقد، وتحت أي رقابة؟"
    ]
   ],
   "cdm_ask_title": "ثلاثة أسئلة لما بعد",
@@ -1682,8 +1690,8 @@
   "sources_links": [
    [
     {
-     "label": "maroc.ma",
-     "href": "https://maroc.ma/fr/actualites/dessalement-une-capacite-de-production-annuelle-de-420-millions-m3"
+     "label": "maroc.ma، 02/11/2026",
+     "href": "https://maroc.ma/fr/actualites/securite-hydrique-lancement-dune-nouvelle-strategie-adaptee-aux-mutations-climatiques-majeures"
     }
    ],
    [
@@ -1728,8 +1736,12 @@
      "href": "https://inside.fifa.com/fr/news/congres-extraordinaire-fifa-hotes-coupe-du-monde-editions-2030-et-2034"
     },
     {
-     "label": "Wikipedia, FIFA 2030 requirements",
-     "href": "https://en.wikipedia.org/wiki/2030_FIFA_World_Cup_bids"
+     "label": "فيفا، متطلبات استضافة 2030",
+     "href": "https://digitalhub.fifa.com/m/2a76876ef04ed7b9/original/FIFA-World-Cup-2030-Overview-of-Hosting-Requirements.pdf"
+    },
+    {
+     "label": "سونارجيس، ملعب الحسن الثاني",
+     "href": "https://www.sonarges.ma/infrastructures/grand-stade-hassan-ii/"
     },
     {
      "label": "Hespress, 11/09/2026",
@@ -1756,8 +1768,8 @@
      "href": "https://ledesk.ma/encontinu/a-benslimane-le-nouveau-grand-stade-de-casablanca-coutera-5-milliards-de-dirhams/"
     },
     {
-     "label": "Afrik-Foot, 01/10/2026",
-     "href": "https://www.afrik-foot.com/maroc-le-grand-stade-hassan-ii-va-couter-plus-de-27-fois-plus-cher-que-prevu"
+     "label": "لوديسك، 06/10/2026",
+     "href": "https://mobile.ledesk.ma/datadesk/grand-stade-hassan-ii-qui-sont-les-acteurs-dun-chantier-desormais-a-136-mmdh/"
     },
     {
      "label": "Médias24, 14/04/2025",
@@ -1768,8 +1780,8 @@
      "href": "https://telquel.ma/instant-t/2025/09/04/le-prince-moulay-el-hassan-inaugure-a-rabat-le-stade-prince-moulay-abdellah-apres-sa-reconstruction_1949001/"
     },
     {
-     "label": "maroc.ma, 10/07/2025",
-     "href": "https://maroc.ma/fr/actualites/le-conseil-de-gouvernement-adopte-le-projet-de-loi-portant-creation-de-la-fondation-maroc-2030"
+     "label": "الجريدة الرسمية، القانون 35.25",
+     "href": "https://www.sgg.gov.ma/BO/FR/2873/2025/BO_7428_Fr.pdf"
     },
     {
      "label": "TelQuel, 14/07/2025",

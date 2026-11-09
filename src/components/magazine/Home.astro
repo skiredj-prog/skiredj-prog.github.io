@@ -14,17 +14,40 @@ const rules: Record<Lang, { title: string; items: string[] }> = {
     'Chaque affirmation porte une étiquette : fait sourcé, lecture ou proposition.',
     'Les sources sont citées et datées. Une erreur signalée est corrigée en ligne, avec sa date.',
     'Aucune publicité dans ce numéro.',
-    'Aucun organisme cité n’a financé ce numéro ni relu son contenu avant publication.' ] },
+    'La citation d’un organisme ne signifie pas qu’il approuve nos analyses.' ] },
   en: { title: 'Our rules', items: [
     'Every statement carries a label: sourced fact, reading or proposal.',
     'Sources are cited and dated. A reported error is corrected online, with its date.',
     'No advertising in this issue.',
-    'No organisation mentioned funded this issue or reviewed its content before publication.' ] },
+    'Mentioning an organisation does not mean it endorses our analysis.' ] },
   ar: { title: 'قواعدنا', items: [
     'كل معلومة تحمل وسماً: معطى موثّق، أو قراءة، أو اقتراح.',
     'المصادر مذكورة ومؤرَّخة. يُصحَّح كل خطأ مبلَّغ عنه في النسخة الإلكترونية مع ذكر تاريخه.',
     'لا إشهار في هذا العدد.',
-    'لم تموّل أي جهة مذكورة هذا العدد، ولم تراجع محتواه قبل نشره.' ] },
+    'ذكر أي جهة لا يعني أنها تؤيد تحليلنا.' ] },
+};
+const proposals: Record<Lang, { title: string; body: string; button: string; note: string; subject: string }> = {
+  fr: {
+    title: 'Proposer un dossier',
+    body: 'Vous portez un projet public ou privé à un moment de décision ? Envoyez son objet, le prochain jalon et des sources publiques. TENIR examine les faits, les choix encore ouverts et ce qui pourrait être corrigé.',
+    button: 'Proposer un projet',
+    note: 'La proposition est gratuite. La sélection reste éditoriale et ne garantit aucune conclusion favorable. N’envoyez pas de document confidentiel dans ce premier message.',
+    subject: 'TENIR — proposition de dossier',
+  },
+  en: {
+    title: 'Propose a report',
+    body: 'Do you lead a public or private project approaching a decision point? Send its purpose, the next milestone and public sources. TENIR examines the facts, the options still open and what could still be corrected.',
+    button: 'Propose a project',
+    note: 'Proposing a project is free. Selection is editorial and does not guarantee favourable coverage. Do not send confidential documents in your first message.',
+    subject: 'TENIR — report proposal',
+  },
+  ar: {
+    title: 'اقترح ملفاً',
+    body: 'هل تحمل مشروعاً عمومياً أو خاصاً يقترب من قرار مهم؟ أرسل موضوعه والمرحلة المقبلة ومصادره العمومية. تدرس TENIR الوقائع والخيارات التي ما زالت مفتوحة وما يمكن تصحيحه.',
+    button: 'اقتراح مشروع',
+    note: 'الاقتراح مجاني. الاختيار تحريري ولا يضمن تغطية مؤيدة. لا ترسل وثائق سرية في رسالتك الأولى.',
+    subject: 'TENIR — اقتراح ملف',
+  },
 };
 const fr = (data as any).fr;
 ---
@@ -58,6 +81,12 @@ const fr = (data as any).fr;
         </div>
         <h3>{rules[l].title}</h3>
         <ul class="mag-locks">{rules[l].items.map((r, i) => <li><span class="n" aria-hidden="true">{i + 1}</span><p>{r}</p></li>)}</ul>
+        <div class="mag-box mag-box--sky" id={`proposer-${l}`}>
+          <h3>{proposals[l].title}</h3>
+          <p>{proposals[l].body}</p>
+          <p><a class="mag-btn mag-btn-light" href={`mailto:skiredj@tenirlabs.cc?subject=${encodeURIComponent(proposals[l].subject)}`}>{proposals[l].button} →</a></p>
+          <p class="mag-small mag-muted">{proposals[l].note}</p>
+        </div>
       </section>
     );
   })}

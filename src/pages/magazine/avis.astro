@@ -8,17 +8,20 @@ import { url } from '../../data/site';
 type Lang = 'fr' | 'en' | 'ar';
 const langs: Lang[] = ['fr', 'en', 'ar'];
 const t = {
-  fr: { title: 'Votre avis sur le n° 01', intro: 'Trois questions, une minute. Vos réponses décident s’il y aura un n° 02, et dans quelles langues.',
+  fr: { title: 'Votre avis sur le n° 01', intro: 'Trois questions pour nous aider à préparer la suite et choisir les langues du prochain numéro.',
         free: 'Un grand projet près de chez vous à expliquer ? (facultatif)', send: 'Préparer mon courriel',
         privacy: 'Ce site n’enregistre aucune réponse. Le bouton prépare un courriel que vous relisez avant de l’envoyer. Il ne demande ni votre nom ni votre adresse, mais votre messagerie joint votre adresse à l’envoi.',
+        fallback: 'Si votre messagerie ne s’ouvre pas, écrivez à',
         back: '← Revenir au numéro', issue: '/magazine/n01/', subject: 'TENIR N° 01 — avis' },
-  en: { title: 'Your view on No. 01', intro: 'Three questions, one minute. Your answers decide whether there will be a No. 02, and in which languages.',
+  en: { title: 'Your view on No. 01', intro: 'Three questions to help us plan what comes next and choose the languages for the next issue.',
         free: 'A big project near you that we should explain? (optional)', send: 'Prepare my email',
         privacy: 'This site stores no answers. The button prepares an email you review before sending. It asks for neither your name nor your address, but your mail app attaches your address when you send it.',
+        fallback: 'If your mail app does not open, write to',
         back: '← Back to the issue', issue: '/magazine/n01/en/', subject: 'TENIR No. 01 — feedback' },
-  ar: { title: 'رأيك في العدد 01', intro: 'ثلاثة أسئلة في دقيقة واحدة. أجوبتك تحدّد هل سيصدر عدد ثانٍ، وبأي لغات.',
+  ar: { title: 'رأيك في العدد 01', intro: 'ثلاثة أسئلة تساعدنا على إعداد الخطوة المقبلة واختيار لغات العدد القادم.',
         free: 'مشروع كبير قرب بيتك تريد أن نشرحه؟ (اختياري)', send: 'تحضير رسالتي',
         privacy: 'لا يسجّل هذا الموقع أي جواب. يحضّر الزر رسالة إلكترونية تراجعها قبل إرسالها. لا يطلب اسمك ولا عنوانك، لكن تطبيق البريد يرفق عنوانك عند الإرسال.',
+        fallback: 'إذا لم يُفتح تطبيق البريد، راسلنا على',
         back: '→ العودة إلى العدد', issue: '/magazine/n01/ar/', subject: 'TENIR العدد 01 — رأي' },
 };
 const keys = ['utile', 'sujet', 'langue'];
@@ -38,16 +41,17 @@ const keys = ['utile', 'sujet', 'langue'];
             <fieldset>
               <legend>{q[0]}</legend>
               <div class="mag-choices">
-                {q[1].map((o: string) => <label><input type="radio" name={keys[qi]} value={o} /> <span>{o}</span></label>)}
+                {q[1].map((o: string, oi: number) => <label><input type="radio" name={keys[qi]} value={o} required={oi === 0} /> <span>{o}</span></label>)}
               </div>
             </fieldset>
           ))}
-          <label style="display:grid;gap:0.4rem;margin-bottom:1.2rem"><span style="font-family:var(--head);font-weight:800">{t[l].free}</span><textarea name="projet"></textarea></label>
+          <label style="display:grid;gap:0.4rem;margin-bottom:1.2rem"><span style="font-family:var(--head);font-weight:800">{t[l].free}</span><textarea name="projet" maxlength="1000"></textarea></label>
           <input type="hidden" name="numero" value="01" />
           <input type="hidden" name="langue_edition" value={l} data-param="l" />
           <input type="hidden" name="source" value="web" data-param="s" />
           <button type="submit" class="mag-btn mag-btn-light">{t[l].send}</button>
           <p class="mag-small mag-muted" style="margin-top:0.9rem">{t[l].privacy}</p>
+          <p class="mag-small mag-muted">{t[l].fallback} <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>.</p>
         </form>
         <p><a href={url(t[l].issue)}>{t[l].back}</a></p>
       </section>
