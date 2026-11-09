@@ -601,6 +601,7 @@
   ],
   "web": {
    "read_pdf": "Télécharger le PDF (A5, 16 pages)",
+   "pdf_note": "Le PDF est conçu pour l’impression. Pour rechercher dans le texte ou utiliser un lecteur d’écran, lisez la version web.",
    "give_view": "Donner mon avis",
    "languages": "Langues",
    "answers_show": "Voir les réponses",
@@ -1216,6 +1217,7 @@
   ],
   "web": {
    "read_pdf": "Download the PDF (A5, 16 pages)",
+   "pdf_note": "The PDF is designed for print. For text search or screen-reader use, read the web edition.",
    "give_view": "Give your view",
    "languages": "Languages",
    "answers_show": "Show the answers",
@@ -1831,6 +1833,7 @@
   ],
   "web": {
    "read_pdf": "تحميل النسخة PDF (A5، 16 صفحة)",
+   "pdf_note": "صُممت نسخة PDF للطباعة. للبحث في النص أو استخدام قارئ الشاشة، اقرأ النسخة الإلكترونية.",
    "give_view": "أبدِ رأيك",
    "languages": "اللغات",
    "answers_show": "عرض الأجوبة",

@@ -79,6 +79,7 @@ const fr = (data as any).fr;
           <a class="mag-btn mag-btn-light" href={url(issue[l])}>{read[l]} →</a>
           <a class="mag-btn mag-btn-light" href={url(`/magazine/n01/TENIR-N01-${l.toUpperCase()}.pdf`)} download>{d.web.read_pdf}</a>
         </div>
+        <p class="mag-small mag-muted">{d.web.pdf_note}</p>
         <h3>{rules[l].title}</h3>
         <ul class="mag-locks">{rules[l].items.map((r, i) => <li><span class="n" aria-hidden="true">{i + 1}</span><p>{r}</p></li>)}</ul>
         <div class="mag-box mag-box--sky" id={`proposer-${l}`}>
