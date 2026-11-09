@@ -71,6 +71,9 @@ class Edition:
         out_dir.mkdir(parents=True, exist_ok=True)
         self.path = out_dir / f"TENIR-N01-{lang.upper()}.pdf"
         self.c = canvas.Canvas(str(self.path), pagesize=A5, pageCompression=1)
+        # PDF viewers resolve bidi from the first strong character.  All three
+        # doc_title values now start with "TENIR" (LTR) so Chrome, Edge and IE
+        # pick the correct base direction for the title bar.
         self.c.setTitle(self.d["web"]["doc_title"])
         self.c.setAuthor("TENIR Labs")
         self.c.setSubject("TENIR N° 01 — Maroc 2030")
@@ -280,8 +283,9 @@ class Edition:
         c.rect(0, 0, PAGE_W, PAGE_H * .48, stroke=0, fill=1)
         self.line("TENIR", 22, PAGE_H - 48, 33, bold=True, head=True,
                   color=NAVY, width=PAGE_W - 44)
-        self.line(self.d["issue_date"], 22, PAGE_H - 31, 7.8,
-                  bold=True, color=NAVY, width=PAGE_W - 44)
+        self.side_line(self.d["issue_date"], PAGE_H - 31,
+                       "left" if self.rtl else "right", 7.8,
+                       bold=True, color=NAVY)
         self.line(self.d["tagline"], 22, PAGE_H - 66, 8.2, bold=True,
                   head=True, color=NAVY, width=PAGE_W - 44)
         c.setFillColor(NAVY)
