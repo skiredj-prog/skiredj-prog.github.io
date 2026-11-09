@@ -108,6 +108,20 @@
 .mag-box--sky { background: var(--sky); }
 .mag-box--copper { background: var(--copper-l); }
 .mag-box--line { border-top: 2px solid var(--navy); border-radius: 0; padding: 0.8rem 0 0; }
+.mag-box--teal { background: #e2f0f1; }
+.mag-box--dashed { border: 1.5px dashed var(--copper-d); }
+.mag-box--dashed h3 { color: var(--copper-d); font-size: 1.05rem; }
+.mag-unknown { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: 0.35rem 1.25rem; }
+.mag-unknown li { position: relative; padding-inline-start: 1rem; }
+.mag-unknown li::before { content: "?"; position: absolute; inset-inline-start: 0; color: var(--copper-d); font-weight: 700; }
+.mag-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; background: var(--navy); color: #fff; border-radius: 6px; padding: 1rem 1.25rem; }
+.mag-duo .v { font-family: "Mag Fraunces", "Mag Kufi", Georgia, serif; font-weight: 800; font-size: 2.3rem; line-height: 1.05; }
+.mag-duo .v--hi { color: var(--copper-on-dark); }
+.mag-duo .v { white-space: nowrap; }
+.mag[dir="rtl"] .mag-duo .v { font-size: 1.9rem; }
+.mag-where { font-size: 0.8125rem; font-weight: 600; color: var(--teal); white-space: nowrap; }
+.mag-locks.mag-locks--plain li { grid-template-columns: minmax(0, 1fr); }
+.mag-section h3.mag-sub-h[id^="cdm-"] { margin-top: 0.75rem; padding-top: 1rem; border-top: 2px solid var(--navy); font-size: 1.4rem; scroll-margin-top: 1rem; }
 .mag-big-q { font-family: var(--head); font-weight: 600; font-size: 1.3rem; line-height: 1.35; color: #fff; }
 
 /* Figures cards */

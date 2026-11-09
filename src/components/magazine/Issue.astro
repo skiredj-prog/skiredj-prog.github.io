@@ -6,7 +6,9 @@ const { d, avisHref, pdfHref } = Astro.props;
 const lang: 'fr' | 'en' | 'ar' = d.lang;
 const ar = lang === 'ar';
 const tag = (k: 'fact' | 'think' | 'suggest') => ({ cls: `mag-tag mag-tag--${k}`, label: d.tags[k] });
-const ids = ['essentiel', 'chantiers', 'choix', 'eau', 'ports-trains', 'ia', 'cas', 'methode', 'quiz'];
+// Sommaire (même ordre que d.toc) et page imprimée → ancre web.
+const ids = ['essentiel', 'chantiers', 'choix', 'eau', 'ports-trains', 'coupe-du-monde', 'ia', 'cas', 'methode', 'quiz'];
+const pageId: Record<string, string> = { '3': 'essentiel', '4': 'chantiers', '5': 'choix', '6': 'eau', '7': 'ports-trains', '8': 'coupe-du-monde', '9': 'cdm-precedents', '10': 'cdm-maroc', '11': 'cdm-choix', '12': 'ia', '13': 'cas', '14': 'methode', '15': 'quiz', '16': 'avis' };
 const extra = {
   fr: { factWeb: 'Vérifié, avec sa source :', checked: 'Sources vérifiées le 9 novembre 2026.', howRead: 'Comment lire ce magazine', answers: 'Réponses', true: 'Vrai', false: 'Faux', grant: d.cas_grant, page: 'p.', suggestLead: 'Un grand projet près de chez vous ?' },
   en: { factWeb: 'Checked, with its source:', checked: 'Sources checked on 9 November 2026.', howRead: 'How to read this magazine', answers: 'Answers', true: 'True', false: 'False', grant: d.cas_grant, page: 'p.', suggestLead: '' },
@@ -121,6 +123,45 @@ const needIcons = ['bolt', 'pipe', 'wrench', 'wave'];
   <div class="mag-box mag-box--sky"><h3>{d.ports_ask_title}</h3><p>{d.ports_ask}</p></div>
 </section>
 
+<section class="mag-section" id="coupe-du-monde" aria-labelledby="cdm-h">
+  <p class="mag-kicker">{d.sections.cdm} · {d.cdm_kicker}</p>
+  <h2 id="cdm-h">{d.cdm_title}</h2>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span>{d.cdm_fact.map((t: string) => <p>{t}</p>)}</div>
+  <div class="mag-duo">
+    {d.cdm_big.map((b: [string, string], i: number) => <div><p class={i === 0 ? 'v v--hi' : 'v'}>{b[0]}</p><p class="mag-small">{b[1]}</p></div>)}
+  </div>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.cdm_think}</p></div>
+
+  <h3 class="mag-sub-h" id="cdm-precedents">{d.cdm_prec_title}</h3>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span></div>
+  <ol class="mag-locks" style="list-style:none;padding:0">
+    {d.cdm_prec.map((c: [string, string, string], i: number) => <li><span class="n" aria-hidden="true">{i + 1}</span><p><strong>{c[0]}</strong> <span class="mag-where">{c[1]}</span><br />{c[2]}</p></li>)}
+  </ol>
+  <div class="mag-box mag-box--teal"><div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.cdm_prec_think}</p></div></div>
+
+  <h3 class="mag-sub-h" id="cdm-maroc">{d.cdm_ma_title}</h3>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span></div>
+  <ul class="mag-locks mag-locks--plain" style="list-style:none;padding:0">
+    {d.cdm_ma_rows.map((r: [string, string]) => <li><p><strong>{r[0]}.</strong> {r[1]}</p></li>)}
+  </ul>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.cdm_ma_think}</p></div>
+  <div class="mag-box mag-box--dashed">
+    <h3>{d.cdm_ma_unknown_title}</h3>
+    <ul class="mag-unknown">{d.cdm_ma_unknown.map((x: string) => <li>{x}</li>)}</ul>
+  </div>
+  <p class="mag-small mag-muted">{d.cdm_ma_note}</p>
+
+  <h3 class="mag-sub-h" id="cdm-choix">{d.cdm_ch_title}</h3>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span><p>{d.cdm_ch_fact}</p></div>
+  <div class="mag-box mag-box--copper">
+    <div class="mag-tagged"><span class={tag('suggest').cls}>{tag('suggest').label}</span></div>
+    <ol class="mag-locks" style="list-style:none;padding:0">
+      {d.cdm_ch.map((c: [string, string], i: number) => <li><span class="n" aria-hidden="true">{i + 1}</span><p><strong>{c[0]}.</strong> {c[1]}</p></li>)}
+    </ol>
+  </div>
+  <div class="mag-box mag-box--dark"><h3>{d.cdm_ask_title}</h3><p>{d.cdm_ask}</p></div>
+</section>
+
 <section class="mag-section" id="ia" aria-labelledby="ia-h">
   <p class="mag-kicker">{d.sections.ia}</p>
   <h2 id="ia-h">{d.ia_title}</h2>
@@ -169,7 +210,7 @@ const needIcons = ['bolt', 'pipe', 'wrench', 'wave'];
   <details>
     <summary>{d.web.answers_show}</summary>
     <ol style="padding-inline-start:1.2rem;margin:0.5rem 0 0">
-      {d.quiz.map((q: [string, string, string], i: number) => <li><strong>{q[1]}</strong> · <a href={`#${ids[Number(q[2]) - 3]}`}>{extra.page} {q[2]}</a></li>)}
+      {d.quiz.map((q: [string, string, string], i: number) => <li><strong>{q[1]}</strong> · <a href={`#${pageId[q[2]]}`}>{extra.page} {q[2]}</a></li>)}
     </ol>
   </details>
 </section>
