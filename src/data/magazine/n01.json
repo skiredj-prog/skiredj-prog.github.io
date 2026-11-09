@@ -1,0 +1,1220 @@
+{
+ "fr": {
+  "lang": "fr",
+  "dir": "ltr",
+  "run": "TENIR · N° 01",
+  "tagline": "Les grands choix, expliqués",
+  "issue_date": "N° 01 · Novembre 2026",
+  "kicker_cover": "Édition pilote · Gratuit",
+  "cover_title": "Maroc 2030",
+  "cover_sub": "Construire vite, garder le choix",
+  "cover_teasers": [
+   [
+    "L’eau de mer au robinet : ce qu’il faut suivre",
+    "6"
+   ],
+   [
+    "Un port confié pour 25 ans",
+    "7"
+   ],
+   [
+    "Une IA qui parle darija : qui garde la main ?",
+    "8"
+   ]
+  ],
+  "cover_caption": "Illustration conceptuelle, aucun lieu réel",
+  "p": "p.",
+  "tags": {
+   "fact": "C’est un fait",
+   "think": "Ce qu’on en pense",
+   "suggest": "Ce qu’on propose"
+  },
+  "sections": {
+   "edito": "Édito",
+   "essentiel": "L’essentiel",
+   "angle": "Grand angle",
+   "eau": "Eau",
+   "ports": "Ports et trains",
+   "ia": "Numérique",
+   "cas": "Un cas concret",
+   "outil": "La méthode",
+   "quiz": "Jeu et sources",
+   "vous": "À vous"
+  },
+  "edito_kicker": "Édito",
+  "edito_title": "Ce qu’on construit aujourd’hui, on vivra avec demain",
+  "edito_body": [
+   "D’ici 2030, le Maroc construit vite : dessalement, trains, ports, intelligence artificielle. Ces chantiers vont changer notre quotidien, de l’eau du robinet à nos trajets.",
+   "Certains choix engagent pour vingt-cinq ans ou plus. Plus on avance, plus une correction coûte cher.",
+   "Ce magazine ne juge pas les projets. Il montre ce que l’on sait, ce que l’on ignore encore et ce que l’on peut demander."
+  ],
+  "edito_q": [
+   "La question n’est pas : « faut-il construire ? »",
+   "La question est : « que pourra-t-on encore corriger ? »"
+  ],
+  "edito_sign": "Aziz Skiredj, TENIR Labs, Casablanca",
+  "toc_title": "Dans ce numéro",
+  "toc": [
+   [
+    "03",
+    "L’essentiel"
+   ],
+   [
+    "04",
+    "Le Maroc construit vite"
+   ],
+   [
+    "05",
+    "Choix difficiles à défaire"
+   ],
+   [
+    "06",
+    "L’eau de mer au robinet"
+   ],
+   [
+    "07",
+    "Ports et trains"
+   ],
+   [
+    "08",
+    "Une IA qui parle darija"
+   ],
+   [
+    "09",
+    "Un prêt en deux temps"
+   ],
+   [
+    "10",
+    "Avant de signer"
+   ],
+   [
+    "11",
+    "Jeu et sources"
+   ]
+  ],
+  "howto_title": "Comment lire ce magazine",
+  "howto": [
+   [
+    "fact",
+    "Vérifié, avec sa source en page 11."
+   ],
+   [
+    "think",
+    "Notre lecture des faits. Elle se discute."
+   ],
+   [
+    "suggest",
+    "Une idée à débattre, pas une vérité."
+   ]
+  ],
+  "ess_title": "L’essentiel en 90 secondes",
+  "ess": [
+   [
+    "fact",
+    "Les grands chantiers avancent sur plusieurs fronts à la fois : eau, rail, ports, énergie, intelligence artificielle."
+   ],
+   [
+    "fact",
+    "Certains engagements durent très longtemps : le terminal ouest du port de Nador West Med est confié pour 25 ans."
+   ],
+   [
+    "think",
+    "Le vrai risque n’est pas de construire. C’est de ne plus pouvoir corriger si une hypothèse se révèle fausse."
+   ]
+  ],
+  "ess_q_label": "La question à retenir",
+  "ess_q": "Avant la prochaine signature, que pourra-t-on encore changer, et qui pourra le décider ?",
+  "angle_title": "Le Maroc construit vite",
+  "angle_intro": "Quatre chantiers, quatre repères. Ce sont des montants et des objectifs annoncés, pas des résultats.",
+  "cards": [
+   [
+    "Eau",
+    "420",
+    "millions de m³ par an",
+    "d’eau de mer dessalée. Objectif : 1,7 milliard.",
+    "Ministre de l’Équipement et de l’Eau, mai 2026"
+   ],
+   [
+    "Train",
+    "96",
+    "milliards de DH",
+    "pour le rail d’ici 2030, dont 168 nouveaux trains.",
+    "ONCF"
+   ],
+   [
+    "Port",
+    "25",
+    "ans de concession",
+    "pour le terminal ouest de Nador West Med. 280 M€ en phase 1.",
+    "Marsa Maroc, 2025"
+   ],
+   [
+    "IA",
+    "200 000",
+    "talents à former",
+    "ou à certifier d’ici 2030. 50 000 emplois visés.",
+    "Feuille de route Maroc IA 2030"
+   ]
+  ],
+  "angle_box_title": "Ce que ces chiffres ne disent pas encore",
+  "angle_box": "Un objectif n’est pas un résultat. Une capacité n’est pas un service. Un budget n’est pas une valeur créée. Une concession n’est pas une preuve de trafic.",
+  "lock_title": "Pourquoi certains choix sont difficiles à défaire",
+  "lock_intro": "Une grande décision ressemble à un chemin qui se divise. Au départ, on peut prendre une autre voie. Plus on avance, plus revenir coûte cher.",
+  "path_labels": [
+   "Au départ",
+   "Après la signature",
+   "Après les travaux"
+  ],
+  "locks": [
+   [
+    "Le contrat",
+    "En sortir a un prix."
+   ],
+   [
+    "L’argent",
+    "Dépensé ou emprunté, il ne revient pas toujours."
+   ],
+   [
+    "La technique",
+    "Changer de fournisseur prend du temps."
+   ],
+   [
+    "L’organisation",
+    "Équipes et budgets suivent un seul choix."
+   ],
+   [
+    "La promesse publique",
+    "Un projet annoncé devient un symbole."
+   ]
+  ],
+  "lock_suggest": "Un test simple : si une hypothèse importante devient fausse demain, que peut-on changer en premier ? Pas tout arrêter : savoir où sont les portes de sortie, qui en a la clé et combien de temps il faut pour les ouvrir.",
+  "eau_title": "L’eau de mer au robinet",
+  "eau_fact": "Face à la sécheresse, le Maroc mise sur le dessalement : rendre l’eau de mer potable. En mai 2026, le ministre de l’Équipement et de l’Eau a annoncé 420 millions de m³ par an, avec l’ambition d’atteindre 1,7 milliard.",
+  "eau_need_title": "Une usine ne suffit pas. Pour que l’eau arrive chez vous, il faut aussi :",
+  "eau_needs": [
+   "de l’électricité, beaucoup",
+   "des conduites jusqu’aux villes",
+   "de l’entretien, chaque année",
+   "gérer le sel rejeté en mer"
+  ],
+  "eau_think": "Une capacité annoncée n’est pas l’eau qui coule au robinet. À suivre : le volume réellement livré, au bon endroit, à un prix supportable.",
+  "eau_suggest": "Avant chaque agrandissement, publier le coût complet du m³ et des scénarios : sécheresse, prix de l’énergie, demande.",
+  "ports_title": "Des choix pour longtemps",
+  "port_head": "Le port",
+  "port_fact": "À Nador West Med, le terminal ouest est confié à Marsa Maroc pour 25 ans. Première phase : 280 millions d’euros, mise en service prévue à partir de 2027.",
+  "port_think": "Un quai ne garantit pas les bateaux. La valeur d’un port dépend des routes, du rail et des clients qu’il attirera vraiment. Le trafic attendu est-il nouveau, ou pris à un autre port ?",
+  "train_head": "Le train",
+  "train_fact": "L’ONCF mène un programme de 96 milliards de DH d’ici 2030 et prévoit près de 100 millions de voyageurs en 2030, contre 55,6 millions en 2025.",
+  "train_think": "Une prévision de voyageurs est une hypothèse. Elle mérite d’être comparée, chaque année, à la fréquentation réelle.",
+  "ports_ask_title": "À demander à chaque mise à jour",
+  "ports_ask": "Quelle hypothèse a changé ? Quel coût est devenu irréversible ? Que se passe-t-il si le trafic reste sous la prévision ?",
+  "ia_title": "Une IA qui parle darija : qui garde la main ?",
+  "ia_fact": "La feuille de route « Maroc IA 2030 », dévoilée en janvier 2026, vise 50 000 emplois et 200 000 talents formés. Le 29 septembre 2026, le ministère de la Transition numérique et Mistral AI ont présenté deux premiers outils libres pour la darija.",
+  "ia_think": "Une avancée concrète, qui permet de poser trois questions valables pour toute IA d’un service public :",
+  "ia_qs": [
+   [
+    "Où fonctionne-t-elle ?",
+    "Sur quelles machines, dans quel pays."
+   ],
+   [
+    "Qui touche aux données ?",
+    "Qui peut les lire, les déplacer, les effacer."
+   ],
+   [
+    "Qui peut l’arrêter ?",
+    "Qui change ses règles, stoppe une action, la relance."
+   ]
+  ],
+  "ia_think2": "L’héberger au Maroc répond à la première question, pas forcément aux deux autres.",
+  "ia_suggest": "Quand une IA touche à un droit ou à un budget, une personne habilitée doit pouvoir arrêter et revoir sa décision.",
+  "cas_title": "Un prêt pour l’eau, en deux temps",
+  "cas_fact": "En juillet 2026, la Banque européenne pour la reconstruction et le développement (BERD) a approuvé un prêt pouvant atteindre 250 millions d’euros à l’ONEE, pour moderniser la production d’eau potable et réduire les pertes d’eau.",
+  "cas_a": [
+   "Part A",
+   "120 M€",
+   "engagée"
+  ],
+  "cas_b": [
+   "Part B",
+   "130 M€",
+   "non engagée"
+  ],
+  "cas_grant": "et une subvention de 5 M€",
+  "cas_think": "Ce découpage crée un rendez-vous utile : avant d’engager la seconde part, on peut vérifier.",
+  "cas_known_title": "Ce qu’on sait",
+  "cas_known": [
+   "Les montants et le but du programme",
+   "Un examen environnemental et social prévu pour la part B",
+   "Ses travaux pourront être adaptés"
+  ],
+  "cas_unknown_title": "Ce qu’on ne sait pas encore",
+  "cas_unknown": [
+   "La date de la décision sur la part B",
+   "La liste des travaux retenus",
+   "Ce que coûterait un changement"
+  ],
+  "cas_note": "Cette page décrit des documents publics. Elle ne juge pas le projet. TENIR n’a contacté ni l’ONEE ni la BERD.",
+  "tool_title": "Deux questions à poser avant de signer",
+  "tool_q1": "Aura-t-on le temps de corriger ?",
+  "tool_a1": "On compare le temps qui reste avant la signature au temps qu’il faut pour repérer un problème, décider et corriger.",
+  "tool_ex_label": "Exemple imaginaire",
+  "tool_ex": "45 jours avant la signature, 52 jours pour corriger : 7 jours de retard. Il faut décaler, réduire la commande ou corriger plus vite.",
+  "tool_q2": "Combien d’argent part avant la preuve ?",
+  "tool_a2": "La somme qu’on ne récupérerait plus si l’on signe avant d’avoir vérifié l’essentiel : la demande, le prix de l’énergie, un raccordement.",
+  "tool_nc_label": "Et si on ne peut pas calculer ?",
+  "tool_nc": "On le dit, et on nomme les pièces qui manquent : une inconnue publiée vaut mieux qu’une précision inventée. Pour les projets de ce numéro, les documents publics ne suffisent pas.",
+  "tool_note": "Deux mesures proposées par TENIR, encore expérimentales. Ce ne sont pas des notes officielles.",
+  "quiz_title": "Vrai ou faux ?",
+  "quiz": [
+   [
+    "Une capacité de dessalement annoncée, c’est l’eau qui arrive au robinet.",
+    "Faux",
+    "6"
+   ],
+   [
+    "Le terminal ouest de Nador West Med est confié pour 25 ans.",
+    "Vrai",
+    "7"
+   ],
+   [
+    "Héberger une IA au Maroc suffit à garder la main sur ses décisions.",
+    "Faux",
+    "8"
+   ],
+   [
+    "Le prêt de la BERD à l’ONEE est entièrement engagé.",
+    "Faux",
+    "9"
+   ]
+  ],
+  "quiz_answers_label": "Réponses",
+  "src_title": "Nos sources",
+  "sources": [
+   "Eau : maroc.ma, 6 mai 2026, déclaration du ministre de l’Équipement et de l’Eau.",
+   "Rail : ONCF ; Le360, 27 octobre 2026.",
+   "Port : Marsa Maroc et Tanger Med, communiqués de 2025.",
+   "IA : ministère de la Transition numérique, janvier et septembre 2026 ; annonce avec Mistral AI, 29 septembre 2026.",
+   "Prêt ONEE : BERD, projet 57587 et rapport au Conseil, juillet 2026."
+  ],
+  "src_note": "Liens complets et corrections : tenirlabs.cc/n01. Vérifié le 9 novembre 2026. Une erreur signalée est corrigée en ligne, avec sa date.",
+  "back_title": "Ce numéro est un essai. Votre avis décide de la suite.",
+  "back_qs": [
+   [
+    "Ce magazine vous a-t-il été utile ?",
+    [
+     "Oui",
+     "Un peu",
+     "Non"
+    ]
+   ],
+   [
+    "Quel sujet pour le prochain numéro ?",
+    [
+     "L’eau",
+     "Les transports",
+     "L’école et le numérique",
+     "L’emploi",
+     "L’énergie"
+    ]
+   ],
+   [
+    "Dans quelle langue préférez-vous le lire ?",
+    [
+     "Français",
+     "العربية",
+     "English"
+    ]
+   ]
+  ],
+  "back_qr": "Scannez pour répondre",
+  "back_cta": "Répondez en une minute",
+  "back_link": "ou sur tenirlabs.cc/n01",
+  "back_suggest": "Un grand projet près de chez vous ? Dites-nous lequel : il pourrait être expliqué dans un prochain numéro.",
+  "back_legal": "TENIR · N° 01, édition pilote gratuite, novembre 2026. Publication d’essai, non périodique. Éditeur : TENIR Labs, Casablanca. Aucune publicité. Couverture : illustration conceptuelle. Les erreurs signalées sont corrigées dans la version en ligne.",
+  "social_line": "Un magazine gratuit pour comprendre les grands choix du pays, en français, en arabe et en anglais.",
+  "social_cta": "Lire : tenirlabs.cc/n01",
+  "taglines": [
+   "Les grands choix, expliqués",
+   "Lire vite, approfondir ensuite",
+   "Chiffres annoncés, résultats à suivre",
+   "Une décision, plusieurs dépendances",
+   "Une capacité n’est pas encore un service",
+   "Un actif, un réseau, des usages réels",
+   "Une IA utile est une IA qu’on peut arrêter",
+   "Un engagement, un rendez-vous de preuve",
+   "Mesurer ce qui reste corrigeable",
+   "Une publication vérifiable est une publication corrigeable",
+   "Les grands choix, expliqués"
+  ],
+  "sources_links": [
+   [
+    {
+     "label": "maroc.ma",
+     "href": "https://maroc.ma/fr/actualites/dessalement-une-capacite-de-production-annuelle-de-420-millions-m3"
+    }
+   ],
+   [
+    {
+     "label": "Le360",
+     "href": "https://fr.le360.ma/economie/oncf-96-mmdh-de-chantiers-en-cours-et-pres-de-100-millions-de-voyageurs-attendus-en-2030_R7APRABPVFEZVGZR2B4E3Y3BXY/"
+    }
+   ],
+   [
+    {
+     "label": "Tanger Med",
+     "href": "https://www.tangermed.ma/fr/apres-le-terminal-a-conteneurs-est-marsa-maroc-operera-le-terminal-ouest-de-nador-west-med/"
+    }
+   ],
+   [
+    {
+     "label": "TelQuel, 12/01/2026",
+     "href": "https://telquel.ma/instant-t/2026/01/12/le-maroc-vise-une-contribution-de-100-milliards-de-dirhams-de-lia-au-pib-dici-2030_1969928/"
+    },
+    {
+     "label": "maroc.ma, 30/09/2026",
+     "href": "https://maroc.ma/fr/actualites/le-ministere-de-la-transition-numerique-et-mistral-annoncent-les-premieres-briques-dia-developpees"
+    }
+   ],
+   [
+    {
+     "label": "EBRD 57587",
+     "href": "https://www.ebrd.com/home/work-with-us/projects/psd/57587.html"
+    },
+    {
+     "label": "PSD (FR)",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/PSD%2057587%20(French).pdf"
+    },
+    {
+     "label": "Board report",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/ONEE%20Water%20Board%20Report.pdf"
+    }
+   ]
+  ],
+  "web": {
+   "read_pdf": "Télécharger le PDF (A5, 12 pages)",
+   "give_view": "Donner mon avis",
+   "languages": "Langues",
+   "answers_show": "Voir les réponses",
+   "corrections": "Corrections : aucune à ce jour (9 novembre 2026).",
+   "published_by": "Publié par TENIR Labs",
+   "toc_label": "Sommaire",
+   "back_to_site": "tenirlabs.cc",
+   "cover_alt": "Illustration conceptuelle : un littoral marocain imaginaire avec un port, un train, une usine de dessalement et des chemins qui se séparent.",
+   "avis_cta": "Répondre aux trois questions",
+   "doc_title": "Maroc 2030 : construire vite, garder le choix — TENIR N° 01",
+   "description": "Le numéro pilote de TENIR, magazine gratuit sur les grands choix du Maroc : dessalement, ports, trains, IA en darija, prêt pour l’eau. Faits sourcés, lectures et propositions séparés."
+  }
+ },
+ "en": {
+  "lang": "en",
+  "dir": "ltr",
+  "run": "TENIR · No. 01",
+  "tagline": "Big choices, explained",
+  "issue_date": "No. 01 · November 2026",
+  "kicker_cover": "Pilot edition · Free",
+  "cover_title": "Morocco 2030",
+  "cover_sub": "Building fast, keeping our options",
+  "cover_teasers": [
+   [
+    "Seawater to tap: what to watch",
+    "6"
+   ],
+   [
+    "A port signed over for 25 years",
+    "7"
+   ],
+   [
+    "An AI that speaks Darija: who stays in charge?",
+    "8"
+   ]
+  ],
+  "cover_caption": "Conceptual illustration, not a real place",
+  "p": "p.",
+  "tags": {
+   "fact": "Fact",
+   "think": "What we think",
+   "suggest": "What we suggest"
+  },
+  "sections": {
+   "edito": "Editorial",
+   "essentiel": "The essentials",
+   "angle": "The big picture",
+   "eau": "Water",
+   "ports": "Ports and trains",
+   "ia": "Digital",
+   "cas": "A real case",
+   "outil": "The method",
+   "quiz": "Quiz and sources",
+   "vous": "Your turn"
+  },
+  "edito_kicker": "Editorial",
+  "edito_title": "What we build today, we will live with tomorrow",
+  "edito_body": [
+   "By 2030, Morocco is building fast: desalination, trains, ports, artificial intelligence. These projects will change daily life, from the water in our taps to the way we travel.",
+   "Some choices commit us for twenty-five years or more. The further we go, the more a correction costs.",
+   "This magazine does not grade projects. It shows what is known, what is not known yet, and what we can ask."
+  ],
+  "edito_q": [
+   "The question is not: “should we build?”",
+   "The question is: “what will we still be able to correct?”"
+  ],
+  "edito_sign": "Aziz Skiredj, TENIR Labs, Casablanca",
+  "toc_title": "In this issue",
+  "toc": [
+   [
+    "03",
+    "The essentials"
+   ],
+   [
+    "04",
+    "Morocco builds fast"
+   ],
+   [
+    "05",
+    "Hard-to-undo choices"
+   ],
+   [
+    "06",
+    "Seawater to tap"
+   ],
+   [
+    "07",
+    "Ports and trains"
+   ],
+   [
+    "08",
+    "An AI that speaks Darija"
+   ],
+   [
+    "09",
+    "A loan in two steps"
+   ],
+   [
+    "10",
+    "Before signing"
+   ],
+   [
+    "11",
+    "Quiz and sources"
+   ]
+  ],
+  "howto_title": "How to read this magazine",
+  "howto": [
+   [
+    "fact",
+    "Checked, with its source on page 11."
+   ],
+   [
+    "think",
+    "Our reading of the facts. Open to debate."
+   ],
+   [
+    "suggest",
+    "An idea to discuss, not a truth."
+   ]
+  ],
+  "ess_title": "The essentials in 90 seconds",
+  "ess": [
+   [
+    "fact",
+    "Major projects are moving on several fronts at once: water, rail, ports, energy, artificial intelligence."
+   ],
+   [
+    "fact",
+    "Some commitments last a very long time: the west terminal of Nador West Med port is granted for 25 years."
+   ],
+   [
+    "think",
+    "The real risk is not building. It is losing the ability to correct course if an assumption turns out wrong."
+   ]
+  ],
+  "ess_q_label": "The question to remember",
+  "ess_q": "Before the next signature, what can still be changed, and who will be able to decide?",
+  "angle_title": "Morocco is building fast",
+  "angle_intro": "Four projects, four markers. These are announced budgets and targets, not results.",
+  "cards": [
+   [
+    "Water",
+    "420",
+    "million m³ a year",
+    "of desalinated seawater today. Target: 1.7 billion.",
+    "Minister of Equipment and Water, May 2026"
+   ],
+   [
+    "Rail",
+    "96",
+    "billion dirhams",
+    "for rail by 2030, including 168 new trains.",
+    "ONCF"
+   ],
+   [
+    "Port",
+    "25",
+    "year concession",
+    "for the west terminal of Nador West Med. €280m for phase 1.",
+    "Marsa Maroc, 2025"
+   ],
+   [
+    "AI",
+    "200,000",
+    "people to train",
+    "or certify by 2030. 50,000 jobs targeted.",
+    "Morocco AI 2030 roadmap"
+   ]
+  ],
+  "angle_box_title": "What these figures don’t say yet",
+  "angle_box": "A target is not a result. A capacity is not a service. A budget is not value created. A concession is not proof of traffic.",
+  "lock_title": "Why some choices are hard to undo",
+  "lock_intro": "A big decision is like a road that forks. At the start, you can still take another way. The further you go, the more turning back costs.",
+  "path_labels": [
+   "At the start",
+   "After signing",
+   "After construction"
+  ],
+  "locks": [
+   [
+    "The contract",
+    "Getting out has a price."
+   ],
+   [
+    "The money",
+    "Once spent or borrowed, it may not come back."
+   ],
+   [
+    "The technology",
+    "Switching suppliers takes time."
+   ],
+   [
+    "The organisation",
+    "Teams and budgets follow one choice."
+   ],
+   [
+    "The public promise",
+    "An announced project becomes a symbol."
+   ]
+  ],
+  "lock_suggest": "A simple test: if a key assumption turns out wrong tomorrow, what can be changed first? Not stopping everything: knowing where the exits are, who holds the key, and how long it takes to open them.",
+  "eau_title": "Seawater to tap",
+  "eau_fact": "Facing drought, Morocco is betting on desalination: turning seawater into drinking water. In May 2026, the Minister of Equipment and Water announced 420 million m³ a year, with the aim of reaching 1.7 billion.",
+  "eau_need_title": "A plant is not enough. For the water to reach your home, you also need:",
+  "eau_needs": [
+   "electricity, and lots of it",
+   "pipes all the way to the cities",
+   "maintenance, every year",
+   "managing the salt sent back to sea"
+  ],
+  "eau_think": "Announced capacity is not the water running from your tap. What to watch: the volume actually delivered, in the right place, at a bearable price.",
+  "eau_suggest": "Before each expansion, publish the full cost per m³ and scenarios: drought, energy prices, demand.",
+  "ports_title": "Choices for the long run",
+  "port_head": "The port",
+  "port_fact": "At Nador West Med, the west terminal is granted to Marsa Maroc for 25 years. First phase: €280 million, with operations planned from 2027.",
+  "port_think": "A quay does not guarantee ships. A port is worth the roads, rail and customers it really attracts. Is the expected traffic new, or taken from another port?",
+  "train_head": "The train",
+  "train_fact": "ONCF is running a MAD 96 billion programme to 2030 and expects nearly 100 million passengers in 2030, up from 55.6 million in 2025.",
+  "train_think": "A passenger forecast is an assumption. It is worth comparing, year after year, with actual ridership.",
+  "ports_ask_title": "To ask at every update",
+  "ports_ask": "Which assumption has changed? Which cost has become irreversible? What happens if traffic stays below the forecast?",
+  "ia_title": "An AI that speaks Darija: who stays in charge?",
+  "ia_fact": "The “Morocco AI 2030” roadmap, unveiled in January 2026, targets 50,000 jobs and 200,000 trained people. On 29 September 2026, the Ministry of Digital Transition and Mistral AI presented two first open-source tools for Darija.",
+  "ia_think": "Real progress, which lets us ask three questions that apply to any AI used by a public service:",
+  "ia_qs": [
+   [
+    "Where does it run?",
+    "On which machines, in which country."
+   ],
+   [
+    "Who handles the data?",
+    "Who can read, move or delete it."
+   ],
+   [
+    "Who can stop it?",
+    "Who changes its rules, halts an action, restarts it."
+   ]
+  ],
+  "ia_think2": "Hosting it in Morocco answers the first question, not necessarily the other two.",
+  "ia_suggest": "When an AI touches a right or a budget, an authorised person must be able to stop and review its decision.",
+  "cas_title": "A loan for water, in two steps",
+  "cas_fact": "In July 2026, the European Bank for Reconstruction and Development (EBRD) approved a loan of up to €250 million to ONEE, to modernise drinking-water production and cut water losses.",
+  "cas_a": [
+   "Part A",
+   "€120m",
+   "committed"
+  ],
+  "cas_b": [
+   "Part B",
+   "€130m",
+   "uncommitted"
+  ],
+  "cas_grant": "plus a €5m grant",
+  "cas_think": "This split creates a useful checkpoint: before committing the second part, things can be checked.",
+  "cas_known_title": "What we know",
+  "cas_known": [
+   "The amounts and the purpose of the programme",
+   "An environmental and social review planned for part B",
+   "Its works can be adapted"
+  ],
+  "cas_unknown_title": "What we don’t know yet",
+  "cas_unknown": [
+   "When part B will be decided",
+   "Which works will be chosen",
+   "What a change would cost"
+  ],
+  "cas_note": "This page describes public documents. It does not judge the project. TENIR has not contacted ONEE or the EBRD.",
+  "tool_title": "Two questions to ask before signing",
+  "tool_q1": "Will there be time to correct?",
+  "tool_a1": "Compare the time left before signing with the time needed to spot a problem, decide and fix it.",
+  "tool_ex_label": "Imaginary example",
+  "tool_ex": "45 days before signing, 52 days to correct: 7 days short. Move the date, shrink the order or correct faster.",
+  "tool_q2": "How much money goes out before the proof?",
+  "tool_a2": "The amount you could no longer recover if you sign before checking the essentials: demand, energy prices, a grid connection.",
+  "tool_nc_label": "And if it can’t be calculated?",
+  "tool_nc": "We say so, and we name the missing documents: a published unknown is better than invented precision. For the projects in this issue, public documents are not enough.",
+  "tool_note": "Two measures proposed by TENIR, still experimental. They are not official ratings.",
+  "quiz_title": "True or false?",
+  "quiz": [
+   [
+    "Announced desalination capacity is the water that reaches your tap.",
+    "False",
+    "6"
+   ],
+   [
+    "The west terminal of Nador West Med is granted for 25 years.",
+    "True",
+    "7"
+   ],
+   [
+    "Hosting an AI in Morocco is enough to stay in charge of its decisions.",
+    "False",
+    "8"
+   ],
+   [
+    "The EBRD loan to ONEE is fully committed.",
+    "False",
+    "9"
+   ]
+  ],
+  "quiz_answers_label": "Answers",
+  "src_title": "Our sources",
+  "sources": [
+   "Water: maroc.ma, 6 May 2026, statement by the Minister of Equipment and Water.",
+   "Rail: ONCF; Le360, 27 October 2026.",
+   "Port: Marsa Maroc and Tanger Med, 2025 releases.",
+   "AI: Ministry of Digital Transition, January and September 2026; announcement with Mistral AI, 29 September 2026.",
+   "ONEE loan: EBRD, project 57587 and Board report, July 2026."
+  ],
+  "src_note": "Full links and corrections: tenirlabs.cc/n01. Checked on 9 November 2026. Reported errors are corrected online, with their date.",
+  "back_title": "This issue is a trial. Your view decides what comes next.",
+  "back_qs": [
+   [
+    "Was this magazine useful to you?",
+    [
+     "Yes",
+     "A little",
+     "No"
+    ]
+   ],
+   [
+    "Which topic for the next issue?",
+    [
+     "Water",
+     "Transport",
+     "School and digital",
+     "Jobs",
+     "Energy"
+    ]
+   ],
+   [
+    "Which language do you prefer?",
+    [
+     "English",
+     "Français",
+     "العربية"
+    ]
+   ]
+  ],
+  "back_qr": "Scan to answer",
+  "back_cta": "Answer in one minute",
+  "back_link": "or at tenirlabs.cc/n01",
+  "back_suggest": "A big project near you? Tell us which one: it could be explained in a future issue.",
+  "back_legal": "TENIR · No. 01, free pilot edition, November 2026. Trial publication, not periodical. Publisher: TENIR Labs, Casablanca. No advertising. Cover: conceptual illustration. Reported errors are corrected in the online version.",
+  "social_line": "A free magazine to understand the country’s big choices, in English, French and Arabic.",
+  "social_cta": "Read: tenirlabs.cc/n01",
+  "taglines": [
+   "Big choices, explained",
+   "Read fast, go deeper later",
+   "Announced figures, results to watch",
+   "One decision, many dependencies",
+   "Capacity is not yet a service",
+   "An asset, a network, real use",
+   "A useful AI is one you can stop",
+   "A commitment, a moment of proof",
+   "Measuring what can still be corrected",
+   "A checkable publication is a correctable one",
+   "Big choices, explained"
+  ],
+  "sources_links": [
+   [
+    {
+     "label": "maroc.ma",
+     "href": "https://maroc.ma/fr/actualites/dessalement-une-capacite-de-production-annuelle-de-420-millions-m3"
+    }
+   ],
+   [
+    {
+     "label": "Le360",
+     "href": "https://fr.le360.ma/economie/oncf-96-mmdh-de-chantiers-en-cours-et-pres-de-100-millions-de-voyageurs-attendus-en-2030_R7APRABPVFEZVGZR2B4E3Y3BXY/"
+    }
+   ],
+   [
+    {
+     "label": "Tanger Med",
+     "href": "https://www.tangermed.ma/fr/apres-le-terminal-a-conteneurs-est-marsa-maroc-operera-le-terminal-ouest-de-nador-west-med/"
+    }
+   ],
+   [
+    {
+     "label": "TelQuel, 12/01/2026",
+     "href": "https://telquel.ma/instant-t/2026/01/12/le-maroc-vise-une-contribution-de-100-milliards-de-dirhams-de-lia-au-pib-dici-2030_1969928/"
+    },
+    {
+     "label": "maroc.ma, 30/09/2026",
+     "href": "https://maroc.ma/fr/actualites/le-ministere-de-la-transition-numerique-et-mistral-annoncent-les-premieres-briques-dia-developpees"
+    }
+   ],
+   [
+    {
+     "label": "EBRD 57587",
+     "href": "https://www.ebrd.com/home/work-with-us/projects/psd/57587.html"
+    },
+    {
+     "label": "PSD (FR)",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/PSD%2057587%20(French).pdf"
+    },
+    {
+     "label": "Board report",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/ONEE%20Water%20Board%20Report.pdf"
+    }
+   ]
+  ],
+  "web": {
+   "read_pdf": "Download the PDF (A5, 12 pages)",
+   "give_view": "Give your view",
+   "languages": "Languages",
+   "answers_show": "Show the answers",
+   "corrections": "Corrections: none so far (9 November 2026).",
+   "published_by": "Published by TENIR Labs",
+   "toc_label": "Contents",
+   "back_to_site": "tenirlabs.cc",
+   "cover_alt": "Conceptual illustration: an imaginary Moroccan coastline with a port, a train, a desalination plant and diverging paths.",
+   "avis_cta": "Answer the three questions",
+   "doc_title": "Morocco 2030: building fast, keeping our options — TENIR No. 01",
+   "description": "The pilot issue of TENIR, a free magazine on Morocco’s big choices: desalination, ports, trains, AI in Darija, a loan for water. Sourced facts, readings and proposals kept apart."
+  }
+ },
+ "ar": {
+  "lang": "ar",
+  "dir": "rtl",
+  "run": "TENIR · العدد 01",
+  "tagline": "الاختيارات الكبرى، بوضوح",
+  "issue_date": "العدد 01 · نونبر 2026",
+  "kicker_cover": "عدد تجريبي · مجاني",
+  "cover_title": "المغرب 2030",
+  "cover_sub": "نبني بسرعة، ونحتفظ بحق الاختيار",
+  "cover_teasers": [
+   [
+    "من البحر إلى الصنبور: ما الذي يجب تتبّعه؟",
+    "6"
+   ],
+   [
+    "ميناء بعقد مدته 25 سنة",
+    "7"
+   ],
+   [
+    "ذكاء اصطناعي يتكلم الدارجة: من يبقى صاحب القرار؟",
+    "8"
+   ]
+  ],
+  "cover_caption": "رسم تخيّلي، لا يمثّل مكاناً حقيقياً",
+  "p": "ص",
+  "tags": {
+   "fact": "معطى ثابت",
+   "think": "رأينا",
+   "suggest": "اقتراحنا"
+  },
+  "sections": {
+   "edito": "افتتاحية",
+   "essentiel": "الأساسي",
+   "angle": "زاوية واسعة",
+   "eau": "الماء",
+   "ports": "الموانئ والقطارات",
+   "ia": "الرقمي",
+   "cas": "حالة ملموسة",
+   "outil": "المنهج",
+   "quiz": "لعبة ومصادر",
+   "vous": "الكلمة لك"
+  },
+  "edito_kicker": "افتتاحية",
+  "edito_title": "ما نبنيه اليوم، سنعيش معه غداً",
+  "edito_body": [
+   "من الآن إلى 2030، يبني المغرب بسرعة: تحلية مياه البحر، والقطارات، والموانئ، والذكاء الاصطناعي. ستغيّر هذه الأوراش حياتنا اليومية، من ماء الصنبور إلى تنقّلاتنا.",
+   "بعض الاختيارات تُلزمنا لخمس وعشرين سنة أو أكثر. وكلما تقدّمنا، صار التصحيح أغلى.",
+   "لا تحكم هذه المجلة على المشاريع. إنها تبيّن ما نعرفه، وما لا نعرفه بعد، وما يمكن أن نسأل عنه."
+  ],
+  "edito_q": [
+   "السؤال ليس: «هل يجب أن نبني؟»",
+   "السؤال هو: «ما الذي سيظل بإمكاننا تصحيحه؟»"
+  ],
+  "edito_sign": "عزيز سكيرج، TENIR Labs، الدار البيضاء",
+  "toc_title": "في هذا العدد",
+  "toc": [
+   [
+    "03",
+    "الأساسي"
+   ],
+   [
+    "04",
+    "المغرب يبني بسرعة"
+   ],
+   [
+    "05",
+    "اختيارات يصعب التراجع عنها"
+   ],
+   [
+    "06",
+    "من البحر إلى الصنبور"
+   ],
+   [
+    "07",
+    "الموانئ والقطارات"
+   ],
+   [
+    "08",
+    "ذكاء اصطناعي بالدارجة"
+   ],
+   [
+    "09",
+    "قرض على مرحلتين"
+   ],
+   [
+    "10",
+    "قبل التوقيع"
+   ],
+   [
+    "11",
+    "لعبة ومصادر"
+   ]
+  ],
+  "howto_title": "كيف تقرأ هذه المجلة",
+  "howto": [
+   [
+    "fact",
+    "تم التحقق منه، ومصدره في الصفحة 11."
+   ],
+   [
+    "think",
+    "قراءتنا للمعطيات، وهي قابلة للنقاش."
+   ],
+   [
+    "suggest",
+    "فكرة للنقاش، لا حقيقة مطلقة."
+   ]
+  ],
+  "ess_title": "الأساسي في 90 ثانية",
+  "ess": [
+   [
+    "fact",
+    "تتقدم الأوراش الكبرى على عدة جبهات في آن واحد: الماء، والسكك الحديدية، والموانئ، والطاقة، والذكاء الاصطناعي."
+   ],
+   [
+    "fact",
+    "بعض الالتزامات تدوم طويلاً: أُسندت المحطة الغربية لميناء الناظور غرب المتوسط لمدة 25 سنة."
+   ],
+   [
+    "think",
+    "الخطر الحقيقي ليس في البناء، بل في فقدان القدرة على التصحيح إذا تبيّن أن فرضية ما خاطئة."
+   ]
+  ],
+  "ess_q_label": "السؤال الذي يجب تذكّره",
+  "ess_q": "قبل التوقيع المقبل، ما الذي سيظل بإمكاننا تغييره، ومن سيملك قرار ذلك؟",
+  "angle_title": "المغرب يبني بسرعة",
+  "angle_intro": "أربعة أوراش وأربعة أرقام. إنها مبالغ وأهداف معلنة، لا نتائج محقّقة.",
+  "cards": [
+   [
+    "الماء",
+    "420",
+    "مليون م³ سنوياً",
+    "من مياه البحر المحلّاة حالياً. الهدف: 1,7 مليار.",
+    "وزير التجهيز والماء، ماي 2026"
+   ],
+   [
+    "القطار",
+    "96",
+    "مليار درهم",
+    "للسكك الحديدية في أفق 2030، منها 168 قطاراً جديداً.",
+    "المكتب الوطني للسكك الحديدية"
+   ],
+   [
+    "الميناء",
+    "25",
+    "سنة امتياز",
+    "للمحطة الغربية لميناء الناظور غرب المتوسط. 280 مليون يورو للمرحلة الأولى.",
+    "مرسى المغرب، 2025"
+   ],
+   [
+    "الذكاء الاصطناعي",
+    "200 ألف",
+    "كفاءة للتكوين",
+    "أو الإشهاد في أفق 2030، مع هدف 50 ألف منصب شغل.",
+    "خارطة طريق المغرب للذكاء الاصطناعي 2030"
+   ]
+  ],
+  "angle_box_title": "ما لا تقوله هذه الأرقام بعد",
+  "angle_box": "الهدف ليس نتيجة. والقدرة ليست خدمة. والميزانية ليست قيمة مُنتَجة. والامتياز ليس دليلاً على حركة السفن.",
+  "lock_title": "لماذا يصعب التراجع عن بعض الاختيارات",
+  "lock_intro": "القرار الكبير يشبه طريقاً يتفرّع. في البداية يمكن سلوك طريق آخر، وكلما تقدّمنا صار الرجوع أغلى.",
+  "path_labels": [
+   "في البداية",
+   "بعد التوقيع",
+   "بعد الأشغال"
+  ],
+  "locks": [
+   [
+    "العقد",
+    "الخروج منه له ثمن."
+   ],
+   [
+    "المال",
+    "ما يُنفق أو يُقترض لا يعود دائماً."
+   ],
+   [
+    "التقنية",
+    "تغيير المزوّد يحتاج وقتاً."
+   ],
+   [
+    "التنظيم",
+    "الفرق والميزانيات تتبع اختياراً واحداً."
+   ],
+   [
+    "الوعد العام",
+    "المشروع المعلن يصبح رمزاً."
+   ]
+  ],
+  "lock_suggest": "اختبار بسيط: إذا تبيّن غداً أن فرضية مهمة خاطئة، ما أول شيء يمكن تغييره؟ لا إيقاف كل شيء، بل معرفة أين أبواب الخروج، ومن يملك مفتاحها، وكم يلزم من الوقت لفتحها.",
+  "eau_title": "من البحر إلى الصنبور",
+  "eau_fact": "في مواجهة الجفاف، يراهن المغرب على تحلية مياه البحر، أي جعلها صالحة للشرب. وفي ماي 2026، أعلن وزير التجهيز والماء عن 420 مليون متر مكعب سنوياً، مع طموح لبلوغ 1,7 مليار.",
+  "eau_need_title": "المحطة وحدها لا تكفي. لكي يصل الماء إلى بيتك، يلزم أيضاً:",
+  "eau_needs": [
+   "كهرباء بكميات كبيرة",
+   "قنوات تصل إلى المدن",
+   "صيانة كل سنة",
+   "تدبير الملح المطروح في البحر"
+  ],
+  "eau_think": "القدرة المعلنة ليست هي الماء الذي يجري في الصنبور. ما يجب تتبّعه: الكمية المسلَّمة فعلاً، في المكان المناسب، وبثمن معقول.",
+  "eau_suggest": "قبل كل توسعة، نشر الكلفة الكاملة للمتر المكعب، وسيناريوهات تجمع الجفاف وأسعار الطاقة والطلب.",
+  "ports_title": "اختيارات طويلة الأمد",
+  "port_head": "الميناء",
+  "port_fact": "في ميناء الناظور غرب المتوسط، أُسندت المحطة الغربية إلى مرسى المغرب لمدة 25 سنة. المرحلة الأولى: 280 مليون يورو، والتشغيل مرتقب ابتداءً من 2027.",
+  "port_think": "الرصيف لا يضمن قدوم السفن. قيمة الميناء رهينة بالطرق والسكك والزبناء الذين سيجذبهم فعلاً. هل الحركة المنتظرة جديدة، أم مأخوذة من ميناء آخر؟",
+  "train_head": "القطار",
+  "train_fact": "يقود المكتب الوطني للسكك الحديدية برنامجاً بقيمة 96 مليار درهم في أفق 2030، ويتوقع نحو 100 مليون مسافر في 2030، مقابل 55,6 مليون في 2025.",
+  "train_think": "توقّع عدد المسافرين فرضية، ومن المفيد مقارنته سنةً بعد سنة بالإقبال الفعلي.",
+  "ports_ask_title": "يُسأل عند كل تحديث",
+  "ports_ask": "أي فرضية تغيّرت؟ أي كلفة أصبحت غير قابلة للاسترجاع؟ ماذا يحدث إذا بقيت الحركة دون التوقعات؟",
+  "ia_title": "ذكاء اصطناعي يتكلم الدارجة: من يبقى صاحب القرار؟",
+  "ia_fact": "تستهدف خارطة الطريق «المغرب للذكاء الاصطناعي 2030»، التي كُشف عنها في يناير 2026، خلق 50 ألف منصب شغل وتكوين 200 ألف كفاءة. وفي 29 شتنبر 2026، قدّمت وزارة الانتقال الرقمي وشركة Mistral AI أول أداتين مفتوحتي المصدر للدارجة.",
+  "ia_think": "تقدّم ملموس يسمح بطرح ثلاثة أسئلة تصلح لكل ذكاء اصطناعي تستعمله مصلحة عمومية:",
+  "ia_qs": [
+   [
+    "أين يشتغل؟",
+    "على أي حواسيب، وفي أي بلد."
+   ],
+   [
+    "من يتحكم في المعطيات؟",
+    "من يستطيع قراءتها أو نقلها أو حذفها."
+   ],
+   [
+    "من يستطيع إيقافه؟",
+    "من يغيّر قواعده، ويوقف إجراءً، ثم يستأنفه."
+   ]
+  ],
+  "ia_think2": "استضافته في المغرب تجيب عن السؤال الأول، لا بالضرورة عن السؤالين الآخرين.",
+  "ia_suggest": "حين يمسّ الذكاء الاصطناعي حقاً أو ميزانية، يجب أن يتمكن شخص مؤهَّل من إيقاف قراره ومراجعته.",
+  "cas_title": "قرض للماء على مرحلتين",
+  "cas_fact": "في يوليوز 2026، وافق البنك الأوروبي لإعادة الإعمار والتنمية على قرض يصل إلى 250 مليون يورو لفائدة المكتب الوطني للكهرباء والماء الصالح للشرب، لتحديث إنتاج الماء الشروب وتقليص ضياع المياه.",
+  "cas_a": [
+   "الجزء أ",
+   "120 مليون يورو",
+   "ملتزَم به"
+  ],
+  "cas_b": [
+   "الجزء ب",
+   "130 مليون يورو",
+   "غير ملتزَم به"
+  ],
+  "cas_grant": "ومنحة قدرها 5 ملايين يورو",
+  "cas_think": "هذا التقسيم يخلق موعداً مفيداً: قبل الالتزام بالجزء الثاني، يمكن التحقق.",
+  "cas_known_title": "ما نعرفه",
+  "cas_known": [
+   "المبالغ وهدف البرنامج",
+   "تقييم بيئي واجتماعي مبرمج للجزء ب",
+   "إمكانية تكييف أشغاله"
+  ],
+  "cas_unknown_title": "ما لا نعرفه بعد",
+  "cas_unknown": [
+   "تاريخ القرار بشأن الجزء ب",
+   "لائحة الأشغال المختارة",
+   "كلفة أي تغيير"
+  ],
+  "cas_note": "تصف هذه الصفحة وثائق عمومية ولا تحكم على المشروع. لم تتصل TENIR بالمكتب ولا بالبنك.",
+  "tool_title": "سؤالان قبل التوقيع",
+  "tool_q1": "هل سيكفي الوقت للتصحيح؟",
+  "tool_a1": "نقارن الوقت المتبقي قبل التوقيع بالوقت اللازم لاكتشاف مشكلة واتخاذ القرار والتصحيح.",
+  "tool_ex_label": "مثال تخيّلي",
+  "tool_ex": "45 يوماً قبل التوقيع، و52 يوماً للتصحيح: تأخّر بسبعة أيام. يجب تأجيل الموعد، أو تقليص الطلبية، أو التصحيح بسرعة أكبر.",
+  "tool_q2": "كم من المال يُصرف قبل الدليل؟",
+  "tool_a2": "المبلغ الذي لن يمكن استرجاعه إذا وقّعنا قبل التحقق من الأساسي: الطلب، وسعر الطاقة، والربط بالشبكة.",
+  "tool_nc_label": "وإذا تعذّر الحساب؟",
+  "tool_nc": "نقول ذلك، ونسمّي الوثائق الناقصة: مجهول معلَن خير من دقة مختلَقة. بالنسبة لمشاريع هذا العدد، لا تكفي الوثائق العمومية.",
+  "tool_note": "مقياسان تقترحهما TENIR، وما زالا تجريبيين. ليسا تنقيطاً رسمياً.",
+  "quiz_title": "صحيح أم خطأ؟",
+  "quiz": [
+   [
+    "القدرة المعلنة للتحلية هي الماء الذي يصل إلى الصنبور.",
+    "خطأ",
+    "6"
+   ],
+   [
+    "أُسندت المحطة الغربية لميناء الناظور غرب المتوسط لمدة 25 سنة.",
+    "صحيح",
+    "7"
+   ],
+   [
+    "استضافة ذكاء اصطناعي في المغرب تكفي لنبقى أصحاب القرار.",
+    "خطأ",
+    "8"
+   ],
+   [
+    "قرض البنك الأوروبي للمكتب الوطني ملتزَم به بالكامل.",
+    "خطأ",
+    "9"
+   ]
+  ],
+  "quiz_answers_label": "الأجوبة",
+  "src_title": "مصادرنا",
+  "sources": [
+   "الماء: maroc.ma، 6 ماي 2026، تصريح وزير التجهيز والماء.",
+   "السكك الحديدية: المكتب الوطني للسكك الحديدية؛ Le360، 27 أكتوبر 2026.",
+   "الميناء: مرسى المغرب وطنجة المتوسط، بلاغات 2025.",
+   "الذكاء الاصطناعي: وزارة الانتقال الرقمي، يناير وشتنبر 2026؛ إعلان مع Mistral AI، 29 شتنبر 2026.",
+   "قرض المكتب الوطني: البنك الأوروبي، المشروع 57587 وتقرير المجلس، يوليوز 2026."
+  ],
+  "src_note": "الروابط الكاملة والتصحيحات: tenirlabs.cc/n01. تم التحقق في 9 نونبر 2026. يُصحَّح كل خطأ مبلَّغ عنه في النسخة الإلكترونية مع ذكر تاريخه.",
+  "back_title": "هذا العدد تجربة. رأيك يحدّد ما سيأتي.",
+  "back_qs": [
+   [
+    "هل كانت هذه المجلة مفيدة لك؟",
+    [
+     "نعم",
+     "قليلاً",
+     "لا"
+    ]
+   ],
+   [
+    "أي موضوع للعدد المقبل؟",
+    [
+     "الماء",
+     "النقل",
+     "المدرسة والرقمي",
+     "الشغل",
+     "الطاقة"
+    ]
+   ],
+   [
+    "بأي لغة تفضّل قراءتها؟",
+    [
+     "العربية",
+     "Français",
+     "English"
+    ]
+   ]
+  ],
+  "back_qr": "امسح الرمز للإجابة",
+  "back_cta": "أجب في دقيقة واحدة",
+  "back_link": "أو عبر tenirlabs.cc/n01",
+  "back_suggest": "مشروع كبير قرب بيتك؟ أخبرنا به، فقد نشرحه في عدد مقبل.",
+  "back_legal": "TENIR · العدد 01، نسخة تجريبية مجانية، نونبر 2026. منشور تجريبي غير دوري. الناشر: TENIR Labs، الدار البيضاء. بدون إشهار. الغلاف: رسم تخيّلي. تُصحَّح الأخطاء المبلَّغ عنها في النسخة الإلكترونية.",
+  "social_line": "مجلة مجانية لفهم الاختيارات الكبرى للبلاد، بالعربية والفرنسية والإنجليزية.",
+  "social_cta": "اقرأ: tenirlabs.cc/n01",
+  "taglines": [
+   "الاختيارات الكبرى، بوضوح",
+   "اقرأ بسرعة، وتعمّق لاحقاً",
+   "أرقام معلنة، ونتائج للتتبّع",
+   "قرار واحد، وتبعيات متعددة",
+   "القدرة ليست خدمة بعد",
+   "منشأة، وشبكة، واستعمال فعلي",
+   "الذكاء الاصطناعي النافع هو الذي يمكن إيقافه",
+   "التزام، وموعد للدليل",
+   "قياس ما يمكن تصحيحه",
+   "المنشور القابل للتحقق منشور قابل للتصحيح",
+   "الاختيارات الكبرى، بوضوح"
+  ],
+  "sources_links": [
+   [
+    {
+     "label": "maroc.ma",
+     "href": "https://maroc.ma/fr/actualites/dessalement-une-capacite-de-production-annuelle-de-420-millions-m3"
+    }
+   ],
+   [
+    {
+     "label": "Le360",
+     "href": "https://fr.le360.ma/economie/oncf-96-mmdh-de-chantiers-en-cours-et-pres-de-100-millions-de-voyageurs-attendus-en-2030_R7APRABPVFEZVGZR2B4E3Y3BXY/"
+    }
+   ],
+   [
+    {
+     "label": "Tanger Med",
+     "href": "https://www.tangermed.ma/fr/apres-le-terminal-a-conteneurs-est-marsa-maroc-operera-le-terminal-ouest-de-nador-west-med/"
+    }
+   ],
+   [
+    {
+     "label": "TelQuel, 12/01/2026",
+     "href": "https://telquel.ma/instant-t/2026/01/12/le-maroc-vise-une-contribution-de-100-milliards-de-dirhams-de-lia-au-pib-dici-2030_1969928/"
+    },
+    {
+     "label": "maroc.ma, 30/09/2026",
+     "href": "https://maroc.ma/fr/actualites/le-ministere-de-la-transition-numerique-et-mistral-annoncent-les-premieres-briques-dia-developpees"
+    }
+   ],
+   [
+    {
+     "label": "EBRD 57587",
+     "href": "https://www.ebrd.com/home/work-with-us/projects/psd/57587.html"
+    },
+    {
+     "label": "PSD (FR)",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/PSD%2057587%20(French).pdf"
+    },
+    {
+     "label": "Board report",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/ONEE%20Water%20Board%20Report.pdf"
+    }
+   ]
+  ],
+  "web": {
+   "read_pdf": "تحميل النسخة PDF (A5، 12 صفحة)",
+   "give_view": "أبدِ رأيك",
+   "languages": "اللغات",
+   "answers_show": "عرض الأجوبة",
+   "corrections": "التصحيحات: لا شيء حتى الآن (9 نونبر 2026).",
+   "published_by": "نشر TENIR Labs",
+   "toc_label": "المحتويات",
+   "back_to_site": "tenirlabs.cc",
+   "cover_alt": "رسم تخيّلي: ساحل مغربي متخيَّل يضم ميناءً وقطاراً ومحطة لتحلية المياه وطرقاً متفرّعة.",
+   "avis_cta": "أجب عن الأسئلة الثلاثة",
+   "doc_title": "المغرب 2030: نبني بسرعة ونحتفظ بحق الاختيار — TENIR العدد 01",
+   "description": "العدد التجريبي من TENIR، مجلة مجانية عن الاختيارات الكبرى للمغرب: تحلية المياه، الموانئ، القطارات، الذكاء الاصطناعي بالدارجة، قرض للماء. معطيات موثّقة، وقراءات ومقترحات منفصلة."
+  }
+ }
+}

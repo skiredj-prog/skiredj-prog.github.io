@@ -1,0 +1,84 @@
+---
+// Gabarit autonome du magazine TENIR (« Les grands choix, expliqués »).
+// Volontairement séparé du gabarit du site : identité éditoriale propre, trois langues (dont l’arabe, de droite à gauche).
+import '../styles/magazine.css';
+import { url } from '../data/site';
+
+type Lang = 'fr' | 'en' | 'ar';
+interface Alt { lang: Lang; href: string; }
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  path: string;            // chemin de la page, ex. /magazine/n01/
+  alternates?: Alt[];      // versions linguistiques de la même page
+  image?: string;          // image de partage
+  current?: 'issue' | 'avis' | 'index';
+  issueHref?: string;
+  avisHref?: string;
+  pdfHref?: string;
+  pdfLabel?: string;
+}
+const { lang, title, description, path, alternates = [], image = '/magazine/n01/partage.jpg', current, issueHref, avisHref, pdfHref, pdfLabel } = Astro.props;
+const dir = lang === 'ar' ? 'rtl' : 'ltr';
+const canonical = new URL(url(path), Astro.site);
+const ui = {
+  fr: { skip: 'Aller au contenu', tagline: 'Les grands choix, expliqués', issue: 'Le numéro', avis: 'Donner mon avis', site: 'Publié par TENIR Labs', langs: 'Langue' },
+  en: { skip: 'Skip to content', tagline: 'Big choices, explained', issue: 'The issue', avis: 'Give your view', site: 'Published by TENIR Labs', langs: 'Language' },
+  ar: { skip: 'انتقل إلى المحتوى', tagline: 'الاختيارات الكبرى، بوضوح', issue: 'العدد', avis: 'أبدِ رأيك', site: 'نشر TENIR Labs', langs: 'اللغة' },
+}[lang];
+const langNames: Record<Lang, string> = { fr: 'Français', en: 'English', ar: 'العربية' };
+const ogLocale: Record<Lang, string> = { fr: 'fr_FR', en: 'en_GB', ar: 'ar_MA' };
+---
+<!doctype html>
+<html lang={lang} dir={dir} class="mag">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={new URL(url(a.href), Astro.site)} />)}
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="preload" href={url('/magazine/fonts/inter-latin-400-normal.woff2')} as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#0b1c33" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(url(image), Astro.site)} />
+    <meta property="og:locale" content={ogLocale[lang]} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="mag" dir={dir}>
+    <a class="skip" href="#contenu">{ui.skip}</a>
+    <header class="mag-bar">
+      <div class="mag-bar-inner">
+        <a class="mag-mast" href={url(issueHref ?? '/magazine/n01/')} dir="ltr">TENIR<span class="visually-hidden"> — {ui.tagline}</span></a>
+        <nav aria-label={ui.tagline}>
+          {issueHref && <a href={url(issueHref)} aria-current={current === 'issue' ? 'true' : undefined}>{ui.issue}</a>}
+          {pdfHref && <a href={url(pdfHref)} download>{pdfLabel}</a>}
+          {avisHref && <a href={url(avisHref)} aria-current={current === 'avis' ? 'true' : undefined}>{ui.avis}</a>}
+          {alternates.length > 0 && (
+            <span class="mag-lang">
+              <span>{ui.langs} :</span>
+              {alternates.map((a) => a.lang === lang
+                ? <strong lang={a.lang}>{langNames[a.lang]}</strong>
+                : <a href={url(a.href)} lang={a.lang} hreflang={a.lang}>{langNames[a.lang]}</a>)}
+            </span>
+          )}
+        </nav>
+      </div>
+    </header>
+    <slot name="hero" />
+    <main id="contenu" class="mag-main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="mag-foot">
+      <div class="mag-foot-inner">
+        <slot name="footer" />
+        <p><a href={url('/')}>{ui.site}</a> · <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
