@@ -281,7 +281,7 @@ body{margin:0;line-height:1.6;background:#ffffff;font-size:17px}
 .pa-qnext{min-width:11rem;justify-content:center}
 .pa-qnext:disabled{opacity:.45;cursor:not-allowed}
 .pa-qnote{margin:1.6rem 0 0;font:400 .8rem/1.5 var(--sans);color:#6a7f8d;text-align:center}
-@media(max-width:760px){.pa-slabel{display:none}.pa-stepper{gap:.25rem;margin-bottom:1.6rem}}
+@media(max-width:760px){.pa-slabel{display:none}.pa-stepper{gap:.25rem;margin-bottom:1.6rem}.pa-sstep button{min-height:24px;justify-content:center}}
 @media(max-width:560px){
 .pa-question{padding:1.4rem 1rem 0}
 .pa-question h2{font-size:1.55rem;margin-bottom:1.3rem}
