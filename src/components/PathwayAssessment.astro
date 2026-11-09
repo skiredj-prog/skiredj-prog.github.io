@@ -7,64 +7,64 @@ const {locale}=Astro.props;
 const fr=locale==='fr';
 const home=url(fr?'/':'/en/');
 const t=fr?{
-title:"Votre aperçu de maturité IA — TENIR Labs",
-desc:"En dix questions, situez votre point de départ sur un parcours de maturité et identifiez la prochaine vérification utile. Sans compte.",
-label:"APERÇU DE MATURITÉ · TENIR LABS",
+title:"Rapport IA personnalisé gratuit — TENIR Labs",
+desc:"Dix questions pour obtenir votre rapport IA personnalisé : votre point de départ, ce qui reste à vérifier et la prochaine étape utile. Gratuit, sans compte.",
+label:"RAPPORT IA PERSONNALISÉ GRATUIT · TENIR LABS",
 tag:"L’IA avance. Vous gardez la main.",
 head:"Avant de laisser l’IA agir, voyez par où commencer.",
-lead:"En 10 questions, obtenez un aperçu de votre point de départ : ce que vous maîtrisez déjà, ce qui reste à vérifier et la prochaine étape raisonnable.",
-b1:"10 questions",b2:"5 minutes environ",b3:"Aperçu de maturité",b4:"Sans compte",
-start:"Voir mon aperçu",more:"Pourquoi cette carte ?",
+lead:"En 10 questions, obtenez votre rapport personnalisé sur votre point de départ : ce que vous maîtrisez déjà, ce qui reste à vérifier et la prochaine étape raisonnable.",
+b1:"10 questions",b2:"5 minutes environ",b3:"Gratuit",b4:"Sans compte",
+start:"Commencer mon rapport",more:"Ce que contient le rapport",
 pitch:"Un regard utile, pas une certification.",
-pitchText:"L’aperçu donne des pistes à partir de vos réponses, pas une note d’audit. Vous pouvez le télécharger, le partager ou l’utiliser pour préparer une discussion.",
-steps:"Ce que cet aperçu vous aide à décider",
+pitchText:"Le rapport donne des pistes à partir de vos réponses, pas une note d’audit. Vous pouvez le télécharger, le partager ou l’utiliser pour préparer une discussion.",
+steps:"Ce que ce rapport vous aide à décider",
 s1:"Votre point de départ",s1d:"Une synthèse lisible de vos forces et des zones à clarifier.",
 s2:"Vos trois priorités",s2d:"Des actions concrètes, ordonnées selon vos réponses.",
 s3:"Votre prochaine étape",s3d:"Une suggestion d’accompagnement si elle peut vous aider.",
-privacy:"Les réponses restent dans votre navigateur. Aucun compte, aucun envoi automatique. Vous choisissez si vous partagez l’aperçu.",
-progress:"QUESTIONNAIRE", back:"Précédent",next:"Suivant",finish:"Voir mon aperçu",startOver:"Recommencer",
-reportKicker:"VOTRE APERÇU DE MATURITÉ · AUTO-ÉVALUATION",
+privacy:"Les réponses restent dans votre navigateur. Aucun compte, aucun envoi automatique. Vous choisissez si vous partagez le rapport.",
+progress:"QUESTIONNAIRE", back:"Précédent",next:"Suivant",finish:"Voir mon rapport",startOver:"Recommencer",
+reportKicker:"VOTRE RAPPORT IA PERSONNALISÉ · AUTO-ÉVALUATION",
 reportHeading:"Votre point de départ se dessine.",
-reportIntro:"Voici ce que suggèrent vos réponses. Cette carte est indicative : elle ne vérifie ni vos systèmes ni vos preuves.",
+reportIntro:"Voici ce que suggèrent vos réponses. Ce rapport est indicatif : il ne vérifie ni vos systèmes ni vos preuves.",
 dimensions:"Six regards sur votre situation",
 priorities:"Les trois actions à considérer",
 recommend:"La prochaine étape avec TENIR Labs",
-recommendBody:"Vous pouvez avancer seul avec cet aperçu ou discuter d’un cas précis avec nous.",
-share:"Partager mon aperçu",copy:"Copier l’aperçu",download:"Télécharger",print:"Imprimer / PDF",copied:"Aperçu copié",
+recommendBody:"Vous pouvez avancer seul avec ce rapport ou discuter d’un cas précis avec nous.",
+share:"Partager mon rapport",copy:"Copier le rapport",download:"Télécharger",print:"Imprimer / PDF",copied:"Rapport copié",
 contact:"Discuter de mon parcours",demo:"Essayer une démo",home:"Retour au site",limits:"Évaluation déclarative. Aucune vérification technique ou certification. Les recommandations sont indicatives ; un diagnostic peut les confirmer ou les nuancer.",
 missing:"Non évalué",backToTop:"Revenir au début",
 }:{
-title:"Your AI maturity preview — TENIR Labs",
-desc:"In ten questions, place your starting point on a maturity journey and identify the next useful check. No account required.",
-label:"AI MATURITY PREVIEW · TENIR LABS",
+title:"Free personalized AI report — TENIR Labs",
+desc:"Ten questions to get your personalized AI report: your starting point, what still needs checking and the next useful step. Free, no account.",
+label:"FREE PERSONALIZED AI REPORT · TENIR LABS",
 tag:"AI takes action. You stay in control.",
 head:"Before AI takes action, see where to begin.",
 lead:"Ten questions to place your starting point: what you already have under control, what still needs checking and what a reasonable next step looks like.",
-b1:"10 questions",b2:"About 5 minutes",b3:"Maturity preview",b4:"No account",
-start:"See my preview",more:"Why this map?",
+b1:"10 questions",b2:"About 5 minutes",b3:"Free",b4:"No account",
+start:"Start my report",more:"What the report contains",
 pitch:"A useful starting point, not a certification.",
-pitchText:"Your preview offers suggestions based on your answers, not an audit score. Download it, share it or use it to prepare a discussion.",
-steps:"What this preview helps you decide",
+pitchText:"Your report offers suggestions based on your answers, not an audit score. Download it, share it or use it to prepare a discussion.",
+steps:"What this report helps you decide",
 s1:"Your starting point",s1d:"A clear overview of strengths and areas to clarify.",
 s2:"Your top three priorities",s2d:"Concrete next steps ordered around your answers.",
 s3:"Your next move",s3d:"A suggested engagement if professional help would be useful.",
-privacy:"Your answers stay in your browser. No account and no automatic submission. You choose whether to share the preview.",
-progress:"ASSESSMENT",back:"Previous",next:"Next",finish:"See my preview",startOver:"Start again",
-reportKicker:"YOUR AI MATURITY PREVIEW · SELF-ASSESSMENT",
+privacy:"Your answers stay in your browser. No account and no automatic submission. You choose whether to share the report.",
+progress:"ASSESSMENT",back:"Previous",next:"Next",finish:"See my report",startOver:"Start again",
+reportKicker:"YOUR PERSONALIZED AI REPORT · SELF-ASSESSMENT",
 reportHeading:"Your starting point is clearer.",
-reportIntro:"These findings reflect your answers. This map is indicative; we haven't verified your systems or supporting evidence.",
+reportIntro:"These findings reflect your answers. This report is indicative; we haven't verified your systems or supporting evidence.",
 dimensions:"Six views of your situation",
 priorities:"Three actions worth considering",
 recommend:"Your next move with TENIR Labs",
-recommendBody:"Use this preview independently or talk to us about one specific scenario.",
-share:"Share my preview",copy:"Copy preview",download:"Download",print:"Print / PDF",copied:"Preview copied",
+recommendBody:"Use this report independently or talk to us about one specific scenario.",
+share:"Share my report",copy:"Copy report",download:"Download",print:"Print / PDF",copied:"Report copied",
 contact:"Discuss my pathway",demo:"Explore the demo",home:"Back to website",limits:"Self-reported assessment only. Not a technical verification or certification. Recommendations are indicative and can be confirmed or adjusted during a diagnostic.",
 missing:"Not assessed",backToTop:"Back to start"
 };
 const demo=url(fr?'/portfolio/control-tower/':'/en/portfolio/control-tower/');
 const contact=url(fr?'/contact/':'/en/contact/');
 ---
-<Base locale={locale} slug={fr?'parcours-ia':'ai-readiness'} documentTitle={t.title} title={fr?'Aperçu de maturité':'Maturity preview'} description={t.desc} kicker={t.label} lede={t.lead} sources="">
+<Base locale={locale} slug={fr?'parcours-ia':'ai-readiness'} documentTitle={t.title} title={fr?'Rapport IA personnalisé gratuit':'Free personalized AI report'} description={t.desc} kicker={t.label} lede={t.lead} sources="">
 <div class="pa-app" data-pathway-app data-locale={locale} data-contact-href={contact} data-demo-href={demo} data-home-href={home}>
   <div id="pa-main">
     <section class="pa-intro" id="pa-intro" aria-labelledby="pa-title">
@@ -85,12 +85,13 @@ const contact=url(fr?'/contact/':'/en/contact/');
     </section>
     <section class="pa-question" id="pa-question" aria-labelledby="pa-question-title" hidden>
       <div class="pa-question-inner">
-        <div class="pa-progress"><span id="pa-progress-label" aria-live="polite"></span><span id="pa-count"></span></div>
-        <div class="pa-track" aria-hidden="true"><div id="pa-progress-fill"></div></div>
-        <span class="pa-qsection" id="pa-qsection"></span>
+        <div class="pa-qhead"><span class="pa-qbrand">{fr?'Rapport IA personnalisé':'Personalized AI report'}</span><span class="pa-qcount" id="pa-count" aria-live="polite"></span></div>
+        <ol class="pa-stepper" id="pa-stepper" aria-label={fr?'Progression du questionnaire':'Questionnaire progress'}></ol>
+        <p class="pa-qsection" id="pa-qsection"></p>
         <h2 id="pa-question-title" tabindex="-1"></h2>
         <div class="pa-options" id="pa-options" role="radiogroup" aria-labelledby="pa-question-title"></div>
-        <div class="pa-qnav"><button class="pa-button pa-muted" type="button" id="pa-back">{t.back}</button><button class="pa-button pa-primary" type="button" id="pa-next" disabled>{t.next} →</button></div>
+        <div class="pa-qnav"><button class="pa-button pa-qback" type="button" id="pa-back"><span aria-hidden="true">←</span> {t.back}</button><button class="pa-button pa-primary pa-qnext" type="button" id="pa-next" disabled>{t.next} <span aria-hidden="true">→</span></button></div>
+        <p class="pa-qnote">{fr?'Vos réponses restent dans votre navigateur. Vous pouvez revenir sur une étape à tout moment.':'Your answers stay in your browser. You can go back to any step at any time.'}</p>
       </div>
     </section>
     <section class="pa-report" id="pa-report" aria-labelledby="pa-report-title" hidden>
@@ -126,7 +127,7 @@ const contact=url(fr?'/contact/':'/en/contact/');
 
         <section class="pa-boundaries" aria-labelledby="pa-boundaries-title">
           <span class="pa-eyebrow">{fr?'À LIRE AVANT DE PARTAGER':'READ BEFORE SHARING'}</span>
-          <h2 id="pa-boundaries-title">{fr?'Ce que cet aperçu ne dit pas':'What this preview does not say'}</h2>
+          <h2 id="pa-boundaries-title">{fr?'Ce que ce rapport ne dit pas':'What this report does not say'}</h2>
           <div class="pa-boundaries-grid">
             <ul class="pa-bd-yes">
               <li>{fr?'Il reflète vos réponses.':'It reflects your answers.'}</li>

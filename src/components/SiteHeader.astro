@@ -19,13 +19,13 @@ const current = (itemSlug: string, itemSection: string) => itemSlug === slug ? '
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span>Menu</span><span class="menu-symbol" aria-hidden="true">☰</span></button>
     <nav class="site-nav" id="main-navigation" aria-label={t.nav}>
       {primaryNav[locale].map(item => <a href={url(item.href)} aria-current={current(item.slug, item.section)}>{item.label}</a>)}
-      <div class="nav-mobile-report"><a class="btn btn-primary nav-mobile-cta" href={url(report.href)} aria-current={onReport ? 'page' : undefined}>{report.label}</a></div>
+      <div class="nav-mobile-report"><a class="btn btn-primary nav-mobile-cta" href={url(report.href)+"?start=1"} aria-current={onReport ? 'page' : undefined}>{report.label}</a></div>
       <div class="nav-mobile-tools"><a class="nav-mobile-lang" href={url(other)} lang={fr ? 'en' : 'fr'}>{fr ? 'Read in English' : 'Lire en français'}</a></div>
     </nav>
     <div class="tools">
       <nav class="lang" aria-label={t.lang}><a href={url(fr ? here : other)} lang="fr" aria-current={fr && !missing ? 'true' : undefined}>FR</a><a href={url(fr ? other : here)} lang="en" aria-current={!fr && !missing ? 'true' : undefined}>EN</a></nav>
       <button class="theme" type="button" data-theme-toggle aria-pressed="false" aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}><span class="label-light" aria-hidden="true">◐</span><span class="label-dark" aria-hidden="true">◑</span></button>
-      <a class="btn btn-primary header-cta" href={url(report.href)} aria-current={onReport ? 'page' : undefined}>{report.label}</a>
+      <a class="btn btn-primary header-cta" href={url(report.href)+"?start=1"} aria-current={onReport ? 'page' : undefined}>{report.label}</a>
     </div>
   </div>
 </header>
