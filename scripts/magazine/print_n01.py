@@ -71,6 +71,9 @@ class Edition:
         out_dir.mkdir(parents=True, exist_ok=True)
         self.path = out_dir / f"TENIR-N01-{lang.upper()}.pdf"
         self.c = canvas.Canvas(str(self.path), pagesize=A5, pageCompression=1)
+        # PDF viewers resolve bidi from the first strong character.  All three
+        # doc_title values now start with "TENIR" (LTR) so Chrome, Edge and IE
+        # pick the correct base direction for the title bar.
         self.c.setTitle(self.d["web"]["doc_title"])
         self.c.setAuthor("TENIR Labs")
         self.c.setSubject("TENIR N° 01 — Maroc 2030")
