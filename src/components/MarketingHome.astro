@@ -18,9 +18,10 @@ const t = fr ? {
   headlineEnd: 'Vous gardez la main.',
   tagline: 'Confiez des tâches à l’IA. Pas les clés de votre entreprise.',
   summary: 'Vos agents IA peuvent déclencher des paiements, modifier des dossiers ou engager votre entreprise. TENIR Labs vous aide à fixer leurs limites, repérer les actions à risque et gérer les situations où personne ne sait exactement ce qui s’est passé.',
-  primary: 'Comprendre pourquoi maintenant',
+  primary: 'Commencer les 10 questions',
   secondary: 'Voir un cas concret',
-  heroNote: 'Une question de marché · des situations reconnaissables · une première lecture',
+  heroNote: 'Rapport IA personnalisé gratuit · sans inscription · résultat immédiat',
+  scope: 'Ce que nous proposons : un diagnostic sur un flux critique, des méthodes d’accompagnement et un logiciel open source. Ce que nous ne délivrons pas : ni certification, ni avis juridique, ni garantie de production.',
   tension: 'L’EXEMPLE QUI CHANGE TOUT',
   tensionTitle: 'Et si votre IA payait deux fois ?',
   tensionBody: 'Un agent déclenche un paiement. La confirmation disparaît. L’IA pense devoir recommencer. Mais le premier paiement a peut-être déjà eu lieu. Comment éviter une deuxième opération à l’aveugle ?',
@@ -29,7 +30,7 @@ const t = fr ? {
   withoutBody: 'Une réponse absente est prise pour un échec. La même opération peut partir deux fois.',
   with: 'Avec une frontière gouvernée',
   withHead: 'Savoir quand s’arrêter.',
-  withBody: 'Le scénario de gouvernance passe en HOLD et exige un rapprochement avant une nouvelle tentative.',
+  withBody: 'L’action est mise en attente (HOLD) : on vérifie d’abord ce qui s’est réellement passé, puis on décide de relancer ou non.',
   fictional: 'Scénario illustratif · pas de transaction réelle',
   caseLink: 'Explorer les cas réels et simulés',
   bankLink: 'Voir le scénario bancaire · français',
@@ -54,6 +55,7 @@ const t = fr ? {
   papers: 'Publications et recherche',
   status: 'Statut et périmètres',
   credibility: 'Parcours Crédibilité · 5.7.0',
+  claims: 'Ce que nous affirmons, et sur quelle preuve',
   closeTitle: 'Vous savez ce que votre IA peut faire. Découvrez par où commencer.',
   closeSub: 'Dix questions pour situer votre point de départ sur un parcours de maturité, repérer la prochaine vérification utile et décider si un accompagnement est nécessaire.',
   closePrimary: 'Commencer les 10 questions',
@@ -65,9 +67,10 @@ const t = fr ? {
   headlineEnd: 'You stay in control.',
   tagline: 'Give AI the work. Not the keys to your business.',
   summary: 'AI agents can initiate payments, update records and make commitments on your behalf. TENIR Labs helps you set the limits, spot risky actions and handle those moments when no one knows exactly what happened.',
-  primary: 'Understand why now',
+  primary: 'Start the 10 questions',
   secondary: 'See one concrete case',
-  heroNote: 'A market question · recognizable situations · a first explanation',
+  heroNote: 'Free personalized AI report · no sign-up · instant result',
+  scope: 'What we offer: a diagnostic of one critical flow, guided methods and open-source software. What we do not provide: certification, legal advice or a production guarantee.',
   tension: 'THE EXAMPLE THAT CHANGES EVERYTHING',
   tensionTitle: 'What if your AI paid twice?',
   tensionBody: 'An agent initiates a payment. The confirmation disappears. The AI thinks it should try again. But the first payment might already have gone through. How do you avoid a second payment in the dark?',
@@ -76,7 +79,7 @@ const t = fr ? {
   withoutBody: 'A missing response is mistaken for failure. The same operation may be dispatched twice.',
   with: 'With a governed boundary',
   withHead: 'Know when to stop.',
-  withBody: 'The governance scenario enters HOLD and requires reconciliation before another attempt.',
+  withBody: 'The action is put on hold (HOLD): first check what actually happened, then decide whether to try again.',
   fictional: 'Illustrative scenario · no live transaction',
   caseLink: 'Explore real and simulated cases',
   bankLink: 'View the banking scenario · French',
@@ -101,6 +104,7 @@ const t = fr ? {
   papers: 'Research and publications',
   status: 'Status and scope',
   credibility: 'Credibility Journey · 5.7.0',
+  claims: 'What we claim, and on what evidence',
   closeTitle: 'You know what AI can do. Find out where to begin.',
   closeSub: 'Ten questions to place your starting point on a maturity journey, identify the next useful check and decide whether outside help is needed.',
   closePrimary: 'Start the 10 questions',
@@ -108,13 +112,13 @@ const t = fr ? {
   smallPrint: 'Diagnostic quoted by scope · software and prototypes at different maturity levels',
 };
 const cards = fr ? [
- {tag:'SERVICE', name:'Execution Boundary Diagnostic', headline:'Découvrez votre point de non-retour.', desc:'Une analyse ciblée d’un flux critique, de ses responsabilités et des angles morts entre autorisation et conséquence.', href:path('diagnostic-execution'),action:'Explorer le diagnostic',mark:'01'},
- {tag:'MÉTHODES', name:'REG Prevent · Prepare',headline:'Transformez les politiques en décisions concrètes.',desc:'Passez des exigences aux contrôles candidats, puis des systèmes aux preuves disponibles. Deux approches, indépendantes ou complémentaires.',href:path('produits-et-services'),action:'Explorer les méthodes',mark:'02'},
- {tag:'SOFTWARE · BÊTA',name:'TENIR-Gov',headline:'Placez un contrôle entre l’intention et l’impact.',desc:'Une couche de gouvernance de l’exécution pour les actions intégrées, avec décisions bornées, HOLD et traçabilité. Logiciel open source.',href:path('portfolio/gov'),action:'Découvrir le logiciel',mark:'03'},
+ {tag:'SERVICE · DISPONIBLE SUR DEVIS', name:'Execution Boundary Diagnostic', headline:'Examiner un flux critique avant qu’il ne déraille.', desc:'Une analyse ciblée d’un flux critique, de ses responsabilités et des angles morts entre autorisation et conséquence.', href:path('diagnostic-execution'),action:'Explorer le diagnostic',mark:'01'},
+ {tag:'MÉTHODES · AVEC ACCOMPAGNEMENT', name:'REG Prevent · Prepare',headline:'Transformer vos politiques en contrôles concrets.',desc:'Passez des exigences aux contrôles candidats, puis des systèmes aux preuves disponibles. Deux approches, indépendantes ou complémentaires.',href:path('produits-et-services'),action:'Explorer les méthodes',mark:'02'},
+ {tag:'LOGICIEL · BÊTA OPEN SOURCE',name:'TENIR-Gov',headline:'Placer un contrôle entre l’intention et l’effet.',desc:'Une couche de gouvernance de l’exécution pour les actions intégrées, avec décisions bornées, HOLD et traçabilité. Logiciel open source.',href:path('portfolio/gov'),action:'Découvrir le logiciel',mark:'03'},
 ] : [
- {tag:'SERVICE',name:'Execution Boundary Diagnostic',headline:'Find your point of no return.',desc:'A focused review of one critical flow, its owners, and the blind spots between authorization and consequence.',href:path('diagnostic-execution'),action:'Explore the diagnostic',mark:'01'},
- {tag:'METHODS',name:'REG Prevent · Prepare',headline:'Turn policies into operational decisions.',desc:'Move from requirements to candidate controls, then from systems to available evidence. Independent or complementary approaches.',href:path('products-and-services'),action:'Explore the methods',mark:'02'},
- {tag:'SOFTWARE · BETA',name:'TENIR-Gov',headline:'Put control between intention and impact.',desc:'Execution governance for integrated agent actions, with bounded verdicts, HOLD and traceability. Open-source software.',href:path('portfolio/gov'),action:'Explore the software',mark:'03'},
+ {tag:'SERVICE · AVAILABLE ON QUOTE',name:'Execution Boundary Diagnostic',headline:'Examine one critical flow before it goes wrong.',desc:'A focused review of one critical flow, its owners, and the blind spots between authorization and consequence.',href:path('diagnostic-execution'),action:'Explore the diagnostic',mark:'01'},
+ {tag:'METHODS · GUIDED',name:'REG Prevent · Prepare',headline:'Turn your policies into concrete controls.',desc:'Move from requirements to candidate controls, then from systems to available evidence. Independent or complementary approaches.',href:path('products-and-services'),action:'Explore the methods',mark:'02'},
+ {tag:'SOFTWARE · OPEN-SOURCE BETA',name:'TENIR-Gov',headline:'Put a control between intention and effect.',desc:'Execution governance for integrated agent actions, with bounded verdicts, HOLD and traceability. Open-source software.',href:path('portfolio/gov'),action:'Explore the software',mark:'03'},
 ];
 ---
 <div class="market-root">
@@ -124,11 +128,12 @@ const cards = fr ? [
       <h1 id="market-heading" class="ml-headline"><span>{t.headlineStart}</span><em>{t.headlineEnd}</em></h1>
       <p class="ml-hero-tagline">{t.tagline}</p>
       <div class="ml-actions" aria-label={fr ? 'Choisir votre prochaine étape' : 'Choose your next step'}>
-        <a class="ml-btn ml-btn-primary" href={whyNow}>{t.primary} <span aria-hidden="true">↗</span></a>
+        <a class="ml-btn ml-btn-primary" href={pathwayStart}>{t.primary} <span aria-hidden="true">↗</span></a>
         <a class="ml-btn ml-btn-outline" href="#comprendre">{t.secondary} <span aria-hidden="true">→</span></a>
       </div>
       <p class="ml-hero-foot">{t.heroNote}</p>
       <p class="ml-hero-body">{t.summary}</p>
+      <p class="ml-hero-scope">{t.scope}</p>
     </div>
   </section>
 
@@ -136,13 +141,6 @@ const cards = fr ? [
     <div class="ml-wrap ml-why-now-grid">
       <div><span class="ml-kicker">{fr ? 'POURQUOI MAINTENANT' : 'WHY NOW'}</span><h2 id="ml-why-now-title">{fr ? 'L’IA ne se contente plus de répondre. Elle peut faire des choses à votre place.' : 'AI no longer only answers. It can do things on your behalf.'}</h2><p>{fr ? 'C’est pratique — jusqu’au jour où elle envoie le mauvais paiement, modifie le mauvais dossier ou répond au client sans que personne ne sache exactement ce qui s’est passé.' : 'That is useful — until it sends the wrong payment, changes the wrong record or replies to a customer and no one knows exactly what happened.'}</p><a class="ml-story-link" href={whyNow}>{fr ? 'Voir les situations concrètes' : 'See the concrete situations'} →</a></div>
       <div class="ml-why-now-list"><article><b>01</b><span>{fr ? 'Un paiement est lancé. La confirmation n’arrive pas. Faut-il recommencer ?' : 'A payment is sent. The confirmation never arrives. Should it be tried again?'}</span></article><article><b>02</b><span>{fr ? 'Un dossier est modifié automatiquement. Qui vérifie que c’est bien le bon ?' : 'A record is changed automatically. Who checks that it is the right one?'}</span></article><article><b>03</b><span>{fr ? 'Une réponse est envoyée au nom de l’entreprise. Qui la relit avant qu’elle parte ?' : 'A reply is sent in the company’s name. Who reads it before it goes out?'}</span></article></div>
-    </div>
-  </section>
-
-  <section class="ml-maturity-entry" aria-labelledby="ml-maturity-entry-title">
-    <div class="ml-wrap ml-maturity-entry-inner">
-      <div><span class="ml-kicker">{fr ? 'POUR SE SITUER' : 'A PLACE TO START'}</span><h2 id="ml-maturity-entry-title">{fr ? 'Vous vous demandez par où commencer ?' : 'Not sure where to begin?'}</h2><p>{fr ? 'En dix questions, obtenez un aperçu indicatif de votre point de départ sur un parcours de maturité IA — et de la prochaine vérification utile.' : 'In ten questions, get an indicative view of your starting point on an AI maturity journey — and the next useful check.'}</p></div>
-      <a class="ml-btn ml-btn-primary" href={pathwayStart}>{fr ? 'Commencer les 10 questions' : 'Start the 10 questions'} <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -167,7 +165,7 @@ const cards = fr ? [
       <div class="ml-cards">
         {cards.map(card => <a class="ml-card" href={card.href}>
           <div class="ml-card-top"><span class="ml-card-number">{card.mark}</span><span class="ml-card-type">{card.tag}</span></div>
-          <h3>{card.name}</h3><strong>{card.headline}</strong><p>{card.desc}</p><span class="ml-card-action">{card.action} <span aria-hidden="true">↗</span></span>
+          <h3>{card.headline}</h3><span class="ml-card-name">{card.name}</span><p>{card.desc}</p><span class="ml-card-action">{card.action} <span aria-hidden="true">↗</span></span>
         </a>)}
       </div>
       <div class="ml-short-journey home-lifecycle">
@@ -202,7 +200,15 @@ const cards = fr ? [
         <a href="https://github.com/skiredj-prog/tenir_governance" rel="noopener" target="_blank"><span class="ml-trust-icon" aria-hidden="true">⌘</span>{t.source}<span aria-hidden="true">↗</span></a>
         <a href={path('publications')}><span class="ml-trust-icon" aria-hidden="true">§</span>{t.papers}<span aria-hidden="true">↗</span></a>
         <a href={path(fr?'credibilite':'credibility')}><span class="ml-trust-icon" aria-hidden="true">◎</span>{t.credibility}<span aria-hidden="true">↗</span></a>
+        <a href={path(fr?'affirmations':'claims')}><span class="ml-trust-icon" aria-hidden="true">✓</span>{t.claims}<span aria-hidden="true">↗</span></a>
       </div>
+    </div>
+  </section>
+
+  <section class="ml-founder ml-section" aria-labelledby="ml-founder-title">
+    <div class="ml-wrap ml-founder-grid">
+      <div><span class="ml-kicker">{fr ? 'QUI EST DERRIÈRE TENIR LABS' : 'WHO IS BEHIND TENIR LABS'}</span><h2 id="ml-founder-title">Abdelaziz Skiredj</h2><p class="ml-founder-role">{fr ? 'Fondateur · architecte-stratège indépendant · Casablanca' : 'Founder · independent architect-strategist · Casablanca'}</p></div>
+      <div><p>{fr ? 'Un parcours entre conseil, ingénierie et opérations publiques : Accenture, PwC, JESA, puis responsable des opérations du programme TASMU / Smart Qatar au ministère des Transports et des Communications du Qatar.' : 'A career across consulting, engineering and public-sector operations: Accenture, PwC, JESA, then Operations Lead for the TASMU / Smart Qatar program at Qatar’s Ministry of Transport and Communications.'}</p><p>{fr ? 'TENIR Labs réunit trois activités qui se nourrissent : la recherche publiée, les diagnostics menés avec les organisations, et le logiciel open source qui en sort. Chacune porte son propre niveau de maturité, indiqué là où elle apparaît.' : 'TENIR Labs brings together three activities that feed one another: published research, diagnostics run with organizations, and the open-source software that comes out of them. Each carries its own maturity level, stated wherever it appears.'}</p><p class="ml-founder-links"><a href={path('contact')}>{fr ? 'Contact' : 'Contact'} →</a><a href="https://orcid.org/0009-0003-2678-4069" rel="noopener" target="_blank">ORCID ↗</a><a href="https://github.com/skiredj-prog" rel="noopener" target="_blank">GitHub ↗</a></p></div>
     </div>
   </section>
 
