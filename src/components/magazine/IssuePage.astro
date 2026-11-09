@@ -1,0 +1,38 @@
+---
+// Page complète d’un numéro dans une langue : gabarit magazine + couverture + édition web.
+import Magazine from '../../layouts/Magazine.astro';
+import Issue from './Issue.astro';
+import data from '../../data/magazine/n01.json';
+import { url } from '../../data/site';
+type Lang = 'fr' | 'en' | 'ar';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const d = (data as any)[lang];
+const paths: Record<Lang, string> = { fr: '/magazine/n01/', en: '/magazine/n01/en/', ar: '/magazine/n01/ar/' };
+const pdfHref = `/magazine/n01/TENIR-N01-${lang.toUpperCase()}.pdf`;
+const avisHref = `/magazine/avis/?n=01&l=${lang}&s=web`;
+const alternates = (['fr', 'en', 'ar'] as Lang[]).map((l) => ({ lang: l, href: paths[l] }));
+---
+<Magazine lang={lang} title={d.web.doc_title} description={d.web.description} path={paths[lang]} alternates={alternates}
+  current="issue" issueHref={paths[lang]} avisHref={avisHref} pdfHref={pdfHref} pdfLabel="PDF">
+  <section class="mag-hero" slot="hero" aria-labelledby="titre">
+    <div class="mag-hero-inner">
+      <figure>
+        <img src={url('/magazine/n01/couverture.jpg')} alt={d.web.cover_alt} width="1100" height="895" />
+        <figcaption>{d.cover_caption}</figcaption>
+      </figure>
+      <div class="mag-hero-text">
+        <p class="mag-kicker">{d.issue_date} · {d.kicker_cover}</p>
+        <h1 id="titre">{d.cover_title}</h1>
+        <p class="mag-sub">{d.cover_sub}</p>
+        <p class="mag-tagline">{d.tagline}</p>
+        <div class="mag-actions">
+          <a class="mag-btn mag-btn-primary" href="#edito">{d.web.toc_label} ↓</a>
+          <a class="mag-btn mag-btn-ghost" href={url(pdfHref)} download>{d.web.read_pdf}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Issue d={d} avisHref={avisHref} pdfHref={pdfHref} />
+  <Fragment slot="footer"><p>{d.back_legal}</p></Fragment>
+</Magazine>

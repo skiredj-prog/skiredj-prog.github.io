@@ -1,0 +1,8 @@
+# Les PDF commités ont été générés sur le poste Windows du propriétaire.
+# Pour une régénération reproductible, figer ici la sortie de `pip freeze`
+# de ce poste (versions exactes) avant toute réimpression.
+reportlab>=4.4,<5
+Pillow>=11,<14
+arabic-reshaper==3.0.0
+python-bidi>=0.6,<0.7
+pypdf>=6,<7

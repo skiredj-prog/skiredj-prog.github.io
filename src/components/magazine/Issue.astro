@@ -1,0 +1,238 @@
+---
+// Édition web du n° 01. Le texte vient de src/data/magazine/n01.json (même source que l’édition imprimée).
+import { url } from '../../data/site';
+interface Props { d: any; avisHref: string; pdfHref: string; }
+const { d, avisHref, pdfHref } = Astro.props;
+const lang: 'fr' | 'en' | 'ar' = d.lang;
+const ar = lang === 'ar';
+const tag = (k: 'fact' | 'think' | 'suggest') => ({ cls: `mag-tag mag-tag--${k}`, label: d.tags[k] });
+// Sommaire (même ordre que d.toc) et page imprimée → ancre web.
+const ids = ['essentiel', 'chantiers', 'choix', 'eau', 'ports-trains', 'coupe-du-monde', 'ia', 'cas', 'methode', 'quiz'];
+const pageId: Record<string, string> = { '3': 'essentiel', '4': 'chantiers', '5': 'choix', '6': 'eau', '7': 'ports-trains', '8': 'coupe-du-monde', '9': 'cdm-precedents', '10': 'cdm-maroc', '11': 'cdm-choix', '12': 'ia', '13': 'cas', '14': 'methode', '15': 'quiz', '16': 'avis' };
+const extra = {
+  fr: { factWeb: 'Vérifié, avec sa source :', howRead: 'Comment lire ce magazine', answers: 'Réponses', true: 'Vrai', false: 'Faux', grant: d.cas_grant, page: 'p.', propose: 'Proposer un dossier' },
+  en: { factWeb: 'Checked, with its source:', howRead: 'How to read this magazine', answers: 'Answers', true: 'True', false: 'False', grant: d.cas_grant, page: 'p.', propose: 'Propose a report' },
+  ar: { factWeb: 'تم التحقق منه، ومصدره في:', howRead: 'كيف تقرأ هذه المجلة', answers: 'الأجوبة', true: 'صحيح', false: 'خطأ', grant: d.cas_grant, page: 'ص', propose: 'اقترح ملفاً' },
+}[lang];
+const icons: Record<string, string> = {
+  bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/>',
+  pipe: '<path d="M2 7h11a4 4 0 0 1 4 4v11"/><path d="M2 13h8a1 1 0 0 1 1 1v8"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>',
+  wave: '<path d="M2 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M8 7h.01M12 5h.01M16 7h.01"/>',
+  anchor: '<path d="M12 8v13"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><circle cx="12" cy="5" r="3"/>',
+  train: '<path d="M6 3h12a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V5a2 2 0 0 1 2-2z"/><path d="M4 11h16"/><path d="M8 21l2-4M16 21l-2-4"/>',
+  drop: '<path d="M12 2.7S5 10.3 5 15a7 7 0 0 0 14 0c0-4.7-7-12.3-7-12.3z"/>',
+  chip: '<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>',
+};
+const svg = (name: string, size = 22) => `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icons[name]}</svg>`;
+const cardIcons = ['drop', 'train', 'anchor', 'chip'];
+const needIcons = ['bolt', 'pipe', 'wrench', 'wave'];
+---
+<section class="mag-section" id="edito" aria-labelledby="edito-h">
+  <p class="mag-kicker">{d.sections.edito}</p>
+  <h2 id="edito-h">{d.edito_title}</h2>
+  <p>{d.edito_body[0]}</p>
+  <p>{d.edito_body[1]}</p>
+  <blockquote class="mag-quote"><p>{d.edito_q[0]}</p><p>{d.edito_q[1]}</p></blockquote>
+  <p>{d.edito_body[2]}</p>
+  <p class="mag-sign">{d.edito_sign}</p>
+  <nav class="mag-toc" aria-labelledby="toc-h">
+    <p class="mag-kicker" id="toc-h">{d.web.toc_label}</p>
+    <ol>
+      {d.toc.map((t: [string, string], i: number) => <li><span class="n">{t[0]}</span><a href={`#${ids[i]}`}>{t[1]}</a></li>)}
+    </ol>
+  </nav>
+</section>
+
+<section class="mag-section" id="essentiel" aria-labelledby="ess-h">
+  <div class="mag-howto">
+    <p class="mag-kicker">{extra.howRead}</p>
+    <ul>
+      {d.howto.map((h: [string, string]) => <li><span><span class={tag(h[0] as any).cls}>{tag(h[0] as any).label}</span></span><span class="mag-muted mag-small">{h[0] === 'fact' ? <>{extra.factWeb} <a href="#sources">{d.src_title}</a></> : h[1]}</span></li>)}
+    </ul>
+  </div>
+  <h2 id="ess-h">{d.ess_title}</h2>
+  <ol class="mag-points" style="list-style:none;padding:0">
+    {d.ess.map((x: [string, string], i: number) => <li><span class="n" aria-hidden="true">{i + 1}</span><div class="mag-tagged"><span class={tag(x[0] as any).cls}>{tag(x[0] as any).label}</span><p>{x[1]}</p></div></li>)}
+  </ol>
+  <div class="mag-box mag-box--dark"><p class="mag-kicker">{d.ess_q_label}</p><p class="mag-big-q">{d.ess_q}</p></div>
+</section>
+
+<section class="mag-section" id="chantiers" aria-labelledby="ch-h">
+  <p class="mag-kicker">{d.sections.angle}</p>
+  <h2 id="ch-h">{d.angle_title}</h2>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span><p class="mag-muted">{d.angle_intro}</p></div>
+  <div class="mag-cards">
+    {d.cards.map((c: string[], i: number) => (
+      <article class="mag-card">
+        <p class="label"><Fragment set:html={svg(cardIcons[i], 20)} /><span class="mag-kicker">{c[0]}</span></p>
+        <p class="value">{c[1]}</p>
+        <p class="unit">{c[2]}</p>
+        <p class="mag-small">{c[3]}</p>
+        <p class="src">{c[4]}</p>
+      </article>
+    ))}
+  </div>
+  <div class="mag-box mag-box--line"><h3>{d.angle_box_title}</h3><p>{d.angle_box}</p></div>
+</section>
+
+<section class="mag-section" id="choix" aria-labelledby="choix-h">
+  <p class="mag-kicker">{d.sections.angle}</p>
+  <h2 id="choix-h">{d.lock_title}</h2>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.lock_intro}</p></div>
+  <figure class="mag-path">
+    <svg aria-hidden="true" viewBox="0 0 467 58" fill="none"><g stroke-linecap="round">
+      <path d="M8 29 C 20 29, 22 6, 34 6 L 150 6" stroke="#0f6b73" stroke-width="2.5" opacity=".55"/>
+      <path d="M8 29 C 20 29, 22 52, 34 52 L 150 52" stroke="#0f6b73" stroke-width="2.5" opacity=".55"/>
+      <path d="M8 29 C 20 29, 22 17, 34 17 L 305 17" stroke="#0f6b73" stroke-width="2.5" opacity=".8"/>
+      <path d="M8 29 C 20 29, 22 41, 34 41 L 305 41" stroke="#0f6b73" stroke-width="2.5" opacity=".8"/>
+      <path d="M4 29 L 452 29" stroke="#102747" stroke-width="3.5"/>
+      <path d="M446 22 L 458 29 L 446 36" stroke="#102747" stroke-width="3.5" stroke-linejoin="round"/>
+      <circle cx="150" cy="6" r="4" fill="#c67b42"/><circle cx="150" cy="52" r="4" fill="#c67b42"/>
+      <circle cx="305" cy="17" r="4" fill="#c67b42"/><circle cx="305" cy="41" r="4" fill="#c67b42"/>
+    </g></svg>
+    <figcaption class="labels">{d.path_labels.map((l: string) => <span>{l}</span>)}</figcaption>
+  </figure>
+  <ol class="mag-locks" style="list-style:none;padding:0">
+    {d.locks.map((l: [string, string], i: number) => <li><span class="n" aria-hidden="true">{i + 1}</span><p><strong>{l[0]}.</strong> {l[1]}</p></li>)}
+  </ol>
+  <div class="mag-box mag-box--copper"><div class="mag-tagged"><span class={tag('suggest').cls}>{tag('suggest').label}</span><p>{d.lock_suggest}</p></div></div>
+</section>
+
+<section class="mag-section" id="eau" aria-labelledby="eau-h">
+  <p class="mag-kicker">{d.sections.eau}</p>
+  <h2 id="eau-h">{d.eau_title}</h2>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span><p>{d.eau_fact}</p></div>
+  <div class="mag-box mag-box--sky">
+    <h3>{d.eau_need_title}</h3>
+    <ul class="mag-needs">{d.eau_needs.map((n: string, i: number) => <li><Fragment set:html={svg(needIcons[i])} /><span>{n}</span></li>)}</ul>
+  </div>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.eau_think}</p></div>
+  <div class="mag-tagged"><span class={tag('suggest').cls}>{tag('suggest').label}</span><p>{d.eau_suggest}</p></div>
+</section>
+
+<section class="mag-section" id="ports-trains" aria-labelledby="pt-h">
+  <p class="mag-kicker">{d.sections.ports}</p>
+  <h2 id="pt-h">{d.ports_title}</h2>
+  <h3 class="mag-sub-h"><Fragment set:html={svg('anchor', 24)} />{d.port_head}</h3>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span><p>{d.port_fact}</p></div>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.port_think}</p></div>
+  <h3 class="mag-sub-h"><Fragment set:html={svg('train', 24)} />{d.train_head}</h3>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span><p>{d.train_fact}</p></div>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.train_think}</p></div>
+  <div class="mag-box mag-box--sky"><h3>{d.ports_ask_title}</h3><p>{d.ports_ask}</p></div>
+</section>
+
+<section class="mag-section" id="coupe-du-monde" aria-labelledby="cdm-h">
+  <p class="mag-kicker">{d.sections.cdm} · {d.cdm_kicker}</p>
+  <h2 id="cdm-h">{d.cdm_title}</h2>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span>{d.cdm_fact.map((t: string) => <p>{t}</p>)}</div>
+  <div class="mag-duo">
+    {d.cdm_big.map((b: [string, string], i: number) => <div><p class={i === 0 ? 'v v--hi' : 'v'}>{b[0]}</p><p class="mag-small">{b[1]}</p></div>)}
+  </div>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.cdm_think}</p></div>
+
+  <h3 class="mag-sub-h" id="cdm-precedents">{d.cdm_prec_title}</h3>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span></div>
+  <ol class="mag-locks" style="list-style:none;padding:0">
+    {d.cdm_prec.map((c: [string, string, string], i: number) => <li><span class="n" aria-hidden="true">{i + 1}</span><p><strong>{c[0]}</strong> <span class="mag-where">{c[1]}</span><br />{c[2]}</p></li>)}
+  </ol>
+  <div class="mag-box mag-box--teal"><div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.cdm_prec_think}</p></div></div>
+
+  <h3 class="mag-sub-h" id="cdm-maroc">{d.cdm_ma_title}</h3>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span></div>
+  <ul class="mag-locks mag-locks--plain" style="list-style:none;padding:0">
+    {d.cdm_ma_rows.map((r: [string, string]) => <li><p><strong>{r[0]}.</strong> {r[1]}</p></li>)}
+  </ul>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.cdm_ma_think}</p></div>
+  <div class="mag-box mag-box--dashed">
+    <h3>{d.cdm_ma_unknown_title}</h3>
+    <ul class="mag-unknown">{d.cdm_ma_unknown.map((x: string) => <li>{x}</li>)}</ul>
+  </div>
+  <p class="mag-small mag-muted">{d.cdm_ma_note}</p>
+
+  <h3 class="mag-sub-h" id="cdm-choix">{d.cdm_ch_title}</h3>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span><p>{d.cdm_ch_fact}</p></div>
+  <div class="mag-box mag-box--copper">
+    <div class="mag-tagged"><span class={tag('suggest').cls}>{tag('suggest').label}</span></div>
+    <ol class="mag-locks" style="list-style:none;padding:0">
+      {d.cdm_ch.map((c: [string, string], i: number) => <li><span class="n" aria-hidden="true">{i + 1}</span><p><strong>{c[0]}.</strong> {c[1]}</p></li>)}
+    </ol>
+  </div>
+  <div class="mag-box mag-box--dark"><h3>{d.cdm_ask_title}</h3><p>{d.cdm_ask}</p></div>
+</section>
+
+<section class="mag-section" id="ia" aria-labelledby="ia-h">
+  <p class="mag-kicker">{d.sections.ia}</p>
+  <h2 id="ia-h">{d.ia_title}</h2>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span><p>{d.ia_fact}</p></div>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.ia_think}</p></div>
+  <ol class="mag-qs" style="list-style:none;padding:0">
+    {d.ia_qs.map((q: [string, string], i: number) => <li><span class="n" aria-hidden="true">{i + 1}</span><strong>{q[0]}</strong><span class="mag-small mag-muted">{q[1]}</span></li>)}
+  </ol>
+  <p style="color:var(--teal);font-weight:600">{d.ia_think2}</p>
+  <div class="mag-tagged"><span class={tag('suggest').cls}>{tag('suggest').label}</span><p>{d.ia_suggest}</p></div>
+</section>
+
+<section class="mag-section" id="cas" aria-labelledby="cas-h">
+  <p class="mag-kicker">{d.sections.cas}</p>
+  <h2 id="cas-h">{d.cas_title}</h2>
+  <div class="mag-tagged"><span class={tag('fact').cls}>{tag('fact').label}</span><p>{d.cas_fact}</p></div>
+  <div class="mag-loan">
+    <div class="a"><span>{d.cas_a[0]}</span><span class="v">{d.cas_a[1]}</span><span class="s">{d.cas_a[2]}</span></div>
+    <div class="b"><span>{d.cas_b[0]}</span><span class="v">{d.cas_b[1]}</span><span class="s">{d.cas_b[2]}</span></div>
+  </div>
+  <p class="mag-small mag-muted">{d.cas_grant}</p>
+  <div class="mag-tagged"><span class={tag('think').cls}>{tag('think').label}</span><p>{d.cas_think}</p></div>
+  <div class="mag-2col">
+    <div><h3>{d.cas_known_title}</h3><ul>{d.cas_known.map((x: string) => <li>{x}</li>)}</ul></div>
+    <div><h3 style="color:var(--copper-d)">{d.cas_unknown_title}</h3><ul>{d.cas_unknown.map((x: string) => <li>{x}</li>)}</ul></div>
+  </div>
+  <p class="mag-small mag-muted">{d.cas_note}</p>
+</section>
+
+<section class="mag-section" id="methode" aria-labelledby="m-h">
+  <p class="mag-kicker">{d.sections.outil}</p>
+  <h2 id="m-h">{d.tool_title}</h2>
+  <div class="mag-step"><span class="n" aria-hidden="true">1</span><div><h3>{d.tool_q1}</h3><p>{d.tool_a1}</p></div></div>
+  <div class="mag-box mag-box--sky"><p class="mag-kicker" style="color:var(--copper-d)">{d.tool_ex_label}</p><p>{d.tool_ex}</p></div>
+  <div class="mag-step"><span class="n" aria-hidden="true">2</span><div><h3>{d.tool_q2}</h3><p>{d.tool_a2}</p></div></div>
+  <div class="mag-box mag-box--dark"><h3>{d.tool_nc_label}</h3><p>{d.tool_nc}</p></div>
+  <p class="mag-small mag-muted">{d.tool_note}</p>
+</section>
+
+<section class="mag-section" id="quiz" aria-labelledby="q-h">
+  <p class="mag-kicker">{d.sections.quiz}</p>
+  <h2 id="q-h">{d.quiz_title}</h2>
+  <ol class="mag-quiz" style="list-style:none;padding:0">
+    {d.quiz.map((q: [string, string, string], i: number) => <li><span class="n" aria-hidden="true">{i + 1}</span><p>{q[0]}</p></li>)}
+  </ol>
+  <details>
+    <summary>{d.web.answers_show}</summary>
+    <ol style="padding-inline-start:1.2rem;margin:0.5rem 0 0">
+      {d.quiz.map((q: [string, string, string], i: number) => <li><strong>{q[1]}</strong> · <a href={`#${pageId[q[2]]}`}>{extra.page} {q[2]}</a></li>)}
+    </ol>
+  </details>
+</section>
+
+<section class="mag-section" id="sources" aria-labelledby="s-h">
+  <h2 id="s-h">{d.src_title}</h2>
+  <ul class="mag-sources">
+    {d.sources.map((s: string, i: number) => (
+      <li>{s}{d.sources_links[i].map((l: { label: string; href: string }) => <a href={l.href} rel="noopener">{l.label} ↗</a>)}</li>
+    ))}
+  </ul>
+  <p class="mag-small mag-muted">{d.web.checked} {d.web.corrections}</p>
+</section>
+
+<section class="mag-section" id="avis" aria-labelledby="a-h">
+  <p class="mag-kicker">{d.sections.vous}</p>
+  <h2 id="a-h">{d.back_title}</h2>
+  <p>{d.back_suggest}</p>
+  <div class="mag-actions">
+    <a class="mag-btn mag-btn-light" href={url(avisHref)}>{d.web.avis_cta} →</a>
+    <a class="mag-btn mag-btn-light" href={url(`/magazine/#proposer-${lang}`)}>{extra.propose} →</a>
+    <a class="mag-btn mag-btn-light" href={url(pdfHref)} download>{d.web.read_pdf}</a>
+  </div>
+  <p class="mag-small mag-muted">{d.web.pdf_note}</p>
+</section>

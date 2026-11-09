@@ -1,0 +1,88 @@
+---
+// Page visée par le QR code du n° 01 (…/magazine/avis/?n=01&l=fr|en|ar&s=papier|web).
+// Ce site statique n’enregistre rien : le formulaire prépare un courriel que le lecteur relit avant l’envoi.
+// Pour passer à un formulaire hébergé, seule cette page change : le QR imprimé reste valable.
+import Magazine from '../../layouts/Magazine.astro';
+import data from '../../data/magazine/n01.json';
+import { url } from '../../data/site';
+type Lang = 'fr' | 'en' | 'ar';
+const langs: Lang[] = ['fr', 'en', 'ar'];
+const t = {
+  fr: { title: 'Votre avis sur le n° 01', intro: 'Trois questions pour nous aider à préparer la suite et choisir les langues du prochain numéro.',
+        free: 'Un grand projet près de chez vous à expliquer ? (facultatif)', send: 'Préparer mon courriel',
+        privacy: 'Ce site n’enregistre aucune réponse. Le bouton prépare un courriel que vous relisez avant de l’envoyer. Il ne demande ni votre nom ni votre adresse, mais votre messagerie joint votre adresse à l’envoi.',
+        fallback: 'Si votre messagerie ne s’ouvre pas, écrivez à',
+        back: '← Revenir au numéro', issue: '/magazine/n01/', subject: 'TENIR N° 01 — avis' },
+  en: { title: 'Your view on No. 01', intro: 'Three questions to help us plan what comes next and choose the languages for the next issue.',
+        free: 'A big project near you that we should explain? (optional)', send: 'Prepare my email',
+        privacy: 'This site stores no answers. The button prepares an email you review before sending. It asks for neither your name nor your address, but your mail app attaches your address when you send it.',
+        fallback: 'If your mail app does not open, write to',
+        back: '← Back to the issue', issue: '/magazine/n01/en/', subject: 'TENIR No. 01 — feedback' },
+  ar: { title: 'رأيك في العدد 01', intro: 'ثلاثة أسئلة تساعدنا على إعداد الخطوة المقبلة واختيار لغات العدد القادم.',
+        free: 'مشروع كبير قرب بيتك تريد أن نشرحه؟ (اختياري)', send: 'تحضير رسالتي',
+        privacy: 'لا يسجّل هذا الموقع أي جواب. يحضّر الزر رسالة إلكترونية تراجعها قبل إرسالها. لا يطلب اسمك ولا عنوانك، لكن تطبيق البريد يرفق عنوانك عند الإرسال.',
+        fallback: 'إذا لم يُفتح تطبيق البريد، راسلنا على',
+        back: '→ العودة إلى العدد', issue: '/magazine/n01/ar/', subject: 'TENIR العدد 01 — رأي' },
+};
+const keys = ['utile', 'sujet', 'langue'];
+---
+<Magazine lang="fr" title="TENIR N° 01 — Votre avis · Your view · رأيك" description="Trois questions sur le numéro pilote de TENIR. Three questions on the TENIR pilot issue. ثلاثة أسئلة حول العدد التجريبي." path="/magazine/avis/" current="avis" issueHref="/magazine/n01/">
+  <p class="mag-lang" style="margin-bottom:1.5rem">
+    {langs.map((l) => <a href={`?n=01&l=${l}`} lang={l} data-lang-link={l}>{l === 'fr' ? 'Français' : l === 'en' ? 'English' : 'العربية'}</a>)}
+  </p>
+  {langs.map((l) => {
+    const d = (data as any)[l];
+    return (
+      <section class="mag-section" lang={l} dir={l === 'ar' ? 'rtl' : 'ltr'} data-avis={l} aria-labelledby={`avis-${l}`}>
+        <h1 id={`avis-${l}`} style="font-family:var(--head);font-weight:800;font-size:clamp(1.8rem,4vw,2.3rem);line-height:1.2">{t[l].title}</h1>
+        <p>{t[l].intro}</p>
+        <form class="mag-form" action="mailto:skiredj@tenirlabs.cc" method="post" enctype="text/plain" data-subject={t[l].subject} data-form-lang={l}>
+          {d.back_qs.map((q: [string, string[]], qi: number) => (
+            <fieldset>
+              <legend>{q[0]}</legend>
+              <div class="mag-choices">
+                {q[1].map((o: string, oi: number) => <label><input type="radio" name={keys[qi]} value={o} required={oi === 0} /> <span>{o}</span></label>)}
+              </div>
+            </fieldset>
+          ))}
+          <label style="display:grid;gap:0.4rem;margin-bottom:1.2rem"><span style="font-family:var(--head);font-weight:800">{t[l].free}</span><textarea name="projet" maxlength="1000"></textarea></label>
+          <input type="hidden" name="numero" value="01" />
+          <input type="hidden" name="langue_edition" value={l} data-param="l" />
+          <input type="hidden" name="source" value="web" data-param="s" />
+          <button type="submit" class="mag-btn mag-btn-light">{t[l].send}</button>
+          <p class="mag-small mag-muted" style="margin-top:0.9rem">{t[l].privacy}</p>
+          <p class="mag-small mag-muted">{t[l].fallback} <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>.</p>
+        </form>
+        <p><a href={url(t[l].issue)}>{t[l].back}</a></p>
+      </section>
+    );
+  })}
+  <script is:inline>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var lang = params.get('l');
+      if (['fr', 'en', 'ar'].indexOf(lang) < 0) lang = 'fr';
+      var source = (params.get('s') || 'web').replace(/[^a-z]/g, '').slice(0, 12) || 'web';
+      document.querySelectorAll('[data-avis]').forEach(function (s) {
+        var on = s.getAttribute('data-avis') === lang;
+        s.hidden = !on;
+        if (on) { document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'; document.body.dir = document.documentElement.dir; }
+      });
+      document.querySelectorAll('[data-lang-link]').forEach(function (a) {
+        // Conserver le marqueur de provenance (s=papier|web) quand on change de langue.
+        a.setAttribute('href', '?n=01&l=' + a.getAttribute('data-lang-link') + '&s=' + source);
+        if (a.getAttribute('data-lang-link') === lang) a.setAttribute('aria-current', 'true');
+      });
+      document.querySelectorAll('input[data-param="s"]').forEach(function (i) { i.value = source; });
+      document.querySelectorAll('form[data-form-lang]').forEach(function (f) {
+        f.addEventListener('submit', function (ev) {
+          ev.preventDefault();
+          var lines = [];
+          new FormData(f).forEach(function (v, k) { if (String(v).trim()) lines.push(k + ' : ' + v); });
+          var subject = f.getAttribute('data-subject') + ' (' + f.getAttribute('data-form-lang') + ', ' + source + ')';
+          location.href = 'mailto:skiredj@tenirlabs.cc?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+        });
+      });
+    })();
+  </script>
+</Magazine>

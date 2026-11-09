@@ -1,0 +1,95 @@
+---
+// Accueil du magazine : choix de la langue, règles éditoriales, téléchargements.
+import Magazine from '../../layouts/Magazine.astro';
+import data from '../../data/magazine/n01.json';
+import { url } from '../../data/site';
+interface Props { path: string; }
+const { path } = Astro.props;
+type Lang = 'fr' | 'en' | 'ar';
+const langs: Lang[] = ['fr', 'en', 'ar'];
+const issue: Record<Lang, string> = { fr: '/magazine/n01/', en: '/magazine/n01/en/', ar: '/magazine/n01/ar/' };
+const read: Record<Lang, string> = { fr: 'Lire en français', en: 'Read in English', ar: 'اقرأ بالعربية' };
+const rules: Record<Lang, { title: string; items: string[] }> = {
+  fr: { title: 'Nos règles', items: [
+    'Chaque affirmation porte une étiquette : fait sourcé, lecture ou proposition.',
+    'Les sources sont citées et datées. Une erreur signalée est corrigée en ligne, avec sa date.',
+    'Aucune publicité dans ce numéro.',
+    'La citation d’un organisme ne signifie pas qu’il approuve nos analyses.' ] },
+  en: { title: 'Our rules', items: [
+    'Every statement carries a label: sourced fact, reading or proposal.',
+    'Sources are cited and dated. A reported error is corrected online, with its date.',
+    'No advertising in this issue.',
+    'Mentioning an organisation does not mean it endorses our analysis.' ] },
+  ar: { title: 'قواعدنا', items: [
+    'كل معلومة تحمل وسماً: معطى موثّق، أو قراءة، أو اقتراح.',
+    'المصادر مذكورة ومؤرَّخة. يُصحَّح كل خطأ مبلَّغ عنه في النسخة الإلكترونية مع ذكر تاريخه.',
+    'لا إشهار في هذا العدد.',
+    'ذكر أي جهة لا يعني أنها تؤيد تحليلنا.' ] },
+};
+const proposals: Record<Lang, { title: string; body: string; button: string; note: string; subject: string }> = {
+  fr: {
+    title: 'Proposer un dossier',
+    body: 'Vous portez un projet public ou privé à un moment de décision ? Envoyez son objet, le prochain jalon et des sources publiques. TENIR examine les faits, les choix encore ouverts et ce qui pourrait être corrigé.',
+    button: 'Proposer un projet',
+    note: 'La proposition est gratuite. La sélection reste éditoriale et ne garantit aucune conclusion favorable. N’envoyez pas de document confidentiel dans ce premier message.',
+    subject: 'TENIR — proposition de dossier',
+  },
+  en: {
+    title: 'Propose a report',
+    body: 'Do you lead a public or private project approaching a decision point? Send its purpose, the next milestone and public sources. TENIR examines the facts, the options still open and what could still be corrected.',
+    button: 'Propose a project',
+    note: 'Proposing a project is free. Selection is editorial and does not guarantee favourable coverage. Do not send confidential documents in your first message.',
+    subject: 'TENIR — report proposal',
+  },
+  ar: {
+    title: 'اقترح ملفاً',
+    body: 'هل تحمل مشروعاً عمومياً أو خاصاً يقترب من قرار مهم؟ أرسل موضوعه والمرحلة المقبلة ومصادره العمومية. تدرس TENIR الوقائع والخيارات التي ما زالت مفتوحة وما يمكن تصحيحه.',
+    button: 'اقتراح مشروع',
+    note: 'الاقتراح مجاني. الاختيار تحريري ولا يضمن تغطية مؤيدة. لا ترسل وثائق سرية في رسالتك الأولى.',
+    subject: 'TENIR — اقتراح ملف',
+  },
+};
+const fr = (data as any).fr;
+---
+<Magazine lang="fr" title="TENIR — Les grands choix, expliqués · N° 01 Maroc 2030" description={fr.web.description} path={path} current="index" issueHref="/magazine/n01/" avisHref="/magazine/avis/?n=01&l=fr&s=web">
+  <section class="mag-hero" slot="hero" aria-labelledby="titre">
+    <div class="mag-hero-inner">
+      <figure>
+        <img src={url('/magazine/n01/couverture.jpg')} alt={fr.web.cover_alt} width="1100" height="895" />
+        <figcaption>{fr.cover_caption}</figcaption>
+      </figure>
+      <div class="mag-hero-text">
+        <p class="mag-kicker">{fr.issue_date} · {fr.kicker_cover}</p>
+        <h1 id="titre">{fr.cover_title}</h1>
+        <p class="mag-sub">{fr.cover_sub}</p>
+        <div class="mag-actions">
+          {langs.map((l) => <a class:list={['mag-btn', l === 'fr' ? 'mag-btn-primary' : 'mag-btn-ghost']} href={url(issue[l])} lang={l} hreflang={l}>{read[l]}</a>)}
+        </div>
+      </div>
+    </div>
+  </section>
+  {langs.map((l) => {
+    const d = (data as any)[l];
+    return (
+      <section class="mag-section" lang={l} dir={l === 'ar' ? 'rtl' : 'ltr'} aria-labelledby={`home-${l}`}>
+        <p class="mag-kicker">{d.tagline}</p>
+        <h2 id={`home-${l}`}>{d.cover_title} · {d.cover_sub}</h2>
+        <p>{d.edito_body[2]}</p>
+        <div class="mag-actions">
+          <a class="mag-btn mag-btn-light" href={url(issue[l])}>{read[l]} →</a>
+          <a class="mag-btn mag-btn-light" href={url(`/magazine/n01/TENIR-N01-${l.toUpperCase()}.pdf`)} download>{d.web.read_pdf}</a>
+        </div>
+        <p class="mag-small mag-muted">{d.web.pdf_note}</p>
+        <h3>{rules[l].title}</h3>
+        <ul class="mag-locks">{rules[l].items.map((r, i) => <li><span class="n" aria-hidden="true">{i + 1}</span><p>{r}</p></li>)}</ul>
+        <div class="mag-box mag-box--sky" id={`proposer-${l}`}>
+          <h3>{proposals[l].title}</h3>
+          <p>{proposals[l].body}</p>
+          <p><a class="mag-btn mag-btn-light" href={`mailto:skiredj@tenirlabs.cc?subject=${encodeURIComponent(proposals[l].subject)}`}>{proposals[l].button} →</a></p>
+          <p class="mag-small mag-muted">{proposals[l].note}</p>
+        </div>
+      </section>
+    );
+  })}
+  <Fragment slot="footer"><p>{fr.back_legal}</p></Fragment>
+</Magazine>

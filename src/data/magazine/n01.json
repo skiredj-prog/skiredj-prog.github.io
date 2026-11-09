@@ -1,0 +1,1853 @@
+{
+ "fr": {
+  "lang": "fr",
+  "dir": "ltr",
+  "run": "TENIR · N° 01",
+  "tagline": "Les grands choix, expliqués",
+  "issue_date": "N° 01 · Novembre 2026",
+  "kicker_cover": "Édition pilote · Gratuit",
+  "cover_title": "Maroc 2030",
+  "cover_sub": "Construire vite, garder le choix",
+  "cover_teasers": [
+   [
+    "Coupe du monde 2030 : et après le dernier match ?",
+    "8"
+   ],
+   [
+    "L’eau de mer au robinet : ce qu’il faut suivre",
+    "6"
+   ],
+   [
+    "Un port confié pour 25 ans",
+    "7"
+   ],
+   [
+    "Une IA qui parle darija : qui garde la main ?",
+    "12"
+   ]
+  ],
+  "cover_caption": "Illustration conceptuelle, aucun lieu réel",
+  "p": "p.",
+  "tags": {
+   "fact": "C’est un fait",
+   "think": "Ce qu’on en pense",
+   "suggest": "Ce qu’on propose"
+  },
+  "sections": {
+   "edito": "Édito",
+   "essentiel": "L’essentiel",
+   "angle": "Grand angle",
+   "eau": "Eau",
+   "ports": "Ports et trains",
+   "ia": "Numérique",
+   "cas": "Un cas concret",
+   "outil": "La méthode",
+   "quiz": "Jeu et sources",
+   "vous": "À vous",
+   "cdm": "Coupe du monde 2030"
+  },
+  "edito_kicker": "Édito",
+  "edito_title": "Ce qu’on construit aujourd’hui, on vivra avec demain",
+  "edito_body": [
+   "D’ici 2030, le Maroc construit vite : dessalement, trains, ports, stades, intelligence artificielle. Ces chantiers vont changer notre quotidien, de l’eau du robinet à nos trajets.",
+   "Certains choix engagent pour vingt-cinq ans ou plus. Plus on avance, plus une correction coûte cher.",
+   "Ce magazine ne juge pas les projets. Il montre ce que l’on sait, ce que l’on ignore encore et ce que l’on peut demander."
+  ],
+  "edito_q": [
+   "La question n’est pas : « faut-il construire ? »",
+   "La question est : « que pourra-t-on encore corriger ? »"
+  ],
+  "edito_sign": "Aziz Skiredj, TENIR Labs, Casablanca",
+  "toc_title": "Dans ce numéro",
+  "toc": [
+   [
+    "03",
+    "L’essentiel"
+   ],
+   [
+    "04",
+    "Le Maroc construit vite"
+   ],
+   [
+    "05",
+    "Choix difficiles à défaire"
+   ],
+   [
+    "06",
+    "L’eau de mer au robinet"
+   ],
+   [
+    "07",
+    "Ports et trains"
+   ],
+   [
+    "08",
+    "Coupe du monde 2030"
+   ],
+   [
+    "12",
+    "Une IA qui parle darija"
+   ],
+   [
+    "13",
+    "Un prêt en deux temps"
+   ],
+   [
+    "14",
+    "Avant de signer"
+   ],
+   [
+    "15",
+    "Jeu et sources"
+   ]
+  ],
+  "howto_title": "Comment lire ce magazine",
+  "howto": [
+   [
+    "fact",
+    "Vérifié, avec sa source en page 15."
+   ],
+   [
+    "think",
+    "Notre lecture des faits. Elle se discute."
+   ],
+   [
+    "suggest",
+    "Une idée à débattre, pas une vérité."
+   ]
+  ],
+  "ess_title": "L’essentiel en 90 secondes",
+  "ess": [
+   [
+    "fact",
+    "Les grands chantiers avancent sur plusieurs fronts à la fois : eau, rail, ports, stades, énergie, intelligence artificielle."
+   ],
+   [
+    "fact",
+    "Certains engagements durent très longtemps : le terminal ouest du port de Nador West Med est confié pour 25 ans."
+   ],
+   [
+    "think",
+    "Le vrai risque n’est pas de construire. C’est de ne plus pouvoir corriger si une hypothèse se révèle fausse."
+   ]
+  ],
+  "ess_q_label": "La question à retenir",
+  "ess_q": "Avant la prochaine signature, que pourra-t-on encore changer, et qui pourra le décider ?",
+  "angle_title": "Le Maroc construit vite",
+  "angle_intro": "Quatre chantiers, quatre repères. Ce sont des montants et des objectifs annoncés, pas des résultats.",
+  "cards": [
+   [
+    "Eau",
+    "447",
+    "millions de m³ par an",
+    "de capacité de dessalement. Horizon 2031 : près de 1,8 milliard.",
+    "Ministre de l’Équipement et de l’Eau, 2 novembre 2026"
+   ],
+   [
+    "Train",
+    "96",
+    "milliards de DH",
+    "pour le rail d’ici 2030, dont 168 nouveaux trains.",
+    "ONCF"
+   ],
+   [
+    "Port",
+    "25",
+    "ans de concession",
+    "pour le terminal ouest de Nador West Med. 280 M€ en phase 1.",
+    "Marsa Maroc, 2025"
+   ],
+   [
+    "IA",
+    "200 000",
+    "talents à former",
+    "ou à certifier d’ici 2030. 50 000 emplois visés.",
+    "Feuille de route Maroc IA 2030"
+   ]
+  ],
+  "angle_box_title": "Ce que ces chiffres ne disent pas encore",
+  "angle_box": "Un objectif n’est pas un résultat. Une capacité n’est pas un service. Un budget n’est pas une valeur créée. Une concession n’est pas une preuve de trafic.",
+  "lock_title": "Pourquoi certains choix sont difficiles à défaire",
+  "lock_intro": "Une grande décision ressemble à un chemin qui se divise. Au départ, on peut prendre une autre voie. Plus on avance, plus revenir coûte cher.",
+  "path_labels": [
+   "Au départ",
+   "Après la signature",
+   "Après les travaux"
+  ],
+  "locks": [
+   [
+    "Le contrat",
+    "En sortir a un prix."
+   ],
+   [
+    "L’argent",
+    "Dépensé ou emprunté, il ne revient pas toujours."
+   ],
+   [
+    "La technique",
+    "Changer de fournisseur prend du temps."
+   ],
+   [
+    "L’organisation",
+    "Équipes et budgets suivent un seul choix."
+   ],
+   [
+    "La promesse publique",
+    "Un projet annoncé devient un symbole."
+   ]
+  ],
+  "lock_suggest": "Un test simple : si une hypothèse importante devient fausse demain, que peut-on changer en premier ? Pas tout arrêter : savoir où sont les portes de sortie, qui en a la clé et combien de temps il faut pour les ouvrir.",
+  "eau_title": "L’eau de mer au robinet",
+  "eau_fact": "Face à la sécheresse, le Maroc mise sur le dessalement : rendre l’eau de mer potable. Le 2 novembre 2026, le ministre de l’Équipement et de l’Eau a indiqué une capacité de 447 millions de m³ par an, avec un objectif proche de 1,8 milliard en 2031.",
+  "eau_need_title": "Une usine ne suffit pas. Pour que l’eau arrive chez vous, il faut aussi :",
+  "eau_needs": [
+   "de l’électricité, beaucoup",
+   "des conduites jusqu’aux villes",
+   "de l’entretien, chaque année",
+   "gérer le sel rejeté en mer"
+  ],
+  "eau_think": "Une capacité annoncée n’est pas l’eau qui coule au robinet. À suivre : le volume réellement livré, au bon endroit, à un prix supportable.",
+  "eau_suggest": "Avant chaque agrandissement, publier le coût complet du m³ et des scénarios : sécheresse, prix de l’énergie, demande.",
+  "ports_title": "Des choix pour longtemps",
+  "port_head": "Le port",
+  "port_fact": "À Nador West Med, le terminal ouest est confié à Marsa Maroc pour 25 ans. Première phase : 280 millions d’euros, mise en service prévue à partir de 2027.",
+  "port_think": "Un quai ne garantit pas les bateaux. La valeur d’un port dépend des routes, du rail et des clients qu’il attirera vraiment. Le trafic attendu est-il nouveau, ou pris à un autre port ?",
+  "train_head": "Le train",
+  "train_fact": "L’ONCF mène un programme de 96 milliards de DH d’ici 2030 et prévoit près de 100 millions de voyageurs en 2030, contre 55,6 millions en 2025.",
+  "train_think": "Une prévision de voyageurs est une hypothèse. Elle mérite d’être comparée, chaque année, à la fréquentation réelle.",
+  "ports_ask_title": "À demander à chaque mise à jour",
+  "ports_ask": "Quelle hypothèse a changé ? Quel coût est devenu irréversible ? Que se passe-t-il si le trafic reste sous la prévision ?",
+  "ia_title": "Une IA qui parle darija : qui garde la main ?",
+  "ia_fact": "La feuille de route « Maroc IA 2030 », dévoilée en janvier 2026, vise 50 000 emplois et 200 000 talents à former ou à certifier. Le 29 septembre 2026, le ministère de la Transition numérique et Mistral AI ont annoncé deux premiers modèles pour la darija et leur publication en open source.",
+  "ia_think": "Une avancée concrète, qui permet de poser trois questions valables pour toute IA d’un service public :",
+  "ia_qs": [
+   [
+    "Où fonctionne-t-elle ?",
+    "Sur quelles machines, dans quel pays."
+   ],
+   [
+    "Qui touche aux données ?",
+    "Qui peut les lire, les déplacer, les effacer."
+   ],
+   [
+    "Qui peut l’arrêter ?",
+    "Qui change ses règles, stoppe une action, la relance."
+   ]
+  ],
+  "ia_think2": "L’héberger au Maroc répond à la première question, pas forcément aux deux autres.",
+  "ia_suggest": "Quand une IA touche à un droit ou à un budget, une personne habilitée doit pouvoir arrêter et revoir sa décision.",
+  "cas_title": "Un prêt pour l’eau, en deux temps",
+  "cas_fact": "En juillet 2026, la Banque européenne pour la reconstruction et le développement (BERD) a approuvé un prêt pouvant atteindre 250 millions d’euros à l’ONEE, pour moderniser la production d’eau potable et réduire les pertes d’eau.",
+  "cas_a": [
+   "Part A",
+   "120 M€",
+   "engagée"
+  ],
+  "cas_b": [
+   "Part B",
+   "130 M€",
+   "non engagée"
+  ],
+  "cas_grant": "et une subvention de 5 M€",
+  "cas_think": "Ce découpage crée un rendez-vous utile : avant d’engager la seconde part, on peut vérifier.",
+  "cas_known_title": "Ce qu’on sait",
+  "cas_known": [
+   "Les montants et le but du programme",
+   "Un examen environnemental et social prévu pour la part B",
+   "Ses travaux pourront être adaptés"
+  ],
+  "cas_unknown_title": "Ce qu’on ne sait pas encore",
+  "cas_unknown": [
+   "La date de la décision sur la part B",
+   "La liste des travaux retenus",
+   "Ce que coûterait un changement"
+  ],
+  "cas_note": "Cette page décrit les documents publics cités. Les acteurs concernés peuvent transmettre des précisions à TENIR.",
+  "tool_title": "Deux questions à poser avant de signer",
+  "tool_q1": "MC · Marge de correction",
+  "tool_a1": "Aura-t-on encore le temps de corriger ? MC = jours restants avant le jalon moins jours nécessaires pour détecter, décider et corriger. Un résultat négatif signale un délai insuffisant.",
+  "tool_ex_label": "Exemple imaginaire",
+  "tool_ex": "45 jours avant la signature, 52 jours pour corriger : 7 jours de retard. Il faut décaler, réduire la commande ou corriger plus vite.",
+  "tool_q2": "EHV · Exposition sous hypothèses non vérifiées",
+  "tool_a2": "Combien engage-t-on avant la preuve ? EHV additionne la part non récupérable des engagements qui dépendent d’hypothèses déterminantes encore non vérifiées, en DH ou en euros.",
+  "tool_nc_label": "Et si on ne peut pas calculer ?",
+  "tool_nc": "On le dit, et on nomme les pièces qui manquent : une inconnue publiée vaut mieux qu’une précision inventée. Pour les projets de ce numéro, les documents publics ne suffisent pas.",
+  "tool_note": "MC et EHV sont deux mesures expérimentales TENIR, sans score global ni évaluation des projets de ce numéro.",
+  "quiz_title": "Vrai ou faux ?",
+  "quiz": [
+   [
+    "Une capacité de dessalement annoncée, c’est l’eau qui arrive au robinet.",
+    "Faux",
+    "6"
+   ],
+   [
+    "Le terminal ouest de Nador West Med est confié pour 25 ans.",
+    "Vrai",
+    "7"
+   ],
+   [
+    "La FIFA a déjà choisi le stade de la finale de 2030.",
+    "Faux",
+    "8"
+   ],
+   [
+    "Héberger une IA au Maroc suffit à garder la main sur ses décisions.",
+    "Faux",
+    "12"
+   ],
+   [
+    "Le prêt de la BERD à l’ONEE est entièrement engagé.",
+    "Faux",
+    "13"
+   ]
+  ],
+  "quiz_answers_label": "Réponses (page)",
+  "src_title": "Nos sources",
+  "sources": [
+   "Eau : maroc.ma, 3 novembre 2026, compte rendu de la déclaration du ministre du 2 novembre.",
+   "Rail : ONCF ; Le360, 27 octobre 2026.",
+   "Port : Marsa Maroc et Tanger Med, communiqués de 2025.",
+   "IA : ministère de la Transition numérique, janvier et septembre 2026 ; annonce avec Mistral AI, 29 septembre 2026.",
+   "Prêt ONEE : BERD, projet 57587 et rapport au Conseil, juillet 2026.",
+   "Coupe du monde : FIFA, SONARGES, loi 35.25, Le Desk et presse internationale."
+  ],
+  "src_note": "Liens complets et corrections : tenirlabs.cc/n01. Vérifié le 9 novembre 2026. Une erreur signalée est corrigée en ligne, avec sa date.",
+  "back_title": "Ce numéro est un essai. Votre avis compte pour la suite.",
+  "back_qs": [
+   [
+    "Ce magazine vous a-t-il été utile ?",
+    [
+     "Oui",
+     "Un peu",
+     "Non"
+    ]
+   ],
+   [
+    "Quel sujet pour le prochain numéro ?",
+    [
+     "L’eau",
+     "Les transports",
+     "L’école et le numérique",
+     "L’emploi",
+     "L’énergie"
+    ]
+   ],
+   [
+    "Dans quelle langue préférez-vous le lire ?",
+    [
+     "Français",
+     "العربية",
+     "English"
+    ]
+   ]
+  ],
+  "back_qr": "Scannez pour répondre",
+  "back_cta": "Répondez en une minute",
+  "back_link": "ou sur tenirlabs.cc/n01",
+  "back_suggest": "Vous portez un projet public ou privé ? Proposez-le comme prochain dossier TENIR. La sélection est éditoriale et ne garantit aucune conclusion favorable.",
+  "back_legal": "TENIR · N° 01, édition pilote gratuite, novembre 2026. Publication d’essai, non périodique. Éditeur : TENIR Labs, Casablanca. Aucune publicité. Couverture : illustration conceptuelle. Les erreurs signalées sont corrigées dans la version en ligne.",
+  "social_line": "Un magazine gratuit pour comprendre les grands choix du pays, en français, en arabe et en anglais.",
+  "social_cta": "Lire : tenirlabs.cc/n01",
+  "taglines": [
+   "Les grands choix, expliqués",
+   "Lire vite, approfondir ensuite",
+   "Chiffres annoncés, résultats à suivre",
+   "Une décision, plusieurs dépendances",
+   "Une capacité n’est pas encore un service",
+   "Un actif, un réseau, des usages réels",
+   "Un mois de matchs, des décennies d’usage",
+   "Apprendre des pays qui ont accueilli avant nous",
+   "Ce qui est annoncé, ce qui reste à publier",
+   "Décider l’après avant le coup d’envoi",
+   "Une IA utile est une IA qu’on peut arrêter",
+   "Un engagement, un rendez-vous de preuve",
+   "Mesurer ce qui reste corrigeable",
+   "Une publication vérifiable est une publication corrigeable",
+   "Les grands choix, expliqués"
+  ],
+  "cdm_kicker": "Dossier · 4 pages",
+  "cdm_title": "Coupe du monde 2030 : et après le dernier match ?",
+  "cdm_fact": [
+   "Le 11 décembre 2024, la FIFA a confié la Coupe du monde 2030 au Maroc, à l’Espagne et au Portugal. Le Maroc propose six stades : Benslimane, Rabat, Tanger, Marrakech, Agadir et Fès.",
+   "À Benslimane, entre Casablanca et Rabat, se construit le Grand Stade Hassan II, annoncé pour début 2028. Le lieu de la finale n’est pas décidé : la FIFA l’a redit en août puis en septembre 2026."
+  ],
+  "cdm_big": [
+   [
+    "115 000",
+    "places de capacité brute annoncée à Benslimane"
+   ],
+   [
+    "80 000",
+    "places assises : minimum FIFA pour une finale"
+   ]
+  ],
+  "cdm_think": "Ces deux jauges ne se comparent pas place pour place : l’une est une capacité brute annoncée, l’autre un minimum de places assises. Elles posent néanmoins la question du dimensionnement au quotidien. Le tournoi dure un peu plus d’un mois ; un stade sert des décennies. Après le dernier match, qui remplira les tribunes et paiera l’entretien ?",
+  "cdm_prec_title": "Ce que les autres pays ont appris",
+  "cdm_prec": [
+   [
+    "Le stade sans public",
+    "Afrique du Sud 2010 · Brésil 2014",
+    "Polokwane (2010) et Manaus (2014) n’avaient pas de grand club pour remplir leur nouveau stade. En 2015, celui de Manaus coûtait environ 233 000 dollars par mois à faire tourner."
+   ],
+   [
+    "Le train oublié",
+    "Brésil 2014",
+    "Les stades devaient être prêts à temps ; les projets de transport pouvaient sortir de la liste. Dès 2013, treize étaient annulés, dans dix villes hôtes."
+   ],
+   [
+    "Le locataire trouvé tard",
+    "Le Cap · 2010",
+    "Il a fallu attendre 2021 pour qu’un club, les Stormers (rugby), s’y installe, en quittant son propre stade. L’accord, signé en 2023, court sur 39 ans."
+   ],
+   [
+    "La promesse de rétrécir",
+    "Russie 2018 · Qatar 2022",
+    "La Russie a prévu des tribunes temporaires, démontables. Le Qatar a promis de retirer environ 170 000 sièges et de démonter le stade 974 ; en janvier 2025, celui-ci accueillait encore un match."
+   ],
+   [
+    "La leçon retenue",
+    "Portugal · 2004, puis 2030",
+    "Après l’Euro 2004, Leiria et Aveiro ont envisagé de démolir des stades trop chers à entretenir. Pour 2030, le Portugal ne présente que les trois stades de ses grands clubs."
+   ]
+  ],
+  "cdm_prec_think": "Ces cas ne donnent pas une recette unique. Ils posent la même question : qui utilisera le stade toute l’année, et avec quel budget d’entretien ?",
+  "cdm_ma_title": "Benslimane : ce qui est prévu, ce qui reste ouvert",
+  "cdm_ma_rows": [
+   [
+    "Les résidents",
+    "En octobre 2026, Fouzi Lekjaa, président de la Fédération, a annoncé que le Raja, le Wydad et l’équipe nationale y joueront, avant même 2030."
+   ],
+   [
+    "L’accès",
+    "Une gare se construit près du stade (marché attribué en mars 2026) ; des trains de proximité doivent la relier à Casa-Port et à l’aéroport."
+   ],
+   [
+    "Les marchés recensés",
+    "L’enveloppe initialement annoncée était d’environ 5 milliards de DH. En octobre 2026, Le Desk a recensé 13,6 milliards de DH de marchés lancés ou attribués autour du chantier. Les périmètres diffèrent ; ce second montant n’est pas un coût final."
+   ]
+  ],
+  "cdm_ma_think": "Deux leçons sont déjà retenues : un club résident est annoncé, le train est prévu avec le stade. Reste un risque plus discret : remplir un stade peut en vider un autre. Mohammed V a été rénové et rouvert en avril 2025, Moulay Abdellah reconstruit à Rabat : un même public pour trois grands stades.",
+  "cdm_ma_unknown_title": "Pas trouvé dans les documents publics",
+  "cdm_ma_unknown": [
+   "Le contrat avec les clubs : durée, loyer, matchs par an",
+   "Le coût d’entretien annuel, et qui le paie",
+   "L’avenir du complexe Mohammed V",
+   "Une jauge réduite pour les matchs ordinaires"
+  ],
+  "cdm_ma_note": "Ce dossier repose sur les documents publics cités. Les acteurs concernés peuvent transmettre des précisions à TENIR.",
+  "cdm_ch_title": "Ce qui peut encore se décider avant 2030",
+  "cdm_ch_fact": "Créée par la loi 35.25 en 2025, la Fondation Maroc 2030 prépare, organise et valorise les compétitions internationales de football confiées au Maroc jusqu’à la Coupe du monde 2030. La loi ne précise pas qui exploitera les équipements après le tournoi.",
+  "cdm_ch": [
+   [
+    "Signer l’usage avant l’inauguration",
+    "Un contrat public avec les clubs : durée, matchs, loyer. Le Cap l’a signé treize ans après."
+   ],
+   [
+    "Prévoir la jauge du quotidien",
+    "Fermer une partie des tribunes un soir de championnat, sans entretenir tout le stade."
+   ],
+   [
+    "Publier le coût complet, à jour",
+    "Construction, accès, gare, entretien : un écart expliqué rassure plus qu’un chiffre figé."
+   ],
+   [
+    "Dater chaque promesse",
+    "Qui exploitera chaque équipement après 2030, sous quel contrat et avec quel contrôle ?"
+   ]
+  ],
+  "cdm_ask_title": "Trois questions pour la suite",
+  "cdm_ask": "Qui jouera à Benslimane un mardi soir de février 2031 ? Combien coûte une saison d’entretien, et qui la paie ? Que deviendra le complexe Mohammed V ?",
+  "sources_links": [
+   [
+    {
+     "label": "maroc.ma, 02/11/2026",
+     "href": "https://maroc.ma/fr/actualites/securite-hydrique-lancement-dune-nouvelle-strategie-adaptee-aux-mutations-climatiques-majeures"
+    }
+   ],
+   [
+    {
+     "label": "Le360",
+     "href": "https://fr.le360.ma/economie/oncf-96-mmdh-de-chantiers-en-cours-et-pres-de-100-millions-de-voyageurs-attendus-en-2030_R7APRABPVFEZVGZR2B4E3Y3BXY/"
+    }
+   ],
+   [
+    {
+     "label": "Tanger Med",
+     "href": "https://www.tangermed.ma/fr/apres-le-terminal-a-conteneurs-est-marsa-maroc-operera-le-terminal-ouest-de-nador-west-med/"
+    }
+   ],
+   [
+    {
+     "label": "TelQuel, 12/01/2026",
+     "href": "https://telquel.ma/instant-t/2026/01/12/le-maroc-vise-une-contribution-de-100-milliards-de-dirhams-de-lia-au-pib-dici-2030_1969928/"
+    },
+    {
+     "label": "maroc.ma, 30/09/2026",
+     "href": "https://maroc.ma/fr/actualites/le-ministere-de-la-transition-numerique-et-mistral-annoncent-les-premieres-briques-dia-developpees"
+    }
+   ],
+   [
+    {
+     "label": "EBRD 57587",
+     "href": "https://www.ebrd.com/home/work-with-us/projects/psd/57587.html"
+    },
+    {
+     "label": "PSD (FR)",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/PSD%2057587%20(French).pdf"
+    },
+    {
+     "label": "Board report",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/ONEE%20Water%20Board%20Report.pdf"
+    }
+   ],
+   [
+    {
+     "label": "FIFA, 11/12/2024",
+     "href": "https://inside.fifa.com/fr/news/congres-extraordinaire-fifa-hotes-coupe-du-monde-editions-2030-et-2034"
+    },
+    {
+     "label": "FIFA, exigences 2030",
+     "href": "https://digitalhub.fifa.com/m/2a76876ef04ed7b9/original/FIFA-World-Cup-2030-Overview-of-Hosting-Requirements.pdf"
+    },
+    {
+     "label": "SONARGES, Grand Stade Hassan II",
+     "href": "https://www.sonarges.ma/infrastructures/grand-stade-hassan-ii/"
+    },
+    {
+     "label": "Hespress, 11/09/2026",
+     "href": "https://fr.hespress.com/488066-finale-cdm-2030-apres-les-declarations-de-lekjaa-la-fifa-rappelle-quaucune-decision-na-ete-prise.html"
+    },
+    {
+     "label": "Morocco World News, 10/2026",
+     "href": "https://www.moroccoworldnews.com/2026/10/344245/lekjaa-hassan-ii-stadium-to-be-ready-in-2028-targets-2030-world-cup-final/"
+    },
+    {
+     "label": "Morocco World News, 10/2026 (2)",
+     "href": "https://www.moroccoworldnews.com/2026/10/344252/lekjaa-hassan-ii-stadium-to-host-morocco-raja-and-wydad-matches/"
+    },
+    {
+     "label": "Le360, 27/03/2026",
+     "href": "https://fr.le360.ma/economie/gare-du-grand-stade-hassan-ii-de-casablanca-jet-contractors-remporte-le-marche-pour-415-millions-de_BDHMVSMC7JDRHH72CYCN5NZHPA/"
+    },
+    {
+     "label": "SNRTnews",
+     "href": "https://snrtnews.com/fr/article/developpement-dun-service-ferroviaire-de-proximite-a-casablanca-le-citoyen-au-coeur-de-la"
+    },
+    {
+     "label": "Le Desk, 2024",
+     "href": "https://ledesk.ma/encontinu/a-benslimane-le-nouveau-grand-stade-de-casablanca-coutera-5-milliards-de-dirhams/"
+    },
+    {
+     "label": "Le Desk, 06/10/2026",
+     "href": "https://mobile.ledesk.ma/datadesk/grand-stade-hassan-ii-qui-sont-les-acteurs-dun-chantier-desormais-a-136-mmdh/"
+    },
+    {
+     "label": "Médias24, 14/04/2025",
+     "href": "https://medias24.com/2025/04/14/le-complexe-mohammed-v-rouvre-ses-portes-apres-une-annee-de-renovation/"
+    },
+    {
+     "label": "TelQuel, 04/09/2025",
+     "href": "https://telquel.ma/instant-t/2025/09/04/le-prince-moulay-el-hassan-inaugure-a-rabat-le-stade-prince-moulay-abdellah-apres-sa-reconstruction_1949001/"
+    },
+    {
+     "label": "Bulletin officiel, loi 35.25",
+     "href": "https://www.sgg.gov.ma/BO/FR/2873/2025/BO_7428_Fr.pdf"
+    },
+    {
+     "label": "TelQuel, 14/07/2025",
+     "href": "https://telquel.ma/2025/07/14/fondation-maroc-2030-lekjaa-tout-puissant_1942260"
+    },
+    {
+     "label": "Mail & Guardian, 2011",
+     "href": "https://mg.co.za/article/2011-06-10-stadiums-score-costly-own-goals"
+    },
+    {
+     "label": "NPR, 2015",
+     "href": "https://www.npr.org/sections/parallels/2015/05/11/405955547/brazils-world-cup-legacy-includes-550m-stadium-turned-parking-lot"
+    },
+    {
+     "label": "A Pública, 2013",
+     "href": "https://apublica.org/2013/01/promessa-da-copa-2014-de-melhorar-mobilidade-urbana-nao-sera-cumprida/"
+    },
+    {
+     "label": "News24, 2021",
+     "href": "https://www.news24.com/sport/rugby/stormers-to-host-cheetahs-at-cape-town-stadium-as-wp-rugby-moves-headquarters-20210222"
+    },
+    {
+     "label": "The Citizen, 2023",
+     "href": "https://www.citizen.co.za/network-news/lnn/article/stormers-to-stay-in-cape-town-beyond-2060/"
+    },
+    {
+     "label": "CNN, 2017",
+     "href": "https://amp.cnn.com/cnn/2017/12/05/football/russia-world-cup-2018-country-infrastructure"
+    },
+    {
+     "label": "AP, 2022",
+     "href": "https://www.castanetkamloops.net/news/Soccer/394649/Qatar-No-white-elephant-legacy-for-World-Cup-stadiums"
+    },
+    {
+     "label": "PSG, 05/01/2025",
+     "href": "https://en.psg.fr/teams/first-team/content/paris-beat-monaco-to-lift-trophee-des-champions-compte-rendu-paris-saint-germain-as-monaco-ligue-1-2024-2025"
+    },
+    {
+     "label": "Play the Game",
+     "href": "https://playthegame.org/news/understanding-why-taxpayers-end-up-with-the-bill-for-white-elephants"
+    },
+    {
+     "label": "The Portugal News, 2023",
+     "href": "https://theportugalnews.com/news/2023-10-24/minister-confirms-no-new-stadiums-for-world-cup/82608"
+    }
+   ]
+  ],
+  "web": {
+   "read_pdf": "Télécharger le PDF (A5, 16 pages)",
+   "pdf_note": "Le PDF est conçu pour l’impression. Pour rechercher dans le texte ou utiliser un lecteur d’écran, lisez la version web.",
+   "give_view": "Donner mon avis",
+   "languages": "Langues",
+   "answers_show": "Voir les réponses",
+   "corrections": "Corrections : aucune à ce jour (9 novembre 2026).",
+   "checked": "Sources vérifiées le 9 novembre 2026.",
+   "published_by": "Publié par TENIR Labs",
+   "toc_label": "Sommaire",
+   "back_to_site": "tenirlabs.cc",
+   "cover_alt": "Illustration conceptuelle : un littoral marocain imaginaire avec un port, un train, une usine de dessalement et des chemins qui se séparent.",
+   "avis_cta": "Répondre aux trois questions",
+   "doc_title": "Maroc 2030 : construire vite, garder le choix — TENIR N° 01",
+   "description": "Le numéro pilote de TENIR, magazine gratuit sur les grands choix du Maroc : dessalement, ports, trains, Coupe du monde 2030, IA en darija, prêt pour l’eau. Faits sourcés, lectures et propositions séparés."
+  }
+ },
+ "en": {
+  "lang": "en",
+  "dir": "ltr",
+  "run": "TENIR · No. 01",
+  "tagline": "Big choices, explained",
+  "issue_date": "No. 01 · November 2026",
+  "kicker_cover": "Pilot edition · Free",
+  "cover_title": "Morocco 2030",
+  "cover_sub": "Building fast, keeping our options",
+  "cover_teasers": [
+   [
+    "World Cup 2030: and after the last match?",
+    "8"
+   ],
+   [
+    "Seawater to tap: what to watch",
+    "6"
+   ],
+   [
+    "A port signed over for 25 years",
+    "7"
+   ],
+   [
+    "An AI that speaks Darija: who stays in charge?",
+    "12"
+   ]
+  ],
+  "cover_caption": "Conceptual illustration, not a real place",
+  "p": "p.",
+  "tags": {
+   "fact": "Fact",
+   "think": "What we think",
+   "suggest": "What we suggest"
+  },
+  "sections": {
+   "edito": "Editorial",
+   "essentiel": "The essentials",
+   "angle": "The big picture",
+   "eau": "Water",
+   "ports": "Ports and trains",
+   "ia": "Digital",
+   "cas": "A real case",
+   "outil": "The method",
+   "quiz": "Quiz and sources",
+   "vous": "Your turn",
+   "cdm": "World Cup 2030"
+  },
+  "edito_kicker": "Editorial",
+  "edito_title": "What we build today, we will live with tomorrow",
+  "edito_body": [
+   "By 2030, Morocco is building fast: desalination, trains, ports, stadiums, artificial intelligence. These projects will change daily life, from the water in our taps to the way we travel.",
+   "Some choices commit us for twenty-five years or more. The further we go, the more a correction costs.",
+   "This magazine does not grade projects. It shows what is known, what is not known yet, and what we can ask."
+  ],
+  "edito_q": [
+   "The question is not: “should we build?”",
+   "The question is: “what will we still be able to correct?”"
+  ],
+  "edito_sign": "Aziz Skiredj, TENIR Labs, Casablanca",
+  "toc_title": "In this issue",
+  "toc": [
+   [
+    "03",
+    "The essentials"
+   ],
+   [
+    "04",
+    "Morocco builds fast"
+   ],
+   [
+    "05",
+    "Hard-to-undo choices"
+   ],
+   [
+    "06",
+    "Seawater to tap"
+   ],
+   [
+    "07",
+    "Ports and trains"
+   ],
+   [
+    "08",
+    "World Cup 2030"
+   ],
+   [
+    "12",
+    "An AI that speaks Darija"
+   ],
+   [
+    "13",
+    "A loan in two steps"
+   ],
+   [
+    "14",
+    "Before signing"
+   ],
+   [
+    "15",
+    "Quiz and sources"
+   ]
+  ],
+  "howto_title": "How to read this magazine",
+  "howto": [
+   [
+    "fact",
+    "Checked, with its source on page 15."
+   ],
+   [
+    "think",
+    "Our reading of the facts. Open to debate."
+   ],
+   [
+    "suggest",
+    "An idea to discuss, not a truth."
+   ]
+  ],
+  "ess_title": "The essentials in 90 seconds",
+  "ess": [
+   [
+    "fact",
+    "Major projects are moving on several fronts at once: water, rail, ports, stadiums, energy, artificial intelligence."
+   ],
+   [
+    "fact",
+    "Some commitments last a very long time: the west terminal of Nador West Med port is granted for 25 years."
+   ],
+   [
+    "think",
+    "The real risk is not building. It is losing the ability to correct course if an assumption turns out wrong."
+   ]
+  ],
+  "ess_q_label": "The question to remember",
+  "ess_q": "Before the next signature, what can still be changed, and who will be able to decide?",
+  "angle_title": "Morocco is building fast",
+  "angle_intro": "Four projects, four markers. These are announced budgets and targets, not results.",
+  "cards": [
+   [
+    "Water",
+    "447",
+    "million m³ a year",
+    "of desalination capacity. About 1.8 billion targeted for 2031.",
+    "Minister of Equipment and Water, 2 November 2026"
+   ],
+   [
+    "Rail",
+    "96",
+    "billion dirhams",
+    "for rail by 2030, including 168 new trains.",
+    "ONCF"
+   ],
+   [
+    "Port",
+    "25",
+    "year concession",
+    "for the west terminal of Nador West Med. €280m for phase 1.",
+    "Marsa Maroc, 2025"
+   ],
+   [
+    "AI",
+    "200,000",
+    "people to train",
+    "or certify by 2030. 50,000 jobs targeted.",
+    "Morocco AI 2030 roadmap"
+   ]
+  ],
+  "angle_box_title": "What these figures don’t say yet",
+  "angle_box": "A target is not a result. A capacity is not a service. A budget is not value created. A concession is not proof of traffic.",
+  "lock_title": "Why some choices are hard to undo",
+  "lock_intro": "A big decision is like a road that forks. At the start, you can still take another way. The further you go, the more turning back costs.",
+  "path_labels": [
+   "At the start",
+   "After signing",
+   "After construction"
+  ],
+  "locks": [
+   [
+    "The contract",
+    "Getting out has a price."
+   ],
+   [
+    "The money",
+    "Once spent or borrowed, it may not come back."
+   ],
+   [
+    "The technology",
+    "Switching suppliers takes time."
+   ],
+   [
+    "The organisation",
+    "Teams and budgets follow one choice."
+   ],
+   [
+    "The public promise",
+    "An announced project becomes a symbol."
+   ]
+  ],
+  "lock_suggest": "A simple test: if a key assumption turns out wrong tomorrow, what can be changed first? Not stopping everything: knowing where the exits are, who holds the key, and how long it takes to open them.",
+  "eau_title": "Seawater to tap",
+  "eau_fact": "Facing drought, Morocco is investing in desalination: turning seawater into drinking water. On 2 November 2026, the Minister of Equipment and Water reported annual capacity of 447 million m³, with a target of about 1.8 billion by 2031.",
+  "eau_need_title": "A plant is not enough. For the water to reach your home, you also need:",
+  "eau_needs": [
+   "electricity, and lots of it",
+   "pipes all the way to the cities",
+   "maintenance, every year",
+   "managing the salt sent back to sea"
+  ],
+  "eau_think": "Announced capacity is not the water running from your tap. What to watch: the volume actually delivered, in the right place, at a bearable price.",
+  "eau_suggest": "Before each expansion, publish the full cost per m³ and scenarios: drought, energy prices, demand.",
+  "ports_title": "Choices for the long run",
+  "port_head": "The port",
+  "port_fact": "At Nador West Med, the west terminal is granted to Marsa Maroc for 25 years. First phase: €280 million, with operations planned from 2027.",
+  "port_think": "A quay does not guarantee ships. A port is worth the roads, rail and customers it really attracts. Is the expected traffic new, or taken from another port?",
+  "train_head": "The train",
+  "train_fact": "ONCF is running a MAD 96 billion programme to 2030 and expects nearly 100 million passengers in 2030, up from 55.6 million in 2025.",
+  "train_think": "A passenger forecast is an assumption. It is worth comparing, year after year, with actual ridership.",
+  "ports_ask_title": "To ask at every update",
+  "ports_ask": "Which assumption has changed? Which cost has become irreversible? What happens if traffic stays below the forecast?",
+  "ia_title": "An AI that speaks Darija: who stays in charge?",
+  "ia_fact": "The “Morocco AI 2030” roadmap, unveiled in January 2026, targets 50,000 jobs and 200,000 people to train or certify. On 29 September 2026, the Ministry of Digital Transition and Mistral AI announced two initial models for Darija and plans to release them as open source.",
+  "ia_think": "Real progress, which lets us ask three questions that apply to any AI used by a public service:",
+  "ia_qs": [
+   [
+    "Where does it run?",
+    "On which machines, in which country."
+   ],
+   [
+    "Who handles the data?",
+    "Who can read, move or delete it."
+   ],
+   [
+    "Who can stop it?",
+    "Who changes its rules, halts an action, restarts it."
+   ]
+  ],
+  "ia_think2": "Hosting it in Morocco answers the first question, not necessarily the other two.",
+  "ia_suggest": "When an AI touches a right or a budget, an authorised person must be able to stop and review its decision.",
+  "cas_title": "A loan for water, in two steps",
+  "cas_fact": "In July 2026, the European Bank for Reconstruction and Development (EBRD) approved a loan of up to €250 million to ONEE, to modernise drinking-water production and cut water losses.",
+  "cas_a": [
+   "Part A",
+   "€120m",
+   "committed"
+  ],
+  "cas_b": [
+   "Part B",
+   "€130m",
+   "uncommitted"
+  ],
+  "cas_grant": "plus a €5m grant",
+  "cas_think": "This split creates a useful checkpoint: before committing the second part, things can be checked.",
+  "cas_known_title": "What we know",
+  "cas_known": [
+   "The amounts and the purpose of the programme",
+   "An environmental and social review planned for part B",
+   "Its works can be adapted"
+  ],
+  "cas_unknown_title": "What we don’t know yet",
+  "cas_unknown": [
+   "When part B will be decided",
+   "Which works will be chosen",
+   "What a change would cost"
+  ],
+  "cas_note": "This page describes the public documents cited. The organisations concerned may send clarifications to TENIR.",
+  "tool_title": "Two questions to ask before signing",
+  "tool_q1": "MC · Correction margin",
+  "tool_a1": "Will there still be time to correct? MC = days left before the decision point minus days needed to spot, decide and fix a problem. A negative result signals too little time.",
+  "tool_ex_label": "Imaginary example",
+  "tool_ex": "45 days before signing, 52 days to correct: 7 days short. Move the date, shrink the order or correct faster.",
+  "tool_q2": "EHV · Exposure under unverified assumptions",
+  "tool_a2": "How much is committed before the evidence? EHV adds the unrecoverable portion of commitments that depend on decisive assumptions still unverified, in dirhams or euros.",
+  "tool_nc_label": "And if it can’t be calculated?",
+  "tool_nc": "We say so, and we name the missing documents: a published unknown is better than invented precision. For the projects in this issue, public documents are not enough.",
+  "tool_note": "MC and EHV are two experimental TENIR measures, not an overall score or an assessment of projects in this issue.",
+  "quiz_title": "True or false?",
+  "quiz": [
+   [
+    "Announced desalination capacity is the water that reaches your tap.",
+    "False",
+    "6"
+   ],
+   [
+    "The west terminal of Nador West Med is granted for 25 years.",
+    "True",
+    "7"
+   ],
+   [
+    "FIFA has already chosen the stadium for the 2030 final.",
+    "False",
+    "8"
+   ],
+   [
+    "Hosting an AI in Morocco is enough to stay in charge of its decisions.",
+    "False",
+    "12"
+   ],
+   [
+    "The EBRD loan to ONEE is fully committed.",
+    "False",
+    "13"
+   ]
+  ],
+  "quiz_answers_label": "Answers (page)",
+  "src_title": "Our sources",
+  "sources": [
+   "Water: maroc.ma, 3 November 2026, reporting the minister’s statement of 2 November.",
+   "Rail: ONCF; Le360, 27 October 2026.",
+   "Port: Marsa Maroc and Tanger Med, 2025 releases.",
+   "AI: Ministry of Digital Transition, January and September 2026; announcement with Mistral AI, 29 September 2026.",
+   "ONEE loan: EBRD, project 57587 and Board report, July 2026.",
+   "World Cup: FIFA, SONARGES, Law 35.25, Le Desk and international reporting."
+  ],
+  "src_note": "Full links and corrections: tenirlabs.cc/n01. Checked on 9 November 2026. Reported errors are corrected online, with their date.",
+  "back_title": "This issue is a pilot. Your feedback will shape what comes next.",
+  "back_qs": [
+   [
+    "Was this magazine useful to you?",
+    [
+     "Yes",
+     "A little",
+     "No"
+    ]
+   ],
+   [
+    "Which topic for the next issue?",
+    [
+     "Water",
+     "Transport",
+     "School and digital",
+     "Jobs",
+     "Energy"
+    ]
+   ],
+   [
+    "Which language do you prefer?",
+    [
+     "English",
+     "Français",
+     "العربية"
+    ]
+   ]
+  ],
+  "back_qr": "Scan to answer",
+  "back_cta": "Answer in one minute",
+  "back_link": "or at tenirlabs.cc/n01",
+  "back_suggest": "Do you lead a public or private project? Propose it for a future TENIR report. Selection is editorial and does not promise favourable coverage.",
+  "back_legal": "TENIR · No. 01, free pilot edition, November 2026. Trial publication, not periodical. Publisher: TENIR Labs, Casablanca. No advertising. Cover: conceptual illustration. Reported errors are corrected in the online version.",
+  "social_line": "A free magazine to understand the country’s big choices, in English, French and Arabic.",
+  "social_cta": "Read: tenirlabs.cc/n01",
+  "taglines": [
+   "Big choices, explained",
+   "Read fast, go deeper later",
+   "Announced figures, results to watch",
+   "One decision, many dependencies",
+   "Capacity is not yet a service",
+   "An asset, a network, real use",
+   "A month of matches, decades of use",
+   "Learning from earlier hosts",
+   "What is announced, what is still unpublished",
+   "Deciding what comes after, before kick-off",
+   "A useful AI is one you can stop",
+   "A commitment, a moment of proof",
+   "Measuring what can still be corrected",
+   "A checkable publication is a correctable one",
+   "Big choices, explained"
+  ],
+  "cdm_kicker": "Special report · 4 pages",
+  "cdm_title": "World Cup 2030: and after the last match?",
+  "cdm_fact": [
+   "On 11 December 2024, FIFA awarded the 2030 World Cup to Morocco, Spain and Portugal. Morocco is offering six stadiums: Benslimane, Rabat, Tangier, Marrakech, Agadir and Fez.",
+   "In Benslimane, between Casablanca and Rabat, the Grand Stade Hassan II is being built, due in early 2028. The venue for the final has not been decided: FIFA said so again in August and September 2026."
+  ],
+  "cdm_big": [
+   [
+    "115,000",
+    "announced gross capacity in Benslimane"
+   ],
+   [
+    "80,000",
+    "all-seater minimum set by FIFA for a final"
+   ]
+  ],
+  "cdm_think": "These figures are not directly comparable: one is announced gross capacity, the other a minimum number of seats. They still raise the question of everyday scale. The tournament lasts just over a month; a stadium serves for decades. After the last match, who will fill the stands and pay for upkeep?",
+  "cdm_prec_title": "What earlier hosts learned",
+  "cdm_prec": [
+   [
+    "The stadium without a crowd",
+    "South Africa 2010 · Brazil 2014",
+    "Polokwane (2010) and Manaus (2014) had no big club to fill their new stadium. In 2015, the one in Manaus cost about $233,000 a month to run."
+   ],
+   [
+    "The forgotten train",
+    "Brazil 2014",
+    "Stadiums had to be ready on time; transport projects could be dropped from the list. By 2013, thirteen had been cancelled, in ten host cities."
+   ],
+   [
+    "The tenant who came late",
+    "Cape Town · 2010",
+    "It took until 2021 for a club, the Stormers (rugby), to move in, leaving its own ground to do so. The deal signed in 2023 runs for 39 years."
+   ],
+   [
+    "The promise to shrink",
+    "Russia 2018 · Qatar 2022",
+    "Russia planned temporary, removable stands. Qatar promised to remove some 170,000 seats and dismantle Stadium 974; in January 2025, it was still hosting a match."
+   ],
+   [
+    "The lesson learned",
+    "Portugal · 2004, then 2030",
+    "After Euro 2004, Leiria and Aveiro considered demolishing stadiums too costly to maintain. For 2030, Portugal is offering only the three stadiums of its big clubs."
+   ]
+  ],
+  "cdm_prec_think": "These cases offer no single recipe. They ask the same question: who will use the stadium year-round, and with what upkeep budget?",
+  "cdm_ma_title": "Benslimane: what is planned, what is still open",
+  "cdm_ma_rows": [
+   [
+    "The tenants",
+    "In October 2026, Federation president Fouzi Lekjaa announced that Raja, Wydad and the national team will play there, even before 2030."
+   ],
+   [
+    "Access",
+    "A station is being built near the stadium (contract awarded in March 2026); commuter trains are to link it to Casa-Port and the airport."
+   ],
+   [
+    "Contracts counted",
+    "The initial envelope announced was about MAD 5 billion. In October 2026, Le Desk counted MAD 13.6 billion in contracts launched or awarded around the project. The scopes differ; the second figure is not a final cost."
+   ]
+  ],
+  "cdm_ma_think": "Two lessons are already learned: a resident club is announced, the train is planned with the stadium. A quieter risk remains: filling one stadium can empty another. Mohammed V was renovated and reopened in April 2025, Rabat’s Moulay Abdellah rebuilt: one crowd for three big stadiums.",
+  "cdm_ma_unknown_title": "Not found in public documents",
+  "cdm_ma_unknown": [
+   "The contract with the clubs: length, rent, matches per year",
+   "Annual maintenance cost, and who pays it",
+   "The future of the Mohammed V complex",
+   "A reduced capacity for ordinary matches"
+  ],
+  "cdm_ma_note": "This report draws on the public documents cited. The organisations concerned may send clarifications to TENIR.",
+  "cdm_ch_title": "What can still be decided before 2030",
+  "cdm_ch_fact": "Created by Law 35.25 in 2025, the Morocco 2030 Foundation prepares, organises and promotes international football competitions entrusted to Morocco up to the 2030 World Cup. The law does not specify who will operate the facilities after the tournament.",
+  "cdm_ch": [
+   [
+    "Sign the use before opening day",
+    "A public contract with the clubs: length, matches, rent. Cape Town signed one thirteen years after."
+   ],
+   [
+    "Plan for everyday capacity",
+    "Close part of the stands on a league night, without maintaining the whole stadium."
+   ],
+   [
+    "Publish the full cost, kept up to date",
+    "Construction, access, station, upkeep: an explained gap reassures more than a frozen figure."
+   ],
+   [
+    "Put a date on every promise",
+    "Who will operate each facility after 2030, under which contract, and with what oversight?"
+   ]
+  ],
+  "cdm_ask_title": "Three questions for what comes next",
+  "cdm_ask": "Who will play in Benslimane on a Tuesday night in February 2031? How much does a season of upkeep cost, and who pays? What will become of the Mohammed V complex?",
+  "sources_links": [
+   [
+    {
+     "label": "maroc.ma, 02/11/2026",
+     "href": "https://maroc.ma/fr/actualites/securite-hydrique-lancement-dune-nouvelle-strategie-adaptee-aux-mutations-climatiques-majeures"
+    }
+   ],
+   [
+    {
+     "label": "Le360",
+     "href": "https://fr.le360.ma/economie/oncf-96-mmdh-de-chantiers-en-cours-et-pres-de-100-millions-de-voyageurs-attendus-en-2030_R7APRABPVFEZVGZR2B4E3Y3BXY/"
+    }
+   ],
+   [
+    {
+     "label": "Tanger Med",
+     "href": "https://www.tangermed.ma/fr/apres-le-terminal-a-conteneurs-est-marsa-maroc-operera-le-terminal-ouest-de-nador-west-med/"
+    }
+   ],
+   [
+    {
+     "label": "TelQuel, 12/01/2026",
+     "href": "https://telquel.ma/instant-t/2026/01/12/le-maroc-vise-une-contribution-de-100-milliards-de-dirhams-de-lia-au-pib-dici-2030_1969928/"
+    },
+    {
+     "label": "maroc.ma, 30/09/2026",
+     "href": "https://maroc.ma/fr/actualites/le-ministere-de-la-transition-numerique-et-mistral-annoncent-les-premieres-briques-dia-developpees"
+    }
+   ],
+   [
+    {
+     "label": "EBRD 57587",
+     "href": "https://www.ebrd.com/home/work-with-us/projects/psd/57587.html"
+    },
+    {
+     "label": "PSD (FR)",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/PSD%2057587%20(French).pdf"
+    },
+    {
+     "label": "Board report",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/ONEE%20Water%20Board%20Report.pdf"
+    }
+   ],
+   [
+    {
+     "label": "FIFA, 11/12/2024",
+     "href": "https://inside.fifa.com/fr/news/congres-extraordinaire-fifa-hotes-coupe-du-monde-editions-2030-et-2034"
+    },
+    {
+     "label": "FIFA, 2030 hosting requirements",
+     "href": "https://digitalhub.fifa.com/m/2a76876ef04ed7b9/original/FIFA-World-Cup-2030-Overview-of-Hosting-Requirements.pdf"
+    },
+    {
+     "label": "SONARGES, Grand Stade Hassan II",
+     "href": "https://www.sonarges.ma/infrastructures/grand-stade-hassan-ii/"
+    },
+    {
+     "label": "Hespress, 11/09/2026",
+     "href": "https://fr.hespress.com/488066-finale-cdm-2030-apres-les-declarations-de-lekjaa-la-fifa-rappelle-quaucune-decision-na-ete-prise.html"
+    },
+    {
+     "label": "Morocco World News, 10/2026",
+     "href": "https://www.moroccoworldnews.com/2026/10/344245/lekjaa-hassan-ii-stadium-to-be-ready-in-2028-targets-2030-world-cup-final/"
+    },
+    {
+     "label": "Morocco World News, 10/2026 (2)",
+     "href": "https://www.moroccoworldnews.com/2026/10/344252/lekjaa-hassan-ii-stadium-to-host-morocco-raja-and-wydad-matches/"
+    },
+    {
+     "label": "Le360, 27/03/2026",
+     "href": "https://fr.le360.ma/economie/gare-du-grand-stade-hassan-ii-de-casablanca-jet-contractors-remporte-le-marche-pour-415-millions-de_BDHMVSMC7JDRHH72CYCN5NZHPA/"
+    },
+    {
+     "label": "SNRTnews",
+     "href": "https://snrtnews.com/fr/article/developpement-dun-service-ferroviaire-de-proximite-a-casablanca-le-citoyen-au-coeur-de-la"
+    },
+    {
+     "label": "Le Desk, 2024",
+     "href": "https://ledesk.ma/encontinu/a-benslimane-le-nouveau-grand-stade-de-casablanca-coutera-5-milliards-de-dirhams/"
+    },
+    {
+     "label": "Le Desk, 06/10/2026",
+     "href": "https://mobile.ledesk.ma/datadesk/grand-stade-hassan-ii-qui-sont-les-acteurs-dun-chantier-desormais-a-136-mmdh/"
+    },
+    {
+     "label": "Médias24, 14/04/2025",
+     "href": "https://medias24.com/2025/04/14/le-complexe-mohammed-v-rouvre-ses-portes-apres-une-annee-de-renovation/"
+    },
+    {
+     "label": "TelQuel, 04/09/2025",
+     "href": "https://telquel.ma/instant-t/2025/09/04/le-prince-moulay-el-hassan-inaugure-a-rabat-le-stade-prince-moulay-abdellah-apres-sa-reconstruction_1949001/"
+    },
+    {
+     "label": "Official Bulletin, Law 35.25",
+     "href": "https://www.sgg.gov.ma/BO/FR/2873/2025/BO_7428_Fr.pdf"
+    },
+    {
+     "label": "TelQuel, 14/07/2025",
+     "href": "https://telquel.ma/2025/07/14/fondation-maroc-2030-lekjaa-tout-puissant_1942260"
+    },
+    {
+     "label": "Mail & Guardian, 2011",
+     "href": "https://mg.co.za/article/2011-06-10-stadiums-score-costly-own-goals"
+    },
+    {
+     "label": "NPR, 2015",
+     "href": "https://www.npr.org/sections/parallels/2015/05/11/405955547/brazils-world-cup-legacy-includes-550m-stadium-turned-parking-lot"
+    },
+    {
+     "label": "A Pública, 2013",
+     "href": "https://apublica.org/2013/01/promessa-da-copa-2014-de-melhorar-mobilidade-urbana-nao-sera-cumprida/"
+    },
+    {
+     "label": "News24, 2021",
+     "href": "https://www.news24.com/sport/rugby/stormers-to-host-cheetahs-at-cape-town-stadium-as-wp-rugby-moves-headquarters-20210222"
+    },
+    {
+     "label": "The Citizen, 2023",
+     "href": "https://www.citizen.co.za/network-news/lnn/article/stormers-to-stay-in-cape-town-beyond-2060/"
+    },
+    {
+     "label": "CNN, 2017",
+     "href": "https://amp.cnn.com/cnn/2017/12/05/football/russia-world-cup-2018-country-infrastructure"
+    },
+    {
+     "label": "AP, 2022",
+     "href": "https://www.castanetkamloops.net/news/Soccer/394649/Qatar-No-white-elephant-legacy-for-World-Cup-stadiums"
+    },
+    {
+     "label": "PSG, 05/01/2025",
+     "href": "https://en.psg.fr/teams/first-team/content/paris-beat-monaco-to-lift-trophee-des-champions-compte-rendu-paris-saint-germain-as-monaco-ligue-1-2024-2025"
+    },
+    {
+     "label": "Play the Game",
+     "href": "https://playthegame.org/news/understanding-why-taxpayers-end-up-with-the-bill-for-white-elephants"
+    },
+    {
+     "label": "The Portugal News, 2023",
+     "href": "https://theportugalnews.com/news/2023-10-24/minister-confirms-no-new-stadiums-for-world-cup/82608"
+    }
+   ]
+  ],
+  "web": {
+   "read_pdf": "Download the PDF (A5, 16 pages)",
+   "pdf_note": "The PDF is designed for print. For text search or screen-reader use, read the web edition.",
+   "give_view": "Give your view",
+   "languages": "Languages",
+   "answers_show": "Show the answers",
+   "corrections": "Corrections: none so far (9 November 2026).",
+   "checked": "Sources checked on 9 November 2026.",
+   "published_by": "Published by TENIR Labs",
+   "toc_label": "Contents",
+   "back_to_site": "tenirlabs.cc",
+   "cover_alt": "Conceptual illustration: an imaginary Moroccan coastline with a port, a train, a desalination plant and diverging paths.",
+   "avis_cta": "Answer the three questions",
+   "doc_title": "Morocco 2030: building fast, keeping our options — TENIR No. 01",
+   "description": "The pilot issue of TENIR, a free magazine on Morocco’s big choices: desalination, ports, trains, the 2030 World Cup, AI in Darija, a loan for water. Sourced facts, readings and proposals kept apart."
+  }
+ },
+ "ar": {
+  "lang": "ar",
+  "dir": "rtl",
+  "run": "TENIR · العدد 01",
+  "tagline": "الاختيارات الكبرى، بوضوح",
+  "issue_date": "العدد 01 · نونبر 2026",
+  "kicker_cover": "عدد تجريبي · مجاني",
+  "cover_title": "المغرب 2030",
+  "cover_sub": "نبني بسرعة، ونحتفظ بحق الاختيار",
+  "cover_teasers": [
+   [
+    "كأس العالم 2030: وماذا بعد المباراة الأخيرة؟",
+    "8"
+   ],
+   [
+    "من البحر إلى الصنبور: ما الذي يجب تتبّعه؟",
+    "6"
+   ],
+   [
+    "ميناء بعقد مدته 25 سنة",
+    "7"
+   ],
+   [
+    "ذكاء اصطناعي يتكلم الدارجة: من يبقى صاحب القرار؟",
+    "12"
+   ]
+  ],
+  "cover_caption": "رسم تخيّلي، لا يمثّل مكاناً حقيقياً",
+  "p": "ص",
+  "tags": {
+   "fact": "معطى ثابت",
+   "think": "رأينا",
+   "suggest": "اقتراحنا"
+  },
+  "sections": {
+   "edito": "افتتاحية",
+   "essentiel": "الأساسي",
+   "angle": "زاوية واسعة",
+   "eau": "الماء",
+   "ports": "الموانئ والقطارات",
+   "ia": "الرقمي",
+   "cas": "حالة ملموسة",
+   "outil": "المنهج",
+   "quiz": "لعبة ومصادر",
+   "vous": "الكلمة لك",
+   "cdm": "كأس العالم 2030"
+  },
+  "edito_kicker": "افتتاحية",
+  "edito_title": "ما نبنيه اليوم، سنعيش معه غداً",
+  "edito_body": [
+   "من الآن إلى 2030، يبني المغرب بسرعة: تحلية مياه البحر، والقطارات، والموانئ، والملاعب، والذكاء الاصطناعي. ستغيّر هذه الأوراش حياتنا اليومية، من ماء الصنبور إلى تنقّلاتنا.",
+   "بعض الاختيارات تُلزمنا لخمس وعشرين سنة أو أكثر. وكلما تقدّمنا، صار التصحيح أغلى.",
+   "لا تحكم هذه المجلة على المشاريع. إنها تبيّن ما نعرفه، وما لا نعرفه بعد، وما يمكن أن نسأل عنه."
+  ],
+  "edito_q": [
+   "السؤال ليس: «هل يجب أن نبني؟»",
+   "السؤال هو: «ما الذي سيظل بإمكاننا تصحيحه؟»"
+  ],
+  "edito_sign": "عزيز سكيرج، TENIR Labs، الدار البيضاء",
+  "toc_title": "في هذا العدد",
+  "toc": [
+   [
+    "03",
+    "الأساسي"
+   ],
+   [
+    "04",
+    "المغرب يبني بسرعة"
+   ],
+   [
+    "05",
+    "اختيارات يصعب التراجع عنها"
+   ],
+   [
+    "06",
+    "من البحر إلى الصنبور"
+   ],
+   [
+    "07",
+    "الموانئ والقطارات"
+   ],
+   [
+    "08",
+    "كأس العالم 2030"
+   ],
+   [
+    "12",
+    "ذكاء اصطناعي بالدارجة"
+   ],
+   [
+    "13",
+    "قرض على مرحلتين"
+   ],
+   [
+    "14",
+    "قبل التوقيع"
+   ],
+   [
+    "15",
+    "لعبة ومصادر"
+   ]
+  ],
+  "howto_title": "كيف تقرأ هذه المجلة",
+  "howto": [
+   [
+    "fact",
+    "تم التحقق منه، ومصدره في الصفحة 15."
+   ],
+   [
+    "think",
+    "قراءتنا للمعطيات، وهي قابلة للنقاش."
+   ],
+   [
+    "suggest",
+    "فكرة للنقاش، لا حقيقة مطلقة."
+   ]
+  ],
+  "ess_title": "الأساسي في 90 ثانية",
+  "ess": [
+   [
+    "fact",
+    "تتقدم الأوراش الكبرى على عدة جبهات في آن واحد: الماء، والسكك الحديدية، والموانئ، والملاعب، والطاقة، والذكاء الاصطناعي."
+   ],
+   [
+    "fact",
+    "بعض الالتزامات تدوم طويلاً: أُسندت المحطة الغربية لميناء الناظور غرب المتوسط لمدة 25 سنة."
+   ],
+   [
+    "think",
+    "الخطر الحقيقي ليس في البناء، بل في فقدان القدرة على التصحيح إذا تبيّن أن فرضية ما خاطئة."
+   ]
+  ],
+  "ess_q_label": "السؤال الذي يجب تذكّره",
+  "ess_q": "قبل التوقيع المقبل، ما الذي سيظل بإمكاننا تغييره، ومن سيملك قرار ذلك؟",
+  "angle_title": "المغرب يبني بسرعة",
+  "angle_intro": "أربعة أوراش وأربعة أرقام. إنها مبالغ وأهداف معلنة، لا نتائج محقّقة.",
+  "cards": [
+   [
+    "الماء",
+    "447",
+    "مليون م³ سنوياً",
+    "من القدرة الحالية لتحلية المياه. الهدف: نحو 1,8 مليار بحلول 2031.",
+    "وزير التجهيز والماء، 2 نونبر 2026"
+   ],
+   [
+    "القطار",
+    "96",
+    "مليار درهم",
+    "للسكك الحديدية في أفق 2030، منها 168 قطاراً جديداً.",
+    "المكتب الوطني للسكك الحديدية"
+   ],
+   [
+    "الميناء",
+    "25",
+    "سنة امتياز",
+    "للمحطة الغربية لميناء الناظور غرب المتوسط. 280 مليون يورو للمرحلة الأولى.",
+    "مرسى المغرب، 2025"
+   ],
+   [
+    "الذكاء الاصطناعي",
+    "200 ألف",
+    "كفاءة للتكوين",
+    "أو الإشهاد في أفق 2030، مع هدف 50 ألف منصب شغل.",
+    "خارطة طريق المغرب للذكاء الاصطناعي 2030"
+   ]
+  ],
+  "angle_box_title": "ما لا تقوله هذه الأرقام بعد",
+  "angle_box": "الهدف ليس نتيجة. والقدرة ليست خدمة. والميزانية ليست قيمة مُنتَجة. والامتياز ليس دليلاً على حركة السفن.",
+  "lock_title": "لماذا يصعب التراجع عن بعض الاختيارات",
+  "lock_intro": "القرار الكبير يشبه طريقاً يتفرّع. في البداية يمكن سلوك طريق آخر، وكلما تقدّمنا صار الرجوع أغلى.",
+  "path_labels": [
+   "في البداية",
+   "بعد التوقيع",
+   "بعد الأشغال"
+  ],
+  "locks": [
+   [
+    "العقد",
+    "الخروج منه له ثمن."
+   ],
+   [
+    "المال",
+    "ما يُنفق أو يُقترض لا يعود دائماً."
+   ],
+   [
+    "التقنية",
+    "تغيير المزوّد يحتاج وقتاً."
+   ],
+   [
+    "التنظيم",
+    "الفرق والميزانيات تتبع اختياراً واحداً."
+   ],
+   [
+    "الوعد العام",
+    "المشروع المعلن يصبح رمزاً."
+   ]
+  ],
+  "lock_suggest": "اختبار بسيط: إذا تبيّن غداً أن فرضية مهمة خاطئة، ما أول شيء يمكن تغييره؟ لا إيقاف كل شيء، بل معرفة أين أبواب الخروج، ومن يملك مفتاحها، وكم يلزم من الوقت لفتحها.",
+  "eau_title": "من البحر إلى الصنبور",
+  "eau_fact": "في مواجهة الجفاف، يستثمر المغرب في تحلية مياه البحر لجعلها صالحة للشرب. وفي 2 نونبر 2026، أعلن وزير التجهيز والماء أن القدرة السنوية بلغت 447 مليون متر مكعب، مع هدف يقارب 1,8 مليار بحلول 2031.",
+  "eau_need_title": "المحطة وحدها لا تكفي. لكي يصل الماء إلى بيتك، يلزم أيضاً:",
+  "eau_needs": [
+   "كهرباء بكميات كبيرة",
+   "قنوات تصل إلى المدن",
+   "صيانة كل سنة",
+   "تدبير الملح المطروح في البحر"
+  ],
+  "eau_think": "القدرة المعلنة ليست هي الماء الذي يجري في الصنبور. ما يجب تتبّعه: الكمية المسلَّمة فعلاً، في المكان المناسب، وبثمن معقول.",
+  "eau_suggest": "قبل كل توسعة، نشر الكلفة الكاملة للمتر المكعب، وسيناريوهات تجمع الجفاف وأسعار الطاقة والطلب.",
+  "ports_title": "اختيارات طويلة الأمد",
+  "port_head": "الميناء",
+  "port_fact": "في ميناء الناظور غرب المتوسط، أُسندت المحطة الغربية إلى مرسى المغرب لمدة 25 سنة. المرحلة الأولى: 280 مليون يورو، والتشغيل مرتقب ابتداءً من 2027.",
+  "port_think": "الرصيف لا يضمن قدوم السفن. قيمة الميناء رهينة بالطرق والسكك والزبناء الذين سيجذبهم فعلاً. هل الحركة المنتظرة جديدة، أم مأخوذة من ميناء آخر؟",
+  "train_head": "القطار",
+  "train_fact": "يقود المكتب الوطني للسكك الحديدية برنامجاً بقيمة 96 مليار درهم في أفق 2030، ويتوقع نحو 100 مليون مسافر في 2030، مقابل 55,6 مليون في 2025.",
+  "train_think": "توقّع عدد المسافرين فرضية، ومن المفيد مقارنته سنةً بعد سنة بالإقبال الفعلي.",
+  "ports_ask_title": "يُسأل عند كل تحديث",
+  "ports_ask": "أي فرضية تغيّرت؟ أي كلفة أصبحت غير قابلة للاسترجاع؟ ماذا يحدث إذا بقيت الحركة دون التوقعات؟",
+  "ia_title": "ذكاء اصطناعي يتكلم الدارجة: من يبقى صاحب القرار؟",
+  "ia_fact": "تستهدف خارطة الطريق «المغرب للذكاء الاصطناعي 2030»، التي كُشف عنها في يناير 2026، خلق 50 ألف منصب شغل وتكوين أو إشهاد 200 ألف كفاءة. وفي 29 شتنبر 2026، أعلنت وزارة الانتقال الرقمي وشركة Mistral AI عن نموذجين أوليين للدارجة وخطة نشرهما بمصدر مفتوح.",
+  "ia_think": "تقدّم ملموس يسمح بطرح ثلاثة أسئلة تصلح لكل ذكاء اصطناعي تستعمله مصلحة عمومية:",
+  "ia_qs": [
+   [
+    "أين يشتغل؟",
+    "على أي حواسيب، وفي أي بلد."
+   ],
+   [
+    "من يتحكم في المعطيات؟",
+    "من يستطيع قراءتها أو نقلها أو حذفها."
+   ],
+   [
+    "من يستطيع إيقافه؟",
+    "من يغيّر قواعده، ويوقف إجراءً، ثم يستأنفه."
+   ]
+  ],
+  "ia_think2": "استضافته في المغرب تجيب عن السؤال الأول، لا بالضرورة عن السؤالين الآخرين.",
+  "ia_suggest": "حين يمسّ الذكاء الاصطناعي حقاً أو ميزانية، يجب أن يتمكن شخص مؤهَّل من إيقاف قراره ومراجعته.",
+  "cas_title": "قرض للماء على مرحلتين",
+  "cas_fact": "في يوليوز 2026، وافق البنك الأوروبي لإعادة الإعمار والتنمية على قرض يصل إلى 250 مليون يورو لفائدة المكتب الوطني للكهرباء والماء الصالح للشرب، لتحديث إنتاج الماء الشروب وتقليص ضياع المياه.",
+  "cas_a": [
+   "الجزء أ",
+   "120 مليون يورو",
+   "ملتزَم به"
+  ],
+  "cas_b": [
+   "الجزء ب",
+   "130 مليون يورو",
+   "غير ملتزَم به"
+  ],
+  "cas_grant": "ومنحة قدرها 5 ملايين يورو",
+  "cas_think": "هذا التقسيم يخلق موعداً مفيداً: قبل الالتزام بالجزء الثاني، يمكن التحقق.",
+  "cas_known_title": "ما نعرفه",
+  "cas_known": [
+   "المبالغ وهدف البرنامج",
+   "تقييم بيئي واجتماعي مبرمج للجزء ب",
+   "إمكانية تكييف أشغاله"
+  ],
+  "cas_unknown_title": "ما لا نعرفه بعد",
+  "cas_unknown": [
+   "تاريخ القرار بشأن الجزء ب",
+   "لائحة الأشغال المختارة",
+   "كلفة أي تغيير"
+  ],
+  "cas_note": "تعرض هذه الصفحة الوثائق العمومية المذكورة. ويمكن للجهات المعنية إرسال توضيحات إلى TENIR.",
+  "tool_title": "سؤالان قبل التوقيع",
+  "tool_q1": "MC · هامش التصحيح",
+  "tool_a1": "هل بقي وقت للتصحيح؟ هامش التصحيح = الأيام المتبقية قبل القرار ناقص الأيام اللازمة لاكتشاف المشكلة واتخاذ القرار وتصحيحها. النتيجة السلبية تعني أن الوقت غير كافٍ.",
+  "tool_ex_label": "مثال تخيّلي",
+  "tool_ex": "45 يوماً قبل التوقيع، و52 يوماً للتصحيح: تأخّر بسبعة أيام. يجب تأجيل الموعد، أو تقليص الطلبية، أو التصحيح بسرعة أكبر.",
+  "tool_q2": "EHV · التعرض لفرضيات غير متحقق منها",
+  "tool_a2": "كم نلتزم قبل الحصول على الدليل؟ يجمع هذا المقياس الجزء غير القابل للاسترجاع من الالتزامات المرتبطة بفرضيات حاسمة لم تُتحقق بعد، بالدرهم أو اليورو.",
+  "tool_nc_label": "وإذا تعذّر الحساب؟",
+  "tool_nc": "نقول ذلك، ونسمّي الوثائق الناقصة: مجهول معلَن خير من دقة مختلَقة. بالنسبة لمشاريع هذا العدد، لا تكفي الوثائق العمومية.",
+  "tool_note": "هذان مقياسان تجريبيان تقترحهما TENIR، وليسا تنقيطاً إجمالياً أو تقييماً لمشاريع هذا العدد.",
+  "quiz_title": "صحيح أم خطأ؟",
+  "quiz": [
+   [
+    "القدرة المعلنة للتحلية هي الماء الذي يصل إلى الصنبور.",
+    "خطأ",
+    "6"
+   ],
+   [
+    "أُسندت المحطة الغربية لميناء الناظور غرب المتوسط لمدة 25 سنة.",
+    "صحيح",
+    "7"
+   ],
+   [
+    "اختار الاتحاد الدولي لكرة القدم ملعب نهائي 2030.",
+    "خطأ",
+    "8"
+   ],
+   [
+    "استضافة ذكاء اصطناعي في المغرب تكفي لنبقى أصحاب القرار.",
+    "خطأ",
+    "12"
+   ],
+   [
+    "قرض البنك الأوروبي للمكتب الوطني ملتزَم به بالكامل.",
+    "خطأ",
+    "13"
+   ]
+  ],
+  "quiz_answers_label": "الأجوبة (الصفحة)",
+  "src_title": "مصادرنا",
+  "sources": [
+   "الماء: maroc.ma، 3 نونبر 2026، تقرير عن تصريح الوزير يوم 2 نونبر.",
+   "السكك الحديدية: المكتب الوطني للسكك الحديدية؛ Le360، 27 أكتوبر 2026.",
+   "الميناء: مرسى المغرب وطنجة المتوسط، بلاغات 2025.",
+   "الذكاء الاصطناعي: وزارة الانتقال الرقمي، يناير وشتنبر 2026؛ إعلان مع Mistral AI، 29 شتنبر 2026.",
+   "قرض المكتب الوطني: البنك الأوروبي، المشروع 57587 وتقرير المجلس، يوليوز 2026.",
+   "كأس العالم: فيفا، سونارجيس، القانون 35.25، لوديسك وصحافة دولية."
+  ],
+  "src_note": "الروابط الكاملة والتصحيحات: tenirlabs.cc/n01. تم التحقق في 9 نونبر 2026. يُصحَّح كل خطأ مبلَّغ عنه في النسخة الإلكترونية مع ذكر تاريخه.",
+  "back_title": "هذا العدد تجربة أولى. رأيك يساعدنا على تحديد الخطوة التالية.",
+  "back_qs": [
+   [
+    "هل كانت هذه المجلة مفيدة لك؟",
+    [
+     "نعم",
+     "قليلاً",
+     "لا"
+    ]
+   ],
+   [
+    "أي موضوع للعدد المقبل؟",
+    [
+     "الماء",
+     "النقل",
+     "المدرسة والرقمي",
+     "الشغل",
+     "الطاقة"
+    ]
+   ],
+   [
+    "بأي لغة تفضّل قراءتها؟",
+    [
+     "العربية",
+     "Français",
+     "English"
+    ]
+   ]
+  ],
+  "back_qr": "امسح الرمز للإجابة",
+  "back_cta": "أجب في دقيقة واحدة",
+  "back_link": "أو عبر tenirlabs.cc/n01",
+  "back_suggest": "هل تحمل مشروعاً عمومياً أو خاصاً؟ اقترحه موضوعاً لملف قادم في TENIR. الاختيار تحريري ولا يضمن تغطية مؤيدة.",
+  "back_legal": "TENIR · العدد 01، نسخة تجريبية مجانية، نونبر 2026. منشور تجريبي غير دوري. الناشر: TENIR Labs، الدار البيضاء. بدون إشهار. الغلاف: رسم تخيّلي. تُصحَّح الأخطاء المبلَّغ عنها في النسخة الإلكترونية.",
+  "social_line": "مجلة مجانية لفهم الاختيارات الكبرى للبلاد، بالعربية والفرنسية والإنجليزية.",
+  "social_cta": "اقرأ: tenirlabs.cc/n01",
+  "taglines": [
+   "الاختيارات الكبرى، بوضوح",
+   "اقرأ بسرعة، وتعمّق لاحقاً",
+   "أرقام معلنة، ونتائج للتتبّع",
+   "قرار واحد، وتبعيات متعددة",
+   "القدرة ليست خدمة بعد",
+   "منشأة، وشبكة، واستعمال فعلي",
+   "شهر من المباريات، وعقود من الاستعمال",
+   "نتعلّم ممن استضاف قبلنا",
+   "ما أُعلن، وما ينتظر النشر",
+   "نقرّر ما بعد البطولة قبل انطلاقها",
+   "الذكاء الاصطناعي النافع هو الذي يمكن إيقافه",
+   "التزام، وموعد للدليل",
+   "قياس ما يمكن تصحيحه",
+   "المنشور القابل للتحقق منشور قابل للتصحيح",
+   "الاختيارات الكبرى، بوضوح"
+  ],
+  "cdm_kicker": "ملف خاص · 4 صفحات",
+  "cdm_title": "كأس العالم 2030: وماذا بعد المباراة الأخيرة؟",
+  "cdm_fact": [
+   "في 11 دجنبر 2024، أسند الاتحاد الدولي لكرة القدم (فيفا) تنظيم كأس العالم 2030 إلى المغرب وإسبانيا والبرتغال. ويقترح المغرب ستة ملاعب: بنسليمان، والرباط، وطنجة، ومراكش، وأكادير، وفاس.",
+   "في بنسليمان، بين الدار البيضاء والرباط، يُشيَّد ملعب الحسن الثاني الكبير، المعلن تسليمه مطلع 2028. ولم يُحسم بعد مكان المباراة النهائية، وقد ذكّر الاتحاد الدولي بذلك في غشت ثم في شتنبر 2026."
+  ],
+  "cdm_big": [
+   [
+    "115 ألف",
+    "الطاقة الاستيعابية الإجمالية المعلنة في بنسليمان"
+   ],
+   [
+    "80 ألف",
+    "مقعد جلوس: الحد الأدنى الذي تشترطه فيفا للنهائي"
+   ]
+  ],
+  "cdm_think": "لا يقارن الرقمان مباشرة: الأول قدرة استيعابية إجمالية معلنة، والثاني حد أدنى للمقاعد. لكنهما يطرحان سؤال الحجم المناسب للاستعمال اليومي. تدوم البطولة أكثر من شهر بقليل، ويُستعمل الملعب لعقود. بعد المباراة الأخيرة، من سيملأ المدرجات ويتحمّل الصيانة؟",
+  "cdm_prec_title": "ما تعلّمته دول استضافت قبلنا",
+  "cdm_prec": [
+   [
+    "ملعب بلا جمهور",
+    "جنوب إفريقيا 2010 · البرازيل 2014",
+    "لم يكن في بولوكواني (2010) ولا في ماناوس (2014) نادٍ كبير يملأ الملعب الجديد. وفي 2015، كانت كلفة تشغيل ملعب ماناوس نحو 233 ألف دولار شهرياً."
+   ],
+   [
+    "القطار المنسي",
+    "البرازيل 2014",
+    "كان على الملاعب أن تكون جاهزة في موعدها، أما مشاريع النقل فكان يمكن سحبها من اللائحة. ومنذ 2013، أُلغي ثلاثة عشر منها في عشر مدن مستضيفة."
+   ],
+   [
+    "مستأجر جاء متأخراً",
+    "كيب تاون · 2010",
+    "لم يستقر في الملعب نادٍ، هو فريق الركبي «ستورمرز»، إلا في 2021، بعد أن غادر ملعبه الخاص. ووُقّع الاتفاق في 2023 لمدة 39 سنة."
+   ],
+   [
+    "وعد بتقليص الملاعب",
+    "روسيا 2018 · قطر 2022",
+    "برمجت روسيا مدرجات مؤقتة تُفكَّك بعد البطولة. ووعدت قطر بإزالة نحو 170 ألف مقعد وتفكيك ملعب 974، غير أن هذا الملعب احتضن مباراة أخرى في يناير 2025."
+   ],
+   [
+    "درس محفوظ",
+    "البرتغال · 2004 ثم 2030",
+    "بعد كأس أوروبا 2004، فكّرت ليريا وأفيرو في هدم ملاعب صارت صيانتها مكلفة جداً. ولسنة 2030، لا تقدّم البرتغال سوى ملاعب أنديتها الكبرى الثلاثة."
+   ]
+  ],
+  "cdm_prec_think": "لا تقدّم هذه التجارب وصفة واحدة، لكنها تطرح السؤال نفسه: من سيستعمل الملعب طوال السنة، وبأي ميزانية للصيانة؟",
+  "cdm_ma_title": "بنسليمان: ما هو مبرمج، وما يبقى مفتوحاً",
+  "cdm_ma_rows": [
+   [
+    "المستعملون",
+    "في أكتوبر 2026، أعلن رئيس الجامعة، فوزي لقجع، أن الملعب سيحتضن مباريات الرجاء والوداد والمنتخب الوطني، حتى قبل 2030."
+   ],
+   [
+    "الولوج",
+    "محطة قطار في طور البناء قرب الملعب (أُسندت صفقتها في مارس 2026)، ومن المرتقب أن تربطها قطارات القرب بمحطة الدار البيضاء الميناء وبمطار محمد الخامس."
+   ],
+   [
+    "الصفقات المحصاة",
+    "بلغ الغلاف المعلن في البداية نحو 5 مليارات درهم. وفي أكتوبر 2026، أحصى موقع «لوديسك» صفقات أُطلقت أو أُسندت حول المشروع بقيمة 13,6 مليار درهم. يختلف نطاق الرقمين، ولا يمثّل الثاني الكلفة النهائية."
+   ]
+  ],
+  "cdm_ma_think": "استُوعب درسان: هناك نادٍ مقيم معلن، والقطار مبرمج مع الملعب. ويبقى خطر أخفى: ملء ملعب قد يُفرغ آخر. فقد جُدّد مركب محمد الخامس وأُعيد افتتاحه في أبريل 2025، وأُعيد بناء ملعب مولاي عبد الله بالرباط، وسيتقاسم الجمهور نفسه ثلاثة ملاعب كبرى.",
+  "cdm_ma_unknown_title": "لم نجده في الوثائق العمومية",
+  "cdm_ma_unknown": [
+   "العقد مع الأندية: المدة، والكراء، وعدد المباريات",
+   "كلفة الصيانة السنوية، ومن يؤديها",
+   "مستقبل المركب الرياضي محمد الخامس",
+   "سعة مخفّضة للمباريات العادية"
+  ],
+  "cdm_ma_note": "يستند هذا الملف إلى الوثائق العمومية المذكورة. ويمكن للجهات المعنية إرسال توضيحات إلى TENIR.",
+  "cdm_ch_title": "ما يمكن أن يُقرَّر قبل 2030",
+  "cdm_ch_fact": "أُحدثت مؤسسة المغرب 2030 بالقانون 35.25 سنة 2025 لتحضير وتنظيم وتثمين مسابقات كرة القدم الدولية المسندة إلى المغرب حتى كأس العالم 2030. ولا يحدد القانون من سيتولى تشغيل المنشآت بعد البطولة.",
+  "cdm_ch": [
+   [
+    "توقيع الاستعمال قبل الافتتاح",
+    "عقد علني مع الأندية: المدة، والمباريات، والكراء. وقّعته كيب تاون بعد بطولتها بثلاث عشرة سنة."
+   ],
+   [
+    "التفكير في سعة الأيام العادية",
+    "إغلاق جزء من المدرجات في مباراة البطولة، دون صيانة الملعب كله."
+   ],
+   [
+    "نشر الكلفة الكاملة وتحيينها",
+    "البناء، والولوج، والمحطة، والصيانة: فارق مُفسَّر يطمئن أكثر من رقم جامد."
+   ],
+   [
+    "تحديد موعد لكل وعد",
+    "من سيشغّل كل منشأة بعد 2030، وبموجب أي عقد، وتحت أي رقابة؟"
+   ]
+  ],
+  "cdm_ask_title": "ثلاثة أسئلة لما بعد",
+  "cdm_ask": "من سيلعب في بنسليمان مساء ثلاثاء من فبراير 2031؟ كم تكلّف صيانة موسم كامل، ومن يؤديها؟ ماذا سيصير المركب الرياضي محمد الخامس؟",
+  "sources_links": [
+   [
+    {
+     "label": "maroc.ma، 02/11/2026",
+     "href": "https://maroc.ma/fr/actualites/securite-hydrique-lancement-dune-nouvelle-strategie-adaptee-aux-mutations-climatiques-majeures"
+    }
+   ],
+   [
+    {
+     "label": "Le360",
+     "href": "https://fr.le360.ma/economie/oncf-96-mmdh-de-chantiers-en-cours-et-pres-de-100-millions-de-voyageurs-attendus-en-2030_R7APRABPVFEZVGZR2B4E3Y3BXY/"
+    }
+   ],
+   [
+    {
+     "label": "Tanger Med",
+     "href": "https://www.tangermed.ma/fr/apres-le-terminal-a-conteneurs-est-marsa-maroc-operera-le-terminal-ouest-de-nador-west-med/"
+    }
+   ],
+   [
+    {
+     "label": "TelQuel, 12/01/2026",
+     "href": "https://telquel.ma/instant-t/2026/01/12/le-maroc-vise-une-contribution-de-100-milliards-de-dirhams-de-lia-au-pib-dici-2030_1969928/"
+    },
+    {
+     "label": "maroc.ma, 30/09/2026",
+     "href": "https://maroc.ma/fr/actualites/le-ministere-de-la-transition-numerique-et-mistral-annoncent-les-premieres-briques-dia-developpees"
+    }
+   ],
+   [
+    {
+     "label": "EBRD 57587",
+     "href": "https://www.ebrd.com/home/work-with-us/projects/psd/57587.html"
+    },
+    {
+     "label": "PSD (FR)",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/PSD%2057587%20(French).pdf"
+    },
+    {
+     "label": "Board report",
+     "href": "https://www.ebrd.com/content/dam/ebrd_dxp/documents/project/57587/ONEE%20Water%20Board%20Report.pdf"
+    }
+   ],
+   [
+    {
+     "label": "FIFA, 11/12/2024",
+     "href": "https://inside.fifa.com/fr/news/congres-extraordinaire-fifa-hotes-coupe-du-monde-editions-2030-et-2034"
+    },
+    {
+     "label": "فيفا، متطلبات استضافة 2030",
+     "href": "https://digitalhub.fifa.com/m/2a76876ef04ed7b9/original/FIFA-World-Cup-2030-Overview-of-Hosting-Requirements.pdf"
+    },
+    {
+     "label": "سونارجيس، ملعب الحسن الثاني",
+     "href": "https://www.sonarges.ma/infrastructures/grand-stade-hassan-ii/"
+    },
+    {
+     "label": "Hespress, 11/09/2026",
+     "href": "https://fr.hespress.com/488066-finale-cdm-2030-apres-les-declarations-de-lekjaa-la-fifa-rappelle-quaucune-decision-na-ete-prise.html"
+    },
+    {
+     "label": "Morocco World News, 10/2026",
+     "href": "https://www.moroccoworldnews.com/2026/10/344245/lekjaa-hassan-ii-stadium-to-be-ready-in-2028-targets-2030-world-cup-final/"
+    },
+    {
+     "label": "Morocco World News, 10/2026 (2)",
+     "href": "https://www.moroccoworldnews.com/2026/10/344252/lekjaa-hassan-ii-stadium-to-host-morocco-raja-and-wydad-matches/"
+    },
+    {
+     "label": "Le360, 27/03/2026",
+     "href": "https://fr.le360.ma/economie/gare-du-grand-stade-hassan-ii-de-casablanca-jet-contractors-remporte-le-marche-pour-415-millions-de_BDHMVSMC7JDRHH72CYCN5NZHPA/"
+    },
+    {
+     "label": "SNRTnews",
+     "href": "https://snrtnews.com/fr/article/developpement-dun-service-ferroviaire-de-proximite-a-casablanca-le-citoyen-au-coeur-de-la"
+    },
+    {
+     "label": "Le Desk, 2024",
+     "href": "https://ledesk.ma/encontinu/a-benslimane-le-nouveau-grand-stade-de-casablanca-coutera-5-milliards-de-dirhams/"
+    },
+    {
+     "label": "لوديسك، 06/10/2026",
+     "href": "https://mobile.ledesk.ma/datadesk/grand-stade-hassan-ii-qui-sont-les-acteurs-dun-chantier-desormais-a-136-mmdh/"
+    },
+    {
+     "label": "Médias24, 14/04/2025",
+     "href": "https://medias24.com/2025/04/14/le-complexe-mohammed-v-rouvre-ses-portes-apres-une-annee-de-renovation/"
+    },
+    {
+     "label": "TelQuel, 04/09/2025",
+     "href": "https://telquel.ma/instant-t/2025/09/04/le-prince-moulay-el-hassan-inaugure-a-rabat-le-stade-prince-moulay-abdellah-apres-sa-reconstruction_1949001/"
+    },
+    {
+     "label": "الجريدة الرسمية، القانون 35.25",
+     "href": "https://www.sgg.gov.ma/BO/FR/2873/2025/BO_7428_Fr.pdf"
+    },
+    {
+     "label": "TelQuel, 14/07/2025",
+     "href": "https://telquel.ma/2025/07/14/fondation-maroc-2030-lekjaa-tout-puissant_1942260"
+    },
+    {
+     "label": "Mail & Guardian, 2011",
+     "href": "https://mg.co.za/article/2011-06-10-stadiums-score-costly-own-goals"
+    },
+    {
+     "label": "NPR, 2015",
+     "href": "https://www.npr.org/sections/parallels/2015/05/11/405955547/brazils-world-cup-legacy-includes-550m-stadium-turned-parking-lot"
+    },
+    {
+     "label": "A Pública, 2013",
+     "href": "https://apublica.org/2013/01/promessa-da-copa-2014-de-melhorar-mobilidade-urbana-nao-sera-cumprida/"
+    },
+    {
+     "label": "News24, 2021",
+     "href": "https://www.news24.com/sport/rugby/stormers-to-host-cheetahs-at-cape-town-stadium-as-wp-rugby-moves-headquarters-20210222"
+    },
+    {
+     "label": "The Citizen, 2023",
+     "href": "https://www.citizen.co.za/network-news/lnn/article/stormers-to-stay-in-cape-town-beyond-2060/"
+    },
+    {
+     "label": "CNN, 2017",
+     "href": "https://amp.cnn.com/cnn/2017/12/05/football/russia-world-cup-2018-country-infrastructure"
+    },
+    {
+     "label": "AP, 2022",
+     "href": "https://www.castanetkamloops.net/news/Soccer/394649/Qatar-No-white-elephant-legacy-for-World-Cup-stadiums"
+    },
+    {
+     "label": "PSG, 05/01/2025",
+     "href": "https://en.psg.fr/teams/first-team/content/paris-beat-monaco-to-lift-trophee-des-champions-compte-rendu-paris-saint-germain-as-monaco-ligue-1-2024-2025"
+    },
+    {
+     "label": "Play the Game",
+     "href": "https://playthegame.org/news/understanding-why-taxpayers-end-up-with-the-bill-for-white-elephants"
+    },
+    {
+     "label": "The Portugal News, 2023",
+     "href": "https://theportugalnews.com/news/2023-10-24/minister-confirms-no-new-stadiums-for-world-cup/82608"
+    }
+   ]
+  ],
+  "web": {
+   "read_pdf": "تحميل النسخة PDF (A5، 16 صفحة)",
+   "pdf_note": "صُممت نسخة PDF للطباعة. للبحث في النص أو استخدام قارئ الشاشة، اقرأ النسخة الإلكترونية.",
+   "give_view": "أبدِ رأيك",
+   "languages": "اللغات",
+   "answers_show": "عرض الأجوبة",
+   "corrections": "التصحيحات: لا شيء حتى الآن (9 نونبر 2026).",
+   "checked": "تم التحقق من المصادر في 9 نونبر 2026.",
+   "published_by": "نشر TENIR Labs",
+   "toc_label": "المحتويات",
+   "back_to_site": "tenirlabs.cc",
+   "cover_alt": "رسم تخيّلي: ساحل مغربي متخيَّل يضم ميناءً وقطاراً ومحطة لتحلية المياه وطرقاً متفرّعة.",
+   "avis_cta": "أجب عن الأسئلة الثلاثة",
+   "doc_title": "المغرب 2030: نبني بسرعة ونحتفظ بحق الاختيار — TENIR العدد 01",
+   "description": "العدد التجريبي من TENIR، مجلة مجانية عن الاختيارات الكبرى للمغرب: تحلية المياه، الموانئ، القطارات، كأس العالم 2030، الذكاء الاصطناعي بالدارجة، قرض للماء. معطيات موثّقة، وقراءات ومقترحات منفصلة."
+  }
+ }
+}
