@@ -27,3 +27,6 @@
 /* Credibility route is a full-width marketing journey, not a prose article. */
 body.credibility-page main.home-main{width:100%;max-width:none;margin:0;padding:0}
 body.credibility-page .cr-root{max-width:none}
+.cr-register{margin:1.1rem 0 0;font-size:.9rem;line-height:1.5}
+.cr-register a{font-weight:700;color:#3fbf9a;margin-right:.5rem}
+.cr-register span{color:#a8bcc6}
