@@ -6,6 +6,79 @@ lede: "From discovery to pilot, each step produces a readable record and a decis
 sources: REG v0.1 Working Draft — October 21, 2026
 ---
 
+## The problem
+
+Two recurring gaps may arise in organizations:
+
+**Upstream**: a rule is adopted, but its conditions, dependencies, and hidden assumptions stay unstated. Compliance is attempted without knowing what is truly required.
+
+**Downstream**: systems run, procedures exist — but when accountability is needed, you cannot clearly show what is covered, partially verified, or missing.
+
+These two service methods can examine both gaps independently or together.
+
+## Track A — PREVENT
+
+### From requirement to mastery
+
+*« What does this rule actually imply for our systems, our decisions, our exposure ? »*
+
+- **Extract**: preserve the distinction between original text and interpretation
+- **Uncover**: surface hidden dependencies, edge cases, ambiguities
+- **Formalize**: turn stated intent into candidate rules — flag what remains unclear
+- **Map**: match controls to requirements, or identify the gap
+- **Deliver**: a prevention brief listing critical assumptions, risks, and next verification steps
+
+## Track B — PREPARE
+
+### From systems to defensible evidence
+
+*« If an auditor or regulator asks tomorrow, what can we actually demonstrate ? »*
+
+- **Scope**: define what is included — and what is not
+- **Inventory**: documents, configs, logs, tests — explicitly mark what is claimed but unavailable
+- **Qualify**: origin, date, validity, linkage, confidence level
+- **Cross-reference**: match what is expected against what is available
+- **Build**: an exportable record with an explicit gap register
+- **Act**: list what must be retrieved, verified, or created to complete the record
+
+## Convergence: the gap matrix
+
+When both tracks are populated, the method aligns:
+
+| Expected              | Available          | Status                     |
+| --------------------- | ------------------ | -------------------------- |
+| Requirement clarified | Control identified | Candidate coverage — to verify |
+| Requirement clarified | Control claimed ⚠️ | Needs verification         |
+| Requirement clarified | Evidence missing ❌ | Gap — action required      |
+| Assumption unresolved | —                  | Clarify before deciding    |
+| Reference ambiguous   | —                  | Pending stable formulation |
+
+**No cell becomes "compliant" through presence alone.** Every finding carries its source, its date, and its limits.
+
+## What these tracks are not
+
+An available document, a statement and a verified control carry different statuses. A gap remains visible and explains which conclusions it prevents. The summary helps choose the next check.
+
+- ❌ They do not issue automatic certification
+- ❌ They do not replace legal advice
+- ❌ They do not claim real-time auditing of live systems
+- ❌ They do not manufacture evidence to fill gaps
+
+**What they are:** an honest mirror. What you see is what you can prove — no more, no less.
+
+## Project status
+
+Reference status as of **October 21, 2026**:
+
+- **Version:** 0.1 — consolidated framing, Working Draft.
+- **Available:** a public simulated example, with no client data.
+- **In development:** Discovery tested on a development branch, in private preview; Translation Studio prototype; Readiness in progress.
+- **To validate:** the value and format of the service through the first real engagements.
+
+[Read the REG v0.1 framing specification — Working Draft →](/en/publications/reg-v0.1/)
+[See the simulated file — no client data →](/en/offer/example/)
+[Contact us →](/en/contact/)
+
 ## How we work: from discovery to pilot
 
 Each step produces a record you can read and a decision to take. None commits you to the next one.
@@ -89,68 +162,4 @@ A **non-blocking observation** pilot may be considered if integration is justifi
 
 Blocking governance (**ENFORCE**) is a later step, subject to validation of invariants, failure modes and bounded guarantees. It is neither automatic nor included in the diagnostic.
 
-## The problem
-
-Two recurring gaps may arise in organizations:
-
-**Upstream** : a rule is adopted, but its conditions, dependencies, and hidden assumptions stay unstated. Compliance is attempted without knowing what is truly required.
-
-**Downstream** : systems run, procedures exist — but when accountability is needed, you cannot clearly show what is covered, partially verified, or missing.
-
-These two service methods can examine both gaps independently or together.
-
-## Track A — PREVENT
-
-### From requirement to mastery
-
-*« What does this rule actually imply for our systems, our decisions, our exposure ? »*
-
-- **Extract** : preserve the distinction between original text and interpretation
-- **Uncover** : surface hidden dependencies, edge cases, ambiguities
-- **Formalize** : turn stated intent into candidate rules — flag what remains unclear
-- **Map** : match controls to requirements, or identify the gap
-- **Deliver** : a prevention brief listing critical assumptions, risks, and next verification steps
-
-## Track B — PREPARE
-
-### From systems to defensible evidence
-
-*« If an auditor or regulator asks tomorrow, what can we actually demonstrate ? »*
-
-- **Scope** : define what is included — and what is not
-- **Inventory** : documents, configs, logs, tests — explicitly mark what is claimed but unavailable
-- **Qualify** : origin, date, validity, linkage, confidence level
-- **Cross-reference** : match what is expected against what is available
-- **Build** : an exportable record with an explicit gap register
-- **Act** : list what must be retrieved, verified, or created to complete the record
-
-## Convergence : the gap matrix
-
-When both tracks are populated, the method aligns:
-
-| Expected              | Available          | Status                     |
-| --------------------- | ------------------ | -------------------------- |
-| Requirement clarified | Control identified | Candidate coverage — to verify |
-| Requirement clarified | Control claimed ⚠️ | Needs verification         |
-| Requirement clarified | Evidence missing ❌ | Gap — action required      |
-| Assumption unresolved | —                  | Clarify before deciding    |
-| Reference ambiguous   | —                  | Pending stable formulation |
-
-**No cell becomes "compliant" through presence alone.** Every finding carries its source, its date, and its limits.
-
-## Reading the findings
-
-An available document, a statement and a verified control carry different statuses. A gap remains visible and explains which conclusions it prevents. The summary helps choose the next check; it is neither certification, legal advice nor production validation. This engagement does not claim real-time auditing of systems or manufacture evidence to fill gaps.
-
-## Project status
-
-Reference status as of **October 21, 2026**:
-
-- **Version:** 0.1 — consolidated framing, Working Draft.
-- **Available:** a public simulated example, with no client data.
-- **In development:** Discovery tested on a development branch, in private preview; Translation Studio prototype; Readiness in progress.
-- **To validate:** the value and format of the service through the first real engagements.
-
-[Read the REG v0.1 framing specification — Working Draft →](/en/publications/reg-v0.1/)
-[See the simulated file — no client data →](/en/offer/example/)
-[Contact us →](/en/contact/)
+**Nothing here is a certification.**
