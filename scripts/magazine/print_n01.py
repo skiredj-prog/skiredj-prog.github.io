@@ -20,6 +20,7 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import A5
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase import pdfdoc
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
@@ -71,6 +72,7 @@ class Edition:
         self.c.setTitle(self.d["web"]["doc_title"])
         self.c.setAuthor("TENIR Labs")
         self.c.setSubject("TENIR N° 01 — Maroc 2030")
+        self.c._doc.Catalog.Lang = pdfdoc.PDFString({"fr": "fr-MA", "en": "en-MA", "ar": "ar-MA"}[lang])
         self.body = "Arabic" if self.rtl else "Body"
         self.bold = "ArabicBold" if self.rtl else "BodyBold"
         self.head = "ArabicBold" if self.rtl else "Head"
@@ -82,14 +84,30 @@ class Edition:
         s = str(s).replace("\u202f", " ").replace("\u00a0", " ")
         return get_display(arabic_reshaper.reshape(s)) if self.rtl else s
 
+    def begin_actual_text(self, logical):
+        """Preserve logical Unicode beside the shaped glyphs in the Arabic PDF.
+
+        Some readers use /ActualText for copy, search, or speech. The PDF is
+        still an untagged print edition; the HTML edition is the accessible one.
+        """
+        if self.rtl:
+            encoded = (b"\xfe\xff" + str(logical).encode("utf-16-be")).hex().upper()
+            self.c._code.append(f"/Span << /ActualText <{encoded}> >> BDC")
+
+    def end_actual_text(self):
+        if self.rtl:
+            self.c._code.append("EMC")
+
     def side_line(self, text, y, side, size, bold=False, color=MUTED):
         self.c.setFont(self.font(bold), size)
         self.c.setFillColor(color)
         shown = self.visual(text)
+        self.begin_actual_text(text)
         if side == "right":
             self.c.drawRightString(RIGHT, y, shown)
         else:
             self.c.drawString(M, y, shown)
+        self.end_actual_text()
 
     def font(self, bold=False, head=False):
         return self.head if head else self.bold if bold else self.body
@@ -102,10 +120,12 @@ class Edition:
         self.c.setFont(self.font(bold, head), size)
         self.c.setFillColor(color)
         shown = self.visual(text)
+        self.begin_actual_text(text)
         if self.rtl:
             self.c.drawRightString(x + (width or 0), y, shown)
         else:
             self.c.drawString(x, y, shown)
+        self.end_actual_text()
         if link:
             self.c.linkURL(link, (x, y - 2, x + (width or self.width(text, size, bold, head)), y + size), relative=0)
 
@@ -208,10 +228,12 @@ class Edition:
             self.c.roundRect(left, row_y - 17, width, 18, 9, fill=1, stroke=1)
             self.c.setFillColor(NAVY)
             self.c.setFont(font, size)
+            self.begin_actual_text(option)
             if is_arabic or self.rtl:
                 self.c.drawRightString(left + width - 8, row_y - 11, shown)
             else:
                 self.c.drawString(left + 8, row_y - 11, shown)
+            self.end_actual_text()
             x = left - 5 if self.rtl else left + width + 5
         return row_y - 34
 
