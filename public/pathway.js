@@ -315,7 +315,20 @@
     const a=document.createElement('a');a.href=url;a.download='TENIR-'+(fr?'aperçu-maturité':'maturity-journey-preview')+'-'+new Date().toISOString().slice(0,10)+'.txt';
     document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
-  $('pa-start').addEventListener('click',()=>{index=0;answers=Array(questions.length).fill(null);renderQuestion();show('question');$('pa-question-title').focus({preventScroll:true});});
+  const beginAssessment=(focus)=>{
+    index=0;answers=Array(questions.length).fill(null);renderQuestion();show('question');
+    if(focus!==false)$('pa-question-title').focus({preventScroll:true});
+  };
+  $('pa-start').addEventListener('click',()=>beginAssessment());
+  // Deep link: /parcours-ia/?start=1 opens question 1 directly, so a
+  // call to action elsewhere on the site does not cost the reader a second click.
+  const wantsDirectStart=()=>{
+    try{
+      if(window.location.hash==='#start')return true;
+      return new URLSearchParams(window.location.search).get('start')==='1';
+    }catch(e){return false;}
+  };
+  if(wantsDirectStart())beginAssessment(false);
   $('pa-back').addEventListener('click',()=>{if(index>0){index--;renderQuestion();$('pa-question-title').focus({preventScroll:true});}});
   $('pa-next').addEventListener('click',()=>{
     if(answers[index]===null)return;
