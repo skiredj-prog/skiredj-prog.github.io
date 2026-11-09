@@ -12,7 +12,7 @@ Chaque étape produit une pièce que vous pouvez relire et une décision à pren
 
 | Étape | Ce qui se passe | Ce que vous obtenez |
 | --- | --- | --- |
-| **1. Découverte** | Un premier échange, ou le [rapport gratuit](/parcours-ia/) en dix questions, pour choisir une situation précise. | Une question cadrée et un point de départ indicatif, pas une certification. |
+| **1. Découverte** | Un premier échange, ou le [rapport gratuit](/parcours-ia/?start=1) en dix questions, pour choisir une situation précise. | Une question cadrée et un point de départ indicatif, pas une certification. |
 | **2. Diagnostic accompagné** | L'examen, sur pièces, d'une exigence, d'un contrôle ou d'un usage de l'IA. | Une synthèse sourcée : constats, inconnues, lacunes et plan d'actions priorisé. |
 | **3. Prevent / Prepare** | Deux méthodes : des exigences vers des contrôles candidats, des systèmes vers des pièces vérifiables. | La matrice des écarts et les vérifications à mener. |
 | **4. Pilote d'observation** | Étudié seulement si une intégration est justifiée et autorisée ; il ne bloque aucune opération. | Des décisions et des traces à examiner dans un périmètre déclaré. |

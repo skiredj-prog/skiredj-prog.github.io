@@ -43,7 +43,7 @@ try {
       assert(await page.locator('h1').first().isVisible(),locale+': offer page heading missing');
       assert(await page.locator('main').isVisible(),locale+': offer page body missing');
       // The free report is the permanent header call to action: in the bar, or at the top of the menu on narrow screens.
-      const freeReport=page.locator('.site-header a[href="'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/')+'"]');
+      const freeReport=page.locator('.site-header a[href="'+(locale==='fr'?'/parcours-ia/?start=1':'/en/ai-readiness/?start=1')+'"]');
       assert.equal(await freeReport.count(),2,locale+': header must link to the free report (bar and menu)');
       if(width<=1100)await page.locator('[data-menu-toggle]').click();
       assert.equal(await freeReport.filter({visible:true}).count(),1,locale+'/'+width+': exactly one free-report link must be visible in the header');
@@ -56,6 +56,23 @@ try {
       console.log('Chromium '+locale.toUpperCase()+' '+width+'px: three offer paths, responsive layout and linked diagnostic PASS.');
     }
   }
+
+  // One click from the header opens question 1: no intro page in between.
+  for(const locale of ['fr','en']){
+    for(const width of [1280,390]){
+      const page=await browser.newPage({viewport:{width,height:844},reducedMotion:'reduce'});
+      await page.goto('http://127.0.0.1:4173'+(locale==='fr'?'/':'/en/'),{waitUntil:'networkidle'});
+      if(width<=1100)await page.locator('[data-menu-toggle]').click();
+      await page.locator('.site-header a[href$="?start=1"]').filter({visible:true}).click();
+      await page.waitForLoadState('networkidle');
+      assert(await page.locator('#pa-question').isVisible(),locale+'/'+width+': header CTA must open question 1 directly');
+      assert(!(await page.locator('#pa-intro').isVisible()),locale+'/'+width+': intro must not stand between the CTA and question 1');
+      assert.equal(await page.locator('#pa-stepper .pa-sstep').count(),10,locale+': stepper must name the 10 steps');
+      assert.equal(await page.locator('#pa-stepper .pa-sstep.is-current').count(),1,locale+': exactly one current step');
+      await page.close();
+    }
+  }
+  console.log('Pathway: header CTA opens question 1 directly, FR/EN, desktop/mobile PASS.');
 
   // Customer acquisition route: complete the full ungated questionnaire in FR and EN.
   for(const locale of ['fr','en']){

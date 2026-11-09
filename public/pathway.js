@@ -204,20 +204,41 @@
     const input=document.createElement('input');input.type='radio';input.name='pathway-choice';input.value=o.v;input.checked=selected===o.v;
     const body=document.createElement('div');const head=document.createElement('span');head.textContent=o.label;body.appendChild(head);
     if(o.sub){const sub=document.createElement('small');sub.textContent=o.sub;body.appendChild(sub);}
-    input.addEventListener('change',()=>{answers[index]=o.v;$('pa-next').disabled=false;});
+    input.addEventListener('change',()=>{answers[index]=o.v;$('pa-next').disabled=false;renderStepper();});
     label.append(input,body);return label;
+  }
+  // One question per screen. The stepper names every step; answered steps can be revisited.
+  const stepName=(q)=>q.section.replace(/^\d+\s*·\s*/,'');
+  const furthest=()=>{const i=answers.findIndex(a=>!a);return i===-1?questions.length-1:i;};
+  function goTo(i){index=i;renderQuestion();$('pa-question-title').focus({preventScroll:true});}
+  function renderStepper(){
+    const reach=furthest();
+    const items=questions.map((q,i)=>{
+      const li=document.createElement('li');
+      const state=i===index?'is-current':answers[i]?'is-done':'is-todo';
+      li.className='pa-sstep '+state;
+      const b=document.createElement('button');b.type='button';
+      b.disabled=i===index||i>reach;
+      if(i===index)b.setAttribute('aria-current','step');
+      b.setAttribute('aria-label',L('Étape ','Step ')+(i+1)+' : '+stepName(q)+(answers[i]?L(' (répondu)',' (answered)'):''));
+      b.append(makeElement('span','pa-sbar'),makeElement('span','pa-slabel',stepName(q)));
+      b.addEventListener('click',()=>goTo(i));
+      li.append(b);return li;
+    });
+    $('pa-stepper').replaceChildren(...items);
   }
   function renderQuestion(){
     const q=questions[index];
-    $('pa-progress-label').textContent=q.section;
-    $('pa-count').textContent=String(index+1)+' / '+String(questions.length);
-    $('pa-progress-fill').style.width=(100*(index+1)/questions.length)+'%';
-    $('pa-qsection').textContent=L('Question ','Question ')+String(index+1);
+    $('pa-count').textContent=L('Question ','Question ')+String(index+1)+L(' sur ',' of ')+String(questions.length);
+    $('pa-qsection').textContent=stepName(q);
     $('pa-question-title').textContent=q.title;
     $('pa-options').replaceChildren(...q.options.map(o=>optionNode(o,answers[index])));
     $('pa-back').disabled=index===0;
     $('pa-next').disabled=!answers[index];
-    $('pa-next').textContent=index===questions.length-1?L('Voir mon aperçu →','See my preview →'):L('Suivant →','Next →');
+    $('pa-next').replaceChildren(document.createTextNode((index===questions.length-1?L('Voir mon rapport','See my report'):L('Suivant','Next'))+' '),makeElement('span',null,'→'));
+    renderStepper();
+    const top=$('pa-question').getBoundingClientRect().top+window.scrollY-80;
+    if(window.scrollY>top)window.scrollTo({top:Math.max(0,top),behavior:'instant'});
   }
   function makeElement(tag,cls,content){
     const el=document.createElement(tag);
@@ -228,14 +249,14 @@
   function reportText(){
     if(!report)return'';
     const rows=[
-      'TENIR LABS — '+L('APERÇU DU PARCOURS DE MATURITÉ','MATURITY JOURNEY PREVIEW'),
+      'TENIR LABS — '+L('RAPPORT IA PERSONNALISÉ','PERSONALIZED AI REPORT'),
       L('Auto-évaluation déclarative','Self-reported assessment')+' · '+new Date().toLocaleDateString(fr?'fr-FR':'en-GB'),
       '',
       L('USAGE EXAMINÉ','USE CASE EXAMINED')+' : '+(($('pa-usecase')?.value.trim())||L('Non précisé','Not specified')),
       L('TYPE D’ACTION','TYPE OF ACTION')+' : '+contextLabel(0,answers[0]),
       L('RISQUE PRINCIPAL','MAIN CONCERN')+' : '+contextLabel(1,answers[1]),
       '',
-      L('SYNTHÈSE DE VOTRE APERÇU','PREVIEW SUMMARY')+': '+report.summary,
+      L('SYNTHÈSE DE VOTRE RAPPORT','REPORT SUMMARY')+': '+report.summary,
       '',
       L('PARCOURS DE MATURITÉ','MATURITY JOURNEY')+': '+report.maturity.stages[report.maturity.current].title,
       L('PROCHAINE ÉTAPE','NEXT STEP')+': '+report.maturity.stages[report.maturity.next].title,
@@ -248,7 +269,7 @@
     rows.push('',L('TROIS PRIORITÉS','THREE PRIORITIES'));
     report.prioritized.forEach((step,i)=>rows.push(String(i+1)+'. '+step.title+' — '+step.desc));
     rows.push('',L('PARCOURS SUGGÉRÉ','SUGGESTED PATHWAY')+': '+report.offer.title,report.offer.desc,'',
-      L('Cet aperçu s’appuie uniquement sur vos réponses. Aucune preuve technique n’a été vérifiée. Ce n’est ni un audit ni une certification.','This preview uses only your answers. No technical evidence was verified. It is neither an audit nor a certification.'),
+      L('Ce rapport s’appuie uniquement sur vos réponses. Aucune preuve technique n’a été vérifiée. Ce n’est ni un audit ni une certification.','This report uses only your answers. No technical evidence was verified. It is neither an audit nor a certification.'),
       'tenirlabs.cc');
     return rows.join('\n');
   }
@@ -343,7 +364,7 @@
     $('pa-offer-description').textContent=report.offer.desc;
     $('pa-learn').href=report.offer.link;
     $('pa-learn').textContent=L('Découvrir cette approche →','Explore this approach →');
-    $('pa-talk').href='mailto:skiredj@tenirlabs.cc?subject='+encodeURIComponent(L('Parlons de mon aperçu de maturité IA','Discuss my AI maturity preview'))+'&body='+encodeURIComponent(L('Bonjour,\n\nJe souhaite discuter des prochaines étapes suggérées par mon aperçu TENIR Labs.\n\n','Hello,\n\nI would like to discuss the next steps suggested by my TENIR Labs preview.\n\n')+reportText()+'\n\n'+L('Cordialement,','Best regards,'));
+    $('pa-talk').href='mailto:skiredj@tenirlabs.cc?subject='+encodeURIComponent(L('Parlons de mon rapport IA personnalisé','Discuss my personalized AI report'))+'&body='+encodeURIComponent(L('Bonjour,\n\nJe souhaite discuter des prochaines étapes suggérées par mon rapport TENIR Labs.\n\n','Hello,\n\nI would like to discuss the next steps suggested by my TENIR Labs report.\n\n')+reportText()+'\n\n'+L('Cordialement,','Best regards,'));
     $('pa-feedback').textContent='';
     show('report');
     $('pa-report-title').focus({preventScroll:true});
@@ -361,7 +382,7 @@
   }
   function downloadReport(){
     const text=reportText();
-    const name='TENIR-'+(fr?'apercu-maturite':'maturity-journey-preview')+'-'+new Date().toISOString().slice(0,10)+'.txt';
+    const name='TENIR-'+(fr?'rapport-ia':'ai-report')+'-'+new Date().toISOString().slice(0,10)+'.txt';
     // ASCII file name: an accented name came back as a bare "download" in headless Chromium.
     const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));
     const a=document.createElement('a');a.href=url;a.download=name;

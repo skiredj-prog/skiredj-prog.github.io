@@ -11,7 +11,7 @@ for(const [locale,page,home,route,other] of [
   }
   assert(c.includes('hreflang="fr"')&&c.includes('hreflang="en"'),locale+': bilingual links missing');
   assert(c.includes(other),locale+': link to other language missing');
-  assert(c.includes('href="'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/')+'"'),locale+': free assessment missing from primary interior navigation');
+  assert(c.includes('href="'+(locale==='fr'?'/parcours-ia/?start=1':'/en/ai-readiness/?start=1')+'"'),locale+': free assessment missing from primary interior navigation');
   assert(!c.includes('282.08s ·'),locale+': unlabelled test-run duration must not reappear');
   assert(h.includes('href="'+route+'"'),locale+': credibility not discoverable on homepage');
   assert(c.includes(locale==='fr'?'Pas de production Raft multi-hôtes':'No production multi-host Raft'),locale+': important exclusion absent');

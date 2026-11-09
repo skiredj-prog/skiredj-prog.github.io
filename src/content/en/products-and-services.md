@@ -12,7 +12,7 @@ Each step produces a record you can read and a decision to take. None commits yo
 
 | Step | What happens | What you receive |
 | --- | --- | --- |
-| **1. Discovery** | A first conversation, or the ten-question [free report](/en/ai-readiness/), to choose one precise situation. | A framed question and an indicative starting point, not a certification. |
+| **1. Discovery** | A first conversation, or the ten-question [free report](/en/ai-readiness/?start=1), to choose one precise situation. | A framed question and an indicative starting point, not a certification. |
 | **2. Guided diagnostic** | A document-based review of a requirement, a control or an AI use. | A sourced summary: findings, unknowns, gaps and a prioritised action plan. |
 | **3. Prevent / Prepare** | Two methods: from requirements to candidate controls, from systems to verifiable evidence. | The gap matrix and the checks still to run. |
 | **4. Observation pilot** | Considered only if an integration is justified and authorised; it blocks no operation. | Decisions and records to review within a declared scope. |
