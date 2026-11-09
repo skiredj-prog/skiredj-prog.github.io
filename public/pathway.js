@@ -252,38 +252,89 @@
       'tenirlabs.cc');
     return rows.join('\n');
   }
+  function labelledPara(cls,label,value){
+    const el=makeElement('p',cls);
+    el.append(makeElement('strong','',label),document.createTextNode(value));
+    return el;
+  }
   function renderReport(){
     report=evaluate();
     $('pa-report-summary').textContent=report.summary;
     const usageValue=$('pa-usecase')?.value.trim()||L('Non précisé','Not specified');
-    const usageMeta=makeElement('p','pa-usage-meta-text');
-    usageMeta.append(makeElement('strong','',L('Usage examiné : ','Use case examined: ')),document.createTextNode(usageValue));
-    $('pa-usage-meta').replaceChildren(usageMeta);
-    const usageCards=report.usage.stages.map(stage=>{
-      const card=makeElement('article','pa-usage-card'+(stage.n===report.usage.current?' is-current':'')+(stage.n===report.usage.next?' is-next':''));
-      if(stage.n===report.usage.current)card.setAttribute('aria-current','step');
-      card.append(makeElement('span','pa-usage-index',String(stage.n+1).padStart(2,'0')),
-        makeElement('span','pa-usage-status',stage.n===report.usage.current?L('Vous êtes ici','You are here'):stage.n===report.usage.next?L('Prochain passage','Next passage'):''),
-        makeElement('h3','',stage.title),makeElement('p','pa-usage-quote','« '+stage.quote+' »'),makeElement('p','pa-usage-next',stage.next));
-      return card;
+    const mStages=report.maturity.stages,mCur=report.maturity.current,mNext=report.maturity.next;
+    const cur=mStages[mCur],nxt=mStages[mNext];
+
+    // Executive summary: position, next passage, first priority. Readable in 20 seconds.
+    const execBlocks=[
+      {k:L('VOTRE POSITION','YOUR POSITION'),v:cur?cur.title:'—',cls:'is-current'},
+      {k:L('PROCHAINE ÉTAPE','NEXT STEP'),v:nxt?nxt.title:L('Parcours complet','Journey complete'),cls:'is-next'},
+      {k:L('PRIORITÉ IMMÉDIATE','IMMEDIATE PRIORITY'),v:report.prioritized[0]?report.prioritized[0].title:'—',cls:''}
+    ].map(b=>{
+      const el=makeElement('div','pa-exec-block '+b.cls);
+      el.append(makeElement('span','pa-exec-key',b.k),makeElement('strong','pa-exec-val',b.v));
+      return el;
     });
-    $('pa-usage-map').replaceChildren(...usageCards);
-    const maturityCards=report.maturity.stages.map(stage=>{
-      const card=makeElement('article','pa-maturity-card'+(stage.n===report.maturity.current?' is-current':'')+(stage.n===report.maturity.next?' is-next':''));
-      if(stage.n===report.maturity.current)card.setAttribute('aria-current','step');
-      card.append(makeElement('span','pa-maturity-index',String(stage.n).padStart(2,'0')),
-        makeElement('span','pa-maturity-status',stage.n===report.maturity.current?L('Votre position','Your position'):stage.n===report.maturity.next?L('Prochaine étape','Next step'):stage.status),
-        makeElement('h3','',stage.title),makeElement('p','pa-maturity-desc',stage.desc),makeElement('p','pa-maturity-gate',stage.gate));
-      return card;
+    $('pa-exec-grid').replaceChildren(...execBlocks);
+
+    // Horizontal milestone track. Trajectory, not verdict: no pass/fail colouring.
+    const track=mStages.map(stage=>{
+      const state=stage.n===mCur?'is-current':stage.n===mNext?'is-next':stage.n<mCur?'is-done':'is-later';
+      const node=makeElement('div','pa-mstep '+state);
+      node.setAttribute('role','listitem');
+      if(stage.n===mCur)node.setAttribute('aria-current','step');
+      // The number sits inside the node, as a milestone rather than a caption.
+      const dot=makeElement('span','pa-mstep-dot',String(stage.n+1).padStart(2,'0'));
+      const badge=stage.n===mCur?L('Vous êtes ici','You are here'):stage.n===mNext?L('Prochaine étape','Next step'):'';
+      node.append(dot,makeElement('span','pa-mstep-title',stage.title));
+      if(badge)node.append(makeElement('span','pa-mstep-badge',badge));
+      return node;
     });
-    $('pa-maturity-map').replaceChildren(...maturityCards);
-    const rows=report.dims.map(d=>{
-      const container=makeElement('div','pa-dimension');
-      const top=makeElement('div','pa-dim-top');
-      top.append(makeElement('strong','',d.name),makeElement('span','',textStatus[d.level]));
-      const track=makeElement('div','pa-dim-track');const fill=makeElement('div','pa-dim-fill '+(d.level==='partial'?'partial':d.level==='weak'?'low':''));
-      fill.style.width=d.level==='strong'?'100%':d.level==='partial'?'63%':d.level==='weak'?'25%':'8%';
-      track.append(fill);container.append(top,track);return container;
+    $('pa-maturity-track').replaceChildren(...track);
+
+    // The two stages that carry the decision, spelled out.
+    const stageCards=[];
+    if(cur){
+      const c=makeElement('article','pa-stage-card is-current');
+      c.append(makeElement('span','pa-stage-flag',L('VOUS ÊTES ICI','YOU ARE HERE')),
+        makeElement('h3','',cur.title),
+        makeElement('p','pa-stage-what',cur.desc),
+        labelledPara('pa-stage-gate',L('Ce qui atteste cette étape : ','What evidences this stage: '),cur.gate));
+      stageCards.push(c);
+    }
+    if(nxt){
+      const c=makeElement('article','pa-stage-card is-next');
+      c.append(makeElement('span','pa-stage-flag',L('PROCHAINE ÉTAPE','NEXT STEP')),
+        makeElement('h3','',nxt.title),
+        makeElement('p','pa-stage-what',nxt.desc),
+        labelledPara('pa-stage-gate',L('À préparer : ','To prepare: '),nxt.gate));
+      stageCards.push(c);
+    }
+    $('pa-stage-cards').replaceChildren(...stageCards);
+
+    // Context restitution, so the result does not read as generic.
+    const uCur=report.usage.stages[report.usage.current];
+    const ctx=[
+      [L('Usage examiné','Use case examined'),usageValue],
+      [L('Où en est cet usage','Where this use case stands'),uCur?uCur.title:'—'],
+      [L('Prochaine vérification','Next check'),uCur?uCur.next:'—']
+    ];
+    // Each term/description pair is wrapped, so the three-column grid keeps
+    // a label with its own value instead of laying out six loose cells.
+    const ctxNodes=ctx.map(([k,v])=>{
+      const cell=makeElement('div','pa-context-cell');
+      cell.append(makeElement('dt','',k),makeElement('dd','',v));
+      return cell;
+    });
+    $('pa-context-grid').replaceChildren(...ctxNodes);
+
+    // Word states, not filled bars: the answers are declarative, and a bar at 63%
+    // reads as a measurement the questionnaire never made.
+    const rows=report.dims.map((d,i)=>{
+      const container=makeElement('div','pa-dimension is-'+d.level);
+      container.append(makeElement('span','pa-dim-n',String(i+1).padStart(2,'0')),
+        makeElement('strong','pa-dim-name',d.name),
+        makeElement('span','pa-dim-state pa-dim-top',textStatus[d.level]));
+      return container;
     });
     $('pa-dimensions').replaceChildren(...rows);
     const items=report.prioritized.map(s=>{const li=document.createElement('li');li.append(makeElement('strong','',s.title),makeElement('p','',s.desc));return li;});
@@ -310,10 +361,11 @@
   }
   function downloadReport(){
     const text=reportText();
-    const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');a.href=url;a.download='TENIR-'+(fr?'aperçu-maturité':'maturity-journey-preview')+'-'+new Date().toISOString().slice(0,10)+'.txt';
-    document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    const name='TENIR-'+(fr?'apercu-maturite':'maturity-journey-preview')+'-'+new Date().toISOString().slice(0,10)+'.txt';
+    const a=document.createElement('a');
+    a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(text);
+    a.download=name;
+    document.body.append(a);a.click();a.remove();
   }
   const beginAssessment=(focus)=>{
     index=0;answers=Array(questions.length).fill(null);renderQuestion();show('question');

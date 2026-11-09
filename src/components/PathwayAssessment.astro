@@ -96,11 +96,51 @@ const contact=url(fr?'/contact/':'/en/contact/');
     <section class="pa-report" id="pa-report" aria-labelledby="pa-report-title" hidden>
       <div class="pa-report-hero"><div class="pa-wrap"><span class="pa-eyebrow">{t.reportKicker}</span><h2 id="pa-report-title" tabindex="-1">{t.reportHeading}</h2><p>{t.reportIntro}</p><div class="pa-report-summary" id="pa-report-summary" aria-live="polite"></div></div></div>
       <div class="pa-wrap pa-report-content">
-        <section class="pa-journey-panel" aria-labelledby="pa-journey-title"><span class="pa-eyebrow">{fr?'PARCOURS DE MATURITÉ ET D’USAGE':'MATURITY AND USAGE JOURNEYS'}</span><h2 id="pa-journey-title">{fr?'Deux cartes pour situer la prochaine vérification':'Two maps to locate the next check'}</h2><div id="pa-usage-meta"></div><div id="pa-usage-map"></div><div id="pa-maturity-map"></div></section>
+        <section class="pa-exec" aria-labelledby="pa-exec-title">
+          <h2 id="pa-exec-title" class="pa-vh">{fr?'Synthèse':'Summary'}</h2>
+          <div class="pa-exec-grid" id="pa-exec-grid"></div>
+        </section>
+
+        <section class="pa-journey-panel" aria-labelledby="pa-journey-title">
+          <span class="pa-eyebrow">{fr?'PARCOURS DE MATURITÉ':'MATURITY JOURNEY'}</span>
+          <h2 id="pa-journey-title">{fr?'Où vous êtes, et le passage suivant':'Where you are, and the next passage'}</h2>
+          <div class="pa-mtrack" id="pa-maturity-track" role="list" aria-label={fr?'Six étapes du parcours de maturité':'Six stages of the maturity journey'}></div>
+          <div class="pa-stage-cards" id="pa-stage-cards"></div>
+          <div class="pa-callouts">
+            <article class="pa-callout"><h4>{fr?'Comment lire la carte':'How to read the map'}</h4><p>{fr?'Votre résultat indique une position probable, pas une certification.':'Your result indicates a likely position, not a certification.'}</p></article>
+            <article class="pa-callout"><h4>{fr?'La prochaine question':'The next question'}</h4><p>{fr?'Quel élément doit être vérifié avant de passer à l’étape suivante ?':'Which element has to be checked before moving to the next stage?'}</p></article>
+            <article class="pa-callout"><h4>{fr?'Principe TENIR':'TENIR principle'}</h4><p>{fr?'Une étape n’est franchie que lorsque les éléments attendus peuvent être examinés.':'A stage is only passed once the expected elements can be examined.'}</p></article>
+          </div>
+        </section>
+
+        <section class="pa-context" aria-labelledby="pa-context-title">
+          <span class="pa-eyebrow">{fr?'CONTEXTE EXAMINÉ':'CONTEXT EXAMINED'}</span>
+          <h2 id="pa-context-title" class="pa-vh">{fr?'Contexte examiné':'Context examined'}</h2>
+          <dl class="pa-context-grid" id="pa-context-grid"></dl>
+        </section>
+
         <div class="pa-report-grid">
           <section class="pa-report-card" aria-labelledby="pa-dimensions-title"><h2 id="pa-dimensions-title">{t.dimensions}</h2><div id="pa-dimensions"></div></section>
           <section class="pa-report-card" aria-labelledby="pa-priorities-title"><h2 id="pa-priorities-title">{t.priorities}</h2><ol id="pa-priorities"></ol></section>
         </div>
+
+        <section class="pa-boundaries" aria-labelledby="pa-boundaries-title">
+          <span class="pa-eyebrow">{fr?'À LIRE AVANT DE PARTAGER':'READ BEFORE SHARING'}</span>
+          <h2 id="pa-boundaries-title">{fr?'Ce que cet aperçu ne dit pas':'What this preview does not say'}</h2>
+          <div class="pa-boundaries-grid">
+            <ul class="pa-bd-yes">
+              <li>{fr?'Il reflète vos réponses.':'It reflects your answers.'}</li>
+              <li>{fr?'Il aide à choisir une prochaine vérification.':'It helps you choose a next check.'}</li>
+              <li>{fr?'Il fournit des pistes de discussion.':'It gives you something to discuss.'}</li>
+            </ul>
+            <ul class="pa-bd-no">
+              <li>{fr?'Il ne vérifie pas vos systèmes.':'It does not inspect your systems.'}</li>
+              <li>{fr?'Il ne confirme pas vos preuves.':'It does not confirm your evidence.'}</li>
+              <li>{fr?'Il ne certifie pas votre organisation.':'It does not certify your organisation.'}</li>
+              <li>{fr?'Il ne garantit aucun niveau de conformité.':'It guarantees no level of compliance.'}</li>
+            </ul>
+          </div>
+        </section>
         <section class="pa-offer" aria-labelledby="pa-offer-title"><span class="pa-eyebrow">{t.recommend}</span><h2 id="pa-offer-title"></h2><p id="pa-offer-description"></p><div class="pa-report-actions"><a class="pa-button pa-primary" id="pa-talk" href={contact}>{t.contact} ↗</a><a class="pa-button pa-outline" id="pa-learn" href={demo}>{t.demo} →</a></div><p class="pa-footnote">{t.recommendBody}</p></section>
         <div class="pa-report-toolbar"><button class="pa-button pa-muted" type="button" id="pa-download">{t.download} ↓</button><button class="pa-button pa-muted" type="button" id="pa-copy">{t.copy}</button><button class="pa-button pa-muted" type="button" id="pa-print">{t.print}</button><button class="pa-restart" type="button" id="pa-restart">{t.startOver}</button><span id="pa-feedback" role="status"></span></div>
         <p class="pa-limits">{t.limits}</p>
