@@ -65,6 +65,12 @@
 .mag .mag-btn-ghost { border-color: rgba(255, 255, 255, 0.55); color: #fff; }
 .mag .mag-btn-ghost:hover { border-color: #fff; color: #fff; }
 .mag .mag-btn-light { border-color: var(--navy); color: var(--navy); background: #fff; }
+.mag-qr-card { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; width: fit-content; max-width: 100%; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--sky); }
+.mag-qr-card > a { display: block; flex: 0 0 auto; background: #fff; }
+.mag-qr-card img { display: block; width: min(12rem, 100%); height: auto; }
+.mag-qr-card > div { display: grid; gap: 0.4rem; }
+.mag-qr-card .mag-qr-title { font-family: var(--head); font-weight: 800; font-size: 1.2rem; }
+.mag-qr-card > div > a { font-weight: 700; }
 
 /* Reading column */
 .mag-main { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
