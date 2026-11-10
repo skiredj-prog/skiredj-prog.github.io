@@ -1,0 +1,44 @@
+---
+import { evidenceFor, evidenceLabels, type Locale, type EvidenceCard } from '../data/evidence';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const cards = evidenceFor(locale);
+const labels = evidenceLabels[locale];
+const levelLabel = (card: EvidenceCard) => card.level === 'scoped-demonstration' ? labels.scoped : card.level === 'exploratory-experiment' ? labels.exploratory : card.level === 'not-established' ? labels.notEstablished : labels.reference;
+---
+<section class="evidence-explorer" data-evidence-explorer>
+  <div class="evidence-filters" aria-label={locale === 'fr' ? 'Filtrer les preuves' : 'Filter evidence'}>
+    <label>{labels.object}<select data-filter="object"><option value="all">{labels.all}</option>{[...new Set(cards.map(c => c.object))].map(object => <option value={object}>{object === 'tenir-gov' ? 'TENIR-Gov' : object === 'ai-safe2' ? 'AI SAFE²' : object.toUpperCase()}</option>)}</select></label>
+    <label>{labels.environment}<select data-filter="environment"><option value="all">{labels.all}</option>{[...new Set(cards.map(c => c.environment))].map(environment => <option value={environment}>{environment}</option>)}</select></label>
+    <label>{labels.level}<select data-filter="level"><option value="all">{labels.all}</option>{['scoped-demonstration','exploratory-experiment','published-reference'].map(level => <option value={level}>{level === 'scoped-demonstration' ? labels.scoped : level === 'exploratory-experiment' ? labels.exploratory : labels.reference}</option>)}</select></label>
+  </div>
+  <p class="evidence-count" data-evidence-count aria-live="polite"></p>
+  <div class="evidence-grid">
+    {cards.map(card => <article class="evidence-card" data-evidence-card data-object={card.object} data-environment={card.environment} data-level={card.level}>
+      <header><p class="evidence-tag">{levelLabel(card)}</p><h2>{card.title}</h2><p class="evidence-claim">{card.claim}</p></header>
+      <p class="evidence-environment"><strong>{labels.environment} :</strong> {card.environment}</p>
+      <div class="evidence-columns"><div><h3>{labels.observed}</h3><ul>{card.observed.map(item => <li>{item}</li>)}</ul></div><div class="evidence-limits"><h3>{labels.limits}</h3><ul>{card.notEstablished.map(item => <li>{item}</li>)}</ul></div></div>
+      <details class="evidence-source"><summary>{labels.source}</summary><p><a href={card.sourceHref} rel="noreferrer">{card.sourceLabel} ↗</a></p><p>{card.versionOrCommit}</p><p>{card.dateChecked}</p></details>
+    </article>)}
+  </div>
+</section>
+<script>
+  const root = document.querySelector('[data-evidence-explorer]');
+  if (root) {
+    const cards = [...root.querySelectorAll('[data-evidence-card]')];
+    const filters = [...root.querySelectorAll('select[data-filter]')];
+    const count = root.querySelector('[data-evidence-count]');
+    const update = () => {
+      const values = Object.fromEntries(filters.map((filter) => [filter.dataset.filter, filter.value]));
+      let visible = 0;
+      cards.forEach((card) => {
+        const match = Object.entries(values).every(([key, value]) => value === 'all' || card.dataset[key] === value);
+        card.hidden = !match;
+        if (match) visible += 1;
+      });
+      if (count) count.textContent = `${visible} / ${cards.length}`;
+    };
+    filters.forEach((filter) => filter.addEventListener('change', update));
+    update();
+  }
+</script>
