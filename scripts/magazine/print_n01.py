@@ -242,7 +242,7 @@ class Edition:
             x = left - 5 if self.rtl else left + width + 5
         return row_y - 34
 
-    def step(self, i, title, body, y, size=None, gap=6):
+    def step(self, i, title, body, y, size=None, gap=10):
         size = size or self.body_size
         num_x = RIGHT - 12 if self.rtl else M
         self.line(str(i), num_x, y, 10.5, bold=True, head=True,
@@ -253,8 +253,11 @@ class Edition:
                                  leading=size * 1.28, bold=True, after=1)
         y_body = self.paragraph(body, y_title, text_x, text_w, size=size,
                                 leading=size * (1.42 if self.rtl else 1.31), after=gap)
-        self.rule(y_body + 3)
-        return y_body - 3
+        # Keep the divider in the whitespace between entries. The previous
+        # offset placed it too close to the body baseline, especially in RTL
+        # pages and in short one-line entries.
+        self.rule(y_body - 1)
+        return y_body - 8
 
     def start(self, section):
         self.page_no += 1
