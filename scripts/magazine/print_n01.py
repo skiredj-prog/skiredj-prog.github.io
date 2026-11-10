@@ -574,8 +574,18 @@ class Edition:
                                leading=10.7 if not self.rtl else 12.2,
                                after=3)
         answers = " · ".join(f"{i} {x[1]} ({x[2]})" for i, x in enumerate(d["quiz"], 1))
-        y = self.paragraph(f"{d['quiz_answers_label']}: {answers}", y,
-                           size=7.7 if not self.rtl else 8.3, color=TEAL, after=8)
+        answer_text = f"{d['quiz_answers_label']}: {answers}"
+        answer_size = 7.7 if not self.rtl else 8.3
+        # Printed edition: preserve the quiz gesture by making the answer key
+        # readable only after turning the page. The web edition keeps the same
+        # answers in an accessible <details> disclosure.
+        self.c.saveState()
+        self.c.translate(RIGHT + M, y)
+        self.c.rotate(180)
+        self.paragraph(answer_text, 0, x=M, width=CONTENT,
+                       size=answer_size, color=TEAL, after=0)
+        self.c.restoreState()
+        y -= answer_size * 1.31 + 8
         y = self.subhead(d["src_title"], y, size=11)
         for i, text in enumerate(d["sources"]):
             href = d["sources_links"][i][1 if i == 5 else 0]["href"]
