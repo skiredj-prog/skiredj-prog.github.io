@@ -256,8 +256,8 @@ class Edition:
         # Keep the divider in the whitespace between entries. The previous
         # offset placed it too close to the body baseline, especially in RTL
         # pages and in short one-line entries.
-        self.rule(y_body - 1)
-        return y_body - 8
+        self.rule(y_body - 3)
+        return y_body - 12
 
     def start(self, section):
         self.page_no += 1
@@ -579,16 +579,19 @@ class Edition:
         answers = " · ".join(f"{i} {x[1]} ({x[2]})" for i, x in enumerate(d["quiz"], 1))
         answer_text = f"{d['quiz_answers_label']}: {answers}"
         answer_size = 7.7 if not self.rtl else 8.3
+        answer_leading = answer_size * 1.31
+        answer_lines = self.wrap(answer_text, CONTENT, answer_size)
         # Printed edition: preserve the quiz gesture by making the answer key
         # readable only after turning the page. The web edition keeps the same
         # answers in an accessible <details> disclosure.
         self.c.saveState()
-        self.c.translate(RIGHT + M, y)
+        answer_bottom = y - (len(answer_lines) - 1) * answer_leading
+        self.c.translate(RIGHT + M, answer_bottom)
         self.c.rotate(180)
         self.paragraph(answer_text, 0, x=M, width=CONTENT,
-                       size=answer_size, color=TEAL, after=0)
+                       size=answer_size, leading=answer_leading, color=TEAL, after=0)
         self.c.restoreState()
-        y -= answer_size * 1.31 + 8
+        y = answer_bottom - answer_leading - 8
         y = self.subhead(d["src_title"], y, size=11)
         for i, text in enumerate(d["sources"]):
             href = d["sources_links"][i][1 if i == 5 else 0]["href"]
