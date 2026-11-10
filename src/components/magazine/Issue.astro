@@ -234,5 +234,14 @@ const needIcons = ['bolt', 'pipe', 'wrench', 'wave'];
     <a class="mag-btn mag-btn-light" href={url(`/magazine/#proposer-${lang}`)}>{extra.propose} →</a>
     <a class="mag-btn mag-btn-light" href={url(pdfHref)} download>{d.web.read_pdf}</a>
   </div>
+  <div class="mag-qr-card">
+    <a href={url(avisHref)} aria-label={d.web.avis_cta}>
+      <img src={url(`/magazine/n01/qr-avis-${lang}.svg`)} alt={d.back_qr} width="192" height="192" loading="lazy" />
+    </a>
+    <div>
+      <p class="mag-qr-title">{d.back_qr}</p>
+      <a href={url(avisHref)}>{d.web.avis_cta} →</a>
+    </div>
+  </div>
   <p class="mag-small mag-muted">{d.web.pdf_note}</p>
 </section>
