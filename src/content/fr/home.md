@@ -43,5 +43,5 @@ Ce qui est **en place** n'est pas toujours **prouvé**
 
 REG — Prévenir · Préparer · Démontrer
 
-[Explorer les deux services REG →](/produits-et-services/)
+[Découvrir REG Prévenir et REG Préparer →](/produits-et-services/)
 [Comprendre le cadre →](/concepts/)

@@ -43,5 +43,5 @@ What is **in place** is not always **provable**
 
 REG — Prevent · Prepare · Demonstrate
 
-[Discover REG →](/en/products-and-services)
+[Explore REG Prevent and REG Prepare →](/en/products-and-services/)
 [Understand the framework →](/en/concepts)
