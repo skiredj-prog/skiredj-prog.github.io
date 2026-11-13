@@ -12,9 +12,9 @@ sources: KB3 · REG v0.1 · Dépôts publics skiredj-prog
 
 Les organisations investissent dans des règles, des systèmes et des vérifications. Pourtant, l'écart persiste :
 
-Ce qui est **exigé** n'est pas toujours **clair**
-Ce qui est **déclaré** n'est pas toujours **vérifié**
-Ce qui est **en place** n'est pas toujours **prouvé**
+- Ce qui est **exigé** n'est pas toujours **clair**
+- Ce qui est **déclaré** n'est pas toujours **vérifié**
+- Ce qui est **en place** n'est pas toujours **prouvé**
 
 **TENIR** est le cadre qui rend cet écart visible.
 **REG** propose deux parcours complémentaires : prévenir en amont, préparer les justificatifs en aval, et distinguer ce qui est établi de ce qui reste à vérifier.
@@ -33,15 +33,15 @@ Ce qui est **en place** n'est pas toujours **prouvé**
 
 ### Au cœur de TENIR
 
-**Intégrité** : ne pas présenter une incertitude comme un fait établi
-**Traçabilité** : relier chaque conclusion à sa source
-**Préservation** : l'humain garde toujours la décision
-**Réversibilité** : corriger, documenter, ne pas effacer
-**Lucidité** : afficher ce qui est incomplet, ambigu ou absent
+- **Intégrité** : ne pas présenter une incertitude comme un fait établi
+- **Traçabilité** : relier chaque conclusion à sa source
+- **Préservation** : l'humain garde toujours la décision
+- **Réversibilité** : corriger, documenter, ne pas effacer
+- **Lucidité** : afficher ce qui est incomplet, ambigu ou absent
 
-*"Beyond the checklist."*
+> *"Beyond the checklist."*
+>
+> REG — Prévenir · Préparer · Démontrer
 
-REG — Prévenir · Préparer · Démontrer
-
-[Explorer les deux services REG →](/produits-et-services/)
-[Comprendre le cadre →](/concepts/)
+[Découvrir REG →](/produits-et-services/)
+[Comprendre le cadre →](/origine/)
