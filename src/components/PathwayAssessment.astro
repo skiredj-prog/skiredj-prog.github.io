@@ -13,6 +13,8 @@ label:"RAPPORT IA PERSONNALISÉ GRATUIT · TENIR LABS",
 tag:"L’IA avance. Vous gardez la main.",
 head:"Avant de laisser l’IA agir, voyez par où commencer.",
 lead:"En 10 questions, obtenez votre rapport personnalisé sur votre point de départ : ce que vous maîtrisez déjà, ce qui reste à vérifier et la prochaine étape raisonnable.",
+usecaseLabel:"Quel usage ou quelle situation IA voulez-vous examiner ?",
+usecasePlaceholder:"Ex. assistant de traitement des demandes clients",
 b1:"10 questions",b2:"5 minutes environ",b3:"Gratuit",b4:"Sans compte",
 start:"Commencer mon rapport",more:"Ce que contient le rapport",
 pitch:"Un regard utile, pas une certification.",
@@ -40,6 +42,8 @@ label:"FREE PERSONALIZED AI REPORT · TENIR LABS",
 tag:"AI takes action. You stay in control.",
 head:"Before AI takes action, see where to begin.",
 lead:"Ten questions to place your starting point: what you already have under control, what still needs checking and what a reasonable next step looks like.",
+usecaseLabel:"Which AI use case or situation do you want to examine?",
+usecasePlaceholder:"E.g. assistant for processing customer requests",
 b1:"10 questions",b2:"About 5 minutes",b3:"Free",b4:"No account",
 start:"Start my report",more:"What the report contains",
 pitch:"A useful starting point, not a certification.",
@@ -71,6 +75,7 @@ const contact=url(fr?'/contact/':'/en/contact/');
       <div class="pa-intro-inner">
         <span class="pa-eyebrow">{t.tag}</span>
         <h1 id="pa-title">{t.head}</h1>
+        <div class="pa-usecase"><label for="pa-usecase">{t.usecaseLabel}</label><input id="pa-usecase" type="text" maxlength="140" placeholder={t.usecasePlaceholder}/><small>{fr?'Le résultat porte sur cet usage, pas sur toute votre organisation.':'The result concerns this use case, not your whole organisation.'}</small></div>
         <div class="pa-buttons"><button class="pa-button pa-primary" id="pa-start" type="button">{t.start} <span aria-hidden="true">→</span></button><a class="pa-button pa-outline" href="#pa-steps">{t.more} ↓</a></div>
         <div class="pa-facts"><span>{t.b1}</span><span>{t.b2}</span><span>{t.b3}</span><span>{t.b4}</span></div>
         <p class="pa-lead">{t.lead}</p>

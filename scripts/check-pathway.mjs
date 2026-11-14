@@ -9,7 +9,7 @@ const routes=[
 for(const r of routes){
   assert(existsSync(r.page),r.locale+': pathway report route not built');
   const page=readFileSync(r.page,'utf8'),home=readFileSync(r.home,'utf8');
-  for(const marker of ['data-pathway-app','id="pa-start"','id="pa-question"','id="pa-report"','id="pa-priorities"','id="pa-dimensions"','id="pa-download"','id="pa-print"','id="pa-copy"','/pathway.js']){
+  for(const marker of ['data-pathway-app','id="pa-start"','id="pa-usecase"','id="pa-question"','id="pa-report"','id="pa-priorities"','id="pa-dimensions"','id="pa-context-grid"','id="pa-download"','id="pa-print"','id="pa-copy"','/pathway.js']){
     assert(page.includes(marker),r.locale+': missing pathway widget '+marker);
   }
   assert(page.includes('hreflang="fr"')&&page.includes('hreflang="en"'),r.locale+': language alternatives missing');

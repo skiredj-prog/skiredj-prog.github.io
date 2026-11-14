@@ -16,6 +16,11 @@ body{margin:0;line-height:1.6;background:#ffffff;font-size:17px}
 .pa-eyebrow{color:#e3ae5f;font-size:.71rem;font-weight:700;letter-spacing:.09em;display:block;text-transform:uppercase;margin:0 0 1.15rem}
 .pa-intro h1{font-family:var(--serif);font-weight:700;font-size:clamp(3rem,5.5vw,5.3rem);letter-spacing:-.036em;line-height:1.04;max-width:20ch;margin:0 0 1.15rem;color:#ffffff;font-size-adjust:.44}
 .pa-lead{font-size:clamp(1.05rem,1.65vw,1.25rem);line-height:1.55;max-width:60ch;color:#c1cfd9;margin:1.15rem 0 0}
+.pa-usecase{max-width:620px;margin:0 0 1.2rem;display:grid;gap:.35rem}
+.pa-usecase label{font-size:.78rem;font-weight:700;color:#dbe8f6}
+.pa-usecase input{width:100%;padding:.68rem .8rem;border:1px solid #46617d;border-radius:6px;background:#0d2440;color:#fff;font:inherit}
+.pa-usecase input::placeholder{color:#91a6bd}
+.pa-usecase small{color:#9eb1c5;font-size:.72rem}
 .pa-facts{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem;margin-bottom:0}
 .pa-facts span{border:1px solid #385365;border-radius:100px;padding:.38rem .8rem;font-size:.74rem;color:#e7eef2;font-weight:600}
 .pa-buttons{display:flex;gap:.7rem;flex-wrap:wrap}
