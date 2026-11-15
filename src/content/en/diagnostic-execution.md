@@ -18,7 +18,7 @@ For a first look, follow this three-step path:
 
 1. [Open the fictional banking replay →](/embeds/demonstration-bancaire.html) (French simulation)
 2. [Open REG DEMO online →](https://tenirlabs.cc/tenir-reg-demo/index.html) to inspect its four fixed scenarios and synthetic evidence.
-3. [Read a fictional example report →](/en/offer/example/), then [discuss one flow to examine →](/en/diagnostic-execution/).
+3. [Read a fictional example report →](/en/offer/example/), then [discuss one flow to examine →](/en/contact/).
 
 REG DEMO is a hosted web walkthrough, not a connection to a client system or live provider. The separate offline consultation kit is not publicly distributed.
 
