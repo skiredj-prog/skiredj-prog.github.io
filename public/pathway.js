@@ -130,7 +130,7 @@
   let report=null;
   const $=(id)=>document.getElementById(id);
   const show=(name)=>{
-    ['pa-intro','pa-steps','pa-question','pa-report'].forEach(id=>{const el=$(id);el.hidden=(id!=='pa-'+name && !(name==='intro'&&id==='pa-steps'));});
+    ['pa-intro','pa-question','pa-report'].forEach(id=>{const el=$(id);el.hidden=(id!=='pa-'+name && !(name==='intro'&&id==='pa-steps'));});
     window.scrollTo({top:0,behavior:'instant'});
   };
   const optValue=(v)=>v==='strong'?2:v==='partial'?1:v==='weak'?0:null;
