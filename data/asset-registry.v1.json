@@ -1,6 +1,6 @@
 {
   "schema_version": "tenir-labs-asset-registry/v1",
-  "updated_on": "2026-10-28",
+  "updated_on": "2026-11-15",
   "purpose": "Deterministic maintenance contract for public portfolio, not normative accreditation or publication approval",
   "historical_input": {
     "filename": "Tenirlabs-Products-consolidation-20261024.zip",
@@ -602,6 +602,66 @@
       ],
       "dependencies": [
         "reg-arch",
+        "gov"
+      ]
+    },
+    {
+      "asset_id": "reg-demo",
+      "lineage": "reg-demo",
+      "kind": "demo",
+      "site": {
+        "fr": {
+          "route": "/portfolio/reg-demo/",
+          "title": "REG DEMO · Instrument de diagnostic",
+          "status": "Prototype non officiel v0.1.0 · démo web publiée · fournisseur simulé"
+        },
+        "en": {
+          "route": "/en/portfolio/reg-demo/",
+          "title": "REG DEMO · Diagnostic instrument",
+          "status": "Unofficial v0.1.0 prototype · public web demo · simulated provider"
+        },
+        "claimed_version": "v0.1.0",
+        "version_basis": "pinned public GitHub Pages deployment"
+      },
+      "version_embedded": "v0.1.0",
+      "source_ref": {
+        "kind": "external_github_pages",
+        "repository": "skiredj-prog/tenir-reg-demo",
+        "ref": "ed9d9aa0dc11057cd925c0b1ac95bbf854473625",
+        "path": "index.html",
+        "url": "https://tenirlabs.cc/tenir-reg-demo/index.html"
+      },
+      "build_ref": {
+        "kind": "github_pages_deployment",
+        "repository": "skiredj-prog/tenir-reg-demo",
+        "run_id": "41083424531",
+        "ref": "ed9d9aa0dc11057cd925c0b1ac95bbf854473625"
+      },
+      "test_ref": {
+        "status": "deployment_workflow_success; no independent browser acceptance claimed",
+        "url": "https://github.com/skiredj-prog/tenir-reg-demo/actions/runs/41083424531"
+      },
+      "release_gate": {
+        "state": "deployed_external_simulation",
+        "conditions": [
+          "Four fixed scenarios and synthetic evidence only",
+          "Offline consultation kit remains unreleased"
+        ]
+      },
+      "public_artifact_url": "https://tenirlabs.cc/tenir-reg-demo/index.html",
+      "public_access": "demo",
+      "claims_scope": [
+        "Hosted web walkthrough of four fixed scenarios",
+        "Synthetic evidence for educational and diagnostic scoping use"
+      ],
+      "non_claims": [
+        "No live TENIR-Gov kernel or client system",
+        "No real provider call, settlement or client evidence",
+        "Public web demo does not release the separate offline consultation ZIP"
+      ],
+      "dependencies": [
+        "diagnostic",
+        "experiences",
         "gov"
       ]
     }

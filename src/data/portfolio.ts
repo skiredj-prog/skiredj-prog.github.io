@@ -22,7 +22,7 @@ export interface PortfolioEntry {
   related: string[];
   sources: { label: string; href: string }[];
 }
-export const portfolioOrder = ['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'] as const;
+export const portfolioOrder = ['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower','reg-demo'] as const;
 export const portfolio: Record<PortfolioLocale, Record<string, PortfolioEntry>> = {
 fr: {
   diagnostic: {
@@ -213,17 +213,17 @@ fr: {
   },
   'reg-demo':{
     id:'reg-demo',kind:'demo',title:'REG DEMO · Instrument de diagnostic',tagline:'Une action autorisée. Un résultat incertain. Que peut-on réellement établir ?',
-    status:'Outil interne de TENIR Labs · prototype local non officiel',
+    status:'Prototype non officiel v0.1.0 · démo web publiée · fournisseur simulé',
     pain:'Les équipes confondent facilement autorisation, envoi, résultat et preuve. REG DEMO rend ces distinctions manipulables dans un cas borné.',
     when:'Pour exécuter un diagnostic accompagné, animer un atelier technique ou préparer une restitution à partir d’un incident UNKNOWN.',
     examines:'Quatre situations : autorisation, blocage, attente et issue inconnue. Le participant suit la décision, les compteurs, la trace et les sources sans déclencher de nouvel envoi.',
     inputs:'Un parcours local, des scénarios fictifs et un dossier de preuves embarqué. Aucun compte, fournisseur ou système de production n’est connecté.',
     output:'Une lecture commune des faits établis, des inconnues et du prochain contrôle à préparer ; le configurateur et les fichiers de preuve servent de supports au diagnostic.',
     relationships:'Instrument opératoire du Diagnostic accompagné de gouvernance, entre le cadrage et la restitution. Distinct du prototype mobile de délégation et du moteur TENIR-Gov.',
-    maturity:'Version locale réhabilitée pour consultation et atelier. Tests techniques présents ; validation indépendante, sessions utilisateurs et publication autonome restent à organiser.',
+    maturity:'Version web hébergée pour consultation et atelier ; kit de consultation hors ligne distinct, non publié. Tests techniques présents ; validation indépendante et sessions utilisateurs restent à organiser.',
     limits:'Ne prouve ni conformité, ni certification, ni protection juridique, ni exécution réelle. Les traces locales ne constituent pas une preuve indépendante de production.',
     next:'Utiliser REG DEMO pendant un diagnostic cadré, puis convertir les inconnues en points de contrôle sourcés.',
-    nextHref:'/offre/',nextLabel:'Voir le diagnostic accompagné',related:['diagnostic','experiences','reg-arch','technical'],
+    nextHref:'https://tenirlabs.cc/tenir-reg-demo/index.html',nextLabel:'Ouvrir REG DEMO en ligne',related:['diagnostic','experiences','reg-arch','technical'],
     sources:[{label:'Offre de diagnostic',href:'/offre/'},{label:'Référence interne REG DEMO',href:'https://github.com/skiredj-prog/tenir-reg-demo'}]
   },
   experiences:{
@@ -443,17 +443,17 @@ en: {
   },
   'reg-demo':{
     id:'reg-demo',kind:'demo',title:'REG DEMO · Diagnostic instrument',tagline:'An authorised action. An uncertain outcome. What can actually be established?',
-    status:'TENIR Labs internal tool · unofficial local prototype',
+    status:'Unofficial v0.1.0 prototype · public web demo · simulated provider',
     pain:'Teams can easily conflate authorization, dispatch, outcome and evidence. REG DEMO makes those distinctions inspectable in a bounded case.',
     when:'To run a guided diagnostic, facilitate a technical workshop or prepare a readout from an UNKNOWN incident.',
     examines:'Four situations: authorization, block, hold and unknown outcome. Participants follow the decision, counters, trace and sources without triggering a new dispatch.',
     inputs:'A local walkthrough, fictional scenarios and an embedded evidence dossier. No account, provider or production system is connected.',
     output:'A shared reading of established facts, unknowns and the next control to prepare; the configurator and evidence files support the diagnostic.',
     relationships:'Operating instrument for the Guided Governance Diagnostic, between scoping and readout. Distinct from the mobile delegation prototype and the TENIR-Gov engine.',
-    maturity:'Local version rehabilitated for consultation and workshops. Technical tests exist; independent validation, user sessions and standalone publication remain open.',
+    maturity:'Hosted web version for consultation and workshops; the separate offline consultation kit is not released. Technical tests exist; independent validation and user sessions remain open.',
     limits:'It proves neither compliance, certification, legal protection nor real execution. Local traces are not independent production evidence.',
     next:'Use REG DEMO during a scoped diagnostic, then turn unknowns into sourced control points.',
-    nextHref:'/en/offer/',nextLabel:'View the guided diagnostic',related:['diagnostic','experiences','reg-arch','technical'],
+    nextHref:'https://tenirlabs.cc/tenir-reg-demo/index.html',nextLabel:'Open REG DEMO online',related:['diagnostic','experiences','reg-arch','technical'],
     sources:[{label:'Guided diagnostic offer',href:'/en/offer/'},{label:'REG DEMO internal reference',href:'https://github.com/skiredj-prog/tenir-reg-demo'}]
   },
   experiences:{
@@ -492,11 +492,11 @@ export const portfolioHubs = {
  fr:{
   products:{title:'Des réponses pour des situations différentes',kicker:'TENIR Labs · Produits',description:'Des offres pour comprendre ce qui se passe, préparer une décision ou vérifier ce qui a vraiment été fait.',lede:'Un usage IA apparaît, une règle change ou une action devient incertaine : commencez par la situation qui ressemble à la vôtre.',opening:'Commencez par ce qui vous arrive.',intro:'Chaque offre est présentée simplement : le problème auquel elle répond, ce qu’elle produit et ce qu’elle ne prétend pas faire. La matrice 2×2 en bas de page sert de résumé.',keys:['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'],linkLabel:'Voir la fiche',spotlight:'Vous n’avez pas besoin de connaître le bon nom. Décrivez d’abord ce qui s’est passé ou ce que vous préparez.'},
   services:{title:'Services et accompagnement',kicker:'TENIR Labs · Services',description:'Comprendre le diagnostic, ses livrables et la façon de commencer.',lede:'Une situation à comprendre ensemble, des constats reliés à leurs sources et une prochaine décision à préparer.',opening:'Faisons le point sur une situation.',intro:'Le diagnostic accompagné part de la question et des éléments disponibles. Un premier échange permet de convenir du périmètre, des livrables et du devis.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'Voir la démarche',spotlight:'Quelques lignes suffisent pour le premier contact. Les accès et les documents utiles se conviennent ensuite.'},
-  demos:{title:'Expériences et démonstrations',kicker:'TENIR Labs · Expériences',description:'Explorer des scénarios simulés, à son rythme.',lede:'Suivre une action, changer de point de vue et voir ce qui reste à vérifier.',opening:'Que se passe-t-il quand le scénario change ?',intro:'La Control Tower propose quatre scénarios à explorer librement. D’autres expériences, le logiciel et l’architecture prolongent la lecture, avec leurs statuts propres.',keys:['control-tower','experiences','gov','reg-arch'],linkLabel:'Voir la fiche',spotlight:'La simulation utilise des données fictives. Vous choisissez quand commencer ; aucun système réel n’est connecté.'}
+  demos:{title:'Expériences et démonstrations',kicker:'TENIR Labs · Expériences',description:'Explorer des scénarios simulés, à son rythme.',lede:'Suivre une action, changer de point de vue et voir ce qui reste à vérifier.',opening:'Que se passe-t-il quand le scénario change ?',intro:'Suivez le replay bancaire fictif, puis ouvrez REG DEMO pour examiner la configuration et les preuves. La Control Tower propose une exploration générale ; chaque simulation garde ses limites propres.',keys:['control-tower','experiences','reg-demo','gov','reg-arch'],linkLabel:'Voir la fiche',spotlight:'La simulation utilise des données fictives. Vous choisissez quand commencer ; aucun système réel n’est connecté.'}
  },
  en:{
   products:{title:'Answers for different situations',kicker:'TENIR Labs · Products',description:'Offers to understand what is happening, prepare a decision or check what was actually done.',lede:'An AI use appears, a rule changes or an action becomes uncertain: start with the situation that looks like yours.',opening:'Start with what is happening.',intro:'Each offer is presented plainly: the problem it addresses, what it produces and what it does not claim. The 2×2 matrix below is only a summary.',keys:['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'],linkLabel:'Read the profile',spotlight:'You do not need to know the right name. Start by describing what happened or what you are preparing.'},
   services:{title:'Services & guided work',kicker:'TENIR Labs · Services',description:'Understand the diagnostic, its deliverables and how to begin.',lede:'Examine a situation together, connect findings to their sources and prepare the next decision.',opening:'Let’s make sense of a situation.',intro:'The Guided Governance Diagnostic starts with the question and available records. An initial conversation helps agree on scope, deliverables and a quote.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'See the approach',spotlight:'A few lines are enough for an initial conversation. Access and useful documents are agreed afterwards.'},
-  demos:{title:'Interactive experiences',kicker:'TENIR Labs · Experiences',description:'Explore simulated scenarios at your own pace.',lede:'Follow an action, change perspective and see what still needs verification.',opening:'What happens when the scenario changes?',intro:'Control Tower offers four scenarios to explore freely. Other experiences, software and architecture offer further reading, each with its own status.',keys:['control-tower','experiences','gov','reg-arch'],linkLabel:'Read the profile',spotlight:'The simulation uses fictional data. You choose when to start; no live system is connected.'}
+  demos:{title:'Interactive experiences',kicker:'TENIR Labs · Experiences',description:'Explore simulated scenarios at your own pace.',lede:'Follow an action, change perspective and see what still needs verification.',opening:'What happens when the scenario changes?',intro:'Follow the fictional banking replay, then open REG DEMO to inspect configuration and evidence. Control Tower offers a general exploration; each simulation keeps its own limits.',keys:['control-tower','experiences','reg-demo','gov','reg-arch'],linkLabel:'Read the profile',spotlight:'The simulation uses fictional data. You choose when to start; no live system is connected.'}
  }
 } as const;

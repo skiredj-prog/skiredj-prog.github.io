@@ -11,7 +11,7 @@ const data = JSON.parse(readFileSync(REGISTRY_PATH,'utf8'));
 const allowedGates = new Set([
   'offered_scoped','working_draft','ready_with_conditions','experimental_draft',
   'experimental_unadmitted','experimental_unpublished','released_scoped_software',
-  'reference_only','deployed_simulation'
+  'reference_only','deployed_simulation','deployed_external_simulation'
 ]);
 const idPattern = /^[a-z][a-z0-9-]*$/;
 const shaPattern = /^[a-f0-9]{40}$/;
@@ -82,6 +82,14 @@ function validate(registry, { built = true } = {}) {
       if (a.site?.claimed_version !== a.source_ref?.ref) bad(id+': displayed version differs from release tag');
       if (!a.test_ref?.url) bad(id+': testing evidence reference missing');
     }
+    if (a.release_gate?.state === 'deployed_external_simulation') {
+      if (a.public_access !== 'demo') bad(id+': deployed external experience must be linked as demo');
+      if (a.source_ref?.kind !== 'external_github_pages' || !shaPattern.test(a.source_ref?.ref||'')) bad(id+': external demo source commit is not pinned');
+      if (a.source_ref?.repository !== 'skiredj-prog/tenir-reg-demo' || a.source_ref?.path !== 'index.html') bad(id+': external demo source path/repository mismatch');
+      if (a.build_ref?.kind !== 'github_pages_deployment' || a.build_ref?.ref !== a.source_ref?.ref || !a.build_ref?.run_id) bad(id+': external Pages deployment is not tied to the pinned source');
+      if (a.public_artifact_url !== 'https://tenirlabs.cc/tenir-reg-demo/index.html' || a.source_ref?.url !== a.public_artifact_url) bad(id+': external demo URL mismatch');
+      if (!a.test_ref?.url?.includes('/actions/runs/')) bad(id+': external deployment workflow evidence missing');
+    }
     if (a.release_gate?.state === 'deployed_simulation') {
       if (a.public_access !== 'demo') bad(id+': deployed demo must be linked as demo');
       if (a.source_ref?.kind !== 'site_file' || !shaPattern.test(a.source_ref?.ref||'')) bad(id+': demo source commit is not pinned');
@@ -102,7 +110,7 @@ function validate(registry, { built = true } = {}) {
       } else if (portfolioAccess.fr[id]?.href!==a.public_artifact_url || portfolioAccess.en[id]?.href!==a.public_artifact_url) {
         bad(id+': published release does not match FR/EN visitor access');
       }
-    } else if (a.release_gate?.state === 'released_scoped_software' || a.release_gate?.state === 'deployed_simulation') {
+    } else if (a.release_gate?.state === 'released_scoped_software' || a.release_gate?.state === 'deployed_simulation' || a.release_gate?.state === 'deployed_external_simulation') {
       bad(id+': released/deployed status without artifact URL');
     }
   }
