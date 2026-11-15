@@ -21,6 +21,13 @@ for (const [name, html] of [['FR', fr], ['EN', en]]) {
   for (const id of [...expectedStages, ...expectedRoles]) if (!html.includes(`id="${id}"`)) failures.push(`${name} missing #${id}`);
   if (!html.includes(name === 'FR' ? 'Voir les méthodes et leur statut' : 'See the related methods and their current status')) failures.push(`${name} missing fixed product sentence`);
 }
+// Products hub -> Process & Roles: every "when to use it" link must land on an existing stage anchor.
+for (const [name, hub, page] of [['FR','dist/portfolio/products/index.html',fr],['EN','dist/en/portfolio/products/index.html',en]]) {
+  const html = readFileSync(resolve(root, hub), 'utf8');
+  const links = [...html.matchAll(/class="pf-when">[\s\S]*?<\/p>/g)].flatMap((m) => [...m[0].matchAll(/processus-et-roles\/#(stage-\d)/g)].map((x) => x[1]));
+  if (links.length < 8) failures.push(`${name} products hub has only ${links.length} stage links`);
+  for (const id of links) if (!page.includes(`id="${id}"`)) failures.push(`${name} products hub links to missing #${id}`);
+}
 if (failures.length) {
   console.error(`FAIL Process & Roles integrity: ${failures.join('; ')}`);
   process.exit(1);

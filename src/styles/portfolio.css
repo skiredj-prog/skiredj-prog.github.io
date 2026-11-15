@@ -208,3 +208,8 @@
   .pf-row-status,.pf-row-action { max-width:none; text-align:left; }
   .pf-row-action { min-height:44px; display:inline-flex; align-items:center; }
 }
+
+/* "When to use it": links to Process & Roles stages; they sit above the row-wide product link. */
+.pf-when { margin:.35rem 0 0; font-size:.8rem; line-height:1.5; color:var(--muted); }
+.pf-when a { position:relative; z-index:1; font-weight:600; }
+.pf-offer .pf-when { margin:0 0 .4rem; }
