@@ -16,7 +16,7 @@ Le **REG Execution Boundary Diagnostic** examine **un seul flux critique**, ses 
 
 Pour exécuter ce travail en atelier, TENIR Labs peut utiliser **REG DEMO**, un instrument local de lecture des scénarios et des preuves. Il ne se connecte pas au système du client : il aide à séparer autorisation, envoi, résultat et preuve avant de formuler le prochain contrôle.
 
-[1 · Voir le replay bancaire fictif →](/rejouer/) · [2 · Ouvrir REG DEMO en ligne →](https://tenirlabs.cc/tenir-reg-demo/index.html) · [3 · Lire la fiche simulée →](/offre/exemple/) · [Parler d’un flux à examiner →](/contact/)
+[1 · Voir le replay bancaire fictif →](/rejouer/) · [2 · Ouvrir la version web publique de REG DEMO →](https://tenirlabs.cc/tenir-reg-demo/index.html) · [3 · Lire la fiche simulée →](/offre/exemple/) · [Parler d’un flux à examiner →](/contact/)
 
 Le replay est une illustration pédagogique. Pour un cas réel, le périmètre, les pièces accessibles, les livrables et les conditions commerciales sont définis ensemble avant la mission.
 
