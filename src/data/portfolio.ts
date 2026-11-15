@@ -491,7 +491,7 @@ en: {
 // Status shown on the Products hub: the full status minus release gates (pending tests, PR numbers,
 // readiness verdicts, test counts), which stay on each profile. Scope limits such as
 // "single-host", "beta" or "not production-qualified" are kept.
-const releaseGate = /READY WITH CONDITIONS|test navigateur|browser test|\bPR #\d+|\d+\/\d+ PASS/i;
+const releaseGate = /READY WITH CONDITIONS|test navigateur|browser test|tests? internes? à préparer|preparing internal testing|\bPR #\d+|\d+\/\d+ PASS/i;
 export const hubStatus = (status: string) => status.split(' · ').filter((part) => !releaseGate.test(part)).join(' · ');
 
 export const portfolioHubs = {
