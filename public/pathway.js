@@ -250,7 +250,7 @@
     if(!report)return'';
     const usage=$('pa-usecase')?.value.trim()||L('Non précisé','Not specified');
     const rows=[
-      'TENIR LABS — '+L('AUTO-ÉVALUATION IA','AI SELF-ASSESSMENT'),
+      'TENIR LABS — '+L('Auto-évaluation déclarative','Self-reported assessment'),
       L('Résultat indicatif, issu de vos réponses','Indicative result based on your answers')+' · '+new Date().toLocaleDateString(fr?'fr-FR':'en-GB'),
       '',
       L('SYNTHÈSE','SUMMARY')+': '+report.summary,
