@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Key pages load', () => {
   const pages = [
     { path: '/cas/', title: /cas/i },
-    { path: '/parcours-ia/', title: /rapport/i },
+    { path: '/parcours-ia/', title: /auto-évaluation ia/i },
     { path: '/tau-tenir/', title: /tau|tenir/i },
     { path: '/contact/', title: /contact/i },
     { path: '/en/', title: /ai takes action/i },

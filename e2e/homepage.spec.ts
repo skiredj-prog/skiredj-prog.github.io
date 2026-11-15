@@ -15,11 +15,11 @@ test.describe('Homepage critical paths', () => {
     await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible();
   });
 
-  test('FR: primary CTA lands on pathway with explanation visible', async ({ page }) => {
+  test('FR: primary CTA lands on the self-assessment entry', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('link', { name: /commencer mon rapport gratuit/i }).first().click();
     await expect(page).toHaveURL(/\/parcours-ia\/?/);
-    await expect(page.getByRole('heading', { name: /ce qui vous attend/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /que vérifier en premier dans votre usage de l’ia/i })).toBeVisible();
   });
 
   test('hero title is visible', async ({ page }) => {
