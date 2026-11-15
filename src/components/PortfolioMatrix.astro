@@ -1,6 +1,6 @@
 ---
 import '../styles/product-matrix.css';
-import { portfolio, type PortfolioLocale } from '../data/portfolio';
+import { portfolio, hubStatus, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
 interface Props { locale: PortfolioLocale }
 const { locale } = Astro.props;
@@ -28,8 +28,8 @@ const cells = [
     items: [['gov', fr ? 'Encadrer une action d’agent' : 'Bound an agent action'], ['conformance', fr ? 'Tester un profil de manière bornée' : 'Test a bounded profile']]
   }
 ];
-// Short status only: the full release gate stays on each profile.
-const status = (id: string) => portfolio[locale][id].status.split(' · ')[0];
+// Release gates stay on each profile; scope limits stay visible here.
+const status = (id: string) => hubStatus(portfolio[locale][id].status);
 const title = (id: string) => id === 'gov' ? 'TENIR-Gov' : id === 'conformance' ? 'REG Conformance' : portfolio[locale][id].title;
 ---
 <section class="portfolio-matrix" aria-labelledby="portfolio-matrix-title">

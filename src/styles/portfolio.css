@@ -191,7 +191,7 @@
 .pf-row h3 a::after { content:""; position:absolute; inset:0; }
 .pf-row:has(h3 a:hover) { background:var(--accent-soft); }
 .pf-row:has(h3 a:focus-visible) { outline:2px solid var(--accent); outline-offset:2px; }
-.pf-row h3 a:focus-visible { outline:0; }
+@supports selector(:has(*)) { .pf-row h3 a:focus-visible { outline:0; } }
 .pf-row-status { flex:none; max-width:16rem; text-align:right; font-size:.78rem; color:var(--muted); }
 .pf-row-action { flex:none; font-size:.86rem; font-weight:600; padding:.6rem 0; text-align:right; }
 .pf-foundations { margin:0 0 1rem; font-size:.9rem; color:var(--muted); }

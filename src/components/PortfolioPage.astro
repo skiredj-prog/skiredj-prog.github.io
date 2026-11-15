@@ -2,7 +2,7 @@
 import '../styles/portfolio.css';
 import PortfolioMatrix from './PortfolioMatrix.astro';
 import { portfolioAccess } from '../data/portfolioAccess';
-import { portfolio, portfolioHubs, type PortfolioLocale } from '../data/portfolio';
+import { portfolio, portfolioHubs, hubStatus, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
 import { portfolioContactHref } from '../data/contact';
 import { stagesFor } from '../data/processRoles';
@@ -18,7 +18,7 @@ const kindName = (kind:string) => ({product:fr?'Produit ou instrument':'Product 
 // Products hub: three readiness tiers. The tier is the only status shown on the hub;
 // engineering detail (gates, pending tests, PR numbers) stays on each profile.
 const item = (id:string) => portfolio[locale][id];
-const shortStatus = (id:string) => item(id).status.split(' · ')[0];
+const shortStatus = (id:string) => hubStatus(item(id).status);
 const available = ['diagnostic','gov','conformance'].map(item);
 const tiers = [
   {id:'pilot',label:fr?'En pilote':'In pilot',note:fr?'Démarche cadrée par un document de travail, à tester sur un cas réel avec vous.':'An approach framed by a working draft, to be tested with you on a real case.',entries:['prevent','prepare'].map(item)},
@@ -75,7 +75,7 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
           <h3><a href={cardHref(e.id)}>{e.tagline}</a></h3>
           <p class="pf-offer-name">{e.title}</p>
           <p class="pf-offer-output">{e.output}</p>
-          <p class="pf-offer-status">{e.status}</p>
+          <p class="pf-offer-status">{shortStatus(e.id)}</p>
           {stagesFor(locale,e.id).length>0&&<p class="pf-when">{whenLabel} {stagesFor(locale,e.id).map((st,i)=><>{i>0&&' · '}<a href={url(stagesPage+'#'+st.id)}>{st.name}</a></>)}</p>}
           <div class="pf-offer-links"><a href={cardHref(e.id)}>{fr?'Voir la fiche':'View profile'}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}</div>
         </article>;})}</div>
