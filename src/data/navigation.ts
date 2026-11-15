@@ -27,8 +27,8 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
 
 /** The free personalized AI report: permanent header call to action. */
 export const reportLink: Record<Locale, NavItem> = {
-  fr: { slug: "parcours-ia", href: "/parcours-ia/", label: "Rapport IA personnalisé gratuit" },
-  en: { slug: "ai-readiness", href: "/en/ai-readiness/", label: "Free personalized AI report" },
+  fr: { slug: "parcours-ia", href: "/parcours-ia/", label: "Auto-évaluation IA · 5 min" },
+  en: { slug: "ai-readiness", href: "/en/ai-readiness/", label: "AI self-assessment · 5 min" },
 };
 
 // Portfolio pages that are demonstrations rather than products, services or foundations.

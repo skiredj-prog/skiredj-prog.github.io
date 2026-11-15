@@ -7,14 +7,14 @@ const {locale}=Astro.props;
 const fr=locale==='fr';
 const home=url(fr?'/':'/en/');
 const t=fr?{
-title:"Rapport IA personnalisé gratuit — TENIR Labs",
-desc:"Dix questions pour obtenir votre rapport IA personnalisé : votre point de départ, ce qui reste à vérifier et la prochaine étape utile. Gratuit, sans compte.",
-label:"RAPPORT IA PERSONNALISÉ GRATUIT · TENIR LABS",
-tag:"L’IA avance. Vous gardez la main.",
-head:"Avant de laisser l’IA agir, voyez par où commencer.",
-lead:"En 10 questions, obtenez votre rapport personnalisé sur votre point de départ : ce que vous maîtrisez déjà, ce qui reste à vérifier et la prochaine étape raisonnable.",
+title:"Auto-évaluation IA : 3 priorités pour savoir par où commencer — TENIR Labs",
+desc:"Dix questions pour situer un usage d’IA et repartir avec trois pistes de vérification. Auto-évaluation indicative, gratuite et sans compte.",
+label:"AUTO-ÉVALUATION IA · 5 MIN · GRATUITE",
+tag:"Un point de départ concret pour votre usage de l’IA.",
+head:"Que vérifier en premier dans votre usage de l’IA ?",
+lead:"Répondez à 10 questions rapides. Obtenez un état des lieux déclaratif, trois priorités concrètes et une prochaine étape à examiner.",
 b1:"10 questions",b2:"5 minutes environ",b3:"Gratuit",b4:"Sans compte",
-start:"Commencer les 10 questions",
+start:"Commencer l’auto-évaluation",
 more:"Ce que contient le rapport",
 pitch:"Un regard utile, pas une certification.",
 pitchText:"Le rapport donne des pistes à partir de vos réponses, pas une note d’audit. Vous pouvez le télécharger, le partager ou l’utiliser pour préparer une discussion.",
@@ -22,7 +22,7 @@ steps:"Ce que ce rapport vous aide à décider",
 s1:"Votre point de départ",s1d:"Une synthèse lisible de vos forces et des zones à clarifier.",
 s2:"Vos trois priorités",s2d:"Des actions concrètes, ordonnées selon vos réponses.",
 s3:"Votre prochaine étape",s3d:"Une suggestion d’accompagnement si elle peut vous aider.",
-privacy:"Les réponses restent dans votre navigateur. Aucun compte, aucun envoi automatique. Vous choisissez si vous partagez le rapport.",
+privacy:"Vos réponses restent dans votre navigateur. Rien n’est envoyé automatiquement.",
 expectTitle:"Ce qui vous attend",
 expectWhat:"Vous répondrez à 10 questions (environ 5 minutes). Aucun compte requis. Rien n’est envoyé automatiquement.",
 expectGet:"À la fin vous recevrez un rapport en 3 parties :",
@@ -31,25 +31,25 @@ expect2:"Vos 3 priorités concrètes",
 expect3:"Une suggestion de prochaine étape",
 expectNote:"Ce n’est pas un audit ni une certification. C’est une lecture utile pour décider par où commencer.",
 progress:"QUESTIONNAIRE", back:"Précédent",next:"Suivant",finish:"Voir mon rapport",startOver:"Recommencer",
-reportKicker:"VOTRE RAPPORT IA PERSONNALISÉ · AUTO-ÉVALUATION",
-reportHeading:"Votre point de départ se dessine.",
+reportKicker:"AUTO-ÉVALUATION DÉCLARATIVE · VOS RÉPONSES UNIQUEMENT",
+reportHeading:"Vos trois priorités de départ.",
 reportIntro:"Voici ce que suggèrent vos réponses. Ce rapport est indicatif : il ne vérifie ni vos systèmes ni vos preuves.",
-dimensions:"Six regards sur votre situation",
-priorities:"Les trois actions à considérer",
-recommend:"La prochaine étape avec TENIR Labs",
-recommendBody:"Vous pouvez avancer seul avec ce rapport ou discuter d’un cas précis avec nous.",
+dimensions:"Vos réponses, en bref",
+priorities:"Vos trois priorités",
+recommend:"Votre prochaine action",
+recommendBody:"Vous pouvez suivre cette piste seul ou en parler avec TENIR Labs.",
 share:"Partager mon rapport",copy:"Copier le rapport",download:"Télécharger",print:"Imprimer / PDF",copied:"Rapport copié",
 contact:"Discuter de mon parcours",demo:"Essayer une démo",home:"Retour au site",limits:"Évaluation déclarative. Aucune vérification technique ou certification. Les recommandations sont indicatives ; un diagnostic peut les confirmer ou les nuancer.",
 missing:"Non évalué",backToTop:"Revenir au début",
 }:{
-title:"Free personalized AI report — TENIR Labs",
-desc:"Ten questions to get your personalized AI report: your starting point, what still needs checking and the next useful step. Free, no account.",
-label:"FREE PERSONALIZED AI REPORT · TENIR LABS",
-tag:"AI takes action. You stay in control.",
-head:"Before AI takes action, see where to begin.",
-lead:"Ten questions to place your starting point: what you already have under control, what still needs checking and what a reasonable next step looks like.",
+title:"AI self-assessment: three priorities to decide where to start — TENIR Labs",
+desc:"Ten questions to map one AI use and leave with three checks to consider. Indicative self-assessment, free and no account.",
+label:"AI SELF-ASSESSMENT · 5 MIN · FREE",
+tag:"A practical starting point for one AI use.",
+head:"What should you check first in your AI use?",
+lead:"Answer 10 quick questions. Get a self-reported snapshot, three practical priorities and one next step to consider.",
 b1:"10 questions",b2:"About 5 minutes",b3:"Free",b4:"No account",
-start:"Start the 10 questions",
+start:"Start the self-assessment",
 more:"What the report contains",
 pitch:"A useful starting point, not a certification.",
 pitchText:"Your report offers suggestions based on your answers, not an audit score. Download it, share it or use it to prepare a discussion.",
@@ -57,7 +57,7 @@ steps:"What this report helps you decide",
 s1:"Your starting point",s1d:"A clear overview of strengths and areas to clarify.",
 s2:"Your top three priorities",s2d:"Concrete next steps ordered around your answers.",
 s3:"Your next move",s3d:"A suggested engagement if professional help would be useful.",
-privacy:"Your answers stay in your browser. No account and no automatic submission. You choose whether to share the report.",
+privacy:"Your answers stay in your browser. Nothing is submitted automatically.",
 expectTitle:"What to expect",
 expectWhat:"You will answer 10 questions (about 5 minutes). No account required. Nothing is submitted automatically.",
 expectGet:"At the end you will receive a report in 3 parts:",
@@ -66,13 +66,13 @@ expect2:"Your 3 concrete priorities",
 expect3:"A suggested next step",
 expectNote:"This is not an audit or a certification. It is a useful reading to decide where to begin.",
 progress:"ASSESSMENT",back:"Previous",next:"Next",finish:"See my report",startOver:"Start again",
-reportKicker:"YOUR PERSONALIZED AI REPORT · SELF-ASSESSMENT",
-reportHeading:"Your starting point is clearer.",
+reportKicker:"SELF-REPORTED ASSESSMENT · YOUR ANSWERS ONLY",
+reportHeading:"Your three starting priorities.",
 reportIntro:"These findings reflect your answers. This report is indicative; we haven't verified your systems or supporting evidence.",
-dimensions:"Six views of your situation",
-priorities:"Three actions worth considering",
-recommend:"Your next move with TENIR Labs",
-recommendBody:"Use this report independently or talk to us about one specific scenario.",
+dimensions:"Your answers at a glance",
+priorities:"Your three priorities",
+recommend:"Your next step",
+recommendBody:"Follow this suggestion independently or discuss one specific scenario with TENIR Labs.",
 share:"Share my report",copy:"Copy report",download:"Download",print:"Print / PDF",copied:"Report copied",
 contact:"Discuss my pathway",demo:"Explore the demo",home:"Back to website",limits:"Self-reported assessment only. Not a technical verification or certification. Recommendations are indicative and can be confirmed or adjusted during a diagnostic.",
 missing:"Not assessed",backToTop:"Back to start"
@@ -85,29 +85,18 @@ const contact=url(fr?'/contact/':'/en/contact/');
   <div id="pa-main">
     <section class="pa-intro" id="pa-intro" aria-labelledby="pa-title">
       <div class="pa-intro-inner">
-        <span class="pa-eyebrow">{t.tag}</span>
+        <span class="pa-eyebrow">{t.label}</span>
+        <p class="pa-eyebrow pa-intro-tag">{t.tag}</p>
         <h1 id="pa-title">{t.head}</h1>
         <p class="pa-lead">{t.lead}</p>
-        <div class="pa-expect" style="margin:1.5rem 0;padding:1.25rem 1.5rem;background:rgba(255,255,255,.04);border-left:3px solid #c9a227;border-radius:0 6px 6px 0;">
-          <h2 style="margin:0 0 .6rem;font-size:1.05rem;">{t.expectTitle}</h2>
-          <p style="margin:0 0 .75rem;">{t.expectWhat}</p>
-          <p style="margin:0 0 .4rem;font-weight:600;">{t.expectGet}</p>
-          <ol style="margin:0 0 .75rem 1.2rem;padding:0;">
-            <li>{t.expect1}</li>
-            <li>{t.expect2}</li>
-            <li>{t.expect3}</li>
-          </ol>
-          <p style="margin:0;font-size:.95rem;opacity:.9;">{t.expectNote}</p>
-        </div>
-        <div class="pa-buttons"><button class="pa-button pa-primary" id="pa-start" type="button">{t.start} <span aria-hidden="true">→</span></button><a class="pa-button pa-outline" href="#pa-steps">{t.more} ↓</a></div>
+        <ul class="pa-output-list" aria-label={fr?'Ce que vous obtiendrez':'What you will get'}>
+          <li><strong>{t.s1}</strong><span>{t.s1d}</span></li>
+          <li><strong>{t.s2}</strong><span>{t.s2d}</span></li>
+          <li><strong>{t.s3}</strong><span>{t.s3d}</span></li>
+        </ul>
+        <div class="pa-buttons"><button class="pa-button pa-primary" id="pa-start" type="button">{t.start} <span aria-hidden="true">→</span></button></div>
         <div class="pa-facts"><span>{t.b1}</span><span>{t.b2}</span><span>{t.b3}</span><span>{t.b4}</span></div>
         <p class="pa-privacy">{t.privacy}</p>
-      </div>
-    </section>
-    <section class="pa-steps" id="pa-steps" aria-labelledby="pa-steps-title">
-      <div class="pa-wrap">
-        <div class="pa-heading"><span class="pa-eyebrow">{t.steps}</span><h2 id="pa-steps-title">{t.pitch}</h2><p>{t.pitchText}</p></div>
-        <div class="pa-step-grid"><article><span>01</span><h3>{t.s1}</h3><p>{t.s1d}</p></article><article><span>02</span><h3>{t.s2}</h3><p>{t.s2d}</p></article><article><span>03</span><h3>{t.s3}</h3><p>{t.s3d}</p></article></div>
       </div>
     </section>
     <section class="pa-question" id="pa-question" aria-labelledby="pa-question-title" hidden>
@@ -125,53 +114,57 @@ const contact=url(fr?'/contact/':'/en/contact/');
       <div class="pa-report-hero"><div class="pa-wrap"><span class="pa-eyebrow">{t.reportKicker}</span><h2 id="pa-report-title" tabindex="-1">{t.reportHeading}</h2><p>{t.reportIntro}</p><div class="pa-report-summary" id="pa-report-summary" aria-live="polite"></div></div></div>
       <div class="pa-wrap pa-report-content">
         <section class="pa-exec" aria-labelledby="pa-exec-title">
-          <h2 id="pa-exec-title" class="pa-vh">{fr?'Synthèse':'Summary'}</h2>
+          <h2 id="pa-exec-title">{fr?'Votre résultat en bref':'Your result at a glance'}</h2>
           <div class="pa-exec-grid" id="pa-exec-grid"></div>
         </section>
-
-        <section class="pa-journey-panel" aria-labelledby="pa-journey-title">
-          <span class="pa-eyebrow">{fr?'PARCOURS DE MATURITÉ':'MATURITY JOURNEY'}</span>
-          <h2 id="pa-journey-title">{fr?'Où vous êtes, et le passage suivant':'Where you are, and the next passage'}</h2>
-          <div class="pa-mtrack" id="pa-maturity-track" role="list" aria-label={fr?'Six étapes du parcours de maturité':'Six stages of the maturity journey'}></div>
-          <div class="pa-stage-cards" id="pa-stage-cards"></div>
-          <div class="pa-callouts">
-            <article class="pa-callout"><h4>{fr?'Comment lire la carte':'How to read the map'}</h4><p>{fr?'Votre résultat indique une position probable, pas une certification.':'Your result indicates a likely position, not a certification.'}</p></article>
-            <article class="pa-callout"><h4>{fr?'La prochaine question':'The next question'}</h4><p>{fr?'Quel élément doit être vérifié avant de passer à l’étape suivante ?':'Which element has to be checked before moving to the next stage?'}</p></article>
-            <article class="pa-callout"><h4>{fr?'Principe TENIR':'TENIR principle'}</h4><p>{fr?'Une étape n’est franchie que lorsque les éléments attendus peuvent être examinés.':'A stage is only passed once the expected elements can be examined.'}</p></article>
-          </div>
+        <section class="pa-priority-panel" aria-labelledby="pa-priorities-title">
+          <h2 id="pa-priorities-title">{t.priorities}</h2>
+          <ol id="pa-priorities"></ol>
         </section>
-
-        <section class="pa-context" aria-labelledby="pa-context-title">
-          <span class="pa-eyebrow">{fr?'CONTEXTE EXAMINÉ':'CONTEXT EXAMINED'}</span>
-          <h2 id="pa-context-title" class="pa-vh">{fr?'Contexte examiné':'Context examined'}</h2>
-          <dl class="pa-context-grid" id="pa-context-grid"></dl>
-        </section>
-
-        <div class="pa-report-grid">
-          <section class="pa-report-card" aria-labelledby="pa-dimensions-title"><h2 id="pa-dimensions-title">{t.dimensions}</h2><div id="pa-dimensions"></div></section>
-          <section class="pa-report-card" aria-labelledby="pa-priorities-title"><h2 id="pa-priorities-title">{t.priorities}</h2><ol id="pa-priorities"></ol></section>
-        </div>
-
-        <section class="pa-boundaries" aria-labelledby="pa-boundaries-title">
-          <span class="pa-eyebrow">{fr?'À LIRE AVANT DE PARTAGER':'READ BEFORE SHARING'}</span>
-          <h2 id="pa-boundaries-title">{fr?'Ce que ce rapport ne dit pas':'What this report does not say'}</h2>
-          <div class="pa-boundaries-grid">
-            <ul class="pa-bd-yes">
-              <li>{fr?'Il reflète vos réponses.':'It reflects your answers.'}</li>
-              <li>{fr?'Il aide à choisir une prochaine vérification.':'It helps you choose a next check.'}</li>
-              <li>{fr?'Il fournit des pistes de discussion.':'It gives you something to discuss.'}</li>
-            </ul>
-            <ul class="pa-bd-no">
-              <li>{fr?'Il ne vérifie pas vos systèmes.':'It does not inspect your systems.'}</li>
-              <li>{fr?'Il ne confirme pas vos preuves.':'It does not confirm your evidence.'}</li>
-              <li>{fr?'Il ne certifie pas votre organisation.':'It does not certify your organisation.'}</li>
-              <li>{fr?'Il ne garantit aucun niveau de conformité.':'It guarantees no level of compliance.'}</li>
-            </ul>
-          </div>
-        </section>
-        <section class="pa-offer" aria-labelledby="pa-offer-title"><span class="pa-eyebrow">{t.recommend}</span><h2 id="pa-offer-title"></h2><p id="pa-offer-description"></p><div class="pa-report-actions"><a class="pa-button pa-primary" id="pa-talk" href={contact}>{t.contact} ↗</a><a class="pa-button pa-outline" id="pa-learn" href={demo}>{t.demo} →</a></div><p class="pa-footnote">{t.recommendBody}</p></section>
+        <section class="pa-offer" aria-labelledby="pa-offer-title"><span class="pa-eyebrow">{t.recommend}</span><h2 id="pa-offer-title"></h2><p id="pa-offer-description"></p><div class="pa-report-actions"><a class="pa-button pa-primary" id="pa-talk" href={contact}>{fr?'Discuter d’un cas précis':'Discuss one specific case'} ↗</a><a class="pa-button pa-outline" id="pa-learn" href={demo}>{fr?'Voir la prochaine étape':'See the next step'} →</a></div><p class="pa-footnote">{t.recommendBody}</p></section>
         <div class="pa-report-toolbar"><button class="pa-button pa-muted" type="button" id="pa-download">{t.download} ↓</button><button class="pa-button pa-muted" type="button" id="pa-copy">{t.copy}</button><button class="pa-button pa-muted" type="button" id="pa-print">{t.print}</button><button class="pa-restart" type="button" id="pa-restart">{t.startOver}</button><span id="pa-feedback" role="status"></span></div>
-        <p class="pa-limits">{t.limits}</p>
+        <details class="pa-report-details">
+          <summary>{fr?'Voir le contexte, les étapes et les limites':'See the context, stages and limits'}</summary>
+          <div class="pa-report-details-body">
+            <section class="pa-journey-panel" aria-labelledby="pa-journey-title">
+              <span class="pa-eyebrow">{fr?'VOTRE PARCOURS INDICATIF':'INDICATIVE PATHWAY'}</span>
+              <h2 id="pa-journey-title">{fr?'Étape actuelle et point à vérifier':'Current stage and next check'}</h2>
+              <div class="pa-mtrack" id="pa-maturity-track" role="list" aria-label={fr?'Six étapes du parcours de maturité':'Six stages of the maturity journey'}></div>
+              <div class="pa-stage-cards" id="pa-stage-cards"></div>
+              <div class="pa-callouts">
+                <article class="pa-callout"><h4>{fr?'Comment lire ce résultat':'How to read this result'}</h4><p>{fr?'La position indique une hypothèse issue de vos réponses, pas un statut vérifié.':'This position is a hypothesis from your answers, not a verified status.'}</p></article>
+                <article class="pa-callout"><h4>{fr?'Prochain contrôle':'Next check'}</h4><p>{fr?'Vérifiez l’élément indiqué avant de considérer l’étape suivante comme acquise.':'Check the stated evidence before treating the next stage as reached.'}</p></article>
+              </div>
+            </section>
+            <section class="pa-context" aria-labelledby="pa-context-title">
+              <span class="pa-eyebrow">{fr?'VOS RÉPONSES':'YOUR ANSWERS'}</span>
+              <h2 id="pa-context-title">{fr?'Le contexte retenu':'Context used'}</h2>
+              <dl class="pa-context-grid" id="pa-context-grid"></dl>
+            </section>
+            <section class="pa-report-grid" aria-labelledby="pa-dimensions-title">
+              <section class="pa-report-card"><h2 id="pa-dimensions-title">{t.dimensions}</h2><div id="pa-dimensions"></div></section>
+            </section>
+            <section class="pa-boundaries" aria-labelledby="pa-boundaries-title">
+              <span class="pa-eyebrow">{fr?'LIMITES':'LIMITS'}</span>
+              <h2 id="pa-boundaries-title">{fr?'Ce que cette auto-évaluation ne vérifie pas':'What this self-assessment does not verify'}</h2>
+              <div class="pa-boundaries-grid">
+                <ul class="pa-bd-yes">
+                  <li>{fr?'Elle reflète vos réponses.':'It reflects your answers.'}</li>
+                  <li>{fr?'Elle aide à choisir une prochaine vérification.':'It helps you choose a next check.'}</li>
+                  <li>{fr?'Elle fournit des pistes de discussion.':'It gives you something to discuss.'}</li>
+                </ul>
+                <ul class="pa-bd-no">
+                  <li>{fr?'Elle ne vérifie pas vos systèmes.':'It does not inspect your systems.'}</li>
+                  <li>{fr?'Elle ne confirme pas vos preuves.':'It does not confirm your evidence.'}</li>
+                  <li>{fr?'Elle ne certifie pas votre organisation.':'It does not certify your organisation.'}</li>
+                  <li>{fr?'Elle ne garantit aucun niveau de conformité.':'It guarantees no compliance level.'}</li>
+                </ul>
+              </div>
+            </section>
+            <p class="pa-limits">{t.limits}</p>
+          </div>
+        </details>
+
       </div>
     </section>
   </div>
