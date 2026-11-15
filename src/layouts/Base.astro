@@ -70,9 +70,7 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
   <body class:list={[home&&'marketing-page',isCredibility&&'credibility-page',isPathway&&'pathway-page']}>
     <a class="skip" href="#content">{t.skip}</a>
     <SiteHeader locale={locale} slug={slug} here={here} other={other} />
-    {isCredibility ? <main id="content" class="home-main" tabindex="-1"><slot/></main>
-    : home ? <main id="content" class="home-main" tabindex="-1"><MarketingHome locale={locale}/><details class="reading-note"><summary>{fr?'Statut, sources et limites de cette présentation':'Status, sources and limits of this presentation'}</summary><div class="prose"><p class="sources">{t.sources} : {sources}</p><slot /></div></details></main>
-    : isPathway ? <main id="content" class="pathway-main" tabindex="-1"><slot/></main>
+    {home ? <main id="content" class="home-main" tabindex="-1"><MarketingHome locale={locale}/><details class="reading-note"><summary>{fr?'Statut, sources et limites de cette présentation':'Status, sources and limits of this presentation'}</summary><div class="prose"><p class="sources">{t.sources} : {sources}</p><slot /></div></details></main>
     : <main id="content" class="page-main" tabindex="-1">
         <header class:list={['page-hero',heroWidth]}>
           <div class="page-hero-inner">
