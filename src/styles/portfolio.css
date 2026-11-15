@@ -165,3 +165,46 @@
 .pf-direct-access p{font-size:.84rem;color:var(--muted);margin:0}
 .pf-direct-access .btn{flex-shrink:0}
 @media(max-width:700px){.pf-direct-access{flex-direction:column;align-items:stretch}.pf-direct-access .btn{text-align:center}}
+
+/* Hubs, Nov. 2026: the situation chooser opens Products; everything else is one line per item. */
+.pf-root .portfolio-matrix { margin:0 0 3rem; padding:0 0 2rem; border-top:0; }
+.pf-tier,.pf-demo-list { margin:0 0 3rem; }
+.pf-tier-head { display:flex; align-items:baseline; justify-content:space-between; gap:1rem 2rem; flex-wrap:wrap; margin:0 0 1rem; }
+.pf-root .pf-tier-head h2 { font-size:clamp(1.4rem,2.2vw,1.85rem); margin:0; }
+.pf-tier-head p { margin:0; max-width:52ch; font-size:.9rem; line-height:1.5; color:var(--muted); }
+.pf-offer-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.pf-offer { position:relative; display:flex; flex-direction:column; padding:1.4rem; border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:var(--radius); background:var(--bg-raised); }
+.pf-offer h3 { font:700 1.3rem/1.22 var(--serif); margin:0 0 .5rem; font-size-adjust:.44; }
+.pf-offer h3 a,.pf-row h3 a { color:var(--ink); text-decoration:none; }
+.pf-offer h3 a:hover,.pf-row h3 a:hover { color:var(--accent); }
+.pf-offer-name { margin:0 0 .9rem; font-weight:600; font-size:.9rem; color:var(--accent); }
+.pf-offer-output { margin:0 0 1rem; font-size:.88rem; line-height:1.55; color:var(--ink-soft); }
+.pf-offer-status { margin:auto 0 0; padding-top:.8rem; border-top:1px solid var(--line); font-size:.78rem; line-height:1.5; color:var(--muted); }
+.pf-offer-links { display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; margin-top:.7rem; }
+.pf-offer-links a { font-size:.85rem; font-weight:600; padding:.35rem 0; }
+.pf-rows { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.pf-row { position:relative; display:flex; align-items:center; justify-content:space-between; gap:.6rem 2rem; padding:.95rem .25rem; border-bottom:1px solid var(--line); }
+.pf-row h3,.pf-row h4 { font:650 1.02rem/1.35 var(--sans); margin:0; color:var(--ink); }
+.pf-row p { margin:.15rem 0 0; font-size:.86rem; line-height:1.5; color:var(--muted); max-width:68ch; }
+.pf-row small { display:block; margin-top:.2rem; font-size:.76rem; color:var(--muted); }
+/* The whole product row is the target; the status stays plain text. */
+.pf-row h3 a::after { content:""; position:absolute; inset:0; }
+.pf-row:has(h3 a:hover) { background:var(--accent-soft); }
+.pf-row:has(h3 a:focus-visible) { outline:2px solid var(--accent); outline-offset:2px; }
+.pf-row h3 a:focus-visible { outline:0; }
+.pf-row-status { flex:none; max-width:16rem; text-align:right; font-size:.78rem; color:var(--muted); }
+.pf-row-action { flex:none; font-size:.86rem; font-weight:600; padding:.6rem 0; text-align:right; }
+.pf-foundations { margin:0 0 1rem; font-size:.9rem; color:var(--muted); }
+.pf-foundations a { font-weight:600; }
+.pf-demo-group { margin:1.8rem 0 0; }
+.pf-demo-group>header { display:flex; align-items:baseline; gap:.4rem 1rem; flex-wrap:wrap; margin:0 0 .5rem; }
+.pf-demo-group>header h3 { font:700 1.05rem/1.3 var(--sans); margin:0; color:var(--accent); }
+.pf-demo-group>header p { margin:0; font-size:.86rem; color:var(--muted); }
+.pf-row.pf-demo-card { padding:.95rem .25rem; border-top:0; }
+.pf-row.pf-demo-card a { padding:.6rem 0; }
+@media(max-width:900px) { .pf-offer-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:620px) {
+  .pf-row { flex-direction:column; align-items:flex-start; gap:.3rem; }
+  .pf-row-status,.pf-row-action { max-width:none; text-align:left; }
+  .pf-row-action { min-height:44px; display:inline-flex; align-items:center; }
+}

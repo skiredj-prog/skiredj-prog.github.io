@@ -166,7 +166,6 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
     {
       id: "produits", label: "Produits", links: [
         { slug: "portfolio/products", href: "/portfolio/products/", label: "Tous les produits" },
-        { slug: "portfolio/services", href: "/portfolio/services/", label: "Services" },
         { slug: "diagnostic-execution", href: "/diagnostic-execution/", label: "Diagnostic d’exécution" },
         { slug: "offre", href: "/offre/", label: "Un accompagnement" },
         { slug: "portfolio/gov", href: "/portfolio/gov/", label: "TENIR-Gov" },
@@ -231,7 +230,6 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
     {
       id: "produits", label: "Products", links: [
         { slug: "portfolio/products", href: "/en/portfolio/products/", label: "All products" },
-        { slug: "portfolio/services", href: "/en/portfolio/services/", label: "Services" },
         { slug: "diagnostic-execution", href: "/en/diagnostic-execution/", label: "Execution diagnostic" },
         { slug: "offer", href: "/en/offer/", label: "Accompanied work" },
         { slug: "portfolio/gov", href: "/en/portfolio/gov/", label: "TENIR-Gov" },

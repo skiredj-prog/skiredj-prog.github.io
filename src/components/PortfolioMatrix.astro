@@ -28,12 +28,13 @@ const cells = [
     items: [['gov', fr ? 'Encadrer une action d’agent' : 'Bound an agent action'], ['conformance', fr ? 'Tester un profil de manière bornée' : 'Test a bounded profile']]
   }
 ];
-const status = (id: string) => portfolio[locale][id].status;
+// Short status only: the full release gate stays on each profile.
+const status = (id: string) => portfolio[locale][id].status.split(' · ')[0];
 const title = (id: string) => id === 'gov' ? 'TENIR-Gov' : id === 'conformance' ? 'REG Conformance' : portfolio[locale][id].title;
 ---
 <section class="portfolio-matrix" aria-labelledby="portfolio-matrix-title">
   <header class="pm-heading">
-    <div><p class="pf-overline">{fr ? 'Récapitulatif · choisir un point de départ' : 'Recap · choose a starting point'}</p><h2 id="portfolio-matrix-title">{fr ? 'Avant ou après l’action ?' : 'Before or after the action?'}</h2></div>
+    <div><h2 id="portfolio-matrix-title">{fr ? 'Avant ou après l’action ?' : 'Before or after the action?'}</h2></div>
     <p>{fr ? 'Commencez par la situation que vous reconnaissez. Les fiches détaillent ensuite le résultat, le statut et les limites de chaque instrument.' : 'Start with the situation you recognize. Each profile then explains its output, status and limits.'}</p>
   </header>
   <div class="pm-2x2" role="region" tabindex="0" aria-label={fr ? 'Matrice 2 par 2 des produits TENIR Labs' : 'TENIR Labs 2 by 2 product matrix'}>

@@ -10,7 +10,6 @@ const source = process.env.REVIEW_SHA || "local";
 const routes = [
   ["FR · Accueil", "/"],
   ["FR · Produits", "/portfolio/products/"],
-  ["FR · Services", "/portfolio/services/"],
   ["FR · Démonstrations", "/portfolio/demos/"],
   ["FR · Rapport gratuit", "/parcours-ia/"],
   ["FR · Crédibilité", "/credibilite/"],

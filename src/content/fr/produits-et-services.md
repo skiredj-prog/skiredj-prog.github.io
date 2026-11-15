@@ -151,7 +151,7 @@ Cette architecture est **une vue logique cible**, non une preuve d'intégration 
 ## Deux parcours d'accompagnement : Prévenir et Préparer
 
 - [Les produits et leur état d'avancement](/portfolio/products/) — capacités, accès et limites.
-- [Les accompagnements](/portfolio/services/) — périmètres, déroulement et livrables.
+- [Les accompagnements](/portfolio/diagnostic/) — périmètres, déroulement et livrables.
 - [Les démonstrations](/portfolio/demos/) — ce que vous pouvez explorer et ce que chaque exemple permet d'observer.
 
 ## Après le diagnostic : des étapes facultatives

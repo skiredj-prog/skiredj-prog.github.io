@@ -30,8 +30,9 @@ for (const locale of ['fr','en']) {
   assert(/X-Ray v0.2/.test(page(locale,'xray')),`${locale}: X-Ray version absent`);
   const demoHub=page(locale,'demos');
   assert(demoHub.includes('/embeds/demonstration-bancaire.html'),`${locale}: banking simulation unreferenced`);
-  assert(demoHub.includes('Point of No Return'),`${locale}: Point of No Return status missing`);
-  assert(demoHub.includes('Agent That Wouldn'),`${locale}: pending demo missing`);
+  // The hub lists only demos that can be opened today (decision of 15 Nov. 2026).
+  assert(!demoHub.includes('Point of No Return')&&!demoHub.includes('Agent That Wouldn'),`${locale}: unavailable demo listed on the hub`);
+  assert.equal((demoHub.match(/pf-demo-card/g)||[]).length,8,`${locale}: expected eight demos in the list`);
   assert(demoHub.includes('/embeds/reg-autonomy-control-tower-v1.0.html')||demoHub.includes('portfolio/control-tower/'),`${locale}: Control Tower route missing`);
   assert(page(locale,'gov').includes('releases/tag/v5.7.0'),`${locale}: runtime release link absent`);
 }
