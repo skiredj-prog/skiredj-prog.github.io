@@ -77,7 +77,7 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
           <p class="pf-offer-output">{e.output}</p>
           <p class="pf-offer-status">{shortStatus(e.id)}</p>
           {stagesFor(locale,e.id).length>0&&<p class="pf-when">{whenLabel} {stagesFor(locale,e.id).map((st,i)=><>{i>0&&' · '}<a href={url(stagesPage+'#'+st.id)}>{st.name}</a></>)}</p>}
-          <div class="pf-offer-links"><a href={cardHref(e.id)}>{fr?'Voir la fiche':'View profile'}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}</div>
+          <div class="pf-offer-links"><a href={cardHref(e.id)}>{fr?'Voir la fiche':'View profile'}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}{e.id==='gov'&&<a href={url(fr?'/affirmations/#claim-tg-1':'/en/claims/#claim-tg-1')}>{fr?'Preuves':'Evidence'}</a>}</div>
         </article>;})}</div>
       </section>
       {tiers.map(tier=><section class="pf-tier" aria-labelledby={'pf-tier-'+tier.id}>

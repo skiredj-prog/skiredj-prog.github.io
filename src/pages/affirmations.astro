@@ -44,16 +44,16 @@ const counts = {
 
   <ul class="cl-list" data-claims-list>
     {claims.map((c: Claim) => (
-      <li class="cl-item" data-product={c.product === 'tenir-gov' ? 'tenir-gov' : 'hold'}>
+      <li class="cl-item" id={`claim-${c.id.toLowerCase()}`} data-product={c.product === 'tenir-gov' ? 'tenir-gov' : 'hold'}>
         <div class="cl-head">
-          <code class="cl-id">{c.id}</code>
+          <a class="cl-id-link" href={`#claim-${c.id.toLowerCase()}`}><code class="cl-id">{c.id}</code></a>
           <span class={`cl-badge is-${c.status}`}>{statusLabel[c.status]}</span>
           <span class="cl-product">{productLabel[c.product]}</span>
         </div>
         <p class="cl-statement">{c.statement.fr}</p>
         <p class="cl-basis"><span>Base :</span> {c.basis.fr}</p>
         <p class="cl-limit"><span>Limite :</span> {c.limit.fr}</p>
-        <p class="cl-anchor">Ancre : <code>{c.anchor}</code></p>
+        <p class="cl-anchor">Ancre : <a href={`https://github.com/skiredj-prog/${c.product === 'tenir-gov' ? 'tenir_governance' : 'hold'}/commit/${c.anchor}`} rel="noopener" target="_blank"><code>{c.anchor}</code> ↗</a></p>
       </li>
     ))}
   </ul>
@@ -108,6 +108,9 @@ const counts = {
     margin: 0;
   }
   .cl-item[hidden] { display: none; }
+  .cl-item { scroll-margin-top: 6rem; }
+  .cl-item:target { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .cl-id-link { text-decoration: none; }
   .cl-head { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem; margin-bottom: .6rem; }
   .cl-id { font: 600 .74rem var(--mono); background: var(--code-bg); padding: .15rem .45rem; border-radius: 4px; }
   .cl-badge {
