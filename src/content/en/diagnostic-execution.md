@@ -14,9 +14,13 @@ The **REG Execution Boundary Diagnostic** examines **one critical flow**, its st
 
 **Deliverables:** a transition map, control and scenario matrices, a register of assumptions and unknowns, and a report distinguishing **acceptable within the tested scope**, **HOLD**, and **not demonstrated**. "Not demonstrated" is an acceptable result.
 
-To run this work in a workshop, TENIR Labs may use **REG DEMO**, a local instrument for reading scenarios and evidence. It does not connect to the client system: it helps separate authorization, dispatch, outcome and evidence before defining the next control.
+For a first look, follow this three-step path:
 
-[Explore the fictional replay →](/en/replay/) · [Discuss one flow to examine →](/en/contact/)
+1. [Open the fictional banking replay →](/embeds/demonstration-bancaire.html) (French simulation)
+2. [Open REG DEMO online →](https://tenirlabs.cc/tenir-reg-demo/index.html) to inspect its four fixed scenarios and synthetic evidence.
+3. [Read a fictional example report →](/en/offer/example/), then [discuss one flow to examine →](/en/contact/).
+
+REG DEMO is a hosted web walkthrough, not a connection to a client system or live provider. The separate offline consultation kit is not publicly distributed.
 
 The replay is an educational illustration. For a real case, scope, available records, deliverables and commercial terms are agreed together before the engagement.
 
@@ -69,4 +73,4 @@ Describe **the action**, its **external effect**, **the cost of duplication or u
 
 ## For a closer technical explanation
 
-The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. **This is currently an overview only: the offline kit is not downloadable from this website.** **REG DEMO** is the internal instrument used when a diagnostic needs a scenario-based walkthrough. The [banking demonstration](/embeds/demonstration-bancaire.html) is separate and fictional, in French.
+The [TENIR/REG Diagnostic & Evidence Workbench](/en/portfolio/workbench/) explains how a configurator and synthetic signed records distinguish authorization from an external effect. Its [hosted REG DEMO walkthrough](https://tenirlabs.cc/tenir-reg-demo/index.html) is available online; it uses four fixed scenarios and no live provider. The separate offline consultation kit is not downloadable from this website. The banking replay and REG DEMO are both fictional teaching surfaces.
