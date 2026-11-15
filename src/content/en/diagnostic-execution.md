@@ -16,7 +16,7 @@ The **REG Execution Boundary Diagnostic** examines **one critical flow**, its st
 
 For a first look, follow this three-step path:
 
-1. [Replay the fictional banking scenario →](/en/replay/)
+1. [Open the fictional banking replay →](/embeds/demonstration-bancaire.html) (French simulation)
 2. [Open REG DEMO online →](https://tenirlabs.cc/tenir-reg-demo/index.html) to inspect its four fixed scenarios and synthetic evidence.
 3. [Read a fictional example report →](/en/offer/example/), then [discuss one flow to examine →](/en/diagnostic-execution/).
 

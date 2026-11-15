@@ -106,7 +106,7 @@ function validate(registry, { built = true } = {}) {
       if (a.public_access !== 'release' && a.public_access !== 'demo') bad(id+': artifact URL cannot be assigned to documentation/example');
       if (a.public_artifact_url.startsWith('https://tenirlabs.cc')) {
         const suffix = a.public_artifact_url.replace('https://tenirlabs.cc','');
-        if (portfolioAccess.fr[id]?.href!==suffix || portfolioAccess.en[id]?.href!==suffix) bad(id+': direct artifact URL does not match FR/EN visitor access');
+        if (![suffix,a.public_artifact_url].includes(portfolioAccess.fr[id]?.href) || ![suffix,a.public_artifact_url].includes(portfolioAccess.en[id]?.href)) bad(id+': direct artifact URL does not match FR/EN visitor access');
       } else if (portfolioAccess.fr[id]?.href!==a.public_artifact_url || portfolioAccess.en[id]?.href!==a.public_artifact_url) {
         bad(id+': published release does not match FR/EN visitor access');
       }
