@@ -22,7 +22,7 @@ export type ClaimStatus =
   | "withdrawn"      // explicitement retiré par les auteurs
   | "experimental";  // branche expérimentale, pas sur main
 
-export type ClaimProduct = "tenir-gov" | "hold" | "hold-b1";
+export type ClaimProduct = "tenir-gov" | "hold";
 
 export interface Claim {
   id: string;
@@ -311,18 +311,18 @@ export const holdNonClaims: NonClaim[] = [
 ];
 
 // ─────────────────────────────────────────────────────────────
-// HOLD B1 — Contrats HTTP/Stripe sur mocks (branche expérimentale)
+// TENIR-Gov B1 — Contrats HTTP/Stripe sur mocks (branche expérimentale)
 // ─────────────────────────────────────────────────────────────
 
-export const holdB1Claims: Claim[] = [
+export const tenirGovB1Claims: Claim[] = [
   {
     id: "B1-HTTP-1",
-    product: "hold-b1",
+    product: "tenir-gov",
     status: "experimental",
     anchor: "8398eef", // PR #123 sur fix/b1-governor-uid-lab (base 310065c = #121+#122) ; PAS sur main
     statement: {
-      fr: "Les contrats HTTP et Stripe de HOLD passent sur mocks avec double-autorité Governor+approbateur dans l'environnement de test.",
-      en: "HOLD's HTTP and Stripe contracts pass on mocks with dual Governor+approver authority in the test environment.",
+      fr: "Les contrats HTTP et Stripe de la branche expérimentale TENIR-Gov passent sur mocks avec double-autorité Governor+approbateur dans l'environnement de test.",
+      en: "TENIR-Gov’s experimental HTTP and Stripe contracts pass on mocks with dual Governor+approver authority in the test environment.",
     },
     basis: {
       fr: "36 tests HTTP + 31 tests Stripe sur mocks. Sur 8398eef : Linux 1 737 PASS / 0 FAIL / 16 SKIP / 1 XFAIL ; Windows profil W2 320 PASS / 0 FAIL / 10 SKIP / 1 XFAIL ; 8/8 mutants détectés. Les 13 régressions W2 historiques passent sur les 8 points d'entrée E01–E08. Conditions : TENIR_ENV=test|lab, HOST_SCOPE=single-host.",
@@ -343,7 +343,7 @@ export const holdB1Claims: Claim[] = [
 export const allClaims: Claim[] = [
   ...tenirGovClaims,
   ...holdClaims,
-  ...holdB1Claims,
+  ...tenirGovB1Claims,
 ];
 
 export const allNonClaims: NonClaim[] = [

@@ -14,8 +14,7 @@ const statusLabel: Record<string, string> = {
 };
 const productLabel: Record<string, string> = {
   'tenir-gov': 'TENIR-Gov',
-  hold: 'HOLD',
-  'hold-b1': 'HOLD B1',
+  hold: 'Prototype HOLD',
 };
 const counts = {
   all: claims.length,
@@ -34,6 +33,8 @@ const counts = {
 >
 
   <p>Une affirmation n’entre dans ce registre que si elle est rattachée à un commit publié, à un run d’expérience archivé ou à un audit documenté. Les travaux en branche expérimentale n’y figurent pas tant qu’ils ne sont pas fusionnés.</p>
+
+  <p>Les affirmations sur TENIR-Gov portent sur la version citée. Les résultats du prototype HOLD portent sur l’expérience figée. La qualification REG porte sur un profil et un périmètre testés.</p>
 
   <div class="cl-filters" role="group" aria-label="Filtrer les affirmations">
     <button type="button" class="cl-filter is-active" data-filter="all" aria-pressed="true">Toutes <span>{counts.all}</span></button>
