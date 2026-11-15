@@ -6,3 +6,4 @@ Before UI or microcopy work, read `.ux-profile.md`, then the matching domain ski
 Before creating a new page, read `page-patterns` and name the pattern. Do not write page markup until the pattern is named.
 Layouts must pass `viewports` at 375px and 1280px.
 Before finishing UI, run `ux-audit`.
+These skills come from the `vectorlab-ux-skills` plugin. Without it, follow `.ux-profile.md` and run the repo's `scripts/check-*.mjs` before finishing.

@@ -488,6 +488,12 @@ en: {
   }
 }
 };
+// Status shown on the Products hub: the full status minus release gates (pending tests, PR numbers,
+// readiness verdicts, test counts), which stay on each profile. Scope limits such as
+// "single-host", "beta" or "not production-qualified" are kept.
+const releaseGate = /READY WITH CONDITIONS|test navigateur|browser test|\bPR #\d+|\d+\/\d+ PASS/i;
+export const hubStatus = (status: string) => status.split(' · ').filter((part) => !releaseGate.test(part)).join(' · ');
+
 export const portfolioHubs = {
  fr:{
   products:{title:'Des réponses pour des situations différentes',kicker:'TENIR Labs · Produits',description:'Des offres pour comprendre ce qui se passe, préparer une décision ou vérifier ce qui a vraiment été fait.',lede:'Un usage IA apparaît, une règle change ou une action devient incertaine : commencez par la situation qui ressemble à la vôtre.',opening:'Commencez par ce qui vous arrive.',intro:'Chaque offre est présentée simplement : le problème auquel elle répond, ce qu’elle produit et ce qu’elle ne prétend pas faire. La matrice 2×2 en bas de page sert de résumé.',keys:['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'],linkLabel:'Voir la fiche',spotlight:'Vous n’avez pas besoin de connaître le bon nom. Décrivez d’abord ce qui s’est passé ou ce que vous préparez.'},
