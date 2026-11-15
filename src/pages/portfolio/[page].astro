@@ -4,7 +4,7 @@ import PortfolioPage from '../../components/PortfolioPage.astro';
 import { portfolio, portfolioHubs, portfolioOrder } from '../../data/portfolio';
 const language = 'fr' as const;
 export function getStaticPaths(){
- const pages = ['products','services','demos',...portfolioOrder];
+ const pages = ['products','demos',...portfolioOrder];
  return pages.map(page=>({params:{page}}));
 }
 const { page } = Astro.params;

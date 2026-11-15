@@ -1,6 +1,5 @@
 ---
 import '../styles/portfolio.css';
-import PortfolioCard from './PortfolioCard.astro';
 import PortfolioMatrix from './PortfolioMatrix.astro';
 import { portfolioAccess } from '../data/portfolioAccess';
 import { portfolio, portfolioHubs, type PortfolioLocale } from '../data/portfolio';
@@ -15,20 +14,34 @@ const publicAccess = portfolioAccess[locale][page];
 const path = (route:string) => url((fr?'/':'/en/') + route + '/');
 const cardHref = (id:string) => path('portfolio/' + id);
 const kindName = (kind:string) => ({product:fr?'Produit ou instrument':'Product or instrument',service:'Service',demo:fr?'Démonstration':'Demo',foundation:fr?'Cadre et recherche':'Framework and research'} as Record<string,string>)[kind] ?? kind;
-  const sections = [
-  {id:'products',label:fr?'Produits':'Products',detail:fr?'Choisir selon votre situation':'Choose by situation'},
-  {id:'services',label:'Services',detail:fr?'Faire examiner un cas':'Examine one case'},
-  {id:'demos',label:fr?'Démonstrations':'Demos',detail:fr?'Voir un scénario':'See a scenario'},
+// Products hub: three readiness tiers. The tier is the only status shown on the hub;
+// engineering detail (gates, pending tests, PR numbers) stays on each profile.
+const item = (id:string) => portfolio[locale][id];
+const shortStatus = (id:string) => item(id).status.split(' · ')[0];
+const available = ['diagnostic','gov','conformance'].map(item);
+const tiers = [
+  {id:'pilot',label:fr?'En pilote':'In pilot',note:fr?'Démarche cadrée par un document de travail, à tester sur un cas réel avec vous.':'An approach framed by a working draft, to be tested with you on a real case.',entries:['prevent','prepare'].map(item)},
+  {id:'prototype',label:fr?'En prototype':'In prototype',note:fr?'Explorations en cours. Aucune n’est qualifiée pour la production.':'Explorations in progress. None is qualified for production.',entries:['explorer','discovery','mediation','xray','translation'].map(item)},
 ];
-const category = entry?.kind === 'service' ? 'services' : entry?.kind === 'demo' ? 'demos' : 'products';
-const hubEntries = hub ? hub.keys.map((id:string)=>portfolio[locale][id]) : [];
-  const cardGroups = page === 'products' ? [
-  {layout:'stories',title:fr?'Commencez par une situation':'Start with a situation',note:fr?'Une fiche à la fois : ce qui vous amène, ce que le produit apporte et la suite possible.':'One profile at a time: what brings you here, what it provides and what comes next.',entries:hubEntries.filter((item:any)=>item.kind==='product')},
-  {layout:'foundations',title:fr?'Pour aller dans les fondations':'For the deeper foundations',note:fr?'À consulter seulement si vous cherchez l’architecture, les textes ou les contrats techniques.':'Open this only if you are looking for architecture, texts or technical contracts.',entries:hubEntries.filter((item:any)=>item.kind==='foundation')},
-] : page === 'services' ? [
-  {title:fr?'Un accompagnement à partir de votre question':'An engagement that starts with your question',note:fr?'Le périmètre, les livrables et le devis se conviennent avant de commencer.':'Scope, deliverables and the quote are agreed before work begins.',entries:hubEntries.filter((item:any)=>item.kind==='service')},
-  {title:fr?'Des instruments selon le besoin':'Instruments to suit the question',note:fr?'Leur utilisation et une éventuelle intégration se cadrent séparément.':'Their use and any integration are scoped separately.',entries:hubEntries.filter((item:any)=>item.kind!=='service')},
-] : [{title:fr?'Pour prolonger l’exploration':'Keep exploring',note:fr?'Expériences, logiciel et architecture : chaque fiche garde son propre statut.':'Experiences, software and architecture: each profile retains its own status.',entries:hubEntries.filter((item:any)=>item.id!=='control-tower' && !(page==='demos' && ['experiences','reg-demo'].includes(item.id)))}];
+const foundations = ['reg-arch','technical'].map(item);
+// Demos hub: one list, grouped by what the visitor does. Only demos that can be opened today.
+const demoGroups = [
+  {label:fr?'À manipuler':'Hands-on',note:fr?'Vous cliquez, la simulation répond.':'You click, the simulation responds.',items:[
+    {title:fr?'Examiner règles, scénarios et preuves':'Inspect rules, scenarios and evidence',name:'REG DEMO',text:fr?'Quatre scénarios fixes et des preuves signées localement. La lecture ne déclenche aucune action.':'Four fixed scenarios and locally signed evidence. Reading does not trigger an action.',meta:fr?'Prototype non officiel · aucun système réel connecté':'Unofficial prototype · no live system connected',href:'https://tenirlabs.cc/tenir-reg-demo/index.html',label:fr?'Ouvrir REG DEMO':'Open REG DEMO'},
+    {title:fr?'Ce que le journal ne voit pas':'What the log cannot see',name:fr?'Comparaison de deux sources':'Two-source comparison',text:fr?'Deux lignes semblent cohérentes. Une autre source révèle une demande manquante.':'Two entries look consistent. Another source reveals a missing request.',meta:fr?'Français et anglais · données fictives':'French and English · fictional data',href:path(fr?'demonstrations/journal':'demos/log'),label:fr?'Comparer les deux sources':'Compare the two sources'},
+    {title:fr?'Comment les pièces se relient-elles ?':'How do the pieces fit together?',name:fr?'Schéma interactif':'Interactive diagram',text:fr?'Les composants de l’architecture et les limites publiées, à parcourir.':'The architecture components and published limits, to explore.',meta:fr?'En anglais':'In English',href:path('architecture/interactive'),label:fr?'Explorer le schéma':'Explore the diagram'},
+    {title:fr?'Une tâche de rendez-vous, pour essayer':'An appointment task to try',name:fr?'Prototype mobile':'Mobile prototype',text:fr?'Proposez un créneau, simulez une réponse, puis mettez en pause.':'Propose a slot, simulate a reply, then pause.',meta:fr?'Site distinct · données d’exemple, aucun vrai message':'Separate site · example data, no real messages',href:'https://mobile.tenirlabs.cc/discover',label:fr?'Ouvrir le prototype mobile':'Open the mobile prototype'},
+  ]},
+  {label:fr?'À suivre':'To watch',note:fr?'Un scénario se déroule, vous avancez scène par scène.':'A scenario unfolds, you move scene by scene.',items:[
+    {title:fr?'Un paiement, un doublon, une interruption':'A payment, a duplicate, an interruption',name:fr?'Replay bancaire fictif PAY-MAR-001':'Fictional banking replay PAY-MAR-001',text:fr?'Une opération normale, un doublon, une interruption, puis la réconciliation.':'A normal operation, a duplicate, an interruption, then reconciliation.',meta:fr?'En français · simulation synthétique, aucun paiement réel':'In French · synthetic simulation, no real payment',href:url('/embeds/demonstration-bancaire.html'),label:fr?'Ouvrir le replay':'Open the replay'},
+    {title:fr?'Une autorisation ne confirme pas l’effet':'Authorization does not confirm an effect',name:fr?'Parcours en six scènes':'Six-scene walkthrough',text:fr?'Autorisation, doublon, interruption et résultat inconnu.':'Authorization, duplicate, interruption and unknown outcome.',meta:fr?'En anglais':'In English',href:path('architecture/demo'),label:fr?'Ouvrir les six scènes':'Open the six scenes'},
+  ]},
+  {label:fr?'À lire':'To read',note:fr?'Ce à quoi ressemble un travail rendu.':'What delivered work looks like.',items:[
+    {title:fr?'Du scénario à la restitution':'From scenario to readout',name:fr?'Fiche simulée':'Simulated sheet',text:fr?'Un exemple de fiche : constats, sources et questions encore ouvertes.':'A sample sheet: findings, sources and open questions.',meta:fr?'Exemple fictif · aucune référence client':'Fictional example · no client reference',href:path(fr?'offre/exemple':'offer/example'),label:fr?'Lire la fiche simulée':'Read the simulated sheet'},
+    {title:fr?'Configurer et relire des preuves':'Configure and review evidence',name:'TENIR/REG · Diagnostic & Evidence Workbench',text:fr?'Présentation du configurateur et des preuves synthétiques. Le ZIP de consultation n’est pas distribué sur ce site.':'An overview of the configuration tool and synthetic records. The consultation ZIP is not distributed on this website.',meta:fr?'Présentation seulement':'Overview only',href:path('portfolio/workbench'),label:fr?'Lire la présentation':'Read the overview'},
+  ]},
+];
+const external = (h:string) => h.startsWith('https:');
 const labels = fr ? [
   ['when','Cela peut vous aider si…'],['inputs','Ce qu’il faut pour commencer'],['examines','Ce que l’on examine'],
   ['pain','La question de départ'],['relationships','Les liens avec les autres approches'],
@@ -48,63 +61,40 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
     : entry?.nextHref.startsWith('https://github.com/')
       ? (fr?'Ressource externe sur GitHub · sources et documentation.':'External GitHub resource · source and documentation.')
       : (fr?'Explication ou démonstration sur ce site.':'Explanation or demonstration on this site.');
-const demos = [
-  {title:fr?'Ce que le journal ne voit pas':'What the log cannot see',text:fr?'Deux lignes semblent cohérentes. Une autre source révèle une demande manquante. Explorez ce que la comparaison permet de conclure.':'Two entries look consistent. Another source reveals a missing request. Explore what the comparison establishes.',format:fr?'Illustration à explorer · FR/EN · données fictives':'Explorable illustration · FR/EN · fictional data',href:path(fr?'demonstrations/journal':'demos/log'),label:fr?'Comparer les deux sources':'Compare the two sources'},
-  {title:fr?'Une autorisation ne confirme pas l’effet.':'Authorization does not confirm an effect.',text:fr?'Suivez six scènes : autorisation, doublon, interruption et résultat inconnu.':'Follow six scenes: authorization, duplicate, interruption and unknown outcome.',format:fr?'Parcours illustratif · anglais':'Illustrative walkthrough · English',href:path('architecture/demo'),label:fr?'Ouvrir les six scènes':'Open the six scenes'},
-  {title:fr?'Comment les pièces se relient-elles ?':'How do the pieces fit together?',text:fr?'Explorez les composants de l’architecture et les limites publiées dans le parcours.':'Explore the architecture components and the limits published in the walkthrough.',format:fr?'Schéma interactif · anglais':'Interactive diagram · English',href:path('architecture/interactive'),label:fr?'Explorer le schéma':'Explore the diagram'},
-  {title:fr?'Une tâche de rendez-vous, pour essayer.':'An appointment task to try.',text:fr?'Proposez un créneau, simulez une réponse, puis mettez en pause avec des données d’exemple.':'Propose a slot, simulate a reply, then pause using example data.',format:fr?'Prototype mobile distinct · aucun vrai message':'Separate mobile prototype · no real messages',href:'https://mobile.tenirlabs.cc/discover',label:fr?'Ouvrir le prototype mobile':'Open the mobile prototype'},
-];
 ---
 <div class="pf-root">
-  <nav class="pf-local-nav" aria-label={fr?'Produits, services et démonstrations':'Products, services and demos'}>
-    {sections.map(s=>{
-      const selected=page===s.id || (!!entry&&category===s.id);
-      return <a class:list={['pf-local-link',selected&&'pf-selected']} href={cardHref(s.id)} aria-current={page===s.id?'page':selected?'location':undefined}><span>{s.label}</span><small>{s.detail}</small></a>;
-    })}
-  </nav>
   {hub ? <>
-    {page==='products'&&<section class="pf-intro">
-      <div class="pf-intro-body"><h2>{hub.opening}</h2><p>{hub.intro}</p></div>
-      <aside class="pf-aside"><span class="pf-aside-label">{fr?'À votre rythme':'At your own pace'}</span><strong>{hub.spotlight}</strong><p>{fr?'Vous pouvez passer d’un instrument à une démo, puis revenir aux sources ou à une conversation.':'Move from an instrument to a demo, then return to the sources or a conversation.'}</p></aside>
-    </section>}
-    {page==='services'&&<section class="pf-service-example" aria-labelledby="pf-service-result">
-      <div><p class="pf-overline">{fr?'Un exemple de travail ensemble':'An example of working together'}</p><h2 id="pf-service-result">{hub.opening}</h2><p>{fr?'Par exemple, un agent a envoyé une action et la confirmation manque. Avant de recommencer, regardons ce que les éléments permettent d’établir.':'For example, an agent sent an action and the confirmation is missing. Before trying again, examine what the available evidence establishes.'}</p><a href={path(fr?'offre/exemple':'offer/example')}>{fr?'Lire la fiche simulée et ses sources':'Read the simulated sheet and its sources'} →</a></div>
-      <dl class="pf-exchange"><div><dt>{fr?'Vous apportez':'You bring'}</dt><dd>{fr?'Une action, une question et les éléments disponibles.':'An action, a question and the available materials.'}</dd></div><div><dt>{fr?'Nous examinons':'We examine'}</dt><dd>{fr?'Autorisation, envoi, résultat, inconnues et conditions de reprise.':'Authorization, dispatch, outcome, unknowns and recovery conditions.'}</dd></div><div><dt>{fr?'Vous repartez avec':'You leave with'}</dt><dd>{fr?'Une fiche sourcée, des annexes courtes et jusqu’à trois priorités.':'A sourced sheet, short annexes and up to three priorities.'}</dd></div></dl>
-    </section>}
+    {page==='products'&&<>
+      <PortfolioMatrix locale={locale} />
+      <section class="pf-tier pf-tier-available" aria-labelledby="pf-available-title">
+        <header class="pf-tier-head"><h2 id="pf-available-title">{fr?'Ce que vous pouvez obtenir aujourd’hui':'What you can get today'}</h2><p>{fr?'Un accompagnement sur devis et deux logiciels publiés, chacun dans un périmètre précis.':'One guided engagement on quote and two published software releases, each within a precise scope.'}</p></header>
+        <div class="pf-offer-grid">{available.map((e:any)=>{const access=portfolioAccess[locale][e.id];return <article class="pf-offer">
+          <h3><a href={cardHref(e.id)}>{e.tagline}</a></h3>
+          <p class="pf-offer-name">{e.title}</p>
+          <p class="pf-offer-output">{e.output}</p>
+          <p class="pf-offer-status">{e.status}</p>
+          <div class="pf-offer-links"><a href={cardHref(e.id)}>{fr?'Voir la fiche':'View profile'}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}</div>
+        </article>;})}</div>
+      </section>
+      {tiers.map(tier=><section class="pf-tier" aria-labelledby={'pf-tier-'+tier.id}>
+        <header class="pf-tier-head"><h2 id={'pf-tier-'+tier.id}>{tier.label}</h2><p>{tier.note}</p></header>
+        <ul class="pf-rows">{tier.entries.map((e:any)=><li class="pf-row"><div><h3><a href={cardHref(e.id)}>{e.tagline}</a></h3><p>{e.title}</p></div><span class="pf-row-status">{shortStatus(e.id)}</span></li>)}</ul>
+      </section>)}
+      <p class="pf-foundations">{fr?'Vous cherchez l’architecture ou les contrats techniques ?':'Looking for the architecture or the technical contracts?'} {foundations.map((e:any,i:number)=><>{i>0&&' · '}<a href={cardHref(e.id)}>{e.title}</a></>)}</p>
+    </>}
     {page==='demos'&&<>
       <section class="pf-feature">
-        <div><p class="pf-overline">{fr?'À essayer ici':'Try it here'}</p><h2>{fr?'La réponse manque. Que faire ensuite ?':'The response is missing. What comes next?'}</h2><p>{fr?'La Control Tower met en scène quatre situations. Choisissez un scénario et observez les décisions et les états simulés.':'Control Tower presents four situations. Choose a scenario and inspect the simulated decisions and states.'}</p><a class="btn btn-primary" href={cardHref('control-tower')}>{fr?'Ouvrir la simulation interactive':'Open the interactive simulation'} →</a><small>{fr?'Artefact en anglais · aucune connexion au noyau réel':'English artifact · no live kernel connected'}</small></div>
-        <div class="pf-scenario-preview" aria-hidden="true"><span>{fr?'APERÇU · SCÉNARIO SIMULÉ':'PREVIEW · SIMULATED SCENARIO'}</span><div>{fr?'Une proposition':'A proposal'} <b>→</b></div><div>{fr?'Une autorisation':'An authorization'} <b>→</b></div><div class="pf-scenario-unknown">{fr?'Un résultat à vérifier':'An outcome to verify'} <i>?</i></div><p>{fr?'Autoriser · envoyer · confirmer':'Authorize · dispatch · confirm'}</p></div>
+        <div><h2>{fr?'La réponse manque. Que faire ensuite ?':'The response is missing. What comes next?'}</h2><p>{fr?'Commencez ici : la Control Tower met en scène quatre situations. Choisissez un scénario et observez les décisions et les états simulés.':'Start here: Control Tower presents four situations. Choose a scenario and inspect the simulated decisions and states.'}</p><a class="btn btn-primary" href={cardHref('control-tower')}>{fr?'Ouvrir la simulation interactive':'Open the interactive simulation'}</a><small>{fr?'En anglais · aucune connexion au noyau réel':'In English · no live kernel connected'}</small></div>
+        <div class="pf-scenario-preview" aria-hidden="true"><div>{fr?'Une proposition':'A proposal'} <b>→</b></div><div>{fr?'Une autorisation':'An authorization'} <b>→</b></div><div class="pf-scenario-unknown">{fr?'Un résultat à vérifier':'An outcome to verify'} <i>?</i></div></div>
       </section>
-      <section class="pf-demo-options" aria-labelledby="pf-path-title">
-        <h2 id="pf-path-title">{fr?'Parcours conseillé · du cas métier au diagnostic':'Suggested path · from business case to diagnostic'}</h2>
-        <div class="pf-demo-grid">
-          <article class="pf-demo-card"><span class="pf-format">{fr?'01 · COMPRENDRE':'01 · UNDERSTAND'}</span><h3>{fr?'Voir le replay bancaire fictif':'Watch the fictional banking replay'}</h3><p>{fr?'Suivez une opération normale, un doublon, une interruption et la réconciliation dans le laboratoire PAY-MAR-001.':'Follow a normal operation, duplicate, interruption and reconciliation in the PAY-MAR-001 lab.'}</p><a href={url('/embeds/demonstration-bancaire.html')}>{fr?'Ouvrir le replay':'Open the replay'} →</a><small>{fr?'Simulation synthétique · aucun paiement réel':'Synthetic simulation · no real payment'}</small></article>
-          <article class="pf-demo-card"><span class="pf-format">{fr?'02 · EXAMINER':'02 · INSPECT'}</span><h3>TENIR/REG · Diagnostic &amp; Evidence Workbench</h3><p>{fr?'Parcourez règles, périmètre, quatre scénarios et preuves signées locales. La lecture ne déclenche aucune action.':'Inspect rules, scope, four scenarios and locally signed evidence. Reading does not trigger an action.'}</p><a href="https://tenirlabs.cc/tenir-reg-demo/index.html">{fr?'Ouvrir REG DEMO en ligne':'Open REG DEMO online'} →</a><small>{fr?'Prototype non officiel · aucun système réel connecté':'Unofficial prototype · no live system connected'}</small></article>
-          <article class="pf-demo-card"><span class="pf-format">{fr?'03 · PRÉPARER LA SUITE':'03 · PREPARE THE NEXT STEP'}</span><h3>{fr?'Du scénario à la restitution':'From scenario to readout'}</h3><p>{fr?'Lisez un exemple de fiche, ses constats, ses sources et les questions encore ouvertes.':'Read a sample report with findings, sources and open questions.'}</p><a href={path(fr?'offre/exemple':'offer/example')}>{fr?'Lire la fiche simulée':'Read the simulated report'} →</a><small>{fr?'Exemple fictif · aucune référence client':'Fictional example · no client reference'}</small></article>
-        </div>
-        <p class="pf-action-note">{fr?'Pour examiner un flux réel, découvrez le périmètre et les conditions du diagnostic spécialisé.':'To examine a real flow, review the scope and conditions of the specialist diagnostic.'} <a href={url(fr?'/diagnostic-execution/':'/en/diagnostic-execution/')}>{fr?'Voir le diagnostic des frontières d’exécution':'See the execution-boundary diagnostic'} →</a></p>
+      <section class="pf-demo-list" aria-labelledby="pf-demos-title">
+        <header class="pf-tier-head"><h2 id="pf-demos-title">{fr?'Toutes les démonstrations':'All demos'}</h2><p>{fr?'Scénarios fictifs et bornés : aucune n’agit sur un système réel.':'Fictional, bounded scenarios: none acts on a real system.'}</p></header>
+        {demoGroups.map(group=><section class="pf-demo-group"><header><h3>{group.label}</h3><p>{group.note}</p></header>
+          <ul class="pf-rows">{group.items.map(d=><li class="pf-row pf-demo-card"><div><h4>{d.title}</h4><p>{d.name}. {d.text}</p><small>{d.meta}</small></div><a class="pf-row-action" href={d.href}>{d.label}{external(d.href)&&<span aria-hidden="true"> ↗</span>}</a></li>)}</ul>
+        </section>)}
       </section>
-      <section class="pf-demo-options" aria-labelledby="pf-pending-title">
-        <h2 id="pf-pending-title">{fr?'Autres prototypes à suivre':'Other prototypes in progress'}</h2>
-        <div class="pf-demo-grid">
-          <article class="pf-demo-card"><span class="pf-format">{fr?'Évalué v0.2 · publication non vérifiée':'Assessed v0.2 · public release unverified'}</span><h3>Point of No Return</h3><p>{fr?'Illustration du HOLD face à une action irréversible. Aucun lien public vérifié à afficher.':'Illustrates HOLD at an irreversible action boundary. No verified public runnable link.'}</p></article>
-          <article class="pf-demo-card"><span class="pf-format">{fr?'En file d’attente':'Pending'}</span><h3>Agent That Wouldn’t Stop</h3><p>{fr?'Expérience prévue, pas encore qualifiée comme livrée ou déployée.':'Planned experience, not yet qualified as delivered or deployed.'}</p></article>
-        </div>
-      </section>
-      <section class="pf-demo-options" aria-labelledby="pf-demos-title"><h2 id="pf-demos-title">{fr?'D’autres façons de comprendre':'Other ways to explore'}</h2><div class="pf-demo-grid">{demos.map(d=><article class="pf-demo-card"><span class="pf-format">{d.format}</span><h3>{d.title}</h3><p>{d.text}</p><a href={d.href}>{d.label} {d.href.startsWith('https:')?'↗':'→'}</a></article>)}</div></section>
-      <section class="pf-conclusion" aria-label={fr?'Workbench — présentation':'Workbench overview'}>
-        <div>
-          <p class="pf-overline">{fr?'POUR APPROFONDIR · PRÉSENTATION':'NEXT STEP · OVERVIEW ONLY'}</p>
-          <h2>TENIR/REG · Diagnostic &amp; Evidence Workbench</h2>
-          <p>{fr?'Après ces scénarios, découvrez le configurateur et les preuves synthétiques que regroupe le Workbench. Le ZIP de consultation a passé les contrôles automatisés, mais il n’est pas distribué sur ce site.':'After these scenarios, read about the configuration tool and synthetic records in the Workbench. The frozen consultation ZIP passed automated tests, but is not distributed on this website.'}</p>
-        </div>
-        <a class="btn" href={path('portfolio/workbench')}>{fr?'Lire la présentation':'Read the overview'} →</a>
-      </section>
+      <p class="pf-foundations">{fr?'Pour examiner un flux réel, et non un scénario :':'To examine a real flow rather than a scenario:'} <a href={url(fr?'/diagnostic-execution/':'/en/diagnostic-execution/')}>{fr?'voir le diagnostic des frontières d’exécution':'see the execution-boundary diagnostic'}</a></p>
     </>}
-    {cardGroups.map(group=><section class:list={['pf-card-group',group.layout==='stories'&&'pf-product-stories',group.layout==='foundations'&&'pf-foundation-group']}><header><h2>{group.title}</h2>{group.note&&<p>{group.note}</p>}</header><div class:list={['pf-card-grid',group.layout==='stories'&&'pf-product-list',group.entries.length===1&&'pf-card-grid-single']}>{group.entries.map((item:any)=><PortfolioCard locale={locale} item={item}/>)}</div></section>)}
-    {page==='products'&&<section class="pf-matrix-summary" aria-labelledby="pf-matrix-summary-title"><p class="pf-overline">{fr?'Récapitulatif':'Recap'}</p><h2 id="pf-matrix-summary-title">{fr?'La matrice, en un coup d’œil':'The matrix, at a glance'}</h2><p>{fr?'Si vous préférez comparer avant de choisir, retrouvez ici les produits par moment de décision.':'If you prefer to compare before choosing, find the products grouped here by decision moment.'}</p><PortfolioMatrix locale={locale} /></section>}
-    <section class="pf-conclusion"><div><h2>{fr?'Vous ne savez pas encore lequel choisir ?':'Still not sure which one fits?'}</h2><p>{fr?'Décrivez ce que vous cherchez à comprendre. Quelques lignes suffisent pour ouvrir la conversation.':'Describe what you are trying to understand. A few lines are enough to start a conversation.'}</p></div><a class="btn" href={contactHref}>{fr?'Ouvrir la page de contact':'Open the contact page'} →</a></section>
   </> : entry ? <>
     {page==='xray'&&<section id="explorer" class="pf-xray-explore" aria-labelledby="xray-explore-title">
       <p class="pf-overline">{fr?'Éclairage X-Ray · exemples illustratifs':'X-Ray perspective · illustrative examples'}</p>

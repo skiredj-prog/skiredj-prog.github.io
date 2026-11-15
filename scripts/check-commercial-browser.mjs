@@ -127,7 +127,7 @@ try {
   for(const locale of ['fr','en']){
     const prefix=locale==='fr'?'':'/en';
     for(const theme of ['dark','light']){
-      for(const hub of ['products','services','demos']){
+      for(const hub of ['products','demos']){
         const page=await browser.newPage({viewport:{width:1710,height:740},colorScheme:theme,reducedMotion:'reduce'});
         await page.addInitScript(mode=>localStorage.setItem('tenir-theme',mode),theme);
         await page.goto('http://127.0.0.1:4173'+prefix+'/portfolio/'+hub+'/',{waitUntil:'networkidle'});
@@ -140,7 +140,8 @@ try {
         assert.equal(colors.bg,theme==='dark'?'rgb(12, 20, 29)':'rgb(245, 248, 250)',locale+'/'+hub+'/'+theme+': stale portfolio page background '+colors.bg);
         assert.equal(colors.accent,theme==='dark'?'#3fbf9a':'#157a5e',locale+'/'+hub+'/'+theme+': accent is not the HOLD mint/sage '+colors.accent);
         assert(colors.scroll<=colors.client+2,locale+'/'+hub+'/'+theme+': horizontal overflow');
-        assert(await page.locator('.pf-local-nav').isVisible(),locale+'/'+hub+'/'+theme+': portfolio navigation hidden');
+        assert(await page.locator(hub==='products'?'.pm-2x2':'.pf-feature').isVisible(),locale+'/'+hub+'/'+theme+': hub entry point hidden');
+        assert.equal(await page.locator('.pf-local-nav').count(),0,locale+'/'+hub+'/'+theme+': second tab bar is back');
         await page.close();
       }
     }

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
 const entries=['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'];
-const hubs=['products','services','demos'];
+const hubs=['products','demos'];
 const expected=[...hubs,...entries];
 const paths = (lang,page) => lang==='fr'?`dist/portfolio/${page}/index.html`:`dist/en/portfolio/${page}/index.html`;
 for(const lang of ['fr','en']){
@@ -19,6 +19,21 @@ for(const lang of ['fr','en']){
       assert(html.includes('pf-status-card'),`Missing maturity panel: ${path}`);
     }
   }
+}
+// Services merged into Products (Nov. 2026): the old address redirects, and the hubs no longer carry a second tab bar.
+for (const [old, target] of [['dist/portfolio/services/index.html','/portfolio/products/'],['dist/en/portfolio/services/index.html','/en/portfolio/products/']]) {
+  assert(existsSync(old), `Missing Services redirect: ${old}`);
+  assert(readFileSync(old,'utf8').includes('url='+target), `Services must redirect to ${target}`);
+}
+for(const lang of ['fr','en']){
+  const products=readFileSync(paths(lang,'products'),'utf8');
+  assert(!products.includes('pf-local-nav'),`${lang}: second tab bar must not come back on Products`);
+  // The situation chooser opens the page, ahead of any product list.
+  assert(products.indexOf('class="pm-2x2"') < products.indexOf('pf-available-title'),`${lang}: the situation chooser must come before the offers`);
+  assert.equal((products.match(/class="pf-offer"/g)||[]).length,3,`${lang}: expected three offers available today`);
+  assert.equal((products.match(/class="pf-row"/g)||[]).length,7,`${lang}: expected seven pilot and prototype rows`);
+  // Engineering gates stay on the profiles, not on the hub.
+  for(const gate of ['READY WITH CONDITIONS','PR #13'])assert(!products.includes(gate),`${lang}: engineering detail on the Products hub: ${gate}`);
 }
 // Products must be discoverable in the primary menu for both languages, not only through site content.
 for (const [lang, home, productsPath] of [
@@ -83,7 +98,7 @@ for(const lang of ['fr','en']){
   assert(frame.includes('loading="lazy"'),'Control Tower should not force media loading');
   assert(frame.includes('/embeds/reg-autonomy-control-tower-v1.0.html'),'Control Tower source missing');
 }
-console.log('Portfolio: 34 FR/EN routes, 28 nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.');
+console.log('Portfolio: 32 FR/EN routes, 28 nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.');
 
 // The free self-assessment is the new commercial front door.
 await import('./check-pathway.mjs');
