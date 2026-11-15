@@ -2,17 +2,17 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Key pages load', () => {
   const pages = [
-    { path: '/cas/', title: /cas/i },
-    { path: '/parcours-ia/', title: /rapport|parcours/i },
-    { path: '/tau-tenir/', title: /tau|tenir/i },
-    { path: '/contact/', title: /contact/i },
-    { path: '/en/', title: /ai takes action/i },
+    { path: '/cas/', name: /cas/i },
+    { path: '/parcours-ia/', name: /rapport|avant de laisser/i },
+    { path: '/tau-tenir/', name: /tau|tenir/i },
+    { path: '/contact/', name: /contact/i },
+    { path: '/en/', name: /ai takes action/i },
   ];
 
   for (const p of pages) {
     test(`${p.path} loads with a heading`, async ({ page }) => {
       await page.goto(p.path);
-      await expect(page.getByRole('heading', { level: 1 })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible({ timeout: 10000 });
     });
   }
 });
