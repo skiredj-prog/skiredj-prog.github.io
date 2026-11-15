@@ -379,5 +379,7 @@ body{margin:0;line-height:1.6;background:#ffffff;font-size:17px}
   .pa-report-details-body{padding-inline:.8rem}
 }
 /* Dark theme: the priority panel and the answers card carried a hard-coded white surface under light-on-dark text. */
+@media screen{
 :root[data-theme="dark"] .pa-priority-panel,:root[data-theme="dark"] .pa-report-details-body .pa-report-card{background:#141f26;border-color:#2b3d49}
 :root[data-theme="dark"] .pa-priority-panel li p{color:#a8bcc6}
+}

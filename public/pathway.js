@@ -195,7 +195,7 @@
     }else if(dims.find(d=>d.id==='visibility').level!=='strong'||dims.find(d=>d.id==='evidence').level!=='strong'){
       offer={title:L('Savoir ce que vous pourrez prouver · REG Prepare','Know what you will be able to prove · REG Prepare'),desc:L('Établir ce qui peut être retrouvé et prouvé, et ce qui reste encore inconnu.','Establish what can be reconstructed and demonstrated, and what remains unknown.'),link:route('portfolio/prepare/')};
     }else{
-      offer={title:L('Tester vos contrôles sur un cas réel','Test your controls on a real case'),desc:L('Vos réponses ouvrent la voie à une revue concrète d’un parcours sensible, sans présumer de sa conformité.','Your answers suggest a focused review of one consequential workflow, without assuming it is compliant.'),link:route('portfolio/products/')};
+      offer={title:L('Tester vos contrôles sur un cas réel','Test your controls on a real case'),desc:L('Vos réponses ouvrent la voie à une revue concrète d’un parcours sensible, sans présumer de sa conformité.','Your answers suggest a focused review of one consequential workflow, without assuming it is compliant.'),link:route('portfolio/products/')+'#pf-available-title'};
     }
     return{dims,prioritized,summary,offer,structured:structured.length,maturity:getMaturity(dims),usage:getUsage(dims)};
   }
