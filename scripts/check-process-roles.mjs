@@ -24,8 +24,10 @@ for (const [name, html] of [['FR', fr], ['EN', en]]) {
 // Products hub -> Process & Roles: every "when to use it" link must land on an existing stage anchor.
 for (const [name, hub, page] of [['FR','dist/portfolio/products/index.html',fr],['EN','dist/en/portfolio/products/index.html',en]]) {
   const html = readFileSync(resolve(root, hub), 'utf8');
-  const links = [...html.matchAll(/class="pf-when">[\s\S]*?<\/p>/g)].flatMap((m) => [...m[0].matchAll(/processus-et-roles\/#(stage-\d)/g)].map((x) => x[1]));
-  if (links.length < 8) failures.push(`${name} products hub has only ${links.length} stage links`);
+  const links = [...html.matchAll(/class="pf-when">[\s\S]*?<\/p>/g)].flatMap((m) => [...m[0].matchAll(/processus-et-roles\/#(stage-\d+)/g)].map((x) => x[1]));
+  // One expected link per (product, stage) pair cited in processRoles.ts, at most two per product on the hub.
+  const expected = 11; // diagnostic 2, gov 1, conformance 1, prevent 2, prepare 2, discovery 1, xray 1, translation 1
+  if (links.length !== expected) failures.push(`${name} products hub has ${links.length} stage links; expected ${expected}`);
   for (const id of links) if (!page.includes(`id="${id}"`)) failures.push(`${name} products hub links to missing #${id}`);
 }
 if (failures.length) {

@@ -48,6 +48,7 @@ jobs:
           npm run check:links
           node scripts/check-portfolio.mjs
           node scripts/check-portfolio-references.mjs
+          npm run check:process-roles
       - name: Bundle sources and complete rendered preview
         shell: bash
         run: |
