@@ -27,8 +27,8 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
 
 /** The free personalized AI report: permanent header call to action. */
 export const reportLink: Record<Locale, NavItem> = {
-  fr: { slug: "parcours-ia", href: "/parcours-ia/", label: "Rapport IA personnalisé gratuit" },
-  en: { slug: "ai-readiness", href: "/en/ai-readiness/", label: "Free personalized AI report" },
+  fr: { slug: "parcours-ia", href: "/parcours-ia/", label: "Auto-évaluation IA · 5 min" },
+  en: { slug: "ai-readiness", href: "/en/ai-readiness/", label: "AI self-assessment · 5 min" },
 };
 
 // Portfolio pages that are demonstrations rather than products, services or foundations.
@@ -51,6 +51,7 @@ const sectionBySlug: Record<string, Section> = {
   standard: "credibilite",
   architecture: "credibilite",
   publications: "credibilite", "publications/reg-v0.1": "credibilite",
+  preuves: "credibilite", "preuves/hold": "credibilite", evidence: "credibilite", "evidence/hold": "credibilite",
   depots: "credibilite", repositories: "credibilite",
   // Approche: how a case is examined, and the reasoning behind it.
   "produits-et-services": "approche", "products-and-services": "approche",
@@ -58,6 +59,7 @@ const sectionBySlug: Record<string, Section> = {
   "pourquoi-maintenant": "approche", "why-now": "approche",
   concepts: "approche",
   origine: "approche", origin: "approche",
+  "tau-tenir": "approche",
   applications: "approche",
   souverainete: "approche", sovereignty: "approche",
   acteurs: "approche", actors: "approche",
@@ -188,6 +190,8 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "statut", href: "/statut/", label: "Statut et limites" },
         { slug: "versions", href: "/versions/", label: "Versions" },
         { slug: "conformance", href: "/conformance/", label: "Conformance" },
+        { slug: "preuves", href: "/preuves/", label: "Socle de preuves" },
+        { slug: "preuves/hold", href: "/preuves/hold/", label: "Expérience HOLD" },
         { slug: "standard", href: "/standard/", label: "Standard" },
         { slug: "architecture", href: "/architecture/", label: "Architecture" },
         { slug: "publications", href: "/publications/", label: "Publications" },
@@ -203,11 +207,14 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "parcours/decouvrir", href: "/parcours/decouvrir/", label: "Comprendre TENIR" },
         { slug: "parcours/activite", href: "/parcours/activite/", label: "En pratique" },
         { slug: "cas", href: "/cas/", label: "Les cas" },
+        { slug: "cas/operation-ambigue", href: "/cas/operation-ambigue/", label: "Opération ambiguë" },
+        { slug: "preuves/cadres", href: "/preuves/cadres/", label: "Comparer les cadres" },
         { slug: "magazine", href: "/magazine/", label: "Magazine · N° 01" },
         { slug: "acteurs", href: "/acteurs/", label: "Les acteurs" },
         { slug: "apprendre", href: "/apprendre/", label: "Apprendre à reconnaître" },
         { slug: "concepts", href: "/concepts/", label: "Concepts" },
         { slug: "origine", href: "/origine/", label: "Origine" },
+        { slug: "tau-tenir", href: "/tau-tenir/", label: "Introduction TAU / TENIR" },
         { slug: "applications", href: "/applications/", label: "Contexte et valeur" },
         { slug: "souverainete", href: "/souverainete/", label: "Souveraineté" },
       ],
@@ -240,6 +247,8 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "demos/log", href: "/en/demos/log/", label: "What the log cannot see" },
         { slug: "replay", href: "/en/replay/", label: "Replay an action" },
         { slug: "offer/example", href: "/en/offer/example/", label: "A sourced example" },
+        { slug: "cases/ambiguous-operation", href: "/en/cases/ambiguous-operation/", label: "Ambiguous operation" },
+        { slug: "evidence/frameworks", href: "/en/evidence/frameworks/", label: "Compare frameworks" },
       ],
     },
     {
@@ -248,6 +257,8 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "status", href: "/en/status/", label: "Status and limits" },
         { slug: "versions", href: "/en/versions/", label: "Versions" },
         { slug: "conformance", href: "/en/conformance/", label: "Conformance" },
+        { slug: "evidence", href: "/en/evidence/", label: "Evidence base" },
+        { slug: "evidence/hold", href: "/en/evidence/hold/", label: "HOLD experiment" },
         { slug: "standard", href: "/en/standard/", label: "Standard" },
         { slug: "architecture", href: "/en/architecture/", label: "Architecture" },
         { slug: "publications", href: "/en/publications/", label: "Publications" },
@@ -268,6 +279,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "learn", href: "/en/learn/", label: "Learn to recognize" },
         { slug: "concepts", href: "/en/concepts/", label: "Concepts" },
         { slug: "origin", href: "/en/origin/", label: "Origin" },
+        { slug: "tau-tenir", href: "/en/tau-tenir/", label: "TAU / TENIR introduction" },
         { slug: "applications", href: "/en/applications/", label: "Context and value" },
         { slug: "sovereignty", href: "/en/sovereignty/", label: "Sovereignty" },
       ],

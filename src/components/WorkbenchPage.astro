@@ -13,6 +13,7 @@ const routes={
   gov: url(fr?'/portfolio/gov/':'/en/portfolio/gov/'),
   contact:url(fr?'/diagnostic-execution/':'/en/diagnostic-execution/'),
   bank:url('/embeds/demonstration-bancaire.html'),
+  webDemo:'https://tenirlabs.cc/tenir-reg-demo/index.html',
 };
 const situations=fr ? [
   ['01','Autorisation','Une demande recevable peut être envoyée, sans que le verdict confirme son résultat.'],
@@ -45,12 +46,13 @@ const stages=fr?[
 </nav>
 <section class="pf-detail-hero">
  <div>
-  <p class="pf-overline">{fr?'EXPÉRIENCE TECHNIQUE · VERSION LOCALE':'TECHNICAL EXPERIENCE · LOCAL EDITION'}</p>
+  <p class="pf-overline">{fr?'EXPÉRIENCE TECHNIQUE · DÉMO WEB':'TECHNICAL EXPERIENCE · HOSTED WEB DEMO'}</p>
   <h2>{fr?'Autoriser une action ne signifie pas connaître son résultat.':'Authorizing an action does not establish its outcome.'}</h2>
-  <p class="pf-detail-lead">{fr?'Le TENIR/REG Diagnostic & Evidence Workbench relie choix de configuration, états d’exécution simulés et sources de preuve. Il commence par une question très concrète : un agent a reçu un PASS, mais la confirmation de son action a disparu. Que sait-on réellement ?':'The TENIR/REG Diagnostic & Evidence Workbench links configuration choices, simulated execution states and evidence sources. Start with a concrete question: an agent received PASS, yet confirmation of its action is missing. What can we actually establish?'}</p>
+  <p class="pf-detail-lead">{fr?'Le TENIR/REG Diagnostic & Evidence Workbench relie choix de configuration, états d’exécution simulés et sources de preuve. REG DEMO est accessible en ligne ; le parcours reste fictif et ne se connecte à aucun système réel. Un agent a reçu un PASS, mais la confirmation de son action a disparu : que sait-on réellement ?':'The TENIR/REG Diagnostic & Evidence Workbench links configuration choices, simulated execution states and evidence sources. REG DEMO is available online; the walkthrough is fictional and connects to no live system. An agent received PASS, yet confirmation of its action is missing: what can we actually establish?'}</p>
   <div class="pf-actions">
-   <a class="btn btn-primary" href={routes.tower}>{fr?'Découvrir d’abord avec la Control Tower':'Start with the Control Tower'} →</a>
-   <a class="btn" href={routes.contact}>{fr?'Comprendre le diagnostic proposé':'Read the proposed diagnostic'} →</a>
+   <a class="btn btn-primary" href={routes.webDemo}>{fr?'Ouvrir REG DEMO en ligne':'Open REG DEMO online'} →</a>
+   <a class="btn" href={routes.bank}>{fr?'Commencer par le replay bancaire':'Start with the banking replay'} →</a>
+   <a class="btn" href={routes.contact}>{fr?'Voir le diagnostic spécialisé':'View the specialist diagnostic'} →</a>
   </div>
  </div>
  <aside class="pf-status-card">
@@ -86,7 +88,7 @@ const stages=fr?[
 </section>
 <section class="pf-conclusion">
  <div><h3>{fr?'Ce que cela ne démontre pas':'What this does not prove'}</h3>
- <p>{fr?'Le démonstrateur local n’est pas intégré au site et n’est pas connecté à TENIR-Gov 5.7.0. L’admissibilité structurelle ne démontre pas une garantie effective. Les signatures Ed25519 assurent la cohérence du dossier synthétique relativement à la clé fournie ; elles ne prouvent ni l’identité indépendante du signataire ni un effet fournisseur réel.':'The local demonstrator is not embedded on this site and is not connected to TENIR-Gov 5.7.0. Structural admissibility is not an effective guarantee. Ed25519 protects the synthetic dossier relative to the provided public key; it does not independently authenticate the signer or establish a real provider effect.'}</p></div>
+ <p>{fr?'La démo web est hébergée sur une route distincte du site principal ; elle n’est pas connectée à TENIR-Gov 5.7.0. L’admissibilité structurelle ne démontre pas une garantie effective. Les signatures Ed25519 assurent la cohérence du dossier synthétique relativement à la clé fournie ; elles ne prouvent ni l’identité indépendante du signataire ni un effet fournisseur réel.':'The web demo is hosted on a route separate from the main site and is not connected to TENIR-Gov 5.7.0. Structural admissibility is not an effective guarantee. Ed25519 protects the synthetic dossier relative to the provided public key; it does not independently authenticate the signer or establish a real provider effect.'}</p></div>
  <a class="btn" href={routes.experiences}>{fr?'Revenir aux expériences':'More experiences'} →</a>
 </section>
 </div>

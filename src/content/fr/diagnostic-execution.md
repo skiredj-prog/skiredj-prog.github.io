@@ -16,7 +16,7 @@ Le **REG Execution Boundary Diagnostic** examine **un seul flux critique**, ses 
 
 Pour exécuter ce travail en atelier, TENIR Labs peut utiliser **REG DEMO**, un instrument local de lecture des scénarios et des preuves. Il ne se connecte pas au système du client : il aide à séparer autorisation, envoi, résultat et preuve avant de formuler le prochain contrôle.
 
-[Explorer le replay fictif →](/rejouer/) · [Parler d’un flux à examiner →](/contact/)
+[1 · Voir le replay bancaire fictif →](/rejouer/) · [2 · Ouvrir la version web publique de REG DEMO →](https://tenirlabs.cc/tenir-reg-demo/index.html) · [3 · Lire la fiche simulée →](/offre/exemple/) · [Parler d’un flux à examiner →](/contact/)
 
 Le replay est une illustration pédagogique. Pour un cas réel, le périmètre, les pièces accessibles, les livrables et les conditions commerciales sont définis ensemble avant la mission.
 
@@ -69,4 +69,4 @@ Il suffit de préciser **l'action concernée**, son **effet externe**, **le coû
 
 ## Pour prolonger la lecture technique
 
-Le [TENIR/REG Diagnostic & Evidence Workbench](/portfolio/workbench/) présente comment un configurateur et un dossier synthétique signé aident à distinguer l'autorisation de l'effet externe. **Il s'agit pour l'instant d'une page explicative : le kit autonome n'est pas téléchargeable sur le site.** **REG DEMO** est l'instrument interne utilisé lorsque le diagnostic nécessite un parcours scénarisé. La [démonstration bancaire](/embeds/demonstration-bancaire.html) reste un scénario distinct, fictif.
+Le [TENIR/REG Diagnostic & Evidence Workbench](/portfolio/workbench/) présente les configurations et preuves synthétiques. Sa [démo web REG DEMO est accessible ici](https://tenirlabs.cc/tenir-reg-demo/index.html) : quatre parcours pré-générés, sans système ni fournisseur réel. Le kit autonome hors ligne est distinct et n'est pas téléchargeable sur le site. La [simulation bancaire](/embeds/demonstration-bancaire.html) constitue le point d'entrée métier ; la [fiche de restitution](/offre/exemple/) montre la forme du livrable, sans représenter un client.

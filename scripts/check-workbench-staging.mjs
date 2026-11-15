@@ -10,7 +10,7 @@ assert.equal(wb.public_url,null, 'Consultation ZIP must not gain an unapproved d
 assert.equal(wb.release_gate,'candidate_awaiting_release');
 assert.equal(wb.editorial_page?.classification,'public_information_only');
 assert.equal(wb.editorial_page?.has_runnable_embedded_kit,false);
-assert.equal(registry.assets.length,14,'Workbench overview must not add a fifteenth product');
+assert.equal(registry.assets.length,15,'Portfolio registry must include the public REG DEMO without releasing the offline kit');
 
 const sitemap=readFileSync('dist/sitemap.xml','utf8');
 for(const locale of ['fr','en']){

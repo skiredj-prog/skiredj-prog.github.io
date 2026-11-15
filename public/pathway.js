@@ -130,7 +130,7 @@
   let report=null;
   const $=(id)=>document.getElementById(id);
   const show=(name)=>{
-    ['pa-intro','pa-steps','pa-question','pa-report'].forEach(id=>{const el=$(id);el.hidden=(id!=='pa-'+name && !(name==='intro'&&id==='pa-steps'));});
+    ['pa-intro','pa-question','pa-report'].forEach(id=>{const el=$(id);el.hidden=(id!=='pa-'+name && !(name==='intro'&&id==='pa-steps'));});
     window.scrollTo({top:0,behavior:'instant'});
   };
   const optValue=(v)=>v==='strong'?2:v==='partial'?1:v==='weak'?0:null;
@@ -248,28 +248,27 @@
   }
   function reportText(){
     if(!report)return'';
+    const usage=$('pa-usecase')?.value.trim()||L('Non précisé','Not specified');
     const rows=[
-      'TENIR LABS — '+L('RAPPORT IA PERSONNALISÉ','PERSONALIZED AI REPORT'),
-      L('Auto-évaluation déclarative','Self-reported assessment')+' · '+new Date().toLocaleDateString(fr?'fr-FR':'en-GB'),
+      'TENIR LABS — '+L('Auto-évaluation déclarative','Self-reported assessment'),
+      L('Résultat indicatif, issu de vos réponses','Indicative result based on your answers')+' · '+new Date().toLocaleDateString(fr?'fr-FR':'en-GB'),
       '',
-      L('USAGE EXAMINÉ','USE CASE EXAMINED')+' : '+(($('pa-usecase')?.value.trim())||L('Non précisé','Not specified')),
-      L('TYPE D’ACTION','TYPE OF ACTION')+' : '+contextLabel(0,answers[0]),
-      L('RISQUE PRINCIPAL','MAIN CONCERN')+' : '+contextLabel(1,answers[1]),
+      L('SYNTHÈSE','SUMMARY')+': '+report.summary,
       '',
-      L('SYNTHÈSE DE VOTRE RAPPORT','REPORT SUMMARY')+': '+report.summary,
-      '',
-      L('PARCOURS DE MATURITÉ','MATURITY JOURNEY')+': '+report.maturity.stages[report.maturity.current].title,
-      L('PROCHAINE ÉTAPE','NEXT STEP')+': '+report.maturity.stages[report.maturity.next].title,
-      L('PARCOURS D’USAGE','USAGE JOURNEY')+': '+report.usage.stages[report.usage.current].title,
-      L('PROCHAINE VÉRIFICATION','NEXT CHECK')+': '+report.usage.stages[report.usage.current].next,
-      '',
-      L('SIX DIMENSIONS','SIX DIMENSIONS')
+      L('VOS TROIS PRIORITÉS','YOUR THREE PRIORITIES')
     ];
-    for(const dim of report.dims)rows.push('• '+dim.name+': '+textStatus[dim.level]);
-    rows.push('',L('TROIS PRIORITÉS','THREE PRIORITIES'));
     report.prioritized.forEach((step,i)=>rows.push(String(i+1)+'. '+step.title+' — '+step.desc));
-    rows.push('',L('PARCOURS SUGGÉRÉ','SUGGESTED PATHWAY')+': '+report.offer.title,report.offer.desc,'',
-      L('Ce rapport s’appuie uniquement sur vos réponses. Aucune preuve technique n’a été vérifiée. Ce n’est ni un audit ni une certification.','This report uses only your answers. No technical evidence was verified. It is neither an audit nor a certification.'),
+    rows.push('',L('PROCHAINE PISTE','SUGGESTED NEXT STEP')+': '+report.offer.title,report.offer.desc,'',
+      L('DÉTAILS DE L’AUTO-ÉVALUATION','SELF-ASSESSMENT DETAILS'),
+      L('Usage examiné','Use case examined')+': '+usage,
+      L('Parcours de maturité estimé','Indicative maturity stage')+': '+report.maturity.stages[report.maturity.current].title,
+      L('Étape suivante à vérifier','Next stage to check')+': '+report.maturity.stages[report.maturity.next].title,
+      L('Parcours de l’usage','Use-case pathway')+': '+report.usage.stages[report.usage.current].title,
+      L('Prochaine vérification','Next check')+': '+report.usage.stages[report.usage.current].next,
+      '',L('SIX DIMENSIONS — ÉTATS DÉCLARÉS','SIX DIMENSIONS — SELF-REPORTED STATES'));
+    for(const dim of report.dims)rows.push('• '+dim.name+': '+textStatus[dim.level]);
+    rows.push('',
+      L('Limites','Limits')+': '+L('Ces résultats reflètent uniquement vos réponses. Aucune preuve technique, aucun système et aucun statut de conformité n’ont été vérifiés.','These results reflect only your answers. No technical evidence, systems or compliance status were verified.'),
       'tenirlabs.cc');
     return rows.join('\n');
   }
@@ -287,8 +286,8 @@
 
     // Executive summary: position, next passage, first priority. Readable in 20 seconds.
     const execBlocks=[
-      {k:L('VOTRE POSITION','YOUR POSITION'),v:cur?cur.title:'—',cls:'is-current'},
-      {k:L('PROCHAINE ÉTAPE','NEXT STEP'),v:nxt?nxt.title:L('Parcours complet','Journey complete'),cls:'is-next'},
+      {k:L('POINT DE DÉPART · DÉCLARATIF','SELF-REPORTED STARTING POINT'),v:cur?cur.title:'—',cls:'is-current'},
+      {k:L('ÉTAPE SUIVANTE À VÉRIFIER','NEXT STEP TO CHECK'),v:nxt?nxt.title:L('Parcours complet','Journey complete'),cls:'is-next'},
       {k:L('PRIORITÉ IMMÉDIATE','IMMEDIATE PRIORITY'),v:report.prioritized[0]?report.prioritized[0].title:'—',cls:''}
     ].map(b=>{
       const el=makeElement('div','pa-exec-block '+b.cls);
@@ -393,15 +392,7 @@
     if(focus!==false)$('pa-question-title').focus({preventScroll:true});
   };
   $('pa-start').addEventListener('click',()=>beginAssessment());
-  // Deep link: /parcours-ia/?start=1 opens question 1 directly, so a
-  // call to action elsewhere on the site does not cost the reader a second click.
-  const wantsDirectStart=()=>{
-    try{
-      if(window.location.hash==='#start')return true;
-      return new URLSearchParams(window.location.search).get('start')==='1';
-    }catch(e){return false;}
-  };
-  if(wantsDirectStart())beginAssessment(false);
+  if(new URLSearchParams(window.location.search).get('start')==='1')beginAssessment();
   $('pa-back').addEventListener('click',()=>{if(index>0){index--;renderQuestion();$('pa-question-title').focus({preventScroll:true});}});
   $('pa-next').addEventListener('click',()=>{
     if(answers[index]===null)return;

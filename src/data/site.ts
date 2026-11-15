@@ -68,6 +68,7 @@ export const navGroups: Record<Locale, NavGroup[]> = {
       label: "Découvrir",
       links: [
         { slug: "origine", href: "/origine/", label: "Origine" },
+        { slug: "tau-tenir", href: "/tau-tenir/", label: "Introduction TAU / TENIR" },
         { slug: "concepts", href: "/concepts/", label: "Concepts" },
       ],
     },
@@ -130,6 +131,7 @@ export const navGroups: Record<Locale, NavGroup[]> = {
       label: "Discover",
       links: [
         { slug: "origin", href: "/en/origin/", label: "Origin" },
+        { slug: "tau-tenir", href: "/en/tau-tenir/", label: "TAU / TENIR introduction" },
         { slug: "concepts", href: "/en/concepts/", label: "Concepts" },
       ],
     },
@@ -207,6 +209,7 @@ const frToEn: Record<string, string> = {
   'parcours/etudier': '/en/start/research/',
   "": "/en/",
   origine: "/en/origin/",
+  "tau-tenir": "/en/tau-tenir/",
   concepts: "/en/concepts/",
   architecture: "/en/architecture/",
   standard: "/en/standard/",
@@ -237,6 +240,10 @@ const frToEn: Record<string, string> = {
   "parcours-ia": "/en/ai-readiness/",
   "architecture/drawing": "/en/architecture/drawing/",
   demarrer: "/en/get-started/",
+  preuves: "/en/evidence/",
+  "preuves/hold": "/en/evidence/hold/",
+  "preuves/cadres": "/en/evidence/frameworks/",
+  "cas/operation-ambigue": "/en/cases/ambiguous-operation/",
   affirmations: "/en/claims/",
   hold: "/en/hold/",
 };

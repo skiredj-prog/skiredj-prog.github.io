@@ -9,7 +9,7 @@
 
 The website had product names that were underlinked, differently versioned or confused with conceptual working drafts. A historical consolidation from 2026-10-24 also contains X-Ray **v0.5.1**, while the current page reports **v0.2**. Automatic replacement would invent lineage.
 
-The registry follows **14 canonical page entries** in both French and English, plus noncanonical historical/staged items. Its URL, status and version assertions fail CI if the pages diverge. Release references for TENIR-Gov v5.7.0 and REG Conformance v0.6.1 additionally pin the exact public Git tag target SHA; the CI rechecks GitHub's public tag refs on changes and weekly.
+The registry follows **15 canonical page entries** in both French and English, plus noncanonical historical/staged items. Its URL, status and version assertions fail CI if the pages diverge. Release references for TENIR-Gov v5.7.0 and REG Conformance v0.6.1 additionally pin the exact public Git tag target SHA; the CI rechecks GitHub's public tag refs on changes and weekly.
 
 **Never copy the historical zip into the public repo**: it holds old source/build snapshots, not a verified public release. Only its filename, SHA-256, item metadata and documented conflicts are retained here.
 
@@ -54,7 +54,7 @@ GitHub Actions applies these checks on PRs, pushes to `main`, every Monday and m
 - **Integrated UX:** old filename v0.3.1, title v0.3. Its historical AI/effect classifier must not be reused.
 - **REG-ARCH:** historical proposal v0.1 and later design references v0.4 must be versioned independently.
 
-**Additional exclusions:** the Workbench signed candidate remains held in private `tenir-reg-demo` PR #4 (stacked on private PR #3). A *public explanatory page* at `/portfolio/workbench/` and `/en/portfolio/workbench/` can describe its capabilities and evidence limitations without redistributing the archive. The historical draft site PR #27 is superseded by a branch reconciled with the post-PMO/post-commercial homepage. **Do not infer the ZIP is deployed, independently authenticated or publicly downloadable.** The live banking scenario has its own synthetic-only claims. REG Conformance v0.6.1's 46/46 PASS is restricted to Raft single-host loopback; no C3 or physical multi-host claim. G3.1 experimental PR #72 cannot be promoted into published TENIR-Gov v5.7.0 by a website metadata change.
+**Additional exclusions:** the offline Workbench signed candidate remains held in private `tenir-reg-demo` PR #4 (stacked on private PR #3). A distinct hosted web demo is published at `https://tenirlabs.cc/tenir-reg-demo/index.html` and tracked as `reg-demo`. A *public explanatory page* at `/portfolio/workbench/` and `/en/portfolio/workbench/` can describe its capabilities and evidence limitations without redistributing the archive. The historical draft site PR #27 is superseded by a branch reconciled with the post-PMO/post-commercial homepage. **Do not infer the ZIP is deployed, independently authenticated or publicly downloadable.** The live banking scenario has its own synthetic-only claims. REG Conformance v0.6.1's 46/46 PASS is restricted to Raft single-host loopback; no C3 or physical multi-host claim. G3.1 experimental PR #72 cannot be promoted into published TENIR-Gov v5.7.0 by a website metadata change.
 
 ## Release-gate rule
 

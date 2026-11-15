@@ -15,6 +15,7 @@ export const portfolioAccess: Record<'fr'|'en', Record<string, PortfolioAccess>>
     technical:{href:'/standard/',label:'Consulter le standard REG',scope:'Références et contrats, non une validation',kind:'documentation'},
     experiences:{href:'/embeds/demonstration-bancaire.html',label:'Ouvrir le scénario bancaire',scope:'Simulation synthétique PAY-MAR-001',kind:'demo'},
     'control-tower':{href:'/embeds/reg-autonomy-control-tower-v1.0.html',label:'Ouvrir la Control Tower v1.0',scope:'Simulation autonome en anglais ; v1.1 FR/EN non déployée',kind:'demo'},
+    'reg-demo':{href:'https://tenirlabs.cc/tenir-reg-demo/index.html',label:'Ouvrir REG DEMO en ligne',scope:'Quatre scénarios fixes et preuves synthétiques ; aucun runtime ni fournisseur réel',kind:'demo'},
   },
   en: {
     diagnostic:{href:'/en/offer/example/',label:'Read fictional example',scope:'Written illustration, not customer evidence',kind:'example'},
@@ -28,5 +29,6 @@ export const portfolioAccess: Record<'fr'|'en', Record<string, PortfolioAccess>>
     technical:{href:'/en/standard/',label:'Read the REG standard',scope:'Reference contracts, not deployment conformance',kind:'documentation'},
     experiences:{href:'/embeds/demonstration-bancaire.html',label:'Open banking scenario',scope:'Synthetic PAY-MAR-001 simulation (French)',kind:'demo'},
     'control-tower':{href:'/embeds/reg-autonomy-control-tower-v1.0.html',label:'Open Control Tower v1.0',scope:'English standalone simulation; FR/EN v1.1 not yet deployed',kind:'demo'},
+    'reg-demo':{href:'https://tenirlabs.cc/tenir-reg-demo/index.html',label:'Open REG DEMO online',scope:'Four fixed scenarios and synthetic evidence; no live runtime or provider',kind:'demo'},
   }
 };

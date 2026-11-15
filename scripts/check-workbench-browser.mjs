@@ -22,7 +22,7 @@ try{
    assert(metrics.scroll<=metrics.viewport+2,locale+'/'+width+': horizontal overflow '+(metrics.scroll-metrics.viewport)+'px');
    assert(!page.url().includes('.zip'),locale+'/'+width+': unexpected download redirect');
    assert.equal(errors.length,0,locale+'/'+width+': JS errors: '+errors.join('; '));
-   const offer=page.locator('.pf-actions a').filter({hasText:locale==='fr'?'Comprendre le diagnostic proposé':'Read the proposed diagnostic'});
+   const offer=page.locator('.pf-actions a').filter({hasText:locale==='fr'?'Voir le diagnostic spécialisé':'View the specialist diagnostic'});
    await offer.click();
    await page.waitForURL('**/diagnostic-execution/');
    assert(await page.locator('main').isVisible(),locale+'/'+width+': diagnostic route failed');

@@ -1,0 +1,7 @@
+---
+import Base from '../../../layouts/Base.astro';
+const rows=[['TENIR-Gov v5.7.0','Can a proposed action cross the boundary?','Runtime control within a configured scope.','Not complete organizational governance.'],['HOLD','Can the floor contain some errors in a synthetic experiment?','Exploratory results and an evidence journal.','No real provider or universal safety.'],['REG Conformance v0.6.1','Does a profile meet declared controls?','Bounded tests of the single-host loopback profile.','Not general certification.'],['AI SAFE² v3.1','Which controls should be examined for an autonomous agent?','External framework and test profiles.','Does not prove TENIR satisfies those controls.'],['SSRN 7291620','Which architecture and results are described?','Research preprint with R5.0.0 measurements explicitly scoped.','Not peer review or field validation.']];
+---
+<Base locale="en" slug="evidence/frameworks" title="Compare the frameworks" description="Compare the objects, questions and limits." kicker="Evidence · comparison" lede="Five different objects, five different functions. Bringing them together must not make them interchangeable." sources="TENIR-Gov, HOLD, REG Conformance repositories · AI SAFE² · SSRN 7291620">
+  <div class="comparison-table" role="region" aria-label="Framework comparison" tabindex="0"><table><thead><tr><th>Object</th><th>Question</th><th>Contribution</th><th>Limit</th></tr></thead><tbody>{rows.map(row=><tr>{row.map(cell=><td>{cell}</td>)}</tr>)}</tbody></table></div>
+</Base>
