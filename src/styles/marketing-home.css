@@ -123,3 +123,44 @@ body.marketing-page .market-root{width:100%;margin-left:0}
 :root[data-theme="dark"] .market-root .ml-founder-grid p{color:#b7c8d3}
 :root[data-theme="dark"] .market-root .ml-founder-role,:root[data-theme="dark"] .market-root .ml-card-name{color:#8da7b9}
 :root[data-theme="dark"] .market-root .ml-founder-links a{color:#5fcdae}
+
+/* Hero entry animation — subtle fade + rise. Disabled under prefers-reduced-motion. */
+.ml-hero .ml-eyebrow,
+.ml-hero .ml-headline,
+.ml-hero .ml-hero-tagline,
+.ml-hero .ml-actions,
+.ml-hero .ml-hero-foot,
+.ml-hero .ml-hero-body,
+.ml-hero .ml-hero-scope {
+  animation: hero-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.ml-hero .ml-eyebrow { animation-delay: 0.05s; }
+.ml-hero .ml-headline { animation-delay: 0.12s; }
+.ml-hero .ml-hero-tagline { animation-delay: 0.22s; }
+.ml-hero .ml-actions { animation-delay: 0.32s; }
+.ml-hero .ml-hero-foot { animation-delay: 0.42s; }
+.ml-hero .ml-hero-body { animation-delay: 0.5s; }
+.ml-hero .ml-hero-scope { animation-delay: 0.58s; }
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ml-hero .ml-eyebrow,
+  .ml-hero .ml-headline,
+  .ml-hero .ml-hero-tagline,
+  .ml-hero .ml-actions,
+  .ml-hero .ml-hero-foot,
+  .ml-hero .ml-hero-body,
+  .ml-hero .ml-hero-scope {
+    animation: none;
+  }
+}
