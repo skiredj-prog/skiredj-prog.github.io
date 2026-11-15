@@ -5,6 +5,7 @@ import { portfolioAccess } from '../data/portfolioAccess';
 import { portfolio, portfolioHubs, hubStatus, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
 import { portfolioContactHref } from '../data/contact';
+import { stagesFor } from '../data/processRoles';
 interface Props { locale: PortfolioLocale; page: string; }
 const { locale, page } = Astro.props;
 const fr = locale === 'fr';
@@ -42,6 +43,8 @@ const demoGroups = [
   ]},
 ];
 const external = (h:string) => h.startsWith('https:');
+const stagesPage = fr ? '/processus-et-roles/' : '/en/processus-et-roles/';
+const whenLabel = fr ? 'Quand l’utiliser :' : 'When to use it:';
 const labels = fr ? [
   ['when','Cela peut vous aider si…'],['inputs','Ce qu’il faut pour commencer'],['examines','Ce que l’on examine'],
   ['pain','La question de départ'],['relationships','Les liens avec les autres approches'],
@@ -73,12 +76,13 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
           <p class="pf-offer-name">{e.title}</p>
           <p class="pf-offer-output">{e.output}</p>
           <p class="pf-offer-status">{shortStatus(e.id)}</p>
+          {stagesFor(locale,e.id).length>0&&<p class="pf-when">{whenLabel} {stagesFor(locale,e.id).map((st,i)=><>{i>0&&' · '}<a href={url(stagesPage+'#'+st.id)}>{st.name}</a></>)}</p>}
           <div class="pf-offer-links"><a href={cardHref(e.id)}>{fr?'Voir la fiche':'View profile'}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}</div>
         </article>;})}</div>
       </section>
       {tiers.map(tier=><section class="pf-tier" aria-labelledby={'pf-tier-'+tier.id}>
         <header class="pf-tier-head"><h2 id={'pf-tier-'+tier.id}>{tier.label}</h2><p>{tier.note}</p></header>
-        <ul class="pf-rows">{tier.entries.map((e:any)=><li class="pf-row"><div><h3><a href={cardHref(e.id)}>{e.tagline}</a></h3><p>{e.title}</p></div><span class="pf-row-status">{shortStatus(e.id)}</span></li>)}</ul>
+        <ul class="pf-rows">{tier.entries.map((e:any)=><li class="pf-row"><div><h3><a href={cardHref(e.id)}>{e.tagline}</a></h3><p>{e.title}</p>{stagesFor(locale,e.id).length>0&&<p class="pf-when">{whenLabel} {stagesFor(locale,e.id).map((st,i)=><>{i>0&&' · '}<a href={url(stagesPage+'#'+st.id)}>{st.name}</a></>)}</p>}</div><span class="pf-row-status">{shortStatus(e.id)}</span></li>)}</ul>
       </section>)}
       <p class="pf-foundations">{fr?'Vous cherchez l’architecture ou les contrats techniques ?':'Looking for the architecture or the technical contracts?'} {foundations.map((e:any,i:number)=><>{i>0&&' · '}<a href={cardHref(e.id)}>{e.title}</a></>)}</p>
     </>}

@@ -53,3 +53,7 @@ export const processRoles: Record<ProcessRolesLocale, { stages: Stage[]; roles: 
     ],
   },
 };
+
+/** Process stages that cite an instrument, in cycle order, at most two (navigation spec §3.2, "When would you use this?"). */
+export const stagesFor = (locale: ProcessRolesLocale, instrumentId: string) =>
+  processRoles[locale].stages.filter((stage) => stage.instruments.some((instrument) => instrument.id === instrumentId)).slice(0, 2);
