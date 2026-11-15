@@ -236,6 +236,7 @@ const frToEn: Record<string, string> = {
   "credibilite": "/en/credibility/",
   "parcours-ia": "/en/ai-readiness/",
   "architecture/drawing": "/en/architecture/drawing/",
+  demarrer: "/en/get-started/",
   affirmations: "/en/claims/",
   hold: "/en/hold/",
 };

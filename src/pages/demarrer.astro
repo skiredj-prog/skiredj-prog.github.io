@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base locale="fr" slug="demarrer" title="Démarrer avec TENIR-Gov" description="Découvrez ce qui se passe lorsqu’une réservation autorisée perd sa réponse." lede="Découvrez ce qui se passe lorsqu’une réservation autorisée perd sa réponse.">
+  <h2>Installer la version publiée</h2>
+  <pre><code>python -m pip install tenir-governance==5.7.0</code></pre>
+  <h2>Essayer l’aperçu depuis les sources</h2>
+  <p>Le paquet 5.7.0 publié contient le moteur. Le parcours est un aperçu à exécuter depuis les sources. Comptez cinq minutes à partir de la fin de la vérification préalable.</p>
+  <p>Le fournisseur crée une réservation simulée et perd sa réponse. TENIR-Gov conserve l’état UNKNOWN, refuse un deuxième envoi et résout l’incertitude à réception d’un reçu corrélé. Le dossier exporté se vérifie hors ligne.</p>
+  <p><a href="https://github.com/skiredj-prog/tenir_governance/blob/main/docs/GETTING_STARTED.md">Ouvrir le guide de démonstration ↗</a></p>
+  <p>TENIR-Gov est le moteur maintenu. Les résultats historiques de l’expérience appartiennent au prototype HOLD. REG définit le cadre de qualification.</p>
+</Base>

@@ -14,8 +14,7 @@ const statusLabel: Record<string, string> = {
 };
 const productLabel: Record<string, string> = {
   'tenir-gov': 'TENIR-Gov',
-  hold: 'HOLD',
-  'hold-b1': 'HOLD B1',
+  hold: 'HOLD prototype',
 };
 const counts = {
   all: claims.length,
@@ -34,6 +33,8 @@ const counts = {
 >
 
   <p>A claim enters this register only when it is tied to a published commit, an archived experiment run, or a documented audit. Work sitting on an experimental branch stays out until it is merged.</p>
+
+  <p>TENIR-Gov claims apply to the named runtime revision. HOLD prototype results apply to the frozen experiment. REG qualification applies to a specified profile and tested scope.</p>
 
   <div class="cl-filters" role="group" aria-label="Filter claims">
     <button type="button" class="cl-filter is-active" data-filter="all" aria-pressed="true">All <span>{counts.all}</span></button>

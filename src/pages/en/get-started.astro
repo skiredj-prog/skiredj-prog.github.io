@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base locale="en" slug="get-started" title="Get started with TENIR-Gov" description="See what happens when an authorized booking loses its response." lede="See what happens when an authorized booking loses its response.">
+  <h2>Install the published runtime</h2>
+  <pre><code>python -m pip install tenir-governance==5.7.0</code></pre>
+  <h2>Run the source preview</h2>
+  <p>The published 5.7.0 package contains the runtime. The walkthrough is a separate source preview. Start the five-minute clock after preflight.</p>
+  <p>The provider creates one synthetic booking and drops its response. TENIR-Gov keeps the outcome UNKNOWN, refuses a second dispatch, and reconciles when a correlated receipt arrives. The exported record can be checked offline.</p>
+  <p><a href="https://github.com/skiredj-prog/tenir_governance/blob/main/docs/GETTING_STARTED.md">Open the source walkthrough ↗</a></p>
+  <p>TENIR-Gov is the maintained runtime. The HOLD prototype owns its historical experiment results. REG defines the qualification framework.</p>
+</Base>
