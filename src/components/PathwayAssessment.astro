@@ -14,7 +14,8 @@ tag:"L’IA avance. Vous gardez la main.",
 head:"Avant de laisser l’IA agir, voyez par où commencer.",
 lead:"En 10 questions, obtenez votre rapport personnalisé sur votre point de départ : ce que vous maîtrisez déjà, ce qui reste à vérifier et la prochaine étape raisonnable.",
 b1:"10 questions",b2:"5 minutes environ",b3:"Gratuit",b4:"Sans compte",
-start:"Commencer mon rapport",more:"Ce que contient le rapport",
+start:"Commencer les 10 questions",
+more:"Ce que contient le rapport",
 pitch:"Un regard utile, pas une certification.",
 pitchText:"Le rapport donne des pistes à partir de vos réponses, pas une note d’audit. Vous pouvez le télécharger, le partager ou l’utiliser pour préparer une discussion.",
 steps:"Ce que ce rapport vous aide à décider",
@@ -22,6 +23,13 @@ s1:"Votre point de départ",s1d:"Une synthèse lisible de vos forces et des zone
 s2:"Vos trois priorités",s2d:"Des actions concrètes, ordonnées selon vos réponses.",
 s3:"Votre prochaine étape",s3d:"Une suggestion d’accompagnement si elle peut vous aider.",
 privacy:"Les réponses restent dans votre navigateur. Aucun compte, aucun envoi automatique. Vous choisissez si vous partagez le rapport.",
+expectTitle:"Ce qui vous attend",
+expectWhat:"Vous répondrez à 10 questions (environ 5 minutes). Aucun compte requis. Rien n’est envoyé automatiquement.",
+expectGet:"À la fin vous recevrez un rapport en 3 parties :",
+expect1:"Votre point de départ (forces et zones floues)",
+expect2:"Vos 3 priorités concrètes",
+expect3:"Une suggestion de prochaine étape",
+expectNote:"Ce n’est pas un audit ni une certification. C’est une lecture utile pour décider par où commencer.",
 progress:"QUESTIONNAIRE", back:"Précédent",next:"Suivant",finish:"Voir mon rapport",startOver:"Recommencer",
 reportKicker:"VOTRE RAPPORT IA PERSONNALISÉ · AUTO-ÉVALUATION",
 reportHeading:"Votre point de départ se dessine.",
@@ -41,7 +49,8 @@ tag:"AI takes action. You stay in control.",
 head:"Before AI takes action, see where to begin.",
 lead:"Ten questions to place your starting point: what you already have under control, what still needs checking and what a reasonable next step looks like.",
 b1:"10 questions",b2:"About 5 minutes",b3:"Free",b4:"No account",
-start:"Start my report",more:"What the report contains",
+start:"Start the 10 questions",
+more:"What the report contains",
 pitch:"A useful starting point, not a certification.",
 pitchText:"Your report offers suggestions based on your answers, not an audit score. Download it, share it or use it to prepare a discussion.",
 steps:"What this report helps you decide",
@@ -49,6 +58,13 @@ s1:"Your starting point",s1d:"A clear overview of strengths and areas to clarify
 s2:"Your top three priorities",s2d:"Concrete next steps ordered around your answers.",
 s3:"Your next move",s3d:"A suggested engagement if professional help would be useful.",
 privacy:"Your answers stay in your browser. No account and no automatic submission. You choose whether to share the report.",
+expectTitle:"What to expect",
+expectWhat:"You will answer 10 questions (about 5 minutes). No account required. Nothing is submitted automatically.",
+expectGet:"At the end you will receive a report in 3 parts:",
+expect1:"Your starting point (strengths and unclear areas)",
+expect2:"Your 3 concrete priorities",
+expect3:"A suggested next step",
+expectNote:"This is not an audit or a certification. It is a useful reading to decide where to begin.",
 progress:"ASSESSMENT",back:"Previous",next:"Next",finish:"See my report",startOver:"Start again",
 reportKicker:"YOUR PERSONALIZED AI REPORT · SELF-ASSESSMENT",
 reportHeading:"Your starting point is clearer.",
@@ -71,9 +87,20 @@ const contact=url(fr?'/contact/':'/en/contact/');
       <div class="pa-intro-inner">
         <span class="pa-eyebrow">{t.tag}</span>
         <h1 id="pa-title">{t.head}</h1>
+        <p class="pa-lead">{t.lead}</p>
+        <div class="pa-expect" style="margin:1.5rem 0;padding:1.25rem 1.5rem;background:rgba(255,255,255,.04);border-left:3px solid #c9a227;border-radius:0 6px 6px 0;">
+          <h2 style="margin:0 0 .6rem;font-size:1.05rem;">{t.expectTitle}</h2>
+          <p style="margin:0 0 .75rem;">{t.expectWhat}</p>
+          <p style="margin:0 0 .4rem;font-weight:600;">{t.expectGet}</p>
+          <ol style="margin:0 0 .75rem 1.2rem;padding:0;">
+            <li>{t.expect1}</li>
+            <li>{t.expect2}</li>
+            <li>{t.expect3}</li>
+          </ol>
+          <p style="margin:0;font-size:.95rem;opacity:.9;">{t.expectNote}</p>
+        </div>
         <div class="pa-buttons"><button class="pa-button pa-primary" id="pa-start" type="button">{t.start} <span aria-hidden="true">→</span></button><a class="pa-button pa-outline" href="#pa-steps">{t.more} ↓</a></div>
         <div class="pa-facts"><span>{t.b1}</span><span>{t.b2}</span><span>{t.b3}</span><span>{t.b4}</span></div>
-        <p class="pa-lead">{t.lead}</p>
         <p class="pa-privacy">{t.privacy}</p>
       </div>
     </section>
@@ -137,7 +164,7 @@ const contact=url(fr?'/contact/':'/en/contact/');
             <ul class="pa-bd-no">
               <li>{fr?'Il ne vérifie pas vos systèmes.':'It does not inspect your systems.'}</li>
               <li>{fr?'Il ne confirme pas vos preuves.':'It does not confirm your evidence.'}</li>
-              <li>{fr?'Il ne certifie pas votre organisation.':'It does not certify your organisation.'}</li>
+              <li>{fr:'Il ne certifie pas votre organisation.':'It does not certify your organisation.'}</li>
               <li>{fr?'Il ne garantit aucun niveau de conformité.':'It guarantees no level of compliance.'}</li>
             </ul>
           </div>
