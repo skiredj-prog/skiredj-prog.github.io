@@ -11,7 +11,7 @@
 .ml-hero .ml-wrap{max-width:1120px}
 .ml-eyebrow{display:flex;align-items:center;gap:.65rem;color:#8c9fad;font-size:.67rem;line-height:1.5;margin:0 0 1.2rem}
 .ml-dot{width:8px;height:8px;border-radius:50%;background:var(--ml-amber);box-shadow:0 0 0 5px rgba(248,174,57,.12);flex:none}
-.ml-headline{font-size:clamp(3rem,5.8vw,5.3rem);line-height:1.04;max-width:19ch;margin:0 0 1.1rem;color:#ffffff}
+.ml-headline{font-size:clamp(2.75rem, 5.8vw, 4.6rem);line-height:1.04;max-width:19ch;margin:0 0 1.1rem;color:#ffffff}
 .ml-headline span:first-child{display:block}
 .ml-headline em{display:block;font-style:normal;color:var(--ml-amber);max-width:18ch}
 .ml-hero-tagline{font-size:clamp(1.12rem,2vw,1.5rem);font-weight:650;max-width:45ch;line-height:1.4;color:#ffffff;margin:0 0 1.15rem}
@@ -80,7 +80,7 @@
 .ml-closing .ml-kicker{color:#e5b36a}
 .market-root .ml-demo-panel iframe:focus-visible{outline:3px solid #e0a44b;outline-offset:2px}
 @media(max-width:940px){.ml-threat-grid{grid-template-columns:1fr;gap:1.8rem}.ml-why-now-grid{grid-template-columns:1fr;gap:1.8rem}.ml-demo>.ml-wrap{grid-template-columns:1fr}.ml-demo-copy{max-width:680px}.ml-demo-panel iframe{height:480px}}
-@media(max-width:760px){.market-root .ml-wrap{width:calc(100% - 2.2rem)}.ml-cards{grid-template-columns:1fr}.ml-card{min-height:0}.ml-short-journey .lifecycle-flow{grid-template-columns:1fr;gap:.6rem}.ml-headline{font-size:clamp(3.15rem,11vw,5.6rem)}.ml-outcomes{grid-template-columns:1fr 1fr}.ml-trust-links{grid-template-columns:1fr}.ml-trust-links a{border-right:0;border-bottom:1px solid var(--ml-line)}.ml-trust-links a:last-child{border-bottom:0}}
+@media(max-width:760px){.market-root .ml-wrap{width:calc(100% - 2.2rem)}.ml-cards{grid-template-columns:1fr}.ml-card{min-height:0}.ml-short-journey .lifecycle-flow{grid-template-columns:1fr;gap:.6rem}.ml-headline{font-size:clamp(2.6rem, 9vw, 4.2rem)}.ml-outcomes{grid-template-columns:1fr 1fr}.ml-trust-links{grid-template-columns:1fr}.ml-trust-links a{border-right:0;border-bottom:1px solid var(--ml-line)}.ml-trust-links a:last-child{border-bottom:0}}
 @media(max-width:480px){.ml-outcomes{grid-template-columns:1fr}.ml-outcome{min-height:0}.ml-hero{padding:2.45rem 0 3rem}.ml-headline{letter-spacing:-.05em}.ml-headline .ml-not-equal{padding:0 .08em}.ml-demo-panel iframe{height:410px}.ml-actions .ml-btn{width:100%}.ml-panel-bar{font-size:.54rem}}
 @media(prefers-reduced-motion:reduce){.market-root *{transition:none!important}}
 

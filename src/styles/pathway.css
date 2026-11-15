@@ -14,7 +14,7 @@ body{margin:0;line-height:1.6;background:#ffffff;font-size:17px}
 .pa-intro{background:var(--pa-deep);color:white;padding:clamp(2.2rem,4.5vw,3.8rem) 1.3rem clamp(3rem,6vw,5rem)}
 .pa-intro-inner{width:min(1000px,100%);margin:0 auto}
 .pa-eyebrow{color:#e3ae5f;font-size:.71rem;font-weight:700;letter-spacing:.09em;display:block;text-transform:uppercase;margin:0 0 1.15rem}
-.pa-intro h1{font-family:var(--serif);font-weight:700;font-size:clamp(3rem,5.5vw,5.3rem);letter-spacing:-.036em;line-height:1.04;max-width:20ch;margin:0 0 1.15rem;color:#ffffff;font-size-adjust:.44}
+.pa-intro h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.75rem, 5.8vw, 4.6rem);letter-spacing:-.036em;line-height:1.04;max-width:20ch;margin:0 0 1.15rem;color:#ffffff;font-size-adjust:.44}
 .pa-lead{font-size:clamp(1.05rem,1.65vw,1.25rem);line-height:1.55;max-width:60ch;color:#c1cfd9;margin:1.15rem 0 0}
 .pa-facts{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem;margin-bottom:0}
 .pa-facts span{border:1px solid #385365;border-radius:100px;padding:.38rem .8rem;font-size:.74rem;color:#e7eef2;font-weight:600}
@@ -71,7 +71,7 @@ body{margin:0;line-height:1.6;background:#ffffff;font-size:17px}
 #pa-feedback{font-size:.78rem;color:#23594a}
 .pa-limits{font-size:.73rem;color:#677d8c;border-top:1px solid #e7eef2;padding-top:1rem;margin-top:1.3rem}
 @media(max-width:760px){.pa-step-grid,.pa-report-grid{grid-template-columns:1fr}.pa-report-content{padding:2rem 0 3rem}}
-@media(max-width:480px){.pa-wrap{width:calc(100% - 2rem)}.pa-intro{padding:2.5rem 1rem 3rem}.pa-intro h1{font-size:clamp(2.9rem,10vw,3.2rem)}.pa-buttons .pa-button{width:100%}.pa-question{padding:2.2rem 1rem}.pa-qnav .pa-button{padding:.7rem 1rem}.pa-report-card{padding:1.25rem}.pa-report-toolbar .pa-button{flex:1}.pa-report-toolbar .pa-restart{margin-left:0}}
+@media(max-width:480px){.pa-wrap{width:calc(100% - 2rem)}.pa-intro{padding:2.5rem 1rem 3rem}.pa-intro h1{font-size:clamp(2.4rem, 9vw, 3.6rem)}.pa-buttons .pa-button{width:100%}.pa-question{padding:2.2rem 1rem}.pa-qnav .pa-button{padding:.7rem 1rem}.pa-report-card{padding:1.25rem}.pa-report-toolbar .pa-button{flex:1}.pa-report-toolbar .pa-restart{margin-left:0}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
 /* Dark theme (HOLD identity, default): same structure, console surfaces. Dark hero sections are unchanged. */
 :root[data-theme="dark"] .pa-app{--pa-ink:#e7eef2;--pa-muted:#a8bcc6;--pa-border:#2c4150;--pa-surface:#111d28;--pa-blue:#3fbf9a;color:#e7eef2;background:#0c141d}
