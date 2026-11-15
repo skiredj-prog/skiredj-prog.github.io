@@ -151,7 +151,7 @@ This is a **target logical view**, not evidence of a live integration. Read the 
 ## Two service methods: Prevent and Prepare
 
 - [Products and their current status](/en/portfolio/products/) — capabilities, access and limits.
-- [Services](/en/portfolio/diagnostic/) — scope, process and deliverables.
+- [Services](/en/portfolio/products/#pf-available-title) — scope, process and deliverables.
 - [Demonstrations](/en/portfolio/demos/) — what you can explore and what each example lets you observe.
 
 ## After the diagnostic: optional next steps

@@ -32,7 +32,9 @@ for (const locale of ['fr','en']) {
   assert(demoHub.includes('/embeds/demonstration-bancaire.html'),`${locale}: banking simulation unreferenced`);
   // The hub lists only demos that can be opened today (decision of 15 Nov. 2026).
   assert(!demoHub.includes('Point of No Return')&&!demoHub.includes('Agent That Wouldn'),`${locale}: unavailable demo listed on the hub`);
-  assert.equal((demoHub.match(/pf-demo-card/g)||[]).length,8,`${locale}: expected eight demos in the list`);
+  const demoHrefs=[...demoHub.matchAll(/<li class="pf-row pf-demo-card">[\s\S]*?<a class="pf-row-action" href="([^"]+)"/g)].map(([,href])=>href);
+  assert.equal(demoHrefs.length,8,`${locale}: expected eight demos in the list`);
+  assert.equal(new Set(demoHrefs).size,8,`${locale}: expected eight distinct demo routes`);
   assert(demoHub.includes('/embeds/reg-autonomy-control-tower-v1.0.html')||demoHub.includes('portfolio/control-tower/'),`${locale}: Control Tower route missing`);
   assert(page(locale,'gov').includes('releases/tag/v5.7.0'),`${locale}: runtime release link absent`);
 }
