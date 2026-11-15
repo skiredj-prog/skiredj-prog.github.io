@@ -8,10 +8,11 @@ const fr = locale === 'fr';
 const path = (p: string) => url((fr ? '/' : '/en/') + p + '/');
 const contact = path('contact') + '?sujet=diagnostic';
 const pathway = url(fr ? '/parcours-ia/' : '/en/ai-readiness/');
-// Deep link straight to question 1: the reader asked for the check, not for a page about it.
-const pathwayStart = `${pathway}?start=1`;
+// No longer deep-link straight into questions; users must see the explanation first.
+const pathwayStart = pathway;
 const demo = path('portfolio/control-tower');
 const whyNow = path(fr ? 'pourquoi-maintenant' : 'why-now');
+const cases = path(fr ? 'cas' : 'cases');
 const t = fr ? {
   eyebrow: 'TENIR LABS · DES AGENTS IA SOUS CONTRÔLE',
   headlineStart: 'L’IA agit.',
@@ -129,7 +130,7 @@ const cards = fr ? [
       <p class="ml-hero-tagline">{t.tagline}</p>
       <div class="ml-actions" aria-label={fr ? 'Choisir votre prochaine étape' : 'Choose your next step'}>
         <a class="ml-btn ml-btn-primary" href={pathwayStart}>{t.primary} <span aria-hidden="true">↗</span></a>
-        <a class="ml-btn ml-btn-outline" href="#comprendre">{t.secondary} <span aria-hidden="true">→</span></a>
+        <a class="ml-btn ml-btn-outline" href={cases}>{t.secondary} <span aria-hidden="true">→</span></a>
       </div>
       <p class="ml-hero-foot">{t.heroNote}</p>
       <p class="ml-hero-body">{t.summary}</p>
@@ -150,7 +151,7 @@ const cards = fr ? [
         <span class="ml-kicker">{t.tension}</span>
         <h2 id="ml-threat-title">{t.tensionTitle}</h2>
         <p>{t.tensionBody}</p>
-        <span class="ml-fiction">{t.fictional}</span><a class="ml-story-link" href={path(fr?'cas':'cases')}>{t.caseLink} →</a>
+        <span class="ml-fiction">{t.fictional}</span><a class="ml-story-link" href={cases}>{t.caseLink} →</a>
       </div>
       <div class="ml-outcomes">
         <div class="ml-outcome ml-risk"><span class="ml-mini-label">{t.without}</span><strong>{t.withoutHead}</strong><p>{t.withoutBody}</p><span class="ml-indicator">RETRY? <span aria-hidden="true">↻</span></span></div>
