@@ -47,7 +47,7 @@ try {
       assert.equal(await freeReport.count(),2,locale+': header must link to the free report (bar and menu)');
       if(width<=1100)await page.locator('[data-menu-toggle]').click();
       assert.equal(await freeReport.filter({visible:true}).count(),1,locale+'/'+width+': exactly one free-report link must be visible in the header');
-      assert.equal(await page.locator('.site-nav > a').count(),4,locale+': header must expose the four sections');
+      assert.equal(await page.locator('.site-nav [data-nav-trigger]').count(),4,locale+': header must expose the four sections');
 
       const offerWidth=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
       assert(offerWidth.scroll<=offerWidth.viewport+2,locale+'/'+width+': offer page horizontal overflow ('+(offerWidth.scroll-offerWidth.viewport)+'px)');
@@ -87,7 +87,7 @@ try {
       const toggle=page.locator('[data-menu-toggle]');
       assert(await toggle.isVisible(),locale+': site menu button must be visible on the report page');
       await toggle.click();
-      const navLinks=page.locator('#main-navigation > a');
+      const navLinks=page.locator('#main-navigation [data-nav-trigger]');
       assert.equal(await navLinks.count(),4,locale+': report page menu must expose the four sections');
       assert(await navLinks.first().isVisible(),locale+': report page menu must open');
       assert((await page.locator('.site-header .brand').getAttribute('href'))===(locale==='fr'?'/':'/en/'),locale+': brand must lead home');
@@ -151,7 +151,7 @@ try {
     const page=await browser.newPage({viewport:{width:1710,height:740},reducedMotion:'reduce'});
     await page.goto('http://127.0.0.1:4173'+(locale==='fr'?'/parcours-ia/':'/en/ai-readiness/'),{waitUntil:'networkidle'});
     assert(await page.locator('#main-navigation').isVisible(),locale+': desktop site navigation absent on the report page');
-    assert.equal(await page.locator('#main-navigation > a').count(),4,locale+': desktop site navigation incomplete');
+    assert.equal(await page.locator('#main-navigation [data-nav-trigger]').count(),4,locale+': desktop site navigation incomplete');
     const start=await page.locator('#pa-start').boundingBox();
     assert(start && start.y+start.height<=724,locale+': start questionnaire below first visible desktop viewport');
     await page.close();

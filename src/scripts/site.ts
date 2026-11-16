@@ -16,12 +16,33 @@ if(document.querySelector('.contact-page')&&contactSituation&&['decouvrir','dele
 const openBusinessProfile=()=>{const id=location.hash.slice(1);document.querySelectorAll<HTMLDetailsElement>('.persona-card').forEach(card=>{if(card.id===id)card.open=true;});};
 openBusinessProfile();
 window.addEventListener('hashchange',openBusinessProfile);
-const closeMenu=(focus=false)=>{menuButton?.setAttribute('aria-expanded','false');nav?.removeAttribute('data-open');if(focus)menuButton?.focus();};
-menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));nav?.toggleAttribute('data-open',open);});
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menuButton?.getAttribute('aria-expanded')==='true')closeMenu(true);});
-document.addEventListener('click',event=>{const target=event.target as Node;if(nav?.contains(target)||menuButton?.contains(target))return;closeMenu();});
+// Section menus. One open at a time. On a wide screen with a mouse, hovering opens a menu and a click keeps it open;
+// everywhere else the section button toggles it. Escape, a click outside or focus leaving closes it.
+const wideNav=matchMedia('(min-width: 1101px)');
+const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
+const navItems=Array.from(document.querySelectorAll<HTMLElement>('[data-nav-item]'));
+const navTrigger=(item:HTMLElement)=>item.querySelector<HTMLButtonElement>('[data-nav-trigger]');
+let pinnedItem:HTMLElement|null=null,hoverTimer=0;
+const setNavItem=(item:HTMLElement,open:boolean)=>{item.toggleAttribute('data-open',open);navTrigger(item)?.setAttribute('aria-expanded',String(open));if(!open&&pinnedItem===item)pinnedItem=null;};
+const closeNavItems=(except?:HTMLElement)=>navItems.forEach(item=>{if(item!==except)setNavItem(item,false);});
+const closeNavPanels=(focus=false)=>{const open=navItems.find(item=>item.hasAttribute('data-open'));window.clearTimeout(hoverTimer);closeNavItems();if(focus&&open)navTrigger(open)?.focus();return Boolean(open);};
+navItems.forEach(item=>{
+  navTrigger(item)?.addEventListener('click',()=>{
+    window.clearTimeout(hoverTimer);
+    if(item.hasAttribute('data-open')&&pinnedItem===item){setNavItem(item,false);return;}
+    closeNavItems(item);setNavItem(item,true);pinnedItem=item;
+  });
+  const hovering=(event:PointerEvent)=>event.pointerType==='mouse'&&wideNav.matches&&finePointer.matches;
+  item.addEventListener('pointerenter',event=>{if(!hovering(event))return;window.clearTimeout(hoverTimer);hoverTimer=window.setTimeout(()=>{closeNavItems(item);setNavItem(item,true);},90);});
+  item.addEventListener('pointerleave',event=>{if(!hovering(event))return;window.clearTimeout(hoverTimer);if(pinnedItem===item)return;hoverTimer=window.setTimeout(()=>setNavItem(item,false),220);});
+  item.addEventListener('focusout',event=>{const next=event.relatedTarget as Node|null;if(wideNav.matches&&next&&!item.contains(next))setNavItem(item,false);});
+});
+const closeMenu=(focus=false)=>{closeNavPanels();menuButton?.setAttribute('aria-expanded','false');nav?.removeAttribute('data-open');if(focus)menuButton?.focus();};
+menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';if(!open)closeNavPanels();menuButton.setAttribute('aria-expanded',String(open));nav?.toggleAttribute('data-open',open);});
+document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;if(wideNav.matches){closeNavPanels(true);return;}if(menuButton?.getAttribute('aria-expanded')==='true')closeMenu(true);});
+document.addEventListener('click',event=>{const target=event.target as Element;if(!target.closest?.('[data-nav-item]'))closeNavPanels();if(nav?.contains(target)||menuButton?.contains(target))return;closeMenu();});
 nav?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>closeMenu()));
-matchMedia('(min-width: 1101px)').addEventListener('change',()=>closeMenu());
+wideNav.addEventListener('change',()=>closeMenu());
 const toc=document.querySelector<HTMLElement>('#toc');
 const mobileToc=document.querySelector<HTMLDetailsElement>('[data-mobile-toc]');
 const headings=Array.from(document.querySelectorAll<HTMLHeadingElement>('.doc .contact-brief h2, .doc .prose h2'));
