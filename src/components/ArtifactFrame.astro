@@ -19,13 +19,21 @@ const { locale, slug, title, description, kicker, lede, sources, src, openLabel 
 
 <Base locale={locale} slug={slug} title={title} description={description} kicker={kicker} lede={lede} sources={sources}>
   <slot />
-  <p class="embed-links">
-    <a href={url(src)}>{openLabel}</a>
-  </p>
-  <iframe class="embed-frame" src={url(src)} title={title}></iframe>
+  <div class="embed-stage">
+    <p class="embed-links">
+      <button class="embed-full" type="button" hidden>{locale === "fr" ? "Plein écran" : "Full screen"}</button>
+      <a href={url(src)}>{openLabel}</a>
+    </p>
+    <iframe class="embed-frame" src={url(src)} title={title} allowfullscreen></iframe>
+  </div>
   <script is:inline>
     (function () {
       var frame = document.querySelector(".embed-frame");
+      var full = document.querySelector(".embed-full");
+      if (frame && full && frame.requestFullscreen) {
+        full.hidden = false;
+        full.addEventListener("click", function () { frame.requestFullscreen().catch(function () {}); });
+      }
       if (!frame || !location.hash || location.hash.length < 2) return;
       var src = frame.getAttribute("src") || "";
       if (src.indexOf("#") === -1 && /^#scene-[1-6]$/.test(location.hash)) frame.src = src + location.hash;

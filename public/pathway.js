@@ -189,13 +189,13 @@
     // Select the most helpful engagement, without turning the self-assessment into a certification.
     let offer;
     if(dims.find(d=>d.id==='purpose').level==='weak'||dims.find(d=>d.id==='accountability').level==='weak'){
-      offer={title:L('Diagnostic de votre parcours IA','AI pathway diagnostic'),desc:L('Un échange ciblé pour clarifier une action, son résultat attendu et les responsabilités.','A focused engagement to clarify an action, its expected outcome and who owns the decision.'),link:route('portfolio/diagnostic/')};
+      offer={title:L('Clarifier l’action et qui en répond · Diagnostic guidé','Clarify the action and who answers for it · Guided Diagnostic'),desc:L('Un échange ciblé pour clarifier une action, son résultat attendu et les responsabilités.','A focused engagement to clarify an action, its expected outcome and who owns the decision.'),link:route('portfolio/diagnostic/')};
     }else if(dims.find(d=>d.id==='control').level!=='strong'){
-      offer={title:L('REG Prevent · Préparer les limites','REG Prevent · Define the limits'),desc:L('Identifier les situations sensibles et les contrôles à préparer avant que l’IA agisse.','Map sensitive situations and the controls to prepare before AI acts.'),link:route('portfolio/prevent/')};
+      offer={title:L('Poser les limites avant que l’IA agisse · REG Prevent','Set the limits before AI acts · REG Prevent'),desc:L('Identifier les situations sensibles et les contrôles à préparer avant que l’IA agisse.','Map sensitive situations and the controls to prepare before AI acts.'),link:route('portfolio/prevent/')};
     }else if(dims.find(d=>d.id==='visibility').level!=='strong'||dims.find(d=>d.id==='evidence').level!=='strong'){
-      offer={title:L('REG Prepare · Organiser les preuves','REG Prepare · Organize the evidence'),desc:L('Établir ce qui peut être retrouvé et prouvé, et ce qui reste encore inconnu.','Establish what can be reconstructed and demonstrated, and what remains unknown.'),link:route('portfolio/prepare/')};
+      offer={title:L('Savoir ce que vous pourrez prouver · REG Prepare','Know what you will be able to prove · REG Prepare'),desc:L('Établir ce qui peut être retrouvé et prouvé, et ce qui reste encore inconnu.','Establish what can be reconstructed and demonstrated, and what remains unknown.'),link:route('portfolio/prepare/')};
     }else{
-      offer={title:L('Échange sur une mise en pratique ciblée','Discuss a focused next step'),desc:L('Vos réponses ouvrent la voie à une revue concrète d’un parcours sensible, sans présumer de sa conformité.','Your answers suggest a focused review of one consequential workflow, without assuming it is compliant.'),link:route('portfolio/services/')};
+      offer={title:L('Tester vos contrôles sur un cas réel','Test your controls on a real case'),desc:L('Vos réponses ouvrent la voie à une revue concrète d’un parcours sensible, sans présumer de sa conformité.','Your answers suggest a focused review of one consequential workflow, without assuming it is compliant.'),link:route('portfolio/products/')+'#pf-available-title'};
     }
     return{dims,prioritized,summary,offer,structured:structured.length,maturity:getMaturity(dims),usage:getUsage(dims)};
   }
@@ -248,7 +248,6 @@
   }
   function reportText(){
     if(!report)return'';
-    const usage=$('pa-usecase')?.value.trim()||L('Non précisé','Not specified');
     const rows=[
       'TENIR LABS — '+L('Auto-évaluation déclarative','Self-reported assessment'),
       L('Résultat indicatif, issu de vos réponses','Indicative result based on your answers')+' · '+new Date().toLocaleDateString(fr?'fr-FR':'en-GB'),
@@ -260,7 +259,6 @@
     report.prioritized.forEach((step,i)=>rows.push(String(i+1)+'. '+step.title+' — '+step.desc));
     rows.push('',L('PROCHAINE PISTE','SUGGESTED NEXT STEP')+': '+report.offer.title,report.offer.desc,'',
       L('DÉTAILS DE L’AUTO-ÉVALUATION','SELF-ASSESSMENT DETAILS'),
-      L('Usage examiné','Use case examined')+': '+usage,
       L('Parcours de maturité estimé','Indicative maturity stage')+': '+report.maturity.stages[report.maturity.current].title,
       L('Étape suivante à vérifier','Next stage to check')+': '+report.maturity.stages[report.maturity.next].title,
       L('Parcours de l’usage','Use-case pathway')+': '+report.usage.stages[report.usage.current].title,
@@ -280,15 +278,13 @@
   function renderReport(){
     report=evaluate();
     $('pa-report-summary').textContent=report.summary;
-    const usageValue=$('pa-usecase')?.value.trim()||L('Non précisé','Not specified');
     const mStages=report.maturity.stages,mCur=report.maturity.current,mNext=report.maturity.next;
     const cur=mStages[mCur],nxt=mStages[mNext];
 
     // Executive summary: position, next passage, first priority. Readable in 20 seconds.
     const execBlocks=[
       {k:L('POINT DE DÉPART · DÉCLARATIF','SELF-REPORTED STARTING POINT'),v:cur?cur.title:'—',cls:'is-current'},
-      {k:L('ÉTAPE SUIVANTE À VÉRIFIER','NEXT STEP TO CHECK'),v:nxt?nxt.title:L('Parcours complet','Journey complete'),cls:'is-next'},
-      {k:L('PRIORITÉ IMMÉDIATE','IMMEDIATE PRIORITY'),v:report.prioritized[0]?report.prioritized[0].title:'—',cls:''}
+      {k:L('ÉTAPE SUIVANTE À VÉRIFIER','NEXT STEP TO CHECK'),v:nxt?nxt.title:L('Parcours complet','Journey complete'),cls:'is-next'}
     ].map(b=>{
       const el=makeElement('div','pa-exec-block '+b.cls);
       el.append(makeElement('span','pa-exec-key',b.k),makeElement('strong','pa-exec-val',b.v));
@@ -334,7 +330,6 @@
     // Context restitution, so the result does not read as generic.
     const uCur=report.usage.stages[report.usage.current];
     const ctx=[
-      [L('Usage examiné','Use case examined'),usageValue],
       [L('Où en est cet usage','Where this use case stands'),uCur?uCur.title:'—'],
       [L('Prochaine vérification','Next check'),uCur?uCur.next:'—']
     ];
