@@ -1,0 +1,37 @@
+---
+// Page complète du n° 02 (français) : gabarit magazine + couverture + édition web.
+// Le texte de l’édition web vient de src/data/magazine/n02.fr.html.
+import Magazine from '../../layouts/Magazine.astro';
+import '../../styles/magazine-n02.css';
+import body from '../../data/magazine/n02.fr.html?raw';
+import { url } from '../../data/site';
+const path = '/magazine/n02/';
+const pdfHref = '/magazine/n02/TENIR-N02-FR.pdf';
+const title = 'TENIR N° 02 — Donnez à l’IA le travail, pas les clés de votre entreprise';
+const description = 'Ce que l’agent propose, ce que votre organisation autorise, et ce que vous pouvez encore vérifier. Numéro pilote, novembre 2026.';
+---
+<Magazine lang="fr" title={title} description={description} path={path} image="/magazine/n02/partage.jpg"
+  current="issue" issueHref={path} pdfHref={pdfHref} pdfLabel="PDF">
+  <section class="mag-hero n02-hero" slot="hero" aria-labelledby="titre">
+    <div class="mag-hero-inner">
+      <figure>
+        <img src={url('/magazine/n02/couverture.jpg')} alt="Une clé dorée posée sur une table de velours ; au fond, des agents en costume travaillent dans un club" width="1168" height="784" />
+        <figcaption>Illustration générée par IA</figcaption>
+      </figure>
+      <div class="mag-hero-text">
+        <p class="mag-kicker">Novembre 2026 · N° 02 · Édition pilote</p>
+        <h1 id="titre">Donnez à l’IA le travail, pas les clés de votre entreprise.</h1>
+        <p class="mag-sub">Ce que l’agent propose, ce que votre organisation autorise, et ce que vous pouvez encore vérifier.</p>
+        <div class="mag-actions">
+          <a class="mag-btn mag-btn-primary" href="#edito">Lire le numéro <span aria-hidden="true">↓</span></a>
+          <a class="mag-btn mag-btn-ghost" href={url(pdfHref)} download>Télécharger le PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Fragment set:html={body} />
+  <Fragment slot="footer">
+    <p>TENIR N° 02 · novembre 2026 · numéro pilote gratuit, en français. PDF au format A5, 16 pages.</p>
+    <p>Proposition éditoriale et pédagogique : les affirmations techniques sont à vérifier contre le périmètre et les artefacts publiés. Les illustrations photographiques sont générées par IA.</p>
+  </Fragment>
+</Magazine>

@@ -1,0 +1,48 @@
+/* TENIR · magazine N° 02 — compléments à magazine.css, mêmes jetons (--navy, --teal, --copper-d, --rule…).
+   Chargé uniquement par les pages du n° 02. */
+
+.n02-hero h1 { font-size: clamp(1.9rem, 4.2vw, 2.9rem); line-height: 1.1; text-wrap: balance; }
+.n02-hero .mag-sub { font-size: clamp(1.05rem, 2.1vw, 1.3rem); }
+
+.mag .n02-fig img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.mag .n02-quote { font-family: var(--head); font-weight: 600; font-size: clamp(1.25rem, 3vw, 1.5rem); line-height: 1.35; border-inline-start: 4px solid var(--copper); padding-inline-start: 1rem; text-wrap: balance; }
+
+.mag .n02-list { list-style: disc; padding-inline-start: 1.25rem; display: grid; gap: 0.35rem; }
+.mag-section > ol:not([class]), .mag .n02-frame ol { padding-inline-start: 1.4rem; display: grid; gap: 0.35rem; }
+.mag .n02-plain { list-style: none; padding: 0; }
+.mag .n02-cards .mag-card h3 { font-size: 1.05rem; }
+.mag .n02-frame { border: 1px solid var(--rule); border-radius: 6px; padding: 1rem 1.1rem; display: grid; gap: 0.6rem; }
+.mag .n02-frame h3 { font-size: 1.05rem; }
+.mag .n02-tour { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: 0.5rem 1.5rem; }
+.mag .n02-tour b { color: var(--copper-d); }
+
+/* Chronologie d’un incident */
+.mag .n02-timeline { margin: 0; border-bottom: 1px solid var(--rule); }
+.mag .n02-timeline > div { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 0.75rem; padding: 0.55rem 0; border-top: 1px solid var(--rule); }
+.mag .n02-timeline dt { font-family: var(--head); font-weight: 800; color: var(--copper-d); }
+.mag .n02-timeline dd { margin: 0; }
+
+/* Verdicts : le mot porte le sens, la couleur ne fait que l’accompagner */
+.mag .n02-verdict { display: inline-block; padding: 0.05rem 0.5rem; border: 1.5px solid currentColor; border-radius: 4px; font-family: var(--body); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; line-height: 1.5; }
+.mag .n02-verdict--allow { color: #1d5a38; }
+.mag .n02-verdict--flag { color: #7a5608; }
+.mag .n02-verdict--hold { color: #2b4d82; }
+.mag .n02-verdict--veto { color: #8c2c24; }
+
+/* Paroles d’agents */
+.mag .n02-voice { border-inline-start: 3px solid var(--teal); padding-inline-start: 1rem; display: grid; gap: 0.35rem; }
+.mag .n02-voice blockquote p { font-family: var(--head); font-weight: 600; font-size: 1.1rem; line-height: 1.45; }
+.mag .n02-voice figcaption { font-size: 0.875rem; color: var(--muted); }
+.mag .n02-voice figcaption strong { display: block; color: var(--copper-d); }
+
+/* Tableaux : défilement à l’intérieur de leur zone sur petit écran */
+.mag .table-scroll { overflow-x: auto; max-width: 100%; }
+.mag-main table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.mag-main th, .mag-main td { border: 1px solid var(--rule); padding: 0.55rem 0.7rem; text-align: start; vertical-align: top; }
+.mag-main th { background: var(--sky); font-family: var(--head); font-weight: 800; }
+
+/* Petit écran : les liens du sommaire sont des cibles tactiles de 44 px */
+@media (max-width: 767.98px) {
+  .mag .mag-toc li { align-items: center; }
+  .mag .mag-toc li a { display: inline-block; padding-block: 0.65rem; }
+}
