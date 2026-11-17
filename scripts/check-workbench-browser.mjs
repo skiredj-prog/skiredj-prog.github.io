@@ -22,10 +22,10 @@ try{
    assert(metrics.scroll<=metrics.viewport+2,locale+'/'+width+': horizontal overflow '+(metrics.scroll-metrics.viewport)+'px');
    assert(!page.url().includes('.zip'),locale+'/'+width+': unexpected download redirect');
    assert.equal(errors.length,0,locale+'/'+width+': JS errors: '+errors.join('; '));
-   const offer=page.locator('.pf-actions a').filter({hasText:locale==='fr'?'Voir le diagnostic spécialisé':'View the specialist diagnostic'});
+   const offer=page.locator('.pf-actions a').filter({hasText:locale==='fr'?'Voir l’offre Leap Readiness':'See the Leap Readiness offer'});
    await offer.click();
-   await page.waitForURL('**/diagnostic-execution/');
-   assert(await page.locator('main').isVisible(),locale+'/'+width+': diagnostic route failed');
+   await page.waitForURL(locale==='fr'?'**/offre/':'**/offer/');
+   assert(await page.locator('main').isVisible(),locale+'/'+width+': offer route failed');
    await page.goto(base+prefix+'/portfolio/demos/',{waitUntil:'networkidle'});
    const link=page.locator('a[href="'+route+'"]').first();
    assert(await link.count()>0,locale+'/'+width+': no Workbench link in demos');

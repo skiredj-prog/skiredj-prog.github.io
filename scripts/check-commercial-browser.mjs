@@ -37,9 +37,9 @@ try {
       const heroDemo=await page.locator('.ml-hero .ml-btn-outline').boundingBox();
       assert(heroDemo && heroDemo.y+heroDemo.height<=height-16,
         locale+'/'+width+': the secondary demo action must be above the fold');
-      const diagnostic=page.locator('.ml-card').first();
-      await diagnostic.click();
-      await page.waitForURL('**/diagnostic-execution/');
+      const offerCard=page.locator('.ml-card').first();
+      await offerCard.click();
+      await page.waitForURL(locale==='fr'?'**/offre/':'**/offer/');
       assert(await page.locator('h1').first().isVisible(),locale+': offer page heading missing');
       assert(await page.locator('main').isVisible(),locale+': offer page body missing');
       // The free report is the permanent header call to action: in the bar, or at the top of the menu on narrow screens.
@@ -53,7 +53,7 @@ try {
       assert(offerWidth.scroll<=offerWidth.viewport+2,locale+'/'+width+': offer page horizontal overflow ('+(offerWidth.scroll-offerWidth.viewport)+'px)');
       assert.equal(errors.length,0,locale+'/'+width+': browser JavaScript error: '+errors.join(', '));
       await page.close();
-      console.log('Chromium '+locale.toUpperCase()+' '+width+'px: three offer paths, responsive layout and linked diagnostic PASS.');
+      console.log('Chromium '+locale.toUpperCase()+' '+width+'px: the offer, its method and its software, responsive layout and linked offer PASS.');
     }
   }
 

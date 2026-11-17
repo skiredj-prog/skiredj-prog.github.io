@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
-const entries=['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'];
+const entries=['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'];
 const hubs=['products','demos'];
 const expected=[...hubs,...entries];
 const paths = (lang,page) => lang==='fr'?`dist/portfolio/${page}/index.html`:`dist/en/portfolio/${page}/index.html`;
@@ -69,10 +69,15 @@ for(const lang of ['fr','en']){
   const matrixStart=matrixPage.indexOf('<div class="pm-2x2"');
   const matrixEnd=matrixPage.indexOf('</div><div class="pm-transverse"',matrixStart);
   const matrix=matrixPage.slice(matrixStart,matrixEnd+6);
-  for(const id of ['reg-arch','technical','diagnostic']){
+  for(const id of ['reg-arch','technical']){
     assert(!matrix.includes(`portfolio/${id}/`),`${lang}: foundation, service or demo incorrectly placed inside product grid: ${id}`);
     assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: missing cross-cutting link ${id}`);
   }
+  // The offer has its own page; the hub links to it, never to a portfolio profile.
+  const offerRoute=lang==='fr'?'/offre/':'/en/offer/';
+  assert(!matrix.includes(offerRoute),`${lang}: the offer must not sit inside the product grid`);
+  assert(matrixPage.includes(`href="${offerRoute}"`),`${lang}: Products must link to the offer`);
+  assert(!matrixPage.includes('portfolio/diagnostic/'),`${lang}: Products still links to the retired diagnostic profile`);
   for(const id of mappedProducts){
     assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: ${id} not placed in the matrix`);
   }

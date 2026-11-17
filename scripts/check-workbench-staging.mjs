@@ -42,12 +42,12 @@ for(const locale of ['fr','en']){
 
  const demo=readFileSync('dist'+pref+'/portfolio/demos/index.html','utf8');
  const experience=readFileSync('dist'+pref+'/portfolio/experiences/index.html','utf8');
- const offer=readFileSync('dist'+pref+'/diagnostic-execution/index.html','utf8');
- for(const [name,content] of [['demos',demo],['experiences',experience],['diagnostic',offer]]){
+ const offer=readFileSync('dist'+(locale==='fr'?'/offre':'/en/offer')+'/index.html','utf8');
+ for(const [name,content] of [['demos',demo],['experiences',experience],['offer',offer]]){
    assert(content.includes('href="'+route+'"'),locale+': missing Workbench link from '+name);
  }
- for(const name of ['demos','experiences','diagnostic']){
-   const html2={demos:demo,experiences:experience,diagnostic:offer}[name];
+ for(const name of ['demos','experiences','offer']){
+   const html2={demos:demo,experiences:experience,offer}[name];
    assert(!html2.includes('href="/downloads/TENIR-REG-public-consultation.zip"'),locale+': premature kit link from '+name);
  }
 }
