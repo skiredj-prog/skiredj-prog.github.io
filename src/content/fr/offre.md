@@ -64,7 +64,7 @@ sources: définition de l’offre du 17 novembre 2026 ; premières missions à v
 </table>
 </div>
 
-<p>Le plan vise toujours le palier suivant, jamais deux d’un coup : on ne contrôle pas ce qu’on ne voit pas encore. La même échelle sert pour tous les périmètres, ce qui rend deux plans comparables.</p>
+<p>Le plan vise toujours le palier suivant, jamais deux d’un coup : on ne contrôle pas ce qu’on ne voit pas encore. Au palier 5, il n’y a pas de palier suivant : le plan porte alors sur le maintien du palier démontré. La même échelle sert pour tous les périmètres, ce qui rend deux plans comparables.</p>
 
 <p>L’auto-évaluation gratuite donne une première lecture, sur vos réponses. Elle utilise sa propre échelle : son résultat n’est pas un palier. La semaine établit le palier démontré, sur pièces.</p>
 
