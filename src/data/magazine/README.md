@@ -24,3 +24,24 @@ La page 14 nomme **MC (Marge de correction)** et **EHV (Exposition sous hypothè
 Ajouté le 9 novembre 2026. Quatre pages : l’ouverture (faits, 115 000 places prévues contre 80 000 exigées par la FIFA pour une finale), cinq précédents (Afrique du Sud 2010, Brésil 2014, Le Cap, Russie 2018 et Qatar 2022, Portugal 2004 puis 2030), ce qui est prévu ou non publié à Benslimane, et ce qui peut encore se décider avant 2030. Les liens sont dans le sixième groupe de `sources_links`.
 
 Points datés, à revérifier avant toute réimpression : marchés du Grand Stade Hassan II (5 milliards de DH initialement annoncés ; 13,6 milliards de marchés lancés ou attribués selon Le Desk au 6 octobre 2026, périmètres différents), lieu de la finale (non attribué au 9 novembre 2026), annonce sur le Raja, le Wydad et l’équipe nationale (octobre 2026), capacité de dessalement annoncée le 2 novembre 2026 (447 millions de m³ par an).
+
+## N° 02 — « Donnez à l’IA le travail, pas les clés de votre entreprise » (novembre 2026)
+
+Numéro pilote en français uniquement, ajouté le 17 novembre 2026.
+
+| Route | Rôle |
+| --- | --- |
+| `/n02/` | Lien court imprimé dans le numéro |
+| `/magazine/n02/` | Édition web complète (URL canonique) |
+
+Sources : `src/data/magazine/n02.fr.html` (texte de l’édition web, inséré tel quel), `src/components/magazine/Issue02Page.astro` (couverture et gabarit), `src/styles/magazine-n02.css` (compléments à `magazine.css`, mêmes jetons, chargés par ces deux pages seulement).
+
+Fichiers servis : `public/magazine/n02/` (couverture, image de partage, huit illustrations, PDF A5 de 16 pages et `SHA256SUMS.txt`). Les pages ne chargent aucune police externe.
+
+Différences avec le N° 01 : pas de fichier JSON ni de générateur ; le PDF est imprimé depuis une maquette HTML A5 qui n’est pas dans ce dépôt, avec les polices Libre Baskerville et DM Sans incorporées. Pour une correction, modifier `n02.fr.html` et la maquette, réimprimer le PDF, puis mettre à jour `SHA256SUMS.txt`.
+
+Points à connaître :
+- les « paroles d’agents » sont extraites des carnets d’une exécution réelle d’une maquette (The Crozwya : agents scriptés, soldes simulés) ; les valeurs sont réelles, le ton est un gabarit écrit par la rédaction ;
+- les illustrations photographiques sont générées par IA ; celle de la section « La membrane » contient du texte en anglais ;
+- la source IETF citée (brouillon `draft-ietf-httpapi-idempotency-key-header-07`, octobre 2025) est à revérifier avant toute réimpression ;
+- la page d’avis (`/magazine/avis/`) reste propre au N° 01 : le N° 02 n’y renvoie pas.

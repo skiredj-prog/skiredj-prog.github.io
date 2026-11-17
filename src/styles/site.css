@@ -623,13 +623,38 @@ h1 {
 .embed-frame {
   display: block;
   width: 100%;
-  height: min(78vh, 52rem);
-  margin: 1rem 0 0;
+  /* Nearly the whole viewport below the sticky header, so the artifact reads without nested scrolling. */
+  height: max(32rem, calc(100vh - 6rem));
+  margin: 0.75rem 0 0;
   border: 1px solid var(--line-strong);
   background: #0c1115;
 }
 
-.embed-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+/* Embedded artifacts take the full page width: no reading column, no table of contents beside them. */
+.doc:has(.embed-stage) { grid-template-columns: minmax(0, 1fr); container-type: inline-size; }
+.doc:has(.embed-stage) .toc { display: none; }
+.embed-stage {
+  /* The stage sits in the reading column, which starts at the left edge of .doc: centre it on .doc (the query container), not on the column. */
+  --embed-w: min(calc(100vw - 3rem), 100rem);
+  width: var(--embed-w);
+  max-width: none;
+  margin-left: calc((100cqw - var(--embed-w)) / 2);
+}
+
+.embed-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; }
+.embed-full {
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.embed-full:hover { border-color: currentColor; }
+.embed-full:focus-visible { outline: 2px solid var(--accent, #3cc79a); outline-offset: 2px; }
 
 @media (max-width: 960px) {
   .doc { grid-template-columns: 1fr; }

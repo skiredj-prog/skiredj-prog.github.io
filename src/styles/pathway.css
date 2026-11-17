@@ -98,7 +98,7 @@ body{margin:0;line-height:1.6;background:#ffffff;font-size:17px}
 
 /* Executive summary — the 20-second read. */
 .pa-exec{margin:0 0 2.6rem}
-.pa-exec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--pa-border);border:1px solid var(--pa-border);border-radius:10px;overflow:hidden}
+.pa-exec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--pa-border);border:1px solid var(--pa-border);border-radius:10px;overflow:hidden}
 .pa-exec-block{background:#ffffff;padding:1.3rem 1.4rem;min-width:0;border-top:3px solid transparent}
 .pa-exec-block.is-current{border-top-color:var(--pa-blue)}
 .pa-exec-block.is-next{border-top-color:var(--pa-amber)}
@@ -153,7 +153,7 @@ body{margin:0;line-height:1.6;background:#ffffff;font-size:17px}
 
 /* Context examined. */
 .pa-context{margin:0 0 2.6rem;padding:1.35rem 1.5rem;background:var(--pa-surface);border:1px solid var(--pa-border);border-radius:10px}
-.pa-context-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin:.7rem 0 0}
+.pa-context-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin:.7rem 0 0}
 .pa-context-cell{min-width:0}
 .pa-context-grid dt{font:600 .64rem var(--mono);letter-spacing:.06em;color:var(--pa-muted);margin-bottom:.3rem}
 .pa-context-grid dd{margin:0;font-size:.92rem;line-height:1.45;font-weight:600}
@@ -377,4 +377,9 @@ body{margin:0;line-height:1.6;background:#ffffff;font-size:17px}
   .pa-report-content{padding:1.2rem 0 2rem}
   .pa-priority-panel{padding:1rem}
   .pa-report-details-body{padding-inline:.8rem}
+}
+/* Dark theme: the priority panel and the answers card carried a hard-coded white surface under light-on-dark text. */
+@media screen{
+:root[data-theme="dark"] .pa-priority-panel,:root[data-theme="dark"] .pa-report-details-body .pa-report-card{background:#141f26;border-color:#2b3d49}
+:root[data-theme="dark"] .pa-priority-panel li p{color:#a8bcc6}
 }
