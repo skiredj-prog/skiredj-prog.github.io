@@ -5,7 +5,7 @@ on:
     paths:
       - 'src/content/fr/offre.md'
       - 'src/content/en/offer.md'
-      - 'src/components/Home.astro'
+      - 'astro.config.mjs'
       - 'src/components/MarketingHome.astro'
       - 'src/styles/experience.css'
       - 'src/data/site.ts'

@@ -103,7 +103,7 @@ for(const lang of ['fr','en']){
   assert(frame.includes('loading="lazy"'),'Control Tower should not force media loading');
   assert(frame.includes('/embeds/reg-autonomy-control-tower-v1.0.html'),'Control Tower source missing');
 }
-console.log('Portfolio: 32 FR/EN routes, 28 nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.');
+console.log(`Portfolio: ${expected.length*2} FR/EN routes, ${entries.length*2} nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.`);
 
 // The free self-assessment is the new commercial front door.
 await import('./check-pathway.mjs');

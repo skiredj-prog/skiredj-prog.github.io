@@ -1,7 +1,7 @@
 ---
 title: Approach & Method
 kicker: TENIR Labs · how we work
-description: "How TENIR Labs works, from discovery to pilot: guided diagnostic, the Prevent and Prepare methods, an observation pilot, and what TENIR, REG, REG+ and TENIR-Gov do not claim to do."
+description: "How TENIR Labs works, from discovery to pilot: the Leap Readiness offer, the Prevent and Prepare methods, an observation pilot, and what TENIR, REG, REG+ and TENIR-Gov do not claim to do."
 lede: "From discovery to pilot, each step produces a readable record and a decision to take: continue, adjust or stop. The starting point is always one precise situation."
 sources: REG v0.1 Working Draft — October 21, 2026
 ---
@@ -91,21 +91,19 @@ Each step produces a record you can read and a decision to take. None commits yo
 | **4. Observation pilot** | Considered only if an integration is justified and authorised; it blocks no operation. | Decisions and records to review within a declared scope. |
 | **5. ENFORCE** | A later step, after the invariants, failure modes and guarantees have been validated. | A blocking control within a defined scope; never automatic. |
 
-## Start with a guided diagnostic
+## Start with Leap Readiness
 
-You have a business, compliance or design question. Start with a specific situation: understand what a requirement implies, locate the evidence supporting a control, or clarify how AI is used in a process.
+You carry a decision: giving an agent more autonomy, going to production, getting a project approved. The starting point is one precise scope: one decision or one flow.
 
-**The deliverable, within the agreed scope:** a sourced summary of findings, unknowns and gaps, with prioritized next steps. It helps prepare a decision and makes its supporting information traceable.
+**In one week, for EUR 5,000:** the map of gaps between what leadership expects and what the system actually does, the demonstrated maturity tier, the plan to reach the next tier, projections in three scenarios and a one-page leadership note.
 
 | You bring | We examine together | You receive |
 | --- | --- | --- |
-| A rule or process, with the documents and evidence available | Requirements, reported controls, verifiable information and gaps | A summary with its sources and limits, followed by proposed checks or decisions |
+| The scope, the documents, the available exports and the people who run the system | What leadership expects, what is written, what the system does and what no one has admitted | Four documents on your scope, usable as they are |
 
-The diagnostic is a **service to scope together**, rather than software to install. An initial remote conversation helps choose the question. A proposal then sets out scope, authorized access, confidentiality, deliverables and commercial terms. No technical access or sensitive document is required to make contact.
+This is **work on evidence**, not software to install: documents, exports and interviews, with no production access. No sensitive document is required to make contact.
 
-[Discuss a guided diagnostic →](/en/contact/)
-
-The contact page helps prepare your message; you review it before sending it through your own email app.
+[See the Leap Readiness offer →](/en/offer/)
 
 ## Five distinct roles, one question: what can be authorized and evidenced?
 
@@ -154,12 +152,12 @@ This is a **target logical view**, not evidence of a live integration. Read the 
 - [Services](/en/portfolio/products/#pf-available-title) — scope, process and deliverables.
 - [Demonstrations](/en/portfolio/demos/) — what you can explore and what each example lets you observe.
 
-## After the diagnostic: optional next steps
+## After the week: optional next steps
 
 When the question concerns AI, the review may cover its actual presence in tools, the data it processes, the decisions or actions it influences and the safeguards available. Reported use and observed use remain distinct.
 
 A **non-blocking observation** pilot may be considered if integration is justified and authorized. It requires assessment of technical impact, data handling and responsibilities; it is not described as risk-free or ready for every client.
 
-Blocking governance (**ENFORCE**) is a later step, subject to validation of invariants, failure modes and bounded guarantees. It is neither automatic nor included in the diagnostic.
+Blocking governance (**ENFORCE**) is a later step, subject to validation of invariants, failure modes and bounded guarantees. It is neither automatic nor included in Leap Readiness.
 
 **Nothing here is a certification.**

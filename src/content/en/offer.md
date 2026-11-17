@@ -48,7 +48,7 @@ sources: offer definition of 17 November 2026; first engagements to come, no cli
 
 ## Your maturity tier
 
-<p>Six tiers, always in the same order. A tier is reached when its exit condition is demonstrated, not when it is written down.</p>
+<p>Six tiers, always in the same order. A tier is reached when its exit condition is verified on evidence, not merely stated.</p>
 
 <div class="table-scroll">
 <table class="fit">
@@ -66,7 +66,7 @@ sources: offer definition of 17 November 2026; first engagements to come, no cli
 
 <p>The plan always targets the next tier, never two at once: you cannot control what you cannot yet see. The same scale applies to every scope, which makes two plans comparable.</p>
 
-<p>The free self-assessment gives a first reading, based on your answers. The week establishes the demonstrated tier, on evidence.</p>
+<p>The free self-assessment gives a first reading, based on your answers. It uses its own scale: its result is not a tier. The week establishes the demonstrated tier, on evidence.</p>
 
 ## The week
 
@@ -95,7 +95,7 @@ sources: offer definition of 17 November 2026; first engagements to come, no cli
   <tbody>
     <tr><td>Stop there</td><td>The documents are yours. The plan is carried out in-house or with your integrator.</td></tr>
     <tr><td>Move to the next tier</td><td>Take this scope from the demonstrated tier to the next one, with an exit condition written in advance. Duration, effort and price are set at the readout. At the end: what you can state before a committee or an auditor, and what you cannot yet.</td></tr>
-    <tr><td>Open another scope</td><td>The same week, on another decision, read on the same scale.</td></tr>
+    <tr><td>Open another scope</td><td>Another week, on another decision, read on the same scale.</td></tr>
   </tbody>
 </table>
 </div>

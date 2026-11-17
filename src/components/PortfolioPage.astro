@@ -97,7 +97,7 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
           <ul class="pf-rows">{group.items.map(d=><li class="pf-row pf-demo-card"><div><h4>{d.title}</h4><p>{d.name}. {d.text}</p><small>{d.meta}</small></div><a class="pf-row-action" href={d.href}>{d.label}{external(d.href)&&<span aria-hidden="true"> ↗</span>}</a></li>)}</ul>
         </section>)}
       </section>
-      <p class="pf-foundations">{fr?'Pour examiner votre propre périmètre, et non un scénario :':'To examine your own scope rather than a scenario:'} <a href={url(fr?'/offre/':'/en/offer/')}>{fr?'voir l’offre Leap Readiness':'see the Leap Readiness offer'}</a>.</p>
+      <p class="pf-foundations">{fr?'Pour examiner votre propre périmètre, et non un scénario :':'To examine your own scope rather than a scenario:'} <a href={cardHref('diagnostic')}>{fr?'voir l’offre Leap Readiness':'see the Leap Readiness offer'}</a>.</p>
     </>}
   </> : entry ? <>
     {page==='xray'&&<section id="explorer" class="pf-xray-explore" aria-labelledby="xray-explore-title">

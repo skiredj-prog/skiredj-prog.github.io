@@ -48,7 +48,7 @@ sources: définition de l’offre du 17 novembre 2026 ; premières missions à v
 
 ## Votre palier de maturité
 
-<p>Six paliers, toujours dans le même ordre. Un palier est atteint quand sa condition de sortie est démontrée, pas quand elle est écrite.</p>
+<p>Six paliers, toujours dans le même ordre. Un palier est atteint quand sa condition de sortie est vérifiée sur pièces, pas seulement annoncée.</p>
 
 <div class="table-scroll">
 <table class="fit">
@@ -66,7 +66,7 @@ sources: définition de l’offre du 17 novembre 2026 ; premières missions à v
 
 <p>Le plan vise toujours le palier suivant, jamais deux d’un coup : on ne contrôle pas ce qu’on ne voit pas encore. La même échelle sert pour tous les périmètres, ce qui rend deux plans comparables.</p>
 
-<p>L’auto-évaluation gratuite donne une première lecture, sur vos réponses. La semaine établit le palier démontré, sur pièces.</p>
+<p>L’auto-évaluation gratuite donne une première lecture, sur vos réponses. Elle utilise sa propre échelle : son résultat n’est pas un palier. La semaine établit le palier démontré, sur pièces.</p>
 
 ## La semaine
 
@@ -95,7 +95,7 @@ sources: définition de l’offre du 17 novembre 2026 ; premières missions à v
   <tbody>
     <tr><td>S’arrêter là</td><td>Les documents sont à vous. Le plan s’exécute en interne ou avec votre intégrateur.</td></tr>
     <tr><td>Passer au palier suivant</td><td>Amener ce périmètre du palier démontré au suivant, avec une condition de sortie écrite d’avance. Durée, charge et prix sont chiffrés à la restitution. À la sortie : ce que vous pouvez affirmer devant un comité ou un auditeur, et ce que vous ne pouvez pas encore.</td></tr>
-    <tr><td>Ouvrir un autre périmètre</td><td>La même semaine, sur une autre décision, lue sur la même échelle.</td></tr>
+    <tr><td>Ouvrir un autre périmètre</td><td>Une autre semaine, sur une autre décision, lue sur la même échelle.</td></tr>
   </tbody>
 </table>
 </div>

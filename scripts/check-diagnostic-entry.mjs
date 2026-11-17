@@ -38,7 +38,7 @@ for(const c of cases){
   for(const t of c.tiers) assert(offer.includes(t),c.locale+': maturity tier missing: '+t);
   assert(offer.includes(c.limits),c.locale+': limits of the offer missing');
   assert(offer.includes('Enterprise Leap'),c.locale+': programme missing from the next steps');
-  assert(!/déduit|deducted|forfeit|remboursé|refund/i.test(offer),c.locale+': commercial conditions belong in the contract, not on the page');
+  assert(!/dédui|déduction|deduct|forfeit|rembours|refund|paiement conditionnel|conditional payment|payé à la réception|paid on delivery/i.test(offer),c.locale+': commercial conditions belong in the contract, not on the page');
   assert(!offer.includes('Production-ready'),c.locale+': unjustified production claim');
   assert(offer.includes(c.other),c.locale+': opposite-language alternate missing');
   assert(offer.includes('<link rel="canonical"'),c.locale+': canonical tag missing');
