@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { processRoles, type ProcessRolesLocale } from '../data/processRoles';
 import { url } from '../data/site';
+import { profilePath } from '../data/portfolio';
 interface Props { locale: ProcessRolesLocale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
@@ -12,7 +13,7 @@ const copy = fr ? {
 };
 const data = processRoles[locale];
 const stageHref = (id:string) => `#${id}`;
-const productHref = (id:string) => url(fr?`/portfolio/${id}/`:`/en/portfolio/${id}/`);
+const productHref = (id:string) => url(profilePath(fr?'fr':'en', id));
 ---
 <Base locale={locale} slug={fr?'processus-et-roles':'processus-et-roles'} title={copy.title} description={copy.description} kicker={copy.kicker} lede={copy.lede} sources={fr?'Spécification de navigation Processus & rôles v1.0 · labels canoniques, périmètre organisationnel et liens vers le portefeuille public.':'Process & Roles navigation specification v1.0 · canonical labels, organizational scope and links to the public portfolio.'}>
   <div class="pr-root">

@@ -1,11 +1,11 @@
 ---
 import '../styles/product-matrix.css';
-import { portfolio, hubStatus, type PortfolioLocale } from '../data/portfolio';
+import { portfolio, hubStatus, profilePath, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
 interface Props { locale: PortfolioLocale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
-const href = (id: string) => url((fr ? '/portfolio/' : '/en/portfolio/') + id + '/');
+const href = (id: string) => url(profilePath(locale, id));
 const cells = [
   {
     title: fr ? 'Avant de laisser agir · comprendre' : 'Before AI acts · understand',

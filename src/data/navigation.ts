@@ -61,7 +61,7 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
       groups: [
         {
           label: "Disponible aujourd’hui", links: [
-            { slug: "portfolio/diagnostic", href: "/portfolio/diagnostic/", label: "Diagnostic accompagné", hint: "Quand il faut décider, savoir sur quoi s’appuyer." },
+            { slug: "offre", href: "/offre/", label: "Leap Readiness · l’offre", hint: "Une semaine, 5 000 EUR : votre palier démontré et le plan." },
             { slug: "portfolio/gov", href: "/portfolio/gov/", label: "TENIR-Gov", hint: "Avant qu’un agent agisse, examiner ce qui l’y autorise." },
             { slug: "portfolio/conformance", href: "/portfolio/conformance/", label: "REG Conformance", hint: "Des tests reproductibles sur un profil borné." },
           ],
@@ -166,7 +166,7 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
       groups: [
         {
           label: "Available today", links: [
-            { slug: "portfolio/diagnostic", href: "/en/portfolio/diagnostic/", label: "Guided diagnostic", hint: "When a decision is needed, know what you can rely on." },
+            { slug: "offer", href: "/en/offer/", label: "Leap Readiness · the offer", hint: "One week, EUR 5,000: your demonstrated tier and the plan." },
             { slug: "portfolio/gov", href: "/en/portfolio/gov/", label: "TENIR-Gov", hint: "Before an agent acts, examine what authorizes it." },
             { slug: "portfolio/conformance", href: "/en/portfolio/conformance/", label: "REG Conformance", hint: "Reproducible tests on a bounded profile." },
           ],
@@ -266,7 +266,6 @@ const sectionBySlug: Record<string, Section> = {
   souverainete: "comprendre", sovereignty: "comprendre",
   // Produits: offers, services and how an engagement runs.
   offre: "produits", offer: "produits",
-  "diagnostic-execution": "produits",
   "produits-et-services": "produits", "products-and-services": "produits",
   "processus-et-roles": "produits",
   "parcours/activite": "produits", "start/business": "produits",
@@ -404,9 +403,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
     {
       id: "produits", label: "Produits", links: [
         { slug: "portfolio/products", href: "/portfolio/products/", label: "Tous les produits" },
-        { slug: "portfolio/diagnostic", href: "/portfolio/diagnostic/", label: "Diagnostic accompagné" },
-        { slug: "diagnostic-execution", href: "/diagnostic-execution/", label: "Diagnostic d’exécution" },
-        { slug: "offre", href: "/offre/", label: "Un accompagnement" },
+        { slug: "offre", href: "/offre/", label: "Leap Readiness · l’offre" },
         { slug: "portfolio/gov", href: "/portfolio/gov/", label: "TENIR-Gov" },
         { slug: "portfolio/conformance", href: "/portfolio/conformance/", label: "REG Conformance" },
         { slug: "portfolio/prevent", href: "/portfolio/prevent/", label: "REG Prevent" },
@@ -474,9 +471,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
     {
       id: "produits", label: "Products", links: [
         { slug: "portfolio/products", href: "/en/portfolio/products/", label: "All products" },
-        { slug: "portfolio/diagnostic", href: "/en/portfolio/diagnostic/", label: "Guided diagnostic" },
-        { slug: "diagnostic-execution", href: "/en/diagnostic-execution/", label: "Execution diagnostic" },
-        { slug: "offer", href: "/en/offer/", label: "Accompanied work" },
+        { slug: "offer", href: "/en/offer/", label: "Leap Readiness · the offer" },
         { slug: "portfolio/gov", href: "/en/portfolio/gov/", label: "TENIR-Gov" },
         { slug: "portfolio/conformance", href: "/en/portfolio/conformance/", label: "REG Conformance" },
         { slug: "portfolio/prevent", href: "/en/portfolio/prevent/", label: "REG Prevent" },

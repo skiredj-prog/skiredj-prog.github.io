@@ -189,7 +189,7 @@
     // Select the most helpful engagement, without turning the self-assessment into a certification.
     let offer;
     if(dims.find(d=>d.id==='purpose').level==='weak'||dims.find(d=>d.id==='accountability').level==='weak'){
-      offer={title:L('Clarifier l’action et qui en répond · Diagnostic guidé','Clarify the action and who answers for it · Guided Diagnostic'),desc:L('Un échange ciblé pour clarifier une action, son résultat attendu et les responsabilités.','A focused engagement to clarify an action, its expected outcome and who owns the decision.'),link:route('portfolio/diagnostic/')};
+      offer={title:L('Savoir où vous en êtes, sur pièces · Leap Readiness','Know where you stand, on evidence · Leap Readiness'),desc:L('En une semaine, sur un périmètre : la carte des écarts, le palier démontré et le plan pour atteindre le suivant.','In one week, on one scope: the gap map, the demonstrated tier and the plan to reach the next one.'),link:route(fr?'offre/':'offer/')};
     }else if(dims.find(d=>d.id==='control').level!=='strong'){
       offer={title:L('Poser les limites avant que l’IA agisse · REG Prevent','Set the limits before AI acts · REG Prevent'),desc:L('Identifier les situations sensibles et les contrôles à préparer avant que l’IA agisse.','Map sensitive situations and the controls to prepare before AI acts.'),link:route('portfolio/prevent/')};
     }else if(dims.find(d=>d.id==='visibility').level!=='strong'||dims.find(d=>d.id==='evidence').level!=='strong'){

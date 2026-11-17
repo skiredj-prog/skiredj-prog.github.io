@@ -2,7 +2,7 @@
 import '../styles/portfolio.css';
 import PortfolioMatrix from './PortfolioMatrix.astro';
 import { portfolioAccess } from '../data/portfolioAccess';
-import { portfolio, portfolioHubs, hubStatus, type PortfolioLocale } from '../data/portfolio';
+import { portfolio, portfolioHubs, hubStatus, profilePath, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
 import { portfolioContactHref } from '../data/contact';
 import { stagesFor } from '../data/processRoles';
@@ -13,7 +13,7 @@ const hub = (portfolioHubs[locale] as Record<string, any>)[page];
 const entry = portfolio[locale][page];
 const publicAccess = portfolioAccess[locale][page];
 const path = (route:string) => url((fr?'/':'/en/') + route + '/');
-const cardHref = (id:string) => path('portfolio/' + id);
+const cardHref = (id:string) => url(profilePath(locale, id));
 const kindName = (kind:string) => ({product:fr?'Produit ou instrument':'Product or instrument',service:'Service',demo:fr?'Démonstration':'Demo',foundation:fr?'Cadre et recherche':'Framework and research'} as Record<string,string>)[kind] ?? kind;
 // Products hub: three readiness tiers. The tier is the only status shown on the hub;
 // engineering detail (gates, pending tests, PR numbers) stays on each profile.
@@ -70,14 +70,14 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
     {page==='products'&&<>
       <PortfolioMatrix locale={locale} />
       <section class="pf-tier pf-tier-available" aria-labelledby="pf-available-title">
-        <header class="pf-tier-head"><h2 id="pf-available-title">{fr?'Ce que vous pouvez obtenir aujourd’hui':'What you can get today'}</h2><p>{fr?'Un accompagnement sur devis et deux logiciels publiés, chacun dans un périmètre précis.':'One guided engagement on quote and two published software releases, each within a precise scope.'}</p></header>
+        <header class="pf-tier-head"><h2 id="pf-available-title">{fr?'Ce que vous pouvez obtenir aujourd’hui':'What you can get today'}</h2><p>{fr?'Une offre à prix fixe, puis deux logiciels publiés, chacun dans un périmètre précis.':'One fixed-price offer, then two published software releases, each within a precise scope.'}</p></header>
         <div class="pf-offer-grid">{available.map((e:any)=>{const access=portfolioAccess[locale][e.id];return <article class="pf-offer">
           <h3><a href={cardHref(e.id)}>{e.tagline}</a></h3>
           <p class="pf-offer-name">{e.title}</p>
           <p class="pf-offer-output">{e.output}</p>
           <p class="pf-offer-status">{shortStatus(e.id)}</p>
           {stagesFor(locale,e.id).length>0&&<p class="pf-when">{whenLabel} {stagesFor(locale,e.id).map((st,i)=><>{i>0&&' · '}<a href={url(stagesPage+'#'+st.id)}>{st.name}</a></>)}</p>}
-          <div class="pf-offer-links"><a href={cardHref(e.id)}>{fr?'Voir la fiche':'View profile'}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}{e.id==='gov'&&<a href={url(fr?'/affirmations/#claim-tg-1':'/en/claims/#claim-tg-1')}>{fr?'Preuves':'Evidence'}</a>}</div>
+          <div class="pf-offer-links"><a href={cardHref(e.id)}>{e.id==='diagnostic'?(fr?'Voir l’offre':'See the offer'):(fr?'Voir la fiche':'View profile')}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}{e.id==='gov'&&<a href={url(fr?'/affirmations/#claim-tg-1':'/en/claims/#claim-tg-1')}>{fr?'Preuves':'Evidence'}</a>}</div>
         </article>;})}</div>
       </section>
       {tiers.map(tier=><section class="pf-tier" aria-labelledby={'pf-tier-'+tier.id}>
@@ -97,7 +97,7 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
           <ul class="pf-rows">{group.items.map(d=><li class="pf-row pf-demo-card"><div><h4>{d.title}</h4><p>{d.name}. {d.text}</p><small>{d.meta}</small></div><a class="pf-row-action" href={d.href}>{d.label}{external(d.href)&&<span aria-hidden="true"> ↗</span>}</a></li>)}</ul>
         </section>)}
       </section>
-      <p class="pf-foundations">{fr?'Pour examiner un flux réel, et non un scénario :':'To examine a real flow rather than a scenario:'} <a href={url(fr?'/diagnostic-execution/':'/en/diagnostic-execution/')}>{fr?'voir le diagnostic des frontières d’exécution':'see the execution-boundary diagnostic'}</a></p>
+      <p class="pf-foundations">{fr?'Pour examiner votre propre périmètre, et non un scénario :':'To examine your own scope rather than a scenario:'} <a href={url(fr?'/offre/':'/en/offer/')}>{fr?'voir l’offre Leap Readiness':'see the Leap Readiness offer'}</a>.</p>
     </>}
   </> : entry ? <>
     {page==='xray'&&<section id="explorer" class="pf-xray-explore" aria-labelledby="xray-explore-title">
