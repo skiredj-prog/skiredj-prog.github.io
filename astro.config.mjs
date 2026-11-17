@@ -12,5 +12,10 @@ export default defineConfig({
   redirects: {
     "/portfolio/services/": `${baseSlash}portfolio/products/#pf-available-title`,
     "/en/portfolio/services/": `${baseSlash}en/portfolio/products/#pf-available-title`,
+    // One offer, one page: the diagnostic pages it replaces point to it.
+    "/portfolio/diagnostic/": `${baseSlash}offre/`,
+    "/en/portfolio/diagnostic/": `${baseSlash}en/offer/`,
+    "/diagnostic-execution/": `${baseSlash}offre/`,
+    "/en/diagnostic-execution/": `${baseSlash}en/offer/`,
   },
 });

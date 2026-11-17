@@ -22,24 +22,26 @@ export interface PortfolioEntry {
   related: string[];
   sources: { label: string; href: string }[];
 }
+/** The offer lives at /offre/ (/en/offer/); every other entry has its portfolio profile. */
+export const profilePath = (locale: PortfolioLocale, id: string) => id === 'diagnostic' ? (locale === 'fr' ? '/offre/' : '/en/offer/') : (locale === 'fr' ? '/portfolio/' : '/en/portfolio/') + id + '/';
 export const portfolioOrder = ['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower','reg-demo'] as const;
 export const portfolio: Record<PortfolioLocale, Record<string, PortfolioEntry>> = {
 fr: {
   diagnostic: {
-    id:'diagnostic',kind:'service',title:'Diagnostic accompagné de gouvernance',
-    tagline:'Quand il faut décider, savoir sur quoi s’appuyer.',
-    status:'Offre proposée · périmètre et devis à convenir',
-    pain:'Une décision attend, mais les règles, les traces et les responsabilités ne racontent pas la même histoire. Quels éléments permettent d’avancer ?',
-    when:'Avant un lancement, lors d’un changement sensible ou après une action d’agent dont le résultat reste incertain.',
-    examines:'Une action, son autorité, ses conditions d’exécution, la preuve disponible et la prochaine décision humaine. Le diagnostic choisit les instruments adaptés : il n’impose pas un parcours unique.',
-    inputs:'Question métier, personne responsable, descriptions du processus, exigences, architecture et traces accessibles selon le périmètre écrit. Aucun accès sensible n’est nécessaire au premier contact.',
-    output:'Fiche sourcée, faits/affirmations distingués, inconnues, points de contrôle prioritaires et restitution humaine.',
-    relationships:'Peut mobiliser REG Prevent, REG Prepare, Discovery, X-Ray ou Translation selon le problème. Un pilote TENIR-Gov est un engagement distinct.',
-    maturity:'Offre commerciale décrite, sur devis après cadrage. Premières missions réelles et résultats clients non publiquement démontrés.',
-    limits:'Ni certification, ni avis juridique, ni contrôle automatique en production, ni garantie d’obtenir une conclusion.',
-    next:'Décrire une action et la décision à prendre ; convenir ensuite d’un périmètre, d’un accès autorisé et d’un livrable.',
-    nextHref:'/contact/',nextLabel:'Décrire la situation',related:['prevent','prepare','xray','gov'],
-    sources:[{label:'Offre actuelle',href:'/offre/'},{label:'Exemple fictif',href:'/offre/exemple/'}]
+    id:'diagnostic',kind:'service',title:'Leap Readiness',
+    tagline:'Savoir où vous en êtes, sur pièces, avant de laisser un agent agir davantage.',
+    status:'L’offre · 5 000 EUR · une semaine · un périmètre',
+    pain:'La direction attend une chose, le système en fait une autre, et personne ne peut dire sur pièces où passe l’écart.',
+    when:'Avant de donner plus d’autonomie à un agent, avant un passage en production, ou quand un comité doit approuver.',
+    examines:'Une décision ou un flux, lu sur sept niveaux : stratégie d’entreprise, ambition IA, organisation, processus, infrastructure, valeur et assurance.',
+    inputs:'Documents, exports et entretiens : cadrage, sponsor, atelier avec les personnes qui font tourner le système. Aucun accès en production.',
+    output:'La carte des écarts avec le palier de maturité démontré, le plan pour atteindre le palier suivant, des projections en trois scénarios et une note de direction d’une page.',
+    relationships:'La méthode est celle de REG (Prevent, Prepare). TENIR-Gov peut être l’un des moyens du plan, à partir du palier 2.',
+    maturity:'Offre définie le 17 novembre 2026. Aucun résultat de mission n’est encore publié.',
+    limits:'Ni certification, ni avis juridique, ni avis de conformité. Aucun accès à la production.',
+    next:'Décrire le périmètre et la décision à prendre ; le cadrage fixe le mode et les pièces.',
+    nextHref:'/contact/',nextLabel:'Décrire votre périmètre',related:['prevent','prepare','gov'],
+    sources:[{label:'L’offre',href:'/offre/'}]
   },
   prevent: {
     id:'prevent',kind:'product',title:'REG Prevent',
@@ -215,11 +217,11 @@ fr: {
     id:'reg-demo',kind:'demo',title:'REG DEMO · Instrument de diagnostic',tagline:'Une action autorisée. Un résultat incertain. Que peut-on réellement établir ?',
     status:'Prototype non officiel v0.1.0 · démo web publiée · fournisseur simulé',
     pain:'Les équipes confondent facilement autorisation, envoi, résultat et preuve. REG DEMO rend ces distinctions manipulables dans un cas borné.',
-    when:'Pour exécuter un diagnostic accompagné, animer un atelier technique ou préparer une restitution à partir d’un incident UNKNOWN.',
+    when:'Pendant une semaine Leap Readiness, pour animer un atelier technique ou préparer une restitution à partir d’un incident UNKNOWN.',
     examines:'Quatre situations : autorisation, blocage, attente et issue inconnue. Le participant suit la décision, les compteurs, la trace et les sources sans déclencher de nouvel envoi.',
     inputs:'Un parcours local, des scénarios fictifs et un dossier de preuves embarqué. Aucun compte, fournisseur ou système de production n’est connecté.',
     output:'Une lecture commune des faits établis, des inconnues et du prochain contrôle à préparer ; le configurateur et les fichiers de preuve servent de supports au diagnostic.',
-    relationships:'Instrument opératoire du Diagnostic accompagné de gouvernance, entre le cadrage et la restitution. Distinct du prototype mobile de délégation et du moteur TENIR-Gov.',
+    relationships:'Instrument de l’offre Leap Readiness, entre le cadrage et la restitution. Distinct du prototype mobile de délégation et du moteur TENIR-Gov.',
     maturity:'Version web hébergée pour consultation et atelier ; kit de consultation hors ligne distinct, non publié. Tests techniques présents ; validation indépendante et sessions utilisateurs restent à organiser.',
     limits:'Ne prouve ni conformité, ni certification, ni protection juridique, ni exécution réelle. Les traces locales ne constituent pas une preuve indépendante de production.',
     next:'Utiliser REG DEMO pendant un diagnostic cadré, puis convertir les inconnues en points de contrôle sourcés.',
@@ -235,7 +237,7 @@ fr: {
     inputs:'Cas simulés et hypothèses explicites ; aucune donnée de production nécessaire.',
     output:'Parcours pédagogique, trace fictive et question à ramener à des sources ou à un pilote.',
     relationships:'Introduit Prevent, Prepare, REG-ARCH ou TENIR-Gov selon le scénario ; la Control Tower en est une expérience distincte.',
-    maturity:'Artefacts de projet en développement et en test ; équivalence des versions publiques et déploiement des trois expériences non établis.',
+    maturity:'Artefacts de projet en développement et en test ; équivalence des versions publiques et déploiement des trois expériences non établis. Le Lifecycle Workbench est visible sur la fiche REG-ARCH, comme démonstration de conception.',
     limits:'Une simulation n’est ni un résultat de production, ni une validation de contrat, ni une certification.',
     next:'Explorer une expérience déjà publiée sur le site, puis choisir un problème réel à examiner.',
     nextHref:'/architecture/demo/',nextLabel:'Ouvrir la démo en six scènes',related:['control-tower','reg-arch','gov','diagnostic'],
@@ -259,19 +261,19 @@ fr: {
 },
 en: {
   diagnostic:{
-    id:'diagnostic',kind:'service',title:'Guided Governance Diagnostic',tagline:'When a decision is needed, know what you can rely on.',
-    status:'Proposed client offer · scoped and quoted',
-    pain:'A decision is waiting, but the rules, records and responsibilities tell different stories. Which findings can help the team move forward?',
-    when:'Before a launch, during a sensitive change or after an agent action with an uncertain outcome.',
-    examines:'One action and its authority, execution boundary, evidence and next human decision. Selects relevant instruments rather than imposing one funnel.',
-    inputs:'Business question, responsible counterpart, process and system context, agreed policies and available traces under written scope. No sensitive access needed for initial contact.',
-    output:'Sourced diagnostic brief, known facts and uncertainties, prioritized checks and human debrief.',
-    relationships:'May draw on REG Prevent, Prepare, Discovery, X-Ray or Translation; TENIR-Gov integration is a separate engagement.',
-    maturity:'Described and available for scoped discussion and quotation; completed customer outcomes have not been publicly demonstrated.',
-    limits:'No certification, legal opinion, production enforcement or guaranteed conclusion.',
-    next:'Describe one action and the decision required; then agree scope, authorized access and deliverables.',
-    nextHref:'/en/contact/',nextLabel:'Describe the situation',related:['prevent','prepare','xray','gov'],
-    sources:[{label:'Existing offer',href:'/en/offer/'},{label:'Fictional example',href:'/en/offer/example/'}]
+    id:'diagnostic',kind:'service',title:'Leap Readiness',tagline:'Know where you stand, on evidence, before you let an agent do more.',
+    status:'The offer · EUR 5,000 · one week · one scope',
+    pain:'Leadership expects one thing, the system does another, and no one can show on evidence where the gap lies.',
+    when:'Before giving an agent more autonomy, before going to production, or when a committee has to approve.',
+    examines:'One decision or one flow, read across seven levels: business strategy, AI ambition, organization, process, infrastructure, value and assurance.',
+    inputs:'Documents, exports and interviews: scoping, sponsor, a workshop with the people who run the system. No production access.',
+    output:'The gap map with the demonstrated maturity tier, the plan to reach the next tier, projections in three scenarios and a one-page leadership note.',
+    relationships:'The method is REG (Prevent, Prepare). TENIR-Gov can be one of the means in the plan, from tier 2 onwards.',
+    maturity:'Offer defined on 17 November 2026. No engagement results are published yet.',
+    limits:'Not a certification, legal opinion or compliance opinion. No production access.',
+    next:'Describe the scope and the decision to be made; scoping sets the mode and the documents.',
+    nextHref:'/en/contact/',nextLabel:'Describe your scope',related:['prevent','prepare','gov'],
+    sources:[{label:'The offer',href:'/en/offer/'}]
   },
   prevent:{
     id:'prevent',kind:'product',title:'REG Prevent',tagline:'A requirement to apply. What needs to be checked?',
@@ -445,16 +447,16 @@ en: {
     id:'reg-demo',kind:'demo',title:'REG DEMO · Diagnostic instrument',tagline:'An authorised action. An uncertain outcome. What can actually be established?',
     status:'Unofficial v0.1.0 prototype · public web demo · simulated provider',
     pain:'Teams can easily conflate authorization, dispatch, outcome and evidence. REG DEMO makes those distinctions inspectable in a bounded case.',
-    when:'To run a guided diagnostic, facilitate a technical workshop or prepare a readout from an UNKNOWN incident.',
+    when:'During a Leap Readiness week, to facilitate a technical workshop or prepare a readout from an UNKNOWN incident.',
     examines:'Four situations: authorization, block, hold and unknown outcome. Participants follow the decision, counters, trace and sources without triggering a new dispatch.',
     inputs:'A local walkthrough, fictional scenarios and an embedded evidence dossier. No account, provider or production system is connected.',
     output:'A shared reading of established facts, unknowns and the next control to prepare; the configurator and evidence files support the diagnostic.',
-    relationships:'Operating instrument for the Guided Governance Diagnostic, between scoping and readout. Distinct from the mobile delegation prototype and the TENIR-Gov engine.',
+    relationships:'Instrument of the Leap Readiness offer, between scoping and readout. Distinct from the mobile delegation prototype and the TENIR-Gov engine.',
     maturity:'Hosted web version for consultation and workshops; the separate offline consultation kit is not released. Technical tests exist; independent validation and user sessions remain open.',
     limits:'It proves neither compliance, certification, legal protection nor real execution. Local traces are not independent production evidence.',
     next:'Use REG DEMO during a scoped diagnostic, then turn unknowns into sourced control points.',
     nextHref:'https://tenirlabs.cc/tenir-reg-demo/index.html',nextLabel:'Open REG DEMO online',related:['diagnostic','experiences','reg-arch','technical'],
-    sources:[{label:'Guided diagnostic offer',href:'/en/offer/'},{label:'REG DEMO internal reference',href:'https://github.com/skiredj-prog/tenir-reg-demo'}]
+    sources:[{label:'Leap Readiness offer',href:'/en/offer/'},{label:'REG DEMO internal reference',href:'https://github.com/skiredj-prog/tenir-reg-demo'}]
   },
   experiences:{
     id:'experiences',kind:'demo',title:'TENIR Labs Experiences',tagline:'Watch a situation unfold, then explore what changes.',
@@ -465,7 +467,7 @@ en: {
     inputs:'Explicit, generally fictional scenario assumptions; no production integration.',
     output:'Educational walkthrough, synthetic trace and a focused question to verify elsewhere.',
     relationships:'Illustrates Prevent, Prepare, REG-ARCH or TENIR-Gov; Control Tower is a distinct illustrative experience.',
-    maturity:'Project artifacts in development/testing; public-source revisions and deployment of the three named experiences unverified.',
+    maturity:'Project artifacts in development/testing; public-source revisions and deployment of the three named experiences unverified. The Lifecycle Workbench is visible on the REG-ARCH profile, as a design demonstration.',
     limits:'No operating-system result, effective conformance demonstration or certification follows from a simulation.',
     next:'Explore an existing public illustrative demo, then inspect source or discuss a real bounded case.',
     nextHref:'/en/architecture/demo/',nextLabel:'Open the six-scene demo',related:['control-tower','reg-arch','gov','diagnostic'],
@@ -497,12 +499,12 @@ export const hubStatus = (status: string) => status.split(' · ').filter((part) 
 export const portfolioHubs = {
  fr:{
   products:{title:'Des réponses pour des situations différentes',kicker:'TENIR Labs · Produits',description:'Des offres pour comprendre ce qui se passe, préparer une décision ou vérifier ce qui a vraiment été fait.',lede:'Un usage IA apparaît, une règle change ou une action devient incertaine : commencez par la situation qui ressemble à la vôtre.',opening:'Commencez par ce qui vous arrive.',intro:'Chaque offre est présentée simplement : le problème auquel elle répond, ce qu’elle produit et ce qu’elle ne prétend pas faire. La matrice 2×2 en bas de page sert de résumé.',keys:['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'],linkLabel:'Voir la fiche',spotlight:'Vous n’avez pas besoin de connaître le bon nom. Décrivez d’abord ce qui s’est passé ou ce que vous préparez.'},
-  services:{title:'Services et accompagnement',kicker:'TENIR Labs · Services',description:'Comprendre le diagnostic, ses livrables et la façon de commencer.',lede:'Une situation à comprendre ensemble, des constats reliés à leurs sources et une prochaine décision à préparer.',opening:'Faisons le point sur une situation.',intro:'Le diagnostic accompagné part de la question et des éléments disponibles. Un premier échange permet de convenir du périmètre, des livrables et du devis.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'Voir la démarche',spotlight:'Quelques lignes suffisent pour le premier contact. Les accès et les documents utiles se conviennent ensuite.'},
+  services:{title:'Services et accompagnement',kicker:'TENIR Labs · Services',description:'Comprendre l’offre Leap Readiness, ses documents et la façon de commencer.',lede:'Une situation à comprendre ensemble, des constats reliés à leurs sources et une prochaine décision à préparer.',opening:'Faisons le point sur une situation.',intro:'Leap Readiness part d’une décision et des éléments disponibles : une semaine, 5 000 EUR. Le cadrage fixe le périmètre, le mode et les pièces à réunir.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'Voir la démarche',spotlight:'Quelques lignes suffisent pour le premier contact. Les accès et les documents utiles se conviennent ensuite.'},
   demos:{title:'Expériences et démonstrations',kicker:'TENIR Labs · Expériences',description:'Explorer des scénarios simulés, à son rythme.',lede:'Suivre une action, changer de point de vue et voir ce qui reste à vérifier.',opening:'Que se passe-t-il quand le scénario change ?',intro:'Suivez le replay bancaire fictif, puis ouvrez REG DEMO pour examiner la configuration et les preuves. La Control Tower propose une exploration générale ; chaque simulation garde ses limites propres.',keys:['control-tower','experiences','reg-demo','gov','reg-arch'],linkLabel:'Voir la fiche',spotlight:'La simulation utilise des données fictives. Vous choisissez quand commencer ; aucun système réel n’est connecté.'}
  },
  en:{
   products:{title:'Answers for different situations',kicker:'TENIR Labs · Products',description:'Offers to understand what is happening, prepare a decision or check what was actually done.',lede:'An AI use appears, a rule changes or an action becomes uncertain: start with the situation that looks like yours.',opening:'Start with what is happening.',intro:'Each offer is presented plainly: the problem it addresses, what it produces and what it does not claim. The 2×2 matrix below is only a summary.',keys:['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical'],linkLabel:'Read the profile',spotlight:'You do not need to know the right name. Start by describing what happened or what you are preparing.'},
-  services:{title:'Services & guided work',kicker:'TENIR Labs · Services',description:'Understand the diagnostic, its deliverables and how to begin.',lede:'Examine a situation together, connect findings to their sources and prepare the next decision.',opening:'Let’s make sense of a situation.',intro:'The Guided Governance Diagnostic starts with the question and available records. An initial conversation helps agree on scope, deliverables and a quote.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'See the approach',spotlight:'A few lines are enough for an initial conversation. Access and useful documents are agreed afterwards.'},
+  services:{title:'Services & guided work',kicker:'TENIR Labs · Services',description:'Understand the Leap Readiness offer, its documents and how to begin.',lede:'Examine a situation together, connect findings to their sources and prepare the next decision.',opening:'Let’s make sense of a situation.',intro:'Leap Readiness starts from one decision and the available records: one week, EUR 5,000. Scoping sets the scope, the mode and the documents to gather.',keys:['diagnostic','prevent','prepare','gov'],linkLabel:'See the approach',spotlight:'A few lines are enough for an initial conversation. Access and useful documents are agreed afterwards.'},
   demos:{title:'Interactive experiences',kicker:'TENIR Labs · Experiences',description:'Explore simulated scenarios at your own pace.',lede:'Follow an action, change perspective and see what still needs verification.',opening:'What happens when the scenario changes?',intro:'Follow the fictional banking replay, then open REG DEMO to inspect configuration and evidence. Control Tower offers a general exploration; each simulation keeps its own limits.',keys:['control-tower','experiences','reg-demo','gov','reg-arch'],linkLabel:'Read the profile',spotlight:'The simulation uses fictional data. You choose when to start; no live system is connected.'}
  }
 } as const;

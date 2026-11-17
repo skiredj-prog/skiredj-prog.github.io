@@ -228,7 +228,6 @@ const frToEn: Record<string, string> = {
   rejouer: "/en/replay/",
   "demonstrations/journal": "/en/demos/log/",
   offre: "/en/offer/",
-  "diagnostic-execution": "/en/diagnostic-execution/",
   "offre/exemple": "/en/offer/example/",
   souverainete: "/en/sovereignty/",
   "produits-et-services": "/en/products-and-services/",

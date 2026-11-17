@@ -1,6 +1,7 @@
 ---
 // One header for every page: four sections, the free report as permanent call to action,
-// language and theme controls. The active section is underlined.
+// language and theme controls. Each section opens a menu: the visitor question it answers,
+// its landing page, then its destinations grouped with a one-line hint. The active section is underlined.
 import { copy, url, type Locale } from '../data/site';
 import { primaryNav, reportLink, sectionOf } from '../data/navigation';
 interface Props { locale: Locale; slug: string; here: string; other: string; }
@@ -11,14 +12,40 @@ const section = sectionOf(slug);
 const report = reportLink[locale];
 const onReport = slug === report.slug;
 const missing = slug === '404';
-const current = (itemSlug: string, itemSection: string) => itemSlug === slug ? 'page' : itemSection === section ? 'true' : undefined;
+const page = (itemSlug: string) => itemSlug === slug ? 'page' : undefined;
+// A hyphenated word stays whole, so a line never breaks inside « parle-t-on » or « TENIR-Gov ».
+const parts = (text: string) => text.split(' ').map((word, index) => ({ word, glue: index > 0 ? ' ' : '', whole: word.includes('-') }));
 ---
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href={url(fr ? '/' : '/en/')} aria-current={home ? 'page' : undefined}><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="1.2"></rect><path d="M10 8h12M16 8v16M10 24h12" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg><span class="brand-name">TENIR <span class="brand-labs">LABS</span></span><span class="visually-hidden">{fr ? ' — accueil' : ' — home'}</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span>Menu</span><span class="menu-symbol" aria-hidden="true">☰</span></button>
     <nav class="site-nav" id="main-navigation" aria-label={t.nav}>
-      {primaryNav[locale].map(item => <a href={url(item.href)} aria-current={current(item.slug, item.section)}>{item.label}</a>)}
+      <ul class="nav-list">
+        {primaryNav[locale].map(item => (
+          <li class="nav-item" data-nav-item>
+            <button class="nav-trigger" type="button" aria-expanded="false" aria-controls={`nav-panel-${item.section}`} aria-current={item.section === section ? 'true' : undefined} data-nav-trigger><span class="nav-trigger-label">{item.label}</span><span class="nav-caret" aria-hidden="true"></span></button>
+            <div class="nav-panel" id={`nav-panel-${item.section}`}>
+              <div class="nav-panel-inner">
+                <div class="nav-lead">
+                  <p class="nav-question">{parts(item.question).map(part => <>{part.glue}{part.whole ? <span class="nav-whole">{part.word}</span> : part.word}</>)}</p>
+                  <a class="nav-overview" href={url(item.href)} aria-current={page(item.slug)}>{item.overview}&nbsp;<span aria-hidden="true">→</span></a>
+                </div>
+                <div class="nav-groups" data-cols={item.groups.length}>
+                  {item.groups.map((group, index) => (
+                    <div class="nav-group">
+                      <p class="nav-group-label" id={`nav-group-${item.section}-${index}`}>{group.label}</p>
+                      <ul aria-labelledby={`nav-group-${item.section}-${index}`}>
+                        {group.links.map((link, linkIndex) => <li><a href={url(link.href)} aria-current={page(link.slug)} aria-labelledby={`nav-link-${item.section}-${index}-${linkIndex}`} aria-describedby={`nav-hint-${item.section}-${index}-${linkIndex}`}><span class="nav-link-label" id={`nav-link-${item.section}-${index}-${linkIndex}`}>{parts(link.label).map(part => <>{part.glue}{part.whole ? <span class="nav-whole">{part.word}</span> : part.word}</>)}{link.external && <span aria-hidden="true"> ↗</span>}</span><span class="nav-link-hint" id={`nav-hint-${item.section}-${index}-${linkIndex}`}>{parts(link.hint).map(part => <>{part.glue}{part.whole ? <span class="nav-whole">{part.word}</span> : part.word}</>)}</span></a></li>)}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
       <div class="nav-mobile-report"><a class="btn btn-primary nav-mobile-cta" href={url(report.href)+"?start=1"} aria-current={onReport ? 'page' : undefined}>{report.label}</a></div>
       <div class="nav-mobile-tools"><a class="nav-mobile-lang" href={url(other)} lang={fr ? 'en' : 'fr'}>{fr ? 'Read in English' : 'Lire en français'}</a></div>
     </nav>

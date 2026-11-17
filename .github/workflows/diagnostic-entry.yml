@@ -1,13 +1,15 @@
-name: Commercial diagnostic front-door — bilingual and scope QA
+name: Commercial offer front-door — bilingual and scope QA
 
 on:
   pull_request:
     paths:
-      - 'src/content/fr/diagnostic-execution.md'
-      - 'src/content/en/diagnostic-execution.md'
       - 'src/content/fr/offre.md'
       - 'src/content/en/offer.md'
-      - 'src/components/Home.astro'
+      - 'astro.config.mjs'
+      - 'scripts/generate-sitemap.mjs'
+      - 'src/components/SiteHeader.astro'
+      - 'src/data/navigation.ts'
+      - 'src/components/MarketingHome.astro'
       - 'src/styles/experience.css'
       - 'src/data/site.ts'
       - 'src/layouts/Base.astro'

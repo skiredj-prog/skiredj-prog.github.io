@@ -34,8 +34,6 @@ const path=(f:string,e:string=f)=>url(fr?`/${f}/`:`/en/${e}/`);
 const selectedJourney=journeys[locale].find(j=>slug===(fr?`parcours/${j.slug}`:`start/${j.slug}`));
 const readerContact=home?path('parcours-ia','ai-readiness'):isPortfolio?portfolioContactHref(locale,slug.split('/')[1]):path('contact')+(selectedJourney?`?situation=${selectedJourney.id}`:'');
 const pageKinds: Record<string, string> = {
-  offre: fr?'Service':'Service', offer:'Service',
-  'diagnostic-execution': fr?'Diagnostic spécialisé':'Specialized diagnostic',
   'credibilite': fr?'Parcours Crédibilité':'Credibility Journey', 'credibility': fr?'Parcours Crédibilité':'Credibility Journey',
   'offre/exemple': fr?'Exemple simulé':'Simulated example', 'offer/example':'Simulated example',
   'architecture/demo': fr?'Démonstration':'Demo', 'architecture/interactive': fr?'Démonstration interactive':'Interactive demo',
@@ -84,7 +82,7 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
         <div class:list={['doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page',isPathway&&'pathway-doc']}>
           <article>
             {slug==='contact'&&<ContactBrief locale={locale}/>}
-            {(slug==='offre'||slug==='offer'||slug==='produits-et-services'||slug==='products-and-services')&&<div class="offer-summary"><div><span class="role">{fr?'Le point de départ':'The starting point'}</span><strong>{fr?'Un cas précis. Une fiche sourcée. Une suite à décider.':'One precise case. A sourced sheet. A next step to decide.'}</strong><p>{fr?'Cadrage proposé : 30 min · forfait sur devis · format à confirmer':'Proposed scoping: 30 min · fixed quote · format to confirm'}</p></div><a class="btn btn-primary" href={path('contact')}>{fr?'Préparer le premier échange':'Prepare the first conversation'} →</a></div>}
+            {(slug==='produits-et-services'||slug==='products-and-services')&&<div class="offer-summary"><div><span class="role">{fr?'Le point de départ':'The starting point'}</span><strong>{fr?'Leap Readiness : une semaine, un périmètre, votre palier démontré.':'Leap Readiness: one week, one scope, your demonstrated tier.'}</strong><p>{fr?'5 000 EUR · cadrage de 30 min · aucun accès en production':'EUR 5,000 · 30-min scoping · no production access'}</p></div><a class="btn btn-primary" href={path('offre','offer')}>{fr?'Voir l’offre':'See the offer'} →</a></div>}
             {slug!=='contact'&&!isPathway&&<details class="mobile-toc" data-mobile-toc hidden><summary>{t.toc}</summary><ol></ol></details>}
             {isBusiness||isPortfolio||isPathway?<slot />:slug==='contact'?<details class="contact-references"><summary>{fr?'Références de l’auteur et citations':'Author references and citations'}</summary><div class="prose"><slot /></div></details>:<div class="prose"><slot /></div>}
           </article>

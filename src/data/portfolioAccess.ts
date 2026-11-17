@@ -4,7 +4,6 @@
 export type PortfolioAccess = { href: string; label: string; scope: string; kind: 'demo'|'documentation'|'release'|'example' };
 export const portfolioAccess: Record<'fr'|'en', Record<string, PortfolioAccess>> = {
   fr: {
-    diagnostic:{href:'/offre/exemple/',label:'Lire un exemple fictif',scope:'Exemple rédigé, pas un dossier client',kind:'example'},
     prevent:{href:'/publications/reg-v0.1/',label:'Lire le cadrage v0.1',scope:'Working Draft, pas un pilote déployé',kind:'documentation'},
     prepare:{href:'/publications/reg-v0.1/',label:'Lire le cadrage v0.1',scope:'Working Draft, pas un audit réel',kind:'documentation'},
     xray:{href:'/portfolio/xray/#explorer',label:'Explorer trois exemples',scope:'Exemples éditoriaux, pas moteur X-Ray v0.2',kind:'example'},
@@ -18,7 +17,6 @@ export const portfolioAccess: Record<'fr'|'en', Record<string, PortfolioAccess>>
     'reg-demo':{href:'https://tenirlabs.cc/tenir-reg-demo/index.html',label:'Ouvrir REG DEMO en ligne',scope:'Quatre scénarios fixes et preuves synthétiques ; aucun runtime ni fournisseur réel',kind:'demo'},
   },
   en: {
-    diagnostic:{href:'/en/offer/example/',label:'Read fictional example',scope:'Written illustration, not customer evidence',kind:'example'},
     prevent:{href:'/en/publications/reg-v0.1/',label:'Read v0.1 working draft',scope:'Working Draft, not a deployed pilot',kind:'documentation'},
     prepare:{href:'/en/publications/reg-v0.1/',label:'Read v0.1 working draft',scope:'Working Draft, not an actual audit',kind:'documentation'},
     xray:{href:'/en/portfolio/xray/#explorer',label:'Explore three examples',scope:'Editorial examples, not the X-Ray v0.2 engine',kind:'example'},

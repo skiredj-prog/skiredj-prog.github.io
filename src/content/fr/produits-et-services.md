@@ -1,7 +1,7 @@
 ---
 title: Approche & Méthode
 kicker: TENIR Labs · comment nous travaillons
-description: "Comment TENIR Labs travaille, de la découverte au pilote : diagnostic accompagné, méthodes Prevent et Prepare, pilote d’observation, et ce que TENIR, REG, REG+ et TENIR-Gov ne prétendent pas faire."
+description: "Comment TENIR Labs travaille, de la découverte au pilote : l’offre Leap Readiness, méthodes Prevent et Prepare, pilote d’observation, et ce que TENIR, REG, REG+ et TENIR-Gov ne prétendent pas faire."
 lede: "De la découverte au pilote, chaque étape produit une pièce lisible et une décision à prendre : continuer, ajuster ou s’arrêter. Le point de départ reste une situation précise."
 sources: REG v0.1 Working Draft — 21 octobre 2026
 ---
@@ -86,26 +86,24 @@ Chaque étape produit une pièce que vous pouvez relire et une décision à pren
 | Étape | Ce qui se passe | Ce que vous obtenez |
 | --- | --- | --- |
 | **1. Découverte** | Un premier échange, ou le [rapport gratuit](/parcours-ia/?start=1) en dix questions, pour choisir une situation précise. | Une question cadrée et un point de départ indicatif, pas une certification. |
-| **2. Diagnostic accompagné** | L'examen, sur pièces, d'une exigence, d'un contrôle ou d'un usage de l'IA. | Une synthèse sourcée : constats, inconnues, lacunes et plan d'actions priorisé. |
+| **2. [Leap Readiness](/offre/)** | Une semaine sur un périmètre : ce que la direction attend, face à ce que le système fait réellement. | La carte des écarts, le palier de maturité démontré et le plan pour atteindre le suivant. |
 | **3. Prevent / Prepare** | Deux méthodes : des exigences vers des contrôles candidats, des systèmes vers des pièces vérifiables. | La matrice des écarts et les vérifications à mener. |
 | **4. Pilote d'observation** | Étudié seulement si une intégration est justifiée et autorisée ; il ne bloque aucune opération. | Des décisions et des traces à examiner dans un périmètre déclaré. |
 | **5. ENFORCE** | Étape ultérieure, après validation des invariants, des modes de défaillance et des garanties. | Un contrôle bloquant dans un périmètre défini ; jamais automatique. |
 
-## Commencer par un diagnostic accompagné
+## Commencer par Leap Readiness
 
-Vous portez une question métier, de conformité ou de conception. Le point de départ est une situation précise : comprendre ce qu'une exigence implique, retrouver les éléments qui soutiennent un contrôle, ou éclaircir un usage de l'IA dans un processus.
+Vous portez une décision : donner plus d'autonomie à un agent, passer en production, faire approuver un projet. Le point de départ est un périmètre précis : une décision ou un flux.
 
-**La restitution, selon le périmètre convenu :** une synthèse sourcée des constats, des inconnues et des lacunes, accompagnée d'un plan d'actions priorisé. Elle permet de préparer une décision et de retrouver ce qui la soutient.
+**En une semaine, pour 5 000 EUR :** la carte des écarts entre ce que la direction attend et ce que le système fait réellement, le palier de maturité démontré, le plan pour atteindre le palier suivant, des projections en trois scénarios et une note de direction d'une page.
 
 | Vous apportez | Nous examinons ensemble | Vous recevez |
 | --- | --- | --- |
-| Une règle ou un processus, avec les documents et éléments disponibles | Les exigences, les contrôles annoncés, les éléments vérifiables et les écarts | Une synthèse avec ses sources et ses limites, puis les prochaines vérifications ou décisions proposées |
+| Le périmètre, les documents, les exports disponibles et les personnes qui font tourner le système | Ce que la direction attend, ce qui est écrit, ce que le système fait et ce que personne n'a admis | Quatre documents sur votre périmètre, utilisables tels quels |
 
-Le diagnostic est un **accompagnement à cadrer**, pas un logiciel à installer. Un premier échange à distance sert à choisir la question. Une proposition précise ensuite le périmètre, les accès autorisés, la confidentialité, les livrables et les conditions commerciales. Aucun accès technique ou document sensible n'est requis pour prendre contact.
+C'est un **travail sur pièces**, pas un logiciel à installer : documents, exports et entretiens, sans accès en production. Aucun document sensible n'est requis pour prendre contact.
 
-[Discuter d'un diagnostic accompagné →](/contact/)
-
-La page de contact aide à préparer votre message ; vous le relisez avant de l'envoyer depuis votre messagerie.
+[Voir l'offre Leap Readiness →](/offre/)
 
 ## Cinq rôles distincts, une même question : que peut-on autoriser et prouver ?
 
@@ -154,12 +152,12 @@ Cette architecture est **une vue logique cible**, non une preuve d'intégration 
 - [Les accompagnements](/portfolio/products/#pf-available-title) — périmètres, déroulement et livrables.
 - [Les démonstrations](/portfolio/demos/) — ce que vous pouvez explorer et ce que chaque exemple permet d'observer.
 
-## Après le diagnostic : des étapes facultatives
+## Après la semaine : des étapes facultatives
 
 Si la question concerne l'IA, l'examen peut porter sur sa présence réelle dans les outils, les données traitées, les décisions ou actions influencées et les protections disponibles. Un usage déclaré et un usage observé restent distingués.
 
 Un pilote d'observation **non bloquant** peut ensuite être étudié si une intégration est justifiée et autorisée. Il nécessite une analyse des impacts techniques, des données et des responsabilités ; il n'est pas présenté comme sans risque ni comme déjà déployable chez tout client.
 
-La gouvernance bloquante (**ENFORCE**) est une étape ultérieure soumise à validation des invariants, des modes de défaillance et des garanties dans un périmètre défini. Elle n'est ni automatique ni incluse dans le diagnostic.
+La gouvernance bloquante (**ENFORCE**) est une étape ultérieure soumise à validation des invariants, des modes de défaillance et des garanties dans un périmètre défini. Elle n'est ni automatique ni incluse dans Leap Readiness.
 
 **Rien ici n'est une certification.**
