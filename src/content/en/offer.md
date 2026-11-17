@@ -64,7 +64,7 @@ sources: offer definition of 17 November 2026; first engagements to come, no cli
 </table>
 </div>
 
-<p>The plan always targets the next tier, never two at once: you cannot control what you cannot yet see. The same scale applies to every scope, which makes two plans comparable.</p>
+<p>The plan always targets the next tier, never two at once: you cannot control what you cannot yet see. At tier 5 there is no next tier: the plan then covers holding the demonstrated tier. The same scale applies to every scope, which makes two plans comparable.</p>
 
 <p>The free self-assessment gives a first reading, based on your answers. It uses its own scale: its result is not a tier. The week establishes the demonstrated tier, on evidence.</p>
 
