@@ -41,7 +41,7 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
             { slug: "apprendre", href: "/apprendre/", label: "Apprendre à reconnaître", hint: "Cinq distinctions entre promesse et preuve." },
             { slug: "cas", href: "/cas/", label: "Les cas", hint: "Des cas documentés et des scénarios pédagogiques." },
             { slug: "acteurs", href: "/acteurs/", label: "Les acteurs", hint: "Qui contrôle quoi, et qui peut le prouver." },
-            { slug: "magazine", href: "/magazine/", label: "Magazine · N° 01", hint: "Les grands choix du Maroc, expliqués." },
+            { slug: "magazine", href: "/magazine/", label: "Magazine", hint: "Les grands choix, expliqués : Maroc 2030, l’IA au travail." },
           ],
         },
         {
@@ -392,7 +392,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "cas", href: "/cas/", label: "Les cas" },
         { slug: "cas/operation-ambigue", href: "/cas/operation-ambigue/", label: "Opération ambiguë" },
         { slug: "acteurs", href: "/acteurs/", label: "Les acteurs" },
-        { slug: "magazine", href: "/magazine/", label: "Magazine · N° 01" },
+        { slug: "magazine", href: "/magazine/", label: "Magazine" },
         { slug: "parcours/decouvrir", href: "/parcours/decouvrir/", label: "Comprendre TENIR" },
         { slug: "tau-tenir", href: "/tau-tenir/", label: "Introduction TAU / TENIR" },
         { slug: "concepts", href: "/concepts/", label: "Concepts" },
