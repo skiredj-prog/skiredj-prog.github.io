@@ -461,6 +461,8 @@ h1 {
   font-size: 0.95rem;
   min-width: 36rem;
 }
+/* Two-column tables that must read without sideways scrolling on a phone (the offer page). */
+.prose table.fit { min-width: 0; }
 
 .prose th,
 .prose td {
