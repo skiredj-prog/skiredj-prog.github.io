@@ -76,7 +76,9 @@ for(const lang of ['fr','en']){
   // The offer has its own page; the hub links to it, never to a portfolio profile.
   const offerRoute=lang==='fr'?'/offre/':'/en/offer/';
   assert(!matrix.includes(offerRoute),`${lang}: the offer must not sit inside the product grid`);
-  assert(matrixPage.includes(`href="${offerRoute}"`),`${lang}: Products must link to the offer`);
+  // The header menu links to the offer on every page: look in the page body only.
+  const productsBody=matrixPage.slice(matrixPage.indexOf('<main'),matrixPage.indexOf('</main>'));
+  assert(productsBody.includes(`href="${offerRoute}"`),`${lang}: Products must link to the offer`);
   assert(!matrixPage.includes('portfolio/diagnostic/'),`${lang}: Products still links to the retired diagnostic profile`);
   for(const id of mappedProducts){
     assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: ${id} not placed in the matrix`);
