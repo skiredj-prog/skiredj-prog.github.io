@@ -35,8 +35,8 @@ navItems.forEach(item=>{
   const hovering=(event:PointerEvent)=>event.pointerType==='mouse'&&wideNav.matches&&finePointer.matches;
   item.addEventListener('pointerenter',event=>{if(!hovering(event))return;window.clearTimeout(hoverTimer);hoverTimer=window.setTimeout(()=>{closeNavItems(item);setNavItem(item,true);},90);});
   item.addEventListener('pointerleave',event=>{if(!hovering(event))return;window.clearTimeout(hoverTimer);if(pinnedItem===item)return;hoverTimer=window.setTimeout(()=>setNavItem(item,false),220);});
-  // Focus leaving the item closes it. With no next target (focus left the document), close unless the pointer is still over the item.
-  item.addEventListener('focusout',event=>{const next=event.relatedTarget as Node|null;if(wideNav.matches&&(next?!item.contains(next):!item.matches(':hover')))setNavItem(item,false);});
+  // Focus leaving the item closes it. With no next target (focus left the document), close unless a mouse pointer is still over the item (touch screens can keep :hover after a tap).
+  item.addEventListener('focusout',event=>{const next=event.relatedTarget as Node|null;if(wideNav.matches&&(next?!item.contains(next):!(finePointer.matches&&item.matches(':hover'))))setNavItem(item,false);});
 });
 const closeMenu=(focus=false)=>{closeNavPanels();menuButton?.setAttribute('aria-expanded','false');nav?.removeAttribute('data-open');if(focus)menuButton?.focus();};
 menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';if(!open)closeNavPanels();menuButton.setAttribute('aria-expanded',String(open));nav?.toggleAttribute('data-open',open);});
