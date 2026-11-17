@@ -40,7 +40,10 @@ Fichiers servis : `public/magazine/n02/` (couverture, image de partage, huit ill
 
 Différences avec le N° 01 : pas de fichier JSON ni de générateur ; le PDF est imprimé depuis une maquette HTML A5 qui n’est pas dans ce dépôt, avec les polices Libre Baskerville et DM Sans incorporées. Pour une correction, modifier `n02.fr.html` et la maquette, réimprimer le PDF, puis mettre à jour `SHA256SUMS.txt`.
 
+Édition anglaise (17 novembre 2026) : `n02.en.html`, servie sur `/magazine/n02/en/`. Même structure et mêmes classes que `n02.fr.html` ; les ancres sont en anglais. Toute correction se fait dans les deux fichiers. Les renvois « page N » du français sont remplacés par le nom de la section, car le PDF n’existe qu’en français. Pas encore d’édition arabe.
+
 Points à connaître :
+- les « paroles d’agents » anglaises ne sont pas traduites à la main : elles sortent des mêmes carnets par les gabarits anglais du dépôt `2-the-crozwya` (`crozwya/recits_en.py`, sortie `out/recits.en.md`), sans nouvelle exécution ; les identifiants d’échange (X-SERVEURS, X-MAINTENANCE) restent tels que le noyau les a écrits ;
 - les « paroles d’agents » sont extraites des carnets d’une exécution réelle d’une maquette (The Crozwya : agents scriptés, soldes simulés) ; les valeurs sont réelles, le ton est un gabarit écrit par la rédaction ;
 - les illustrations photographiques sont générées par IA ; celle de la section « La membrane » contient du texte en anglais ;
 - la source IETF citée (brouillon `draft-ietf-httpapi-idempotency-key-header-07`, octobre 2025) est à revérifier avant toute réimpression ;

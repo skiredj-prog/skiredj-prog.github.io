@@ -43,6 +43,11 @@
 .mag-bar nav a[aria-current="true"] { color: var(--navy); text-decoration: underline; text-decoration-thickness: 2px; }
 .mag-lang { display: flex; gap: 0.5rem; align-items: center; }
 .mag-lang span { color: var(--muted); }
+/* Téléphone : chaque lien de la barre offre une zone tactile de 44 px (règle du projet). */
+@media (max-width: 767.98px) {
+  .mag-bar nav { gap: 0 1rem; }
+  .mag-bar nav a, .mag-mast { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
+}
 
 /* Hero */
 .mag-hero { background: var(--navy-d); color: #fff; }

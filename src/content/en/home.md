@@ -6,7 +6,7 @@ lede: Prevent what we can foresee. Prepare what we must demonstrate.
 sources: KB3 · REG v0.1 · skiredj-prog public repositories
 ---
 
-# TENIR Labs
+## TENIR Labs
 
 ## Know what must hold. Know what you can prove.
 
