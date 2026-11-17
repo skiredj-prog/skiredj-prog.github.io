@@ -16,14 +16,14 @@
       "kind": "service",
       "site": {
         "fr": {
-          "route": "/portfolio/diagnostic/",
-          "title": "Diagnostic accompagné de gouvernance",
-          "status": "Offre proposée · périmètre et devis à convenir"
+          "route": "/offre/",
+          "title": "Leap Readiness",
+          "status": "L’offre · 5 000 EUR · une semaine · un périmètre"
         },
         "en": {
-          "route": "/en/portfolio/diagnostic/",
-          "title": "Guided Governance Diagnostic",
-          "status": "Proposed client offer · scoped and quoted"
+          "route": "/en/offer/",
+          "title": "Leap Readiness",
+          "status": "The offer · EUR 5,000 · one week · one scope"
         },
         "claimed_version": null,
         "version_basis": "not_applicable"
@@ -35,16 +35,17 @@
       "release_gate": {
         "state": "offered_scoped",
         "conditions": [
-          "Scope, custody and commercial terms agreed before work"
+          "Scope and mode set at scoping; commercial terms in the contract"
         ]
       },
       "public_artifact_url": null,
-      "public_access": "example",
+      "public_access": null,
       "claims_scope": [
-        "Scope limited to the displayed editorial description."
+        "Scope limited to the displayed offer description; no engagement results published."
       ],
       "non_claims": [
-        "Not a certification or automated runtime enforcement"
+        "Not a certification, legal opinion or compliance opinion",
+        "No production access"
       ],
       "dependencies": []
     },

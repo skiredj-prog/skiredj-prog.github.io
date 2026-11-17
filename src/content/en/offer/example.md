@@ -10,7 +10,7 @@ sources: "frozen local file of the TENIR/REG demonstrator; evidence records #5 a
   <p><strong>Simulated example — fictional data.</strong> Illustrative sheet prepared on 20 October 2026 from the TENIR/REG demonstrator file. No client, interview, real incident, or commercial gain is represented. The sheet is written by hand. The recommendations are not signed results of the engine. A trial of this demonstrator does not show a client’s system.</p>
 </div>
 
-<p>The synthesis illustrates the sheet delivered at the end of the service described in the <a href="/en/offer/">offer</a>. The annexes state its sources and the limits of the example. PASS, here, is an execution verdict. It is not a posture. This case shows an UNKNOWN outcome after a PASS. It does not show a new HOLD verdict.</p>
+<p>This sheet illustrates the format of the earlier single-action diagnostic, which predates the current offer. The four documents delivered by <a href="/en/offer/">Leap Readiness</a> are described on the offer page. The annexes state its sources and the limits of the example. PASS, here, is an execution verdict. It is not a posture. This case shows an UNKNOWN outcome after a PASS. It does not show a new HOLD verdict.</p>
 
 ## Synthesis sheet
 

@@ -4,7 +4,8 @@ import PortfolioPage from '../../../components/PortfolioPage.astro';
 import { portfolio, portfolioHubs, portfolioOrder } from '../../../data/portfolio';
 const language = 'en' as const;
 export function getStaticPaths(){
- const pages = ['products','demos',...portfolioOrder];
+ // The offer has its own page (/offre/, /en/offer/); its old profile URL redirects there.
+ const pages = ['products','demos',...portfolioOrder.filter(id=>id!=='diagnostic')];
  return pages.map(page=>({params:{page}}));
 }
 const { page } = Astro.params;

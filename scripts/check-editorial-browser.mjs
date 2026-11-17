@@ -25,7 +25,8 @@ try {
    assert(positions.story<positions.offers,locale+'/'+width+': offer appears before the consequential-action story');
    assert(positions.offers<positions.demo,locale+'/'+width+': simulation appears before the offer choices');
    assert(positions.width<=positions.viewport+3,locale+'/'+width+': homepage horizontal overflow '+(positions.width-positions.viewport));
-   await page.locator('a[href="'+casePath+'"]').first().click();
+   // Scoped to the page body: the header section menus also link to the cases, and stay closed until opened.
+   await page.locator('main a[href="'+casePath+'"]').first().click();
    await page.waitForURL('**'+casePath);
    assert(await page.locator('main').isVisible(),locale+'/'+width+': cases missing');
    for(const id of ['banque-assurance','transport-mobilite']){

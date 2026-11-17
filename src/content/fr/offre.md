@@ -1,160 +1,118 @@
 ---
-title: Diagnostic des contrôles d’un agent
-kicker: Offre
-description: Offre de diagnostic accompagné. Une action, ses preuves, le prochain contrôle à décider. Forfait sur devis après cadrage.
-lede: Une action, ses preuves, le prochain contrôle à décider.
-sources: proposition d’offre du 20 octobre 2026 ; format et charge à confirmer dans chaque devis
+title: Leap Readiness
+kicker: L’offre · 5 000 EUR · une semaine · un périmètre
+description: En une semaine, sur un périmètre, la carte des écarts entre ce que la direction attend et ce que vos agents IA font réellement, le palier de maturité démontré et le plan pour atteindre le suivant. 5 000 EUR.
+lede: Savoir où vous en êtes, sur pièces, avant de laisser un agent IA agir davantage.
+sources: définition de l’offre du 17 novembre 2026 ; premières missions à venir, aucun résultat client publié
 ---
 
-<div class="callout callout-note">
-  <p><strong>Hypothèse de lancement.</strong> Proposition du 20 octobre 2026. Le format et la charge ci-dessous sont à confirmer dans chaque devis. Ils restent à éprouver sur les premières missions. Cette page ne constitue pas une certification, ni une autorisation de mise en production.</p>
+<div class="table-scroll">
+<table class="fit">
+  <tbody>
+    <tr><th scope="row">Prix</th><td>5 000 EUR</td></tr>
+    <tr><th scope="row">Durée</th><td>Une semaine</td></tr>
+    <tr><th scope="row">Périmètre</th><td>Une décision ou un flux, choisi avec vous au cadrage</td></tr>
+    <tr><th scope="row">Accès demandé</th><td>Documents, exports et entretiens. Aucun accès qui permette de déclencher une action en production.</td></tr>
+  </tbody>
+</table>
 </div>
-
-<p><strong>Pour un flux agentique à effet externe :</strong> le <a href="/diagnostic-execution/">REG Execution Boundary Diagnostic</a> est notre proposition spécialisée pour analyser doublons, interruptions, résultats UNKNOWN et réconciliation. Ce parcours est distinct du diagnostic documentaire général présenté ci-dessous ; sa durée et son prix restent sur devis après cadrage.</p>
-
-## Une question, des pièces, une suite à décider
-
-<p>Par exemple, un agent a envoyé une demande et la confirmation manque. Avant de recommencer, vous souhaitez savoir ce qui est établi, ce qui reste inconnu et qui peut vérifier la suite. Cette situation est illustrative.</p>
-
-<p><strong>Vous apportez</strong> une action, une question et les règles, documents ou traces disponibles. <strong>Nous examinons ensemble</strong> ce qui autorise l’action, ce qui a été envoyé et ce qui confirme réellement le résultat.</p>
-
-<p><strong>Vous recevez</strong> une fiche sourcée, des annexes courtes et jusqu’à trois priorités. Chaque priorité propose un contrôle à vérifier, une responsabilité à confirmer et un critère observable. Les informations manquantes restent explicites.</p>
-
-<p><strong>La décision préparée.</strong> Les éléments disponibles suffisent-ils pour poursuivre le projet, faut-il obtenir une information supplémentaire, ou faut-il préparer un essai ciblé ? Toute décision opérationnelle reste prise par le responsable compétent du client.</p>
 
 <div class="actions">
-  <a class="btn" href="/offre/exemple/">D’abord, voir une fiche simulée</a>
-  <a class="text-link" href="/contact/">Décrire une situation →</a>
+  <a class="btn" href="/contact/">Décrire votre périmètre</a>
+  <a class="text-link" href="/parcours-ia/?start=1">D’abord, faire l’auto-évaluation gratuite →</a>
 </div>
 
-<p>Le premier lien ouvre un exemple rédigé ; le second prépare un message à relire avant envoi. Le périmètre et le devis sont convenus avant le démarrage d’une mission.</p>
+## Ce que vous recevez
 
-## Pour qui, et à quel moment
-
-<p>Le commanditaire est le responsable qui porte l’action : direction technique, responsable IA, architecte ou responsable des opérations. Le propriétaire métier et une personne capable d’expliquer le parcours technique participent à l’examen.</p>
-
-<p>Une même offre couvre deux situations, choisies au cadrage.</p>
+<p>Quatre documents, tous sur votre périmètre et utilisables tels quels.</p>
 
 <div class="table-scroll">
-<table>
-  <thead><tr><th>Situation</th><th>Question de départ</th><th>Matière examinée</th></tr></thead>
+<table class="fit">
+  <thead><tr><th>Document</th><th>Ce qu’il contient</th></tr></thead>
   <tbody>
-    <tr><td>Avant une mise en service ou un changement</td><td>Avons-nous défini les contrôles et les conditions de reprise de cette action ?</td><td>Conception, règles et comportements attendus. Les scénarios restent des hypothèses tant qu’ils ne sont pas éprouvés.</td></tr>
-    <tr><td>Après un incident ou une réponse ambiguë</td><td>Que pouvons-nous établir avant de décider de la suite ?</td><td>Une occurrence convenue, sa chronologie et les traces accessibles, même partielles.</td></tr>
+    <tr><td>La carte des écarts</td><td>Ce que la direction attend, face à ce que le système fait réellement, sur sept niveaux. Chaque ligne porte son statut de preuve : documenté, déclaré, démontré ou non établi. La carte donne le palier de maturité démontré.</td></tr>
+    <tr><td>Le plan</td><td>Les actions pour atteindre le palier suivant. Pour chacune : un responsable, la preuve attendue et le moyen.</td></tr>
+    <tr><td>Les projections</td><td>Ce que les écarts peuvent coûter, en trois scénarios calculés sur vos volumes.</td></tr>
+    <tr><td>La note de direction</td><td>Une page, à présenter au comité qui approuve.</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>Exemples d’actions : créer une commande fournisseur, modifier un droit d’accès, publier une donnée ou transmettre une instruction de paiement. Ces exemples décrivent des usages possibles. Ils ne constituent pas des références clients.</p>
+## L’écart, lu dans les deux sens
 
-## Le périmètre de départ
+<p><strong>Du haut vers le bas :</strong> ce que la direction attend et ce qui est écrit, mais que rien ne démontre au moment où l’agent agit.</p>
 
-<p>Le périmètre proposé comprend <strong>un processus, un type d’action, un système destinataire, un environnement de référence et une question centrale</strong>. Pour une revue d’incident, il porte sur une occurrence ou un dossier d’incident convenu par écrit.</p>
+<p><strong>Du bas vers le haut :</strong> ce que l’agent peut faire, mais que personne n’a jamais admis.</p>
 
-<p>Le travail se fait à partir de documents, d’exports et d’entretiens. Il comprend le cadrage, l’analyse, un atelier, une restitution et un cycle de correction factuelle. Il ne demande pas d’accès permettant de déclencher une action en production.</p>
+<p>Les sept niveaux lus pour une même décision : stratégie d’entreprise, ambition IA, organisation, processus, infrastructure, valeur et assurance.</p>
 
-<p>Les modifications de code, l’instrumentation, les tests dans le système du client et le déploiement d’un mécanisme de reprise font l’objet d’un périmètre complémentaire. Le diagnostic peut préciser les essais à réaliser. Leur exécution doit être explicitement convenue.</p>
+## Votre palier de maturité
 
-## Les entrées attendues
+<p>Six paliers, toujours dans le même ordre. Un palier est atteint quand sa condition de sortie est vérifiée sur pièces, pas seulement annoncée.</p>
 
 <div class="table-scroll">
-<table>
-  <thead><tr><th>Entrée</th><th>Exemple minimal</th><th>Si elle manque</th></tr></thead>
+<table class="fit">
+  <thead><tr><th>Palier</th><th>Condition de sortie</th></tr></thead>
   <tbody>
-    <tr><td>Action et conséquence à préserver</td><td>Créer une seule commande par demande approuvée</td><td>Le cadrage commence par choisir cette action.</td></tr>
-    <tr><td>Règles et responsabilités</td><td>Qui autorise, limite de montant ou de volume, conditions d’arrêt</td><td>Une règle déclarée reste une hypothèse à faire confirmer.</td></tr>
-    <tr><td>Parcours technique</td><td>Agent, outil, service destinataire, point où l’effet devient engagé</td><td>La cartographie est reconstruite avec l’équipe et marquée comme déclarative.</td></tr>
-    <tr><td>Identité et chronologie</td><td>Identifiant de demande, identifiant d’appel, séquence des événements</td><td>Les limites de rapprochement sont consignées.</td></tr>
-    <tr><td>Traces disponibles, pour un incident</td><td>Décision, requête, réponse, journal, accusé ou état du destinataire</td><td>La conclusion peut être « non établi » et déboucher sur un plan de collecte.</td></tr>
-    <tr><td>Procédure de reprise connue</td><td>Relance, annulation, rapprochement, intervention humaine</td><td>Le diagnostic formule les décisions de conception nécessaires.</td></tr>
-    <tr><td>Interlocuteurs et décision attendue</td><td>Responsable métier, responsable technique, décision à préparer</td><td>La proposition précise les participants nécessaires avant démarrage.</td></tr>
+    <tr><td>0 · Défini</td><td>Ce que l’agent peut faire est écrit, et un responsable est nommé.</td></tr>
+    <tr><td>1 · Observable</td><td>Chaque action est reliée, dans le journal, à sa demande et à son autorisation.</td></tr>
+    <tr><td>2 · Contrôlé</td><td>Une action hors limites est bloquée avant exécution, et ce blocage a été testé.</td></tr>
+    <tr><td>3 · Prouvé</td><td>Un tiers peut vérifier que ce qui a été testé est ce qui tourne.</td></tr>
+    <tr><td>4 · Tenu</td><td>Le dispositif a résisté à des exercices et à des incidents réels.</td></tr>
+    <tr><td>5 · Coordonné</td><td>Plusieurs agents partagent des ressources selon des règles d’arbitrage écrites.</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>Les documents peuvent être expurgés des secrets et des données sans utilité pour la question. Les modalités de transmission, d’accès, de conservation et de suppression sont convenues au cadrage.</p>
+<p>Le plan vise toujours le palier suivant, jamais deux d’un coup : on ne contrôle pas ce qu’on ne voit pas encore. Au palier 5, il n’y a pas de palier suivant : le plan porte alors sur le maintien du palier démontré. La même échelle sert pour tous les périmètres, ce qui rend deux plans comparables.</p>
 
-## Le déroulement
+<p>L’auto-évaluation gratuite donne une première lecture, sur vos réponses. Elle utilise sa propre échelle : son résultat n’est pas un palier. La semaine établit le palier démontré, sur pièces.</p>
 
-<ol>
-  <li><strong>Cadrage de 30 minutes.</strong> Choisir l’action, la question, les sources accessibles et les critères de réception. Le périmètre écrit permet de décider du lancement.</li>
-  <li><strong>Préparation documentaire.</strong> Inventorier les sources, relever les contradictions et préparer la grille des contrôles.</li>
-  <li><strong>Atelier de 90 minutes.</strong> Reconstituer autorisation, envoi, résultat et ressource engagée. Examiner le déroulement normal et les exceptions pertinentes.</li>
-  <li><strong>Analyse et rédaction.</strong> Produire la fiche, les références et au maximum trois actions prioritaires dans le périmètre convenu.</li>
-  <li><strong>Restitution de 45 minutes.</strong> Relire les faits, préciser les désaccords, confirmer les responsables et décider de la suite. Un cycle de correction factuelle est inclus.</li>
-</ol>
-
-<p>Une enveloppe initiale de deux à trois jours de travail prestataire, répartis sur une semaine après réception des éléments convenus, peut servir à chiffrer les premiers devis. Ce format reste à éprouver sur les premières missions. Il ne constitue pas un délai contractuel déjà garanti.</p>
-
-## Ce que l’on examine
-
-<p>Lorsqu’un dossier nomme PASS, FLAG, HOLD ou HARD_VETO, ce sont des verdicts d’exécution. Ils restent un champ distinct des postures NORMAL, CAUTION et HOLDING-FIRST. La membrane, dans le cadre TENIR, est la ligne qui tranche. Le diagnostic ne la remplace pas : il prépare une décision humaine, dans un périmètre écrit.</p>
+## La semaine
 
 <div class="table-scroll">
-<table>
-  <thead><tr><th>Question</th><th>Ce que l’examen recherche</th></tr></thead>
+<table class="fit">
+  <thead><tr><th>Étape</th><th>Ce qui s’y passe</th></tr></thead>
   <tbody>
-    <tr><td>Autorisation</td><td>Règle applicable, autorité, limites et observation requise avant envoi.</td></tr>
-    <tr><td>Identité de l’action</td><td>Lien entre demande, tentative, appel et effet attendu. Comportement lors d’un rejeu.</td></tr>
-    <tr><td>Résultat</td><td>Différence entre autorisation, appel enregistré, réponse reçue et effet confirmé.</td></tr>
-    <tr><td>Ressource engagée</td><td>Montant ou quota consommé, réservé et disponible. Règle de mise à jour.</td></tr>
-    <tr><td>Exceptions</td><td>Refus, observation absente ou périmée, réponse inconnue, demande concurrente et interruption, selon le cas.</td></tr>
-    <tr><td>Reprise</td><td>Information faisant autorité, responsable de la décision et condition nécessaire avant une nouvelle tentative.</td></tr>
+    <tr><td>Cadrage · 30 min</td><td>Le périmètre, le mode et les pièces à réunir.</td></tr>
+    <tr><td>Entretien avec le sponsor</td><td>Ce que la direction attend de ce périmètre.</td></tr>
+    <tr><td>Atelier · 90 min</td><td>Avec les personnes qui font tourner le système : ce qu’il fait réellement.</td></tr>
+    <tr><td>Analyse</td><td>La carte, le palier, le plan et les projections.</td></tr>
+    <tr><td>Restitution · 45 min</td><td>Les quatre documents, et la décision sur la suite.</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>Chaque point reçoit un statut : <strong>documenté</strong>, <strong>déclaré par l’équipe</strong>, <strong>démontré par un essai identifié</strong>, ou <strong>non établi</strong>. Un essai du démonstrateur TENIR/REG ne démontre pas le comportement du système du client.</p>
+<p>Le mode est fixé au cadrage. <strong>Exploratoire</strong> si aucun agent n’agit encore : la semaine dit ce qu’il faudra démontrer avant. <strong>Engagé</strong> si un agent est en pilote ou en production : la semaine dit ce qui est démontré aujourd’hui.</p>
 
-## Les livrables
+## Après la semaine
 
-<p><strong>Une fiche de synthèse d’une page</strong> : action, question, périmètre, principaux constats, inconnues, conclusion et prochain contrôle.</p>
-
-<p><strong>Des annexes de travail courtes</strong> : cartographie de l’action, registre des sources et grille des contrôles examinés. Une trace est référencée par fichier, identifiant, séquence ou chemin exploitable. Une déclaration est attribuée à son interlocuteur.</p>
-
-<p><strong>Un plan de suite limité à trois priorités</strong> : problème traité, contrôle proposé, preuve attendue, responsabilité proposée puis confirmée par le client, et condition de clôture. Si les éléments suffisent déjà, le dossier peut conclure à l’absence de complément nécessaire dans le périmètre étudié.</p>
-
-<p>Le démonstrateur peut servir de support pédagogique pendant l’atelier. La valeur livrée est l’analyse du cas du client et la décision qu’elle permet de préparer. L’<a href="/offre/exemple/">exemple rempli — simulation locale, issue inconnue</a> montre la forme attendue. Ce n’est pas une référence client.</p>
-
-## Les critères de réception
+<p>Trois suites possibles, aucune imposée.</p>
 
 <div class="table-scroll">
-<table>
-  <thead><tr><th>Critère</th><th>Vérification lors de la restitution</th></tr></thead>
+<table class="fit">
+  <thead><tr><th>Suite</th><th>Ce que c’est</th></tr></thead>
   <tbody>
-    <tr><td>Périmètre explicite</td><td>L’action, le système, l’environnement et la question sont nommés. Les limites sont visibles.</td></tr>
-    <tr><td>Constats traçables</td><td>Chaque constat important renvoie à une source retrouvable, à une déclaration attribuée ou à une lacune explicite.</td></tr>
-    <tr><td>États correctement distingués</td><td>Autorisation, envoi, résultat et ressource engagée sont présentés séparément.</td></tr>
-    <tr><td>Incertitude conservée</td><td>Chaque information manquante indique ce qu’elle empêche de conclure et, si possible, comment l’obtenir.</td></tr>
-    <tr><td>Suite exploitable</td><td>Chaque action prioritaire a un objectif, une responsabilité identifiée ou à confirmer, et un critère observable.</td></tr>
-    <tr><td>Relecture close</td><td>Les corrections factuelles sont intégrées. Les désaccords restant ouverts sont consignés.</td></tr>
+    <tr><td>S’arrêter là</td><td>Les documents sont à vous. Le plan s’exécute en interne ou avec votre intégrateur.</td></tr>
+    <tr><td>Passer au palier suivant</td><td>Amener ce périmètre du palier démontré au suivant, avec une condition de sortie écrite d’avance. Durée, charge et prix sont chiffrés à la restitution. À la sortie : ce que vous pouvez affirmer devant un comité ou un auditeur, et ce que vous ne pouvez pas encore.</td></tr>
+    <tr><td>Ouvrir un autre périmètre</td><td>Une autre semaine, sur une autre décision, lue sur la même échelle.</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>Une conclusion « non établi avec les éléments disponibles » est recevable si elle explique la lacune et ses conséquences. La réception n’exige ni découverte d’une défaillance, ni résolution de l’incident, ni achat de logiciel. Elle ne constitue pas une certification ou une autorisation générale de mise en production.</p>
+<p><strong>Enterprise Leap</strong> est ce cycle, une semaine puis un palier, répété sur plusieurs périmètres. La direction lit alors sur une page le palier démontré de chacun.</p>
 
-## Le modèle commercial
+## Les instruments
 
-<p id="cadrer"><strong>Un forfait sur devis, accepté après cadrage.</strong> Le prix est calculé à partir de la charge de préparation, d’analyse, d’animation et de rédaction, avec le cycle de correction inclus. Le devis fixe le volume documentaire, les participants, les dates, le format des livrables et les modalités de réception.</p>
+<p>La méthode est celle de <a href="/standard/">REG</a> : <a href="/portfolio/prevent/">REG Prevent</a> lit l’écart du haut vers le bas, <a href="/portfolio/prepare/">REG Prepare</a> du bas vers le haut. <a href="/portfolio/gov/">TENIR-Gov</a>, notre logiciel open source, peut être l’un des moyens du plan, à partir du palier 2. Il n’est jamais un prérequis. Pendant la semaine, le <a href="/portfolio/workbench/">Workbench</a> nous sert à configurer l’examen et à relire les preuves.</p>
 
-<p>Un second processus, plusieurs environnements, une reconstitution technique étendue ou des essais supplémentaires déclenchent un recadrage écrit. Une éventuelle étude d’architecture, ou un pilote, reste une décision ultérieure.</p>
+## Ce que ce n’est pas
 
-<p>Pour valider l’offre, les premières missions doivent permettre d’observer la charge réelle, la compréhension de la fiche, son usage dans une décision et la disposition à payer. Aucun prix de marché, gain de temps ou retour sur investissement n’est établi.</p>
+<p>Ni une certification, ni un avis juridique, ni un avis de conformité. La semaine ne touche pas à votre production. Les décisions restent prises par vos responsables.</p>
 
-## Les cinq questions du premier échange
-
-<ol>
-  <li>Quelle action précise l’agent peut-il déclencher, dans quel système, et quelle conséquence faut-il préserver ?</li>
-  <li>Quel incident, doute ou changement motive la demande ?</li>
-  <li>Quelle décision faut-il prendre, et à quelle échéance ?</li>
-  <li>Quelles règles, personnes et traces sont accessibles pour l’examen ?</li>
-  <li>Qui porte la décision et le budget du diagnostic, et qui participera à la restitution ?</li>
-</ol>
-
-<p>Le bouton ouvre un message à <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>, déjà structuré par ces cinq questions. Le site ne l’envoie pas : la messagerie s’ouvre chez vous, pour relecture.</p>
+<p>L’offre est nouvelle : aucun résultat de mission n’est encore publié. Ce que le site démontre aujourd’hui est décrit dans <a href="/credibilite/">Crédibilité</a>.</p>
 
 <div class="actions">
-  <a class="btn btn-primary" href="mailto:skiredj@tenirlabs.cc?subject=Cadrage%20%E2%80%94%20diagnostic%20des%20contr%C3%B4les%20d%E2%80%99un%20agent&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20cadrer%20un%20diagnostic%20des%20contr%C3%B4les%20d%E2%80%99un%20agent.%0A%0A1.%20Quelle%20action%20pr%C3%A9cise%20l%E2%80%99agent%20peut-il%20d%C3%A9clencher%2C%20dans%20quel%20syst%C3%A8me%2C%20et%20quelle%20cons%C3%A9quence%20faut-il%20pr%C3%A9server%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0A2.%20Quel%20incident%2C%20doute%20ou%20changement%20motive%20la%20demande%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0A3.%20Quelle%20d%C3%A9cision%20faut-il%20prendre%2C%20et%20%C3%A0%20quelle%20%C3%A9ch%C3%A9ance%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0A4.%20Quelles%20r%C3%A8gles%2C%20personnes%20et%20traces%20sont%20accessibles%20pour%20l%E2%80%99examen%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0A5.%20Qui%20porte%20la%20d%C3%A9cision%20et%20le%20budget%20du%20diagnostic%2C%20et%20qui%20participera%20%C3%A0%20la%20restitution%20%3F%0A%C3%80%20pr%C3%A9ciser%0A%0AMerci.">Cadrer mon diagnostic</a>
-  <a class="btn" href="/offre/exemple/">Voir l’exemple simulé</a>
+  <a class="btn" href="/contact/">Décrire votre périmètre</a>
+  <a class="text-link" href="/parcours-ia/?start=1">Faire l’auto-évaluation gratuite →</a>
 </div>

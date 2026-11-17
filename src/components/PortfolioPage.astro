@@ -2,7 +2,7 @@
 import '../styles/portfolio.css';
 import PortfolioMatrix from './PortfolioMatrix.astro';
 import { portfolioAccess } from '../data/portfolioAccess';
-import { portfolio, portfolioHubs, hubStatus, type PortfolioLocale } from '../data/portfolio';
+import { portfolio, portfolioHubs, hubStatus, profilePath, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
 import { portfolioContactHref } from '../data/contact';
 import { stagesFor } from '../data/processRoles';
@@ -13,7 +13,7 @@ const hub = (portfolioHubs[locale] as Record<string, any>)[page];
 const entry = portfolio[locale][page];
 const publicAccess = portfolioAccess[locale][page];
 const path = (route:string) => url((fr?'/':'/en/') + route + '/');
-const cardHref = (id:string) => path('portfolio/' + id);
+const cardHref = (id:string) => url(profilePath(locale, id));
 const kindName = (kind:string) => ({product:fr?'Produit ou instrument':'Product or instrument',service:'Service',demo:fr?'Démonstration':'Demo',foundation:fr?'Cadre et recherche':'Framework and research'} as Record<string,string>)[kind] ?? kind;
 // Products hub: three readiness tiers. The tier is the only status shown on the hub;
 // engineering detail (gates, pending tests, PR numbers) stays on each profile.
@@ -70,14 +70,14 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
     {page==='products'&&<>
       <PortfolioMatrix locale={locale} />
       <section class="pf-tier pf-tier-available" aria-labelledby="pf-available-title">
-        <header class="pf-tier-head"><h2 id="pf-available-title">{fr?'Ce que vous pouvez obtenir aujourd’hui':'What you can get today'}</h2><p>{fr?'Un accompagnement sur devis et deux logiciels publiés, chacun dans un périmètre précis.':'One guided engagement on quote and two published software releases, each within a precise scope.'}</p></header>
+        <header class="pf-tier-head"><h2 id="pf-available-title">{fr?'Ce que vous pouvez obtenir aujourd’hui':'What you can get today'}</h2><p>{fr?'Une offre à prix fixe, puis deux logiciels publiés, chacun dans un périmètre précis.':'One fixed-price offer, then two published software releases, each within a precise scope.'}</p></header>
         <div class="pf-offer-grid">{available.map((e:any)=>{const access=portfolioAccess[locale][e.id];return <article class="pf-offer">
           <h3><a href={cardHref(e.id)}>{e.tagline}</a></h3>
           <p class="pf-offer-name">{e.title}</p>
           <p class="pf-offer-output">{e.output}</p>
           <p class="pf-offer-status">{shortStatus(e.id)}</p>
           {stagesFor(locale,e.id).length>0&&<p class="pf-when">{whenLabel} {stagesFor(locale,e.id).map((st,i)=><>{i>0&&' · '}<a href={url(stagesPage+'#'+st.id)}>{st.name}</a></>)}</p>}
-          <div class="pf-offer-links"><a href={cardHref(e.id)}>{fr?'Voir la fiche':'View profile'}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}{e.id==='gov'&&<a href={url(fr?'/affirmations/#claim-tg-1':'/en/claims/#claim-tg-1')}>{fr?'Preuves':'Evidence'}</a>}</div>
+          <div class="pf-offer-links"><a href={cardHref(e.id)}>{e.id==='diagnostic'?(fr?'Voir l’offre':'See the offer'):(fr?'Voir la fiche':'View profile')}</a>{access&&<a href={url(access.href)}>{access.label}{external(access.href)&&<span aria-hidden="true"> ↗</span>}</a>}{e.id==='gov'&&<a href={url(fr?'/affirmations/#claim-tg-1':'/en/claims/#claim-tg-1')}>{fr?'Preuves':'Evidence'}</a>}</div>
         </article>;})}</div>
       </section>
       {tiers.map(tier=><section class="pf-tier" aria-labelledby={'pf-tier-'+tier.id}>
@@ -97,7 +97,7 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
           <ul class="pf-rows">{group.items.map(d=><li class="pf-row pf-demo-card"><div><h4>{d.title}</h4><p>{d.name}. {d.text}</p><small>{d.meta}</small></div><a class="pf-row-action" href={d.href}>{d.label}{external(d.href)&&<span aria-hidden="true"> ↗</span>}</a></li>)}</ul>
         </section>)}
       </section>
-      <p class="pf-foundations">{fr?'Pour examiner un flux réel, et non un scénario :':'To examine a real flow rather than a scenario:'} <a href={url(fr?'/diagnostic-execution/':'/en/diagnostic-execution/')}>{fr?'voir le diagnostic des frontières d’exécution':'see the execution-boundary diagnostic'}</a></p>
+      <p class="pf-foundations">{fr?'Pour examiner votre propre périmètre, et non un scénario :':'To examine your own scope rather than a scenario:'} <a href={cardHref('diagnostic')}>{fr?'voir l’offre Leap Readiness':'see the Leap Readiness offer'}</a>.</p>
     </>}
   </> : entry ? <>
     {page==='xray'&&<section id="explorer" class="pf-xray-explore" aria-labelledby="xray-explore-title">
@@ -123,6 +123,7 @@ const actionNote = entry?.nextHref === '/contact/' || entry?.nextHref === '/en/c
       <div><h2>TENIR/REG · Diagnostic &amp; Evidence Workbench</h2><p>{fr?'Une lecture plus technique de la configuration et des preuves simulées ; le ZIP de consultation n’est pas distribué sur ce site.':'A deeper introduction to configuration and synthetic signed evidence; the consultation ZIP is not distributed on this website.'}</p></div>
       <a class="btn" href={path('portfolio/workbench')}>{fr?'Comprendre le Workbench':'Understand the Workbench'} →</a>
     </section>}
+    {page==='reg-arch'&&<section id="reg-arch-lifecycle" class="pf-embed-section"><div class="pf-embed-heading"><div><span class="pf-overline">{fr?'REG-ARCH · CYCLE DE VIE DES DÉCISIONS':'REG-ARCH · DECISION LIFECYCLE'}</span><h2>{fr?'Une demande, une décision, son application : trois faits distincts.':'A request, a decision, its application: three distinct facts.'}</h2><p>{fr?'Neuf cycles, quatorze portes, trois domaines : prétention, action, représentation. Choisissez un cycle, puis comparez un refus et une décision acceptée mais non appliquée.':'Nine lifecycles, fourteen gates, three lanes: claim, action, representation. Pick a lifecycle, then compare a refusal with a decision that is accepted but not applied.'}</p></div><a href={url(fr?'/embeds/reg-lifecycle-workbench.html':'/embeds/reg-lifecycle-workbench.html?lang=en')} target="_blank" rel="noopener noreferrer">{fr?'Ouvrir en plein écran':'Open full screen'} ↗</a></div><iframe loading="lazy" title={fr?'REG-ARCH, cycle de vie des décisions : démonstration de conception, sans exécution':'REG-ARCH decision lifecycle: design demonstration, no execution'} src={url(fr?'/embeds/reg-lifecycle-workbench.html':'/embeds/reg-lifecycle-workbench.html?lang=en')} class="pf-demo-frame"></iframe><p class="pf-frame-note">{fr?'Démonstration de conception · événements synthétiques · aucun lien avec TENIR-Gov ni avec un système réel.':'Design demonstration · synthetic events · no connection to TENIR-Gov or any real system.'}</p></section>}
     {page==='control-tower'&&<section id="control-tower-experience" class="pf-embed-section"><div class="pf-embed-heading"><div><span class="pf-overline">AUTONOMY CONTROL TOWER v1.0</span><h2>{fr?'Choisissez un scénario. Regardez ce qui change.':'Choose a scenario. See what changes.'}</h2><p>{fr?'Le simulateur est en anglais. Sélectionnez l’une des quatre situations, puis lancez le parcours quand vous le souhaitez.':'The simulator is in English. Select one of the four situations, then start when you are ready.'}</p></div><a href={url('/embeds/reg-autonomy-control-tower-v1.0.html')} target="_blank" rel="noopener noreferrer">{fr?'Ouvrir en plein écran':'Open full screen'} ↗</a></div><iframe loading="lazy" title="REG Autonomy Control Tower v1.0 — interactive English-language simulation, no live kernel" src={url('/embeds/reg-autonomy-control-tower-v1.0.html')} class="pf-demo-frame"></iframe><p class="pf-frame-note">{fr?'Scénario synthétique · noyau non connecté · sur mobile, le plein écran facilite la lecture.':'Synthetic scenario · no live kernel connected · full screen makes mobile reading easier.'}</p></section>}
     <section class="pf-details" aria-labelledby="pf-details-title"><header class="pf-details-head"><h2 id="pf-details-title">{fr?'Pour savoir si cela vous correspond':'See whether it fits your situation'}</h2></header><dl>{labels.map(([key,label])=><div class:list={['pf-field',key==='limits'&&'pf-field-limit']}><dt>{label}</dt><dd>{(entry as any)[key]}</dd></div>)}</dl></section>
     <section class="pf-related"><h2>{fr?'Cela se relie aussi à…':'It also connects to…'}</h2><div class="pf-related-grid">{entry.related.map(id=><a href={cardHref(id)}><span>{portfolio[locale][id].title} →</span><small>{kindName(portfolio[locale][id].kind)} · {portfolio[locale][id].tagline}</small></a>)}</div></section>

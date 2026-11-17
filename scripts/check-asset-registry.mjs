@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { portfolioOrder, portfolio } from '../src/data/portfolio.ts';
+import { portfolioOrder, portfolio, profilePath } from '../src/data/portfolio.ts';
 import { portfolioAccess } from '../src/data/portfolioAccess.ts';
 
 const RELEASE_PATH = 'data/workbench-publication.v1.json';
@@ -16,7 +16,7 @@ const allowedGates = new Set([
 const idPattern = /^[a-z][a-z0-9-]*$/;
 const shaPattern = /^[a-f0-9]{40}$/;
 const fullShaPattern = /^[a-f0-9]{64}$/;
-const entryRoute = (lang,id) => (lang==='fr' ? '/portfolio/' : '/en/portfolio/') + id + '/';
+const entryRoute = (lang,id) => profilePath(lang,id);
 const siteFile = route => path.posix.join('dist',route.replace(/^\//,''),'index.html');
 
 function validate(registry, { built = true } = {}) {

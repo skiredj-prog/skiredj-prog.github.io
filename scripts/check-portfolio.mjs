@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
-const entries=['diagnostic','prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'];
+const entries=['prevent','prepare','explorer','discovery','mediation','xray','translation','gov','conformance','reg-arch','technical','experiences','control-tower'];
 const hubs=['products','demos'];
 const expected=[...hubs,...entries];
 const paths = (lang,page) => lang==='fr'?`dist/portfolio/${page}/index.html`:`dist/en/portfolio/${page}/index.html`;
@@ -49,7 +49,7 @@ for (const [lang, home, productsPath] of [
   assert(nav.includes(`href="${productsPath}"`), `${lang}: Products link missing from header nav`);
   assert(existsSync(paths(lang,'products')), `${lang}: menu destination not built`);
   const expectedLabel = lang === 'fr' ? 'Produits' : 'Products';
-  assert(nav.includes(`>${expectedLabel}</a>`), `${lang}: visible Products label missing`);
+  assert(nav.includes(`<span class="nav-trigger-label">${expectedLabel}</span>`), `${lang}: visible Products section missing`);
   const productNavLinks = (nav.match(new RegExp('href="' + productsPath + '"','g')) || []).length;
   assert.equal(productNavLinks, 1, `${lang}: duplicate Products entry in header navigation`);
 }
@@ -69,10 +69,17 @@ for(const lang of ['fr','en']){
   const matrixStart=matrixPage.indexOf('<div class="pm-2x2"');
   const matrixEnd=matrixPage.indexOf('</div><div class="pm-transverse"',matrixStart);
   const matrix=matrixPage.slice(matrixStart,matrixEnd+6);
-  for(const id of ['reg-arch','technical','diagnostic']){
+  for(const id of ['reg-arch','technical']){
     assert(!matrix.includes(`portfolio/${id}/`),`${lang}: foundation, service or demo incorrectly placed inside product grid: ${id}`);
     assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: missing cross-cutting link ${id}`);
   }
+  // The offer has its own page; the hub links to it, never to a portfolio profile.
+  const offerRoute=lang==='fr'?'/offre/':'/en/offer/';
+  assert(!matrix.includes(offerRoute),`${lang}: the offer must not sit inside the product grid`);
+  // The header menu links to the offer on every page: look in the page body only.
+  const productsBody=matrixPage.slice(matrixPage.indexOf('<main'),matrixPage.indexOf('</main>'));
+  assert(productsBody.includes(`href="${offerRoute}"`),`${lang}: Products must link to the offer`);
+  assert(!matrixPage.includes('portfolio/diagnostic/'),`${lang}: Products still links to the retired diagnostic profile`);
   for(const id of mappedProducts){
     assert(matrixPage.includes(`href="${lang==='fr'?'/':'/en/'}portfolio/${id}/"`),`${lang}: ${id} not placed in the matrix`);
   }
@@ -98,7 +105,7 @@ for(const lang of ['fr','en']){
   assert(frame.includes('loading="lazy"'),'Control Tower should not force media loading');
   assert(frame.includes('/embeds/reg-autonomy-control-tower-v1.0.html'),'Control Tower source missing');
 }
-console.log('Portfolio: 32 FR/EN routes, 28 nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.');
+console.log(`Portfolio: ${expected.length*2} FR/EN routes, ${entries.length*2} nine-field profiles, standalone 4-scenario interactive artifact, no autoplay.`);
 
 // The free self-assessment is the new commercial front door.
 await import('./check-pathway.mjs');

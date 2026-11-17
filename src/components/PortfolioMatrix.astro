@@ -1,11 +1,11 @@
 ---
 import '../styles/product-matrix.css';
-import { portfolio, hubStatus, type PortfolioLocale } from '../data/portfolio';
+import { portfolio, hubStatus, profilePath, type PortfolioLocale } from '../data/portfolio';
 import { url } from '../data/site';
 interface Props { locale: PortfolioLocale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
-const href = (id: string) => url((fr ? '/portfolio/' : '/en/portfolio/') + id + '/');
+const href = (id: string) => url(profilePath(locale, id));
 const cells = [
   {
     title: fr ? 'Avant de laisser agir · comprendre' : 'Before AI acts · understand',
@@ -40,5 +40,5 @@ const title = (id: string) => id === 'gov' ? 'TENIR-Gov' : id === 'conformance' 
   <div class="pm-2x2" role="region" tabindex="0" aria-label={fr ? 'Matrice 2 par 2 des produits TENIR Labs' : 'TENIR Labs 2 by 2 product matrix'}>
     {cells.map(cell => <section class="pm-cell"><h3>{cell.title}</h3><p>{cell.intro}</p><ul>{cell.items.map(([id, label]) => <li><a href={href(id)}><strong>{label}</strong><span aria-hidden="true">↗</span></a><small>{title(id)} · {status(id)}</small></li>)}</ul></section>)}
   </div>
-  <div class="pm-transverse"><p>{fr ? 'TENIR aide à poser la question ; les produits et services répondent à des moments différents. Une simulation ne vaut pas preuve de production.' : 'TENIR frames the question; products and services address different moments. A simulation is not proof of production.'}</p><p><a href={href('diagnostic')}>{fr ? 'Commencer par un diagnostic accompagné' : 'Start with a guided diagnostic'}</a>{' · '}<a href={url(fr ? '/pourquoi-maintenant/' : '/en/why-now/')}>{fr ? 'Pourquoi maintenant ?' : 'Why now?'}</a></p></div>
+  <div class="pm-transverse"><p>{fr ? 'TENIR aide à poser la question ; les produits et services répondent à des moments différents. Une simulation ne vaut pas preuve de production.' : 'TENIR frames the question; products and services address different moments. A simulation is not proof of production.'}</p><p><a href={href('diagnostic')}>{fr ? 'Commencer par Leap Readiness' : 'Start with Leap Readiness'}</a>{' · '}<a href={url(fr ? '/pourquoi-maintenant/' : '/en/why-now/')}>{fr ? 'Pourquoi maintenant ?' : 'Why now?'}</a></p></div>
 </section>
