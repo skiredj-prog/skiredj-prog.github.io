@@ -36,7 +36,7 @@ const parts = (text: string) => text.split(' ').map((word, index) => ({ word, gl
                     <div class="nav-group">
                       <p class="nav-group-label" id={`nav-group-${item.section}-${index}`}>{group.label}</p>
                       <ul aria-labelledby={`nav-group-${item.section}-${index}`}>
-                        {group.links.map(link => <li><a href={url(link.href)} aria-current={page(link.slug)}><span class="nav-link-label">{parts(link.label).map(part => <>{part.glue}{part.whole ? <span class="nav-whole">{part.word}</span> : part.word}</>)}{link.external && <span aria-hidden="true"> ↗</span>}</span><span class="nav-link-hint">{parts(link.hint).map(part => <>{part.glue}{part.whole ? <span class="nav-whole">{part.word}</span> : part.word}</>)}</span></a></li>)}
+                        {group.links.map((link, linkIndex) => <li><a href={url(link.href)} aria-current={page(link.slug)} aria-labelledby={`nav-link-${item.section}-${index}-${linkIndex}`} aria-describedby={`nav-hint-${item.section}-${index}-${linkIndex}`}><span class="nav-link-label" id={`nav-link-${item.section}-${index}-${linkIndex}`}>{parts(link.label).map(part => <>{part.glue}{part.whole ? <span class="nav-whole">{part.word}</span> : part.word}</>)}{link.external && <span aria-hidden="true"> ↗</span>}</span><span class="nav-link-hint" id={`nav-hint-${item.section}-${index}-${linkIndex}`}>{parts(link.hint).map(part => <>{part.glue}{part.whole ? <span class="nav-whole">{part.word}</span> : part.word}</>)}</span></a></li>)}
                       </ul>
                     </div>
                   ))}
