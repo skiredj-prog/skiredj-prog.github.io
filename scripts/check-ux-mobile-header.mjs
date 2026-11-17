@@ -4,7 +4,8 @@ import { chromium } from 'playwright';
 const browser = await chromium.launch({ headless: true });
 try {
   for (const width of [320, 390, 768, 1024, 1100]) {
-    const page = await browser.newPage({ viewport: { width, height: 640 } });
+    // Touch device: section menus are opened with tap(), as a phone would.
+    const page = await browser.newPage({ viewport: { width, height: 640 }, hasTouch: true });
     await page.goto('http://127.0.0.1:4173/', { waitUntil: 'networkidle' });
     const header = page.locator('.site-header');
     const nav = page.locator('#main-navigation');
@@ -20,12 +21,14 @@ try {
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await page.keyboard.press('Escape');
     assert(!(await nav.isVisible()), 'Escape closes menu');
-    // Each section is an accordion in the folded menu: one open at a time, no sideways scroll, 44px targets.
+    // Each section is an accordion in the folded menu: one open at a time, no sideways scroll, 44px section buttons and links.
     await toggle.click();
     const triggers = page.locator('[data-nav-trigger]');
     for (let index = 0; index < 4; index += 1) {
       const trigger = triggers.nth(index);
-      await trigger.click();
+      await trigger.tap();
+      const triggerBox = await trigger.boundingBox();
+      assert(triggerBox && triggerBox.height >= 44, `section button ${index} under 44px at ${width}px`);
       const panel = page.locator(`#${await trigger.getAttribute('aria-controls')}`);
       assert.equal(await trigger.getAttribute('aria-expanded'), 'true', `section ${index} expands at ${width}px`);
       assert(await panel.isVisible(), `section ${index} menu visible at ${width}px`);
@@ -35,7 +38,7 @@ try {
       const small = await panel.locator('a').evaluateAll(links => links.filter(link => link.getBoundingClientRect().height < 44).map(link => link.textContent.trim()));
       assert.deepEqual(small, [], `menu links under 44px at ${width}px`);
     }
-    await triggers.nth(3).click();
+    await triggers.nth(3).tap();
     assert.equal(await page.locator('.nav-item[data-open]').count(), 0, `second tap closes the section at ${width}px`);
     await page.close();
   }
@@ -96,10 +99,10 @@ try {
     await desktop.mouse.click(640, 700);
     assert.equal(await desktop.locator('.nav-panel').filter({ visible: true }).count(), 0, `${route}: a click outside closes the menu`);
     await triggers.nth(1).hover();
-    await desktop.waitForTimeout(250);
-    assert(await desktop.locator('#nav-panel-produits').isVisible(), `${route}: hovering opens the menu`);
+    // Wait on the panel state, not on the open/close timers in site.ts.
+    await desktop.locator('#nav-panel-produits').waitFor({ state: 'visible', timeout: 3000 });
     await desktop.mouse.move(640, 700);
-    await desktop.waitForTimeout(400);
+    await desktop.locator('#nav-panel-produits').waitFor({ state: 'hidden', timeout: 3000 });
     assert.equal(await desktop.locator('.nav-panel').filter({ visible: true }).count(), 0, `${route}: leaving closes the menu`);
   }
   // Nothing in a header menu is missing from the footer site map.

@@ -286,7 +286,6 @@ const sectionBySlug: Record<string, Section> = {
   preuves: "credibilite", "preuves/hold": "credibilite", "preuves/cadres": "credibilite",
   evidence: "credibilite", "evidence/hold": "credibilite", "evidence/frameworks": "credibilite",
   depots: "credibilite", repositories: "credibilite",
-  contribuer: "credibilite", contribute: "credibilite",
 };
 
 /** Section a page belongs to, or null (home, contact, free report, 404). */
