@@ -1,0 +1,57 @@
+name: Magazine N01 — Windows PDF qualification (no publication)
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-pdf:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check required Windows font files
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $fontRoot = Join-Path $env:WINDIR "Fonts"
+          foreach ($name in @("arial.ttf", "arialbd.ttf", "georgiab.ttf", "tahoma.ttf", "tahomabd.ttf")) {
+            $path = Join-Path $fontRoot $name
+            if (-not (Test-Path $path)) { throw "Official Windows font not present: $name" }
+            Write-Host "Found required Windows font: $name"
+          }
+      - name: Generate and structurally verify all three PDF editions
+        shell: pwsh
+        run: ./scripts/magazine/regenerate_n01_windows.ps1
+      - name: Record PDF build metadata (no font files included)
+        shell: pwsh
+        run: |
+          $commit = (git rev-parse HEAD).Trim()
+          $pythonVersion = (python --version 2>&1 | Out-String).Trim()
+          $libs = (python -m pip freeze | Out-String).Trim()
+          $metadata = [ordered]@{
+            source_commit = $commit
+            runner = $env:RUNNER_OS
+            python = $pythonVersion
+            dependencies = $libs
+            font_source = "Windows system fonts (not exported)"
+            result = "STRUCTURAL_CHECK_PASS_ONLY — visual review required before publishing"
+          }
+          $metadata | ConvertTo-Json -Depth 4 | Set-Content public/magazine/n01/PDF_BUILD_METADATA.json -Encoding UTF8
+      - name: Upload candidate PDF artifacts for manual review (not deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: TENIR-N01-Windows-candidate
+          path: |
+            public/magazine/n01/TENIR-N01-FR.pdf
+            public/magazine/n01/TENIR-N01-EN.pdf
+            public/magazine/n01/TENIR-N01-AR.pdf
+            public/magazine/n01/SHA256SUMS.txt
+            public/magazine/n01/PDF_BUILD_METADATA.json
+          if-no-files-found: error
+          retention-days: 7
