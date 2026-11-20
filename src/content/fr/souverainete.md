@@ -11,7 +11,7 @@ sources: Proposition éditoriale TENIR Labs ; pages Offre, Architecture et Statu
 <p>TENIR vous aide à définir les limites de l’action autonome, à traiter les situations d’incertitude et à préciser les preuves nécessaires avant de poursuivre.</p>
 
 <ol class="path">
-  <li><a href="mailto:skiredj@tenirlabs.cc?subject=P%C3%A9rim%C3%A8tre%20de%20contr%C3%B4le%20%E2%80%94%20souverainet%C3%A9%20d%E2%80%99ex%C3%A9cution">Définir mon périmètre de contrôle ↗</a></li>
+  <li><a href="mailto:skiredj@gmail.com?subject=P%C3%A9rim%C3%A8tre%20de%20contr%C3%B4le%20%E2%80%94%20souverainet%C3%A9%20d%E2%80%99ex%C3%A9cution">Définir mon périmètre de contrôle ↗</a></li>
   <li><a href="#recu-perdu">Explorer le reçu perdu</a></li>
 </ol>
 
@@ -218,7 +218,7 @@ sources: Proposition éditoriale TENIR Labs ; pages Offre, Architecture et Statu
   </article>
 </div>
 
-<p><a href="mailto:skiredj@tenirlabs.cc?subject=Processus%20critique%20%E2%80%94%20souverainet%C3%A9%20d%E2%80%99ex%C3%A9cution">Parlons de votre processus critique ↗</a></p>
+<p><a href="mailto:skiredj@gmail.com?subject=Processus%20critique%20%E2%80%94%20souverainet%C3%A9%20d%E2%80%99ex%C3%A9cution">Parlons de votre processus critique ↗</a></p>
 <p>Un périmètre concret. Des décisions et des preuves à examiner. La forme du livrable est l’<a href="/offre/exemple/">exemple de fiche</a>. Le cadre du service est la page <a href="/offre/">Offre</a>. Les conditions se conviennent avant l’intervention.</p>
 
 <h2 id="perimetre-et-statut">Périmètre et statut</h2>

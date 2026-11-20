@@ -11,7 +11,7 @@ sources: TENIR Labs editorial proposition ; Offer, Architecture, and Status page
 <p>TENIR helps you define the limits of autonomous action, treat situations of uncertainty, and state the evidence required before going on.</p>
 
 <ol class="path">
-  <li><a href="mailto:skiredj@tenirlabs.cc?subject=Control%20perimeter%20%E2%80%94%20execution%20sovereignty">Define my control perimeter ↗</a></li>
+  <li><a href="mailto:skiredj@gmail.com?subject=Control%20perimeter%20%E2%80%94%20execution%20sovereignty">Define my control perimeter ↗</a></li>
   <li><a href="#lost-receipt">Explore the lost receipt</a></li>
 </ol>
 
@@ -218,7 +218,7 @@ sources: TENIR Labs editorial proposition ; Offer, Architecture, and Status page
   </article>
 </div>
 
-<p><a href="mailto:skiredj@tenirlabs.cc?subject=Critical%20process%20%E2%80%94%20execution%20sovereignty">Let us talk about your critical process ↗</a></p>
+<p><a href="mailto:skiredj@gmail.com?subject=Critical%20process%20%E2%80%94%20execution%20sovereignty">Let us talk about your critical process ↗</a></p>
 <p>A concrete perimeter. Decisions and evidence to examine. The shape of the deliverable is the <a href="/en/offer/example/">example sheet</a>. The frame of the service is the <a href="/en/offer/">Offer</a> page. Terms are agreed before any engagement.</p>
 
 <h2 id="perimeter-and-status">Perimeter and status</h2>

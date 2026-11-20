@@ -107,7 +107,7 @@ try {
       assert.equal(await page.locator('#pa-priorities li').count(),3,locale+': expected exactly three practical priorities');
       assert(await page.locator('#pa-report-summary').innerText(),locale+': narrative must be substantive');
       const mail=await page.locator('#pa-talk').getAttribute('href');
-      assert(mail.startsWith('mailto:skiredj@tenirlabs.cc'),locale+': explicit share-by-email action missing');
+      assert(mail.startsWith('mailto:skiredj@gmail.com'),locale+': explicit share-by-email action missing');
       const download=page.waitForEvent('download');
       await page.locator('#pa-download').click();
       const file=await download;

@@ -21,8 +21,8 @@ const topics=portfolioTopics(locale);
     <button class="btn btn-primary" type="submit" disabled data-brief-submit>{fr?'Préparer mon e-mail':'Prepare my email'} <span aria-hidden="true">↗</span></button>
     <p class="section-note">{fr?'Le site ne reçoit pas vos réponses. Votre texte reste dans cet onglet si vous changez de langue. Vous décidez de l’envoi depuis votre messagerie.':'The site does not receive your answers. Your text stays in this tab when you change language. You decide when to send it from your email app.'}</p>
     <p data-brief-feedback role="status" hidden>{fr?'Votre brouillon est prêt. Relisez-le ci-dessous avant de l’ouvrir dans votre messagerie.':'Your draft is ready. Review it below before opening it in your email app.'}</p>
-    <div data-brief-fallback hidden><label for="brief-copy">{fr?'Votre brouillon':'Your draft'}</label><textarea id="brief-copy" readonly rows="8"></textarea><a class="btn btn-primary" data-brief-mailto href="mailto:skiredj@tenirlabs.cc">{fr?'Ouvrir dans ma messagerie':'Open in my email app'} ↗</a><p class="section-note">{fr?'Pas de messagerie configurée ? Copiez le brouillon et écrivez à skiredj@tenirlabs.cc.':'No email app configured? Copy the draft and write to skiredj@tenirlabs.cc.'}</p></div>
-    <noscript><p>{fr?'Écrivez directement à':'Write directly to'} <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>.</p></noscript>
+    <div data-brief-fallback hidden><label for="brief-copy">{fr?'Votre brouillon':'Your draft'}</label><textarea id="brief-copy" readonly rows="8"></textarea><a class="btn btn-primary" data-brief-mailto href="mailto:skiredj@gmail.com">{fr?'Ouvrir dans ma messagerie':'Open in my email app'} ↗</a><p class="section-note">{fr?'Pas de messagerie configurée ? Copiez le brouillon et écrivez à skiredj@gmail.com.':'No email app configured? Copy the draft and write to skiredj@gmail.com.'}</p></div>
+    <noscript><p>{fr?'Écrivez directement à':'Write directly to'} <a href="mailto:skiredj@gmail.com">skiredj@gmail.com</a>.</p></noscript>
   </form>
 </section>
 <script>
@@ -91,7 +91,7 @@ const topics=portfolioTopics(locale);
       const fallback=form.querySelector<HTMLElement>('[data-brief-fallback]'),feedback=form.querySelector<HTMLElement>('[data-brief-feedback]'),copy=form.querySelector<HTMLTextAreaElement>('#brief-copy');
       if(copy)copy.value=body;if(fallback)fallback.hidden=false;if(feedback)feedback.hidden=false;
       const mailto=form.querySelector<HTMLAnchorElement>('[data-brief-mailto]');
-      if(mailto)mailto.href=`mailto:skiredj@tenirlabs.cc?subject=${encodeURIComponent(fr?'Une question sur TENIR':'A question about TENIR')}&body=${encodeURIComponent(body)}`;
+      if(mailto)mailto.href=`mailto:skiredj@gmail.com?subject=${encodeURIComponent(fr?'Une question sur TENIR':'A question about TENIR')}&body=${encodeURIComponent(body)}`;
       copy?.focus();
     });
     form.querySelector<HTMLTextAreaElement>('[name=action]')?.addEventListener('input',event=>(event.target as HTMLTextAreaElement).setCustomValidity(''));
