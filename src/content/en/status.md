@@ -1,15 +1,15 @@
 ---
 title: Status
-kicker: Actual maturity · October 2026
+kicker: Actual maturity · 20 November 2026 review
 description: Status of the TENIR framework, REG drafts and released TENIR-Gov v5.7.0, with explicit deployment boundaries and limitations.
-lede: KB3 is the active doctrinal rendering line and the REG RFCs remain proposed drafts. TENIR-Gov v5.7.0 was published on 24 October 2026 with a bounded single-host deployment scope, no multi-host C3 claim and no production certification.
+lede: KB3 is the active rendering line. REG's baseline is frozen; RFC-4 v0.3 was author-ratified outside it. TENIR-Gov v5.7.0 is published, while 5.7.5 is merged in main without verified publication. Scope remains bounded single-host, with no production certification.
 sources: KB3 and versioning policy; REG RFCs; TENIR-Gov v5.7.0 release (24 October 2026), README and pyproject.toml; historical 5.6.x change logs; harness STATUS.md
 ---
 
 ## Read this first
 
 - **The framework and the standard are not the software:** KB3 and REG describe meaning lines or proposed rules.
-- **The software exists as a beta:** TENIR-Gov v5.7.0 is published, but its stated scope remains bounded and single-host.
+- **The software exists as a beta:** TENIR-Gov v5.7.0 is published; 5.7.5 is merged in main but is not a verified published release in this review. Scope remains bounded and single-host.
 - **Published does not mean certified:** nothing on this page proves a customer deployment, multi-host tolerance, or exactly-once external effect.
 
 ## Where each namespace stands
