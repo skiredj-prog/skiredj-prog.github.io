@@ -1,0 +1,15 @@
+---
+import {projectStatus, snapshotCopy, type SiteLocale} from '../data/project-status';
+interface Props { locale: SiteLocale; }
+const {locale} = Astro.props;
+const t = snapshotCopy[locale];
+const link = locale === 'fr' ? '/statut/' : '/en/status/';
+---
+<section class="callout callout-limit" aria-label={t.title} data-status-snapshot={projectStatus.reviewedAt}>
+  <h2>{t.title}</h2>
+  <p>{t.published} <a href={projectStatus.tenirGov.published.releaseUrl}>Release &amp; commit</a>.</p>
+  <p>{t.merged} <a href={projectStatus.tenirGov.development.sourceUrl}>Merge</a> · <a href={projectStatus.tenirGov.development.limitsUrl}>{locale === 'fr' ? 'Limites' : 'Limitations'}</a>.</p>
+  <p>{t.reg} <a href={projectStatus.reg.sourceUrl}>{locale === 'fr' ? 'Source REG' : 'REG source'}</a> · <a href={projectStatus.reg.revisionUrl}>RFC-4 v0.3</a>.</p>
+  <p><strong>{t.scope}</strong> {t.historic}</p>
+  <p><a href={link}>{locale === 'fr' ? 'Consulter les limites et statuts' : 'Read status and limitations'}</a></p>
+</section>
