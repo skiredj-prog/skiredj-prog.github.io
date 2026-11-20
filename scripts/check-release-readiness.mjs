@@ -1,5 +1,5 @@
 // S4 — Deterministic build-output preflight. Does not prove live availability.
-// Known UX/social defects are WARN until PR #96 is reviewed and integrated.
+// PR #96 is merged: one H1 and a social share image are now release requirements.
 import assert from 'node:assert/strict';
 import {readFileSync, existsSync} from 'node:fs';
 import path from 'node:path';
@@ -26,8 +26,8 @@ for (const [route, lang] of routes) {
   if (html.includes(['skiredj','tenirlabs.cc'].join('@'))) errors.push(route+': retired email rendered');
   if (/\/contact\/$/.test(route) && (!html.includes('skiredj@gmail.com')||!html.includes('mailto:skiredj@gmail.com'))) errors.push(route+': replacement email missing from contact');
   const h1=(html.match(/<h1(?:\s[^>]*)?>/gi)||[]).length;
-  if (h1!==1) warnings.push(route+': expected exactly one h1, got '+h1+' (review UX/PR #96)');
-  if (!has(html,/<meta\s+property="og:image"\s+content=/i)) warnings.push(route+': missing og:image (tracked by PR #96)');
+  if (h1!==1) errors.push(route+': expected exactly one h1, got '+h1);
+  if (!has(html,/<meta\s+property="og:image"\s+content=/i)) errors.push(route+': missing og:image');
 }
 const sitemap='dist/sitemap.xml';
 if(!existsSync(sitemap)) errors.push('missing generated sitemap.xml');
@@ -42,4 +42,4 @@ if(!existsSync(cname) || readFileSync(cname,'utf8').trim()!=='tenirlabs.cc') err
 for(const v of warnings) console.warn('WARN '+v);
 for(const v of errors) console.error('FAIL '+v);
 if(errors.length) process.exitCode=1;
-else console.log('PASS: '+routes.length+' critical FR/EN routes, canonical metadata, contact email, sitemap and CNAME; '+warnings.length+' non-blocking UX/share warnings.');
+else console.log('PASS: '+routes.length+' critical FR/EN routes, canonical metadata, contact email, sitemap and CNAME; '+warnings.length+' optional warnings.');
