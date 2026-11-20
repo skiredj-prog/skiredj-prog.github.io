@@ -7,7 +7,7 @@ test.describe('S0 live contact-address acceptance', () => {
     test(route+' exposes new email and prepares a correct message', async ({page}) => {
       const response = await page.goto(route, {waitUntil:'domcontentloaded'});
       expect(response?.status()).toBe(200);
-      await expect(page.locator('a[href^="mailto:skiredj@gmail.com"]').first()).toBeVisible();
+      await expect(page.locator('.site-footer a[href^="mailto:skiredj@gmail.com"]').first()).toBeVisible();
       expect(await page.content()).not.toContain(['skiredj','tenirlabs.cc'].join('@'));
 
       const form=page.locator('[data-contact-brief]');
