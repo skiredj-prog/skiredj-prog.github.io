@@ -1,18 +1,18 @@
 ---
 title: Publications
 kicker: Package · working papers
-description: The PyPI package tenir-governance 5.6.0, beta, and two SSRN working papers. TENIR-Gov aligns to KB3; KB3 is not in the code.
+description: Published TENIR-Gov 5.7.0, merged 5.7.5 development code and two SSRN working papers, with dated limitations and sources.
 lede: What is listed here is a published implementation or a working paper. It is not KB3, and it is not a certification.
-sources: PyPI tenir-governance, version 5.6.0, read on 20 October 2026; SSRN 7291620; SSRN 7197218
+sources: TENIR-Gov 5.7.0 release (24 October 2026); development merge 42513bff (20 November 2026); SSRN 7291620 and 7197218
 ---
 
 <div class="callout callout-limit">
-  <p><strong>Limit.</strong> Class of this page: simplified public-facing. TENIR-Gov is an implementation that should align to KB3. KB3 is the enacted doctrinal rendering line, outside the code. It is not this package. 5.6.0 is beta. The <a href="/en/status/">Status</a> page keeps the freeze on public communication until a hardened 5.7.0. SSRN abstracts are not reproduced here.</p>
+  <p><strong>Limit.</strong> Class of this page: simplified public-facing. TENIR-Gov is an implementation that should align to KB3. KB3 is the enacted doctrinal rendering line, outside the code. It is not this package. TENIR-Gov remains beta. The <a href="/en/status/">Status</a> page separates released software from unqualified merged development code. SSRN abstracts are not reproduced here.</p>
 </div>
 
 ## Package
 
-<p><a href="https://pypi.org/project/tenir-governance/"><code>tenir-governance</code></a>. Current version on PyPI: 5.6.0. The releases present run from 5.3.0 to 5.6.0: 5.3.0, 5.3.1, 5.4.0, 5.4.1, 5.4.2, 5.4.3, 5.4.4, 5.5.0, and 5.6.0. The changelog’s 5.6.1 is not among them.</p>
+<p><a href="https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0"><code>tenir-governance 5.7.0</code></a> is the identified published baseline from 24 October 2026 (also documented on <a href="https://pypi.org/project/tenir-governance/5.7.0/">PyPI 5.7.0</a>). Version 5.7.5 code was merged into <a href="https://github.com/skiredj-prog/tenir_governance/commit/42513bff3c129996cfb73060ef99c842602634b1"><code>main</code> on 20 November</a>; its GitHub/PyPI publication has not been established in this review. A merge is not a release or a deployment qualification. Scope remains bounded single-host.</p>
 
 <p><code>pip install tenir-governance</code></p>
 
@@ -21,13 +21,14 @@ sources: PyPI tenir-governance, version 5.6.0, read on 20 October 2026; SSRN 729
   <tbody>
     <tr><th>Python</th><td>&gt;=3.10</td></tr>
     <tr><th>PyPI summary</th><td>TENIR-Gov: Governance Middleware for AI-Enabled Operational Systems</td></tr>
-    <tr><th>DOI</th><td><a href="https://doi.org/10.5281/zenodo.21277138">10.5281/zenodo.21277138</a></td></tr>
+    <tr><th>Historical displayed DOI</th><td><a href="https://doi.org/10.5281/zenodo.21277138">10.5281/zenodo.21277138</a> (older snapshot; unresolved difference)</td></tr>
+    <tr><th>Main metadata DOI</th><td><a href="https://doi.org/10.5281/zenodo.21264802">10.5281/zenodo.21264802</a> (<code>pyproject.toml</code>, 20 November)</td></tr>
     <tr><th>Repository</th><td><a href="https://github.com/skiredj-prog/tenir_governance">github.com/skiredj-prog/tenir_governance</a></td></tr>
   </tbody>
 </table>
 </div>
 
-<p>This DOI is the one the PyPI page and the repository README display for the package. The <a href="/en/contact/">Contact</a> page keeps the gap with other identifiers in the same tree.</p>
+<p>Do not treat these identifiers as interchangeable. Before citing a concept or release, verify the Zenodo record, <code>CITATION.cff</code> and exact commit. The <a href="/en/contact/">Contact</a> page preserves the historical discrepancy.</p>
 
 ## SSRN working papers
 
