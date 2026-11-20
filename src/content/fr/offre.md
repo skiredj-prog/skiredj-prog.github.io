@@ -18,7 +18,7 @@ sources: définition de l’offre du 17 novembre 2026 ; premières missions à v
 </div>
 
 <div class="actions">
-  <a class="btn" href="/contact/">Décrire votre périmètre</a>
+  <a class="btn" href="/contact/?sujet=diagnostic">Cadrer Leap Readiness</a>
   <a class="text-link" href="/parcours-ia/?start=1">D’abord, faire l’auto-évaluation gratuite →</a>
 </div>
 
@@ -113,6 +113,6 @@ sources: définition de l’offre du 17 novembre 2026 ; premières missions à v
 <p>L’offre est nouvelle : aucun résultat de mission n’est encore publié. Ce que le site démontre aujourd’hui est décrit dans <a href="/credibilite/">Crédibilité</a>.</p>
 
 <div class="actions">
-  <a class="btn" href="/contact/">Décrire votre périmètre</a>
+  <a class="btn" href="/contact/?sujet=diagnostic">Cadrer Leap Readiness</a>
   <a class="text-link" href="/parcours-ia/?start=1">Faire l’auto-évaluation gratuite →</a>
 </div>

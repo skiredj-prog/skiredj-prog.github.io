@@ -18,7 +18,7 @@ sources: offer definition of 17 November 2026; first engagements to come, no cli
 </div>
 
 <div class="actions">
-  <a class="btn" href="/en/contact/">Describe your scope</a>
+  <a class="btn" href="/en/contact/?sujet=diagnostic">Scope Leap Readiness</a>
   <a class="text-link" href="/en/ai-readiness/?start=1">First, take the free self-assessment →</a>
 </div>
 
@@ -113,6 +113,6 @@ sources: offer definition of 17 November 2026; first engagements to come, no cli
 <p>The offer is new: no engagement results are published yet. What the site demonstrates today is described under <a href="/en/credibility/">Credibility</a>.</p>
 
 <div class="actions">
-  <a class="btn" href="/en/contact/">Describe your scope</a>
+  <a class="btn" href="/en/contact/?sujet=diagnostic">Scope Leap Readiness</a>
   <a class="text-link" href="/en/ai-readiness/?start=1">Take the free self-assessment →</a>
 </div>
