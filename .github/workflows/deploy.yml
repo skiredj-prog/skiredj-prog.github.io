@@ -33,6 +33,8 @@ jobs:
         run: npm run check:workbench-release:unit
       - name: Build
         run: npm run build
+      - name: Check retired contact address in sources and rendered site
+        run: node scripts/check-contact-address.mjs
       - name: Check internal links
         run: npm run check:links
       - name: Check Workbench release metadata and site claims
