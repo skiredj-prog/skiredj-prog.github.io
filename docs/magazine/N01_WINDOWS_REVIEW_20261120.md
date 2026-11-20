@@ -29,7 +29,7 @@ All 48 pages were rendered to a low-resolution visual overview. Pages 1, 5, 15 a
 - Page 15 contains the question list, deliberately inverted answer key and sources; the Arabic answer line becomes legible on 180-degree rotation, as intended.
 - Page 16 presents feedback options and a QR code in FR/EN/AR.
 - No visually obvious severe clipping was identified in the 48-page contact sheets. This is not a full proof of visual parity with the previous publication.
-- PDF link annotations were inspected: FR 22, EN 21, AR 20, all without the retired site email `skiredj@tenirlabs.cc`.
+- PDF link annotations were inspected: FR 22, EN 21, AR 20, all without the retired site email `expired tenirlabs.cc mailbox`.
 
 ## Release gate remains open
 
