@@ -1,9 +1,9 @@
 ---
 title: Repositories
-kicker: Map · 19 October 2026
-description: Role of each public skiredj-prog repository related to TENIR, REG, and IronOmega, with the files to open first.
+kicker: Historical repository map · 19 October 2026
+description: Dated repository map from 19 October 2026, to be read with the current status snapshot.
 lede: "Seven public repositories, read on 19 October 2026. One of them, this one, was empty on that date. The others are not seven copies of the same software: doctrine, standard, runtime, and schemas did not share the same age or the same authority."
-sources: trees cloned on 19 October 2026; namespace policy v2
+sources: historical trees cloned on 19 October 2026; 20 November 2026 status snapshot at top; namespace policy v2
 ---
 
 <table>
