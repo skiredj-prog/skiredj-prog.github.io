@@ -46,7 +46,7 @@ def logical_actual_text(page) -> str:
         return ""
     raw = contents.get_data()
     logical = []
-    for hex_bytes in re.findall(rb"/ActualText\\s*<([0-9A-Fa-f]+)>", raw):
+    for hex_bytes in re.findall(rb"/ActualText\s*<([0-9A-Fa-f]+)>", raw):
         value = bytes.fromhex(hex_bytes.decode("ascii"))
         if not value.startswith(bytes.fromhex("feff")):
             raise SystemExit("Arabic /ActualText is missing a UTF-16 BOM")
