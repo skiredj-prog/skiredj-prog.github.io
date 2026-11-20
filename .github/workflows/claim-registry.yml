@@ -1,0 +1,25 @@
+name: Claim registry — evidence integrity
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Validate claim provenance and bilingual rendering
+        run: node --experimental-strip-types scripts/check-claim-registry.mjs
+      - run: npm run check:links
