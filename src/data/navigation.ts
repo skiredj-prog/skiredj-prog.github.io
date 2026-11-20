@@ -146,7 +146,7 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
             { slug: "learn", href: "/en/learn/", label: "Learn to recognize", hint: "Five distinctions between promise and evidence." },
             { slug: "cases", href: "/en/cases/", label: "The cases", hint: "Documented cases and teaching scenarios." },
             { slug: "actors", href: "/en/actors/", label: "The players", hint: "Who controls what, and who can prove it." },
-            { slug: "magazine", href: "/magazine/n01/en/", label: "Magazine · No. 01", hint: "Morocco’s big choices, explained." },
+            { slug: "magazine", href: "/magazine/n02/en/", label: "Magazine", hint: "Big choices, explained: Morocco 2030, AI at work." },
           ],
         },
         {
@@ -458,7 +458,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "cases", href: "/en/cases/", label: "The cases" },
         { slug: "cases/ambiguous-operation", href: "/en/cases/ambiguous-operation/", label: "Ambiguous operation" },
         { slug: "actors", href: "/en/actors/", label: "The players" },
-        { slug: "magazine", href: "/magazine/n01/en/", label: "Magazine · No. 01" },
+        { slug: "magazine", href: "/magazine/n02/en/", label: "Magazine" },
         { slug: "start/discover", href: "/en/start/discover/", label: "Understand TENIR" },
         { slug: "tau-tenir", href: "/en/tau-tenir/", label: "TAU / TENIR introduction" },
         { slug: "concepts", href: "/en/concepts/", label: "Concepts" },

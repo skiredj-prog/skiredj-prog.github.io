@@ -74,9 +74,10 @@ const fr = (data as any).fr;
     <p>Ce que l’agent propose, ce que votre organisation autorise, et ce que vous pouvez encore vérifier.</p>
     <div class="mag-actions">
       <a class="mag-btn mag-btn-light" href={url('/magazine/n02/')}>Lire le N° 02 <span aria-hidden="true">→</span></a>
+      <a class="mag-btn mag-btn-light" href={url('/magazine/n02/en/')} lang="en" hreflang="en">Read in English <span aria-hidden="true">→</span></a>
       <a class="mag-btn mag-btn-light" href={url('/magazine/n02/TENIR-N02-FR.pdf')} download>Télécharger le PDF</a>
     </div>
-    <p class="mag-small mag-muted">Numéro pilote en français. PDF au format A5, 16 pages.</p>
+    <p class="mag-small mag-muted">Numéro pilote, à lire en français et en anglais. PDF au format A5, 16 pages, en français.</p>
   </section>
   {langs.map((l) => {
     const d = (data as any)[l];

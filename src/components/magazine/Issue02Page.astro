@@ -1,37 +1,72 @@
 ---
-// Page complète du n° 02 (français) : gabarit magazine + couverture + édition web.
-// Le texte de l’édition web vient de src/data/magazine/n02.fr.html.
+// Page complète du n° 02 : gabarit magazine + couverture + édition web.
+// Le texte vient de src/data/magazine/n02.fr.html et n02.en.html (même structure, mêmes classes).
+// Le PDF A5 n'existe qu'en français pour l'instant : la page anglaise le propose en le disant.
 import Magazine from '../../layouts/Magazine.astro';
 import '../../styles/magazine-n02.css';
-import body from '../../data/magazine/n02.fr.html?raw';
+import bodyFr from '../../data/magazine/n02.fr.html?raw';
+import bodyEn from '../../data/magazine/n02.en.html?raw';
 import { url } from '../../data/site';
-const path = '/magazine/n02/';
+interface Props { lang?: 'fr' | 'en'; }
+const { lang = 'fr' } = Astro.props;
+const paths = { fr: '/magazine/n02/', en: '/magazine/n02/en/' };
+const alternates = (['fr', 'en'] as const).map((l) => ({ lang: l, href: paths[l] }));
 const pdfHref = '/magazine/n02/TENIR-N02-FR.pdf';
-const title = 'TENIR N° 02 — Donnez à l’IA le travail, pas les clés de votre entreprise';
-const description = 'Ce que l’agent propose, ce que votre organisation autorise, et ce que vous pouvez encore vérifier. Numéro pilote, novembre 2026.';
+const t = {
+  fr: {
+    body: bodyFr,
+    title: 'TENIR N° 02 — Donnez à l’IA le travail, pas les clés de votre entreprise',
+    description: 'Ce que l’agent propose, ce que votre organisation autorise, et ce que vous pouvez encore vérifier. Numéro pilote, novembre 2026.',
+    pdfLabel: 'PDF',
+    alt: 'Une clé dorée posée sur une table de velours ; au fond, des agents en costume travaillent dans un club',
+    caption: 'Illustration générée par IA',
+    kicker: 'Novembre 2026 · N° 02 · Édition pilote',
+    h1: 'Donnez à l’IA le travail, pas les clés de votre entreprise.',
+    sub: 'Ce que l’agent propose, ce que votre organisation autorise, et ce que vous pouvez encore vérifier.',
+    read: 'Lire le numéro', first: '#edito',
+    download: 'Télécharger le PDF',
+    foot1: 'TENIR N° 02 · novembre 2026 · numéro pilote gratuit, en français et en anglais. PDF au format A5, 16 pages, en français.',
+    foot2: 'Proposition éditoriale et pédagogique : les affirmations techniques sont à vérifier contre le périmètre et les artefacts publiés. Les illustrations photographiques sont générées par IA.',
+  },
+  en: {
+    body: bodyEn,
+    title: 'TENIR No. 02 — Give AI the work, not the keys to your business',
+    description: 'What the agent proposes, what your organisation authorises, and what you can still verify. Pilot issue, November 2026.',
+    pdfLabel: 'PDF (French)',
+    alt: 'A golden key lies on a velvet table; in the background, agents in suits work in a club',
+    caption: 'AI-generated illustration',
+    kicker: 'November 2026 · No. 02 · Pilot edition',
+    h1: 'Give AI the work, not the keys to your business.',
+    sub: 'What the agent proposes, what your organisation authorises, and what you can still verify.',
+    read: 'Read the issue', first: '#editorial',
+    download: 'Download the PDF (French)',
+    foot1: 'TENIR No. 02 · November 2026 · free pilot issue, in French and English. A5 PDF, 16 pages, in French only for now.',
+    foot2: 'An editorial and teaching proposal: technical claims are to be checked against the published scope and artefacts. The photographic illustrations are AI-generated.',
+  },
+}[lang];
 ---
-<Magazine lang="fr" title={title} description={description} path={path} image="/magazine/n02/partage.jpg"
-  current="issue" issueHref={path} pdfHref={pdfHref} pdfLabel="PDF">
+<Magazine lang={lang} title={t.title} description={t.description} path={paths[lang]} alternates={alternates} image="/magazine/n02/partage.jpg"
+  current="issue" issueHref={paths[lang]} pdfHref={pdfHref} pdfLabel={t.pdfLabel}>
   <section class="mag-hero n02-hero" slot="hero" aria-labelledby="titre">
     <div class="mag-hero-inner">
       <figure>
-        <img src={url('/magazine/n02/couverture.jpg')} alt="Une clé dorée posée sur une table de velours ; au fond, des agents en costume travaillent dans un club" width="1168" height="784" />
-        <figcaption>Illustration générée par IA</figcaption>
+        <img src={url('/magazine/n02/couverture.jpg')} alt={t.alt} width="1168" height="784" />
+        <figcaption>{t.caption}</figcaption>
       </figure>
       <div class="mag-hero-text">
-        <p class="mag-kicker">Novembre 2026 · N° 02 · Édition pilote</p>
-        <h1 id="titre">Donnez à l’IA le travail, pas les clés de votre entreprise.</h1>
-        <p class="mag-sub">Ce que l’agent propose, ce que votre organisation autorise, et ce que vous pouvez encore vérifier.</p>
+        <p class="mag-kicker">{t.kicker}</p>
+        <h1 id="titre">{t.h1}</h1>
+        <p class="mag-sub">{t.sub}</p>
         <div class="mag-actions">
-          <a class="mag-btn mag-btn-primary" href="#edito">Lire le numéro <span aria-hidden="true">↓</span></a>
-          <a class="mag-btn mag-btn-ghost" href={url(pdfHref)} download>Télécharger le PDF</a>
+          <a class="mag-btn mag-btn-primary" href={t.first}>{t.read} <span aria-hidden="true">↓</span></a>
+          <a class="mag-btn mag-btn-ghost" href={url(pdfHref)} download hreflang="fr">{t.download}</a>
         </div>
       </div>
     </div>
   </section>
-  <Fragment set:html={body} />
+  <Fragment set:html={t.body} />
   <Fragment slot="footer">
-    <p>TENIR N° 02 · novembre 2026 · numéro pilote gratuit, en français. PDF au format A5, 16 pages.</p>
-    <p>Proposition éditoriale et pédagogique : les affirmations techniques sont à vérifier contre le périmètre et les artefacts publiés. Les illustrations photographiques sont générées par IA.</p>
+    <p>{t.foot1}</p>
+    <p>{t.foot2}</p>
   </Fragment>
 </Magazine>
