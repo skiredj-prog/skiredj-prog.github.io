@@ -1,15 +1,15 @@
 ---
 title: Statut
-kicker: Maturité réelle · octobre 2026
+kicker: Maturité réelle · relevé du 20 novembre 2026
 description: Statuts du canon, des brouillons REG et du runtime TENIR-Gov v5.7.0 publié, avec périmètres et limites explicites.
-lede: KB3 est la ligne de rendu doctrinale active ; les RFC REG restent des brouillons proposés. TENIR-Gov v5.7.0 est publié depuis le 24 octobre 2026, avec un périmètre mono-hôte borné, sans revendication C3 multi-hôte ni certification de production.
+lede: KB3 est la ligne de rendu active. Le baseline REG reste gelé ; RFC-4 v0.3 est ratifiée par l’auteur hors baseline. TENIR-Gov v5.7.0 est publié, tandis que 5.7.5 est fusionné dans main sans publication confirmée. Périmètre mono-hôte borné, aucune certification de production.
 sources: KB3 et politique v2 ; RFC REG ; TENIR-Gov release v5.7.0 (24 octobre 2026), README et pyproject.toml ; anciens journaux 5.6.x à titre historique ; STATUS.md du harnais
 ---
 
 ## À retenir avant de lire le détail
 
 - **Le cadre et le standard ne sont pas le logiciel :** KB3 et REG décrivent des lignes de sens ou des règles proposées.
-- **Le logiciel existe en bêta :** TENIR-Gov v5.7.0 est publié, mais son périmètre annoncé reste mono-hôte et borné.
+- **Le logiciel existe en bêta :** TENIR-Gov v5.7.0 est publié ; 5.7.5 est fusionné dans main mais n’est pas une publication vérifiée dans ce relevé. Le périmètre reste mono-hôte et borné.
 - **Publié ne veut pas dire certifié :** aucune ligne de cette page ne prouve un déploiement client, une tolérance multi-hôte ou un effet externe exactement une fois.
 
 ## Où en est chaque espace
@@ -20,7 +20,7 @@ sources: KB3 et politique v2 ; RFC REG ; TENIR-Gov release v5.7.0 (24 octobre 20
     <tr><td>TENIR 2.0</td><td>Nom du cadre dans l’espace canon. Ce nom n’est pas, à lui seul, l’institution de KB3.</td></tr>
     <tr><td>KB3</td><td>Ligne de rendu doctrinale instituée et active, par la déclaration du propriétaire du 19 octobre 2026. Les fichiers fournis avec cette déclaration ne contiennent pas d’enregistrement signé sous <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. Couche documentaire, hors du code. KB3 rend le sens ; il ne crée pas de sens souverain et n’est pas une nouvelle constitution. Les services ou applications spécialisés peuvent l’envelopper ou l’étendre ; ils ne doivent pas le redéfinir. TENIR-Gov doit s’y aligner ; il n’est pas KB3.</td></tr>
     <tr><td>KB2</td><td>Ligne de rendu antérieure, continuité seulement. Pas d’autorité active simultanée avec KB3. Le build du 30 mars 2026 est conservé. La note qui l’a nommé actif à l’institution est un contexte historique, pas l’autorité actuelle. KB1.1 est historique. Rédigé et curé avec assistance, auteur Abdelaziz Skiredj.</td></tr>
-    <tr><td>REG</td><td>RFC-0 à RFC-7 : Proposed Standard, brouillon gelé, 2–3 octobre 2026. Pas une norme adoptée par un organisme extérieur.</td></tr>
+    <tr><td>REG</td><td>Baseline RFC-0 à RFC-7 gelé ; révision RFC-4 v0.3 ratifiée par son auteur le 19 novembre 2026 hors baseline gelée. Pas une norme adoptée par un organisme extérieur, ni une certification de runtime.</td></tr>
     <tr><td>TENIR-Gov</td><td>Logiciel open source bêta (« Development Status :: 4 - Beta »). Release <a href="https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0">v5.7.0</a> publiée le 24 octobre 2026 ; source identifiée par le tag et le commit <code>47ef67e3efc5f3008896a7d88bebf929fa0a98f0</code>. Publication ne signifie pas qualification d’un déploiement client.</td></tr>
     <tr><td>5.6.1</td><td>Ancien état documentaire : le journal consulté au 19 octobre portait « Pending release ». Cette mention n’est plus une information sur la dernière release publiée.</td></tr>
     <tr><td>5.7.0</td><td>Release GitHub et paquet PyPI <a href="https://pypi.org/project/tenir-governance/5.7.0/">5.7.0</a>, publiés le 24 octobre 2026. Périmètre de déploiement annoncé : mono-hôte, avec manifeste de production vérifié et registre durable configuré ; multi-hôte Raft de production bloqué (FM-20), aucune tolérance C3 multi-hôte ni exactly-once externe revendiquée.</td></tr>
