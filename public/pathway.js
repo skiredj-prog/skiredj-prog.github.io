@@ -358,7 +358,7 @@
     $('pa-offer-description').textContent=report.offer.desc;
     $('pa-learn').href=report.offer.link;
     $('pa-learn').textContent=L('Découvrir cette approche →','Explore this approach →');
-    $('pa-talk').href='mailto:skiredj@tenirlabs.cc?subject='+encodeURIComponent(L('Parlons de mon rapport IA personnalisé','Discuss my personalized AI report'))+'&body='+encodeURIComponent(L('Bonjour,\n\nJe souhaite discuter des prochaines étapes suggérées par mon rapport TENIR Labs.\n\n','Hello,\n\nI would like to discuss the next steps suggested by my TENIR Labs report.\n\n')+reportText()+'\n\n'+L('Cordialement,','Best regards,'));
+    $('pa-talk').href='mailto:skiredj@gmail.com?subject='+encodeURIComponent(L('Parlons de mon rapport IA personnalisé','Discuss my personalized AI report'))+'&body='+encodeURIComponent(L('Bonjour,\n\nJe souhaite discuter des prochaines étapes suggérées par mon rapport TENIR Labs.\n\n','Hello,\n\nI would like to discuss the next steps suggested by my TENIR Labs report.\n\n')+reportText()+'\n\n'+L('Cordialement,','Best regards,'));
     $('pa-feedback').textContent='';
     show('report');
     $('pa-report-title').focus({preventScroll:true});
