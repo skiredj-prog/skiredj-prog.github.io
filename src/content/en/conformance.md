@@ -3,14 +3,14 @@ title: Conformance
 kicker: Suites · not a certification
 description: How to read and run the REG conformance suites, and what a passing test actually establishes.
 lede: A structurally admissible configuration is not a demonstrated effective guarantee. A harness that passes is not a validation of production REG.
-sources: reg-conformance/README.md and spec.md; tenir-conformance-s1-g1/README.md and STATUS.md; illustrative architecture, audit section
+sources: reg-conformance/README.md, VECTORS.md and spec.md (20 November 2026 review); tenir-conformance-s1-g1/README.md and STATUS.md; historical validation runs
 ---
 
 <p>The <a href="https://github.com/skiredj-prog/reg-conformance">reg-conformance</a> repository is an implementation-neutral suite. It defines properties — safety, liveness, fault tolerance, I8 — and a <code>ConsensusBackend</code> interface: reserve, commit, release, reconcile, get_state. It prescribes neither Raft, nor Paxos, nor a particular database. Any backend that holds the properties declared by its profile is a possible subject of conformance. “Consensus” in the interface name means a coordination point for shared state, not necessarily a distributed algorithm.</p>
 
 ## Catalogue
 
-<p>The README and the illustrative document report the same counts, which they say are checked by a test independent of the generator: 144 theoretical combinations, 42 structurally admissible (9 single-process, 18 single-host, 15 multi-host), 102 rejected. Rules R1, R2, and R3 bind host scope, concurrency, and deduplication. A profile that violates resilience bounds is rejected: for crash-only, n ≥ 2f+1; for Byzantine, n ≥ 3m+1.</p>
+<p>For the REG+ catalogue (distinct from the conformance runner), the README and the illustrative document report the same counts, which they say are checked by a test independent of the generator: 144 theoretical combinations, 42 structurally admissible (9 single-process, 18 single-host, 15 multi-host), 102 rejected. Rules R1, R2, and R3 bind host scope, concurrency, and deduplication. A profile that violates resilience bounds is rejected: for crash-only, n ≥ 2f+1; for Byzantine, n ≥ 3m+1.</p>
 
 <div class="callout callout-limit">
   <p><strong>Structural is not effective.</strong> The effective-guarantee verifier requires a proof file to be present, a SHA-256 equal to the attestation, and a relative path without <code>..</code>. Otherwise it fails closed. The README says that failure, for the example profiles, is the intended behaviour. That absence is an incomplete marking: INCONCLUSIVE, IMPLEMENTATION_GAP, or a missing proof is not summarised as full admissibility, nor as posture NORMAL.</p>
