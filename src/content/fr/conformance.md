@@ -6,7 +6,7 @@ lede: Une configuration structurellement admissible n’est pas une garantie eff
 sources: reg-conformance/README.md, VECTORS.md et spec.md (relevé du 20 novembre 2026) ; tenir-conformance-s1-g1/README.md et STATUS.md ; résultats de validation historiques
 ---
 
-<p>Le dépôt <a href="https://github.com/skiredj-prog/reg-conformance">reg-conformance</a> est une suite neutre vis-à-vis de l’implémentation. Elle définit des propriétés — safety, liveness, tolérance aux fautes, I8 — et une interface <code>ConsensusBackend</code> : reserve, commit, release, reconcile, get_state. Elle ne prescrit ni Raft, ni Paxos, ni une base particulière. Tout backend qui tient les propriétés déclarées de son profil est le sujet possible d’une conformance. « Consensus » dans le nom de l’interface désigne un point de coordination d’état, pas forcément un algorithme distribué.</p>
+<p>Le dépôt <a href="https://github.com/skiredj-prog/reg-conformance">reg-conformance</a> est une suite neutre vis-à-vis de l’implémentation. Elle définit des propriétés — safety, liveness, tolérance aux fautes et budget agrégé (BUD, anciennement I8 dans le catalogue) — et une interface <code>ConsensusBackend</code> : reserve, commit, release, reconcile, get_state. Elle ne prescrit ni Raft, ni Paxos, ni une base particulière. Tout backend qui tient les propriétés déclarées de son profil est le sujet possible d’une conformance. « Consensus » dans le nom de l’interface désigne un point de coordination d’état, pas forcément un algorithme distribué.</p>
 
 ## Catalogue
 
