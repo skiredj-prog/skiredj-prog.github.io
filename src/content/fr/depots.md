@@ -1,9 +1,9 @@
 ---
 title: Dépôts
-kicker: Cartographie · 19 octobre 2026
-description: Rôle de chaque dépôt public de skiredj-prog lié à TENIR, REG et IronOmega, avec les fichiers à ouvrir en premier.
+kicker: Cartographie historique · relevé du 19 octobre 2026
+description: Cartographie historique des dépôts TENIR et REG au 19 octobre 2026, à lire avec le point de situation actuel.
 lede: "Sept dépôts publics, lus le 19 octobre 2026. L’un, celui-ci, était vide à cette date. Les autres ne sont pas sept copies du même logiciel : doctrine, standard, runtime et schémas n’y avaient pas le même âge ni la même autorité."
-sources: arbres clonés le 19 octobre 2026 ; politique de namespaces v2
+sources: archive des arbres clonés le 19 octobre 2026 ; point de situation du 20 novembre 2026 en tête de page ; politique de namespaces v2
 ---
 
 <table>

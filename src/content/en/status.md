@@ -1,15 +1,15 @@
 ---
 title: Status
-kicker: Actual maturity · October 2026
+kicker: Actual maturity · 20 November 2026 review
 description: Status of the TENIR framework, REG drafts and released TENIR-Gov v5.7.0, with explicit deployment boundaries and limitations.
-lede: KB3 is the active doctrinal rendering line and the REG RFCs remain proposed drafts. TENIR-Gov v5.7.0 was published on 24 October 2026 with a bounded single-host deployment scope, no multi-host C3 claim and no production certification.
+lede: KB3 is the active rendering line. REG's baseline is frozen; RFC-4 v0.3 was author-ratified outside it. TENIR-Gov v5.7.0 is published, while 5.7.5 is merged in main without verified publication. Scope remains bounded single-host, with no production certification.
 sources: KB3 and versioning policy; REG RFCs; TENIR-Gov v5.7.0 release (24 October 2026), README and pyproject.toml; historical 5.6.x change logs; harness STATUS.md
 ---
 
 ## Read this first
 
 - **The framework and the standard are not the software:** KB3 and REG describe meaning lines or proposed rules.
-- **The software exists as a beta:** TENIR-Gov v5.7.0 is published, but its stated scope remains bounded and single-host.
+- **The software exists as a beta:** TENIR-Gov v5.7.0 is published; 5.7.5 is merged in main but is not a verified published release in this review. Scope remains bounded and single-host.
 - **Published does not mean certified:** nothing on this page proves a customer deployment, multi-host tolerance, or exactly-once external effect.
 
 ## Where each namespace stands
@@ -20,7 +20,7 @@ sources: KB3 and versioning policy; REG RFCs; TENIR-Gov v5.7.0 release (24 Octob
     <tr><td>TENIR 2.0</td><td>Name of the framework in the canon namespace. That name is not, by itself, the enactment of KB3.</td></tr>
     <tr><td>KB3</td><td>Enacted, active doctrinal rendering line, by the owner’s declaration of 19 October 2026. The files provided with that declaration contain no signed record under <code>00_GOVERNANCE/04_DECISIONS_AND_RATIFICATIONS</code>. A document layer, outside the code. KB3 renders meaning; it does not create sovereign meaning and is not a new constitution. Specialized services or applications may wrap or extend it; they must not redefine it. TENIR-Gov should align to it; it is not KB3.</td></tr>
     <tr><td>KB2</td><td>Prior rendering line, continuity only. No simultaneous active authority with KB3. The build of 30 March 2026 is kept. The note that once named it active, at institution, is historical context, not current authority. KB1.1 is historical. Written and curated with assistance; author Abdelaziz Skiredj.</td></tr>
-    <tr><td>REG</td><td>RFC-0 through RFC-7: Proposed Standard, frozen draft, 2–3 October 2026. Not a standard adopted by an external body.</td></tr>
+    <tr><td>REG</td><td>Frozen RFC-0 through RFC-7 baseline; RFC-4 v0.3 ratified by its author on 19 November 2026 outside the frozen baseline. Not a standard adopted by an external body, and not a runtime certification.</td></tr>
     <tr><td>TENIR-Gov</td><td>Open-source beta software (“Development Status :: 4 - Beta”). <a href="https://github.com/skiredj-prog/tenir_governance/releases/tag/v5.7.0">v5.7.0</a> released on 24 October 2026, tied to tagged source commit <code>47ef67e3efc5f3008896a7d88bebf929fa0a98f0</code>. A published release is not evidence of a qualified customer deployment.</td></tr>
     <tr><td>5.6.1</td><td>Historical snapshot: the changelog reviewed on 19 October still said “Pending release”. That statement no longer describes the latest published release.</td></tr>
     <tr><td>5.7.0</td><td>GitHub release and <a href="https://pypi.org/project/tenir-governance/5.7.0/">PyPI package 5.7.0</a>, published 24 October 2026. Published deployment boundary: single host, verified production manifest and durable registry configuration; production multi-host Raft blocked by FM-20, with no multi-host C3 fault tolerance or external exactly-once provider effect claimed.</td></tr>
