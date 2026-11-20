@@ -36,7 +36,7 @@ const keys = ['utile', 'sujet', 'langue'];
       <section class="mag-section" lang={l} dir={l === 'ar' ? 'rtl' : 'ltr'} data-avis={l} aria-labelledby={`avis-${l}`}>
         <h1 id={`avis-${l}`} style="font-family:var(--head);font-weight:800;font-size:clamp(1.8rem,4vw,2.3rem);line-height:1.2">{t[l].title}</h1>
         <p>{t[l].intro}</p>
-        <form class="mag-form" action="mailto:skiredj@tenirlabs.cc" method="post" enctype="text/plain" data-subject={t[l].subject} data-form-lang={l}>
+        <form class="mag-form" action="mailto:skiredj@gmail.com" method="post" enctype="text/plain" data-subject={t[l].subject} data-form-lang={l}>
           {d.back_qs.map((q: [string, string[]], qi: number) => (
             <fieldset>
               <legend>{q[0]}</legend>
@@ -51,7 +51,7 @@ const keys = ['utile', 'sujet', 'langue'];
           <input type="hidden" name="source" value="web" data-param="s" />
           <button type="submit" class="mag-btn mag-btn-light">{t[l].send}</button>
           <p class="mag-small mag-muted" style="margin-top:0.9rem">{t[l].privacy}</p>
-          <p class="mag-small mag-muted">{t[l].fallback} <a href="mailto:skiredj@tenirlabs.cc">skiredj@tenirlabs.cc</a>.</p>
+          <p class="mag-small mag-muted">{t[l].fallback} <a href="mailto:skiredj@gmail.com">skiredj@gmail.com</a>.</p>
         </form>
         <p><a href={url(t[l].issue)}>{t[l].back}</a></p>
       </section>
@@ -80,7 +80,7 @@ const keys = ['utile', 'sujet', 'langue'];
           var lines = [];
           new FormData(f).forEach(function (v, k) { if (String(v).trim()) lines.push(k + ' : ' + v); });
           var subject = f.getAttribute('data-subject') + ' (' + f.getAttribute('data-form-lang') + ', ' + source + ')';
-          location.href = 'mailto:skiredj@tenirlabs.cc?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+          location.href = 'mailto:skiredj@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
         });
       });
     })();
