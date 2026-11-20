@@ -6,7 +6,7 @@ The website is automatically published by GitHub Actions on pushes to `main` usi
 1. Check the PR is based on the current `main` and no unreviewed changes to `KB3` or normative REG claims are included.
 2. Confirm all required workflows have passed, especially `npm run build`, `npm run check:links`, `node scripts/check-contact-address.mjs`, `node scripts/check-release-readiness.mjs`, and the relevant Playwright tests.
 3. Verify FR/EN claims, evidence limits, semantic version labels, and date of source review.
-4. Treat `WARN` notices for `og:image` or multiple `h1` as backlog items under PR #96, not as silent successes. Promote them to blocking only after fixes are merged.
+4. PR #96 has been merged: missing `og:image` or a page with more or fewer than one `h1` on the ten critical routes is a **blocking release defect**, enforced by `scripts/check-release-readiness.mjs`. Review a representative social share preview and accessible heading outline.
 5. Keep magazine PDF PR #81 separate: do not publish unreproduced Windows-font PDF binaries.
 
 ## After merge (manual verification required)
