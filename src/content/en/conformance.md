@@ -6,7 +6,7 @@ lede: A structurally admissible configuration is not a demonstrated effective gu
 sources: reg-conformance/README.md, VECTORS.md and spec.md (20 November 2026 review); tenir-conformance-s1-g1/README.md and STATUS.md; historical validation runs
 ---
 
-<p>The <a href="https://github.com/skiredj-prog/reg-conformance">reg-conformance</a> repository is an implementation-neutral suite. It defines properties — safety, liveness, fault tolerance, I8 — and a <code>ConsensusBackend</code> interface: reserve, commit, release, reconcile, get_state. It prescribes neither Raft, nor Paxos, nor a particular database. Any backend that holds the properties declared by its profile is a possible subject of conformance. “Consensus” in the interface name means a coordination point for shared state, not necessarily a distributed algorithm.</p>
+<p>The <a href="https://github.com/skiredj-prog/reg-conformance">reg-conformance</a> repository is an implementation-neutral suite. It defines properties — safety, liveness, fault tolerance and aggregate budget (BUD, historically called I8 in the catalogue) — and a <code>ConsensusBackend</code> interface: reserve, commit, release, reconcile, get_state. It prescribes neither Raft, nor Paxos, nor a particular database. Any backend that holds the properties declared by its profile is a possible subject of conformance. “Consensus” in the interface name means a coordination point for shared state, not necessarily a distributed algorithm.</p>
 
 ## Catalogue
 
