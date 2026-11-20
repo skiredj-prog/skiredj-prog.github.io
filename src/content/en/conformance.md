@@ -25,9 +25,9 @@ python3 tools/validate_profiles.py
 python3 tests/test_catalog_enumeration.py
 python3 tools/verify_effective_guarantees.py</code></pre>
 
-<p>The runner <code>runner.py</code> describes itself as suite v0.3.2. Modes: <code>--mode http</code> (adapter, evidence level 2), <code>--mode native</code> (in-process kernel, level 3), or both. A result must declare <code>interface_mode</code>. Mixing native and adapter without a label is non-conformant in the sense of RFC-7. Report states include PASS, FAIL, INCONCLUSIVE, NOT_APPLICABLE, ADAPTER_REQUIRED, IMPLEMENTATION_GAP. INCONCLUSIVE is never a PASS.</p>
+<p>In the historical October snapshot, <code>runner.py</code> described itself as suite v0.3.2. Modes: <code>--mode http</code> (adapter, evidence level 2), <code>--mode native</code> (in-process kernel, level 3), or both. A result must declare <code>interface_mode</code>. Mixing native and adapter without a label is non-conformant in the sense of RFC-7. Report states include PASS, FAIL, INCONCLUSIVE, NOT_APPLICABLE, ADAPTER_REQUIRED, IMPLEMENTATION_GAP. INCONCLUSIVE is never a PASS.</p>
 
-<p><code>spec.md</code> v0.3.1 says the runner registers 53 vectors, of which 36 extended vectors were still IMPLEMENTATION_GAP, native C4 not applicable, and CT-R4-009 and CT-R4-010 open. That sentence dates the file’s scope. The tree continued. Do not read 36 as the live count without re-reading <a href="https://github.com/skiredj-prog/reg-conformance/blob/main/VECTORS.md">VECTORS.md</a>.</p>
+<p>An older reading of <code>spec.md</code> v0.3.1 recorded 53 vectors, of which 36 extended vectors were still IMPLEMENTATION_GAP, native C4 not applicable, and CT-R4-009 and CT-R4-010 open. That sentence dates the file’s scope. The tree continued. Do not read 36 as the live count without re-reading <a href="https://github.com/skiredj-prog/reg-conformance/blob/main/VECTORS.md">VECTORS.md</a>.</p>
 
 ## Published validation — 20 October 2026
 
