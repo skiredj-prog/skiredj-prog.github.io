@@ -32,7 +32,7 @@ python3 tools/verify_effective_guarantees.py</code></pre>
 ## Published validation — 20 October 2026
 
 <div class="callout">
-  <p><strong>REG-Conformant — Raft single-host loopback profile (limited scope)</strong></p>
+  <p><strong>Published re-run — Raft single-host loopback profile (limited scope)</strong></p>
   <p>The <a href="https://github.com/skiredj-prog/reg-conformance/releases/tag/v0.6.1">REG Conformance v0.6.1 release</a>, published on 21 October 2026, reports an independent re-run by Harv Banning on 20 October 2026: <strong>46 of 46 tests PASS</strong>, for TENIR-Gov v5.6.1 (commit <code>8203705</code>), on a single-host Raft loopback cluster.</p>
   <p><strong>Declared SHA-256 fingerprint:</strong> <code>f9f9c98b42c939acd9b953e08e1da89a94fcbb3a5d8cf11abb8e3ec60d785172</code>.</p>
   <p><strong>Scope:</strong> C3 is not claimed; this is not a third-party certification; physical multi-host remains unsupported. The release summary is a published attestation, not in itself an independent reproduction of the evidence or a production-behaviour guarantee.</p>
