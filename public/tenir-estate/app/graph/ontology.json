@@ -814,24 +814,6 @@
    "type": "absorbs"
   },
   {
-   "id": "e_imported.kb3_start_here_concept.capacity_28",
-   "from": "imported.kb3_start_here",
-   "to": "concept.capacity",
-   "type": "mentions"
-  },
-  {
-   "id": "e_imported.kb3_start_here_concept.pressure_29",
-   "from": "imported.kb3_start_here",
-   "to": "concept.pressure",
-   "type": "mentions"
-  },
-  {
-   "id": "e_imported.kb3_start_here_concept.tenir_30",
-   "from": "imported.kb3_start_here",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
    "id": "e_imported.kb5_a_governed_incarnation_concept.capacity_36",
    "from": "imported.kb5_a_governed_incarnation",
    "to": "concept.capacity",
@@ -874,30 +856,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_imported.tenir_kb4_kb5_verification_note_concept.capacity_121",
-   "from": "imported.tenir_kb4_kb5_verification_note",
-   "to": "concept.capacity",
-   "type": "mentions"
-  },
-  {
-   "id": "e_imported.tenir_kb4_kb5_verification_note_concept.pressure_122",
-   "from": "imported.tenir_kb4_kb5_verification_note",
-   "to": "concept.pressure",
-   "type": "mentions"
-  },
-  {
-   "id": "e_imported.tenir_kb4_kb5_verification_note_concept.tenir_123",
-   "from": "imported.tenir_kb4_kb5_verification_note",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.6_layer_execution_architecture_concept.capacity_193",
-   "from": "estate.6_layer_execution_architecture",
-   "to": "concept.capacity",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.beyond_the_layers_linkedin_carousel_concept.capacity_204",
    "from": "estate.beyond_the_layers_linkedin_carousel",
    "to": "concept.capacity",
@@ -913,24 +871,6 @@
    "id": "e_estate.tenir_2_0_canonical_alignment_matrix_concept.tenir_244",
    "from": "estate.tenir_2_0_canonical_alignment_matrix",
    "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.two_kernel_architecture_concept.tenir_274",
-   "from": "estate.two_kernel_architecture",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.two_kernel_architecture_concept.pressure_275",
-   "from": "estate.two_kernel_architecture",
-   "to": "concept.pressure",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.two_kernel_architecture_concept.capacity_276",
-   "from": "estate.two_kernel_architecture",
-   "to": "concept.capacity",
    "type": "mentions"
   },
   {
@@ -1006,12 +946,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.reg_discovery_concept.tenir_506",
-   "from": "estate.reg_discovery",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.tenir_535",
    "from": "estate.spec_reg_01_reference_implementation_v1_0",
    "to": "concept.tenir",
@@ -1054,30 +988,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.tenir_compliance_crosswalk_concept.tenir_551",
-   "from": "estate.tenir_compliance_crosswalk",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.tenir_hold_control_guide_concept.tenir_564",
-   "from": "estate.tenir_hold_control_guide",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.article_beyond_the_layers_orthogonal_governance_concept.capacity_589",
-   "from": "estate.article_beyond_the_layers_orthogonal_governance",
-   "to": "concept.capacity",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.01_strict_step_by_step_concept.tenir_595",
-   "from": "estate.01_strict_step_by_step",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.tenir_1x_to_2_0_migration_and_supersession_memo_concept.tenir_596",
    "from": "estate.tenir_1x_to_2_0_migration_and_supersession_memo",
    "to": "concept.tenir",
@@ -1110,12 +1020,6 @@
   {
    "id": "e_estate.tenir_versioning_and_overlay_naming_policy_concept.tenir_606",
    "from": "estate.tenir_versioning_and_overlay_naming_policy",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.mobile_handoff_ui_concept.tenir_629",
-   "from": "estate.mobile_handoff_ui",
    "to": "concept.tenir",
    "type": "mentions"
   },
@@ -1162,12 +1066,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.reg_discovery_concept.reg_694",
-   "from": "estate.reg_discovery",
-   "to": "concept.reg",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.reg_710",
    "from": "estate.spec_reg_01_reference_implementation_v1_0",
    "to": "concept.reg",
@@ -1186,32 +1084,14 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.tenir_compliance_crosswalk_concept.reg_723",
-   "from": "estate.tenir_compliance_crosswalk",
-   "to": "concept.reg",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.reg_core_protocol_v0_3_0_v3_concept.reg_736",
    "from": "estate.reg_core_protocol_v0_3_0_v3",
    "to": "concept.reg",
    "type": "mentions"
   },
   {
-   "id": "e_estate.two_kernel_architecture_concept.tenir_gov_768",
-   "from": "estate.two_kernel_architecture",
-   "to": "concept.tenir_gov",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.cartes_mentales_gouvernance_ia_2_concept.hold_818",
    "from": "estate.cartes_mentales_gouvernance_ia_2",
-   "to": "concept.hold",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.two_kernel_architecture_concept.hold_833",
-   "from": "estate.two_kernel_architecture",
    "to": "concept.hold",
    "type": "mentions"
   },
@@ -1246,12 +1126,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.hold_trace_replay_concept.hold_909",
-   "from": "estate.hold_trace_replay",
-   "to": "concept.hold",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.hold_script_de_tournage_jury_3_minutes_concept.hold_912",
    "from": "estate.hold_script_de_tournage_jury_3_minutes",
    "to": "concept.hold",
@@ -1264,38 +1138,8 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.tenir_hold_control_guide_concept.hold_921",
-   "from": "estate.tenir_hold_control_guide",
-   "to": "concept.hold",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.judges_concept.hold_935",
-   "from": "estate.judges",
-   "to": "concept.hold",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.mobile_handoff_ui_concept.hold_944",
-   "from": "estate.mobile_handoff_ui",
-   "to": "concept.hold",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.agentphone_le_relais_gouvern_entre_les_agents_et_les_humains_concept.agentphone_946",
    "from": "estate.agentphone_le_relais_gouvern_entre_les_agents_et_les_humains",
-   "to": "concept.agentphone",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.judges_concept.agentphone_947",
-   "from": "estate.judges",
-   "to": "concept.agentphone",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.mobile_handoff_ui_concept.agentphone_953",
-   "from": "estate.mobile_handoff_ui",
    "to": "concept.agentphone",
    "type": "mentions"
   },
@@ -1396,20 +1240,8 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.article_beyond_the_layers_orthogonal_governance_concept.receipt_1088",
-   "from": "estate.article_beyond_the_layers_orthogonal_governance",
-   "to": "concept.receipt",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.cartes_mentales_gouvernance_ia_2_concept.reconciliation_1094",
    "from": "estate.cartes_mentales_gouvernance_ia_2",
-   "to": "concept.reconciliation",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.article_beyond_the_layers_orthogonal_governance_concept.reconciliation_1134",
-   "from": "estate.article_beyond_the_layers_orthogonal_governance",
    "to": "concept.reconciliation",
    "type": "mentions"
   },
@@ -1432,12 +1264,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.6_layer_execution_architecture_concept.evidence_1186",
-   "from": "estate.6_layer_execution_architecture",
-   "to": "concept.evidence",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.beyond_the_layers_linkedin_carousel_concept.evidence_1191",
    "from": "estate.beyond_the_layers_linkedin_carousel",
    "to": "concept.evidence",
@@ -1446,18 +1272,6 @@
   {
    "id": "e_estate.cartes_mentales_gouvernance_ia_2_concept.evidence_1193",
    "from": "estate.cartes_mentales_gouvernance_ia_2",
-   "to": "concept.evidence",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.doublon_middleware_governance_concept.evidence_1196",
-   "from": "estate.doublon_middleware_governance",
-   "to": "concept.evidence",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.two_kernel_architecture_concept.evidence_1218",
-   "from": "estate.two_kernel_architecture",
    "to": "concept.evidence",
    "type": "mentions"
   },
@@ -1504,36 +1318,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.tenir_hold_control_guide_concept.evidence_1345",
-   "from": "estate.tenir_hold_control_guide",
-   "to": "concept.evidence",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.start_here_concept.evidence_1347",
-   "from": "estate.start_here",
-   "to": "concept.evidence",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.article_beyond_the_layers_orthogonal_governance_concept.evidence_1360",
-   "from": "estate.article_beyond_the_layers_orthogonal_governance",
-   "to": "concept.evidence",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.judges_concept.evidence_1364",
-   "from": "estate.judges",
-   "to": "concept.evidence",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.6_layer_execution_architecture_concept.conformance_1369",
-   "from": "estate.6_layer_execution_architecture",
-   "to": "concept.conformance",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.conformance_1418",
    "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
    "to": "concept.conformance",
@@ -1570,18 +1354,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.tenir_compliance_crosswalk_concept.conformance_1444",
-   "from": "estate.tenir_compliance_crosswalk",
-   "to": "concept.conformance",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.6_layer_execution_architecture_concept.standing_1464",
-   "from": "estate.6_layer_execution_architecture",
-   "to": "concept.standing",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.reg_standard_rfc_6_security_transport_cryptography_concept.standing_1480",
    "from": "estate.reg_standard_rfc_6_security_transport_cryptography",
    "to": "concept.standing",
@@ -1606,12 +1378,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.two_kernel_architecture_concept.kernel_1554",
-   "from": "estate.two_kernel_architecture",
-   "to": "concept.kernel",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.kernel_1572",
    "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
    "to": "concept.kernel",
@@ -1633,12 +1399,6 @@
    "id": "e_estate.tenir_ed_epistemic_surrender_treatment_note_concept.epistemic_sovereignty_1695",
    "from": "estate.tenir_ed_epistemic_surrender_treatment_note",
    "to": "concept.epistemic_sovereignty",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.two_kernel_architecture_concept.velocity_1709",
-   "from": "estate.two_kernel_architecture",
-   "to": "concept.velocity",
    "type": "mentions"
   },
   {
@@ -1672,255 +1432,9 @@
    "type": "implements"
   },
   {
-   "id": "e_estate.exemple_composition_membrane_optionalite_2026_11_08_concept.tenir_1726",
-   "from": "estate.exemple_composition_membrane_optionalite_2026_11_08",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_2026_11_08_concept.tau_1727",
-   "from": "estate.exemple_composition_membrane_optionalite_2026_11_08",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_2026_11_21_concept.tenir_1728",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_2026_11_21",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_2026_11_21_concept.tau_1729",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_2026_11_21",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_2026_11_21_concept.admissibility_1730",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_2026_11_21",
-   "to": "concept.admissibility",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23_concept.tenir_1731",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23_concept.tau_1732",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_holding_2026_11_13_concept.tenir_1733",
-   "from": "estate.exemple_composition_membrane_optionalite_holding_2026_11_13",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_holding_2026_11_13_concept.tau_1734",
-   "from": "estate.exemple_composition_membrane_optionalite_holding_2026_11_13",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_optionalite_membrane_2026_11_14_concept.tenir_1735",
-   "from": "estate.exemple_composition_optionalite_membrane_2026_11_14",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_optionalite_membrane_2026_11_14_concept.tau_1736",
-   "from": "estate.exemple_composition_optionalite_membrane_2026_11_14",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_optionalite_membrane_2026_11_14_concept.admissibility_1737",
-   "from": "estate.exemple_composition_optionalite_membrane_2026_11_14",
-   "to": "concept.admissibility",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouveau_document_membrane_tenir_concept.tenir_1738",
-   "from": "estate.nouveau_document_membrane_tenir",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouveau_document_membrane_tenir_concept.tau_1739",
-   "from": "estate.nouveau_document_membrane_tenir",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouveau_document_membrane_tenir_concept.admissibility_1740",
-   "from": "estate.nouveau_document_membrane_tenir",
-   "to": "concept.admissibility",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouveau_document_optionalite_irreversibilite_concept.tenir_1741",
-   "from": "estate.nouveau_document_optionalite_irreversibilite",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouveau_document_optionalite_irreversibilite_concept.tau_1742",
-   "from": "estate.nouveau_document_optionalite_irreversibilite",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_gap_acceleration_holding_2026_11_07_concept.tenir_1743",
-   "from": "estate.nouvelle_composition_gap_acceleration_holding_2026_11_07",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_gap_acceleration_holding_2026_11_07_concept.tau_1744",
-   "from": "estate.nouvelle_composition_gap_acceleration_holding_2026_11_07",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_constitutionnelle_concept.tenir_1745",
-   "from": "estate.nouvelle_composition_membrane_constitutionnelle",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_constitutionnelle_concept.tau_1746",
-   "from": "estate.nouvelle_composition_membrane_constitutionnelle",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_crossing_2026_11_03_concept.tenir_1747",
-   "from": "estate.nouvelle_composition_membrane_crossing_2026_11_03",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_crossing_2026_11_03_concept.tau_1748",
-   "from": "estate.nouvelle_composition_membrane_crossing_2026_11_03",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_crossing_2026_11_03_concept.admissibility_1749",
-   "from": "estate.nouvelle_composition_membrane_crossing_2026_11_03",
-   "to": "concept.admissibility",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_crossing_2026_11_05_concept.tenir_1750",
-   "from": "estate.nouvelle_composition_membrane_crossing_2026_11_05",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_optionalite_2026_11_09_concept.tenir_1751",
-   "from": "estate.nouvelle_composition_membrane_optionalite_2026_11_09",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_optionalite_2026_11_09_concept.tau_1752",
-   "from": "estate.nouvelle_composition_membrane_optionalite_2026_11_09",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_optionalite_2026_11_10_concept.tenir_1753",
-   "from": "estate.nouvelle_composition_membrane_optionalite_2026_11_10",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_optionalite_2026_11_10_concept.tau_1754",
-   "from": "estate.nouvelle_composition_membrane_optionalite_2026_11_10",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_optionalite_2026_11_10_concept.admissibility_1755",
-   "from": "estate.nouvelle_composition_membrane_optionalite_2026_11_10",
-   "to": "concept.admissibility",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_optionalite_gap_2026_11_15_concept.tenir_1756",
-   "from": "estate.nouvelle_composition_membrane_optionalite_gap_2026_11_15",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_optionalite_gap_2026_11_15_concept.tau_1757",
-   "from": "estate.nouvelle_composition_membrane_optionalite_gap_2026_11_15",
-   "to": "concept.tau",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.claude_syllabus_architecte_stratege_tenir_concept.reverse_cycle_1798",
    "from": "estate.claude_syllabus_architecte_stratege_tenir",
    "to": "concept.reverse_cycle",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23_concept.hold_1830",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23",
-   "to": "concept.hold",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_2026_11_08_concept.posture_1831",
-   "from": "estate.exemple_composition_membrane_optionalite_2026_11_08",
-   "to": "concept.posture",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23_concept.posture_1832",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23",
-   "to": "concept.posture",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_holding_2026_11_13_concept.posture_1833",
-   "from": "estate.exemple_composition_membrane_optionalite_holding_2026_11_13",
-   "to": "concept.posture",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_2026_11_21_concept.realm_1839",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_2026_11_21",
-   "to": "concept.realm",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23_concept.realm_1840",
-   "from": "estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23",
-   "to": "concept.realm",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.exemple_composition_optionalite_membrane_2026_11_14_concept.realm_1841",
-   "from": "estate.exemple_composition_optionalite_membrane_2026_11_14",
-   "to": "concept.realm",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_crossing_2026_11_03_concept.realm_1842",
-   "from": "estate.nouvelle_composition_membrane_crossing_2026_11_03",
-   "to": "concept.realm",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.nouvelle_composition_membrane_optionalite_2026_11_10_concept.realm_1843",
-   "from": "estate.nouvelle_composition_membrane_optionalite_2026_11_10",
-   "to": "concept.realm",
    "type": "mentions"
   }
  ]

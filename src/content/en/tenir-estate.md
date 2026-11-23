@@ -1,9 +1,9 @@
 ---
 title: Tenir-Estate
 kicker: Corpus archive · public edition of 23 November 2026
-description: The TENIR corpus to explore in a working tool. 37 concepts, 65 publishable pieces, and the 193 links between them.
+description: The TENIR corpus to explore in a working tool. 37 concepts, 30 publishable pieces, and the 112 links between them.
 lede: "The TENIR corpus as it is filed in the Estate: concepts, pieces, and the links between them. This edition keeps only the pieces that can be published."
-sources: Tenir-Estate, public edition of 23 November 2026 (65 pieces, 37 concepts, 193 links), drawn from the partner edition of the same day
+sources: Tenir-Estate, public edition of 23 November 2026 (30 pieces, 37 concepts, 112 links), drawn from the partner edition of the same day
 ---
 
 <p><a class="btn btn-primary" href="/tenir-estate/app/">Open Tenir-Estate</a></p>
@@ -14,15 +14,15 @@ sources: Tenir-Estate, public edition of 23 November 2026 (65 pieces, 37 concept
 
 <ul>
   <li><strong>37 concepts</strong>, from TAU and TENIR to HOLD, the membrane, the permit, the receipt, reconciliation, and conformance.</li>
-  <li><strong>65 pieces</strong>: the REG standard RFCs, the reference specification, architecture notes, HOLD and AgentPhone materials, and working compositions.</li>
-  <li><strong>193 links</strong> between concepts and pieces. Each link says which piece mentions, defines, or implements which concept.</li>
+  <li><strong>30 pieces</strong>: the REG standard RFCs, the reference specification and protocol, doctrine notes, and the HOLD and AgentPhone materials.</li>
+  <li><strong>112 links</strong> between concepts and pieces. Each link says which piece mentions, defines, or implements which concept.</li>
 </ul>
 
 <p>Six activities let you read the corpus: explore the ontology, analyze a system, follow the chronology, validate the graph, compose a projection, and search the full text.</p>
 
 ## What it leaves out
 
-<p>Pieces tied to partners, pilots, or named people are not published, and neither are internal positioning documents or working files with no content. The full corpus holds a little over 500 pieces.</p>
+<p>Pieces tied to partners, pilots, or named people are not published, and neither are internal documents, generated drafts, pages that load external resources, or files with no content. The full corpus holds a little over 500 pieces.</p>
 
 <div class="callout callout-limit">
   <p><strong>Limit.</strong> This is a dated archive, not the current state. Each piece is a working document as of its date: versions, figures, and wording may have changed since. What is claimed today is in <a href="/en/status/">Status and limits</a> and in the <a href="/en/claims/">Claims register</a>.</p>

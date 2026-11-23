@@ -9,8 +9,8 @@ var landingView = (function(){
       { view:'publish', glyph:'▤', name:'Publish Projection', flow:'<b>uses</b> Concepts, Articles<br><b>produces</b> a portable brief' },
       { view:'search', glyph:'⌕', name:'Full-Text Search', flow:'<b>uses</b> full corpus index<br><b>produces</b> ranked matches' }
     ];
-    tiles.innerHTML = tileData.map(t => '<div class="tile" data-view="'+t.view+'"><span class="t-glyph">'+t.glyph+'</span><div class="t-name">'+t.name+'</div><div class="t-flow">'+t.flow+'</div></div>').join('');
-    tiles.querySelectorAll('.tile').forEach(el => el.addEventListener('click', ()=> app.switchView(el.dataset.view)));
+    tiles.innerHTML = tileData.map(t => '<div class="tile" role="button" tabindex="0" data-view="'+t.view+'"><span class="t-glyph">'+t.glyph+'</span><div class="t-name">'+t.name+'</div><div class="t-flow">'+t.flow+'</div></div>').join('');
+    tiles.querySelectorAll('.tile').forEach(el => { el.addEventListener('click', ()=> app.switchView(el.dataset.view)); el.addEventListener('keydown', ev => { if (ev.key==='Enter'||ev.key===' ') { ev.preventDefault(); el.click(); } }); });
   }
   return { init };
 })();

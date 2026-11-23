@@ -24,10 +24,11 @@ var searchView = (function(){
         const url = r.properties && r.properties.url;
         const open = url ? '<a class="r-open" href="' + encodeURI(url).replace(/#/g, '%23') + '" target="_blank" rel="noopener">open ↗</a>' : '';
         const snippet = hit.snippet || (r.type === 'concept' ? 'concept node — see Explore Ontology' : 'no text indexed');
-        return '<div class="result" data-id="'+esc(r.id)+'"><span class="r-title">'+esc(r.label)+'</span><span class="r-group">'+esc(kind)+'</span>'+open+
+        return '<div class="result" role="button" tabindex="0" data-id="'+esc(r.id)+'"><span class="r-title">'+esc(r.label)+'</span><span class="r-group">'+esc(kind)+'</span>'+open+
           '<div class="r-snippet">'+snippet+'</div></div>';
       }).join('');
       resultsDiv.querySelectorAll('.result').forEach(el => {
+        el.addEventListener('keydown', ev => { if (ev.key==='Enter'||ev.key===' ') { ev.preventDefault(); el.click(); } });
         el.addEventListener('click', ev => {
           if (ev.target.closest('.r-open')) return;
           app.switchView('explore');

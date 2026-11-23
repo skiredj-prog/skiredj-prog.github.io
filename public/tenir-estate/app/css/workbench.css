@@ -1,6 +1,6 @@
 :root{
   --bg:#090c12; --panel:#0e131c; --panel2:#121a27; --border:#212c3d; --border-soft:#182131;
-  --text:#ccd6e4; --dim:#66798f; --faint:#3a4759;
+  --text:#ccd6e4; --dim:#66798f; --faint:#7d8ca0;
   --amber:#f2b544; --blue:#5b93f5; --red:#ef6c62; --green:#3fd39a; --violet:#b18cf7;
   --mono:'IBM Plex Mono',ui-monospace,monospace; --sans:'IBM Plex Sans',system-ui,sans-serif;
 }
@@ -23,6 +23,7 @@ body{
 .cmdbar input{flex:1;background:transparent;border:0;color:var(--text);font-family:var(--mono);font-size:13px;min-width:0}
 .cmdbar input::placeholder{color:var(--faint)}
 .cmdbar input:focus{outline:none}
+.cmdbar:focus-within{outline:2px solid var(--amber);outline-offset:2px}
 .telemetry{display:flex;gap:14px;font-family:var(--mono);font-size:10.5px;color:var(--dim);white-space:nowrap}
 .telemetry b{color:var(--text)}
 #body{flex:1;display:flex;min-height:0}
@@ -148,3 +149,4 @@ textarea{width:100%;height:280px;background:var(--panel);border:1px solid var(--
 /* Public edition: close control for the detail overlay on small screens. */
 .detail-close{display:none;min-height:44px;padding:0 14px;margin:0 0 14px auto;background:transparent;border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;cursor:pointer}
 .detail-close:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.tile:focus-visible,.result:focus-visible{outline:2px solid var(--amber);outline-offset:2px}

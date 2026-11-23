@@ -1,24 +1,6 @@
 {
  "artifacts": [
   {
-   "id": "imported.claude_tenir_ui_paradigm",
-   "title": "Claude Tenir Ui Paradigm",
-   "type": "document",
-   "path": "nodes/CLAUDE tenir_ui_paradigm.jsx",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "imported"
-   ],
-   "summary": "[.JSX file]",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
    "id": "imported.tenir_autonomous_systems_risk_insurance_layer",
    "title": "Tenir Autonomous Systems Risk Insurance Layer",
    "type": "document",
@@ -29,78 +11,6 @@
     "imported"
    ],
    "summary": "[PDF file: TENIR Autonomous Systems Risk Insurance Layer.pdf]",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "imported.tenir_interface_2cironomega_v1",
-   "title": "Tenir Interface 2Cironomega V1",
-   "type": "document",
-   "path": "nodes/TENIR_Interface_2cIronOmega_v1.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "imported"
-   ],
-   "summary": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>TENIR Interface 2cIronOmega v1</title> <style> /* TENIR Int",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "imported.tenir_ui_paradigm",
-   "title": "Tenir Ui Paradigm",
-   "type": "document",
-   "path": "nodes/tenir_ui_paradigm.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "imported"
-   ],
-   "summary": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /> <title>TENIR / TAU</title> <style> @import url('https://fonts.",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "imported.vantagepointsynthesizer_engine",
-   "title": "Vantagepointsynthesizer Engine",
-   "type": "document",
-   "path": "nodes/VantagePointSynthesizer_engine.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "imported"
-   ],
-   "summary": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>TENIR V5 - Vantage Point Synthesizer</title> <style> @impor",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "imported.kb3_start_here",
-   "title": "Kb3  Start Here",
-   "type": "document",
-   "path": "nodes/KB3__START_HERE.md",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "imported"
-   ],
-   "summary": "# KB3 — Start Here",
    "aliases": [],
    "version": "",
    "created": "",
@@ -145,43 +55,6 @@
    "supersededBy": ""
   },
   {
-   "id": "imported.tenir_kb4_kb5_verification_note",
-   "title": "Tenir Kb4 Kb5 Verification Note",
-   "type": "document",
-   "path": "nodes/TENIR_KB4_KB5_Verification_Note.txt",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "imported"
-   ],
-   "summary": "TENIR KB4/KB5 verification note Date: 2026-04-20",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.6_layer_execution_architecture",
-   "title": "6 layer execution architecture",
-   "type": "document",
-   "path": "nodes/6_layer_execution_architecture.html",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Modèle formel multi-couches pour systèmes transactionnels souverains",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-07",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
    "id": "estate.beyond_the_layers_linkedin_carousel",
    "title": "Beyond the Layers LinkedIn Carousel",
    "type": "document",
@@ -220,25 +93,6 @@
    "supersededBy": ""
   },
   {
-   "id": "estate.doublon_middleware_governance",
-   "title": "doublon middleware governance",
-   "type": "document",
-   "path": "nodes/doublon_middleware_governance.html",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Visual Abstract · Gouvernance des systèmes autonomes Prévenir la double exécution des agents IA",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-12",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
    "id": "estate.tenir_2_0_canonical_alignment_matrix",
    "title": "TENIR 2 0 Canonical Alignment Matrix",
    "type": "document",
@@ -254,25 +108,6 @@
    "version": "",
    "created": "",
    "modified": "2026-09-24",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.two_kernel_architecture",
-   "title": "two-kernel-architecture",
-   "type": "document",
-   "path": "nodes/two-kernel-architecture.md",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "08_Platform_SDK_Governance"
-   ],
-   "summary": "Two-Kernel Architecture: Synergies, Tensions, and Revised Plan",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-15",
    "supersedes": "",
    "supersededBy": ""
   },
@@ -486,25 +321,6 @@
    "supersededBy": ""
   },
   {
-   "id": "estate.reg_discovery",
-   "title": "reg discovery",
-   "type": "document",
-   "path": "nodes/reg_discovery.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "14_REG_Standard"
-   ],
-   "summary": "04 // REG DISCOVERY REG Discovery : rendre les hypothèses visibles.",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-25",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
    "id": "estate.spec_reg_01_reference_implementation_v1_0",
    "title": "SPEC-REG-01 Reference-Implementation-v1.0",
    "type": "document",
@@ -562,44 +378,6 @@
    "supersededBy": ""
   },
   {
-   "id": "estate.tenir_compliance_crosswalk",
-   "title": "tenir-compliance-crosswalk",
-   "type": "document",
-   "path": "nodes/tenir-compliance-crosswalk.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "14_REG_Standard"
-   ],
-   "summary": "REG Conformance Crosswalk v2.0-normative + TENIR Direct traceability mapping between international AI normative frameworks (ISO 42001, NIST AI RMF, EU AI Act) and verifiable runtime execution invariants of the REG protocol — extended with TENIR-Gov v5.3.0 modu",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-13",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.hold_trace_replay",
-   "title": "HOLD Trace Replay",
-   "type": "document",
-   "path": "nodes/HOLD Trace Replay.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "15_HOLD"
-   ],
-   "summary": "HOLD trace replay Three runs recorded during the frozen E1-A6 campaign: Llama 3.2 3B acting through HOLD, against a synthetic hotel provider. Every line below is read from the trace file named in the proof panel. Nothing is re-enacted.",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-03",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
    "id": "estate.hold_script_de_tournage_jury_3_minutes",
    "title": "HOLD — script de tournage jury 3 minutes",
    "type": "document",
@@ -638,63 +416,6 @@
    "supersededBy": ""
   },
   {
-   "id": "estate.hold_console",
-   "title": "hold-console",
-   "type": "document",
-   "path": "nodes/hold-console.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "15_HOLD"
-   ],
-   "summary": "01 Mission configuration 02 Live record 03 Audit & replay 04 Agent vs journal 05 Scope & limits",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-03",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.tenir_hold_control_guide",
-   "title": "TENIR HOLD CONTROL GUIDE",
-   "type": "document",
-   "path": "nodes/TENIR HOLD CONTROL GUIDE.html",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "15_HOLD"
-   ],
-   "summary": "Guide de Visite Bienvenue dans la HOLD Execution Console . Suivez ce guide pour comprendre comment notre système a sauvé une réservation d'hôtel de l'hallucination d'une IA.",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-03",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.start_here",
-   "title": "START HERE",
-   "type": "document",
-   "path": "nodes/START_HERE.md",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "15_HOLD"
-   ],
-   "summary": "External audit starter kit — NOT the complete raw evidence package",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-03",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
    "id": "estate.agentphone_le_relais_gouvern_entre_les_agents_et_les_humains",
    "title": "AgentPhone — Le relais gouverné entre les agents et les humains",
    "type": "document",
@@ -714,25 +435,6 @@
    "supersededBy": ""
   },
   {
-   "id": "estate.project_phoenix_interractive_geometry",
-   "title": "Project Phoenix interractive geometry",
-   "type": "document",
-   "path": "nodes/Project Phoenix interractive geometry.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "17_Books_and_Philosophical_Corpus"
-   ],
-   "summary": "```html ```",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-31",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
    "id": "estate.reg_core_protocol_v0_3_0_v3",
    "title": "REG Core Protocol v0.3.0 v3",
    "type": "document",
@@ -748,63 +450,6 @@
    "version": "0.3.0",
    "created": "",
    "modified": "2026-10-09",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.article_beyond_the_layers_orthogonal_governance",
-   "title": "Article beyond the layers orthogonal governance",
-   "type": "document",
-   "path": "nodes/Article beyond the layers orthogonal governance.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "13_Manuscripts_and_Working_Papers"
-   ],
-   "summary": "From governance and middleware to the objects, relationships, and properties that must remain safe as AI systems act.",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-12",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.01_strict_step_by_step",
-   "title": "01 STRICT STEP BY STEP",
-   "type": "document",
-   "path": "nodes/01_STRICT_STEP_BY_STEP.md",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "00_Governance_Constitution"
-   ],
-   "summary": "Windows - `C:\\TENIR\\dropzone` - `C:\\TENIR\\canon` - `C:\\TENIR\\rc`",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-04-04",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.02_dossier_index",
-   "title": "02 DOSSIER INDEX",
-   "type": "document",
-   "path": "nodes/02_DOSSIER_INDEX.md",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "00_Governance_Constitution"
-   ],
-   "summary": "00_READ_FIRST Operational reading order and deterministic execution instructions.",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-04-04",
    "supersedes": "",
    "supersededBy": ""
   },
@@ -900,310 +545,6 @@
    "version": "",
    "created": "",
    "modified": "2026-04-04",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.judges",
-   "title": "JUDGES",
-   "type": "document",
-   "path": "nodes/JUDGES.md",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "15_HOLD"
-   ],
-   "summary": "Problem.** An autonomous agent inherits a goal and bounded authority. When a real-world operation times out, it must maintain a viable path to completion without inventing the outcome, exhausting legitimate options, or exceeding its mandate. In this synthetic ",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-31",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.mobile_handoff_ui",
-   "title": "mobile handoff ui",
-   "type": "document",
-   "path": "nodes/mobile_handoff_ui.html",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "16_AgentPhone"
-   ],
-   "summary": "AGENT PHONE HOLD Relay · by TENIR Labs LOCAL DEMO · SIMULATED CHANNEL The agent can hesitate When the mission hits the unknown, call a human. A real AgentPhone backend suspends the mission. The local phone interface presents a structured decision. A human acti",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-29",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.exemple_composition_membrane_optionalite_2026_11_08",
-   "title": "Exemple Composition Membrane Optionalite 2026-11-08",
-   "type": "document",
-   "path": "nodes/Exemple_Composition_Membrane_Optionalite_2026-11-08.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Note composée : Membrane, Optionalité et Holding-First sous Gap d'Accélération",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-07",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.exemple_composition_membrane_optionalite_gap_2026_11_21",
-   "title": "Exemple Composition Membrane Optionalite Gap 2026-11-21",
-   "type": "document",
-   "path": "nodes/Exemple_Composition_Membrane_Optionalite_Gap_2026-11-21.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Document composé — membrane constitutionnelle optionalité gap accélération crossing gateway",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-20",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.exemple_composition_membrane_optionalite_gap_v5_0_2026_11_23",
-   "title": "Exemple Composition Membrane Optionalite Gap v5.0 2026-11-23",
-   "type": "document",
-   "path": "nodes/Exemple_Composition_Membrane_Optionalite_Gap_v5.0_2026-11-23.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Document composé — membrane constitutionnelle optionalité gap accélération crossing gateway TAU TENIR",
-   "aliases": [],
-   "version": "5.0.2026",
-   "created": "",
-   "modified": "2026-11-22",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.exemple_composition_membrane_optionalite_holding_2026_11_13",
-   "title": "Exemple Composition Membrane Optionalite Holding 2026-11-13",
-   "type": "document",
-   "path": "nodes/Exemple_Composition_Membrane_Optionalite_Holding_2026-11-13.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Composition TENIR : Membrane Constitutionnelle, Optionalité et Holding-First",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-12",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.exemple_composition_optionalite_membrane_2026_11_14",
-   "title": "Exemple Composition Optionalite Membrane 2026-11-14",
-   "type": "document",
-   "path": "nodes/Exemple_Composition_Optionalite_Membrane_2026-11-14.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Nouvelle composition : Optionalité et Membrane Constitutionnelle",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-13",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouveau_document_membrane_tenir",
-   "title": "Nouveau Document Membrane TENIR",
-   "type": "document",
-   "path": "nodes/Nouveau_Document_Membrane_TENIR.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Composé à partir des concepts/mots-clés : Crossing Gateway membrane invariants optionalité irréversibilité*",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-28",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouveau_document_optionalite_irreversibilite",
-   "title": "Nouveau Document Optionalite Irreversibilite",
-   "type": "document",
-   "path": "nodes/Nouveau_Document_Optionalite_Irreversibilite.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Composition : Préserver l'optionalité face à l'irréversibilité",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-24",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouvelle_composition_gap_acceleration_holding_2026_11_07",
-   "title": "Nouvelle Composition Gap Acceleration Holding 2026-11-07",
-   "type": "document",
-   "path": "nodes/Nouvelle_Composition_Gap_Acceleration_Holding_2026-11-07.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "TENIR (θ) (concept) Art de traverser la pression sans livrer l'essentiel ; viabilité opérationnelle, robustesse, optionalité. Capacité de suspension et stabilisation.",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-06",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouvelle_composition_membrane_constitutionnelle",
-   "title": "Nouvelle Composition Membrane Constitutionnelle",
-   "type": "document",
-   "path": "nodes/Nouvelle_Composition_Membrane_Constitutionnelle.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Composé à partir des concepts/mots-clés : membrane constitutionnelle optionalité irréversibilité suspension*",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-10-25",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouvelle_composition_membrane_crossing_2026_11_03",
-   "title": "Nouvelle Composition Membrane Crossing 2026-11-03",
-   "type": "document",
-   "path": "nodes/Nouvelle_Composition_Membrane_Crossing_2026-11-03.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Composé à partir des concepts/mots-clés : Crossing Gateway constitutional membrane Realms invariant preservation optionalité*",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-02",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouvelle_composition_membrane_crossing_2026_11_05",
-   "title": "Nouvelle Composition Membrane Crossing 2026-11-05",
-   "type": "document",
-   "path": "nodes/Nouvelle_Composition_Membrane_Crossing_2026-11-05.md",
-   "status": "published",
-   "language": "en",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Basé sur : membrane constitutionnelle optionalité irréversibilité suspension*",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-04",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouvelle_composition_membrane_optionalite_2026_11_09",
-   "title": "Nouvelle Composition Membrane Optionalite 2026-11-09",
-   "type": "document",
-   "path": "nodes/Nouvelle_Composition_Membrane_Optionalite_2026-11-09.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Composition : Membrane Constitutionnelle et Préservation de l'Optionalité sous Pression",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-08",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouvelle_composition_membrane_optionalite_2026_11_10",
-   "title": "Nouvelle Composition Membrane Optionalite 2026-11-10",
-   "type": "document",
-   "path": "nodes/Nouvelle_Composition_Membrane_Optionalite_2026-11-10.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Composé à partir des concepts/mots-clés invoqués : membrane constitutionnelle optionalité irréversibilité gap* *Date : généré depuis le KG v3.3 (corpus Abdelaziz Skiredj)*",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-09",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
-   "id": "estate.nouvelle_composition_membrane_optionalite_gap_2026_11_15",
-   "title": "Nouvelle Composition Membrane Optionalite Gap 2026-11-15",
-   "type": "document",
-   "path": "nodes/Nouvelle_Composition_Membrane_Optionalite_Gap_2026-11-15.md",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "04_Architecture_and_System_Design"
-   ],
-   "summary": "Nouvelle Composition — Membrane, Optionalité et Gap d'Accélération **Date :** 2026-11-15 **Concepts invoqués :** Constitutional Membrane / Crossing Gateway · Optionalité (O) · Gap d'accélération · Posture HOLDING-FIRST · TAU (τ)",
-   "aliases": [],
-   "version": "",
-   "created": "",
-   "modified": "2026-11-14",
    "supersedes": "",
    "supersededBy": ""
   },

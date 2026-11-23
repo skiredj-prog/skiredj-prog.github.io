@@ -86,7 +86,8 @@ var app = (function(){
       // Artifact relations start at the artifact; concept relations are counted where the concept is the target.
       const withEdge = new Set(repo.getEdges().filter(e=>e.type.toLowerCase()===edgeLabel.toLowerCase()).map(e=>wantConcepts?e.to:e.from));
       const missing = targets.filter(n=>!withEdge.has(n.id));
-      document.getElementById('adhoc-slot').innerHTML = '<div class="adhoc-result"><div style="font-family:var(--mono);font-size:10.5px;color:var(--amber);letter-spacing:1px;margin-bottom:8px">QUERY: show '+m[1]+' without '+m[2]+' → resolved edge "'+edgeLabel+'"</div>'+(missing.length ? missing.map(n=>'<div class="rel-row"><span>'+n.label+'</span><span class="r-label">no "'+edgeLabel+'" edge</span></div>').join('') : '<div class="check-detail">None — every node in this group has that relation.</div>')+'</div>';
+      const escq = v => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      document.getElementById('adhoc-slot').innerHTML = '<div class="adhoc-result"><div style="font-family:var(--mono);font-size:10.5px;color:var(--amber);letter-spacing:1px;margin-bottom:8px">QUERY: show '+escq(m[1])+' without '+escq(m[2])+' → resolved edge "'+escq(edgeLabel)+'"</div>'+(missing.length ? missing.map(n=>'<div class="rel-row"><span>'+escq(n.label)+'</span><span class="r-label">no "'+escq(edgeLabel)+'" edge</span></div>').join('') : '<div class="check-detail">None — every node in this group has that relation.</div>')+'</div>';
       return;
     }
     m = lower.match(/^(explain|trace|show|open)\s+(.+)$/);
