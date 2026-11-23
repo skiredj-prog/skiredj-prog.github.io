@@ -1,16 +1,17 @@
 ---
 // Page complète du n° 02 : gabarit magazine + couverture + édition web.
-// Le texte vient de src/data/magazine/n02.fr.html et n02.en.html (même structure, mêmes classes).
-// Le PDF A5 n'existe qu'en français pour l'instant : la page anglaise le propose en le disant.
+// Le texte vient de src/data/magazine/n02.fr.html, n02.en.html et n02.ar.html (même structure, mêmes classes).
+// Le PDF A5 n'existe qu'en français pour l'instant : les pages anglaise et arabe le proposent en le disant.
 import Magazine from '../../layouts/Magazine.astro';
 import '../../styles/magazine-n02.css';
 import bodyFr from '../../data/magazine/n02.fr.html?raw';
 import bodyEn from '../../data/magazine/n02.en.html?raw';
+import bodyAr from '../../data/magazine/n02.ar.html?raw';
 import { url } from '../../data/site';
-interface Props { lang?: 'fr' | 'en'; }
+interface Props { lang?: 'fr' | 'en' | 'ar'; }
 const { lang = 'fr' } = Astro.props;
-const paths = { fr: '/magazine/n02/', en: '/magazine/n02/en/' };
-const alternates = (['fr', 'en'] as const).map((l) => ({ lang: l, href: paths[l] }));
+const paths = { fr: '/magazine/n02/', en: '/magazine/n02/en/', ar: '/magazine/n02/ar/' };
+const alternates = (['fr', 'en', 'ar'] as const).map((l) => ({ lang: l, href: paths[l] }));
 const pdfHref = '/magazine/n02/TENIR-N02-FR.pdf';
 const t = {
   fr: {
@@ -25,7 +26,7 @@ const t = {
     sub: 'Ce que l’agent propose, ce que votre organisation autorise, et ce que vous pouvez encore vérifier.',
     read: 'Lire le numéro', first: '#edito',
     download: 'Télécharger le PDF',
-    foot1: 'TENIR N° 02 · novembre 2026 · numéro pilote gratuit, en français et en anglais. PDF au format A5, 16 pages, en français.',
+    foot1: 'TENIR N° 02 · novembre 2026 · numéro pilote gratuit, en français, en anglais et en arabe. PDF au format A5, 16 pages, en français.',
     foot2: 'Proposition éditoriale et pédagogique : les affirmations techniques sont à vérifier contre le périmètre et les artefacts publiés. Les illustrations photographiques sont générées par IA.',
   },
   en: {
@@ -40,8 +41,23 @@ const t = {
     sub: 'What the agent proposes, what your organisation authorises, and what you can still verify.',
     read: 'Read the issue', first: '#editorial',
     download: 'Download the PDF (French)',
-    foot1: 'TENIR No. 02 · November 2026 · free pilot issue, in French and English. A5 PDF, 16 pages, in French only for now.',
+    foot1: 'TENIR No. 02 · November 2026 · free pilot issue, in French, English and Arabic. A5 PDF, 16 pages, in French only for now.',
     foot2: 'An editorial and teaching proposal: technical claims are to be checked against the published scope and artefacts. The photographic illustrations are AI-generated.',
+  },
+  ar: {
+    body: bodyAr,
+    title: 'TENIR العدد 02 — أعطوا الذكاء الاصطناعي العمل، لا مفاتيح مؤسستكم',
+    description: 'ما يقترحه الوكيل، وما تأذن به مؤسستكم، وما تستطيعون التحقق منه بعدُ. عدد تجريبي، نونبر 2026.',
+    pdfLabel: 'PDF (بالفرنسية)',
+    alt: 'مفتاح ذهبي موضوع على طاولة مخملية؛ وفي الخلفية وكلاء ببذلات يعملون داخل نادٍ',
+    caption: 'رسم مولَّد بالذكاء الاصطناعي',
+    kicker: 'نونبر 2026 · العدد 02 · طبعة تجريبية',
+    h1: 'أعطوا الذكاء الاصطناعي العمل، لا مفاتيح مؤسستكم.',
+    sub: 'ما يقترحه الوكيل، وما تأذن به مؤسستكم، وما تستطيعون التحقق منه بعدُ.',
+    read: 'اقرأ العدد', first: '#editorial',
+    download: 'تحميل PDF (بالفرنسية)',
+    foot1: 'TENIR العدد 02 · نونبر 2026 · عدد تجريبي مجاني، بالفرنسية والإنجليزية والعربية. ملف PDF بحجم A5\u200F، 16 صفحة، بالفرنسية فقط حالياً.',
+    foot2: 'مقترح تحريري وتعليمي: الادعاءات التقنية يجب التحقق منها في ضوء النطاق والوثائق المنشورة. الصور الفوتوغرافية مولَّدة بالذكاء الاصطناعي.',
   },
 }[lang];
 ---
