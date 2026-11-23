@@ -27,20 +27,22 @@ Points datés, à revérifier avant toute réimpression : marchés du Grand Stad
 
 ## N° 02 — « Donnez à l’IA le travail, pas les clés de votre entreprise » (novembre 2026)
 
-Numéro pilote en français uniquement, ajouté le 17 novembre 2026.
+Numéro pilote en trois langues : français (17 novembre 2026), anglais (20 novembre), arabe (23 novembre). Le PDF A5 n’existe qu’en français.
 
 | Route | Rôle |
 | --- | --- |
 | `/n02/` | Lien court imprimé dans le numéro |
-| `/magazine/n02/` | Édition web complète (URL canonique) |
+| `/magazine/n02/` | Édition web complète en français (URL canonique) |
+| `/magazine/n02/en/` | Édition web anglaise |
+| `/magazine/n02/ar/` | Édition web arabe, de droite à gauche |
 
-Sources : `src/data/magazine/n02.fr.html` (texte de l’édition web, inséré tel quel), `src/components/magazine/Issue02Page.astro` (couverture et gabarit), `src/styles/magazine-n02.css` (compléments à `magazine.css`, mêmes jetons, chargés par ces deux pages seulement).
+Sources : `src/data/magazine/n02.fr.html`, `n02.en.html` et `n02.ar.html` (texte des éditions web, inséré tel quel), `src/components/magazine/Issue02Page.astro` (couverture et gabarit), `src/styles/magazine-n02.css` (compléments à `magazine.css`, mêmes jetons, chargés par ces deux pages seulement).
 
 Fichiers servis : `public/magazine/n02/` (couverture, image de partage, huit illustrations, PDF A5 de 16 pages et `SHA256SUMS.txt`). Les pages ne chargent aucune police externe.
 
 Différences avec le N° 01 : pas de fichier JSON ni de générateur ; le PDF est imprimé depuis une maquette HTML A5 qui n’est pas dans ce dépôt, avec les polices Libre Baskerville et DM Sans incorporées. Pour une correction, modifier `n02.fr.html` et la maquette, réimprimer le PDF, puis mettre à jour `SHA256SUMS.txt`.
 
-Édition anglaise (17 novembre 2026) : `n02.en.html`, servie sur `/magazine/n02/en/`. Même structure et mêmes classes que `n02.fr.html` ; les ancres sont en anglais. Toute correction se fait dans les deux fichiers. Les renvois « page N » du français sont remplacés par le nom de la section, car le PDF n’existe qu’en français. 
+Édition anglaise (17 novembre 2026) : `n02.en.html`, servie sur `/magazine/n02/en/`. Même structure et mêmes classes que `n02.fr.html` ; les ancres sont en anglais. Toute correction de fond se fait dans les trois fichiers. Les renvois « page N » du français sont remplacés par le nom de la section, car le PDF n’existe qu’en français. 
 
 Édition arabe (22 novembre 2026) : `n02.ar.html`, servie sur `/magazine/n02/ar/`, de droite à gauche. Mêmes ancres que l’anglais. Relecteur désigné : Mohammed Ali Skiredj ; publication approuvée par Aziz Skiredj le 23 novembre 2026. Toute correction de langue reçue ensuite s’applique directement dans ce fichier. Conventions du N° 01 arabe : arabe standard, chiffres occidentaux, guillemets « », mois à la marocaine. Les fragments latins (identifiants, verdicts, noms de normes) sont entourés de `<span dir="ltr">` pour ne pas être réordonnés ; les milliers sont séparés par une espace insécable, sinon « 50 000 » s’affiche « 000 50 ». Les paroles d’agents arabes sortent de `crozwya/recits_ar.py` (dépôt `2-the-crozwya`).
 
