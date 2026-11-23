@@ -1,0 +1,1441 @@
+{
+ "nodes": [
+  {
+   "id": "concept.tenir",
+   "type": "concept",
+   "label": "TENIR (Governance)",
+   "properties": {
+    "level": 1
+   },
+   "aliases": [
+    "TENIR",
+    "Governance Framework"
+   ],
+   "tags": [
+    "foundational"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.tau",
+   "type": "concept",
+   "label": "TAU (Invariant)",
+   "properties": {
+    "level": 1
+   },
+   "aliases": [
+    "Threshold of Autonomous Unity",
+    "Autonomous Unity Threshold",
+    "TAU"
+   ],
+   "tags": [
+    "core"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.reverse_cycle",
+   "type": "concept",
+   "label": "Reverse Cycle (Ecosystem)",
+   "properties": {
+    "level": 1
+   },
+   "aliases": [],
+   "tags": [
+    "ecosystem"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.membrane",
+   "type": "concept",
+   "label": "Runtime Membrane",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Deterministic Membrane"
+   ],
+   "tags": [
+    "mechanism"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.admissibility",
+   "type": "concept",
+   "label": "Admissibility",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [],
+   "tags": [
+    "mechanism"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.circuit_breaker",
+   "type": "concept",
+   "label": "Ontological Circuit Breaker",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [],
+   "tags": [
+    "mechanism"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.pressure",
+   "type": "concept",
+   "label": "Pressure (P)",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [
+    "P"
+   ],
+   "tags": [
+    "primitive"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.capacity",
+   "type": "concept",
+   "label": "Capacity (K)",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [
+    "K"
+   ],
+   "tags": [
+    "primitive"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.noise",
+   "type": "concept",
+   "label": "Metabolic Noise",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [],
+   "tags": [
+    "primitive"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.async_time",
+   "type": "concept",
+   "label": "Asynchronous Time",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [],
+   "tags": [
+    "primitive"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.identity",
+   "type": "concept",
+   "label": "Identity vs Loop",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [],
+   "tags": [
+    "primitive"
+   ],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.reg",
+   "type": "concept",
+   "label": "REG (Runtime Execution Governance)",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "REG",
+    "Runtime Execution Governance",
+    "REG Core Protocol"
+   ],
+   "tags": [
+    "extension",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.tenir_gov",
+   "type": "concept",
+   "label": "TENIR-Gov",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "TENIR-Gov",
+    "tenir_governance",
+    "IRON OMEGA"
+   ],
+   "tags": [
+    "platform",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.hold",
+   "type": "concept",
+   "label": "HOLD",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "HOLD"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.agentphone",
+   "type": "concept",
+   "label": "AgentPhone",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "AgentPhone"
+   ],
+   "tags": [
+    "extension",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.posture",
+   "type": "concept",
+   "label": "Canonical Posture (NORMAL / CAUTION / HOLDING-FIRST)",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "HOLDING-FIRST",
+    "Posture Determination"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.commit_boundary",
+   "type": "concept",
+   "label": "Commit Boundary",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Commit Gate",
+    "Norme du Commit"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.execution_boundary",
+   "type": "concept",
+   "label": "Execution Boundary",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Frontière d'exécution",
+    "Point d'exécution"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.permit",
+   "type": "concept",
+   "label": "Permit",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Execution Grant"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.receipt",
+   "type": "concept",
+   "label": "Receipt",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.reconciliation",
+   "type": "concept",
+   "label": "Reconciliation",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Réconciliation"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.fail_closed",
+   "type": "concept",
+   "label": "Fail-Closed",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.evidence",
+   "type": "concept",
+   "label": "Evidence (Preuve)",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Evidence Ledger",
+    "EvidenceManifest",
+    "Preuve"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.conformance",
+   "type": "concept",
+   "label": "Conformance",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Crosswalk",
+    "Conformité"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.standing",
+   "type": "concept",
+   "label": "Standing (Authority Continuity)",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Authority Continuity"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.witness",
+   "type": "concept",
+   "label": "Witness",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Jolt-Witness",
+    "Témoin"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.escalation",
+   "type": "concept",
+   "label": "Escalation (ESCALATED)",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "ESCALATED"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.no_silent_refinement",
+   "type": "concept",
+   "label": "No Silent Refinement",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.kernel",
+   "type": "concept",
+   "label": "Adjudication Kernel",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Kernel"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.cave",
+   "type": "concept",
+   "label": "CAVE",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "CAVE matrix"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.pvks",
+   "type": "concept",
+   "label": "PVKS",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "Redline Protocol"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.evp",
+   "type": "concept",
+   "label": "EVP (Enterprise Value Protected)",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "EVP"
+   ],
+   "tags": [
+    "measure",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.value_trajectory",
+   "type": "concept",
+   "label": "Value Trajectory",
+   "properties": {
+    "level": 2
+   },
+   "aliases": [
+    "ValueTrajectory",
+    "Trajectoire de valeur"
+   ],
+   "tags": [
+    "mechanism",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.realm",
+   "type": "concept",
+   "label": "Realm (Cross-Realm)",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [
+    "Cross-Realm"
+   ],
+   "tags": [
+    "primitive",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.epistemic_uncertainty",
+   "type": "concept",
+   "label": "Epistemic Uncertainty",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [
+    "Unobserved"
+   ],
+   "tags": [
+    "primitive",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.epistemic_sovereignty",
+   "type": "concept",
+   "label": "Epistemic Sovereignty",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [
+    "Epistemic Surrender"
+   ],
+   "tags": [
+    "primitive",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "concept.velocity",
+   "type": "concept",
+   "label": "Velocity (V)",
+   "properties": {
+    "level": 3
+   },
+   "aliases": [
+    "Vélocité"
+   ],
+   "tags": [
+    "primitive",
+    "estate-2026-11"
+   ],
+   "version": "",
+   "created": "2026-11-23",
+   "modified": "2026-11-23",
+   "status": "published",
+   "supersedes": "",
+   "supersededBy": ""
+  }
+ ],
+ "edges": [
+  {
+   "id": "e1",
+   "from": "concept.tenir",
+   "to": "concept.tau",
+   "type": "protects"
+  },
+  {
+   "id": "e2",
+   "from": "concept.reverse_cycle",
+   "to": "concept.tenir",
+   "type": "implements"
+  },
+  {
+   "id": "e3",
+   "from": "concept.tenir",
+   "to": "concept.membrane",
+   "type": "operates via"
+  },
+  {
+   "id": "e4",
+   "from": "concept.membrane",
+   "to": "concept.admissibility",
+   "type": "evaluates"
+  },
+  {
+   "id": "e5",
+   "from": "concept.membrane",
+   "to": "concept.circuit_breaker",
+   "type": "triggers"
+  },
+  {
+   "id": "e6",
+   "from": "concept.pressure",
+   "to": "concept.capacity",
+   "type": "tests"
+  },
+  {
+   "id": "e7",
+   "from": "concept.noise",
+   "to": "concept.capacity",
+   "type": "drains"
+  },
+  {
+   "id": "e8",
+   "from": "concept.async_time",
+   "to": "concept.pressure",
+   "type": "absorbs"
+  },
+  {
+   "id": "e_imported.kb5_a_governed_incarnation_concept.capacity_36",
+   "from": "imported.kb5_a_governed_incarnation",
+   "to": "concept.capacity",
+   "type": "mentions"
+  },
+  {
+   "id": "e_imported.kb5_a_governed_incarnation_concept.tau_37",
+   "from": "imported.kb5_a_governed_incarnation",
+   "to": "concept.tau",
+   "type": "mentions"
+  },
+  {
+   "id": "e_imported.kb5_a_governed_incarnation_concept.pressure_38",
+   "from": "imported.kb5_a_governed_incarnation",
+   "to": "concept.pressure",
+   "type": "mentions"
+  },
+  {
+   "id": "e_imported.kb5_official_rendering_v2_concept.capacity_41",
+   "from": "imported.kb5_official_rendering_v2",
+   "to": "concept.capacity",
+   "type": "mentions"
+  },
+  {
+   "id": "e_imported.kb5_official_rendering_v2_concept.pressure_42",
+   "from": "imported.kb5_official_rendering_v2",
+   "to": "concept.pressure",
+   "type": "mentions"
+  },
+  {
+   "id": "e_imported.kb5_official_rendering_v2_concept.admissibility_43",
+   "from": "imported.kb5_official_rendering_v2",
+   "to": "concept.admissibility",
+   "type": "mentions"
+  },
+  {
+   "id": "e_imported.kb5_official_rendering_v2_concept.tenir_44",
+   "from": "imported.kb5_official_rendering_v2",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.beyond_the_layers_linkedin_carousel_concept.capacity_204",
+   "from": "estate.beyond_the_layers_linkedin_carousel",
+   "to": "concept.capacity",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.cartes_mentales_gouvernance_ia_2_concept.tenir_206",
+   "from": "estate.cartes_mentales_gouvernance_ia_2",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_2_0_canonical_alignment_matrix_concept.tenir_244",
+   "from": "estate.tenir_2_0_canonical_alignment_matrix",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.audit_report_concept.tenir_277",
+   "from": "estate.audit_report",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.audit_report_2_concept.tenir_278",
+   "from": "estate.audit_report_2",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_explorer_review_concept.tenir_478",
+   "from": "estate.reg_explorer_review",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.admissibility_496",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.admissibility",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.tenir_497",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.admissibility_498",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.admissibility",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_5_liveness_operationalization_1_concept.tenir_499",
+   "from": "estate.reg_standard_rfc_5_liveness_operationalization_1",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_5_liveness_operationalization_1_concept.tau_500",
+   "from": "estate.reg_standard_rfc_5_liveness_operationalization_1",
+   "to": "concept.tau",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_5_liveness_operationalization_1_concept.capacity_501",
+   "from": "estate.reg_standard_rfc_5_liveness_operationalization_1",
+   "to": "concept.capacity",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_6_security_transport_cryptography_concept.tenir_502",
+   "from": "estate.reg_standard_rfc_6_security_transport_cryptography",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_supporting_artifacts_schemas_statemachine_examples_concept.tenir_503",
+   "from": "estate.reg_standard_supporting_artifacts_schemas_statemachine_examples",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_supporting_artifacts_schemas_statemachine_examples_concept.tau_504",
+   "from": "estate.reg_standard_supporting_artifacts_schemas_statemachine_examples",
+   "to": "concept.tau",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.tenir_535",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.admissibility_536",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.admissibility",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.capacity_537",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.capacity",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_concept.tenir_546",
+   "from": "estate.reg_standard_rfc_7_conformance_suite",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_concept.tau_547",
+   "from": "estate.reg_standard_rfc_7_conformance_suite",
+   "to": "concept.tau",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_concept.admissibility_548",
+   "from": "estate.reg_standard_rfc_7_conformance_suite",
+   "to": "concept.admissibility",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_updated_concept.tenir_549",
+   "from": "estate.reg_standard_rfc_7_conformance_suite_updated",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_1x_to_2_0_migration_and_supersession_memo_concept.tenir_596",
+   "from": "estate.tenir_1x_to_2_0_migration_and_supersession_memo",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_1x_to_2_0_migration_and_supersession_memo_concept.tau_597",
+   "from": "estate.tenir_1x_to_2_0_migration_and_supersession_memo",
+   "to": "concept.tau",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_ed_epistemic_surrender_treatment_note_concept.tenir_599",
+   "from": "estate.tenir_ed_epistemic_surrender_treatment_note",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_posture_determination_protocol_concept.tenir_604",
+   "from": "estate.tenir_posture_determination_protocol",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_posture_determination_protocol_concept.tau_605",
+   "from": "estate.tenir_posture_determination_protocol",
+   "to": "concept.tau",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_versioning_and_overlay_naming_policy_concept.tenir_606",
+   "from": "estate.tenir_versioning_and_overlay_naming_policy",
+   "to": "concept.tenir",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.workflow_carousel_concept.reg_657",
+   "from": "estate.workflow_carousel",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_hypothesis_lab_test_your_own_theory_concept.reg_669",
+   "from": "estate.reg_hypothesis_lab_test_your_own_theory",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.reg_688",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.reg_689",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_5_liveness_operationalization_1_concept.reg_690",
+   "from": "estate.reg_standard_rfc_5_liveness_operationalization_1",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_6_security_transport_cryptography_concept.reg_691",
+   "from": "estate.reg_standard_rfc_6_security_transport_cryptography",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_supporting_artifacts_schemas_statemachine_examples_concept.reg_692",
+   "from": "estate.reg_standard_supporting_artifacts_schemas_statemachine_examples",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.reg_710",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_concept.reg_720",
+   "from": "estate.reg_standard_rfc_7_conformance_suite",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_updated_concept.reg_721",
+   "from": "estate.reg_standard_rfc_7_conformance_suite_updated",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_core_protocol_v0_3_0_v3_concept.reg_736",
+   "from": "estate.reg_core_protocol_v0_3_0_v3",
+   "to": "concept.reg",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.cartes_mentales_gouvernance_ia_2_concept.hold_818",
+   "from": "estate.cartes_mentales_gouvernance_ia_2",
+   "to": "concept.hold",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.hold_886",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.hold",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.hold_887",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.hold",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_5_liveness_operationalization_1_concept.hold_888",
+   "from": "estate.reg_standard_rfc_5_liveness_operationalization_1",
+   "to": "concept.hold",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_supporting_artifacts_schemas_statemachine_examples_concept.hold_889",
+   "from": "estate.reg_standard_supporting_artifacts_schemas_statemachine_examples",
+   "to": "concept.hold",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.hold_898",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.hold",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.hold_script_de_tournage_jury_3_minutes_concept.hold_912",
+   "from": "estate.hold_script_de_tournage_jury_3_minutes",
+   "to": "concept.hold",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.hold_script_vid_o_pour_le_jury_concept.hold_913",
+   "from": "estate.hold_script_vid_o_pour_le_jury",
+   "to": "concept.hold",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.agentphone_le_relais_gouvern_entre_les_agents_et_les_humains_concept.agentphone_946",
+   "from": "estate.agentphone_le_relais_gouvern_entre_les_agents_et_les_humains",
+   "to": "concept.agentphone",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.audit_report_concept.posture_969",
+   "from": "estate.audit_report",
+   "to": "concept.posture",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.audit_report_2_concept.posture_970",
+   "from": "estate.audit_report_2",
+   "to": "concept.posture",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_posture_determination_protocol_concept.posture_972",
+   "from": "estate.tenir_posture_determination_protocol",
+   "to": "concept.posture",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.commit_boundary_976",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.commit_boundary",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.commit_boundary_977",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.commit_boundary",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.cartes_mentales_gouvernance_ia_2_concept.execution_boundary_982",
+   "from": "estate.cartes_mentales_gouvernance_ia_2",
+   "to": "concept.execution_boundary",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.execution_boundary_996",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.execution_boundary",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.permit_1015",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.permit",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.permit_1016",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.permit",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_supporting_artifacts_schemas_statemachine_examples_concept.permit_1017",
+   "from": "estate.reg_standard_supporting_artifacts_schemas_statemachine_examples",
+   "to": "concept.permit",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.workflow_carousel_concept.receipt_1051",
+   "from": "estate.workflow_carousel",
+   "to": "concept.receipt",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.receipt_1065",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.receipt",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.receipt_1066",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.receipt",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_6_security_transport_cryptography_concept.receipt_1067",
+   "from": "estate.reg_standard_rfc_6_security_transport_cryptography",
+   "to": "concept.receipt",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.receipt_1070",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.receipt",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.hold_script_de_tournage_jury_3_minutes_concept.receipt_1077",
+   "from": "estate.hold_script_de_tournage_jury_3_minutes",
+   "to": "concept.receipt",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.cartes_mentales_gouvernance_ia_2_concept.reconciliation_1094",
+   "from": "estate.cartes_mentales_gouvernance_ia_2",
+   "to": "concept.reconciliation",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_5_liveness_operationalization_1_concept.fail_closed_1153",
+   "from": "estate.reg_standard_rfc_5_liveness_operationalization_1",
+   "to": "concept.fail_closed",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_6_security_transport_cryptography_concept.fail_closed_1154",
+   "from": "estate.reg_standard_rfc_6_security_transport_cryptography",
+   "to": "concept.fail_closed",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_supporting_artifacts_schemas_statemachine_examples_concept.fail_closed_1155",
+   "from": "estate.reg_standard_supporting_artifacts_schemas_statemachine_examples",
+   "to": "concept.fail_closed",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.beyond_the_layers_linkedin_carousel_concept.evidence_1191",
+   "from": "estate.beyond_the_layers_linkedin_carousel",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.cartes_mentales_gouvernance_ia_2_concept.evidence_1193",
+   "from": "estate.cartes_mentales_gouvernance_ia_2",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_explorer_review_concept.evidence_1298",
+   "from": "estate.reg_explorer_review",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.evidence_1304",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.evidence_1305",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.evidence_1312",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_concept.evidence_1323",
+   "from": "estate.reg_standard_rfc_7_conformance_suite",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_updated_concept.evidence_1324",
+   "from": "estate.reg_standard_rfc_7_conformance_suite_updated",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.hold_script_de_tournage_jury_3_minutes_concept.evidence_1340",
+   "from": "estate.hold_script_de_tournage_jury_3_minutes",
+   "to": "concept.evidence",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.conformance_1418",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.conformance",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.conformance_1419",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.conformance",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_6_security_transport_cryptography_concept.conformance_1420",
+   "from": "estate.reg_standard_rfc_6_security_transport_cryptography",
+   "to": "concept.conformance",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.conformance_1431",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.conformance",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_concept.conformance_1439",
+   "from": "estate.reg_standard_rfc_7_conformance_suite",
+   "to": "concept.conformance",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_updated_concept.conformance_1440",
+   "from": "estate.reg_standard_rfc_7_conformance_suite_updated",
+   "to": "concept.conformance",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_6_security_transport_cryptography_concept.standing_1480",
+   "from": "estate.reg_standard_rfc_6_security_transport_cryptography",
+   "to": "concept.standing",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_supporting_artifacts_schemas_statemachine_examples_concept.standing_1481",
+   "from": "estate.reg_standard_supporting_artifacts_schemas_statemachine_examples",
+   "to": "concept.standing",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.spec_reg_01_reference_implementation_v1_0_concept.standing_1488",
+   "from": "estate.spec_reg_01_reference_implementation_v1_0",
+   "to": "concept.standing",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_concept.standing_1489",
+   "from": "estate.reg_standard_rfc_7_conformance_suite",
+   "to": "concept.standing",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_concept.kernel_1572",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "to": "concept.kernel",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_4_commit_execution_proof_frozen_2_concept.kernel_1573",
+   "from": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "to": "concept.kernel",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.reg_standard_rfc_7_conformance_suite_updated_concept.kernel_1579",
+   "from": "estate.reg_standard_rfc_7_conformance_suite_updated",
+   "to": "concept.kernel",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate.tenir_ed_epistemic_surrender_treatment_note_concept.epistemic_sovereignty_1695",
+   "from": "estate.tenir_ed_epistemic_surrender_treatment_note",
+   "to": "concept.epistemic_sovereignty",
+   "type": "mentions"
+  },
+  {
+   "id": "e_estate_rel_tenir_gov_admissibility",
+   "from": "concept.tenir_gov",
+   "to": "concept.admissibility",
+   "type": "evaluates"
+  },
+  {
+   "id": "e_estate_rel_reg_commit_boundary",
+   "from": "concept.reg",
+   "to": "concept.commit_boundary",
+   "type": "operates via"
+  },
+  {
+   "id": "e_estate_rel_conformance_reg",
+   "from": "concept.conformance",
+   "to": "concept.reg",
+   "type": "tests"
+  },
+  {
+   "id": "e_estate_rel_evp_tenir_gov",
+   "from": "concept.evp",
+   "to": "concept.tenir_gov",
+   "type": "measures"
+  },
+  {
+   "id": "e_estate_rel_posture_tenir",
+   "from": "concept.posture",
+   "to": "concept.tenir",
+   "type": "implements"
+  },
+  {
+   "id": "e_estate.claude_syllabus_architecte_stratege_tenir_concept.reverse_cycle_1798",
+   "from": "estate.claude_syllabus_architecte_stratege_tenir",
+   "to": "concept.reverse_cycle",
+   "type": "mentions"
+  }
+ ]
+}

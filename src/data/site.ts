@@ -245,6 +245,7 @@ const frToEn: Record<string, string> = {
   "cas/operation-ambigue": "/en/cases/ambiguous-operation/",
   affirmations: "/en/claims/",
   hold: "/en/hold/",
+  "tenir-estate": "/en/tenir-estate/",
 };
 
 const enToFr: Record<string, string> = Object.fromEntries(

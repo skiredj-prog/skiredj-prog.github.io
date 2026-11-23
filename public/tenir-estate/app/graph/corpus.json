@@ -1,0 +1,571 @@
+{
+ "artifacts": [
+  {
+   "id": "imported.tenir_autonomous_systems_risk_insurance_layer",
+   "title": "Tenir Autonomous Systems Risk Insurance Layer",
+   "type": "document",
+   "path": "nodes/TENIR Autonomous Systems Risk Insurance Layer.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "imported"
+   ],
+   "summary": "[PDF file: TENIR Autonomous Systems Risk Insurance Layer.pdf]",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "imported.kb5_a_governed_incarnation",
+   "title": "Kb5-A Governed Incarnation",
+   "type": "document",
+   "path": "nodes/KB5-A_GOVERNED_INCARNATION.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "imported"
+   ],
+   "summary": "# KB5-A - Extension: Governed Incarnation & Temporal Architecture",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "imported.kb5_official_rendering_v2",
+   "title": "Kb5 Official Rendering V2",
+   "type": "document",
+   "path": "nodes/KB5_OFFICIAL_RENDERING v2.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "imported"
+   ],
+   "summary": "# KB5 - Official Rendering Line: R5 Deep-Tech (As-Built)",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.beyond_the_layers_linkedin_carousel",
+   "title": "Beyond the Layers LinkedIn Carousel",
+   "type": "document",
+   "path": "nodes/Beyond_the_Layers_LinkedIn_Carousel.pptx",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "04_Architecture_and_System_Design"
+   ],
+   "summary": "Instead of a vague instruction to \"be careful with retries,\" the design gives",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-12",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.cartes_mentales_gouvernance_ia_2",
+   "title": "cartes mentales gouvernance ia",
+   "type": "document",
+   "path": "nodes/cartes_mentales_gouvernance_ia.pdf",
+   "status": "published",
+   "language": "fr",
+   "tags": [
+    "estate",
+    "04_Architecture_and_System_Design"
+   ],
+   "summary": "Cartes Mentales : Gouvernance & Résilience de l'IA Agentique Structure arborescente des concepts, diagnostics et invariants de la frontière d'exécution",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-26",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.tenir_2_0_canonical_alignment_matrix",
+   "title": "TENIR 2 0 Canonical Alignment Matrix",
+   "type": "document",
+   "path": "nodes/TENIR_2_0_Canonical_Alignment_Matrix.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "08_Platform_SDK_Governance"
+   ],
+   "summary": "Layer | TENIR 2.0 status | Key obligation | |---|---|---| | Constitution | Sovereign | Defines meaning | | KB2 | Active rendering | Renders doctrine faithfully | | Agentic profile | Modular | Cannot impersonate canon | | Metabolic / Rhizomatic profiles | Modul",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-09-24",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.audit_report",
+   "title": "audit report",
+   "type": "document",
+   "path": "nodes/audit_report.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "08_Platform_SDK_Governance"
+   ],
+   "summary": "transaction_id | datetime | posture | stability | target_system | proposed_action | |:-----------------|:------------------------------|:--------------|------------:|:----------------|:------------------| | tx-7487274d | 2026-04-05 22:48:17.359376907 | NORMAL ",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-09-24",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.audit_report_2",
+   "title": "audit report",
+   "type": "document",
+   "path": "nodes/audit_report.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "08_Platform_SDK_Governance"
+   ],
+   "summary": "TENIR Governance Audit Report Total Intercepts: 150 NORMAL: 73 CAUTION: 50 HOLDING-FIRST: 27 datetime",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-09-24",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.workflow_carousel",
+   "title": "workflow-carousel",
+   "type": "document",
+   "path": "nodes/workflow-carousel.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "11_Publication_and_External_Facing"
+   ],
+   "summary": "Most handoffs can be fixed later. One can’t. A refund proposed by an AI agent, across five teams and one payment provider. YOUR SYSTEMS",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-21",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.beyond_the_layers_into_orthogonality",
+   "title": "Beyond the Layers into Orthogonality",
+   "type": "document",
+   "path": "nodes/Beyond the Layers into Orthogonality.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "13_Manuscripts_and_Working_Papers"
+   ],
+   "summary": "",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-12",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_hypothesis_lab_test_your_own_theory",
+   "title": "REG Hypothesis Lab — test your own theory",
+   "type": "document",
+   "path": "nodes/REG Hypothesis Lab — test your own theory.html",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "REG HYPOTHESIS LAB Bring a theory. Try to break it. State your claim, write it as a small state machine, and the lab walks every reachable state. You get a verdict, or the shortest sequence of events that proves your own theory wrong.",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-07",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_explorer_review",
+   "title": "reg-explorer-review",
+   "type": "document",
+   "path": "nodes/reg-explorer-review.html",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "TENIR LABS / REG · REVIEW BUILD 0.1 Requirements-to-Evidence Explorer Synthetic demonstration — not a compliance assessment or TENIR-Gov execution. 2 traceability concerns · illustrative Traceability graph All nodes Selected chain Highlight gaps Select a graph",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-23",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_standard_rfc_4_commit_execution_proof_frozen",
+   "title": "REG-Standard RFC-4 Commit-Execution-Proof FROZEN",
+   "type": "document",
+   "path": "nodes/REG-Standard_RFC-4_Commit-Execution-Proof_FROZEN.docx",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "Dependency: RFC-0 (Constitution), RFC-1 (Wire Protocol), RFC-2 (Structure), RFC-3 (Standing)",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-09-28",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_standard_rfc_4_commit_execution_proof_frozen_2",
+   "title": "REG-Standard RFC-4 Commit-Execution-Proof FROZEN",
+   "type": "document",
+   "path": "nodes/REG-Standard_RFC-4_Commit-Execution-Proof_FROZEN.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "Status: Proposed Standard (Frozen) Dependency: RFC-0 (Constitution), RFC-1 (Wire Protocol), RFC-2 (Structure), RFC-3 (Standing) Purpose: Defines the normative properties that must be satisfied for an Execution Grant to cross the Execution Boundary. It establis",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-09-28",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_standard_rfc_5_liveness_operationalization_1",
+   "title": "REG-Standard RFC-5 Liveness-Operationalization-1",
+   "type": "document",
+   "path": "nodes/REG-Standard_RFC-5_Liveness-Operationalization-1.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "RFC-5: Liveness & Operationalization (Final) Status: Proposed Standard (Final) Dependency: RFC-0 (Constitution) through RFC-4 (Commit) Purpose: Defines how the REG system maintains operational liveness when actions are suspended (HOLD) or blocked, preventing o",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-09-28",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_standard_rfc_6_security_transport_cryptography",
+   "title": "REG-Standard RFC-6 Security-Transport-Cryptography",
+   "type": "document",
+   "path": "nodes/REG-Standard_RFC-6_Security-Transport-Cryptography.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "RFC-6: Security, Transport & Cryptography (Final) Status: Proposed Standard (Final) Dependency: RFC-0 (Constitution), RFC-1 (Wire Protocol), RFC-3 (Standing), RFC-4 (Commit) Purpose: Defines the cryptographic and transport security properties required to prote",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-01",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_standard_supporting_artifacts_schemas_statemachine_examples",
+   "title": "REG-Standard Supporting-Artifacts Schemas-StateMachine-Examples",
+   "type": "document",
+   "path": "nodes/REG-Standard_Supporting-Artifacts_Schemas-StateMachine-Examples.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "REG Standard — Supporting Artifacts (Schemas, State Machine & Examples)",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-01",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.spec_reg_01_reference_implementation_v1_0",
+   "title": "SPEC-REG-01 Reference-Implementation-v1.0",
+   "type": "document",
+   "path": "nodes/SPEC-REG-01_Reference-Implementation-v1.0.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "SPEC-REG-01 — Runtime Execution Governance Reference Implementation v1.0",
+   "aliases": [],
+   "version": "1.0",
+   "created": "",
+   "modified": "2026-10-01",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_standard_rfc_7_conformance_suite",
+   "title": "REG-Standard RFC-7 Conformance-Suite",
+   "type": "document",
+   "path": "nodes/REG-Standard_RFC-7_Conformance-Suite.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "RFC-7: Conformance Suite & Interoperability (Final) Status: Proposed Standard (Final) Dependency: RFC-0 (Constitution) through RFC-6 (Security & Cryptography) Purpose: Defines the methodology, tooling, and deployment maturity ladder for proving that an impleme",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-09-28",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_standard_rfc_7_conformance_suite_updated",
+   "title": "REG-Standard RFC-7 Conformance-Suite UPDATED",
+   "type": "document",
+   "path": "nodes/REG-Standard_RFC-7_Conformance-Suite_UPDATED.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "REG Standard — RFC-7 — Conformance Suite & Interoperability (Updated)",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-09-28",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.hold_script_de_tournage_jury_3_minutes",
+   "title": "HOLD — script de tournage jury 3 minutes",
+   "type": "document",
+   "path": "nodes/HOLD — script de tournage jury 3 minutes.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "15_HOLD"
+   ],
+   "summary": "Durée cible : 3:00. Voix off : anglais. Images : captures de terminal et cartons sobres. Les deux traces sont des enregistrements rejoués : aucun modèle ni appel réseau n’est utilisé pendant leur lecture.",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-11-03",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.hold_script_vid_o_pour_le_jury",
+   "title": "HOLD — Script vidéo pour le jury",
+   "type": "document",
+   "path": "nodes/HOLD — Script vidéo pour le jury.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "15_HOLD"
+   ],
+   "summary": "Cadre Une vidéo de 3 minutes, narrée en anglais, qui montre deux trajectoires réelles de la campagne gelée E1-A6, rejouées dans le terminal sans modèle ni réseau. La durée est à caler sur la limite du règlement du hackathon (à vérifier). Trace rejouée",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-11-03",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.agentphone_le_relais_gouvern_entre_les_agents_et_les_humains",
+   "title": "AgentPhone — Le relais gouverné entre les agents et les humains",
+   "type": "document",
+   "path": "nodes/AgentPhone — Le relais gouverné entre les agents et les humains.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "16_AgentPhone"
+   ],
+   "summary": "AGENTPHONE: THE GOVERNED RELAY Connecting autonomous agents to humans through a strictly gater auditable policy layer ,",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-10-29",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.reg_core_protocol_v0_3_0_v3",
+   "title": "REG Core Protocol v0.3.0 v3",
+   "type": "document",
+   "path": "nodes/REG Core Protocol v0.3.0 v3.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "14_REG_Standard"
+   ],
+   "summary": "",
+   "aliases": [],
+   "version": "0.3.0",
+   "created": "",
+   "modified": "2026-10-09",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.tenir_1x_to_2_0_migration_and_supersession_memo",
+   "title": "TENIR 1x to 2 0 Migration and Supersession Memo",
+   "type": "document",
+   "path": "nodes/TENIR_1x_to_2_0_Migration_and_Supersession_Memo.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "00_Governance_Constitution"
+   ],
+   "summary": "Purpose Resolve historical confusion and define the current status of legacy labels.",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-04-04",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.tenir_ed_epistemic_surrender_treatment_note",
+   "title": "TENIR Ed Epistemic Surrender Treatment Note",
+   "type": "document",
+   "path": "nodes/TENIR_Ed_Epistemic_Surrender_Treatment_Note.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "00_Governance_Constitution"
+   ],
+   "summary": "Decision TENIR 2.0 does **not** integrate the former v3 scalar **E_d** into the stability formula.",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-04-04",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.tenir_posture_determination_protocol",
+   "title": "TENIR Posture Determination Protocol",
+   "type": "document",
+   "path": "nodes/TENIR_Posture_Determination_Protocol.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "00_Governance_Constitution"
+   ],
+   "summary": "Constitutional posture states - NORMAL - CAUTION - HOLDING-FIRST",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-04-04",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.tenir_versioning_and_overlay_naming_policy",
+   "title": "TENIR Versioning and Overlay Naming Policy",
+   "type": "document",
+   "path": "nodes/TENIR_Versioning_and_Overlay_Naming_Policy.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "00_Governance_Constitution"
+   ],
+   "summary": "Rule 1 — Canonical namespace Reserved for constitutional framework versions only. Examples: TENIR 2.0, future TENIR 2.1.",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-04-04",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.01_lens_integration_audit",
+   "title": "01 Lens Integration Audit",
+   "type": "document",
+   "path": "nodes/01_Lens_Integration_Audit.md",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "00_Governance_Constitution"
+   ],
+   "summary": "Correct role The Lens should be: - interpretive front-end - simulation / scenario cockpit - executive / pedagogical surface - narrative synthesis layer",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-04-04",
+   "supersedes": "",
+   "supersededBy": ""
+  },
+  {
+   "id": "estate.claude_syllabus_architecte_stratege_tenir",
+   "title": "Claude - Syllabus Architecte Stratege Tenir",
+   "type": "document",
+   "path": "nodes/Claude - Syllabus_Architecte_Stratege_Tenir.pdf",
+   "status": "published",
+   "language": "en",
+   "tags": [
+    "estate",
+    "13_Manuscripts_and_Working_Papers"
+   ],
+   "summary": "Architecte-Stratège™ — Décision, incertitude et trajectoires soutenables Objectifs pédagogiques Former des profils capables de lire des situations complexes, identifier les décisions irréversibles, préserver l’optionnalité et concevoir des trajectoires soutena",
+   "aliases": [],
+   "version": "",
+   "created": "",
+   "modified": "2026-01-29",
+   "supersedes": "",
+   "supersededBy": ""
+  }
+ ]
+}

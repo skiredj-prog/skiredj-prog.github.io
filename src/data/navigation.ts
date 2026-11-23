@@ -130,6 +130,7 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
             { slug: "publications/reg-v0.1", href: "/publications/reg-v0.1/", label: "REG v0.1 · document de travail", hint: "La spécification de cadrage." },
             { slug: "preuves/hold", href: "/preuves/hold/", label: "Expérience HOLD", hint: "Une expérience, pas une promesse." },
             { slug: "preuves/cadres", href: "/preuves/cadres/", label: "Comparer les cadres", hint: "Leurs objets, leurs questions, leurs limites." },
+            { slug: "tenir-estate", href: "/tenir-estate/", label: "Tenir-Estate", hint: "Le corpus, ses concepts et leurs liens." },
           ],
         },
       ],
@@ -235,6 +236,7 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
             { slug: "publications/reg-v0.1", href: "/en/publications/reg-v0.1/", label: "REG v0.1 · working draft", hint: "The framing specification." },
             { slug: "evidence/hold", href: "/en/evidence/hold/", label: "HOLD experiment", hint: "An experiment, not a promise." },
             { slug: "evidence/frameworks", href: "/en/evidence/frameworks/", label: "Compare frameworks", hint: "Their objects, their questions, their limits." },
+            { slug: "tenir-estate", href: "/en/tenir-estate/", label: "Tenir-Estate", hint: "The corpus, its concepts and their links." },
           ],
         },
       ],
@@ -285,6 +287,7 @@ const sectionBySlug: Record<string, Section> = {
   preuves: "credibilite", "preuves/hold": "credibilite", "preuves/cadres": "credibilite",
   evidence: "credibilite", "evidence/hold": "credibilite", "evidence/frameworks": "credibilite",
   depots: "credibilite", repositories: "credibilite",
+  "tenir-estate": "credibilite",
 };
 
 /** Section a page belongs to, or null (home, contact, free report, 404). */
@@ -440,6 +443,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "publications", href: "/publications/", label: "Publications" },
         { slug: "publications/reg-v0.1", href: "/publications/reg-v0.1/", label: "REG v0.1 · document de travail" },
         { slug: "depots", href: "/depots/", label: "Dépôts" },
+        { slug: "tenir-estate", href: "/tenir-estate/", label: "Tenir-Estate" },
       ],
     },
     {
@@ -508,6 +512,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
         { slug: "publications", href: "/en/publications/", label: "Publications" },
         { slug: "publications/reg-v0.1", href: "/en/publications/reg-v0.1/", label: "REG v0.1 · working draft" },
         { slug: "repositories", href: "/en/repositories/", label: "Repositories" },
+        { slug: "tenir-estate", href: "/en/tenir-estate/", label: "Tenir-Estate" },
       ],
     },
     {

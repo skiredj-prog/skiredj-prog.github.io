@@ -1,0 +1,22 @@
+{
+ "repository": "Tenir-Estate",
+ "version": "1.0.0",
+ "schema": "3",
+ "created": "2026-07-22T14:00:00Z",
+ "modified": "2026-11-23T00:00:00Z",
+ "sources": [
+  {
+   "type": "ontology",
+   "provider": "json",
+   "path": "ontology.json"
+  },
+  {
+   "type": "corpus",
+   "provider": "json",
+   "path": "corpus.json"
+  }
+ ],
+ "storage": "json",
+ "platform": "Tenir-Estate",
+ "release": "public-2026-11-23"
+}
