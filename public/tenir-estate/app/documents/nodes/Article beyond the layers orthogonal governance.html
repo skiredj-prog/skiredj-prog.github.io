@@ -1,0 +1,1143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An accessible guide to governing autonomous AI, from middleware and runtime enforcement to object-centric governance, uncertainty, and system-wide safety.">
+<title>Beyond the Layers — Governing Autonomous AI</title>
+
+<style>
+:root {
+  --ink: #203342;
+  --muted: #5b6e79;
+  --paper: #fbfaf7;
+  --white: #ffffff;
+  --teal: #167d78;
+  --teal-light: #e5f4f0;
+  --blue-light: #eaf0fa;
+  --amber: #b9752c;
+  --amber-light: #fff1df;
+  --rose-light: #f9e9e7;
+  --purple-light: #f0ebf8;
+  --line: #dce4e5;
+  --shadow: 0 8px 26px rgba(32,51,66,.07);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font: 17px/1.75 system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+}
+header {
+  padding: 76px 22px 62px;
+  background: linear-gradient(135deg,#e6f4f0,#f2f5fb 65%,#fff0dc);
+  border-bottom: 1px solid var(--line);
+}
+.wrap { width: min(920px, calc(100% - 36px)); margin: auto; }
+.eyebrow {
+  color: var(--teal);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+h1,h2,h3 { line-height: 1.2; letter-spacing: -.025em; }
+h1 { font-size: clamp(2.6rem,7vw,4.8rem); margin: 14px 0; }
+h2 { font-size: clamp(1.8rem,4vw,2.55rem); margin: 0 0 18px; }
+h3 { font-size: 1.3rem; margin: 24px 0 8px; }
+.subtitle { max-width: 760px; font-size: 1.25rem; color: #3f5664; }
+.byline { color: var(--muted); font-size: .9rem; margin-top: 24px; }
+main { padding: 36px 0 70px; }
+section { margin: 0 0 58px; scroll-margin-top: 20px; }
+p { margin: 0 0 1.1em; }
+.lead { font-size: 1.13rem; color: #3c5360; }
+nav {
+  padding: 23px 26px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  margin-bottom: 48px;
+}
+nav strong { display: block; margin-bottom: 8px; }
+nav ol { columns: 2; padding-left: 23px; margin: 0; }
+nav li { padding: 3px 0; break-inside: avoid; font-size: .94rem; }
+a { color: #126e76; text-underline-offset: 3px; }
+.figure {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  margin: 26px 0;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.figure svg { display: block; width: 100%; height: auto; }
+figcaption { margin: 13px 2px 0; font-size: .9rem; color: var(--muted); }
+.svg-title { font-size: 17px; font-weight: 750; fill: var(--ink); }
+.svg-text { font-size: 14px; fill: var(--ink); }
+.svg-small { font-size: 12px; fill: var(--muted); }
+.callout {
+  background: var(--teal-light);
+  border-left: 5px solid var(--teal);
+  border-radius: 0 12px 12px 0;
+  padding: 19px 22px;
+  margin: 25px 0;
+}
+.callout.amber { background: var(--amber-light); border-color: var(--amber); }
+.callout strong { display: block; margin-bottom: 5px; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+.card {
+  padding: 19px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+}
+.card h3 { margin: 0 0 8px; font-size: 1.13rem; }
+.card p { font-size: .95rem; color: #485d68; margin: 0; }
+.number {
+  display: inline-grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 10px;
+  background: var(--teal-light);
+  color: var(--teal);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.steps { padding-left: 26px; }
+.steps li { margin-bottom: 15px; padding-left: 5px; }
+blockquote {
+  margin: 30px 0;
+  padding: 8px 0 8px 22px;
+  border-left: 4px solid var(--amber);
+  font-size: 1.16rem;
+  color: #3b5360;
+}
+.pill {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 2px 9px;
+  background: var(--amber-light);
+  font-size: .82rem;
+  font-weight: 750;
+}
+table { border-collapse: collapse; width: 100%; margin: 22px 0; font-size: .94rem; }
+th,td { text-align: left; vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line); }
+th { background: #edf3f4; }
+.small { font-size: .91rem; color: var(--muted); }
+.references { font-size: .91rem; }
+.references li { margin-bottom: 12px; overflow-wrap: anywhere; }
+footer {
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 32px 20px 48px;
+  color: var(--muted);
+  font-size: .88rem;
+}
+@media(max-width:650px) {
+  body { font-size: 16px; }
+  .wrap { width: calc(100% - 28px); }
+  header { padding: 52px 0 42px; }
+  nav ol { columns: 1; }
+  .cards { grid-template-columns: 1fr; }
+  .figure { padding: 10px; }
+  th,td { padding: 8px 6px; }
+}
+@media print {
+  body { background: white; font-size: 11pt; }
+  header { padding: 30px 0; background: white; }
+  .wrap { width: 100%; }
+  .figure,nav,.card { box-shadow: none; break-inside: avoid; }
+  a { color: inherit; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">A guide to safer autonomous AI</div>
+    <h1>Beyond the Layers</h1>
+    <p class="subtitle">
+      From governance and middleware to the objects, relationships,
+      and properties that must remain safe as AI systems act.
+    </p>
+    <p class="byline">
+      A public-friendly synthesis of the discussion on autonomous
+      AI governance, execution uncertainty, and system-wide safety.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<nav aria-label="Contents">
+  <strong>In this article</strong>
+  <ol>
+    <li><a href="#starting">The starting point</a></li>
+    <li><a href="#distinction">Governance versus middleware</a></li>
+    <li><a href="#layers">Why layers are not enough</a></li>
+    <li><a href="#objects">What exactly is governed?</a></li>
+    <li><a href="#properties">From objects to properties</a></li>
+    <li><a href="#lifecycle">The execution lifecycle</a></li>
+    <li><a href="#uncertainty">Governing uncertainty</a></li>
+    <li><a href="#membrane">The execution membrane</a></li>
+    <li><a href="#composition">From local safety to global safety</a></li>
+    <li><a href="#architecture">A joined-up architecture</a></li>
+    <li><a href="#limits">What remains difficult</a></li>
+    <li><a href="#conclusion">The central idea</a></li>
+  </ol>
+</nav>
+
+<section id="starting">
+<h2>1. The starting point: controlling systems that can act</h2>
+
+<p class="lead">
+Autonomous AI systems do more than produce answers. They can call tools,
+send requests, change records, move money, delegate work, and trigger
+events in the outside world. Once AI can act, safety becomes a question
+of controlling execution—not just improving the answer it gives.
+</p>
+
+<p>
+Imagine a business using several AI agents. One handles invoices, another
+manages purchasing, and a third coordinates operations. Each has permission
+to act within a set of limits.
+</p>
+
+<p>
+Even if every agent follows its own rules, the business can still encounter
+problems. Two agents might spend from the same budget. A request might be
+sent twice after a timeout. An approval might be applied to a different
+operation than the one originally reviewed. Or the system might believe
+a transaction failed when it actually succeeded.
+</p>
+
+<p>
+These problems share an important feature: they cannot always be solved
+by improving the agent's reasoning. They also require reliable execution,
+clear authority, accurate evidence, and rules that apply across interacting
+parts of the system.
+</p>
+
+<div class="callout">
+<strong>The question that connects the whole discussion</strong>
+What must remain true as an autonomous system acts—and how can the system
+enforce and verify those conditions when information is incomplete?
+</div>
+</section>
+
+<section id="distinction">
+<h2>2. Governance and middleware: two different jobs</h2>
+
+<p>
+Governance and middleware are closely related, but they answer different
+questions. Confusing them can leave a system with good rules but weak
+enforcement—or strong enforcement of rules that are too narrow.
+</p>
+
+<div class="cards">
+  <article class="card">
+    <div class="number">1</div>
+    <h3>Governance defines what is allowed</h3>
+    <p>
+      Who may act? Which tools can they use? What limits apply?
+      Which actions need approval? What conditions must remain true?
+    </p>
+  </article>
+  <article class="card">
+    <div class="number">2</div>
+    <h3>Middleware and runtime enforce constraints</h3>
+    <p>
+      Check requests, prevent duplicate execution, manage concurrency,
+      enforce limits, and block or pause unsafe transitions.
+    </p>
+  </article>
+  <article class="card">
+    <div class="number">3</div>
+    <h3>Evidence helps establish what happened</h3>
+    <p>
+      Receipts, logs, external status checks, and reconciled records
+      help distinguish success, failure, and unresolved outcomes.
+    </p>
+  </article>
+  <article class="card">
+    <div class="number">4</div>
+    <h3>System-wide checks connect the pieces</h3>
+    <p>
+      Check whether several individually valid actions together violate
+      a budget, safety limit, or broader system commitment.
+    </p>
+  </article>
+</div>
+
+<figure class="figure">
+<svg viewBox="0 0 760 315" role="img" aria-labelledby="flowTitle flowDesc">
+<title id="flowTitle">Governance, execution, and evidence</title>
+<desc id="flowDesc">An agent proposes an action, governance evaluates it, runtime enforcement controls it, and the external result is reconciled with evidence.</desc>
+<defs>
+<marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6 Z" fill="#718792"/>
+</marker>
+</defs>
+<g>
+<rect x="12" y="35" width="132" height="70" rx="12" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="78" y="62" text-anchor="middle" class="svg-title">AI agent</text>
+<text x="78" y="83" text-anchor="middle" class="svg-small">Proposes action</text>
+
+<rect x="166" y="35" width="140" height="70" rx="12" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="236" y="62" text-anchor="middle" class="svg-title">Governance</text>
+<text x="236" y="83" text-anchor="middle" class="svg-small">Allow / hold / deny</text>
+
+<rect x="328" y="35" width="140" height="70" rx="12" fill="#fff1df" stroke="#e2b77e"/>
+<text x="398" y="62" text-anchor="middle" class="svg-title">Runtime</text>
+<text x="398" y="83" text-anchor="middle" class="svg-small">Enforces decision</text>
+
+<rect x="490" y="35" width="140" height="70" rx="12" fill="#f0ebf8" stroke="#b9acd9"/>
+<text x="560" y="62" text-anchor="middle" class="svg-title">External system</text>
+<text x="560" y="83" text-anchor="middle" class="svg-small">Real-world effect</text>
+</g>
+<g fill="none" stroke="#718792" stroke-width="2" marker-end="url(#arr1)">
+<path d="M144 70 H162"/>
+<path d="M306 70 H324"/>
+<path d="M468 70 H486"/>
+<path d="M560 105 V146 H398 V112"/>
+<path d="M398 146 V184"/>
+<path d="M398 235 H236 V112"/>
+</g>
+<rect x="305" y="184" width="186" height="51" rx="11" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="398" y="205" text-anchor="middle" class="svg-title">Evidence and status</text>
+<text x="398" y="222" text-anchor="middle" class="svg-small">Record and reconcile</text>
+<text x="380" y="278" text-anchor="middle" class="svg-text">Permission is not proof of successful execution.</text>
+<text x="380" y="299" text-anchor="middle" class="svg-small">The outcome must be observed or reliably reconciled.</text>
+</svg>
+<figcaption>
+The components work together: governance establishes the rule,
+runtime controls execution, and evidence supports the next decision.
+</figcaption>
+</figure>
+
+<p>
+For example, governance might say that an agent may spend no more than
+$1,000. Middleware can stop the same payment request from being dispatched
+twice. A ledger can help establish how much was actually spent.
+</p>
+
+<p>
+The rule, the enforcement mechanism, and the evidence are three different
+things. A reliable system needs all three.
+</p>
+</section>
+
+<section id="layers">
+<h2>3. Why thinking only in software layers is not enough</h2>
+
+<p>
+Architecture diagrams commonly show a stack: agent, policy engine,
+middleware, runtime, external service. Such diagrams explain where
+components live and how information flows between them.
+</p>
+
+<p>
+But the location of a rule does not tell us everything about what that
+rule governs. A policy service might evaluate an agent's authority, a
+particular payment, a sequence of earlier actions, or the balance of
+a shared account.
+</p>
+
+<figure class="figure">
+<svg viewBox="0 0 760 370" role="img" aria-labelledby="layersTitle layersDesc">
+<title id="layersTitle">The shift from layers to governed objects</title>
+<desc id="layersDesc">The left side shows a stack of software layers. The right side shows connected governed objects including agent, action, transition, trajectory, shared resource, and system invariant.</desc>
+<text x="172" y="25" text-anchor="middle" class="svg-title">LAYER-CENTRIC</text>
+<text x="574" y="25" text-anchor="middle" class="svg-title">OBJECT-CENTRIC</text>
+
+<g>
+<rect x="20" y="43" width="300" height="43" rx="8" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="170" y="69" text-anchor="middle" class="svg-text">Agent</text>
+<rect x="20" y="91" width="300" height="43" rx="8" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="170" y="117" text-anchor="middle" class="svg-text">Governance / policy</text>
+<rect x="20" y="139" width="300" height="43" rx="8" fill="#fff1df" stroke="#e2b77e"/>
+<text x="170" y="165" text-anchor="middle" class="svg-text">Middleware</text>
+<rect x="20" y="187" width="300" height="43" rx="8" fill="#f0ebf8" stroke="#b9acd9"/>
+<text x="170" y="213" text-anchor="middle" class="svg-text">Runtime</text>
+<rect x="20" y="235" width="300" height="43" rx="8" fill="#edf1f2" stroke="#bdcbd0"/>
+<text x="170" y="261" text-anchor="middle" class="svg-text">External system</text>
+<text x="170" y="312" text-anchor="middle" class="svg-small">Where is the rule implemented?</text>
+</g>
+
+<g stroke="#7a929a" stroke-width="1.8" fill="none">
+<path d="M447 72 L550 78"/>
+<path d="M574 97 L522 142"/>
+<path d="M594 98 L659 140"/>
+<path d="M500 165 L448 220"/>
+<path d="M523 165 L628 220"/>
+<path d="M448 242 H628"/>
+</g>
+<g>
+<rect x="375" y="47" width="144" height="42" rx="10" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="447" y="73" text-anchor="middle" class="svg-text">Agent</text>
+<rect x="525" y="78" width="144" height="42" rx="10" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="597" y="104" text-anchor="middle" class="svg-text">Action</text>
+<rect x="430" y="142" width="144" height="42" rx="10" fill="#fff1df" stroke="#e2b77e"/>
+<text x="502" y="168" text-anchor="middle" class="svg-text">Transition</text>
+<rect x="590" y="142" width="144" height="42" rx="10" fill="#f0ebf8" stroke="#b9acd9"/>
+<text x="662" y="168" text-anchor="middle" class="svg-text">Trajectory</text>
+<rect x="375" y="220" width="144" height="42" rx="10" fill="#edf1f2" stroke="#bdcbd0"/>
+<text x="447" y="246" text-anchor="middle" class="svg-text">Shared resource</text>
+<rect x="525" y="220" width="209" height="42" rx="10" fill="#f9e9e7" stroke="#e1aaa5"/>
+<text x="629" y="246" text-anchor="middle" class="svg-text">System-wide invariant</text>
+<text x="555" y="312" text-anchor="middle" class="svg-small">What must remain true?</text>
+</g>
+<path d="M330 168 H358 M350 160 L358 168 L350 176" stroke="#b9752c" stroke-width="3" fill="none"/>
+<text x="380" y="348" text-anchor="middle" class="svg-small">Layers locate implementation; objects define the scope of governance.</text>
+</svg>
+<figcaption>
+Layers remain useful for engineering. They are simply not enough
+to describe every object, relationship, and outcome that needs protection.
+</figcaption>
+</figure>
+
+<p>
+Consider two authorized agents making different payments. A middleware
+component may prevent duplicate requests perfectly, yet the total spending
+can still exceed the shared budget. The problem is not a broken duplicate
+check. It is that the policy was too narrow.
+</p>
+
+<div class="callout amber">
+<strong>The essential distinction</strong>
+A component can enforce its local rule correctly while the overall system
+still reaches an unsafe result. Local correctness and global safety are
+not the same thing.
+</div>
+</section>
+
+<section id="objects">
+<h2>4. What exactly is being governed?</h2>
+
+<p>
+A more complete view begins by identifying the objects that policies
+apply to. The categories below are a practical framework for organizing
+the problem—not a universal standard or a claim that every system needs
+a separate service for each category.
+</p>
+
+<div class="cards">
+<article class="card">
+<div class="number">1</div>
+<h3>Agent or principal</h3>
+<p>Identity, authority, permissions, tools, and spending limits. May this entity act?</p>
+</article>
+<article class="card">
+<div class="number">2</div>
+<h3>Action or operation</h3>
+<p>A particular payment, message, file change, or tool call. Is this request permitted?</p>
+</article>
+<article class="card">
+<div class="number">3</div>
+<h3>Transition or passage</h3>
+<p>A specific change across an execution boundary. Is this the exact change that was approved?</p>
+</article>
+<article class="card">
+<div class="number">4</div>
+<h3>Trajectory or workflow</h3>
+<p>A sequence of actions and outcomes. Does the course of execution remain acceptable?</p>
+</article>
+<article class="card">
+<div class="number">5</div>
+<h3>Relationship or delegation</h3>
+<p>Authority passed between agents, dependencies, and trust boundaries. Who may act for whom?</p>
+</article>
+<article class="card">
+<div class="number">6</div>
+<h3>Shared resource</h3>
+<p>Budgets, accounts, inventory, capacity, and records used by several actors. Will shared limits hold?</p>
+</article>
+<article class="card">
+<div class="number">7</div>
+<h3>Mission or system invariant</h3>
+<p>Conditions that must remain true across the whole system, regardless of which agent acts.</p>
+</article>
+</div>
+
+<figure class="figure">
+<svg viewBox="0 0 760 340" role="img" aria-labelledby="graphTitle graphDesc">
+<title id="graphTitle">Governed objects form a connected graph</title>
+<desc id="graphDesc">An agent initiates an action, the action creates a transition, the transition affects a shared account and becomes part of a trajectory, while a system-wide budget rule constrains the combined effects.</desc>
+<defs>
+<marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6 Z" fill="#718792"/>
+</marker>
+</defs>
+<g stroke="#718792" stroke-width="1.8" fill="none" marker-end="url(#arr2)">
+<path d="M140 70 H222"/>
+<path d="M322 70 H405"/>
+<path d="M505 85 L566 145"/>
+<path d="M566 190 L505 245"/>
+<path d="M405 267 H316"/>
+<path d="M90 98 V215"/>
+</g>
+<rect x="20" y="44" width="120" height="54" rx="11" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="80" y="67" text-anchor="middle" class="svg-text">Agent</text>
+<text x="80" y="84" text-anchor="middle" class="svg-small">initiates</text>
+<rect x="222" y="44" width="100" height="54" rx="11" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="272" y="67" text-anchor="middle" class="svg-text">Action</text>
+<text x="272" y="84" text-anchor="middle" class="svg-small">requests</text>
+<rect x="405" y="44" width="100" height="54" rx="11" fill="#fff1df" stroke="#e2b77e"/>
+<text x="455" y="67" text-anchor="middle" class="svg-text">Transition</text>
+<text x="455" y="84" text-anchor="middle" class="svg-small">changes state</text>
+<rect x="530" y="145" width="200" height="45" rx="11" fill="#edf1f2" stroke="#bdcbd0"/>
+<text x="630" y="173" text-anchor="middle" class="svg-text">Shared account</text>
+<rect x="405" y="245" width="230" height="45" rx="11" fill="#f9e9e7" stroke="#e1aaa5"/>
+<text x="520" y="273" text-anchor="middle" class="svg-text">System-wide budget rule</text>
+<rect x="185" y="245" width="131" height="45" rx="11" fill="#f0ebf8" stroke="#b9acd9"/>
+<text x="250" y="264" text-anchor="middle" class="svg-text">Trajectory</text>
+<text x="250" y="280" text-anchor="middle" class="svg-small">action history</text>
+<rect x="20" y="215" width="140" height="45" rx="11" fill="#fff1df" stroke="#e2b77e"/>
+<text x="90" y="234" text-anchor="middle" class="svg-text">Delegation</text>
+<text x="90" y="250" text-anchor="middle" class="svg-small">authority link</text>
+<text x="380" y="324" text-anchor="middle" class="svg-small">A rule may apply across several connected objects at once.</text>
+</svg>
+<figcaption>
+An action rarely exists in isolation. It has an actor, a context,
+a history, effects on resources, and consequences for the wider system.
+</figcaption>
+</figure>
+
+<p>
+These objects are connected. A payment, for example, belongs to an
+operation, is initiated by an agent, crosses a transition, changes an
+account, and becomes part of a history of spending.
+</p>
+
+<p>
+The same payment can therefore be checked from several angles. The agent
+must be authorized. The transition must match the approved request. The
+operation must not be retried unsafely. The account must remain within its
+budget. The combined sequence must respect the broader policy.
+</p>
+</section>
+
+<section id="properties">
+<h2>5. From objects to properties: what must remain true?</h2>
+
+<p>
+Listing objects is useful, but the real purpose of governance is to
+preserve properties—conditions that must hold as the system changes.
+</p>
+
+<p>
+Examples include:
+</p>
+
+<ul>
+<li>An agent must not use a tool outside its authority.</li>
+<li>A permit must not be reused for a different transition.</li>
+<li>An unresolved payment must not be blindly resubmitted.</li>
+<li>Total spending must stay within the applicable budget.</li>
+<li>Delegation must not grant more authority than the delegator possesses.</li>
+<li>A system-wide safety condition must hold even when several agents act concurrently.</li>
+</ul>
+
+<p>
+Each property needs a defined scope, relevant context, a point where it
+is checked, a mechanism that enforces it, and evidence that supports
+the resulting decision.
+</p>
+
+<table>
+<thead>
+<tr><th>Question</th><th>What it tells us</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>What is governed?</td>
+<td>The object or relationship the rule concerns.</td>
+<td>A payment and the account it affects.</td>
+</tr>
+<tr>
+<td>What must remain true?</td>
+<td>The property or invariant to preserve.</td>
+<td>Spending must not exceed the budget.</td>
+</tr>
+<tr>
+<td>When is it checked?</td>
+<td>The decision point and its context.</td>
+<td>Before dispatch and again at commit.</td>
+</tr>
+<tr>
+<td>How is it enforced?</td>
+<td>The mechanism that makes the decision effective.</td>
+<td>An atomic reservation of available funds.</td>
+</tr>
+<tr>
+<td>How do we know?</td>
+<td>The evidence that supports the claim.</td>
+<td>A reconciled transaction record.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+This gives us a simple conceptual model:
+</p>
+
+<figure class="figure">
+<svg viewBox="0 0 760 155" role="img" aria-labelledby="triadTitle triadDesc">
+<title id="triadTitle">The three parts of practical governance</title>
+<desc id="triadDesc">Governed object leads to the property that must hold, which leads to enforcement and evidence.</desc>
+<defs>
+<marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6 Z" fill="#718792"/>
+</marker>
+</defs>
+<rect x="12" y="32" width="210" height="74" rx="13" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="117" y="59" text-anchor="middle" class="svg-title">Governed object</text>
+<text x="117" y="80" text-anchor="middle" class="svg-small">What are we protecting?</text>
+<path d="M222 69 H270" stroke="#718792" stroke-width="2" marker-end="url(#arr3)"/>
+<rect x="275" y="32" width="210" height="74" rx="13" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="380" y="59" text-anchor="middle" class="svg-title">Required property</text>
+<text x="380" y="80" text-anchor="middle" class="svg-small">What must remain true?</text>
+<path d="M485 69 H533" stroke="#718792" stroke-width="2" marker-end="url(#arr3)"/>
+<rect x="538" y="32" width="210" height="74" rx="13" fill="#fff1df" stroke="#e2b77e"/>
+<text x="643" y="59" text-anchor="middle" class="svg-title">Enforcement + evidence</text>
+<text x="643" y="80" text-anchor="middle" class="svg-small">How do we preserve and verify it?</text>
+<text x="380" y="136" text-anchor="middle" class="svg-small">The layer is an implementation choice, not the definition of the property.</text>
+</svg>
+<figcaption>
+A practical governance rule connects what is protected, what must hold,
+and how the system enforces and verifies it.
+</figcaption>
+</figure>
+</section>
+
+<section id="lifecycle">
+<h2>6. The execution lifecycle: from permission to evidence</h2>
+
+<p>
+Governance cannot end when a request receives approval. The system must
+also manage execution, observe the result, and respond to new information.
+</p>
+
+<ol class="steps">
+<li><strong>Evaluate.</strong> Identify the actor, requested action, current state, applicable rules, and important uncertainties.</li>
+<li><strong>Decide.</strong> Allow, deny, hold, or escalate the operation.</li>
+<li><strong>Enforce.</strong> Verify the execution identity and apply runtime protections such as idempotency, single-use permits, and concurrency controls.</li>
+<li><strong>Observe.</strong> Collect the response, receipt, status, or other relevant evidence.</li>
+<li><strong>Reconcile.</strong> If the result is unclear, consult a reliable source instead of guessing.</li>
+<li><strong>Reassess.</strong> Update the system's view of the operation and check whether later actions remain permissible.</li>
+</ol>
+
+<p>
+This is a feedback loop, not a one-time approval stamp. A decision that
+was reasonable before execution may need to be reconsidered when the
+external result becomes known.
+</p>
+</section>
+
+<section id="uncertainty">
+<h2>7. Governing uncertainty: what if the system does not know?</h2>
+
+<p>
+AI systems are often discussed in terms of uncertainty about their
+answers. Autonomous systems face another kind of uncertainty: uncertainty
+about what happened after a command was sent.
+</p>
+
+<p>
+Imagine that an assistant sends a payment request. The payment service
+processes the payment, but the confirmation is lost. The assistant sees
+a timeout.
+</p>
+
+<p>
+The timeout does not tell the assistant whether the payment happened.
+There are at least two possible realities:
+</p>
+
+<div class="cards">
+<article class="card">
+<h3>Possibility A: no payment</h3>
+<p>The request did not reach the service or the service did not commit it.</p>
+</article>
+<article class="card">
+<h3>Possibility B: payment completed</h3>
+<p>The service committed the payment, but the acknowledgment never arrived.</p>
+</article>
+</div>
+
+<figure class="figure">
+<svg viewBox="0 0 760 280" role="img" aria-labelledby="timeoutTitle timeoutDesc">
+<title id="timeoutTitle">A timeout creates an unknown outcome</title>
+<desc id="timeoutDesc">A payment request reaches a service, but its acknowledgment is lost. The caller cannot tell whether the payment occurred, so the safe next step is reconciliation rather than a blind retry.</desc>
+<defs>
+<marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6 Z" fill="#718792"/>
+</marker>
+</defs>
+<rect x="15" y="25" width="170" height="57" rx="11" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="100" y="49" text-anchor="middle" class="svg-title">AI assistant</text>
+<text x="100" y="67" text-anchor="middle" class="svg-small">Sends request</text>
+<rect x="280" y="25" width="190" height="57" rx="11" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="375" y="49" text-anchor="middle" class="svg-title">Payment service</text>
+<text x="375" y="67" text-anchor="middle" class="svg-small">May commit payment</text>
+<path d="M185 53 H275" stroke="#718792" stroke-width="2" marker-end="url(#arr4)"/>
+<path d="M375 82 V118 H100 V88" fill="none" stroke="#b9752c" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arr4)"/>
+<text x="240" y="111" text-anchor="middle" class="svg-small">Acknowledgment lost</text>
+<rect x="15" y="145" width="210" height="54" rx="11" fill="#fff1df" stroke="#e2b77e"/>
+<text x="120" y="168" text-anchor="middle" class="svg-title">Outcome: UNKNOWN</text>
+<text x="120" y="186" text-anchor="middle" class="svg-small">Do not guess</text>
+<path d="M225 172 H270" stroke="#718792" stroke-width="2" marker-end="url(#arr4)"/>
+<rect x="275" y="145" width="205" height="54" rx="11" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="377" y="168" text-anchor="middle" class="svg-title">Hold and reconcile</text>
+<text x="377" y="186" text-anchor="middle" class="svg-small">Check authoritative state</text>
+<path d="M480 172 H525" stroke="#718792" stroke-width="2" marker-end="url(#arr4)"/>
+<rect x="530" y="145" width="215" height="54" rx="11" fill="#f9e9e7" stroke="#e1aaa5"/>
+<text x="637" y="168" text-anchor="middle" class="svg-title">Avoid blind retry</text>
+<text x="637" y="186" text-anchor="middle" class="svg-small">The first payment may exist</text>
+<text x="380" y="240" text-anchor="middle" class="svg-text">Missing confirmation is not proof of failure.</text>
+<text x="380" y="260" text-anchor="middle" class="svg-small">Use reliable status information, idempotency, or reconciliation.</text>
+</svg>
+<figcaption>
+A safe system distinguishes what it knows from what it merely suspects.
+</figcaption>
+</figure>
+
+<p>
+The system should represent this as <span class="pill">UNKNOWN</span>,
+not silently convert it to success or failure.
+</p>
+
+<p>
+The next step may be to query the service, check a transaction ledger,
+use a stable idempotency key, or ask an authorized person to intervene.
+Only after enough evidence is available should the system decide whether
+a retry is safe.
+</p>
+
+<h3>Uncertainty is not one single problem</h3>
+
+<ul>
+<li><strong>Missing knowledge:</strong> the system lacks facts needed for a decision.</li>
+<li><strong>Stale state:</strong> the system's records may no longer match reality.</li>
+<li><strong>Execution uncertainty:</strong> an external action's outcome is unresolved.</li>
+<li><strong>Ambiguous authority:</strong> the system does not know which instruction or policy governs.</li>
+<li><strong>Uncertain prediction:</strong> the model cannot confidently predict what will happen.</li>
+</ul>
+
+<p>
+These situations need different responses. A model confidence score cannot
+prove that a remote transaction was committed. That requires evidence about
+the transaction itself.
+</p>
+
+<div class="callout">
+<strong>Fail closed does not mean give up</strong>
+It means do not take a risky next step while a necessary condition remains
+unproven. The system can hold, investigate, reconcile, or escalate instead
+of proceeding blindly.
+</div>
+</section>
+
+<section id="membrane">
+<h2>8. The execution membrane: a practical example</h2>
+
+<p>
+The paper <em>Governing the Unobserved: A Fail-Closed Membrane for
+Cross-Realm Execution under Post-Admission Epistemic Uncertainty</em>
+explores a focused version of this problem.
+</p>
+
+<p>
+Its central idea is an execution membrane: a controlled boundary that
+tracks a logical operation, its individual attempts, its execution
+permissions, and the evidence about what happened.
+</p>
+
+<p>
+Instead of relying on a general instruction such as “be careful with
+retries,” the design gives the operation a stable identity and preserves
+its history. It distinguishes an unresolved attempt from a confirmed
+failure and requires evidence to support retry decisions.
+</p>
+
+<figure class="figure">
+<svg viewBox="0 0 760 300" role="img" aria-labelledby="membraneTitle membraneDesc">
+<title id="membraneTitle">Inside an execution membrane</title>
+<desc id="membraneDesc">A logical operation passes through a single-use permit and attempt record, then an evidence check. The system dispatches if safe or holds the operation for reconciliation if the outcome remains uncertain.</desc>
+<rect x="12" y="20" width="736" height="252" rx="22" fill="#f7fbfa" stroke="#167d78" stroke-width="2.5" stroke-dasharray="8 5"/>
+<text x="32" y="45" class="svg-title">EXECUTION MEMBRANE</text>
+<rect x="32" y="72" width="150" height="66" rx="11" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="107" y="96" text-anchor="middle" class="svg-title">Operation</text>
+<text x="107" y="115" text-anchor="middle" class="svg-small">Stable identity</text>
+<path d="M182 105 H207" stroke="#718792" stroke-width="2"/>
+<rect x="210" y="72" width="160" height="66" rx="11" fill="#fff1df" stroke="#e2b77e"/>
+<text x="290" y="96" text-anchor="middle" class="svg-title">Permit + attempt</text>
+<text x="290" y="115" text-anchor="middle" class="svg-small">Single use, history</text>
+<path d="M370 105 H395" stroke="#718792" stroke-width="2"/>
+<rect x="398" y="72" width="145" height="66" rx="11" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="470" y="96" text-anchor="middle" class="svg-title">Evidence check</text>
+<text x="470" y="115" text-anchor="middle" class="svg-small">Known or unknown?</text>
+<path d="M543 105 H565 V83 H580" stroke="#718792" stroke-width="2" fill="none"/>
+<path d="M543 105 H565 V147 H580" stroke="#718792" stroke-width="2" fill="none"/>
+<rect x="582" y="60" width="140" height="46" rx="10" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="652" y="79" text-anchor="middle" class="svg-text">Dispatch</text>
+<text x="652" y="95" text-anchor="middle" class="svg-small">if permitted</text>
+<rect x="582" y="125" width="140" height="46" rx="10" fill="#fff1df" stroke="#e2b77e"/>
+<text x="652" y="144" text-anchor="middle" class="svg-text">Hold or block</text>
+<text x="652" y="160" text-anchor="middle" class="svg-small">if unresolved</text>
+<path d="M470 138 V191" stroke="#718792" stroke-width="2"/>
+<rect x="220" y="191" width="300" height="48" rx="10" fill="#f0ebf8" stroke="#b9acd9"/>
+<text x="370" y="211" text-anchor="middle" class="svg-title">Reconcile external state</text>
+<text x="370" y="228" text-anchor="middle" class="svg-small">Then reassess whether retry is safe</text>
+</svg>
+<figcaption>
+The membrane protects operation identity and attempt history while
+making uncertainty explicit.
+</figcaption>
+</figure>
+
+<h3>What the design helps clarify</h3>
+
+<ul>
+<li>Permission to execute is different from proof that execution succeeded.</li>
+<li>A confirmed failure is different from an unknown outcome.</li>
+<li>A retry should depend on evidence, not simply on a timeout.</li>
+<li>An approval must remain bound to the specific transition it approved.</li>
+<li>Local records must not be treated as proof of external reality unless the required observation assumptions hold.</li>
+</ul>
+
+<h3>What the design does not automatically prove</h3>
+
+<p>
+The membrane's safety claims depend on explicit assumptions about how
+external effects are produced and observed. If a service can commit a
+payment while the local system loses the acknowledgment and fails to
+persist evidence, the local system may not be able to prove that no
+payment occurred.
+</p>
+
+<p>
+A bounded model can help reveal counterexamples and compare alternative
+designs, but a finite set of simulated scenarios is not a universal
+guarantee of production safety.
+</p>
+
+<p>
+The paper's reported 53-trace comparison illustrates this distinction:
+target-side idempotency prevented duplicates in the modeled traces, while
+evidence-bound reconciliation improved outcome classification under its
+stated reliability assumptions. Those results are useful within the model;
+they are not real-world probabilities or proof of universal correctness.
+</p>
+
+<p>
+The membrane is therefore best understood as one possible mechanism
+for enforcing transition- and operation-level safety—not as a complete
+governance system for every agent, resource, and mission.
+</p>
+</section>
+
+<section id="composition">
+<h2>9. From local safety to global safety</h2>
+
+<p>
+A system can prevent duplicate requests and still violate its overall
+rules. This is the difference between protecting one operation and
+protecting a shared resource or whole trajectory.
+</p>
+
+<p>
+Suppose two agents are authorized to spend $1,000 each. They send
+different payments to the same account. Both payments execute exactly
+once, but the account has only a $1,500 budget.
+</p>
+
+<figure class="figure">
+<svg viewBox="0 0 760 280" role="img" aria-labelledby="budgetTitle budgetDesc">
+<title id="budgetTitle">Two valid actions can exceed a shared budget</title>
+<desc id="budgetDesc">Two agents each make a valid one-thousand-dollar payment. Together they spend two thousand dollars against a fifteen-hundred-dollar budget.</desc>
+<rect x="16" y="30" width="205" height="65" rx="12" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="118" y="53" text-anchor="middle" class="svg-title">Agent A</text>
+<text x="118" y="75" text-anchor="middle" class="svg-text">$1,000 payment</text>
+<rect x="16" y="132" width="205" height="65" rx="12" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="118" y="155" text-anchor="middle" class="svg-title">Agent B</text>
+<text x="118" y="177" text-anchor="middle" class="svg-text">$1,000 payment</text>
+<path d="M221 62 H274 L310 111 M221 164 H274 L310 111" stroke="#718792" stroke-width="2" fill="none"/>
+<rect x="310" y="76" width="180" height="72" rx="12" fill="#fff1df" stroke="#e2b77e"/>
+<text x="400" y="99" text-anchor="middle" class="svg-title">Shared account</text>
+<text x="400" y="120" text-anchor="middle" class="svg-text">$2,000 total</text>
+<text x="400" y="137" text-anchor="middle" class="svg-small">Both payments count</text>
+<path d="M490 111 H530" stroke="#718792" stroke-width="2"/>
+<rect x="530" y="67" width="215" height="90" rx="12" fill="#f9e9e7" stroke="#e1aaa5"/>
+<text x="637" y="91" text-anchor="middle" class="svg-title">Budget exceeded</text>
+<text x="637" y="115" text-anchor="middle" class="svg-text">$1,500 allowed</text>
+<text x="637" y="137" text-anchor="middle" class="svg-text">$500 over limit</text>
+<text x="380" y="226" text-anchor="middle" class="svg-title">No duplicate request was needed.</text>
+<text x="380" y="250" text-anchor="middle" class="svg-small">The missing protection was a rule over shared spending.</text>
+</svg>
+<figcaption>
+Idempotency helps stop duplicates. It does not, by itself,
+enforce a global budget across different operations.
+</figcaption>
+</figure>
+
+<p>
+To prevent this, the system needs a property that applies to the shared
+account and all relevant transactions—not just to each agent individually.
+It may need an atomic reservation or transaction mechanism so that two
+agents cannot both spend the same remaining funds.
+</p>
+
+<p>
+The same principle applies to other domains:
+</p>
+
+<ul>
+<li>Several agents consume more computing capacity than the system can safely provide.</li>
+<li>Several workflow steps create an irreversible outcome that no single step would have caused alone.</li>
+<li>An agent delegates work to another agent whose authority is insufficient.</li>
+<li>A sequence of valid tool calls gradually crosses a cumulative risk threshold.</li>
+</ul>
+
+<p>
+The system must therefore govern both individual objects and the
+relationships and shared state connecting them.
+</p>
+</section>
+
+<section id="architecture">
+<h2>10. A joined-up architecture</h2>
+
+<p>
+An object-centric approach does not require one central service to make
+every decision. Different responsibilities can remain distributed across
+the system, provided they share a clear account of the rules and evidence
+that matter.
+</p>
+
+<figure class="figure">
+<svg viewBox="0 0 760 360" role="img" aria-labelledby="archTitle archDesc">
+<title id="archTitle">A joined-up architecture for autonomous governance</title>
+<desc id="archDesc">Five connected capabilities: an object and relationship map, policy evaluation, runtime enforcement, evidence reconciliation, and trajectory and system-wide monitoring.</desc>
+<defs>
+<marker id="arr5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6 Z" fill="#718792"/>
+</marker>
+</defs>
+<rect x="205" y="15" width="350" height="55" rx="12" fill="#eaf0fa" stroke="#a9c2df"/>
+<text x="380" y="38" text-anchor="middle" class="svg-title">1. Object and relationship map</text>
+<text x="380" y="56" text-anchor="middle" class="svg-small">Actors, actions, resources, histories</text>
+<rect x="15" y="105" width="220" height="68" rx="12" fill="#e5f4f0" stroke="#7cc7bb"/>
+<text x="125" y="129" text-anchor="middle" class="svg-title">2. Policy evaluation</text>
+<text x="125" y="149" text-anchor="middle" class="svg-small">Which rules apply?</text>
+<rect x="270" y="105" width="220" height="68" rx="12" fill="#fff1df" stroke="#e2b77e"/>
+<text x="380" y="129" text-anchor="middle" class="svg-title">3. Runtime enforcement</text>
+<text x="380" y="149" text-anchor="middle" class="svg-small">Control actual execution</text>
+<rect x="525" y="105" width="220" height="68" rx="12" fill="#f0ebf8" stroke="#b9acd9"/>
+<text x="635" y="129" text-anchor="middle" class="svg-title">4. Evidence and recovery</text>
+<text x="635" y="149" text-anchor="middle" class="svg-small">What really happened?</text>
+<rect x="125" y="238" width="510" height="70" rx="12" fill="#f9e9e7" stroke="#e1aaa5"/>
+<text x="380" y="264" text-anchor="middle" class="svg-title">5. Trajectory and system-wide monitoring</text>
+<text x="380" y="285" text-anchor="middle" class="svg-small">Budgets, cumulative risk, temporal rules, escalation</text>
+<g stroke="#718792" stroke-width="2" fill="none" marker-end="url(#arr5)">
+<path d="M300 70 L155 101"/>
+<path d="M380 70 V101"/>
+<path d="M460 70 L605 101"/>
+<path d="M235 139 H266"/>
+<path d="M490 139 H521"/>
+<path d="M125 173 L205 234"/>
+<path d="M380 173 V234"/>
+<path d="M635 173 L555 234"/>
+</g>
+<text x="380" y="337" text-anchor="middle" class="svg-small">Distributed implementation, coherent properties, traceable evidence.</text>
+</svg>
+<figcaption>
+These are capabilities, not necessarily separate products.
+A small system may combine them; a large system may distribute them.
+</figcaption>
+</figure>
+
+<p>
+The architecture needs five connected capabilities:
+</p>
+
+<ol>
+<li><strong>An object and relationship map</strong> so the system knows which actors, operations, resources, and histories are relevant.</li>
+<li><strong>Policy and invariant evaluation</strong> to determine which properties apply in the current context.</li>
+<li><strong>Runtime enforcement</strong> to make decisions effective at the execution boundary.</li>
+<li><strong>Evidence and reconciliation</strong> to establish outcomes and resolve uncertainty.</li>
+<li><strong>Trajectory and system-wide monitoring</strong> to check cumulative effects and cross-agent constraints.</li>
+</ol>
+
+<p>
+The goal is not to put everything in one place. The goal is to stop
+individual components from making locally reasonable decisions that
+contradict the system's broader safety requirements.
+</p>
+</section>
+
+<section id="limits">
+<h2>11. What remains difficult?</h2>
+
+<p>
+The shift from layers to governed objects gives us a better way to ask
+the questions. It does not make the hard engineering problems disappear.
+</p>
+
+<h3>External reality is not always observable</h3>
+<p>
+A local log may say that no success was observed, but that is not proof
+that no external effect occurred. Reliable reconciliation may require
+target-side idempotency, an authoritative status service, transactional
+cooperation, or an independently verifiable receipt.
+</p>
+
+<h3>Concurrency changes the picture</h3>
+<p>
+Two requests may be evaluated against the same stale state and then
+execute concurrently. Preventing that may require atomic reservations,
+version checks, serialization, or other mechanisms that connect the
+decision to the actual state change.
+</p>
+
+<h3>Evidence needs more than a valid signature</h3>
+<p>
+A signature can help establish that evidence has not been altered and
+was signed by a particular key. It does not, on its own, prove that the
+key is trustworthy, that its owner had authority, that the evidence is
+fresh, or that it refers to the correct transition.
+</p>
+
+<h3>Safety and progress must be balanced</h3>
+<p>
+A system that blocks every uncertain operation forever may avoid some
+unsafe retries but become unusable. A robust design needs clear rules
+for holds, escalation, recovery, and eventual resolution.
+</p>
+
+<h3>Tests have boundaries</h3>
+<p>
+A bounded simulation can find counterexamples within the scenarios and
+state space it explores. It cannot automatically establish safety under
+all possible concurrency, crashes, malicious inputs, or production
+conditions. Claims should state their assumptions and limits.
+</p>
+
+<div class="callout amber">
+<strong>One distinction matters throughout</strong>
+A property can be specified without being enforced. A mechanism can be
+implemented without being sufficient. A test can pass without proving
+universal safety. Good governance makes these differences visible.
+</div>
+</section>
+
+<section id="conclusion">
+<h2>12. The central idea: govern what must remain true</h2>
+
+<p>
+Governance and middleware are not rivals. Governance defines what must
+be true; middleware and runtime components help enforce those conditions;
+evidence and reconciliation help establish whether they remain true.
+</p>
+
+<p>
+The deeper shift is to stop treating software layers as the primary
+definition of governance. Instead, begin with the things that matter:
+agents, actions, transitions, histories, delegations, shared resources,
+and system-wide commitments.
+</p>
+
+<p>
+Then identify the properties that apply to those things, the relationships
+that connect them, the moments when the properties must be checked, and
+the mechanisms and evidence needed to preserve them.
+</p>
+
+<blockquote>
+The most useful question is not only “Which layer checks this?”
+It is: “What must remain true, for which objects and relationships,
+throughout autonomous execution—and how will we know?”
+</blockquote>
+
+<p>
+This perspective connects policy to execution, execution to evidence,
+and individual actions to the wider outcomes the system is supposed
+to protect.
+</p>
+
+<p>
+It also offers a practical direction for future work: build systems that
+do not merely authorize agents or block duplicate requests, but preserve
+meaningful safety properties across interacting objects—even when
+execution is uncertain, information is incomplete, and no single
+component sees the whole picture.
+</p>
+</section>
+
+<section id="references">
+<h2>Further reading</h2>
+<p class="small">
+These sources provide background on AI safety, runtime verification,
+distributed systems, and risk management. They support the underlying
+ideas; they should not be taken as independently validating the
+object-centric taxonomy proposed in this article.
+</p>
+<ol class="references">
+<li>Amodei, D. et al. (2016). <em>Concrete Problems in AI Safety.</em>
+<a href="https://arxiv.org/abs/1606.06565">Read the paper</a>.</li>
+<li>Leucker, M. &amp; Schallhart, C. (2009).
+<em>A Brief Account of Runtime Verification.</em>
+<a href="https://doi.org/10.1016/j.jlap.2008.08.004">Journal article</a>.</li>
+<li>Schneider, F. B. (2000). <em>Enforceable Security Policies.</em>
+<a href="https://doi.org/10.1145/353323.353382">Journal article</a>.</li>
+<li>Alpern, B. &amp; Schneider, F. B. (1985). <em>Defining Liveness.</em>
+<a href="https://doi.org/10.1016/0020-0190(85)90056-0">Journal article</a>.</li>
+<li>Gray, J. &amp; Reuter, A. (1992).
+<em>Transaction Processing: Concepts and Techniques.</em>
+Morgan Kaufmann.</li>
+<li>Helland, P. (2007).
+<em>Life Beyond Distributed Transactions: An Apostate's Opinion.</em>
+<a href="https://www.cidrdb.org/cidr2007/papers/cidr07p15.pdf">Conference paper</a>.</li>
+<li>National Institute of Standards and Technology (2023).
+<em>Artificial Intelligence Risk Management Framework 1.0.</em>
+<a href="https://doi.org/10.6028/NIST.AI.100-1">Read the framework</a>.</li>
+<li>ISO/IEC (2023). <em>Artificial Intelligence — Guidance on Risk Management.</em>
+<a href="https://www.iso.org/standard/77304.html">Standard overview</a>.</li>
+<li>Ovadia, Y. et al. (2019).
+<em>Can You Trust Your Model's Uncertainty?</em>
+<a href="https://arxiv.org/abs/1906.02530">Read the paper</a>.</li>
+<li>Geifman, Y. &amp; El-Yaniv, R. (2017).
+<em>Selective Classification for Deep Neural Networks.</em>
+<a href="https://arxiv.org/abs/1705.08500">Read the paper</a>.</li>
+<li>Guo, C. et al. (2017). <em>On Calibration of Modern Neural Networks.</em>
+<a href="https://proceedings.mlr.press/v70/guo17a.html">Read the paper</a>.</li>
+<li>Bauer, A., Leucker, M. &amp; Schallhart, C. (2011).
+<em>Runtime Verification for LTL and TLTL.</em>
+<a href="https://doi.org/10.1145/2000791.2000793">Journal article</a>.</li>
+</ol>
+</section>
+
+</main>
+
+<footer>
+<p><strong>Beyond the Layers — Governing Autonomous AI</strong></p>
+<p>A standalone explainer with diagrams embedded as SVG.</p>
+<p>No external images, scripts, or libraries are needed to view this page.</p>
+</footer>
+
+</body>
+</html>

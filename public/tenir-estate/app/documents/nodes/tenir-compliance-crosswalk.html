@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" data-writer-dashboard-theme="org-default">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REG Conformance Crosswalk — with TENIR Code</title>
+<script>
+  const saved = localStorage.getItem("writer-dashboard-color-scheme");
+  if (saved) document.documentElement.setAttribute("data-writer-dashboard-color-scheme", saved);
+</script>
+<style id="writer-dashboard-theme-values" data-writer-dashboard-user-override="true">
+:root {
+  --writer-dashboard-page: #0A111E;
+  --writer-dashboard-surface: #132035;
+  --writer-dashboard-text: #FFFFFF;
+  --writer-dashboard-muted-text: #8FA0BC;
+  --writer-dashboard-border: #1E2D45;
+  --writer-dashboard-accent: #38BDF8;
+  --writer-dashboard-accent-foreground: #0A111E;
+  --writer-dashboard-surface-muted: #162238;
+  --writer-dashboard-chart-1: #38BDF8;
+  --writer-dashboard-chart-2: #3FB950;
+  --writer-dashboard-chart-3: #D29922;
+  --writer-dashboard-chart-4: #F85149;
+  --writer-dashboard-chart-5: #A371F7;
+  --writer-dashboard-chart-track: #1E2D45;
+  --writer-dashboard-comparison: #1E2D45;
+  --writer-dashboard-comparison-foreground: #FFFFFF;
+  --writer-dashboard-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+:root[data-writer-dashboard-color-scheme="light"] {
+  --writer-dashboard-page: #F8FAFC;
+  --writer-dashboard-surface: #FFFFFF;
+  --writer-dashboard-text: #0F172A;
+  --writer-dashboard-muted-text: #64748B;
+  --writer-dashboard-border: #E2E8F0;
+  --writer-dashboard-accent: #0284C7;
+  --writer-dashboard-accent-foreground: #FFFFFF;
+  --writer-dashboard-surface-muted: #F1F5F9;
+  --writer-dashboard-chart-track: #E2E8F0;
+  --writer-dashboard-comparison: #E2E8F0;
+  --writer-dashboard-comparison-foreground: #0F172A;
+}
+</style>
+<style id="writer-dashboard-styles">
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--writer-dashboard-page);
+  color: var(--writer-dashboard-text);
+  font-family: var(--writer-dashboard-font-family);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app { max-width: 1500px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* Header */
+.header { margin-bottom: 36px; }
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.header-left { flex: 1; }
+.header h1 { font-size: 1.875rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.version-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--writer-dashboard-surface);
+  border: 1px solid var(--writer-dashboard-border);
+  color: var(--writer-dashboard-accent);
+}
+.header .subtitle { color: var(--writer-dashboard-muted-text); font-size: 0.9375rem; max-width: 760px; margin-top: 8px; }
+.gh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--writer-dashboard-surface);
+  border: 1px solid var(--writer-dashboard-border);
+  color: var(--writer-dashboard-text);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.gh-btn:hover { border-color: var(--writer-dashboard-accent); }
+
+.toggle-btn {
+  background: var(--writer-dashboard-surface-muted);
+  border: 1px solid var(--writer-dashboard-border);
+  color: var(--writer-dashboard-text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-family: var(--writer-dashboard-font-family);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.toggle-btn:hover { border-color: var(--writer-dashboard-accent); }
+
+/* KPI cards */
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 32px 0; }
+.kpi-card {
+  background: var(--writer-dashboard-surface);
+  border: 1px solid var(--writer-dashboard-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.kpi-card .label { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--writer-dashboard-muted-text); margin-bottom: 8px; }
+.kpi-card .value { font-size: 1.75rem; font-weight: 700; color: var(--writer-dashboard-accent); }
+.kpi-card .value.green { color: var(--writer-dashboard-chart-2); }
+.kpi-card .sub { font-size: 0.75rem; color: var(--writer-dashboard-muted-text); margin-top: 4px; }
+
+/* Controls */
+.controls { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; align-items: center; }
+.search-box {
+  flex: 1; min-width: 200px;
+  padding: 10px 16px;
+  background: var(--writer-dashboard-surface);
+  border: 1px solid var(--writer-dashboard-border);
+  border-radius: 8px;
+  color: var(--writer-dashboard-text);
+  font-size: 0.8125rem;
+  font-family: var(--writer-dashboard-font-family);
+}
+.search-box:focus { outline: none; border-color: var(--writer-dashboard-accent); }
+.search-box::placeholder { color: var(--writer-dashboard-muted-text); }
+
+.filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-chip {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--writer-dashboard-border);
+  background: var(--writer-dashboard-surface);
+  color: var(--writer-dashboard-muted-text);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: var(--writer-dashboard-font-family);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.filter-chip:hover { border-color: var(--writer-dashboard-accent); color: var(--writer-dashboard-text); }
+.filter-chip.active {
+  background: var(--writer-dashboard-accent);
+  color: var(--writer-dashboard-accent-foreground);
+  border-color: var(--writer-dashboard-accent);
+}
+
+/* Table */
+.table-wrap { overflow-x: auto; border: 1px solid var(--writer-dashboard-border); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+thead th {
+  background: var(--writer-dashboard-surface-muted);
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--writer-dashboard-muted-text);
+  border-bottom: 1px solid var(--writer-dashboard-border);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+tbody tr { border-bottom: 1px solid var(--writer-dashboard-border); transition: background 0.1s ease; }
+tbody tr:hover { background: var(--writer-dashboard-surface-muted); }
+tbody td { padding: 16px; vertical-align: top; }
+tbody tr:last-child { border-bottom: none; }
+
+/* Framework cell */
+.fw-name { color: var(--writer-dashboard-accent); font-weight: 600; font-size: 0.8125rem; }
+.fw-clause { color: var(--writer-dashboard-text); font-weight: 500; margin-top: 4px; }
+
+/* Mechanism cell */
+.mech-title { font-weight: 600; color: var(--writer-dashboard-text); font-size: 0.8125rem; }
+.mech-note { color: var(--writer-dashboard-muted-text); font-size: 0.75rem; margin-top: 6px; line-height: 1.5; }
+
+/* Vector badge */
+.vector-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--writer-dashboard-surface-muted);
+  border: 1px solid var(--writer-dashboard-border);
+  color: var(--writer-dashboard-accent);
+}
+.vector-dash { color: var(--writer-dashboard-muted-text); }
+
+/* Type badge */
+.type-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.type-enforces { background: rgba(63,185,80,0.15); color: #3FB950; }
+.type-audits { background: rgba(56,189,248,0.15); color: #38BDF8; }
+.type-dash { color: var(--writer-dashboard-muted-text); }
+
+/* Status badge */
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.status-tested { background: rgba(63,185,80,0.15); color: #3FB950; }
+.status-unverified { background: rgba(248,81,73,0.12); color: #F85149; }
+.status-planned { background: rgba(210,153,34,0.15); color: #D29922; }
+.status-frozen { background: rgba(143,160,188,0.15); color: #8FA0BC; }
+
+/* Test refs */
+.test-refs { margin-top: 8px; font-size: 0.6875rem; color: var(--writer-dashboard-muted-text); font-family: 'SF Mono', 'Fira Code', monospace; line-height: 1.6; }
+
+/* TENIR code cell */
+.tenir-module {
+  font-weight: 700;
+  color: var(--writer-dashboard-chart-3);
+  font-size: 0.8125rem;
+}
+.tenir-code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: var(--writer-dashboard-chart-2);
+  margin-top: 4px;
+}
+.tenir-invariant {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.6875rem;
+  color: var(--writer-dashboard-chart-5);
+  margin-top: 2px;
+}
+.tenir-desc {
+  color: var(--writer-dashboard-muted-text);
+  font-size: 0.75rem;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* Legend */
+.legend { margin-top: 40px; padding: 24px; background: var(--writer-dashboard-surface); border: 1px solid var(--writer-dashboard-border); border-radius: 12px; }
+.legend h3 { font-size: 1rem; margin-bottom: 16px; }
+.legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.legend-item { display: flex; gap: 12px; align-items: flex-start; }
+.legend-item .tenir-module { white-space: nowrap; min-width: 200px; }
+
+/* Footer */
+.footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--writer-dashboard-border); text-align: center; }
+.footer p { color: var(--writer-dashboard-muted-text); font-size: 0.8125rem; }
+.writer-agent-credit { margin-top: 12px; font-size: 0.8125rem; color: var(--writer-dashboard-muted-text); }
+
+/* No results */
+.no-results { text-align: center; padding: 48px; color: var(--writer-dashboard-muted-text); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app { padding: 16px 12px 60px; }
+  .header h1 { font-size: 1.5rem; }
+  .controls { flex-direction: column; }
+  .filter-group { width: 100%; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-left">
+        <h1>REG Conformance Crosswalk <span class="version-pill">v2.0-normative + TENIR</span></h1>
+        <p class="subtitle">Direct traceability mapping between international AI normative frameworks (ISO 42001, NIST AI RMF, EU AI Act) and verifiable runtime execution invariants of the REG protocol — extended with TENIR-Gov v5.3.0 module references.</p>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <a class="gh-btn" href="https://github.com/skiredj-prog/reg-conformance" target="_blank" rel="noopener noreferrer">📂 GitHub Repository</a>
+        <button class="toggle-btn" id="scheme-toggle" aria-pressed="false">
+          <span id="scheme-icon">☀</span> <span id="scheme-label">Light</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI cards -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="label">Core Invariants Mapped</div>
+      <div class="value">4</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Standards Covered</div>
+      <div class="value">3</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Verification Level</div>
+      <div class="value green">2 / 16</div>
+      <div class="sub">rows tested</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">TENIR Modules Referenced</div>
+      <div class="value">8</div>
+      <div class="sub">v5.3.0 Agentic Governance Profile</div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <input type="text" class="search-box" id="search" placeholder="Search by framework, mechanism, vector ID, clause, or TENIR module…">
+    <div class="filter-group" id="filters">
+      <button class="filter-chip active" data-filter="all">All</button>
+      <button class="filter-chip" data-filter="iso">ISO/IEC 42001</button>
+      <button class="filter-chip" data-filter="nist">NIST AI RMF</button>
+      <button class="filter-chip" data-filter="eu">EU AI Act</button>
+      <button class="filter-chip" data-filter="rfc">REG RFCs</button>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <table id="crosswalk-table">
+      <thead>
+        <tr>
+          <th>Framework & Normative Clause</th>
+          <th>REG Execution Mechanism</th>
+          <th>Vector Ref</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>TENIR Code</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <div class="no-results" id="no-results" style="display:none;">No rows match your filter.</div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <h3>TENIR Module Reference (v5.3.0)</h3>
+    <div class="legend-grid" id="legend-grid"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Runtime Execution Governance (REG) · TENIR-Gov v5.3.0 — Agentic Governance Profile v1.0.0</p>
+    <div class="writer-agent-credit">Created with Writer Agent</div>
+  </div>
+
+</div>
+
+<script>
+// ── Crosswalk data (REG v2.0-normative + TENIR code column) ─────
+const rows = [
+  {
+    fwGroup: "iso",
+    fwName: "ISO/IEC 42001:2023",
+    fwClause: "Clause 8.2 — AI risk assessment",
+    mechTitle: "HOLD (Uncertainty Interception & Race Detection)",
+    mechNote: "Correspondence withdrawn: CT-R4-005 (race detection) is not an AI risk assessment. Re-mapping pending.",
+    vector: "—",
+    vectorDash: true,
+    type: "—",
+    typeDash: true,
+    status: "UNVERIFIED",
+    tenirModule: "DualKernelGovernor",
+    tenirCode: "governor.adjudicate() → HOLD",
+    tenirInvariant: "Fail-closed composition",
+    tenirDesc: "Fail-closed HOLD on uncertainty, indeterminate results, and kernel exceptions. Continuous risk assessment via scoring kernel + membrane composition. Re-mapping: scoring kernel's S=K/(P·V+ε) is the AI risk assessment, not race detection alone."
+  },
+  {
+    fwGroup: "nist",
+    fwName: "NIST AI RMF 1.0",
+    fwClause: "MANAGE 2.2 — Mechanisms to sustain value of deployed AI systems",
+    mechTitle: "HARD_VETO (Inviolable Guardrail Interception)",
+    mechNote: "Prevents non-PASS states from crossing the commit barrier.",
+    vector: "CT-R4-006",
+    type: "ENFORCES",
+    status: "TESTED",
+    testRefs: "commit 9ce6f10 · PR #27 · CI run #186 · test_g0_s11_transition.py",
+    tenirModule: "TransitionMembrane",
+    tenirCode: "TransitionMembrane.check() → HARD_VETO",
+    tenirInvariant: "I3–I9 invariant enforcement",
+    tenirDesc: "Discrete invariant enforcement prevents non-PASS states from dispatching. Invariants I3 (delegation trust), I4 (budget atomicity), I6 (idempotency), I7 (irreversibility), I8 (authority boundary), I9 (temporal consistency) are mandatory — a healthy score does not bypass them."
+  },
+  {
+    fwGroup: "eu",
+    fwName: "EU AI Act",
+    fwClause: "Article 12 — Record-keeping",
+    mechTitle: "EVIDENCE_MANIFEST (Immutable Audit Trail)",
+    mechNote: "The membrane's evidence registry is hash-chained and verified. Tail truncation: detectable only against a tail anchored outside the ledger, not implemented. Limit: covers technical integrity of recorded events, not complete automatic logging over the system's lifecycle.",
+    vector: "CT-R4-008",
+    type: "AUDITS",
+    status: "TESTED",
+    testRefs: "commit cf15407 · PR #33 · CI run 38191997909 · test_ct_r4_008_evidence_ledger.py · test_membrane_evidence_ledger.py",
+    tenirModule: "HashChainedLedger + DurableOperationRegistry",
+    tenirCode: "HashChainedLedger.append() + registry._persist()",
+    tenirInvariant: "Tamper-evident audit trail",
+    tenirDesc: "Every operation state transition is persisted with fcntl.flock durability and directory fsync. Hash-chained ledger provides tamper-evident audit trail. trace.trace_id maps each operation to its provenance chain."
+  },
+  {
+    fwGroup: "eu",
+    fwName: "EU AI Act",
+    fwClause: "Article 15 — Accuracy, robustness and cybersecurity",
+    mechTitle: "COMMIT_BINDING (Cryptographic Payload Integrity) / SCHEMA_SAFETY",
+    mechNote: "COMMIT_BINDING and SCHEMA_SAFETY are integrity controls, not robustness measures. Art. 15(4) requires resilience to errors, faults, and inconsistencies; Art. 15(5) requires resilience against unauthorized exploitation. Limit: integrity validation only, not robustness or cybersecurity.",
+    vector: "—",
+    vectorDash: true,
+    type: "—",
+    typeDash: true,
+    status: "UNVERIFIED",
+    tenirModule: "schema_adapter + TransitionMembrane",
+    tenirCode: "conform_to_schema() + I7 (irreversibility materiality)",
+    tenirInvariant: "Schema 1.2 conformance + irreversibility",
+    tenirDesc: "Schema conformance validates every output against TENIR 2.0 schema 1.2. Irreversibility materiality (I7) flags actions that cannot be undone. Gap: robustness against external attacks and fault tolerance require additional system-level controls beyond the governance layer."
+  },
+  {
+    fwGroup: "eu",
+    fwName: "EU AI Act",
+    fwClause: "Article 17 — Quality management system",
+    mechTitle: "POLICY_ANCHOR",
+    mechNote: "POLICY_ANCHOR is one element of a QMS, not a QMS itself. Art. 17(1) requires a complete QMS covering strategy, design control, data management, risk management, record-keeping, post-market monitoring, and more. Limit: one QMS element, not the system.",
+    vector: "—",
+    vectorDash: true,
+    type: "—",
+    typeDash: true,
+    status: "UNVERIFIED",
+    tenirModule: "CompositionPolicy + ProfileDisclosure",
+    tenirCode: "CompositionPolicy + ProfileDisclosure",
+    tenirInvariant: "Versioned, configurable policy",
+    tenirDesc: "CompositionPolicy is explicit, versioned, and configurable (budget escalation threshold default 85%). ProfileDisclosure declares doctrinal version, platform version, compliance class, active profiles. Gap: one policy anchor, not the full QMS required by Art. 17."
+  },
+  {
+    fwGroup: "iso",
+    fwName: "ISO/IEC 42001:2023",
+    fwClause: "Clause 8.3 — AI risk treatment",
+    mechTitle: "COMMIT_BINDING (Cryptographic Payload Integrity)",
+    mechNote: "Correspondence withdrawn: CT-R4-002 (action binding) is not AI risk treatment. Re-mapping pending.",
+    vector: "—",
+    vectorDash: true,
+    type: "—",
+    typeDash: true,
+    status: "UNVERIFIED",
+    tenirModule: "DurableOperationRegistry",
+    tenirCode: "registry.transition_to(CONFIRMED)",
+    tenirInvariant: "CREATED→RESERVED→DISPATCHING→CONFIRMED",
+    tenirDesc: "Commit binding via durable dispatch state machine: the key is durably claimed at CREATED, reserved, dispatched, then confirmed or failed. Re-mapping: risk treatment is the decision lattice (PASS/FLAG/HOLD/HARD_VETO) that selects the treatment path, not the commit binding alone."
+  },
+  {
+    fwGroup: "iso",
+    fwName: "ISO/IEC 42001:2023",
+    fwClause: "Clause 6.1.4 — AI system impact assessment",
+    mechTitle: "STRUCTURE_GATE",
+    mechNote: "STRUCTURE_GATE is an admission condition at execution start, not an AI system impact assessment. Clause 6.1.4 requires a formal, documented process evaluating impacts on individuals and societies. Limit: admission control only, not an impact assessment.",
+    vector: "—",
+    vectorDash: true,
+    type: "—",
+    typeDash: true,
+    status: "UNVERIFIED",
+    tenirModule: "TransitionMembrane + ScoringKernelAdapter",
+    tenirCode: "I5 (option-space adequacy) + adapter._build_coordinates()",
+    tenirInvariant: "Option-space + structure gate",
+    tenirDesc: "Option-space adequacy (I5) verifies the agent has sufficient alternatives before committing. ScoringKernelAdapter constructs constraint geometry coordinates that evaluate structural readiness. Gap: admission control, not the formal impact assessment process required by Clause 6.1.4."
+  },
+  {
+    fwGroup: "iso",
+    fwName: "ISO/IEC 42001:2023",
+    fwClause: "Clause 8.4 — AI system impact assessment",
+    mechTitle: "HARD_VETO (Inviolable Guardrail Interception)",
+    mechNote: "Correspondence withdrawn: HARD_VETO is an automated control, not an AI system impact assessment. Clause 8.4 requires a formal, documented process by which impacts are identified, evaluated and addressed. Limit: automated veto, not an impact assessment process.",
+    vector: "—",
+    vectorDash: true,
+    type: "—",
+    typeDash: true,
+    status: "UNVERIFIED",
+    tenirModule: "DualKernelGovernor",
+    tenirCode: "compose() → HARD_VETO + HOLD reasons retained",
+    tenirInvariant: "Decision lattice: HARD_VETO ∪ HOLD",
+    tenirDesc: "When HARD_VETO and HOLD coexist, both reasons are retained. The decision lattice maps the full composition of scoring kernel + membrane. Gap: the veto is an automated safety control, not the formal impact assessment process required by Clause 8.4."
+  },
+  {
+    fwGroup: "rfc",
+    fwName: "REG RFC-0 (Extended)",
+    fwClause: "Policy Anchor Integrity",
+    mechTitle: "POLICY_ANCHOR",
+    mechNote: "Planned: integrity check of the policy anchor at execution-engine start-up.",
+    vector: "CT-R0-001",
+    type: "—",
+    typeDash: true,
+    status: "PLANNED",
+    tenirModule: "CompositionPolicy + ProfileDisclosure",
+    tenirCode: "CompositionPolicy.validate() + ProfileDisclosure.verify()",
+    tenirInvariant: "Policy anchor integrity at startup",
+    tenirDesc: "CompositionPolicy is loaded and validated at governor initialization. ProfileDisclosure declares the active profile version and compliance class. Integrity check ensures the policy has not been tampered with since deployment."
+  },
+  {
+    fwGroup: "rfc",
+    fwName: "REG RFC-1 (Extended)",
+    fwClause: "Response Schema Compliance",
+    mechTitle: "SCHEMA_SAFETY",
+    mechNote: "Planned: strict conformance of response schemas to the protocol specification.",
+    vector: "CT-R1-001",
+    type: "—",
+    typeDash: true,
+    status: "PLANNED",
+    tenirModule: "schema_adapter",
+    tenirCode: "conform_to_schema() → schema 1.2 validation",
+    tenirInvariant: "TENIR 2.0 schema 1.2 conformance",
+    tenirDesc: "Every module's output is validated against TENIR 2.0 schema 1.2 at the boundary. conform_to_schema() maps governor outputs to canonical fields: posture, synthesis, trace, degraded_mode, compliance_class. Schema field names are stable; new modules add fields but don't rename existing ones."
+  },
+  {
+    fwGroup: "rfc",
+    fwName: "REG RFC-2 (Extended)",
+    fwClause: "S-Score Determinism",
+    mechTitle: "SCORING_DETERMINISM",
+    mechNote: "Planned: deterministic results for security-score (S-Score) computations.",
+    vector: "CT-R2-002",
+    type: "—",
+    typeDash: true,
+    status: "PLANNED",
+    tenirModule: "TenirKernel",
+    tenirCode: "TenirKernel.adjudicate() — S = K/(P·V+ε)",
+    tenirInvariant: "Deterministic scoring formula",
+    tenirDesc: "The scoring kernel computes S = K/(P·V+ε) deterministically from constraint geometry coordinates (pressure, velocity, capacity, option_space, authority, context_fit, evidence_quality, irreversibility_materiality). Same inputs → same score, same CES state classification."
+  },
+  {
+    fwGroup: "rfc",
+    fwName: "REG RFC-3 (Extended)",
+    fwClause: "Revocation Propagation",
+    mechTitle: "CREDENTIAL_STANDING",
+    mechNote: "Planned: immediate propagation of certificate and credential revocations.",
+    vector: "CT-R3-002",
+    type: "—",
+    typeDash: true,
+    status: "PLANNED",
+    tenirModule: "TransitionMembrane",
+    tenirCode: "I3 (delegation trust) + I8 (authority boundary)",
+    tenirInvariant: "Delegation trust + authority verification",
+    tenirDesc: "Delegation trust (I3) verifies the delegate is currently trusted before each operation. Authority boundary (I8) verifies the delegate has authority for the specific action. Revocation invalidates trust → I3 fails → HOLD. Gap: immediate propagation across distributed systems requires external infrastructure."
+  },
+  {
+    fwGroup: "rfc",
+    fwName: "REG RFC-4 (frozen)",
+    fwClause: "Commit-Execution Proof",
+    mechTitle: "—",
+    mechNote: "RFC-4 is frozen. Its vectors are mapped in other rows; a row-level mapping of RFC-4 is pending.",
+    vector: "—",
+    vectorDash: true,
+    type: "—",
+    typeDash: true,
+    status: "FROZEN",
+    tenirModule: "DurableOperationRegistry",
+    tenirCode: "CREATED→RESERVED→DISPATCHING→CONFIRMED",
+    tenirInvariant: "Durable dispatch state machine",
+    tenirDesc: "The durable dispatch state machine provides commit-execution proof: the idempotency key is durably claimed at CREATED (before any kernel evaluation), reserved, dispatched, then confirmed or failed. Recovery uses resume_existing(), not re-adjudication. CREATED blocks fresh adjudication."
+  },
+  {
+    fwGroup: "rfc",
+    fwName: "REG RFC-5 (Extended)",
+    fwClause: "Manifest Export & Retention",
+    mechTitle: "EVIDENCE_EXPORT",
+    mechNote: "Planned: long-term export and retention policy for proof manifests.",
+    vector: "CT-R5-001",
+    type: "—",
+    typeDash: true,
+    status: "PLANNED",
+    tenirModule: "HashChainedLedger + schema_adapter",
+    tenirCode: "ledger.export() + conform_to_schema() → trace.stages[]",
+    tenirInvariant: "Tamper-evident export + schema trace",
+    tenirDesc: "Hash-chained ledger provides the evidence manifest. schema_adapter maps operation_state to trace.stages[] in schema 1.2 for export. Retention policy is configurable. Gap: long-term retention and external archive integration require infrastructure beyond the governance layer."
+  },
+  {
+    fwGroup: "rfc",
+    fwName: "REG RFC-6 (Extended)",
+    fwClause: "Emergency Override Audit",
+    mechTitle: "EMERGENCY_OVERRIDE",
+    mechNote: "Planned: traceability and strict audit of emergency-override activation.",
+    vector: "CT-R6-001",
+    type: "—",
+    typeDash: true,
+    status: "PLANNED",
+    tenirModule: "DualKernelGovernor + CompositionPolicy",
+    tenirCode: "COLLAPSE posture → recovery action distinction",
+    tenirInvariant: "Recovery vs. ordinary action separation",
+    tenirDesc: "COLLAPSE posture must not block recovery/safety actions. The system distinguishes ordinary actions from approved recovery actions. Emergency override is auditable via the hash-chained ledger. Gap: strict audit of override activation requires external attestation infrastructure."
+  },
+  {
+    fwGroup: "rfc",
+    fwName: "REG RFC-7 (Extended)",
+    fwClause: "Adapter Result Equivalence",
+    mechTitle: "ADAPTER_COMPATIBILITY",
+    mechNote: "Planned: functional equivalence of results across execution adapters.",
+    vector: "CT-R7-001",
+    type: "—",
+    typeDash: true,
+    status: "PLANNED",
+    tenirModule: "ScoringKernelAdapter",
+    tenirCode: "ScoringKernelAdapter._build_coordinates() + gate injection",
+    tenirInvariant: "Bridge equivalence between kernels",
+    tenirDesc: "ScoringKernelAdapter bridges TenirKernel.adjudicate() to the composition layer's expected interface. It constructs constraint geometry coordinates and injects extra gate reasons (tau floor, option space) that TenirKernel does not natively evaluate. Same governance semantics across different execution backends."
+  },
+];
+
+// ── TENIR module legend ──
+const modules = [
+  { name: "TenirKernel", code: "tenir_kernel.kernel.TenirKernel", desc: "Scoring kernel: S=K/(P·V+ε) with constraint geometry, CES states. 557 tests." },
+  { name: "ScoringKernelAdapter", code: "composition.governor.ScoringKernelAdapter", desc: "Bridges TenirKernel to composition layer; constructs geometry coordinates, injects gate reasons." },
+  { name: "TransitionMembrane", code: "membrane.TransitionMembrane", desc: "Discrete invariant enforcement I3–I9: delegation trust, budget atomicity, idempotency, irreversibility, option space, temporal consistency, authority boundary." },
+  { name: "DualKernelGovernor", code: "composition.governor.DualKernelGovernor", desc: "Composes scoring + membrane via decision lattice (PASS/FLAG/HOLD/HARD_VETO). Fail-closed on exceptions." },
+  { name: "DurableOperationRegistry", code: "operations.registry.DurableOperationRegistry", desc: "Dispatch state machine: CREATED→RESERVED→DISPATCHING→CONFIRMED|FAILED|UNKNOWN. fcntl.flock durability, resume_existing() recovery." },
+  { name: "BudgetCoordinator", code: "operations.budget.BudgetCoordinator", desc: "Atomic budget reservation. InProcessBudgetCoordinator (threading.Lock); distributed requires transactional DB." },
+  { name: "CompositionPolicy", code: "composition.policy.CompositionPolicy", desc: "Configurable, versioned policy: budget escalation threshold (default 85%), FLAG→HOLD rules, hard/soft gates." },
+  { name: "schema_adapter", code: "composition.schema_adapter.conform_to_schema()", desc: "Maps governor outputs to TENIR 2.0 schema 1.2: posture, synthesis, trace, degraded_mode, compliance_class." },
+];
+
+// ── Rendering ───────────────────────────────────────────────────
+const tbody = document.getElementById('tbody');
+const noResults = document.getElementById('no-results');
+const searchInput = document.getElementById('search');
+
+let activeFilter = 'all';
+let searchTerm = '';
+
+function statusClass(status) {
+  if (status === 'TESTED') return 'status-tested';
+  if (status === 'UNVERIFIED') return 'status-unverified';
+  if (status === 'PLANNED') return 'status-planned';
+  if (status === 'FROZEN') return 'status-frozen';
+  return '';
+}
+
+function typeClass(type) {
+  if (type === 'ENFORCES') return 'type-enforces';
+  if (type === 'AUDITS') return 'type-audits';
+  return 'type-dash';
+}
+
+function renderTable() {
+  const filtered = rows.filter(r => {
+    const matchFw = activeFilter === 'all' || r.fwGroup === activeFilter;
+    const matchSearch = searchTerm === '' ||
+      r.fwName.toLowerCase().includes(searchTerm) ||
+      r.fwClause.toLowerCase().includes(searchTerm) ||
+      r.mechTitle.toLowerCase().includes(searchTerm) ||
+      r.vector.toLowerCase().includes(searchTerm) ||
+      r.status.toLowerCase().includes(searchTerm) ||
+      r.tenirModule.toLowerCase().includes(searchTerm) ||
+      r.tenirCode.toLowerCase().includes(searchTerm) ||
+      r.tenirInvariant.toLowerCase().includes(searchTerm);
+    return matchFw && matchSearch;
+  });
+
+  tbody.innerHTML = filtered.map(r => `
+    <tr>
+      <td>
+        <div class="fw-name">${r.fwName}</div>
+        <div class="fw-clause">${r.fwClause}</div>
+      </td>
+      <td>
+        <div class="mech-title">${r.mechTitle}</div>
+        <div class="mech-note">${r.mechNote}</div>
+        ${r.testRefs ? `<div class="test-refs">${r.testRefs}</div>` : ''}
+      </td>
+      <td>${r.vectorDash ? '<span class="vector-dash">—</span>' : `<span class="vector-badge">${r.vector}</span>`}</td>
+      <td>${r.typeDash ? '<span class="type-dash">—</span>' : `<span class="type-badge ${typeClass(r.type)}">${r.type}</span>`}</td>
+      <td><span class="status-badge ${statusClass(r.status)}">${r.status}</span></td>
+      <td>
+        <div class="tenir-module">${r.tenirModule}</div>
+        <div class="tenir-code">${r.tenirCode}</div>
+        <div class="tenir-invariant">${r.tenirInvariant}</div>
+        <div class="tenir-desc">${r.tenirDesc}</div>
+      </td>
+    </tr>
+  `).join('');
+
+  noResults.style.display = filtered.length === 0 ? 'block' : 'none';
+}
+
+function renderLegend() {
+  document.getElementById('legend-grid').innerHTML = modules.map(m => `
+    <div class="legend-item">
+      <div>
+        <div class="tenir-module">${m.name}</div>
+        <div class="tenir-code" style="margin-bottom:4px;">${m.code}</div>
+        <div class="tenir-desc">${m.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── Event handlers ──────────────────────────────────────────────
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeFilter = chip.dataset.filter;
+    renderTable();
+  });
+});
+
+searchInput.addEventListener('input', (e) => {
+  searchTerm = e.target.value.toLowerCase();
+  renderTable();
+});
+
+// ── Dark/light toggle ───────────────────────────────────────────
+const toggle = document.getElementById('scheme-toggle');
+const schemeIcon = document.getElementById('scheme-icon');
+const schemeLabel = document.getElementById('scheme-label');
+
+function updateToggleUI() {
+  const isDark = document.documentElement.getAttribute('data-writer-dashboard-color-scheme') !== 'light';
+  toggle.setAttribute('aria-pressed', String(!isDark));
+  schemeIcon.textContent = isDark ? '☀' : '☾';
+  schemeLabel.textContent = isDark ? 'Light' : 'Dark';
+}
+
+toggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-writer-dashboard-color-scheme');
+  const next = current === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-writer-dashboard-color-scheme', next);
+  localStorage.setItem('writer-dashboard-color-scheme', next);
+  updateToggleUI();
+});
+
+// ── Init ────────────────────────────────────────────────────────
+renderTable();
+renderLegend();
+updateToggleUI();
+</script>
+</body>
+</html>

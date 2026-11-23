@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>REG Hypothesis Lab — test your own theory</title>
+<style>
+:root{--bg:#f4f1ea;--fg:#1d1b18;--mut:#6d675c;--card:#fffdf8;--line:#d9d2c3;--ok:#1b6e45;--bad:#b32a1c;--warn:#94620a;--inc:#46567a;--chip:#ece6d8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--fg:#efeadd;--mut:#9d9686;--card:#1e1b16;--line:#383327;--ok:#5cc58b;--bad:#ff7b6b;--warn:#e4b04f;--inc:#8fa3d1;--chip:#2a261d}}
+:root[data-theme="dark"]{--bg:#15130f;--fg:#efeadd;--mut:#9d9686;--card:#1e1b16;--line:#383327;--ok:#5cc58b;--bad:#ff7b6b;--warn:#e4b04f;--inc:#8fa3d1;--chip:#2a261d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:0 auto;padding:40px 20px 64px}
+.k{font:600 12px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.18em;color:var(--mut);margin:0 0 14px}
+h1{font:400 clamp(38px,8vw,64px)/1.02 ui-serif,Georgia,"Times New Roman",serif;letter-spacing:-.02em;margin:0 0 16px}
+h1 em{color:var(--bad);font-style:italic}
+.sub{color:var(--mut);max-width:60ch;margin:0 0 32px}
+section{margin:0 0 28px}
+label{display:block;font-size:13px;font-weight:600;color:var(--mut);margin:0 0 6px}
+.f{margin:0 0 16px}
+input,select,textarea{width:100%;font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+textarea{font:13.5px/1.55 ui-monospace,Menlo,Consolas,monospace;min-height:280px;resize:vertical;tab-size:2}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--fg);outline-offset:1px}
+button{font:600 15px inherit;font-family:inherit;background:var(--fg);color:var(--bg);border:0;border-radius:999px;padding:12px 26px;cursor:pointer}
+button:active{transform:translateY(1px)}
+.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+#err{color:var(--bad);font-size:14px;flex:1;min-width:200px}
+.v{border-radius:14px;padding:22px 24px;background:var(--card);border:1px solid var(--line);border-left:8px solid var(--c)}
+.v h2{font:400 clamp(26px,5vw,36px)/1.15 ui-serif,Georgia,serif;margin:0 0 6px;color:var(--c)}
+.v p{margin:0;color:var(--mut)}
+.FAIL{--c:var(--bad)}.PASS{--c:var(--ok)}.VACUOUS{--c:var(--warn)}.INCONCLUSIVE{--c:var(--inc)}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--mut);font-weight:600}
+.pill{display:inline-block;font:700 11px ui-monospace,monospace;letter-spacing:.06em;color:var(--c);border:1.5px solid var(--c);border-radius:99px;padding:2px 9px;white-space:nowrap}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+ol.tr{list-style:none;margin:16px 0 0;padding:0;counter-reset:s}
+ol.tr li{counter-increment:s;position:relative;padding:8px 0 8px 40px;border-left:2px solid var(--line);margin-left:12px}
+ol.tr li::before{content:counter(s);position:absolute;left:-13px;top:8px;width:24px;height:24px;border-radius:50%;background:var(--fg);color:var(--bg);font:700 12px/24px ui-monospace,monospace;text-align:center}
+ol.tr li.last::before{background:var(--bad)}
+.chip{display:inline-block;background:var(--chip);border-radius:6px;padding:1px 8px;margin:2px 6px 2px 0;font:12.5px ui-monospace,Menlo,monospace}
+.chip b{color:var(--bad)}
+pre.log{background:var(--chip);border-radius:8px;padding:12px 14px;font:12.5px/1.6 ui-monospace,Menlo,monospace;overflow-x:auto;margin:16px 0 0;white-space:pre-wrap}
+.note{font-size:13px;color:var(--mut);margin-top:12px}
+h3{font:600 12px ui-monospace,monospace;letter-spacing:.14em;color:var(--mut);margin:26px 0 4px}
+footer{font-size:13px;color:var(--mut);border-top:1px solid var(--line);padding-top:18px}
+</style></head><body><main>
+<header>
+<p class="k">REG HYPOTHESIS LAB</p>
+<h1>Bring a theory.<br><em>Try to break it.</em></h1>
+<p class="sub">State your claim, write it as a small state machine, and the lab walks every reachable state. You get a verdict, or the shortest sequence of events that proves your own theory wrong.</p>
+</header>
+<section>
+<div class="f"><label for="tpl">Start from an example, or write your own</label><select id="tpl"></select></div>
+<div class="f"><label for="claim">Your claim, in plain words</label><input id="claim" placeholder="e.g. A refund that was approved can never be denied"></div>
+<div class="f"><label for="src">Formal model <span style="font-weight:400">(var · init · action · inv · entities)</span></label><textarea id="src" spellcheck="false"></textarea></div>
+<div class="row"><button id="run">Test the theory</button><span id="err" role="alert"></span></div>
+</section>
+<section id="out" aria-live="polite"></section>
+<section id="hist"></section>
+<footer><b>How to read a verdict.</b> PASS means no reachable state of <i>this finite model</i> violates your invariant. It is not a proof about the real world, and the model is only as faithful as you made it. VACUOUS means the invariant held only because its premise (the left side of <span class="mono">=&gt;</span>) was never reached. INCONCLUSIVE means the search hit its state cap and counts as nothing. Syntax: <span class="mono">var x: a|b|c</span> · <span class="mono">init: x=a</span> · <span class="mono">action go: x==a -&gt; x=b</span> · <span class="mono">x=*</span> for any value · <span class="mono">inv Name: x==a =&gt; y</span> · <span class="mono">entities: p1,p2</span> repeats any line containing <span class="mono">$</span>.</footer>
+</main>
+<script>
+const T=v=>v===true||v==='true';
+function compile(text){
+  const fail=(n,m)=>{throw new Error('line '+n+': '+m)};
+  const L=text.split('\n').map((l,i)=>[i+1,l.replace(/#.*/,'').trim()]).filter(x=>x[1]);
+  const ents=[],raw=[];
+  for(const [n,l] of L){const m=l.match(/^entities\s*:\s*(.+)$/i);m?ents.push(...m[1].split(',').map(s=>s.trim()).filter(Boolean)):raw.push([n,l]);}
+  const lines=[];
+  for(const [n,l] of raw){
+    if(l.includes('$')){if(!ents.length)fail(n,'uses $ but no "entities:" line is declared');ents.forEach(e=>lines.push([n,l.split('$').join(e)]));}
+    else lines.push([n,l]);
+  }
+  const vars=[],doms=[],idx=Object.create(null),vals=new Set(['true','false']);
+  for(const [n,l] of lines){
+    const m=l.match(/^var\s+([\w.]+)\s*:\s*(.+)$/);if(!m)continue;
+    const d=m[2].split('|').map(s=>s.trim()).filter(Boolean);
+    if(d.length<2)fail(n,'a domain needs at least two values, e.g. a|b');
+    if(m[1] in idx)fail(n,'variable declared twice: '+m[1]);
+    idx[m[1]]=vars.length;vars.push(m[1]);doms.push(d);d.forEach(v=>vals.add(v));
+  }
+  if(!vars.length)throw new Error('Declare at least one variable, e.g.  var state: idle|busy');
+  const expr=(src,n)=>{
+    const tk=src.match(/=>|==|!=|&&|\|\||[()!]|[\w.]+/g)||[];let i=0;
+    if(tk.join('')!==src.replace(/\s/g,''))fail(n,'unsupported character in "'+src+'"');
+    const atom=()=>{
+      const t=tk[i++];if(t===undefined)fail(n,'expression ends too early');
+      if(t==='('){const e=imp();if(tk[i++]!==')')fail(n,'missing )');return e;}
+      if(t in idx){const k=idx[t];return s=>s[k];}
+      if(vals.has(t))return()=>t;
+      fail(n,'unknown name "'+t+'" (not a variable or a declared value)');
+    };
+    const cmp=()=>{const l=atom();if(tk[i]==='=='||tk[i]==='!='){const o=tk[i++],r=atom();return s=>(String(l(s))===String(r(s)))===(o==='==');}return l;};
+    const not=()=>{if(tk[i]==='!'){i++;const f=not();return s=>!T(f(s));}return cmp();};
+    const and=()=>{let l=not();while(tk[i]==='&&'){i++;const a=l,r=not();l=s=>T(a(s))&&T(r(s));}return l;};
+    const or=()=>{let l=and();while(tk[i]==='||'){i++;const a=l,r=and();l=s=>T(a(s))||T(r(s));}return l;};
+    const imp=()=>{const l=or();if(tk[i]==='=>'){i++;const r=imp(),f=s=>!T(l(s))||T(r(s));f.ante=l;return f;}return l;};
+    const f=imp();if(i<tk.length)fail(n,'unexpected "'+tk[i]+'"');return f;
+  };
+  const init={},acts=[],invs=[];
+  for(const [n,l] of lines){
+    if(/^var\s/.test(l))continue;
+    let m=l.match(/^init\s*:\s*(.+)$/);
+    if(m){for(const p of m[1].split(',')){
+      const [k,v]=p.split('=').map(s=>s.trim());
+      if(!(k in idx))fail(n,'unknown variable '+k);
+      if(!doms[idx[k]].includes(v))fail(n,v+' is not in the domain of '+k);
+      if(init[k]!==undefined&&init[k]!==v)fail(n,'conflicting init for '+k);
+      init[k]=v;}continue;}
+    m=l.match(/^action\s+([\w.]+)\s*:\s*(.+?)\s*->\s*(.+)$/);
+    if(m){
+      const e=m[3].split(',').map(p=>{
+        const q=p.split('=').map(s=>s.trim());
+        if(q.length!==2||!(q[0] in idx))fail(n,'bad assignment "'+p.trim()+'" (use var=value)');
+        return[idx[q[0]],q[1]==='*'?null:expr(q[1],n)];});
+      acts.push({name:m[1],g:expr(m[2],n),e});continue;}
+    m=l.match(/^inv\s+([\w.]+)\s*:\s*(.+)$/);
+    if(m){invs.push({name:m[1],f:expr(m[2],n)});continue;}
+    fail(n,'cannot read this line. Lines start with var, init, action, inv or entities');
+  }
+  for(const v of vars)if(init[v]===undefined)throw new Error('No initial value for '+v+'. Add it to an init: line');
+  if(!invs.length)throw new Error('State your theory as an invariant, e.g.  inv Safe: x==a => y==b');
+  return{vars,doms,init,acts,invs};
+}
+function explore(M,cap=200000){
+  const key=s=>s.join('\u0001'),s0=M.vars.map(v=>M.init[v]);
+  const S=[s0],par=[-1],via=[''],seen=new Map([[key(s0),0]]);
+  let gen=1,capped=false,depth=0;const dep=[0],fired={},ante={},viol={};
+  M.acts.forEach(a=>fired[a.name]=0);
+  Q:for(let q=0;q<S.length;q++){
+    const s=S[q];
+    for(const v of M.invs){
+      if(v.f.ante&&T(v.f.ante(s)))ante[v.name]=1;
+      if(!(v.name in viol)&&!T(v.f(s)))viol[v.name]=q;
+    }
+    for(const a of M.acts){
+      if(!T(a.g(s)))continue;fired[a.name]++;
+      let outs=[s.slice()];
+      for(const [k,f] of a.e){
+        if(f){const val=String(f(s));
+          if(!M.doms[k].includes(val))throw new Error('Action '+a.name+' sets '+M.vars[k]+' to "'+val+'", outside its domain '+M.doms[k].join('|'));
+          outs.forEach(o=>o[k]=val);}
+        else outs=outs.flatMap(o=>M.doms[k].map(d=>{const c=o.slice();c[k]=d;return c;}));
+      }
+      for(const o of outs){
+        gen++;const kk=key(o);
+        if(!seen.has(kk)){
+          if(S.length>=cap){capped=true;break Q;}
+          seen.set(kk,S.length);S.push(o);par.push(q);via.push(a.name);dep.push(dep[q]+1);depth=Math.max(depth,dep[q]+1);
+        }
+      }
+    }
+  }
+  const res=M.invs.map(v=>{
+    if(v.name in viol){const t=[];for(let i=viol[v.name];i>=0;i=par[i])t.push({a:via[i],s:S[i]});return{name:v.name,status:'FAIL',trace:t.reverse()};}
+    if(capped)return{name:v.name,status:'INCONCLUSIVE'};
+    if(v.f.ante&&!ante[v.name])return{name:v.name,status:'VACUOUS'};
+    return{name:v.name,status:'PASS'};
+  });
+  return{gen,distinct:S.length,depth,capped,res,dead:M.acts.filter(a=>!fired[a.name]).map(a=>a.name)};
+}
+if(typeof document!=='undefined'){
+const TPL=[
+{n:'Refund policy: a ghost variable (breaks)',c:'Once a refund has been approved, it can never be denied.',s:`# The theory is about history, so the model keeps a ghost variable
+# (everApproved) that remembers what happened. The ghost never
+# affects behaviour; it only lets the invariant look backwards.
+var state: new|approved|denied|paid
+var everApproved: false|true
+init: state=new, everApproved=false
+
+action approve: state==new -> state=approved, everApproved=true
+action pay:     state==approved -> state=paid
+action deny:    state==new || state==approved -> state=denied
+
+inv NeverUndone: everApproved => state!=denied
+# Fix it: change deny's guard to  state==new  and run again.
+`},
+{n:'Lock theory: mutual exclusion (breaks)',c:'Two processes can never be in the critical section at the same time.',s:`entities: p1, p2
+var pc_$: idle|waiting|crit
+var lock: free|held
+init: pc_$=idle, lock=free
+
+action want_$:  pc_$==idle -> pc_$=waiting
+action enter_$: pc_$==waiting -> pc_$=crit, lock=held
+action leave_$: pc_$==crit -> pc_$=idle, lock=free
+
+inv Exclusion: !(pc_p1==crit && pc_p2==crit)
+# Fix it: add  && lock==free  to enter_$'s guard.
+`},
+{n:'Queue theory: holds, but vacuously',c:'When the queue is full, new jobs are rejected.',s:`var queue: empty|some|full
+var rejected: false|true
+init: queue=empty, rejected=false
+
+action enqueue: queue==empty -> queue=some
+action more:    queue==some -> queue=some
+action reject:  queue==full -> rejected=true
+
+inv FullRejects: queue==full => rejected
+# It "passes", but the queue can never become full.
+`}];
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const RANK={FAIL:4,INCONCLUSIVE:3,VACUOUS:2,PASS:1},runs=[];
+$('tpl').innerHTML=TPL.map((t,i)=>'<option value="'+i+'">'+esc(t.n)+'</option>').join('')+'<option value="x">Blank: write my own</option>';
+function load(){const t=TPL[$('tpl').value];$('claim').value=t?t.c:'';$('src').value=t?t.s:'var x: a|b\ninit: x=a\naction flip: x==a -> x=b\ninv Never: x==a';}
+const chips=(vars,s,prev)=>vars.map((v,i)=>{const ch=prev&&prev[i]!==s[i];return'<span class="chip">'+esc(v)+'='+(ch?'<b>'+esc(s[i])+'</b>':esc(s[i]))+'</span>';}).join('');
+const NOTE={PASS:'No reachable state violates it.',VACUOUS:'Held only because its premise was never true.',INCONCLUSIVE:'State cap reached; nothing is established.',FAIL:'A reachable state violates it.'};
+function go(){
+  $('err').textContent='';
+  let M,R;
+  try{M=compile($('src').value);R=explore(M);}catch(e){$('err').textContent=e.message;return;}
+  const top=R.res.reduce((a,r)=>RANK[r.status]>RANK[a]?r.status:a,'PASS');
+  const fails=R.res.filter(r=>r.status==='FAIL');
+  const H={FAIL:['Your theory breaks.',fails.length?'Shortest counterexample: '+(fails[0].trace.length-1)+' step'+(fails[0].trace.length===2?'':'s')+', found in "'+fails[0].name+'".':''],
+    INCONCLUSIVE:['Search incomplete.','The state space exceeded the cap. Shrink the model (fewer variables or values) to get a real verdict.'],
+    VACUOUS:['Held, but check your premise.','An invariant passed only because the situation it guards against never occurs.'],
+    PASS:['Your theory holds, inside this model.','Every reachable state was checked. Now ask whether the model is faithful to your claim.']}[top];
+  const claim=$('claim').value.trim();
+  let h='<div class="v '+top+'"><h2>'+H[0]+'</h2><p>'+esc(H[1])+'</p>'+(claim?'<p class="note">Claim tested: “'+esc(claim)+'”</p>':'')+'</div>';
+  h+='<div class="scroll"><table><tr><th>Invariant</th><th>Verdict</th><th>Meaning</th></tr>'+R.res.map(r=>'<tr><td class="mono">'+esc(r.name)+'</td><td><span class="pill '+r.status+'">'+r.status+'</span></td><td>'+NOTE[r.status]+'</td></tr>').join('')+'</table></div>';
+  for(const r of fails){
+    h+='<h3>HOW IT BREAKS: '+esc(r.name).toUpperCase()+'</h3><ol class="tr">'+r.trace.map((t,i)=>'<li'+(i===r.trace.length-1?' class="last"':'')+'>'+(i?'<b class="mono">'+esc(t.a)+'</b><br>':'<b>Initial state</b><br>')+chips(M.vars,t.s,i?r.trace[i-1].s:null)+'</li>').join('')+'</ol>';
+  }
+  if(R.dead.length)h+='<p class="note"><b>Never enabled:</b> <span class="mono">'+R.dead.map(esc).join(', ')+'</span>. These actions are dead in your model; either a guard is wrong or the theory never needs them.</p>';
+  const ok=!fails.length&&!R.capped;
+  h+='<pre class="log">'+(R.capped?'State cap reached. Search incomplete.':fails.length?'Invariant '+esc(fails[0].name)+' is violated.':'Model checking completed. No error has been found.')+'\n'+R.gen+' states generated, '+R.distinct+' distinct states found.\nThe depth of the complete state graph search is '+R.depth+'.'+(fails.length?'\n(all invariants were checked over the full space; the trace shown is the shortest)':'')+'</pre>';
+  $('out').innerHTML=h;
+  const prev=runs[runs.length-1],chg=prev?R.res.filter(r=>{const p=prev.res.find(x=>x.name===r.name);return p&&p.status!==r.status;}).map(r=>r.name+' '+prev.res.find(x=>x.name===r.name).status+' → '+r.status):[];
+  runs.push({res:R.res,top,d:R.distinct,dep:R.depth,t:new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}),chg});
+  $('hist').innerHTML=runs.length<2?'':'<h3>RUN HISTORY</h3><div class="scroll"><table><tr><th>#</th><th>Verdict</th><th>States</th><th>Depth</th><th>Changed since previous run</th></tr>'+runs.map((r,i)=>'<tr><td>'+(i+1)+'</td><td><span class="pill '+r.top+'">'+r.top+'</span></td><td>'+r.d+'</td><td>'+r.dep+'</td><td class="mono">'+(i?(r.chg.length?esc(r.chg.join('; ')):'no change'):'first run')+'</td></tr>').reverse().join('')+'</table></div>';
+}
+$('tpl').onchange=load;$('run').onclick=go;
+$('src').addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter')go();});
+load();go();
+}
+if(typeof module!=='undefined')module.exports={compile,explore};
+</script></body></html>

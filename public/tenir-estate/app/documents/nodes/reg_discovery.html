@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Inter:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rice-paper: #F5F0E8;
+            --pine-ink: #2C3E2D;
+            --surface-card: #E8E0CE;
+            --seal-red: #C23B22;
+            --border-line: #2C3E2D;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--rice-paper);
+            color: var(--pine-ink);
+            font-family: 'Inter', sans-serif;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+        }
+        .motif {
+            position: absolute;
+            top: 48px;
+            right: 48px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 16px;
+        }
+        .section-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: var(--seal-red);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 42px;
+            font-weight: 700;
+        }
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            flex-grow: 1;
+        }
+        .matrix-card {
+            background-color: var(--surface-card);
+            border: 1px solid var(--border-line);
+            padding: 32px;
+        }
+        .card-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--seal-red);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        .list-item {
+            display: flex;
+            margin-bottom: 16px;
+            font-size: 17px;
+            line-height: 1.4;
+        }
+        .bullet {
+            color: var(--seal-red);
+            font-family: 'IBM Plex Mono', monospace;
+            margin-right: 12px;
+            font-weight: 700;
+        }
+        .footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            border-top: 1px solid var(--border-line);
+            padding-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="motif">[TENIR.LABS // REG]</div>
+        
+        <div class="header">
+            <div class="section-tag">04 // REG DISCOVERY</div>
+            <h2>REG Discovery : rendre les hypothèses visibles.</h2>
+        </div>
+
+        <div class="matrix-grid">
+            <div class="matrix-card">
+                <div class="card-title">CARTOGRAPHIE DES TRANSITIONS</div>
+                <div class="list-item">
+                    <div class="bullet">→</div>
+                    <div>Identification des états d'admission, réservation et comptabilité.</div>
+                </div>
+                <div class="list-item">
+                    <div class="bullet">→</div>
+                    <div>Définition des frontières d'exécution et des effets irréversibles.</div>
+                </div>
+                <div class="list-item">
+                    <div class="bullet">→</div>
+                    <div>Localisation des points d'interruption et des flux orphelins.</div>
+                </div>
+            </div>
+            <div class="matrix-card">
+                <div class="card-title">ANALYSE DES HYPOTHÈSES</div>
+                <div class="list-item">
+                    <div class="bullet">!</div>
+                    <div>L'identifiant d'opération reste-t-il unique en cas de panne ?</div>
+                </div>
+                <div class="list-item">
+                    <div class="bullet">!</div>
+                    <div>Le fournisseur externe garantit-il l'atomicité du règlement ?</div>
+                </div>
+                <div class="list-item">
+                    <div class="bullet">!</div>
+                    <div>Quelle autorité décide de la finalité d'un virement ambigu ?</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>Standard : Runtime Execution Governance</div>
+            <div>PAGE 04</div>
+        </div>
+    </div>
+</body>
+</html>
