@@ -83,7 +83,8 @@ var app = (function(){
       const wantConcepts = m[1]==='concepts';
       const edgeLabel = resolveEdgeLabel(m[2].trim());
       const targets = wantConcepts ? repo.getNodes().filter(n=>n.type==='concept') : repo.getNodes().filter(n=>n.type==='artifact');
-      const withEdge = new Set(repo.getEdges().filter(e=>e.type.toLowerCase()===edgeLabel.toLowerCase()).map(e=>e.to));
+      // Artifact relations start at the artifact; concept relations are counted where the concept is the target.
+      const withEdge = new Set(repo.getEdges().filter(e=>e.type.toLowerCase()===edgeLabel.toLowerCase()).map(e=>wantConcepts?e.to:e.from));
       const missing = targets.filter(n=>!withEdge.has(n.id));
       document.getElementById('adhoc-slot').innerHTML = '<div class="adhoc-result"><div style="font-family:var(--mono);font-size:10.5px;color:var(--amber);letter-spacing:1px;margin-bottom:8px">QUERY: show '+m[1]+' without '+m[2]+' → resolved edge "'+edgeLabel+'"</div>'+(missing.length ? missing.map(n=>'<div class="rel-row"><span>'+n.label+'</span><span class="r-label">no "'+edgeLabel+'" edge</span></div>').join('') : '<div class="check-detail">None — every node in this group has that relation.</div>')+'</div>';
       return;

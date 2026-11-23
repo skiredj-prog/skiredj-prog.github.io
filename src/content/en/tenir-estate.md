@@ -1,9 +1,9 @@
 ---
 title: Tenir-Estate
 kicker: Corpus archive · public edition of 23 November 2026
-description: The TENIR corpus to explore in a working tool. 37 concepts, 66 publishable pieces, and the 195 links between them.
+description: The TENIR corpus to explore in a working tool. 37 concepts, 65 publishable pieces, and the 193 links between them.
 lede: "The TENIR corpus as it is filed in the Estate: concepts, pieces, and the links between them. This edition keeps only the pieces that can be published."
-sources: Tenir-Estate, public edition of 23 November 2026 (66 pieces, 37 concepts, 195 links), drawn from the partner edition of the same day
+sources: Tenir-Estate, public edition of 23 November 2026 (65 pieces, 37 concepts, 193 links), drawn from the partner edition of the same day
 ---
 
 <p><a class="btn btn-primary" href="/tenir-estate/app/">Open Tenir-Estate</a></p>
@@ -14,8 +14,8 @@ sources: Tenir-Estate, public edition of 23 November 2026 (66 pieces, 37 concept
 
 <ul>
   <li><strong>37 concepts</strong>, from TAU and TENIR to HOLD, the membrane, the permit, the receipt, reconciliation, and conformance.</li>
-  <li><strong>66 pieces</strong>: the REG standard RFCs, the reference specification, architecture notes, HOLD and AgentPhone materials, and working compositions.</li>
-  <li><strong>195 links</strong> between concepts and pieces. Each link says which piece mentions, defines, or implements which concept.</li>
+  <li><strong>65 pieces</strong>: the REG standard RFCs, the reference specification, architecture notes, HOLD and AgentPhone materials, and working compositions.</li>
+  <li><strong>193 links</strong> between concepts and pieces. Each link says which piece mentions, defines, or implements which concept.</li>
 </ul>
 
 <p>Six activities let you read the corpus: explore the ontology, analyze a system, follow the chronology, validate the graph, compose a projection, and search the full text.</p>

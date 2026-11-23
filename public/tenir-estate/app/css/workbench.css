@@ -106,7 +106,8 @@ textarea{width:100%;height:280px;background:var(--panel);border:1px solid var(--
   .activity-btn span:not(.glyph){position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
   .rail-note,.brand-sub,.telemetry{display:none}
   #topbar a{white-space:nowrap}
-  #detail-panel:has(.detail-empty){display:none}
+  #detail-panel:not(.is-open){display:none}
+  #detail-panel .detail-close{display:block}
   #detail-panel{position:absolute;right:0;top:0;bottom:0;z-index:5;box-shadow:-8px 0 24px rgba(0,0,0,.4)}
 }
 .r-snippet mark{background:rgba(242,181,68,.2);color:#ffce6b;padding:0 2px;border-radius:2px}
@@ -143,3 +144,7 @@ textarea{width:100%;height:280px;background:var(--panel);border:1px solid var(--
 @media (max-width:1100px){.cmp-grid{grid-template-columns:1fr}}
 #search-reset{border-color:var(--border);color:var(--dim)}
 #search-reset:hover{border-color:var(--amber);color:var(--amber)}
+
+/* Public edition: close control for the detail overlay on small screens. */
+.detail-close{display:none;min-height:44px;padding:0 14px;margin:0 0 14px auto;background:transparent;border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;cursor:pointer}
+.detail-close:focus-visible{outline:2px solid var(--amber);outline-offset:2px}

@@ -916,12 +916,6 @@
    "type": "mentions"
   },
   {
-   "id": "e_estate.tenir_kernel_v1_0_executive_summary_concept.tenir_255",
-   "from": "estate.tenir_kernel_v1_0_executive_summary",
-   "to": "concept.tenir",
-   "type": "mentions"
-  },
-  {
    "id": "e_estate.two_kernel_architecture_concept.tenir_274",
    "from": "estate.two_kernel_architecture",
    "to": "concept.tenir",
@@ -1609,12 +1603,6 @@
    "id": "e_estate.reg_standard_rfc_7_conformance_suite_concept.standing_1489",
    "from": "estate.reg_standard_rfc_7_conformance_suite",
    "to": "concept.standing",
-   "type": "mentions"
-  },
-  {
-   "id": "e_estate.tenir_kernel_v1_0_executive_summary_concept.kernel_1550",
-   "from": "estate.tenir_kernel_v1_0_executive_summary",
-   "to": "concept.kernel",
    "type": "mentions"
   },
   {

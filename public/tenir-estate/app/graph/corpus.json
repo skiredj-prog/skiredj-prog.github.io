@@ -258,25 +258,6 @@
    "supersededBy": ""
   },
   {
-   "id": "estate.tenir_kernel_v1_0_executive_summary",
-   "title": "TENIR Kernel v1.0 – Executive Summary",
-   "type": "document",
-   "path": "nodes/TENIR Kernel v1.0 – Executive Summary .docx",
-   "status": "published",
-   "language": "fr",
-   "tags": [
-    "estate",
-    "08_Platform_SDK_Governance"
-   ],
-   "summary": "Executive Summary – TENIR Kernel v1.0 Rapport de Synthèse Exécutive",
-   "aliases": [],
-   "version": "1.0",
-   "created": "",
-   "modified": "2026-09-24",
-   "supersedes": "",
-   "supersededBy": ""
-  },
-  {
    "id": "estate.two_kernel_architecture",
    "title": "two-kernel-architecture",
    "type": "document",
