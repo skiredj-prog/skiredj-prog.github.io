@@ -147,18 +147,18 @@ sinon → PASS
     <p><strong>Le texte.</strong> Règlement (UE) 2024/1689. Un système d’IA à haut risque doit permettre, techniquement, l’enregistrement automatique des événements (journaux) tout au long de sa durée de vie. Ces journaux servent à repérer les situations à risque ou les modifications substantielles, à la surveillance après commercialisation et au suivi du fonctionnement par le déployeur. Le règlement (UE) 2026/1744, en vigueur depuis le 27 juillet 2026, reporte ces obligations au 2 décembre 2027 pour les systèmes de l’annexe III, et au 2 août 2028 pour ceux de l’annexe I.</p>
     <p><strong>Le mécanisme.</strong> <code>Record()</code> produit un EvidenceRecord pour chaque décision : contexte, entrées, résultat par invariant, trace de commit, hash et signature.</p>
     <p><strong>La limite.</strong> Ce journal couvre la frontière d’exécution, pas le modèle ni le reste de l’application. Dire si un système est à haut risque, puis le rendre conforme, reste l’affaire du fournisseur et du déployeur.</p>
-    <p><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-12">Article 12, AI Act Service Desk<span aria-hidden="true"> ↗</span></a> · <a href="https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/">Calendrier modifié par le règlement 2026/1744<span aria-hidden="true"> ↗</span></a></p>
+    <p><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-12">Article 12, AI Act Service Desk<span aria-hidden="true"> ↗</span></a> · <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=OJ:L_202601744">Règlement (UE) 2026/1744, EUR-Lex<span aria-hidden="true"> ↗</span></a></p>
   </div></article>
   <article><span class="n">DORA · art. 9</span><div>
     <p><strong>Le texte.</strong> Règlement (UE) 2022/2554, applicable aux entités financières depuis le 17 janvier 2025. Elles doivent surveiller et contrôler en continu la sécurité et le fonctionnement de leurs systèmes TIC, limiter l’accès à ce qui est légitimement requis, et tenir une gestion des changements documentée et approuvée.</p>
     <p><strong>Le mécanisme.</strong> <code>Evaluate()</code> rend un verdict avant que <code>Commit()</code> ne tente la moindre mutation, dans les limites fixées par le profil. Un résultat externe inconnu reste UNKNOWN : HOLD et la réconciliation évitent de relancer à l’aveugle.</p>
     <p><strong>La limite.</strong> Un contrôle au moment de l’action ne remplace ni la politique de sécurité de l’information, ni la gestion des accès, ni le cadre de gestion du risque TIC de l’entité.</p>
-    <p><a href="https://streamlex.eu/articles/dora-en-art-9/">Article 9<span aria-hidden="true"> ↗</span></a> · <a href="https://oeil.europarl.europa.eu/oeil/en/procedure-document-summary/pdf?id=1728965">Date d’application, Parlement européen<span aria-hidden="true"> ↗</span></a></p>
+    <p><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj">Règlement (UE) 2022/2554, EUR-Lex<span aria-hidden="true"> ↗</span></a></p>
   </div></article>
   <article><span class="n">NIST AI RMF · MANAGE 2.4</span><div>
     <p><strong>Le texte.</strong> NIST AI 100-1, janvier 2023, cadre d’usage volontaire. MANAGE 2.4 demande des mécanismes en place et appliqués, et des responsabilités attribuées et comprises, pour supplanter, désengager ou désactiver un système d’IA dont les performances ou les résultats ne correspondent pas à l’usage prévu.</p>
-    <p><strong>Le mécanisme.</strong> Au moment de l’action, avant l’effet, HOLD suspend et HARD_VETO refuse.</p>
-    <p><strong>La limite.</strong> MANAGE 2.4 demande aussi que les responsabilités soient attribuées. Le mécanisme ne désigne pas qui décide : l’organisation le fait.</p>
+    <p><strong>Le mécanisme.</strong> Au moment de l’action, avant l’effet, HOLD suspend une opération et HARD_VETO la refuse. La démo de cette page montre aussi QUARANTINE_LOCK, qui bloque toute admission pour une entité.</p>
+    <p><strong>La limite.</strong> Ces verdicts portent sur une opération : ils ne désengagent ni ne désactivent un système entier. MANAGE 2.4 demande aussi que les responsabilités soient attribuées ; le mécanisme ne désigne pas qui décide, l’organisation le fait.</p>
     <p><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/">Fonctions du AI RMF, NIST<span aria-hidden="true"> ↗</span></a></p>
   </div></article>
   <article><span class="n">ISO/IEC 42001 · A.6.2.8</span><div>

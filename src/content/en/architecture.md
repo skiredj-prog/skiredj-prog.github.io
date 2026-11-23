@@ -147,18 +147,18 @@ else → PASS
     <p><strong>The text.</strong> Regulation (EU) 2024/1689. A high-risk AI system must technically allow the automatic recording of events (logs) over its lifetime. These logs serve to identify risk situations or substantial modifications, post-market monitoring, and the deployer’s monitoring of operation. Regulation (EU) 2026/1744, in force since 27 July 2026, postpones these obligations to 2 December 2027 for Annex III systems and to 2 August 2028 for Annex I systems.</p>
     <p><strong>The mechanism.</strong> <code>Record()</code> produces an EvidenceRecord for each decision: context, inputs, per-invariant result, commit trace, hash, and signature.</p>
     <p><strong>The limit.</strong> This record covers the execution boundary, not the model or the rest of the application. Whether a system is high-risk, and making it compliant, remain the provider’s and the deployer’s work.</p>
-    <p><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-12">Article 12, AI Act Service Desk<span aria-hidden="true"> ↗</span></a> · <a href="https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/">Timeline amended by Regulation 2026/1744<span aria-hidden="true"> ↗</span></a></p>
+    <p><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-12">Article 12, AI Act Service Desk<span aria-hidden="true"> ↗</span></a> · <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=en">Regulation (EU) 2026/1744, EUR-Lex<span aria-hidden="true"> ↗</span></a></p>
   </div></article>
   <article><span class="n">DORA · Art. 9</span><div>
     <p><strong>The text.</strong> Regulation (EU) 2022/2554, applicable to financial entities since 17 January 2025. They must continuously monitor and control the security and functioning of their ICT systems, limit access to what is legitimately required, and keep documented, approved change management.</p>
     <p><strong>The mechanism.</strong> <code>Evaluate()</code> returns a verdict before <code>Commit()</code> attempts any mutation, within the limits the profile sets. An unknown external outcome remains UNKNOWN: HOLD and reconciliation avoid a blind retry.</p>
     <p><strong>The limit.</strong> A control at the moment of action replaces neither the information security policy, nor access management, nor the entity’s ICT risk management framework.</p>
-    <p><a href="https://streamlex.eu/articles/dora-en-art-9/">Article 9<span aria-hidden="true"> ↗</span></a> · <a href="https://oeil.europarl.europa.eu/oeil/en/procedure-document-summary/pdf?id=1728965">Application date, European Parliament<span aria-hidden="true"> ↗</span></a></p>
+    <p><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng">Regulation (EU) 2022/2554, EUR-Lex<span aria-hidden="true"> ↗</span></a></p>
   </div></article>
   <article><span class="n">NIST AI RMF · MANAGE 2.4</span><div>
     <p><strong>The text.</strong> NIST AI 100-1, January 2023, a framework for voluntary use. MANAGE 2.4 asks for mechanisms in place and applied, and responsibilities assigned and understood, to supersede, disengage, or deactivate AI systems whose performance or outcomes are inconsistent with intended use.</p>
-    <p><strong>The mechanism.</strong> At the moment of action, before the effect, HOLD suspends and HARD_VETO refuses.</p>
-    <p><strong>The limit.</strong> MANAGE 2.4 also asks for responsibilities to be assigned. The mechanism does not name who decides: the organization does.</p>
+    <p><strong>The mechanism.</strong> At the moment of action, before the effect, HOLD suspends one operation and HARD_VETO refuses it. The demonstration on this page also shows QUARANTINE_LOCK, which blocks all admission for an entity.</p>
+    <p><strong>The limit.</strong> These verdicts apply to one operation: they do not disengage or deactivate a whole system. MANAGE 2.4 also asks for responsibilities to be assigned; the mechanism does not name who decides, the organization does.</p>
     <p><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/">AI RMF Core, NIST<span aria-hidden="true"> ↗</span></a></p>
   </div></article>
   <article><span class="n">ISO/IEC 42001 · A.6.2.8</span><div>
