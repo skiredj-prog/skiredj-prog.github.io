@@ -3,7 +3,7 @@ title: Architecture
 kicker: Illustrative document · adapted
 description: Illustrative architecture of TENIR / REG — theory, standard, runtime, signals, dual kernel, and proof. An illustrative drawing, not the normative schema.
 lede: An intention does not become an effect because a component said yes. It passes a business rule, a regulatory constraint, a mediation, a profile, then a runtime that separates judging, mutating, and proving.
-sources: TENIR / REG — illustrative architecture; REG+ v5.6.0 interactive walkthrough; Execution Control Plane demo; KB3, enacted rendering line; tenir_governance and reg-conformance
+sources: TENIR / REG — illustrative architecture; REG+ v5.6.0 interactive walkthrough; Execution Control Plane demo; KB3, enacted rendering line; tenir_governance and reg-conformance; Regulations (EU) 2024/1689, 2026/1744, and 2022/2554; NIST AI 100-1; ISO/IEC 42001:2023; IMDA, 22 January 2026
 ---
 
 ## In one sentence
@@ -46,7 +46,7 @@ This page explains **how TENIR thinks about the path from a request to a real ac
 
 <div class="stack">
   <article><span class="n">Level 0</span><p><strong>Business rule.</strong> Stated by the functional team or a regulator. The given example: do not double-execute a payment. Complete in its register, not yet executable.</p></article>
-  <article><span class="n">Level 1</span><p><strong>Regulatory constraint.</strong> The document cites, as examples, EU AI Act Art. 12 and DORA Art. 9: traceability, supervision, or control obligations. This site does not verify those articles.</p></article>
+  <article><span class="n">Level 1</span><p><strong>Regulatory constraint.</strong> The document cites, as examples, EU AI Act Art. 12 and DORA Art. 9: traceability, supervision, or control obligations. What they require is set out, text in hand, in <a href="#rules-and-mechanisms">Rules and mechanisms</a>.</p></article>
   <article><span class="n">Level 2</span><p><strong>Act of mediation.</strong> Business intention plus infrastructure hypotheses equals a substantive rule. The rule becomes deployment-dependent.</p></article>
   <article><span class="n">Level 3</span><p><strong>REG Core and REG+.</strong> Resolve(i, h, R, V) → Profile(σ, I*). The profile is the contract. The invariants are executable.</p></article>
   <article><span class="n">Level 4</span><p><strong>Runtime.</strong> Evaluate produces a verdict. Commit attempts the mutation. Record produces reconstructible proof.</p></article>
@@ -133,6 +133,46 @@ else → PASS
 
 <h3>Proof and after the fact</h3>
 <p>The EvidenceRecord separates evaluation context, inputs, results — including per-invariant detail, not a global boolean —, the commit trace, and integrity. τ⁻¹ classes are PRE_COMMIT, EXACT_INVERSE, COMPENSATION, IRREVERSIBLE, INDETERMINATE. INDETERMINATE is not IRREVERSIBLE: ignorance is not proof that there is no way back. EVP separates intended value, realised value, execution loss, and friction reported apart. The <code>tenir_governance</code> repository says EVP reads records with no write path into the verdict.</p>
+
+## Rules and mechanisms
+
+<p>Five texts come up as soon as the question is how to control what an agent does. For each: what the text asks, the mechanism described on this page that relates to it, and what that mechanism does not cover.</p>
+
+<div class="callout callout-limit">
+  <p><strong>Limit.</strong> Linking a mechanism to a text establishes neither compliance nor certification, and does not say whether the text applies to your system. This is not legal advice. Texts re-read on 23 November 2026.</p>
+</div>
+
+<div class="stack">
+  <article><span class="n">AI Act · Art. 12</span><div>
+    <p><strong>The text.</strong> Regulation (EU) 2024/1689. A high-risk AI system must technically allow the automatic recording of events (logs) over its lifetime. These logs serve to identify risk situations or substantial modifications, post-market monitoring, and the deployer’s monitoring of operation. Regulation (EU) 2026/1744, in force since 27 July 2026, postpones these obligations to 2 December 2027 for Annex III systems and to 2 August 2028 for Annex I systems.</p>
+    <p><strong>The mechanism.</strong> <code>Record()</code> produces an EvidenceRecord for each decision: context, inputs, per-invariant result, commit trace, hash, and signature.</p>
+    <p><strong>The limit.</strong> This record covers the execution boundary, not the model or the rest of the application. Whether a system is high-risk, and making it compliant, remain the provider’s and the deployer’s work.</p>
+    <p><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-12">Article 12, AI Act Service Desk<span aria-hidden="true"> ↗</span></a> · <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=en">Regulation (EU) 2026/1744, EUR-Lex<span aria-hidden="true"> ↗</span></a></p>
+  </div></article>
+  <article><span class="n">DORA · Art. 9</span><div>
+    <p><strong>The text.</strong> Regulation (EU) 2022/2554, applicable to financial entities since 17 January 2025. They must continuously monitor and control the security and functioning of their ICT systems, limit access to what is legitimately required, and keep documented, approved change management.</p>
+    <p><strong>The mechanism.</strong> <code>Evaluate()</code> returns a verdict before <code>Commit()</code> attempts any mutation, within the limits the profile sets. An unknown external outcome remains UNKNOWN: HOLD and reconciliation avoid a blind retry.</p>
+    <p><strong>The limit.</strong> A control at the moment of action replaces neither the information security policy, nor access management, nor the entity’s ICT risk management framework.</p>
+    <p><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng">Regulation (EU) 2022/2554, EUR-Lex<span aria-hidden="true"> ↗</span></a></p>
+  </div></article>
+  <article><span class="n">NIST AI RMF · MANAGE 2.4</span><div>
+    <p><strong>The text.</strong> NIST AI 100-1, January 2023, a framework for voluntary use. MANAGE 2.4 asks for mechanisms in place and applied, and responsibilities assigned and understood, to supersede, disengage, or deactivate AI systems whose performance or outcomes are inconsistent with intended use.</p>
+    <p><strong>The mechanism.</strong> At the moment of action, before the effect, HOLD suspends one operation and HARD_VETO refuses it. The demonstration on this page also shows QUARANTINE_LOCK, which blocks all admission for an entity.</p>
+    <p><strong>The limit.</strong> These verdicts apply to one operation: they do not disengage or deactivate a whole system. MANAGE 2.4 also asks for responsibilities to be assigned; the mechanism does not name who decides, the organization does.</p>
+    <p><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/">AI RMF Core, NIST<span aria-hidden="true"> ↗</span></a></p>
+  </div></article>
+  <article><span class="n">ISO/IEC 42001 · A.6.2.8</span><div>
+    <p><strong>The text.</strong> ISO/IEC 42001:2023 sets the requirements for an AI management system that an organization establishes, implements, maintains, and improves. Its Annex A includes a control on recording AI system event logs.</p>
+    <p><strong>The mechanism.</strong> The EvidenceRecord provides event logs at the execution boundary, which the organization can use toward that control.</p>
+    <p><strong>The limit.</strong> ISO/IEC 42001 certification covers an organization’s management system. A software component is not one, and is not certified against this standard.</p>
+  </div></article>
+  <article><span class="n">IMDA · Agentic AI</span><div>
+    <p><strong>The text.</strong> Model AI Governance Framework for Agentic AI, published in Singapore on 22 January 2026. Among its four dimensions: bound risks upfront by limiting agents’ powers, define checkpoints where human approval is required, and implement technical controls throughout the agent lifecycle.</p>
+    <p><strong>The mechanism.</strong> The REG profile sets what the agent may do, and <code>Evaluate()</code> applies it to each action. HOLD suspends the action; HARD_VETO refuses it.</p>
+    <p><strong>The limit.</strong> Choosing use cases, placing human approval points, and naming who approves belong to the organization, not to the mechanism.</p>
+    <p><a href="https://www.mddi.gov.sg/newsroom/singapore-launches-new-model-ai-governance-framework-for-agentic-ai--/">Ministry announcement, Singapore<span aria-hidden="true"> ↗</span></a></p>
+  </div></article>
+</div>
 
 ## Control-plane demonstration
 

@@ -3,7 +3,7 @@ title: Architecture
 kicker: Document illustratif · adapté
 description: Architecture illustrative de TENIR / REG — théorie, standard, runtime, signaux, double noyau et preuve. Dessin illustratif, pas schéma normatif.
 lede: Une intention ne devient pas un effet parce qu’un composant a dit oui. Elle traverse une règle, une contrainte, une médiation, un profil, puis un runtime qui sépare juger, muter et prouver.
-sources: TENIR / REG — Architecture illustrative ; parcours interactif REG+ v5.6.0 ; démo Execution Control Plane ; KB3, ligne instituée ; dépôts tenir_governance et reg-conformance
+sources: TENIR / REG — Architecture illustrative ; parcours interactif REG+ v5.6.0 ; démo Execution Control Plane ; KB3, ligne instituée ; dépôts tenir_governance et reg-conformance ; règlements (UE) 2024/1689, 2026/1744 et 2022/2554 ; NIST AI 100-1 ; ISO/IEC 42001:2023 ; IMDA, 22 janvier 2026
 ---
 
 ## En une phrase
@@ -46,7 +46,7 @@ Cette page explique **comment TENIR imagine le passage d’une demande à une ac
 
 <div class="stack">
   <article><span class="n">Niveau 0</span><p><strong>Règle métier.</strong> Formulée par l’équipe ou le régulateur. Exemple donné : ne pas double-exécuter un paiement. Complète dans son registre, pas encore exécutable.</p></article>
-  <article><span class="n">Niveau 1</span><p><strong>Contrainte réglementaire.</strong> Le document cite, comme exemples, l’article 12 de l’EU AI Act et l’article 9 de DORA : obligations de traçabilité, de supervision ou de contrôle. Ce site ne vérifie pas ces articles.</p></article>
+  <article><span class="n">Niveau 1</span><p><strong>Contrainte réglementaire.</strong> Le document cite, comme exemples, l’article 12 de l’EU AI Act et l’article 9 de DORA : obligations de traçabilité, de supervision ou de contrôle. Ce qu’ils demandent est relevé, texte en main, dans <a href="#normes-et-mécanismes">Normes et mécanismes</a>.</p></article>
   <article><span class="n">Niveau 2</span><p><strong>Acte de médiation.</strong> Intention métier plus hypothèses d’infrastructure égale règle substantive. La règle devient dépendante du déploiement.</p></article>
   <article><span class="n">Niveau 3</span><p><strong>REG Core et REG+.</strong> Resolve(i, h, R, V) → Profile(σ, I*). Le profil est le contrat. Les invariants sont exécutables.</p></article>
   <article><span class="n">Niveau 4</span><p><strong>Runtime.</strong> Evaluate produit un verdict. Commit tente la mutation. Record produit une preuve reconstructible.</p></article>
@@ -133,6 +133,46 @@ sinon → PASS
 
 <h3>Preuve et après-coup</h3>
 <p>L’EvidenceRecord sépare le contexte d’évaluation, les entrées, les résultats — dont le détail par invariant, pas un booléen global —, la trace de commit et l’intégrité. τ⁻¹ classe PRE_COMMIT, EXACT_INVERSE, COMPENSATION, IRREVERSIBLE, INDETERMINATE. INDETERMINATE n’est pas IRREVERSIBLE : l’ignorance n’est pas la preuve d’un non-retour. EVP distingue valeur visée, valeur réalisée, perte d’exécution et friction rapportée à part. Le dépôt <code>tenir_governance</code> dit qu’EVP lit les enregistrements sans chemin d’écriture vers le verdict.</p>
+
+## Normes et mécanismes
+
+<p>Cinq textes reviennent dès qu’on parle de contrôler ce que fait un agent. Pour chacun : ce que le texte demande, le mécanisme décrit sur cette page qui s’y rapporte, et ce que ce mécanisme ne couvre pas.</p>
+
+<div class="callout callout-limit">
+  <p><strong>Limite.</strong> Relier un mécanisme à un texte n’établit ni conformité ni certification, et ne dit pas si ce texte s’applique à votre système. Ce relevé n’est pas un avis juridique. Textes relus le 23 novembre 2026.</p>
+</div>
+
+<div class="stack">
+  <article><span class="n">AI Act · art. 12</span><div>
+    <p><strong>Le texte.</strong> Règlement (UE) 2024/1689. Un système d’IA à haut risque doit permettre, techniquement, l’enregistrement automatique des événements (journaux) tout au long de sa durée de vie. Ces journaux servent à repérer les situations à risque ou les modifications substantielles, à la surveillance après commercialisation et au suivi du fonctionnement par le déployeur. Le règlement (UE) 2026/1744, en vigueur depuis le 27 juillet 2026, reporte ces obligations au 2 décembre 2027 pour les systèmes de l’annexe III, et au 2 août 2028 pour ceux de l’annexe I.</p>
+    <p><strong>Le mécanisme.</strong> <code>Record()</code> produit un EvidenceRecord pour chaque décision : contexte, entrées, résultat par invariant, trace de commit, hash et signature.</p>
+    <p><strong>La limite.</strong> Ce journal couvre la frontière d’exécution, pas le modèle ni le reste de l’application. Dire si un système est à haut risque, puis le rendre conforme, reste l’affaire du fournisseur et du déployeur.</p>
+    <p><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-12">Article 12, AI Act Service Desk<span aria-hidden="true"> ↗</span></a> · <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=OJ:L_202601744">Règlement (UE) 2026/1744, EUR-Lex<span aria-hidden="true"> ↗</span></a></p>
+  </div></article>
+  <article><span class="n">DORA · art. 9</span><div>
+    <p><strong>Le texte.</strong> Règlement (UE) 2022/2554, applicable aux entités financières depuis le 17 janvier 2025. Elles doivent surveiller et contrôler en continu la sécurité et le fonctionnement de leurs systèmes TIC, limiter l’accès à ce qui est légitimement requis, et tenir une gestion des changements documentée et approuvée.</p>
+    <p><strong>Le mécanisme.</strong> <code>Evaluate()</code> rend un verdict avant que <code>Commit()</code> ne tente la moindre mutation, dans les limites fixées par le profil. Un résultat externe inconnu reste UNKNOWN : HOLD et la réconciliation évitent de relancer à l’aveugle.</p>
+    <p><strong>La limite.</strong> Un contrôle au moment de l’action ne remplace ni la politique de sécurité de l’information, ni la gestion des accès, ni le cadre de gestion du risque TIC de l’entité.</p>
+    <p><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj">Règlement (UE) 2022/2554, EUR-Lex<span aria-hidden="true"> ↗</span></a></p>
+  </div></article>
+  <article><span class="n">NIST AI RMF · MANAGE 2.4</span><div>
+    <p><strong>Le texte.</strong> NIST AI 100-1, janvier 2023, cadre d’usage volontaire. MANAGE 2.4 demande des mécanismes en place et appliqués, et des responsabilités attribuées et comprises, pour supplanter, désengager ou désactiver un système d’IA dont les performances ou les résultats ne correspondent pas à l’usage prévu.</p>
+    <p><strong>Le mécanisme.</strong> Au moment de l’action, avant l’effet, HOLD suspend une opération et HARD_VETO la refuse. La démo de cette page montre aussi QUARANTINE_LOCK, qui bloque toute admission pour une entité.</p>
+    <p><strong>La limite.</strong> Ces verdicts portent sur une opération : ils ne désengagent ni ne désactivent un système entier. MANAGE 2.4 demande aussi que les responsabilités soient attribuées ; le mécanisme ne désigne pas qui décide, l’organisation le fait.</p>
+    <p><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/">Fonctions du AI RMF, NIST<span aria-hidden="true"> ↗</span></a></p>
+  </div></article>
+  <article><span class="n">ISO/IEC 42001 · A.6.2.8</span><div>
+    <p><strong>Le texte.</strong> ISO/IEC 42001:2023 fixe les exigences d’un système de management de l’IA, que l’organisation établit, met en œuvre, tient à jour et améliore. Son annexe A comprend un contrôle sur l’enregistrement des journaux d’événements des systèmes d’IA.</p>
+    <p><strong>Le mécanisme.</strong> L’EvidenceRecord fournit des journaux d’événements à la frontière d’exécution, que l’organisation peut verser à ce contrôle.</p>
+    <p><strong>La limite.</strong> La certification ISO/IEC 42001 porte sur le système de management d’une organisation. Un composant logiciel n’en est pas un et ne se certifie pas à cette norme.</p>
+  </div></article>
+  <article><span class="n">IMDA · IA agentique</span><div>
+    <p><strong>Le texte.</strong> Model AI Governance Framework for Agentic AI, publié à Singapour le 22 janvier 2026. Parmi ses quatre dimensions : borner les risques en amont en limitant les pouvoirs des agents, définir des points de contrôle où une approbation humaine est requise, et mettre en place des contrôles techniques sur tout le cycle de vie de l’agent.</p>
+    <p><strong>Le mécanisme.</strong> Le profil REG fixe ce que l’agent peut faire, et <code>Evaluate()</code> l’applique à chaque action. HOLD suspend l’action ; HARD_VETO la refuse.</p>
+    <p><strong>La limite.</strong> Choisir les cas d’usage, placer les points d’approbation humaine et nommer qui approuve relève de l’organisation, pas du mécanisme.</p>
+    <p><a href="https://www.mddi.gov.sg/newsroom/singapore-launches-new-model-ai-governance-framework-for-agentic-ai--/">Annonce du ministère, Singapour<span aria-hidden="true"> ↗</span></a></p>
+  </div></article>
+</div>
 
 ## Démonstration du plan de contrôle
 
