@@ -554,7 +554,7 @@ h1 {
 .stack .n,
 .pipeline .n {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
