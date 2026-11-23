@@ -40,7 +40,9 @@ Fichiers servis : `public/magazine/n02/` (couverture, image de partage, huit ill
 
 Différences avec le N° 01 : pas de fichier JSON ni de générateur ; le PDF est imprimé depuis une maquette HTML A5 qui n’est pas dans ce dépôt, avec les polices Libre Baskerville et DM Sans incorporées. Pour une correction, modifier `n02.fr.html` et la maquette, réimprimer le PDF, puis mettre à jour `SHA256SUMS.txt`.
 
-Édition anglaise (17 novembre 2026) : `n02.en.html`, servie sur `/magazine/n02/en/`. Même structure et mêmes classes que `n02.fr.html` ; les ancres sont en anglais. Toute correction se fait dans les deux fichiers. Les renvois « page N » du français sont remplacés par le nom de la section, car le PDF n’existe qu’en français. Pas encore d’édition arabe.
+Édition anglaise (17 novembre 2026) : `n02.en.html`, servie sur `/magazine/n02/en/`. Même structure et mêmes classes que `n02.fr.html` ; les ancres sont en anglais. Toute correction se fait dans les deux fichiers. Les renvois « page N » du français sont remplacés par le nom de la section, car le PDF n’existe qu’en français. 
+
+Édition arabe (22 novembre 2026) : `n02.ar.html`, servie sur `/magazine/n02/ar/`, de droite à gauche. Mêmes ancres que l’anglais. Relecteur désigné : Mohammed Ali Skiredj ; publication approuvée par Aziz Skiredj le 23 novembre 2026. Toute correction de langue reçue ensuite s’applique directement dans ce fichier. Conventions du N° 01 arabe : arabe standard, chiffres occidentaux, guillemets « », mois à la marocaine. Les fragments latins (identifiants, verdicts, noms de normes) sont entourés de `<span dir="ltr">` pour ne pas être réordonnés ; les milliers sont séparés par une espace insécable, sinon « 50 000 » s’affiche « 000 50 ». Les paroles d’agents arabes sortent de `crozwya/recits_ar.py` (dépôt `2-the-crozwya`).
 
 Points à connaître :
 - les « paroles d’agents » anglaises ne sont pas traduites à la main : elles sortent des mêmes carnets par les gabarits anglais du dépôt `2-the-crozwya` (`crozwya/recits_en.py`, sortie `out/recits.en.md`), sans nouvelle exécution ; les identifiants d’échange (X-SERVEURS, X-MAINTENANCE) restent tels que le noyau les a écrits ;
