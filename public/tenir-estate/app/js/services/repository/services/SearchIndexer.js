@@ -78,15 +78,16 @@ var SearchIndexer = (function() {
     const d = docs[id]; if (!d || !d.body) return [];
     if (d.sents) return d.sents;
     const raw = d.body.split(/(?<=[.!?…:;])\s+(?=[A-ZÀ-Ý0-9"“«(#\[-])/), out = [];
-    let buf = '';
+    let buf = '', seq = 0;   // seq numbers every flushed chunk, kept or not, so callers can tell adjacent sentences apart
     raw.forEach(p => {
       buf = buf ? buf + ' ' + p : p;
       if (buf.length < 70) return;
+      const n = seq++;
       let t = buf.replace(/[\u200b-\u200d\ufeff]/g, '').replace(/^[#>*\-\s|•·]+/, '').replace(/^(\d+\.)+\d*\s+(?=[A-ZÀ-Ý])/, '').replace(/\s+/g, ' ').trim(); buf = '';
       if (t.length > 460) { const cut = t.lastIndexOf(' ', 440); t = t.slice(0, cut > 200 ? cut : 440) + '…'; }
       const letters = (t.match(/[A-Za-zÀ-ÿ ]/g) || []).length;
       if (letters / t.length < 0.72 || (t.match(/\|/g) || []).length > 2 || /https?:\/\//.test(t)) return;
-      out.push({ t, f:fold(t), q:quality(t) });
+      out.push({ t, f:fold(t), q:quality(t), n });
     });
     d.sents = out; return out;
   }
@@ -152,7 +153,7 @@ var SearchIndexer = (function() {
         const a = hasTerms(ra, s.f), b = hasTerms(rb, s.f);
         if (a >= na && b >= nb) { out.push({ id:n.id, text:s.t, score:30 + (a + b) * 4 + s.q }); return; }
         const nx = ss[i + 1]; if (!nx || s.t.length + nx.t.length > 520) return;
-        if ((a >= na && hasTerms(rb, nx.f) >= nb) || (b >= nb && hasTerms(ra, nx.f) >= na)) out.push({ id:n.id, text:s.t + ' ' + nx.t, score:14 + (a + b) * 4 + Math.min(s.q, nx.q) });
+        if ((a >= na && hasTerms(rb, nx.f) >= nb) || (b >= nb && hasTerms(ra, nx.f) >= na)) out.push({ id:n.id, text:s.t + (nx.n === s.n + 1 && !s.t.endsWith('…') ? ' ' : ' […] ') + nx.t, score:14 + (a + b) * 4 + Math.min(s.q, nx.q) });
       });
     });
     out.sort((p, q) => q.score - p.score);

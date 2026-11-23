@@ -107,6 +107,7 @@ var graphRenderer = (function(){
 
   function render(containerId, graph, onNodeClick) {
     G = graph; onClick = onNodeClick;
+    if (network) { network.destroy(); network = null; }   // release the previous canvas and its resize listeners
     nodes = new vis.DataSet([]); edges = new vis.DataSet([]);
     network = new vis.Network(document.getElementById(containerId), { nodes, edges },
       { physics:false, interaction:{ hover:true, tooltipDelay:120 }, nodes:{ chosen:true } });

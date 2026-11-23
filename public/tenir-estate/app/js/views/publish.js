@@ -54,6 +54,9 @@ var publishView = (function(){
     });
     $('cmp-ideas').addEventListener('click', onBoardClick);
     $('cmp-pairs').addEventListener('click', onBoardClick);
+    ['cmp-ideas', 'cmp-pairs', 'cmp-suggest'].forEach(id => $(id).addEventListener('keydown', e => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[role="button"]')) { e.preventDefault(); e.target.click(); }
+    }));
     $('cmp-suggest').addEventListener('click', e => { const c = e.target.closest('.pub-chip'); if (c) { addIdea(c.dataset.label, c.dataset.id); input.value = ''; suggest(); } });
   }
 
@@ -99,15 +102,21 @@ var publishView = (function(){
   }
   function passageRow(p, attrs, k) {
     const n = G.getNode(p.id);
-    return '<div class="cmp-p' + (p.pinned ? ' on' : '') + '" ' + attrs + ' data-k="' + k + '"><span class="cmp-check">' + (p.pinned ? '✓' : '+') + '</span><div>' +
+    return '<div class="cmp-p' + (p.pinned ? ' on' : '') + '" role="button" tabindex="0" aria-pressed="' + !!p.pinned + '" ' + attrs + ' data-k="' + k + '"><span class="cmp-check">' + (p.pinned ? '✓' : '+') + '</span><div>' +
       '<div class="cmp-pt">' + esc(p.text) + '</div><div class="cmp-ps">' + esc(n.label) + (family(n) ? ' · ' + esc(family(n)) : '') + (n.modified ? ' · ' + esc(n.modified) : '') + '</div></div></div>';
   }
+  function focusedControl() {   // remembers which board control has keyboard focus, so a re-render can give it back
+    const a = document.activeElement, box = a && a.closest ? a.closest('#cmp-ideas,#cmp-pairs,#cmp-suggest') : null;
+    if (!box || a.getAttribute('role') !== 'button') return null;
+    return '#' + box.id + ' .' + a.classList[0] + Object.keys(a.dataset).map(k => '[data-' + k.replace(/[A-Z]/g, m => '-' + m.toLowerCase()) + '="' + CSS.escape(a.dataset[k]) + '"]').join('');
+  }
   function render() {
+    const keep = focusedControl();
     $('cmp-ideas').innerHTML = ideas.map((i, x) =>
       '<div class="cmp-idea"><div class="cmp-idea-h"><span class="cmp-idea-t">' + esc(i.label) + '</span><span class="r-group">' + (i.conceptId ? 'CONCEPT' : 'IDEA') +
-      '</span><span class="cmp-x" data-x="' + x + '" title="remove">×</span></div>' +
+      '</span><span class="cmp-x" role="button" tabindex="0" aria-label="Remove ' + esc(i.label) + '" data-x="' + x + '" title="remove">×</span></div>' +
       (i.passages.length ? i.passages.map((p, k) => passageRow(p, 'data-idea="' + x + '"', k)).join('') +
-        (i.passages.length >= i.shown ? '<div class="cmp-more" data-more="' + x + '">more passages</div>' : '')
+        (i.passages.length >= i.shown ? '<div class="cmp-more" role="button" tabindex="0" data-more="' + x + '">more passages</div>' : '')
         : '<div class="cmp-none">No passage of the indexed corpus carries these words together. Try fewer or other words.</div>') + '</div>').join('');
     $('cmp-pairs').innerHTML = pairs.length ? '<div class="cmp-h" style="margin-top:22px">2 · CONNECTIONS</div>' + pairs.map((p, x) =>
       '<div class="cmp-idea"><div class="cmp-idea-h"><span class="cmp-idea-t">' + esc(p.a) + ' ↔ ' + esc(p.b) + '</span><span class="r-group">' + p.shared.length + ' SHARED ARTIFACT' + (p.shared.length === 1 ? '' : 'S') + '</span></div>' +
@@ -116,6 +125,7 @@ var publishView = (function(){
         : '<div class="cmp-none">No passage joins these two ideas. The draft will say so instead of inventing a link.</div>') + '</div>').join('') : '';
     suggest();
     if (!edited) generate();
+    if (keep) (document.querySelector(keep) || $('cmp-input')).focus();
   }
   function suggest() {
     const typed = $('cmp-input').value.trim().toLowerCase(), on = new Set(ideas.map(i => i.conceptId).filter(Boolean));
@@ -131,7 +141,7 @@ var publishView = (function(){
       list = Object.keys(score).filter(id => !on.has(id)).sort((a, b) => score[b] - score[a]).map(id => G.getNode(id));
     } else { lead = 'start from'; list = concepts().slice().sort((a, b) => G.incoming(b.id).length - G.incoming(a.id).length); }
     $('cmp-suggest').innerHTML = (list.length ? '<span class="cmp-lead">' + lead + '</span>' : '') + list.slice(0, 9).map(c =>
-      '<div class="pub-chip" data-id="' + esc(c.id) + '" data-label="' + esc(bare(c.label)) + '">' + esc(bare(c.label)) + '</div>').join('') +
+      '<div class="pub-chip" role="button" tabindex="0" data-id="' + esc(c.id) + '" data-label="' + esc(bare(c.label)) + '">' + esc(bare(c.label)) + '</div>').join('') +
       (ideas.length >= MAX_IDEAS ? '<span class="cmp-lead">board is full (' + MAX_IDEAS + ' ideas)</span>' : '');
   }
   function generate() {
