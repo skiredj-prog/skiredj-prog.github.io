@@ -89,6 +89,7 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
         {
           label: "À manipuler", links: [
             { slug: "portfolio/control-tower", href: "/portfolio/control-tower/", label: "Control Tower", hint: "Un agent propose une action. Que se passe-t-il ensuite\u00a0?" },
+            { slug: "workbench", href: "/workbench/", label: "TENIR Workbench", hint: "Un système qui approche de sa limite. Lecture seule, chiffres illustratifs." },
             { slug: "demonstrations/journal", href: "/demonstrations/journal/", label: "Ce que le journal ne voit pas", hint: "Deux lignes cohérentes, une demande manquante." },
             { slug: "architecture/interactive", href: "/architecture/interactive/", label: "Parcours interactif", hint: "L’architecture, pièce par pièce." },
             { slug: "prototype", href: "https://mobile.tenirlabs.cc/discover", label: "Prototype mobile", hint: "Une simulation distincte, sur téléphone.", external: true },
@@ -195,6 +196,7 @@ export const primaryNav: Record<Locale, PrimaryItem[]> = {
         {
           label: "Hands-on", links: [
             { slug: "portfolio/control-tower", href: "/en/portfolio/control-tower/", label: "Control Tower", hint: "An agent proposes an action. What happens next?" },
+            { slug: "workbench", href: "/en/workbench/", label: "TENIR Workbench", hint: "A system approaching its limit. Read-only, illustrative figures." },
             { slug: "demos/log", href: "/en/demos/log/", label: "What the log cannot see", hint: "Two consistent lines, one missing request." },
             { slug: "architecture/interactive", href: "/en/architecture/interactive/", label: "Interactive walkthrough", hint: "The architecture, piece by piece." },
             { slug: "prototype", href: "https://mobile.tenirlabs.cc/discover", label: "Mobile prototype", hint: "A separate simulation, on your phone.", external: true },
@@ -275,6 +277,7 @@ const sectionBySlug: Record<string, Section> = {
   "offre/exemple": "demos", "offer/example": "demos",
   "demonstrations/journal": "demos", "demos/log": "demos",
   rejouer: "demos", replay: "demos",
+  workbench: "demos",
   // Crédibilité: transparency, architecture and research.
   credibilite: "credibilite", credibility: "credibilite",
   statut: "credibilite", status: "credibilite",
@@ -419,6 +422,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
       id: "demos", label: "Démos", links: [
         { slug: "portfolio/demos", href: "/portfolio/demos/", label: "Toutes les démonstrations" },
         { slug: "portfolio/control-tower", href: "/portfolio/control-tower/", label: "Control Tower" },
+        { slug: "workbench", href: "/workbench/", label: "TENIR Workbench" },
         { slug: "prototype", href: "https://mobile.tenirlabs.cc/discover", label: "Prototype mobile" },
         { slug: "architecture/demo", href: "/architecture/demo/", label: "Démo du plan de contrôle" },
         { slug: "architecture/interactive", href: "/architecture/interactive/", label: "Parcours interactif" },
@@ -488,6 +492,7 @@ export const footerGroups: Record<Locale, FooterGroup[]> = {
       id: "demos", label: "Demos", links: [
         { slug: "portfolio/demos", href: "/en/portfolio/demos/", label: "All demos" },
         { slug: "portfolio/control-tower", href: "/en/portfolio/control-tower/", label: "Control Tower" },
+        { slug: "workbench", href: "/en/workbench/", label: "TENIR Workbench" },
         { slug: "prototype", href: "https://mobile.tenirlabs.cc/discover", label: "Mobile prototype" },
         { slug: "architecture/demo", href: "/en/architecture/demo/", label: "Control-plane demo" },
         { slug: "architecture/interactive", href: "/en/architecture/interactive/", label: "Interactive walkthrough" },

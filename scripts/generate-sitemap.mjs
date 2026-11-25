@@ -20,9 +20,16 @@ await visit(root);
 urls.sort();
 const present=new Set(urls);
 const full=(path)=>origin+base+path;
+const workbenchPair=new Map([['/workbench/','/en/workbench/'],['/en/workbench/','/workbench/']]);
 const entries=urls.map(path=>{
  let alternates='';
- if(path.startsWith('/portfolio/')&&present.has('/en'+path)) {
+ const twin=workbenchPair.get(path);
+ if(twin&&present.has(twin)) {
+   const frPath=path.startsWith('/en/')?twin:path;
+   const enPath=path.startsWith('/en/')?path:twin;
+   alternates='\n    <xhtml:link rel="alternate" hreflang="fr" href="'+escaped(full(frPath))+'"/>'+
+              '\n    <xhtml:link rel="alternate" hreflang="en" href="'+escaped(full(enPath))+'"/>';
+ }else if(path.startsWith('/portfolio/')&&present.has('/en'+path)) {
    alternates='\n    <xhtml:link rel="alternate" hreflang="fr" href="'+escaped(full(path))+'"/>'+
               '\n    <xhtml:link rel="alternate" hreflang="en" href="'+escaped(full('/en'+path))+'"/';
  }else if(path.startsWith('/en/portfolio/')&&present.has(path.slice(3))) {

@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import SystemWorkbench from '../../components/SystemWorkbench.astro';
+const locale = 'fr' as const;
+---
+<Base locale={locale} slug="workbench"
+  documentTitle="TENIR Workbench — Explorer comment un système tient sous pression"
+  title="Explorer comment un système tient sous pression"
+  description="Page de lecture seule : un système illustratif approche de sa limite. Curseurs, marge, trois lectures. Concept de communication, pas le noyau de score, pas une certification."
+  kicker="TENIR Workbench · lecture seule"
+  lede="Un environnement interactif pour explorer les contraintes d’un système, l’admissibilité, les marges de décision, la gouvernance de l’exécution et la capacité à corriger."
+  sources="Visuel réutilisable classé dans tenir_governance PR #149 (docs/workbench/s0). Le HTML figé n’est pas servi. Limites citées depuis le CHANGELOG 5.7.6 via ecarts-cartographie.md : harnais NOT_CERTIFIABLE, TENIR-Gov mono-hôte, FM-20 ouvert.">
+  <SystemWorkbench locale={locale} />
+</Base>

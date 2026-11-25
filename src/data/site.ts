@@ -246,6 +246,7 @@ const frToEn: Record<string, string> = {
   affirmations: "/en/claims/",
   hold: "/en/hold/",
   "tenir-estate": "/en/tenir-estate/",
+  workbench: "/en/workbench/",
 };
 
 const enToFr: Record<string, string> = Object.fromEntries(

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4731",
-    "build": "node scripts/check-workbench-release.mjs && astro build && node scripts/finalize-html.mjs && node scripts/generate-sitemap.mjs && node scripts/check-workbench-release.mjs --dist",
+    "build": "node scripts/check-workbench-release.mjs && astro build && node scripts/finalize-html.mjs && node scripts/generate-sitemap.mjs && node scripts/check-workbench-release.mjs --dist && npm run check:workbench-s1",
     "preview": "astro preview --host 127.0.0.1 --port 4731",
     "check:links": "node scripts/check-links.mjs",
     "check:assets": "node --experimental-strip-types scripts/check-asset-registry.mjs",
@@ -17,6 +17,7 @@
     "check:process-roles": "node scripts/check-process-roles.mjs",
     "check:workbench-release": "node scripts/check-workbench-release.mjs",
     "check:workbench-release:unit": "node scripts/check-workbench-release.mjs --self-test",
+    "check:workbench-s1": "node --experimental-strip-types scripts/check-workbench-s1.mjs",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
   },

@@ -1,0 +1,409 @@
+---
+import '../styles/workbench-s1.css';
+import { url, type Locale } from '../data/site';
+import {
+  DEFAULT_READING,
+  GAUGE,
+  approachSeries,
+  disclaimer,
+  gaugeGeometry,
+  gaugeTicks,
+  illustrativeStress,
+  syntheticLabel,
+  viewModel,
+} from '../data/workbench-s1';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const series = approachSeries(DEFAULT_READING);
+const view = viewModel(locale, DEFAULT_READING, 'hold', null, series);
+const geo = gaugeGeometry(illustrativeStress(DEFAULT_READING));
+const ticks = gaugeTicks();
+const synth = syntheticLabel[locale];
+const to = (path: string) => url(path);
+const links = fr
+  ? [
+      ['/portfolio/workbench/', 'L’atelier TENIR/REG, une autre page'],
+      ['/preuves/', 'Socle de preuves'],
+      ['/statut/', 'Statut et limites'],
+      ['/conformance/', 'Conformance'],
+    ]
+  : [
+      ['/en/portfolio/workbench/', 'The TENIR/REG workbench, a different page'],
+      ['/en/evidence/', 'Evidence base'],
+      ['/en/status/', 'Status and limits'],
+      ['/en/conformance/', 'Conformance'],
+    ];
+---
+<div class="wb" data-workbench-s1 data-locale={locale}>
+  <p class="wb-disclaimer" role="note">
+    <strong>{disclaimer[locale]}</strong>
+    {fr && <span lang="en">{disclaimer.en}</span>}
+  </p>
+  <p class="wb-kicker">{fr ? 'Scénario de départ · pas une IA' : 'Opening scenario · not an AI system'}</p>
+  <p class="wb-scenario">{fr
+    ? 'Un système qui approche de sa limite. Pensez à une ligne, un stock ou un procédé dont la charge monte et la réserve baisse. Aucun équipement n’est branché. Les trois lectures portent sur les mêmes chiffres.'
+    : 'A system approaching its limit. Picture a line, a stock or a process whose load rises and whose reserve falls. No equipment is connected. The three readings use the same figures.'}</p>
+  <div class="wb-tabs" role="tablist" aria-label={fr ? 'Trois lectures' : 'Three readings'}>
+    <button type="button" role="tab" id="wb-tab-observe" aria-controls="wb-panel-observe" aria-selected="true" tabindex="0">{fr ? 'Observer' : 'Observe'}</button>
+    <button type="button" role="tab" id="wb-tab-decide" aria-controls="wb-panel-decide" aria-selected="false" tabindex="-1">{fr ? 'Décider' : 'Decide'}</button>
+    <button type="button" role="tab" id="wb-tab-verify" aria-controls="wb-panel-verify" aria-selected="false" tabindex="-1">{fr ? 'Vérifier' : 'Verify'}</button>
+  </div>
+
+  <section role="tabpanel" id="wb-panel-observe" aria-labelledby="wb-tab-observe">
+    <h2>{fr ? 'Observer — un système sous pression' : 'Observe — a system under pressure'}</h2>
+    <p class="wb-note">{fr
+      ? 'Stabilité, capacité disponible, variance du milieu, trajectoire, options restantes. Lecture seule.'
+      : 'Stability, available capacity, environmental variance, trajectory, remaining options. Read only.'}</p>
+    <div class="wb-bar">
+      <span class="wb-synth">{synth}</span>
+      <span>{fr ? 'Marge' : 'Margin'} <b data-wb="margin">{view.margin}</b> pts</span>
+      <span>{fr ? 'Posture indicative' : 'Indicative posture'} <b class="wb-posture" data-wb="posture">{view.posture}</b></span>
+      <span data-wb="envelope">{view.envelope}</span>
+    </div>
+    <div class="wb-grid">
+      <article class="wb-card">
+        <header><h3>{fr ? 'Stabilité illustrative' : 'Illustrative stability'}</h3><span class="wb-synth">{synth}</span></header>
+        <svg class="wb-gauge-svg" viewBox="0 0 200 118" role="img" aria-labelledby="wb-gauge-title">
+          <title id="wb-gauge-title">{fr ? 'Jauge de tension illustrative' : 'Illustrative tension gauge'}</title>
+          <path class="wb-track" d={geo.track}></path>
+          <path class:list={['wb-value', `wb-stress-${view.stressBand}`]} data-wb-arc d={geo.track} stroke-dasharray={`${geo.dash} ${geo.length}`}></path>
+          {ticks.map((tick) => <line class="wb-tick" x1={tick.x1} y1={tick.y1} x2={tick.x2} y2={tick.y2}></line>)}
+          <line class="wb-needle" data-wb-needle x1={GAUGE.cx} y1={GAUGE.cy} x2={geo.tip.x} y2={geo.tip.y}></line>
+          <circle class="wb-hub" cx={GAUGE.cx} cy={GAUGE.cy} r="3.5"></circle>
+          <circle class:list={['wb-tip', `wb-stress-${view.stressBand}`]} data-wb-tip cx={geo.tip.x} cy={geo.tip.y} r="4.5"></circle>
+        </svg>
+        <p class="wb-gauge-value"><span data-wb="stress">{view.stress}</span></p>
+        <p class="wb-help" data-wb="stress-mark">{view.stressMark}</p>
+        <p class="wb-help">{fr
+          ? '0 est calme, 1 est tendu, sur cette page seulement. Les marques sont les constantes du dessin figé, pas une politique.'
+          : '0 is calm, 1 is tense, on this page only. The marks are constants of the frozen drawing, not a policy.'}</p>
+      </article>
+      <article class="wb-card">
+        <header><h3>{fr ? 'Trajectoire' : 'Trajectory'}</h3><span class="wb-synth">{synth}</span></header>
+        <svg class="wb-traj" viewBox="0 0 300 112" role="img" aria-labelledby="wb-traj-title">
+          <title id="wb-traj-title" data-wb="traj-title">{fr
+            ? 'Trajectoire illustrative vers la lecture actuelle'
+            : 'Illustrative trajectory into the current reading'}</title>
+          <polyline class="wb-line wb-line-p" data-wb-line="p" points={view.lines.p}></polyline>
+          <polyline class="wb-line wb-line-k" data-wb-line="k" points={view.lines.k}></polyline>
+          <polyline class="wb-line wb-line-v" data-wb-line="v" points={view.lines.v}></polyline>
+          <polyline class="wb-line wb-line-s" data-wb-line="s" points={view.lines.s}></polyline>
+        </svg>
+        <ul class="wb-legend">
+          <li><span class="wb-swatch wb-swatch-p"></span>{fr ? 'Pression' : 'Pressure'}</li>
+          <li><span class="wb-swatch wb-swatch-k"></span>{fr ? 'Capacité' : 'Capacity'}</li>
+          <li><span class="wb-swatch wb-swatch-v"></span>{fr ? 'Variance' : 'Variance'}</li>
+          <li><span class="wb-swatch wb-swatch-s"></span>{fr ? 'Tension' : 'Tension'}</li>
+        </ul>
+        <p class="wb-help" data-wb="delta">{view.delta}</p>
+      </article>
+      <article class="wb-card">
+        <header><h3>{fr ? 'Lecture' : 'Reading'}</h3><span class="wb-synth">{synth}</span></header>
+        <dl class="wb-readout">
+          <div><dt>{fr ? 'Marge de capacité' : 'Capacity margin'}</dt><dd><span data-wb="margin">{view.margin}</span> pts</dd></div>
+          <div><dt>{fr ? 'Pression d’exploitation' : 'Operating pressure'}</dt><dd><span data-wb="pressure">{view.pressure}</span> %</dd></div>
+          <div><dt>{fr ? 'Capacité disponible' : 'Available capacity'}</dt><dd><span data-wb="capacity">{view.capacity}</span> %</dd></div>
+          <div><dt>{fr ? 'Variance du milieu' : 'Environmental variance'}</dt><dd><span data-wb="variance">{view.variance}</span> %</dd></div>
+          <div><dt>{fr ? 'Options restantes' : 'Remaining options'}</dt><dd><span data-wb="options">{view.options}</span> % · <span data-wb="option-unit">{view.optionUnit}</span></dd></div>
+        </dl>
+        <p class="wb-sentence" data-wb="sentence">{view.sentence}</p>
+      </article>
+    </div>
+    <div class="wb-sliders">
+      <label class="wb-slider">
+        <span class="wb-slider-top"><span>{fr ? 'Pression d’exploitation' : 'Operating pressure'}</span><output for="wb-pressure" data-wb="pressure">{view.pressure}</output></span>
+        <input id="wb-pressure" type="range" min="0" max="100" step="1" value={DEFAULT_READING.pressure} aria-describedby="wb-pressure-help" />
+        <span class="wb-synth">{synth}</span>
+        <span class="wb-help" id="wb-pressure-help">{fr ? 'Part illustrative de la charge, de 0 à 100.' : 'Illustrative share of the load, from 0 to 100.'}</span>
+      </label>
+      <label class="wb-slider">
+        <span class="wb-slider-top"><span>{fr ? 'Capacité disponible' : 'Available capacity'}</span><output for="wb-capacity" data-wb="capacity">{view.capacity}</output></span>
+        <input id="wb-capacity" type="range" min="0" max="100" step="1" value={DEFAULT_READING.capacity} aria-describedby="wb-capacity-help" />
+        <span class="wb-synth">{synth}</span>
+        <span class="wb-help" id="wb-capacity-help">{fr ? 'Réserve illustrative, de 0 à 100.' : 'Illustrative reserve, from 0 to 100.'}</span>
+      </label>
+      <label class="wb-slider">
+        <span class="wb-slider-top"><span>{fr ? 'Variance du milieu' : 'Environmental variance'}</span><output for="wb-variance" data-wb="variance">{view.variance}</output></span>
+        <input id="wb-variance" type="range" min="0" max="100" step="1" value={DEFAULT_READING.variance} aria-describedby="wb-variance-help" />
+        <span class="wb-synth">{synth}</span>
+        <span class="wb-help" id="wb-variance-help">{fr ? 'Perturbations dessinées autour de la lecture. Elles relèvent la tension.' : 'Drawn disturbances around the reading. They raise the tension.'}</span>
+      </label>
+      <label class="wb-slider">
+        <span class="wb-slider-top"><span>{fr ? 'Options restantes' : 'Remaining options'}</span><output for="wb-options"><span data-wb="options">{view.options}</span> % · <span data-wb="option-unit">{view.optionUnit}</span></output></span>
+        <input id="wb-options" type="range" min="0" max="100" step="1" value={DEFAULT_READING.options} aria-describedby="wb-options-help" />
+        <span class="wb-synth">{synth}</span>
+        <span class="wb-help" id="wb-options-help">{fr
+          ? 'Échelle de cette page, aussi affichée de 0 à 1. Le schéma 1.2 borne option_space à [0, 1]. Ce curseur n’écrit pas ce champ.'
+          : 'This page’s scale, also shown from 0 to 1. Schema 1.2 bounds option_space to [0, 1]. This slider does not write that field.'}</span>
+      </label>
+    </div>
+    <details class="wb-formula">
+      <summary>{fr ? 'Comment ces chiffres sont dessinés' : 'How these figures are drawn'}</summary>
+      <p class="wb-help">{fr
+        ? 'La marge, en points, est la capacité disponible moins la pression d’exploitation. La tension illustrative vaut (pression / capacité) × (0,72 + 0,28 × variance) × (1,05 − 0,20 × options), chaque curseur ramené entre 0 et 1, capacité plancher 0,05, résultat borné à [0, 1]. Les marques 0,42, 0,75 et 0,90 sont les constantes du dessin figé. Relâcher la charge retire 15 points de pression dans le récit. Le tampon, s’il est dessiné, ajoute 10 points de capacité et retire 15 points d’options. Ces pas ne sont pas un modèle physique.'
+        : 'Margin, in points, is available capacity minus operating pressure. Illustrative tension is (pressure / capacity) × (0.72 + 0.28 × variance) × (1.05 − 0.20 × options), each slider scaled to 0–1, capacity floored at 0.05, and the result clamped to [0, 1]. The marks 0.42, 0.75 and 0.90 are constants of the frozen drawing. Easing the load removes 15 pressure points in the story. The buffer, when it is drawn, adds 10 capacity points and removes 15 option points. These steps are not a physical model.'}</p>
+    </details>
+    <p class="visually-hidden" aria-live="polite" data-wb-live></p>
+  </section>
+
+  <section role="tabpanel" id="wb-panel-decide" aria-labelledby="wb-tab-decide" hidden>
+    <h2>{fr ? 'Décider — le moment du jugement' : 'Decide — the moment of judgment'}</h2>
+    <p class="wb-note">{fr
+      ? 'Trois alternatives pour la même lecture. La personne décide du but et de l’arbitrage. TENIR, dans le cadre réel, vérifierait des frontières opposables. Cette page ne les vérifie pas, n’envoie rien et ne change aucun mode.'
+      : 'Three alternatives for the same reading. The human decides the purpose and the trade-off. In the real frame, TENIR would check enforceable boundaries. This page does not check them, sends nothing and changes no mode.'}</p>
+    <div class="wb-choices">
+      <label class="wb-choice">
+        <input type="radio" name="wb-choice" value="hold" checked />
+        <h3>{fr ? 'Tenir le régime' : 'Hold the rate'}</h3>
+        <p>{fr ? 'Ce qui est gardé : le débit prévu du récit. Ce qui est compromis : la marge pour une perturbation de plus. Incertitude : la taille de cette perturbation n’est pas dans le dessin.' : 'What is kept: the story’s planned throughput. What is compromised: margin for one more disturbance. Uncertainty: the size of that disturbance is not in the drawing.'}</p>
+      </label>
+      <label class="wb-choice">
+        <input type="radio" name="wb-choice" value="ease" />
+        <h3>{fr ? 'Relâcher la charge' : 'Ease the load'}</h3>
+        <p>{fr ? 'Ce qui est gardé : un peu de marge dessinée, par −15 points de pression dans le récit. Ce qui est compromis : le volume prévu. Incertitude : le récit ne dit pas si ce régime sert encore le but.' : 'What is kept: a little drawn margin, by −15 pressure points in the story. What is compromised: the planned volume. Uncertainty: the story does not say whether that rate still serves the purpose.'}</p>
+      </label>
+      <label class="wb-choice">
+        <input type="radio" name="wb-choice" value="buffer" />
+        <h3>{fr ? 'Ouvrir un tampon temporaire' : 'Open a temporary buffer'}</h3>
+        <p>{fr ? 'Ce qui est gardé : une réserve racontée, +10 points de capacité, si les options dépassent 30 %. Ce qui est compromis : le temps, la coordination, et 15 points d’options. Incertitude : rien n’établit que le tampon arriverait.' : 'What is kept: a narrated reserve, +10 capacity points, if options are above 30%. What is compromised: time, coordination, and 15 option points. Uncertainty: nothing establishes that the buffer would arrive.'}</p>
+        <p data-wb="buffer-status">{view.bufferStatus}</p>
+      </label>
+    </div>
+    <div class="wb-constraints">
+      <article class="wb-card">
+        <header><h3>{fr ? 'Contraintes de la lecture' : 'Constraints of the reading'}</h3><span class="wb-synth">{synth}</span></header>
+        <dl>
+          <div><dt>{fr ? 'Pression' : 'Pressure'}</dt><dd><span data-wb="pressure">{view.pressure}</span> %</dd></div>
+          <div><dt>{fr ? 'Capacité' : 'Capacity'}</dt><dd><span data-wb="capacity">{view.capacity}</span> %</dd></div>
+          <div><dt>{fr ? 'Comparaison d’enveloppe' : 'Envelope comparison'}</dt><dd data-wb="envelope">{view.envelope}</dd></div>
+          <div><dt>{fr ? 'Variance' : 'Variance'}</dt><dd><span data-wb="variance">{view.variance}</span> %</dd></div>
+          <div><dt>{fr ? 'Options' : 'Options'}</dt><dd><span data-wb="options">{view.options}</span> %</dd></div>
+        </dl>
+        <p class="wb-help">{fr
+          ? 'La comparaison pression / capacité est un dessin. Elle ne bloque aucun choix. Ce qui n’est pas ici : serment, mode, envoi.'
+          : 'The pressure / capacity comparison is a drawing. It blocks no choice. What is not here: an oath, a mode, a dispatch.'}</p>
+      </article>
+      <article class="wb-card">
+        <header><h3>{fr ? 'Choix en lecture' : 'Choice being read'}</h3><span class="wb-synth">{synth}</span></header>
+        <p data-wb="decision">{view.decision}</p>
+        <p data-wb="keeps">{view.keeps}</p>
+        <p data-wb="costs">{view.costs}</p>
+        <p data-wb="uncertainty">{view.uncertainty}</p>
+      </article>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="wb-panel-verify" aria-labelledby="wb-tab-verify" hidden>
+    <h2>{fr ? 'Vérifier — ce qui s’est passé dans le récit' : 'Verify — what happened in the story'}</h2>
+    <p class="wb-note">{fr
+      ? 'Décision, pas illustré, pièces, incertitudes, capacité restante à corriger. Le premier choix est présélectionné pour que le récit se lise. Rien n’est enregistré.'
+      : 'Decision, illustrated step, evidence, uncertainties, remaining ability to correct. The first choice is preselected so the story can be read. Nothing is recorded.'}</p>
+    <ol class="wb-steps">
+      <li class="wb-step"><span>01</span><div>
+        <h3>{fr ? 'Décision' : 'Decision'}</h3>
+        <p><span class="wb-synth">{synth}</span> <span data-wb="decision">{view.decision}</span></p>
+        <p data-wb="keeps">{view.keeps}</p>
+        <p data-wb="costs">{view.costs}</p>
+      </div></li>
+      <li class="wb-step"><span>02</span><div>
+        <h3>{fr ? 'Transition illustrée' : 'Illustrated transition'}</h3>
+        <p data-wb="transition">{view.transition}</p>
+        <p>{fr ? 'Avant' : 'Before'} <span data-wb="pressure">{view.pressure}</span> % / <span data-wb="capacity">{view.capacity}</span> % · {fr ? 'marge' : 'margin'} <span data-wb="margin">{view.margin}</span> pts · <span data-wb="posture">{view.posture}</span></p>
+        <p>{fr ? 'Après' : 'After'} <span data-wb="after-pressure">{view.afterPressure}</span> % / <span data-wb="after-capacity">{view.afterCapacity}</span> % · {fr ? 'marge' : 'margin'} <span data-wb="after-margin">{view.afterMargin}</span> pts · <span data-wb="after-posture">{view.afterPosture}</span> · {fr ? 'options' : 'options'} <span data-wb="after-options">{view.afterOptions}</span> %</p>
+      </div></li>
+      <li class="wb-step"><span>03</span><div>
+        <h3>{fr ? 'Pièces' : 'Evidence'}</h3>
+        <p data-wb="evidence">{view.evidence}</p>
+      </div></li>
+      <li class="wb-step"><span>04</span><div>
+        <h3>{fr ? 'Incertitudes' : 'Uncertainties'}</h3>
+        <p data-wb="unknown-0">{view.unknowns[0]}</p>
+        <p data-wb="unknown-1">{view.unknowns[1]}</p>
+        <p data-wb="unknown-2">{view.unknowns[2]}</p>
+      </div></li>
+      <li class="wb-step"><span>05</span><div>
+        <h3>{fr ? 'Capacité restante à corriger' : 'Remaining ability to correct'}</h3>
+        <p data-wb="correct">{view.correct}</p>
+      </div></li>
+    </ol>
+  </section>
+
+  <section class="wb-limits" aria-labelledby="wb-limits-title">
+    <h2 id="wb-limits-title">{fr ? 'Ce que cette page ne dit pas' : 'What this page does not say'}</h2>
+    <ul>
+      <li>{fr
+        ? 'Tous les chiffres sont illustratifs et synthétiques. Ils sont calculés dans le navigateur, à partir des curseurs. Aucune requête ne part.'
+        : 'Every figure is illustrative and synthetic. It is computed in the browser from the sliders. No request is sent.'}</li>
+      <li>{fr
+        ? 'Le harnais REG est INCOMPLETE / NOT_CERTIFIABLE. Le CHANGELOG 5.7.6 de tenir_governance, cité par docs/workbench/s0/ecarts-cartographie.md, écrit que la conformance REG n’est pas démontrée : le harnais n’a pas été relancé sur 5.7.6. Le dernier résultat cité est NOT_CERTIFIABLE (brouillon non fusionné reg-conformance#81 ; REG v0.7.0 est la référence normative). INCOMPLETE est le mot de cette page : il n’y a pas de suite verte à montrer. Le changelog écrit NOT_CERTIFIABLE.'
+        : 'The REG harness is INCOMPLETE / NOT_CERTIFIABLE. The tenir_governance CHANGELOG entry 5.7.6, as cited by docs/workbench/s0/ecarts-cartographie.md, states that REG conformance is not demonstrated: the harness was not re-run on 5.7.6. The last cited result is NOT_CERTIFIABLE (unmerged draft reg-conformance#81; REG v0.7.0 is the normative reference). INCOMPLETE is this page’s word: there is no green suite to show. The changelog’s word is NOT_CERTIFIABLE.'}</li>
+      <li>{fr
+        ? 'TENIR-Gov est mono-hôte. Le même CHANGELOG, entrée 5.7.6, borne le déploiement à un hôte contrôlé et un processus gouverneur. Raft reste limité à des nœuds de développement ou de test en loopback tant que FM-20 est ouvert. Ce dessin n’est pas un plan de contrôle multi-hôte et n’exerce pas Raft.'
+        : 'TENIR-Gov is single-host. The same CHANGELOG entry, 5.7.6, limits deployment to one controlled host and one governor process. Raft stays restricted to development or test loopback nodes while FM-20 is open. This drawing is not a multi-host control plane and does not exercise Raft.'}</li>
+      <li>{fr
+        ? 'La cartographie nommée CARTOGRAPHIE-FONCTIONNELLE-TENIR-GOV-5.7.7-ec00d98.md n’est pas dans le dépôt. 5.7.7 n’est pas une version déclarée. Cette page ne l’invente pas et ne prend pas son absence pour une certification.'
+        : 'The named cartography CARTOGRAPHIE-FONCTIONNELLE-TENIR-GOV-5.7.7-ec00d98.md is not in the repository. 5.7.7 is not a declared version. This page does not invent it and does not treat its absence as a certification.'}</li>
+      <li>{fr
+        ? 'Aucune certification, aucune aptitude à la production. Le panneau d’autorité du dessin figé — serment, transition de mode, ENFORCE — n’est pas repris, même désactivé.'
+        : 'No certification and no production readiness. The frozen drawing’s authority panel — oath, mode transition, ENFORCE — is not carried over, not even as a disabled control.'}</li>
+      <li>{fr
+        ? 'Le plan de travail, le journal et la couche BFF marqués absents sur le dessin figé restent absents. Cette page ne les promet pas.'
+        : 'The work plan, journal and BFF layer marked absent on the frozen drawing stay absent. This page does not promise them.'}</li>
+    </ul>
+    <ul class="wb-links">
+      {links.map(([href, label]) => <li><a href={to(href)}>{label}</a></li>)}
+      <li><a href="https://github.com/skiredj-prog/tenir_governance/pull/149">{fr ? 'Classement visuel S0 (PR 149)' : 'S0 visual classification (PR 149)'} <span aria-hidden="true">↗</span></a></li>
+    </ul>
+    <p class="wb-ai">{fr
+      ? 'Une variante avec un agent pourra réutiliser ces trois lectures. Elle n’est pas sur cette page. Le scénario de départ n’est pas une IA.'
+      : 'An agent variant can reuse these three readings later. It is not on this page. The opening scenario is not an AI system.'}</p>
+  </section>
+</div>
+<script>
+  import {
+    DEFAULT_READING,
+    approachSeries,
+    gaugeGeometry,
+    illustrativeStress,
+    isChoice,
+    normalize,
+    viewModel,
+    type ChoiceId,
+    type Reading,
+  } from '../data/workbench-s1';
+
+  const root = document.querySelector<HTMLElement>('[data-workbench-s1]');
+  if (root) {
+    const locale = root.dataset.locale === 'en' ? 'en' : 'fr';
+    const pressure = root.querySelector<HTMLInputElement>('#wb-pressure');
+    const capacity = root.querySelector<HTMLInputElement>('#wb-capacity');
+    const variance = root.querySelector<HTMLInputElement>('#wb-variance');
+    const options = root.querySelector<HTMLInputElement>('#wb-options');
+    const arc = root.querySelector<SVGPathElement>('[data-wb-arc]');
+    const needle = root.querySelector<SVGLineElement>('[data-wb-needle]');
+    const tip = root.querySelector<SVGCircleElement>('[data-wb-tip]');
+    const live = root.querySelector<HTMLElement>('[data-wb-live]');
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const bands = ['wb-stress-calm', 'wb-stress-marked', 'wb-stress-high'];
+    if (pressure && capacity && variance && options && arc && needle && tip && live && tabs.length === 3) {
+      const read = (): Reading => normalize({
+        pressure: Number(pressure.value),
+        capacity: Number(capacity.value),
+        variance: Number(variance.value),
+        options: Number(options.value),
+      });
+      let choice: ChoiceId = 'hold';
+      let series = approachSeries(read());
+      const moved = (reading: Reading) => reading.pressure !== DEFAULT_READING.pressure
+        || reading.capacity !== DEFAULT_READING.capacity
+        || reading.variance !== DEFAULT_READING.variance
+        || reading.options !== DEFAULT_READING.options;
+
+      const text = (name: string, value: string) => {
+        root.querySelectorAll<HTMLElement>(`[data-wb="${name}"]`).forEach((node) => {
+          node.textContent = value;
+        });
+      };
+
+      const paint = (current: Reading, previous: Reading | null, announce: boolean) => {
+        const view = viewModel(locale, current, choice, previous, series);
+        text('pressure', view.pressure);
+        text('capacity', view.capacity);
+        text('variance', view.variance);
+        text('options', view.options);
+        text('option-unit', view.optionUnit);
+        text('margin', view.margin);
+        text('posture', view.posture);
+        text('sentence', view.sentence);
+        text('stress', view.stress);
+        text('stress-mark', view.stressMark);
+        text('envelope', view.envelope);
+        text('delta', view.delta);
+        text('buffer-status', view.bufferStatus);
+        text('decision', view.decision);
+        text('keeps', view.keeps);
+        text('costs', view.costs);
+        text('uncertainty', view.uncertainty);
+        text('transition', view.transition);
+        text('after-pressure', view.afterPressure);
+        text('after-capacity', view.afterCapacity);
+        text('after-margin', view.afterMargin);
+        text('after-options', view.afterOptions);
+        text('after-posture', view.afterPosture);
+        text('evidence', view.evidence);
+        text('unknown-0', view.unknowns[0]);
+        text('unknown-1', view.unknowns[1]);
+        text('unknown-2', view.unknowns[2]);
+        text('correct', view.correct);
+        text('traj-title', locale === 'fr'
+          ? `Trajectoire illustrative. Pression ${view.pressure} %, capacité ${view.capacity} %.`
+          : `Illustrative trajectory. Pressure ${view.pressure}%, capacity ${view.capacity}%.`);
+        const line = root.querySelector<SVGPolylineElement>(`[data-wb-line="p"]`);
+        const lineK = root.querySelector<SVGPolylineElement>(`[data-wb-line="k"]`);
+        const lineV = root.querySelector<SVGPolylineElement>(`[data-wb-line="v"]`);
+        const lineS = root.querySelector<SVGPolylineElement>(`[data-wb-line="s"]`);
+        line?.setAttribute('points', view.lines.p);
+        lineK?.setAttribute('points', view.lines.k);
+        lineV?.setAttribute('points', view.lines.v);
+        lineS?.setAttribute('points', view.lines.s);
+        const geo = gaugeGeometry(illustrativeStress(current));
+        arc.setAttribute('stroke-dasharray', `${geo.dash} ${geo.length}`);
+        arc.classList.remove(...bands);
+        arc.classList.add(`wb-stress-${view.stressBand}`);
+        tip.classList.remove(...bands);
+        tip.classList.add(`wb-stress-${view.stressBand}`);
+        needle.setAttribute('x2', String(geo.tip.x));
+        needle.setAttribute('y2', String(geo.tip.y));
+        tip.setAttribute('cx', String(geo.tip.x));
+        tip.setAttribute('cy', String(geo.tip.y));
+        pressure.setAttribute('aria-valuetext', `${view.pressure}%. ${locale === 'fr' ? 'Illustratif, synthétique.' : 'Illustrative, synthetic.'}`);
+        capacity.setAttribute('aria-valuetext', `${view.capacity}%. ${locale === 'fr' ? 'Illustratif, synthétique.' : 'Illustrative, synthetic.'}`);
+        variance.setAttribute('aria-valuetext', `${view.variance}%. ${locale === 'fr' ? 'Illustratif, synthétique.' : 'Illustrative, synthetic.'}`);
+        options.setAttribute('aria-valuetext', `${view.options}%, ${view.optionUnit}. ${locale === 'fr' ? 'Illustratif, synthétique.' : 'Illustrative, synthetic.'}`);
+        if (announce) live.textContent = view.summary;
+      };
+
+      const onSlider = () => {
+        const next = read();
+        series = [...series, next].slice(-28);
+        paint(next, moved(next) ? DEFAULT_READING : null, true);
+      };
+      [pressure, capacity, variance, options].forEach((input) => input.addEventListener('input', onSlider));
+      root.querySelectorAll<HTMLInputElement>('input[name="wb-choice"]').forEach((input) => {
+        input.addEventListener('change', () => {
+          if (!input.checked || !isChoice(input.value)) return;
+          choice = input.value;
+          const next = read();
+          paint(next, moved(next) ? DEFAULT_READING : null, true);
+        });
+      });
+
+      const selectTab = (index: number) => {
+        tabs.forEach((tab, i) => {
+          const on = i === index;
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+          tab.tabIndex = on ? 0 : -1;
+          const panel = document.getElementById(tab.getAttribute('aria-controls') || '');
+          if (panel) panel.hidden = !on;
+        });
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectTab(index));
+        tab.addEventListener('keydown', (event) => {
+          const next = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? (index + 1) % tabs.length
+            : event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? (index + tabs.length - 1) % tabs.length
+            : event.key === 'Home' ? 0
+            : event.key === 'End' ? tabs.length - 1
+            : -1;
+          if (next < 0) return;
+          event.preventDefault();
+          selectTab(next);
+          tabs[next].focus();
+        });
+      });
+      paint(read(), null, false);
+    }
+  }
+</script>
