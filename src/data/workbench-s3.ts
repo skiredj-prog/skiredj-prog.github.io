@@ -13,6 +13,14 @@ const blob = (path: string) =>
 export interface Localized { fr: string; en: string }
 export interface Citation { file: string; symbol: string; url: string }
 
+export interface Continuity {
+  /** Field that identifies the operation. Never a made-up record. */
+  operationIdentity: string;
+  registryState: string;
+  evidenceOnRecord: string;
+  recordExists: boolean;
+}
+
 export interface PathStep {
   id: string;
   title: Localized;
@@ -20,12 +28,21 @@ export interface PathStep {
   citation: Citation | null;
   reading: Localized;
   gap: Localized | null;
+  continuity: Continuity;
 }
 
 export interface DelegateRow {
   responsibility: Localized;
-  delegate: Localized;
-  limit: Localized;
+  investigate: Localized;
+  decide: Localized;
+  runtimeExecutes: { symbol: string; text: Localized };
+}
+
+export interface ClosureLevel {
+  id: "task" | "operational" | "external";
+  verified: boolean;
+  title: Localized;
+  text: Localized;
 }
 
 export interface BoundaryItem {
@@ -58,7 +75,16 @@ export const steps: readonly PathStep[] = [
       fr: "OperationState.UNKNOWN vaut \"unknown\". resume_existing dit : résultat incertain, revue humaine, ne pas renvoyer. Un appel fournisseur ambigu ou expiré, dans dispatch_and_execute, passe à UNKNOWN.",
       en: "OperationState.UNKNOWN is \"unknown\". resume_existing says: outcome uncertain, human review, do not resend. An ambiguous or timed-out provider call, in dispatch_and_execute, moves to UNKNOWN.",
     },
-    gap: null,
+    gap: {
+      fr: "Le corps de la réponse fournisseur n’est pas un champ de l’enregistrement. Seul l’état UNKNOWN est là.",
+      en: "The provider response body is not a field of the record. Only the UNKNOWN state is there.",
+    },
+    continuity: {
+      operationIdentity: "idempotency_key",
+      registryState: "UNKNOWN",
+      evidenceOnRecord: "OperationRecord.state",
+      recordExists: true,
+    },
   },
   {
     id: "reconciliation",
@@ -72,6 +98,12 @@ export const steps: readonly PathStep[] = [
     gap: {
       fr: "tenir-gov-scope.md exclut l’extériorité E1 (réconciliation fournisseur) du runtime de la voie B. Le contrat peut exister dans le gouverneur sans que cette exclusion soit levée.",
       en: "tenir-gov-scope.md excludes exteriority E1 (provider reconciliation) from the Lane B runtime. The contract can exist on the governor without that exclusion being lifted.",
+    },
+    continuity: {
+      operationIdentity: "idempotency_key",
+      registryState: "UNKNOWN | DISPATCHING",
+      evidenceOnRecord: "provider reconcile() result only when a provider is configured; otherwise none",
+      recordExists: true,
     },
   },
   {
@@ -87,6 +119,12 @@ export const steps: readonly PathStep[] = [
       fr: "Une affectation devrait s’attacher à un enregistrement déjà durable et vérifiable (la clé d’idempotence d’OperationRecord). Ce lien n’existe pas dans l’arbre lu.",
       en: "An assignment would have to attach to a record that is already durable and verifiable (an OperationRecord idempotency key). That link is not in the tree that was read.",
     },
+    continuity: {
+      operationIdentity: "idempotency_key",
+      registryState: "not found",
+      evidenceOnRecord: "not found",
+      recordExists: false,
+    },
   },
   {
     id: "evidence",
@@ -100,6 +138,12 @@ export const steps: readonly PathStep[] = [
     gap: {
       fr: "La demande de pièce, comme enregistrement attaché, n’a pas été trouvée. Non vérifié.",
       en: "An evidence request, as an attached record, was not found. Not verified.",
+    },
+    continuity: {
+      operationIdentity: "idempotency_key",
+      registryState: "HOLD",
+      evidenceOnRecord: "caller arguments of resolve_hold; no stored evidence-request record",
+      recordExists: true,
     },
   },
   {
@@ -115,6 +159,12 @@ export const steps: readonly PathStep[] = [
       fr: "La docstring de DualKernelGovernor.authorize_exit (approve vrai → RESERVED) et le corps de HoldManager.authorize_exit (approve vrai → HOLD) divergent. Non résolu.",
       en: "The DualKernelGovernor.authorize_exit docstring (approve true → RESERVED) and the HoldManager.authorize_exit body (approve true → HOLD) diverge. Not resolved.",
     },
+    continuity: {
+      operationIdentity: "idempotency_key",
+      registryState: "ESCALATED",
+      evidenceOnRecord: "ExitReceipt on the hold record",
+      recordExists: true,
+    },
   },
   {
     id: "closure",
@@ -129,34 +179,81 @@ export const steps: readonly PathStep[] = [
       fr: "Une clôture administrative distincte de ces états n’a pas été trouvée. Non vérifié. Une clôture administrative n’est pas un effet externe confirmé.",
       en: "An administrative closure distinct from these states was not found. Not verified. An administrative closure is not a confirmed external effect.",
     },
+    continuity: {
+      operationIdentity: "idempotency_key",
+      registryState: "CONFIRMED | FAILED",
+      evidenceOnRecord: "OperationRecord.execution_record",
+      recordExists: true,
+    },
+  },
+];
+
+export const closureLevels: readonly ClosureLevel[] = [
+  {
+    id: "task",
+    verified: false,
+    title: { fr: "Clôture de tâche", en: "Task closure" },
+    text: {
+      fr: "Aucune clôture de tâche administrative n’a été trouvée, attachée à idempotency_key. Écart. Elle ne serait pas, même si elle existait, un effet externe.",
+      en: "No administrative task closure was found, attached to idempotency_key. Gap. It would not, even if it existed, be an external effect.",
+    },
+  },
+  {
+    id: "operational",
+    verified: true,
+    title: { fr: "Résolution d’état opérationnel", en: "Operational state resolution" },
+    text: {
+      fr: "Le registre change l’état de l’opération : HOLD, UNKNOWN, DISPATCHING, ESCALATED, CONFIRMED ou FAILED. C’est une transition d’OperationState. CONFIRMED_NONEXECUTION dit qu’une tentative n’a pas été envoyée. Ce n’est pas la confirmation de l’effet chez le fournisseur.",
+      en: "The registry changes the operation’s state: HOLD, UNKNOWN, DISPATCHING, ESCALATED, CONFIRMED or FAILED. That is an OperationState transition. CONFIRMED_NONEXECUTION says an attempt was not dispatched. It is not confirmation of the effect at the provider.",
+    },
+  },
+  {
+    id: "external",
+    verified: true,
+    title: { fr: "Confirmation de l’effet externe", en: "External effect confirmation" },
+    text: {
+      fr: "E1, la réconciliation fournisseur, est hors du runtime de la voie B (tenir-gov-scope.md). G-07 HOLD est une porte de ce runtime : une issue indéterminée vers une issue qualifiée, refusée si les éléments de réconciliation manquent. G-07 n’est pas E1.",
+      en: "E1, provider reconciliation, is outside the Lane B runtime (tenir-gov-scope.md). G-07 HOLD is a gate of that runtime: an indeterminate outcome toward a qualified outcome, refused when the elements for reconciliation are insufficient. G-07 is not E1.",
+    },
   },
 ];
 
 export const delegates: readonly DelegateRow[] = [
   {
-    responsibility: { fr: "Proposer une piste de réconciliation", en: "Propose a reconciliation lead" },
-    delegate: { fr: "Agent automatisé", en: "Automated agent" },
-    limit: { fr: "Aucune autorité au-delà du mandat. Pas de transition d’état.", en: "No authority beyond the mandate. No state transition." },
+    responsibility: { fr: "Réponse fournisseur perdue", en: "Lost provider response" },
+    investigate: { fr: "L’agent automatisé peut proposer une piste. L’opérateur instruit la revue.", en: "An automated agent may propose a lead. The operator investigates the review." },
+    decide: { fr: "Ni l’agent ni l’opérateur ne décide l’état. Sans fournisseur, la recommandation est human_review.", en: "Neither the agent nor the operator decides the state. With no provider, the recommendation is human_review." },
+    runtimeExecutes: {
+      symbol: "DualKernelGovernor.reconcile_unknown",
+      text: { fr: "Seul le runtime interroge le fournisseur ou laisse UNKNOWN.", en: "Only the runtime asks the provider or leaves UNKNOWN." },
+    },
   },
   {
-    responsibility: { fr: "Revue humaine quand aucun fournisseur n’est configuré", en: "Human review when no provider is configured" },
-    delegate: { fr: "Opérateur", en: "Operator" },
-    limit: { fr: "reconcile_unknown renvoie recommendation human_review. L’opérateur ne devient pas le runtime.", en: "reconcile_unknown returns recommendation human_review. The operator does not become the runtime." },
+    responsibility: { fr: "Lecture d’un engagement sans réponse", en: "Reading a commitment with no response" },
+    investigate: { fr: "La finance instruit la conséquence métier.", en: "Finance investigates the business consequence." },
+    decide: { fr: "La finance ne décide pas l’envoi.", en: "Finance does not decide dispatch." },
+    runtimeExecutes: {
+      symbol: "DualKernelGovernor.dispatch_and_execute",
+      text: { fr: "Seul le runtime a écrit UNKNOWN. Il ne reçoit pas d’ordre d’envoi depuis cette page.", en: "Only the runtime wrote UNKNOWN. It receives no dispatch order from this page." },
+    },
   },
   {
-    responsibility: { fr: "Lire un engagement dont la réponse fournisseur manque", en: "Read a commitment whose provider response is missing" },
-    delegate: { fr: "Finance", en: "Finance" },
-    limit: { fr: "Peut qualifier la conséquence métier. Ne peut pas autoriser un envoi.", en: "May qualify the business consequence. Cannot authorise a dispatch." },
+    responsibility: { fr: "Mesures nouvelles sur un HOLD", en: "New measures on a HOLD" },
+    investigate: { fr: "Celui qui apporte les mesures instruit le dossier.", en: "Whoever brings the measures investigates the case." },
+    decide: { fr: "La décision reste celle de l’adjudication, pas celle du porteur des mesures.", en: "The decision stays the adjudication’s, not the measure-bearer’s." },
+    runtimeExecutes: {
+      symbol: "DualKernelGovernor.resolve_hold",
+      text: { fr: "Seul le runtime rejoue l’adjudication et change l’état.", en: "Only the runtime re-adjudicates and changes the state." },
+    },
   },
   {
-    responsibility: { fr: "Sortie d’un état ESCALATED", en: "Exit from ESCALATED" },
-    delegate: { fr: "Propriétaire habilité", en: "Authorised owner" },
-    limit: { fr: "authorize_exit exige authorized_by, scope et authorization. Le corps vérifié ne dispense pas d’une nouvelle adjudication si approve est vrai.", en: "authorize_exit requires authorized_by, scope and authorization. The verified body does not skip a fresh adjudication when approve is true." },
-  },
-  {
-    responsibility: { fr: "Tenir l’état absorbant jusqu’à une sortie autorisée", en: "Hold the absorbing state until an authorised exit" },
-    delegate: { fr: "Fonction de contrôle", en: "Control function" },
-    limit: { fr: "ESCALATED reste absorbant. Une sortie par le temps est refusée : l’expiration de τ_K produit UNKNOWN, pas une résolution.", en: "ESCALATED stays absorbing. A time-based exit is rejected: τ_K expiry produces UNKNOWN, not a resolution." },
+    responsibility: { fr: "Sortie de ESCALATED", en: "Exit from ESCALATED" },
+    investigate: { fr: "La fonction de contrôle instruit. Le propriétaire habilité signe scope et authorization.", en: "The control function investigates. The authorised owner signs scope and authorization." },
+    decide: { fr: "approve vrai ou faux est la décision portée au runtime. Elle ne dépasse pas le mandat.", en: "approve true or false is the decision carried to the runtime. It does not exceed the mandate." },
+    runtimeExecutes: {
+      symbol: "HoldManager.authorize_exit",
+      text: { fr: "Seul le runtime exécute la transition ESCALATED → HOLD ou FAILED.", en: "Only the runtime executes the transition ESCALATED → HOLD or FAILED." },
+    },
   },
 ];
 

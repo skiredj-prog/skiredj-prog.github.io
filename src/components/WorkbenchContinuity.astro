@@ -1,7 +1,7 @@
 ---
 import '../styles/workbench-s3.css';
 import { url, type Locale } from '../data/site';
-import { boundaries, delegates, evpInputs, financialExample, pin, rules, states, steps } from '../data/workbench-s3';
+import { boundaries, closureLevels, delegates, evpInputs, financialExample, pin, rules, states, steps } from '../data/workbench-s3';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const fr = locale === 'fr';
@@ -24,6 +24,12 @@ const back = url(fr ? '/workbench/technique/' : '/en/workbench/technical/');
     </header>
     {step.citation && <p class="wb3-cite"><a href={step.citation.url}>{step.citation.file} · {step.citation.symbol} ↗</a></p>}
     <p>{t(step.reading)}</p>
+    <dl class="wb2-facts">
+      <div><dt>{fr ? 'Identité de l’opération' : 'Operation identity'}</dt><dd><code>{step.continuity.operationIdentity}</code></dd></div>
+      <div><dt>{fr ? 'État du registre' : 'Registry state'}</dt><dd><code>{step.continuity.registryState}</code></dd></div>
+      <div><dt>{fr ? 'Preuve sur l’enregistrement' : 'Evidence on the record'}</dt><dd>{step.continuity.evidenceOnRecord}</dd></div>
+      <div><dt>{fr ? 'Enregistrement trouvé' : 'Record found'}</dt><dd>{step.continuity.recordExists ? (fr ? 'oui' : 'yes') : (fr ? 'non — écart' : 'no — gap')}</dd></div>
+    </dl>
     {step.gap && <p class="wb3-gap">{t(step.gap)}</p>}
   </article>)}
 
@@ -34,8 +40,17 @@ const back = url(fr ? '/workbench/technique/' : '/en/workbench/technical/');
       : 'Exception resolution may be delegated. Authority beyond the mandate may not.'}</p>
     {delegates.map((row) => <div class="wb2-gap">
       <h3>{t(row.responsibility)}</h3>
-      <p><strong>{fr ? 'Délégataire possible :' : 'Possible delegate:'}</strong> {t(row.delegate)}</p>
-      <p><strong>{fr ? 'Limite :' : 'Limit:'}</strong> {t(row.limit)}</p>
+      <p><strong>{fr ? 'Instruit :' : 'Investigates:'}</strong> {t(row.investigate)}</p>
+      <p><strong>{fr ? 'Décide :' : 'Decides:'}</strong> {t(row.decide)}</p>
+      <p><strong>{fr ? 'Seul TENIR-Gov exécute :' : 'Only TENIR-Gov executes:'}</strong> <code>{row.runtimeExecutes.symbol}</code>. {t(row.runtimeExecutes.text)}</p>
+    </div>)}
+  </section>
+
+  <section class="wb2-card" id="cloture">
+    <h2>{fr ? 'Trois niveaux de clôture' : 'Three closure levels'}</h2>
+    {closureLevels.map((level) => <div class="wb2-gap">
+      <h3>{t(level.title)}{level.verified ? '' : (fr ? ' — non vérifié' : ' — not verified')}</h3>
+      <p>{t(level.text)}</p>
     </div>)}
   </section>
 
