@@ -1,0 +1,86 @@
+---
+import '../styles/workbench-s2.css';
+import { url, type Locale } from '../data/site';
+import {
+  architecture,
+  audienceNote,
+  events,
+  explorerLabel,
+  gaps,
+  laneNote,
+  pin,
+  qualification,
+  readingLabel,
+  registryLabel,
+} from '../data/workbench-s2';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const t = (value: { fr: string; en: string }) => value[locale];
+const workbench = url(fr ? '/workbench/' : '/en/workbench/');
+const evidence = url(fr ? '/preuves/' : '/en/evidence/');
+---
+<div class="wb2" data-workbench-s2>
+  <p class="wb2-target">{t(architecture)}</p>
+  <p class="wb2-note">{t(laneNote)}</p>
+  <p class="wb2-kicker">{pin.repo} · {pin.tag} · {pin.commit}</p>
+  <p>{fr
+    ? 'Les trois phrases d’une carte sont des lectures du même enregistrement. Elles ne sont pas trois preuves. L’exemple HOLD financier est un patron de formulation. X, Y et Z ne sont pas remplis.'
+    : 'The three sentences on a card are readings of the same record. They are not three proofs. The financial HOLD example is a wording pattern. X, Y and Z are not filled in.'}</p>
+  <p>{fr
+    ? 'Intégrité : ce que le journal couvert permet de détecter (maillon cassé, champ modifié). Vérité de l’événement : le journal seul n’établit ni l’effet externe, ni qu’une observation est complète.'
+    : 'Integrity: what the covered log can detect (a broken link, a changed field). Event truth: the log alone establishes neither an external effect nor that an observation is complete.'}</p>
+
+  {events.map((event) => <article class="wb2-card" id={event.id}>
+    <header>
+      <h2>{t(event.title)}</h2>
+      <span class="wb2-pill">{event.eventType}</span>
+      <span class="wb2-pill">{t(readingLabel[event.reading])}</span>
+      <span class="wb2-pill">{t(registryLabel[event.registryStatus])}</span>
+      <span class="wb2-pill">{t(explorerLabel[event.explorerLevel])}</span>
+      {!event.verified && <span class="wb2-pill wb2-unverified">{fr ? 'Non vérifié' : 'Unverified'}</span>}
+    </header>
+    <div class="wb2-reads">
+      <div class="wb2-read"><h3>{fr ? 'Opérationnel' : 'Operational'}</h3><p>{t(event.presentation.operational)}</p></div>
+      <div class="wb2-read"><h3>{fr ? 'Conséquences' : 'Business'}</h3><p>{t(event.presentation.business)}</p></div>
+      <div class="wb2-read"><h3>{fr ? 'Preuve' : 'Evidence'}</h3><p>{t(event.presentation.evidence)}</p></div>
+    </div>
+    <div class="wb2-split">
+      <div>
+        <h3>{fr ? 'Intégrité' : 'Integrity'}</h3>
+        <p>{t(event.integrity)}</p>
+        <h3>{fr ? 'Vérité de l’événement' : 'Event truth'}</h3>
+        <p>{t(event.eventTruth)}</p>
+        <p><strong>{fr ? 'Preuve brute :' : 'Raw evidence:'}</strong> {event.rawEvidence}. {t(event.rawEvidenceNote)}</p>
+      </div>
+      <div class="wb2-missing">
+        <h3>{fr ? 'Champs présents' : 'Fields present'}</h3>
+        <ul>{event.presentFields.map((field) => <li><code>{field}</code></li>)}</ul>
+        <h3>{fr ? 'Champs absents' : 'Missing fields'}</h3>
+        <ul>{event.missingFields.map((field) => <li><code>{field}</code></li>)}</ul>
+      </div>
+    </div>
+    <p class="wb2-sources">{event.sources.map((source) => <a href={source.url}>{source.path} ↗</a>)}{' '}</p>
+  </article>)}
+
+  <section class="wb2-card" id="ecarts">
+    <h2>{fr ? 'Écarts R5 et voie B' : 'R5 and Lane B gaps'}</h2>
+    <p>{fr
+      ? 'Travail technique sur les enregistrements déjà là. Pas une nouvelle architecture, pas une passerelle, pas une chaîne supplémentaire.'
+      : 'Technical work on records that are already there. Not a new architecture, not a gateway, not an extra chain.'}</p>
+    <div class="wb2-gaps">
+      {gaps.map((gap) => <div class="wb2-gap">
+        <h3>{gap.id}. {t(gap.title)}{gap.verified ? '' : (fr ? ' — non vérifié' : ' — unverified')}</h3>
+        <p>{t(gap.work)}</p>
+      </div>)}
+    </div>
+  </section>
+
+  <section class="wb2-card" id="qualification">
+    <h2>{fr ? 'Statut de qualification' : 'Qualification status'}</h2>
+    <p>{t(qualification)}</p>
+    <p>{t(audienceNote)}</p>
+    <p><a href={workbench}>{fr ? 'Retour au Workbench public' : 'Back to the public Workbench'}</a> · <a href={evidence}>{fr ? 'Socle de preuves' : 'Evidence base'}</a></p>
+  </section>
+</div>

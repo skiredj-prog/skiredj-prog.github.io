@@ -1,0 +1,14 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import WorkbenchMatrix from '../../../../components/WorkbenchMatrix.astro';
+const locale = 'en' as const;
+---
+<Base locale={locale} slug="workbench/technical"
+  documentTitle="TENIR Workbench — technical matrix"
+  title="What the records can be read as"
+  description="Documentary matrix: observation, control_transition, previous_hash and Merkle at tag v5.7.6. Three readings of the same record. No second authority."
+  kicker="TENIR Workbench · S2 · documentary"
+  lede="One evidence backbone is the target, with several readings. R5 and Lane B are not unified. This page does not create a chain."
+  sources="skiredj-prog/tenir_governance, tag v5.7.6, commit 1881c90bb33a0cf1218df5381698c4e3c8dd4df2. Vocabulary of this site’s claim register and evidence base.">
+  <WorkbenchMatrix locale={locale} />
+</Base>
