@@ -280,6 +280,8 @@ const sectionBySlug: Record<string, Section> = {
   workbench: "demos",
   "workbench/technique": "demos",
   "workbench/technical": "demos",
+  "workbench/continuite": "demos",
+  "workbench/continuity": "demos",
   // Crédibilité: transparency, architecture and research.
   credibilite: "credibilite", credibility: "credibilite",
   statut: "credibilite", status: "credibilite",

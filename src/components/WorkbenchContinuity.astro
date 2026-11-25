@@ -1,0 +1,74 @@
+---
+import '../styles/workbench-s3.css';
+import { url, type Locale } from '../data/site';
+import { boundaries, closureLevels, delegates, evpInputs, financialExample, pin, rules, states, steps } from '../data/workbench-s3';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const fr = locale === 'fr';
+const t = (value: { fr: string; en: string }) => value[locale];
+const back = url(fr ? '/workbench/technique/' : '/en/workbench/technical/');
+---
+<div class="wb2" data-workbench-s3>
+  <p class="wb2-target">{t(rules)}</p>
+  <p class="wb2-note">{fr
+    ? 'Conception documentaire. Aucun contrôle d’autorité, aucune passerelle, aucune chaîne nouvelle. Le Workbench coordonne une lecture. Le runtime TENIR-Gov (voie B) gouverne.'
+    : 'Documentary design. No authority control, no gateway, no new chain. The Workbench coordinates a reading. The TENIR-Gov runtime (Lane B) governs.'}</p>
+  <p class="wb2-kicker">{pin.repo} · {pin.tag} · {pin.commit}</p>
+  <p>{fr ? 'États lus dans OperationState :' : 'States read on OperationState:'} {states.join(' · ')}</p>
+  <p>{t(financialExample)}</p>
+
+  {steps.map((step, index) => <article class="wb2-card wb3-step" id={step.id}>
+    <header>
+      <h2>{String(index + 1).padStart(2, '0')} · {t(step.title)}</h2>
+      <span class="wb2-pill">{step.verified ? (fr ? 'Cité' : 'Cited') : (fr ? 'Non vérifié' : 'Not verified')}</span>
+    </header>
+    {step.citation && <p class="wb3-cite"><a href={step.citation.url}>{step.citation.file} · {step.citation.symbol} ↗</a></p>}
+    <p>{t(step.reading)}</p>
+    <dl class="wb2-facts">
+      <div><dt>{fr ? 'Identité de l’opération' : 'Operation identity'}</dt><dd><code>{step.continuity.operationIdentity}</code></dd></div>
+      <div><dt>{fr ? 'État du registre' : 'Registry state'}</dt><dd><code>{step.continuity.registryState}</code></dd></div>
+      <div><dt>{fr ? 'Preuve sur l’enregistrement' : 'Evidence on the record'}</dt><dd>{step.continuity.evidenceOnRecord}</dd></div>
+      <div><dt>{fr ? 'Enregistrement trouvé' : 'Record found'}</dt><dd>{step.continuity.recordExists ? (fr ? 'oui' : 'yes') : (fr ? 'non — écart' : 'no — gap')}</dd></div>
+    </dl>
+    {step.gap && <p class="wb3-gap">{t(step.gap)}</p>}
+  </article>)}
+
+  <section class="wb2-card" id="delegation">
+    <h2>{fr ? 'Délégation' : 'Delegation'}</h2>
+    <p>{fr
+      ? 'La résolution d’une exception peut être déléguée. L’autorité au-delà du mandat ne l’est pas.'
+      : 'Exception resolution may be delegated. Authority beyond the mandate may not.'}</p>
+    {delegates.map((row) => <div class="wb2-gap">
+      <h3>{t(row.responsibility)}</h3>
+      <p><strong>{fr ? 'Instruit :' : 'Investigates:'}</strong> {t(row.investigate)}</p>
+      <p><strong>{fr ? 'Décide :' : 'Decides:'}</strong> {t(row.decide)}</p>
+      <p><strong>{fr ? 'Seul TENIR-Gov exécute :' : 'Only TENIR-Gov executes:'}</strong> <code>{row.runtimeExecutes.symbol}</code>. {t(row.runtimeExecutes.text)}</p>
+    </div>)}
+  </section>
+
+  <section class="wb2-card" id="cloture">
+    <h2>{fr ? 'Trois niveaux de clôture' : 'Three closure levels'}</h2>
+    {closureLevels.map((level) => <div class="wb2-gap">
+      <h3>{t(level.title)}{level.verified ? '' : (fr ? ' — non vérifié' : ' — not verified')}</h3>
+      <p>{t(level.text)}</p>
+    </div>)}
+  </section>
+
+  <section class="wb2-card" id="limites">
+    <h2>{fr ? 'Frontières' : 'Boundaries'}</h2>
+    {boundaries.map((item) => <p class="wb3-gap">{item.verified ? '' : (fr ? 'Non vérifié. ' : 'Not verified. ')}{t(item.text)}</p>)}
+  </section>
+
+  <section class="wb2-card" id="evp">
+    <h2>{fr ? 'Entrées EVP possibles' : 'Possible EVP inputs'}</h2>
+    <p>{fr
+      ? 'Ce sont des entrées d’un rapport d’évaluation, pas une valeur démontrée de ce parcours.'
+      : 'These are inputs to an assessment report, not a demonstrated value of this path.'}</p>
+    {evpInputs.map((item) => <div class="wb2-gap">
+      <h3><code>{item.name}</code></h3>
+      <p class="wb3-cite">{item.source}</p>
+      <p>{t(item.note)}</p>
+    </div>)}
+  </section>
+  <p><a href={back}>{fr ? 'Retour à la matrice technique' : 'Back to the technical matrix'}</a></p>
+</div>
