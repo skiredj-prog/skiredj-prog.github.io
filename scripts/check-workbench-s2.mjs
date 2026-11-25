@@ -30,7 +30,11 @@ for (const event of events) {
   assert.ok(event.presentation.operational.en.length > 20, event.id);
   assert.ok(event.integrity.en.length > 20 && event.eventTruth.en.length > 20, event.id);
 }
-assert.equal(holdEvent.wording.operational.en, 'Operation suspended, no dispatch authorised at this stage.');
+assert.match(holdEvent.wording.operational.en, /If a corroborated operation state/);
+assert.match(holdEvent.wording.operational.fr, /Si un état d’opération corroboré/);
+assert.match(holdEvent.integrity.en, /does not recompute the content hash/);
+assert.match(holdEvent.integrity.fr, /ne recalcule pas l’empreinte du contenu/);
+assert.match(holdEvent.integrity.en, /not the same property/);
 assert.equal(observation.eventType, 'observation');
 assert.ok(gaps.length >= 4);
 const joined = JSON.stringify({ events, gaps });

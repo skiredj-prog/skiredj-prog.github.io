@@ -84,13 +84,13 @@ export const readingLabel: Record<Reading, Localized> = {
 };
 
 export const architecture: Localized = {
-  fr: "Cible, pas un état constaté : un seul runtime de gouvernance, une seule colonne vertébrale de preuves, plusieurs interprétations, aucune autorité dupliquée. R5 et la voie B ne sont pas unifiés aujourd’hui. Cette page n’ajoute ni passerelle, ni seconde chaîne.",
-  en: "Target, not a state found in the tree: one governance runtime, one evidence backbone, multiple interpretations, no duplicated authority. R5 and Lane B are not unified today. This page adds neither a gateway nor a second chain.",
+  fr: "Cible, pas un état constaté : un seul runtime de gouvernance, une seule colonne vertébrale de preuves, plusieurs interprétations, aucune autorité dupliquée. R5 est le cockpit de laboratoire. La voie B est le périmètre de gouvernance et d’exécution, pas cette page. Le Workbench public est une interface pédagogique qui ne lit pas encore ces événements. Cette page n’ajoute ni passerelle, ni seconde chaîne.",
+  en: "Target, not a state found in the tree: one governance runtime, one evidence backbone, multiple interpretations, no duplicated authority. R5 is the laboratory cockpit. Lane B is the governance and execution scope, not this page. The public Workbench is a pedagogical interface that does not yet read those events. This page adds neither a gateway nor a second chain.",
 };
 
 export const laneNote: Localized = {
-  fr: "La voie B est la lecture publique de ce site (Workbench S1). R5 est le cockpit de laboratoire dans tenir_governance. Les deux lisent, ou liront, les mêmes événements. Aucun des deux n’est une seconde autorité.",
-  en: "Lane B is this site’s public reading (Workbench S1). R5 is the laboratory cockpit in tenir_governance. The two read, or will read, the same events. Neither is a second authority.",
+  fr: "La voie B désigne le périmètre de gouvernance et d’exécution. Le Workbench public S1/S2 est une interface pédagogique : elle ne lit pas encore les événements de ce périmètre. R5 est le cockpit de laboratoire dans tenir_governance. Aucune de ces surfaces n’est une seconde autorité, et cette page n’en crée pas une.",
+  en: "Lane B names the governance and execution scope. The public Workbench S1/S2 is a pedagogical interface: it does not yet read that scope’s events. R5 is the laboratory cockpit in tenir_governance. None of these surfaces is a second authority, and this page does not create one.",
 };
 
 export const audienceNote: Localized = {
@@ -161,8 +161,8 @@ export const holdEvent: HoldEvent = {
     en: "What is established here: the shape of the observation payload in the cited file, at the cited commit. This identifier is not an executed entry. The register says Not qualified. The CHANGELOG’s 1,457 tests were not re-run. “Financial commitment” is the consequence reading’s wording; amount and the instrument are unavailable, so it is not an extra fact.",
   },
   integrity: {
-    fr: "previous_hash et chain_hash couvrent cette entrée dans le journal SDK. validate_chain détecte une rupture de ce chaînage. Cela ne prouve pas un effet externe.",
-    en: "previous_hash and chain_hash cover this entry in the SDK log. validate_chain detects a break in that chain. That does not prove an external effect.",
+    fr: "Pour cette entrée SDK, validate_chain() vérifie seulement que previous_hash égale le chain_hash de l’entrée précédente. Il ne recalcule pas l’empreinte du contenu : un payload modifié qui laisse ces deux champs en place n’est pas détecté. verify_chain() de HashChainedLedger, dans composition/lattice.py, recalcule le SHA-256 des champs couverts. Ce n’est pas la même propriété, et ce n’est pas ce journal. Aucune des deux ne prouve un effet externe.",
+    en: "For this SDK entry, validate_chain() only checks that previous_hash equals the previous entry’s chain_hash. It does not recompute the content hash: a changed payload that leaves those two fields in place is not detected. HashChainedLedger.verify_chain(), in composition/lattice.py, recomputes the SHA-256 of the covered fields. That is not the same property, and it is not this log. Neither proves an external effect.",
   },
   externalEffect: {
     fr: "Le journal ne prouve pas qu’un effet externe a eu lieu, ni que l’observation est complète. Le CHANGELOG 5.7.6 écrit que le runtime n’observe pas le fournisseur. L’absence d’exécution reste à établir auprès du système concerné.",
@@ -170,12 +170,12 @@ export const holdEvent: HoldEvent = {
   },
   wording: {
     operational: {
-      fr: "Opération suspendue. Aucun envoi n’est autorisé à ce stade.",
-      en: "Operation suspended, no dispatch authorised at this stage.",
+      fr: "Si un état d’opération corroboré établit que l’envoi n’a pas été autorisé, la lecture est : opération suspendue, aucun envoi n’est autorisé à ce stade. L’entrée observation seule ne contient ni cet état, ni le montant, ni la réponse du fournisseur.",
+      en: "If a corroborated operation state establishes that dispatch was not authorised, the reading is: operation suspended, no dispatch authorised at this stage. The observation entry alone contains neither that state, nor the amount, nor the provider response.",
     },
     business: {
-      fr: "Un engagement financier est retenu le temps de préserver la possibilité d’une réévaluation.",
-      en: "A financial commitment is temporarily held to preserve the possibility of re-evaluation.",
+      fr: "Si l’engagement concerné est financier et qu’un état d’opération corroboré confirme la suspension, il est retenu le temps de préserver la possibilité d’une réévaluation. Le montant n’est pas dans l’observation.",
+      en: "If the commitment concerned is financial and a corroborated operation state confirms the suspension, it is held so that re-evaluation stays possible. The amount is not in the observation.",
     },
     evidence: {
       fr: "Décision HOLD, version de politique X, horodatage Y, empreinte Z. L’absence d’exécution reste à établir auprès du système concerné.",
@@ -321,8 +321,8 @@ export const events: readonly EventReading[] = [
       en: "HashChainedLedger copies scoring_result and membrane_result into the entry. Those are structured results, not the provider’s original dossier. test_tamper_detection alters decision and expects verify_chain() to be false.",
     },
     integrity: {
-      fr: "Deux chaînes distinctes existent au commit épinglé. Le SDK lie previous_hash au chain_hash précédent. HashChainedLedger (composition/lattice.py) recalcule SHA-256 du payload canonique et échoue si un champ couvert change. Les deux détectent une altération des enregistrements qu’elles couvrent.",
-      en: "Two distinct chains exist at the pinned commit. The SDK links previous_hash to the previous chain_hash. HashChainedLedger (composition/lattice.py) recomputes the SHA-256 of the canonical payload and fails if a covered field changes. Both detect tampering of the records they cover.",
+      fr: "Deux chaînes distinctes existent au commit épinglé, et elles ne démontrent pas la même propriété. validate_chain() dans sdk.py vérifie seulement l’enchaînement previous_hash = chain_hash précédent. Il ne recalcule pas le contenu. verify_chain() dans composition/lattice.py recalcule le SHA-256 des champs couverts et échoue si l’un d’eux a changé.",
+      en: "Two distinct chains exist at the pinned commit, and they do not demonstrate the same property. validate_chain() in sdk.py only checks the link previous_hash = previous chain_hash. It does not recompute the content. verify_chain() in composition/lattice.py recomputes the SHA-256 of the covered fields and fails if one of them changed.",
     },
     eventTruth: {
       fr: "Une chaîne valide ne dit pas que la décision correspond au monde. Elle dit que les enregistrements couverts n’ont pas été modifiés après coup, dans cette chaîne-là.",
@@ -338,8 +338,8 @@ export const events: readonly EventReading[] = [
         en: "One can show that a covered record was not rewritten. One cannot conclude that the external commitment happened.",
       },
       evidence: {
-        fr: "previous_hash, chain_hash, et le résultat de verify_chain ou validate_chain. Tests : tests/test_composition.py (test_genesis_link, test_tamper_detection) et tests/test_sprints_9_10_11.py. La suite de 1 457 tests citée par le CHANGELOG n’a pas été relancée ici.",
-        en: "previous_hash, chain_hash, and the result of verify_chain or validate_chain. Tests: tests/test_composition.py (test_genesis_link, test_tamper_detection) and tests/test_sprints_9_10_11.py. The 1,457 tests cited by the CHANGELOG were not re-run here.",
+        fr: "previous_hash et chain_hash. validate_chain() ne recalcule pas le contenu. verify_chain() le recalcule pour les champs couverts de HashChainedLedger. Tests : tests/test_composition.py (test_genesis_link, test_tamper_detection) et tests/test_sprints_9_10_11.py. La suite de 1 457 tests citée par le CHANGELOG n’a pas été relancée ici.",
+        en: "previous_hash and chain_hash. validate_chain() does not recompute the content. verify_chain() does recompute it for HashChainedLedger’s covered fields. Tests: tests/test_composition.py (test_genesis_link, test_tamper_detection) and tests/test_sprints_9_10_11.py. The 1,457 tests cited by the CHANGELOG were not re-run here.",
       },
     },
     sources: [
@@ -433,10 +433,10 @@ export const gaps: readonly Gap[] = [
   },
   {
     id: "lane-b-reader",
-    title: { fr: "La voie B ne lit pas encore le journal", en: "Lane B does not read the log yet" },
+    title: { fr: "Le Workbench public ne lit pas les événements de la voie B", en: "The public Workbench does not read Lane B events" },
     work: {
-      fr: "S1 calcule ses chiffres dans le navigateur. Brancher ces curseurs sur une entrée exigerait un lecteur des champs déjà écrits. Ce n’est pas une nouvelle architecture métier.",
-      en: "S1 computes its figures in the browser. Connecting those sliders to an entry would require a reader of fields that are already written. That is not a new business architecture.",
+      fr: "La voie B est le périmètre de gouvernance et d’exécution. Le Workbench S1/S2 est une interface pédagogique. S1 calcule ses chiffres dans le navigateur et ne lit pas ces événements. Les relier est un travail de lecture, pas une infrastructure séparée.",
+      en: "Lane B is the governance and execution scope. Workbench S1/S2 is a pedagogical interface. S1 computes its figures in the browser and does not read those events. Connecting them is a reading task, not a separate infrastructure.",
     },
     verified: true,
   },
