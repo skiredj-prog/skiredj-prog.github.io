@@ -40,6 +40,26 @@ assert.ok(gaps.length >= 4);
 const joined = JSON.stringify({ events, gaps });
 assert.ok(!joined.includes('5.7.7'), '5.7.7 must not be named as a version here');
 assert.ok(!/workbench gateway/i.test(joined), 'no Workbench Gateway');
+const bannedLane = [
+  'La voie B est la lecture publique',
+  "Lane B is this site’s public reading",
+  "Lane B is this site's public reading",
+  'Lane B is the public Workbench',
+  'voie B est le Workbench',
+];
+const sources = [
+  'src/data/workbench-s2.ts',
+  'src/components/WorkbenchMatrix.astro',
+  'src/pages/workbench/technique/index.astro',
+  'src/pages/en/workbench/technical/index.astro',
+].map((file) => readFileSync(file, 'utf8')).join('\n');
+for (const phrase of bannedLane) assert.ok(!sources.includes(phrase), 'old Lane B phrasing: ' + phrase);
+assert.match(sources, /runtime TENIR-Gov/);
+assert.match(sources, /TENIR-Gov runtime/);
+assert.ok(!/les deux détectent une altération/i.test(sources), 'SDK and lattice integrity still conflated');
+assert.ok(!/both detect tamper/i.test(sources));
+assert.match(sources, /ne recalcule pas/);
+assert.match(sources, /does not recompute the content/);
 
 for (const file of ['src/data/workbench-s2.ts', 'src/components/WorkbenchMatrix.astro']) {
   const text = readFileSync(file, 'utf8');

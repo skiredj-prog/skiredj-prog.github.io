@@ -84,13 +84,13 @@ export const readingLabel: Record<Reading, Localized> = {
 };
 
 export const architecture: Localized = {
-  fr: "Cible, pas un état constaté : un seul runtime de gouvernance, une seule colonne vertébrale de preuves, plusieurs interprétations, aucune autorité dupliquée. R5 est le cockpit de laboratoire. La voie B est le périmètre de gouvernance et d’exécution, pas cette page. Le Workbench public est une interface pédagogique qui ne lit pas encore ces événements. Cette page n’ajoute ni passerelle, ni seconde chaîne.",
-  en: "Target, not a state found in the tree: one governance runtime, one evidence backbone, multiple interpretations, no duplicated authority. R5 is the laboratory cockpit. Lane B is the governance and execution scope, not this page. The public Workbench is a pedagogical interface that does not yet read those events. This page adds neither a gateway nor a second chain.",
+  fr: "Cible, pas un état constaté : un seul runtime de gouvernance, une seule colonne vertébrale de preuves, plusieurs interprétations, aucune autorité dupliquée. R5 est le cockpit de laboratoire. La voie B est le périmètre de gouvernance et d’exécution du runtime TENIR-Gov, pas cette page. Le Workbench public est une interface pédagogique qui ne lit pas encore les événements de ce runtime. Cette page n’ajoute ni passerelle, ni seconde chaîne.",
+  en: "Target, not a state found in the tree: one governance runtime, one evidence backbone, multiple interpretations, no duplicated authority. R5 is the laboratory cockpit. Lane B is the governance and execution perimeter of the TENIR-Gov runtime, not this page. The public Workbench is a pedagogical interface that does not yet read that runtime’s events. This page adds neither a gateway nor a second chain.",
 };
 
 export const laneNote: Localized = {
-  fr: "La voie B désigne le périmètre de gouvernance et d’exécution. Le Workbench public S1/S2 est une interface pédagogique : elle ne lit pas encore les événements de ce périmètre. R5 est le cockpit de laboratoire dans tenir_governance. Aucune de ces surfaces n’est une seconde autorité, et cette page n’en crée pas une.",
-  en: "Lane B names the governance and execution scope. The public Workbench S1/S2 is a pedagogical interface: it does not yet read that scope’s events. R5 is the laboratory cockpit in tenir_governance. None of these surfaces is a second authority, and this page does not create one.",
+  fr: "La voie B est le périmètre de gouvernance et d’exécution du runtime TENIR-Gov. Le Workbench public S1/S2 est une interface pédagogique : elle ne lit pas encore les événements de ce runtime. R5 est le cockpit de laboratoire dans tenir_governance. Aucune de ces surfaces n’est une seconde autorité, et cette page n’en crée pas une.",
+  en: "Lane B is the governance and execution perimeter of the TENIR-Gov runtime. The public Workbench S1/S2 is a pedagogical interface: it does not yet read that runtime’s events. R5 is the laboratory cockpit in tenir_governance. None of these surfaces is a second authority, and this page does not create one.",
 };
 
 export const audienceNote: Localized = {
@@ -435,8 +435,8 @@ export const gaps: readonly Gap[] = [
     id: "lane-b-reader",
     title: { fr: "Le Workbench public ne lit pas les événements de la voie B", en: "The public Workbench does not read Lane B events" },
     work: {
-      fr: "La voie B est le périmètre de gouvernance et d’exécution. Le Workbench S1/S2 est une interface pédagogique. S1 calcule ses chiffres dans le navigateur et ne lit pas ces événements. Les relier est un travail de lecture, pas une infrastructure séparée.",
-      en: "Lane B is the governance and execution scope. Workbench S1/S2 is a pedagogical interface. S1 computes its figures in the browser and does not read those events. Connecting them is a reading task, not a separate infrastructure.",
+      fr: "La voie B est le périmètre de gouvernance et d’exécution du runtime TENIR-Gov. Le Workbench S1/S2 est une interface pédagogique. S1 calcule ses chiffres dans le navigateur et ne lit pas les événements de ce runtime. Les relier est un travail de lecture, pas une infrastructure séparée.",
+      en: "Lane B is the governance and execution perimeter of the TENIR-Gov runtime. Workbench S1/S2 is a pedagogical interface. S1 computes its figures in the browser and does not read that runtime’s events. Connecting them is a reading task, not a separate infrastructure.",
     },
     verified: true,
   },
