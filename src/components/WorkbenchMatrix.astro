@@ -7,8 +7,10 @@ import {
   events,
   explorerLabel,
   gaps,
+  holdEvent,
   laneNote,
   pin,
+  readingsOf,
   qualification,
   readingLabel,
   registryLabel,
@@ -20,6 +22,12 @@ const fr = locale === 'fr';
 const t = (value: { fr: string; en: string }) => value[locale];
 const workbench = url(fr ? '/workbench/' : '/en/workbench/');
 const evidence = url(fr ? '/preuves/' : '/en/evidence/');
+const holdReadings = readingsOf(holdEvent);
+const roleLabel = {
+  operational: fr ? 'Opérationnel' : 'Operational',
+  business: fr ? 'Conséquences' : 'Business',
+  evidence: fr ? 'Preuve' : 'Evidence',
+} as const;
 ---
 <div class="wb2" data-workbench-s2>
   <p class="wb2-target">{t(architecture)}</p>
@@ -42,9 +50,25 @@ const evidence = url(fr ? '/preuves/' : '/en/evidence/');
       {!event.verified && <span class="wb2-pill wb2-unverified">{fr ? 'Non vérifié' : 'Unverified'}</span>}
     </header>
     <div class="wb2-reads">
-      <div class="wb2-read"><h3>{fr ? 'Opérationnel' : 'Operational'}</h3><p>{t(event.presentation.operational)}</p></div>
-      <div class="wb2-read"><h3>{fr ? 'Conséquences' : 'Business'}</h3><p>{t(event.presentation.business)}</p></div>
-      <div class="wb2-read"><h3>{fr ? 'Preuve' : 'Evidence'}</h3><p>{t(event.presentation.evidence)}</p></div>
+      {event.id === holdEvent.id
+        ? holdReadings.map((reading) => <div class="wb2-read" data-hold-reading={reading.role} data-event-id={reading.eventId}>
+            <h3>{roleLabel[reading.role]}</h3>
+            <p>{t(reading.wording)}</p>
+            <dl class="wb2-facts">
+              <div><dt>{fr ? 'Identifiant' : 'Event identifier'}</dt><dd><code>{reading.eventId}</code></dd></div>
+              <div><dt>{fr ? 'Décision' : 'Decision'}</dt><dd><code>{reading.decision}</code></dd></div>
+              <div><dt>{fr ? 'Provenance' : 'Provenance'}</dt><dd>{reading.provenance.map((item) => <span>{item.file} · {item.field} · {item.commit}</span>)}</dd></div>
+              <div><dt>{fr ? 'Champs indisponibles' : 'Unavailable fields'}</dt><dd>{reading.unavailableFields.map((field) => <code>{field}</code>)}</dd></div>
+              <div><dt>{fr ? 'Limite de ce qui est démontré' : 'Limit of what is demonstrated'}</dt><dd>{t(reading.demonstratedLimit)}</dd></div>
+              <div><dt>{fr ? 'Intégrité cryptographique' : 'Cryptographic integrity'}</dt><dd>{t(reading.integrity)}</dd></div>
+              <div><dt>{fr ? 'Effet externe' : 'External effect'}</dt><dd>{t(reading.externalEffect)}</dd></div>
+            </dl>
+          </div>)
+        : <>
+            <div class="wb2-read"><h3>{fr ? 'Opérationnel' : 'Operational'}</h3><p>{t(event.presentation.operational)}</p></div>
+            <div class="wb2-read"><h3>{fr ? 'Conséquences' : 'Business'}</h3><p>{t(event.presentation.business)}</p></div>
+            <div class="wb2-read"><h3>{fr ? 'Preuve' : 'Evidence'}</h3><p>{t(event.presentation.evidence)}</p></div>
+          </>}
     </div>
     <div class="wb2-split">
       <div>

@@ -100,9 +100,108 @@ export const audienceNote: Localized = {
 
 const src = (path: string): SourceRef => ({ path, url: blob(path) });
 
+export interface ProvenanceRef {
+  file: string;
+  field: string;
+  commit: string;
+}
+
+/** One HOLD observation. The three readings copy these facts; they do not add any. */
+export interface HoldEvent {
+  id: "hold-observation-s2";
+  decision: "HOLD";
+  provenance: readonly ProvenanceRef[];
+  unavailableFields: readonly string[];
+  demonstratedLimit: Localized;
+  integrity: Localized;
+  externalEffect: Localized;
+  wording: { operational: Localized; business: Localized; evidence: Localized };
+}
+
+export interface DerivedReading {
+  role: "operational" | "business" | "evidence";
+  eventId: HoldEvent["id"];
+  decision: HoldEvent["decision"];
+  provenance: HoldEvent["provenance"];
+  unavailableFields: HoldEvent["unavailableFields"];
+  demonstratedLimit: Localized;
+  integrity: Localized;
+  externalEffect: Localized;
+  wording: Localized;
+}
+
+export const holdEvent: HoldEvent = {
+  id: "hold-observation-s2",
+  decision: "HOLD",
+  provenance: [
+    { file: "tenir_governance/sdk.py", field: "payload.type", commit: pin.commit },
+    { file: "tenir_governance/sdk.py", field: "payload.decision", commit: pin.commit },
+    { file: "tenir_governance/sdk.py", field: "payload.policy_version", commit: pin.commit },
+    { file: "tenir_governance/sdk.py", field: "timestamp", commit: pin.commit },
+    { file: "tenir_governance/sdk.py", field: "previous_hash", commit: pin.commit },
+    { file: "tenir_governance/sdk.py", field: "chain_hash", commit: pin.commit },
+    { file: "tenir_governance/nomenclature.py", field: "LedgerEntryTypes.OBSERVATION", commit: pin.commit },
+  ],
+  unavailableFields: [
+    "amount",
+    "financial instrument",
+    "pressure",
+    "capacity",
+    "option_space",
+    "velocity",
+    "provider response",
+    "execution proof",
+    "external system identifier",
+    "filled policy_version",
+    "filled timestamp",
+    "filled chain_hash",
+  ],
+  demonstratedLimit: {
+    fr: "Ce qui est établi ici : la forme du payload observation dans le fichier cité, au commit cité. Cet identifiant n’est pas une entrée exécutée. Le registre dit Non qualifié. Les 1 457 tests du CHANGELOG n’ont pas été relancés. « Engagement financier » est la formulation de la lecture des conséquences ; amount et l’instrument sont indisponibles, donc ce n’est pas un fait de plus.",
+    en: "What is established here: the shape of the observation payload in the cited file, at the cited commit. This identifier is not an executed entry. The register says Not qualified. The CHANGELOG’s 1,457 tests were not re-run. “Financial commitment” is the consequence reading’s wording; amount and the instrument are unavailable, so it is not an extra fact.",
+  },
+  integrity: {
+    fr: "previous_hash et chain_hash couvrent cette entrée dans le journal SDK. validate_chain détecte une rupture de ce chaînage. Cela ne prouve pas un effet externe.",
+    en: "previous_hash and chain_hash cover this entry in the SDK log. validate_chain detects a break in that chain. That does not prove an external effect.",
+  },
+  externalEffect: {
+    fr: "Le journal ne prouve pas qu’un effet externe a eu lieu, ni que l’observation est complète. Le CHANGELOG 5.7.6 écrit que le runtime n’observe pas le fournisseur. L’absence d’exécution reste à établir auprès du système concerné.",
+    en: "The log does not prove that an external effect happened, or that the observation is complete. CHANGELOG 5.7.6 states that the runtime does not observe the provider. Absence of execution remains to be established with the system concerned.",
+  },
+  wording: {
+    operational: {
+      fr: "Opération suspendue. Aucun envoi n’est autorisé à ce stade.",
+      en: "Operation suspended, no dispatch authorised at this stage.",
+    },
+    business: {
+      fr: "Un engagement financier est retenu le temps de préserver la possibilité d’une réévaluation.",
+      en: "A financial commitment is temporarily held to preserve the possibility of re-evaluation.",
+    },
+    evidence: {
+      fr: "Décision HOLD, version de politique X, horodatage Y, empreinte Z. L’absence d’exécution reste à établir auprès du système concerné.",
+      en: "HOLD decision, policy version X, timestamp Y, hash Z. Absence of execution remains to be established with the system concerned.",
+    },
+  },
+};
+
+/** Three readings of one record. Facts are the same object, not three copies. */
+export function readingsOf(event: HoldEvent): readonly DerivedReading[] {
+  return (["operational", "business", "evidence"] as const).map((role) => ({
+    role,
+    eventId: event.id,
+    decision: event.decision,
+    provenance: event.provenance,
+    unavailableFields: event.unavailableFields,
+    demonstratedLimit: event.demonstratedLimit,
+    integrity: event.integrity,
+    externalEffect: event.externalEffect,
+    wording: event.wording[role],
+  }));
+}
+
 export const events: readonly EventReading[] = [
   {
-    id: "observation",
+    id: holdEvent.id,
     eventType: "observation",
     title: { fr: "Entrée observation", en: "Observation entry" },
     reading: "tested-behaviour",
@@ -127,43 +226,15 @@ export const events: readonly EventReading[] = [
       "chain_hash",
       "timestamp",
     ],
-    missingFields: [
-      "pressure",
-      "capacity",
-      "option_space",
-      "velocity",
-      "provider response",
-      "execution proof",
-      "amount",
-      "external system identifier",
-    ],
+    missingFields: holdEvent.unavailableFields,
     rawEvidence: "absent",
     rawEvidenceNote: {
       fr: "Le payload SDK garde la décision et des scores dérivés. Il ne garde ni la réponse du fournisseur, ni le texte source. L’original, s’il existe, n’est pas dans cette entrée : sa récupération n’est pas établie.",
       en: "The SDK payload keeps the decision and derived scores. It does not keep the provider response or the source text. The original, if it exists, is not in this entry: retrievability is not established.",
     },
-    integrity: {
-      fr: "previous_hash et chain_hash lient cette entrée à la précédente dans le journal en mémoire ou JSONL du client SDK. validate_chain vérifie cette liaison. Cela détecte une rupture de chaîne dans ce journal. Ce n’est pas l’arbre de Merkle.",
-      en: "previous_hash and chain_hash link this entry to the previous one in the SDK client’s in-memory or JSONL log. validate_chain checks that link. That detects a break in this log. It is not the Merkle tree.",
-    },
-    eventTruth: {
-      fr: "Une chaîne intacte ne prouve pas qu’un effet externe a eu lieu, ni que l’observation est complète. Le CHANGELOG 5.7.6 dit que le runtime n’observe pas le fournisseur.",
-      en: "An intact chain does not prove that an external effect happened, or that the observation is complete. CHANGELOG 5.7.6 says the runtime does not observe the provider.",
-    },
-    presentation: {
-      operational: {
-        fr: "Opération suspendue. Aucun envoi n’est autorisé à ce stade.",
-        en: "Operation suspended, no dispatch authorised at this stage.",
-      },
-      business: {
-        fr: "Un engagement financier est retenu le temps de préserver la possibilité d’une réévaluation.",
-        en: "A financial commitment is temporarily held to preserve the possibility of re-evaluation.",
-      },
-      evidence: {
-        fr: "Décision HOLD, version de politique X, horodatage Y, empreinte Z. L’absence d’exécution reste à établir auprès du système concerné. X, Y et Z sont des noms de champs, pas des valeurs tirées d’un dossier.",
-        en: "HOLD decision, policy version X, timestamp Y, hash Z. Absence of execution remains to be established with the system concerned. X, Y and Z are field names, not values taken from a dossier.",
-      },
-    },
+    integrity: holdEvent.integrity,
+    eventTruth: holdEvent.externalEffect,
+    presentation: holdEvent.wording,
     sources: [
       src("tenir_governance/sdk.py"),
       src("tenir_governance/nomenclature.py"),
