@@ -1,0 +1,14 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SystemWorkbench from '../../../components/SystemWorkbench.astro';
+const locale = 'en' as const;
+---
+<Base locale={locale} slug="workbench"
+  documentTitle="TENIR Workbench — Explore how systems hold under pressure"
+  title="Explore how systems hold under pressure"
+  description="Read-only page: an illustrative system approaches its limit. Sliders, margin, three readings. A communication concept, not the scoring kernel and not a certification."
+  kicker="TENIR Workbench · read only"
+  lede="An interactive environment for exploring system constraints, admissibility, decision margins, execution governance and the capacity to correct."
+  sources="Reusable visual classified in tenir_governance PR #149 (docs/workbench/s0). The frozen HTML is not served. Limits cited from CHANGELOG 5.7.6 via ecarts-cartographie.md: harness NOT_CERTIFIABLE, single-host TENIR-Gov, FM-20 open.">
+  <SystemWorkbench locale={locale} />
+</Base>

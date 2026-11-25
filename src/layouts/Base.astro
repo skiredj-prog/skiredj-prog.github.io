@@ -28,6 +28,7 @@ const isPathway=slug==='parcours-ia'||slug==='ai-readiness';
 const isJourney=slug.startsWith('parcours/')||slug.startsWith('start/');
 const isBusiness=slug==='parcours/activite'||slug==='start/business';
 const isPortfolio=slug.startsWith('portfolio/');
+const isWorkbench=slug==='workbench';
 const other=slug==='404'?(fr?'/en/':'/'):alternate(locale,slug);
 const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}`;
 const canonical=new URL(url(here),Astro.site);
@@ -47,7 +48,7 @@ const sectionLink=sectionItem(locale,sectionOf(slug));
 const crumb=sectionLink&&sectionLink.slug!==slug?sectionLink:undefined;
 // Pages whose own flow already ends the reading: journeys, the 404 and the two step-by-step replays.
 const ownEnding=slug==='404'||isJourney||['rejouer','replay','demonstrations/journal','demos/log'].includes(slug);
-const heroWidth=isPortfolio?'page-hero--wide':slug==='contact'?'page-hero--narrow':isBusiness?'page-hero--business':undefined;
+const heroWidth=isPortfolio||isWorkbench?'page-hero--wide':slug==='contact'?'page-hero--narrow':isBusiness?'page-hero--business':undefined;
 const groups=footerGroups[locale];
 const hasStatusSnapshot=['statut','status','publications','conformance','depots','repositories'].includes(slug);
 const mainTitle=documentTitle??(home?(fr?'TENIR Labs — L’IA agit. Vous gardez la main.':'TENIR Labs — AI takes action. You stay in control.'):`${title} — TENIR`);
@@ -81,12 +82,12 @@ const mainDescription=home?(fr?'Confiez des tâches à l’IA, pas les clés de 
             {!isPortfolio&&<><p class="lede">{lede}</p>{slug!=='contact'&&<details class="source-disclosure"><summary>{fr?'Sources et contexte de lecture':'Sources and reading context'}</summary><p class="sources">{sources}</p><p>{t.status} <a href={path('statut','status')}>{fr?'Lire le statut détaillé':'Read the detailed status'} →</a></p></details>}</>}
           </div>
         </header>}
-        <div class:list={['doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page',isPathway&&'pathway-doc']}>
+        <div class:list={['doc',slug==='contact'&&'contact-page',isBusiness&&'business-page',isPortfolio&&'portfolio-page',isWorkbench&&'workbench-page',isPathway&&'pathway-doc']}>
           <article>
             {slug==='contact'&&<ContactBrief locale={locale}/>}
             {(slug==='produits-et-services'||slug==='products-and-services')&&<div class="offer-summary"><div><span class="role">{fr?'Le point de départ':'The starting point'}</span><strong>{fr?'Leap Readiness : une semaine, un périmètre, votre palier démontré.':'Leap Readiness: one week, one scope, your demonstrated tier.'}</strong><p>{fr?'5 000 EUR · cadrage de 30 min · aucun accès en production':'EUR 5,000 · 30-min scoping · no production access'}</p></div><a class="btn btn-primary" href={path('offre','offer')}>{fr?'Voir l’offre':'See the offer'} →</a></div>}
             {slug!=='contact'&&!isPathway&&<details class="mobile-toc" data-mobile-toc hidden><summary>{t.toc}</summary><ol></ol></details>}
-            {isBusiness||isPortfolio||isPathway?<slot />:slug==='contact'?<details class="contact-references"><summary>{fr?'Références de l’auteur et citations':'Author references and citations'}</summary><div class="prose"><slot /></div></details>:<div class="prose">{hasStatusSnapshot&&<ProjectStatusSnapshot locale={locale}/>}<slot /></div>}
+            {isBusiness||isPortfolio||isPathway||isWorkbench?<slot />:slug==='contact'?<details class="contact-references"><summary>{fr?'Références de l’auteur et citations':'Author references and citations'}</summary><div class="prose"><slot /></div></details>:<div class="prose">{hasStatusSnapshot&&<ProjectStatusSnapshot locale={locale}/>}<slot /></div>}
           </article>
           {slug!=='contact'&&!isPathway&&<aside class="toc" id="toc" hidden><p>{t.toc}</p><ol></ol><a class="toc-help" href={readerContact}>{fr?'Une question en lisant ?':'A question while reading?'}<strong>{fr?'Écrire à Abdelaziz':'Write to Abdelaziz'} ↗</strong></a><a class="toc-help" href={url(journeyHref(locale,journeys[locale][0]))}>{fr?'Revenir à une explication simple':'Return to a simple explanation'} →</a></aside>}
         </div>
