@@ -1,0 +1,67 @@
+/* S2 documentary matrix. Same tokens as the evidence cards. No selector, no motion. */
+.doc.workbench-page { display: block; width: min(var(--page), calc(100% - 4rem)); max-width: none; }
+.wb2 { color: var(--ink); overflow-wrap: anywhere; }
+.wb2 code { overflow-wrap: anywhere; }
+.wb2 * { box-sizing: border-box; min-width: 0; }
+.wb2 h2 { font: 700 clamp(1.45rem, 2.2vw, 1.85rem)/1.2 var(--serif); margin: 0 0 0.4rem; font-size-adjust: 0.44; }
+.wb2 h3 { font: 650 1rem/1.35 var(--sans); margin: 0; }
+.wb2 p { margin: 0.35rem 0 0; }
+.wb2-note, .wb2-target {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  max-width: 78ch;
+}
+.wb2-target { border-left: 3px solid var(--accent); background: var(--accent-soft); }
+.wb2-note { border-left: 3px solid var(--limit); background: var(--limit-soft); }
+.wb2-kicker { margin: 0 0 0.35rem; font: 500 0.68rem/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.wb2-card {
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem 1.15rem;
+  margin: 0 0 1rem;
+}
+.wb2-card header { display: flex; flex-wrap: wrap; gap: 0.4rem 0.7rem; align-items: baseline; margin-bottom: 0.6rem; }
+.wb2-pill {
+  font: 600 0.66rem/1.3 var(--mono);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.12rem 0.45rem;
+  color: var(--ink);
+  background: var(--bg);
+}
+.wb2-unverified { border-color: var(--limit); color: var(--limit); }
+.wb2-reads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.8rem; }
+.wb2-read { border-top: 2px solid var(--accent); padding-top: 0.45rem; }
+.wb2-read h3 { color: var(--accent); font: 600 0.72rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.wb2-read p { color: var(--ink-soft); font-size: 0.95rem; }
+.wb2-facts { margin: 0.55rem 0 0; }
+.wb2-facts div { margin-top: 0.45rem; }
+.wb2-facts dt { font: 600 0.68rem/1.3 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.wb2-facts dd { margin: 0.15rem 0 0; color: var(--ink-soft); }
+.wb2-facts dd span, .wb2-facts dd code { display: block; }
+.wb2-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.8rem; }
+.wb2-split h3 { font: 600 0.72rem/1.4 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.wb2-split ul, .wb2-gaps { margin: 0.35rem 0 0; padding-left: 1.1rem; }
+.wb2-split li, .wb2-gaps li { margin: 0.25rem 0; color: var(--ink-soft); }
+.wb2-missing { border-left: 3px solid var(--limit); padding-left: 0.7rem; }
+.wb2-missing h3 { color: var(--limit); }
+.wb2-sources { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.8rem; font-size: 0.88rem; }
+.wb2-sources a { overflow-wrap: anywhere; }
+.wb2-gap { padding: 0.7rem 0; border-top: 1px solid var(--line); }
+.wb2-gap h3 { margin-bottom: 0.2rem; }
+@media (max-width: 800px) {
+  .wb2-reads, .wb2-split { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .doc.workbench-page { width: calc(100% - 2.5rem); }
+}
+@media (max-width: 380px) {
+  .doc.workbench-page { width: calc(100% - 2rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wb2, .wb2 * { transition: none !important; animation: none !important; }
+}

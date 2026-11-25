@@ -28,7 +28,7 @@ const isPathway=slug==='parcours-ia'||slug==='ai-readiness';
 const isJourney=slug.startsWith('parcours/')||slug.startsWith('start/');
 const isBusiness=slug==='parcours/activite'||slug==='start/business';
 const isPortfolio=slug.startsWith('portfolio/');
-const isWorkbench=slug==='workbench';
+const isWorkbench=slug==='workbench'||slug.startsWith('workbench/');
 const other=slug==='404'?(fr?'/en/':'/'):alternate(locale,slug);
 const here=slug==='404'?'/':fr?(slug?`/${slug}/`:'/'):`/en/${slug?`${slug}/`:''}`;
 const canonical=new URL(url(here),Astro.site);

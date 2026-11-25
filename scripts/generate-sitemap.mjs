@@ -20,7 +20,12 @@ await visit(root);
 urls.sort();
 const present=new Set(urls);
 const full=(path)=>origin+base+path;
-const workbenchPair=new Map([['/workbench/','/en/workbench/'],['/en/workbench/','/workbench/']]);
+const workbenchPair=new Map([
+  ['/workbench/','/en/workbench/'],
+  ['/en/workbench/','/workbench/'],
+  ['/workbench/technique/','/en/workbench/technical/'],
+  ['/en/workbench/technical/','/workbench/technique/'],
+]);
 const entries=urls.map(path=>{
  let alternates='';
  const twin=workbenchPair.get(path);
