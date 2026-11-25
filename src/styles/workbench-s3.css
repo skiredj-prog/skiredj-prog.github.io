@@ -1,0 +1,4 @@
+@import "./workbench-s2.css";
+.wb3-step { scroll-margin-top: 6rem; }
+.wb3-cite { font-family: var(--mono); font-size: 0.82rem; }
+.wb3-gap { border-left: 3px solid var(--limit); padding-left: 0.7rem; margin-top: 0.6rem; }

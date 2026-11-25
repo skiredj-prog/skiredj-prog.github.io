@@ -25,6 +25,8 @@ const workbenchPair=new Map([
   ['/en/workbench/','/workbench/'],
   ['/workbench/technique/','/en/workbench/technical/'],
   ['/en/workbench/technical/','/workbench/technique/'],
+  ['/workbench/continuite/','/en/workbench/continuity/'],
+  ['/en/workbench/continuity/','/workbench/continuite/'],
 ]);
 const entries=urls.map(path=>{
  let alternates='';
